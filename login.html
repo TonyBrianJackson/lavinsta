@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="import" href="index.html">
+    <link rel="import" href="lavinsta.html">
+    <link rel="shortcut icon" href="icons/playstore.png" type="image/x-icon">
+    <!------script tags------>
+    <script defer src="script/authentication.js"></script>
+</head>
+
+<body>
+    <section class="entiresignupandloginpage">
+        <button class="loginbtn2">Login</button>
+        <div class="unique_background">
+            <div class="logoNameLoading">
+                <p>Lavi</p>
+                <p>nsta</p>
+            </div>
+        </div>
+        <div class="pages loginpage" id="loginpage">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img src="lavinstaphotos/eagle.png" alt="eagle Logo"></div>
+                <div class="title_logs_Flex">
+                    <div class="flexerLogger">
+                        <div class="recent_Logs_call">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
+                                width="512" height="512" x="0" y="0" viewBox="0 0 100 100"
+                                style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                <g>
+                                    <linearGradient id="a">
+                                        <stop offset="0" stop-color="#15ffff"></stop>
+                                        <stop offset=".085" stop-color="#14f6fd"></stop>
+                                        <stop offset=".222" stop-color="#13def7"></stop>
+                                        <stop offset=".394" stop-color="#10b8ed"></stop>
+                                        <stop offset=".595" stop-color="#0c82e0"></stop>
+                                        <stop offset=".816" stop-color="#073ecf"></stop>
+                                        <stop offset="1" stop-color="#0300bf"></stop>
+                                    </linearGradient>
+                                    <linearGradient xlink:href="#a" id="b" x1="-17.758" x2="87.367" y1="12.837"
+                                        y2="116.937" gradientUnits="userSpaceOnUse"></linearGradient>
+                                    <linearGradient xlink:href="#a" id="c" x1="8.641" x2="113.766" y1="-13.823"
+                                        y2="90.278" gradientUnits="userSpaceOnUse"></linearGradient>
+                                    <path fill="url(#b)"
+                                        d="M50 56.933c-22.269 0-40.321 9.383-40.321 20.957 0 14.468 4.68 19.61 40.321 19.61s40.321-5.142 40.321-19.61c0-11.574-18.052-20.957-40.321-20.957z"
+                                        data-original="url(#b)"></path>
+                                    <path fill="url(#c)"
+                                        d="M50 53.905c12.297 0 22.265-14.018 22.265-28.213S62.297 2.5 50 2.5s-22.265 8.997-22.265 23.192S37.703 53.905 50 53.905z"
+                                        data-original="url(#c)"></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <h1 class="login_title_LogIn logintitle">Log In To Lavinsta</h1>
+                </div>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="loginspace">
+                    <input class="login_email" type="email" id="usersemail" placeholder="Enter Email">
+                    <input class="login_phone" type="tel" id="login_upphone" placeholder="Enter Phone">
+                    <span class="use_user_Phone"><small>Or</small></span>
+                </div>
+                <div class="loginspace">
+                    <input type="password" id="userspassword" placeholder="Enter Password">
+                    <span class="password_Visibility login_Password_Visible"><small class="visible">SP</small></span>
+                </div>
+                <button class="classBtn_Button loginbtn" type="submit">Login</button>
+                <button id="signup" class="classBtn_Button signupbtn">Sign Up</button>
+                <button class="classBtn_Button forgotpasswordbtn" type="submit" id="forget_Password">Forgot
+                    Password</button>
+                <p class="loginconsole"></p>
+            </div>
+        </div>
+        <div class="pages signupasanadmin">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img src="lavinstaphotos/eagle.png" class="create_Account_Logo"></div>
+                <h1 class="logintitle">Sign Up As An Admin</h1>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="loginspace">
+                    <input type="password" id="AdminsKeyVerificationBox_Key_N0ts3t" placeholder="Enter Admins Key">
+                    <span class="password_Visibility admin_keyVisibility"><small class="visible">SP</small></span>
+                </div>
+                <div class="loginspace">
+                    <input type="password" id="CEOsKeyVerificationBox_key_N0ts3t" placeholder="Enter CEO Key">
+                    <span class="password_Visibility CEO_keyVisibility"><small class="visible">SP</small></span>
+                </div>
+                <button class="classBtn_Button Verify_Admins_Key_Button" type="submit">submit</button>
+                <button id="exItAMINsKey_Password_Page" class="classBtn_Button loginbtn" type="submit">back</button>
+            </div>
+        </div>
+        <div class="pages forgot_Password_Page">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img class="users_Id_And_Logo" src="lavinstaphotos/eagle.png" alt=""></div>
+                <h1 class="logintitle" id="users_Name_And_Page_Title">Reset</h1>
+                <p class="reset_Console"></p>
+                <div class="loginspace">
+                    <input class="user_Email_Reset" type="email" id="usersemail_Reset" placeholder="Enter Email">
+                    <input class="user_Phone_Reset" type="tel" id="usersphone_Reset" placeholder="Enter Phone">
+                    <span class="use_Phone_Reset"><small>Or</small></span>
+                </div>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="loginspace">
+                    <input maxlength="5" type="tel" id="Users_verification_Input" placeholder="Enter code">
+                </div>
+                <button class="classBtn_Button signupbtn" id="get_Verification_Code_Button">Get Code</button>
+                <button class="classBtn_Button verify_Acc_Button" type="submit">verify</button>
+                <button id="Open_LoggIn_Page" class="classBtn_Button loginbtn" type="submit">Login</button>
+                <p class="loginconsole"></p>
+            </div>
+        </div>
+        <div class="pages Verify_Password_Page">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img class="users_Id_And_Logo" src="lavinstaphotos/eagle.png" alt=""></div>
+                <h1 class="logintitle" id="users_Name_And_Page_Title">Reset</h1>
+                <p class="reset_Console"></p>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="loginspace">
+                    <input type="password" id="users_Reset_Password_Reset" placeholder="Create New Password">
+                    <span class="password_Visibility reset_Create_Password_Visible"><small
+                            class="visible">SP</small></span>
+                </div>
+                <div class="loginspace">
+                    <input type="password" id="Users_Confirm_Password_Reset" placeholder="Confirm New Password">
+                    <span class="password_Visibility reset_Confirm_Password_Visible"><small
+                            class="visible">SP</small></span>
+                </div>
+                <button class="classBtn_Button Verify_Password_Button" type="submit">verify</button>
+                <button id="Open_Forgot_Password_Page" class="classBtn_Button loginbtn" type="submit">back</button>
+                <p class="Verify_Password_Console"></p>
+            </div>
+        </div>
+        <div class="pages signuppage">
+            <div class="style_Top_Popup">
+                <div class="signuplogo KeY_AdM1Ns"><img src="lavinstaphotos/eagle.png" alt=""></div>
+                <h1 class="logintitle">Sign Up To Lavinsta</h1>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="loginspace"><input type="text" name="" id="first-name" placeholder="First Name"></div>
+                <div class="loginspace"><input type="text" name="" id="sur-name" placeholder="Surname"></div>
+                <div class="loginspace">
+                    <input class="email_textBox" type="email" name="" id="sign-upemail" placeholder="Email">
+                    <input class="Phone_textBox" type="tel" name="" id="sign-upphone" placeholder="Phone">
+                    <span class="use_Phone_Number"><small>Or</small></span>
+                </div>
+                <button id="toopendateofbirth" class="classBtn_Button nextbtn1">Next</button>
+                <button id="login" class="classBtn_Button signupbtn" type="submit">Log In</button>
+            </div>
+        </div>
+        <div class="pages signuppage1">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img src="lavinstaphotos/eagle.png" alt=""></div>
+                <h1 class="logintitle">Date Of Birth</h1>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="valuesOfDateOfBirth">
+                    <p class="DateOfBirtConsole_Day">Day</p>
+                    <p class="DateOfBirtConsole_Month">Month</p>
+                    <p class="DateOfBirtConsole_Year">Year</p>
+                </div>
+                <div class="selectoption">
+                    <div class="date_picker_container">
+                        <header>
+                            <span class="Date_PickerCloseButton">&times;</span>
+                        </header>
+                        <div class="day_picker">
+                            <div class="day_Option active">1</div>
+                            <div class="day_Option">2</div>
+                            <div class="day_Option">3</div>
+                            <div class="day_Option">4</div>
+                            <div class="day_Option">5</div>
+                            <div class="day_Option">6</div>
+                            <div class="day_Option">7</div>
+                            <div class="day_Option">8</div>
+                            <div class="day_Option">9</div>
+                            <div class="day_Option">10</div>
+                            <div class="day_Option">11</div>
+                            <div class="day_Option">12</div>
+                            <div class="day_Option">13</div>
+                            <div class="day_Option">14</div>
+                            <div class="day_Option">15</div>
+                            <div class="day_Option">16</div>
+                            <div class="day_Option">17</div>
+                            <div class="day_Option">18</div>
+                            <div class="day_Option">19</div>
+                            <div class="day_Option">20</div>
+                            <div class="day_Option">21</div>
+                            <div class="day_Option">22</div>
+                            <div class="day_Option">23</div>
+                            <div class="day_Option">24</div>
+                            <div class="day_Option">25</div>
+                            <div class="day_Option">26</div>
+                            <div class="day_Option">27</div>
+                            <div class="day_Option">28</div>
+                            <div class="day_Option">29</div>
+                            <div class="day_Option">30</div>
+                            <div class="day_Option">31</div>
+                            <span class="done_with_Date_Picker">Done</span>
+                        </div>
+                    </div>
+                    <div class="date_picker_container_month">
+                        <header>
+                            <span class="Month_PickerCloseButton">&times;</span>
+                        </header>
+                        <div class="month_picker">
+                            <div class="month_picker_Option active">January</div>
+                            <div class="month_picker_Option">February</div>
+                            <div class="month_picker_Option">March</div>
+                            <div class="month_picker_Option">April</div>
+                            <div class="month_picker_Option">May</div>
+                            <div class="month_picker_Option">June</div>
+                            <div class="month_picker_Option">July</div>
+                            <div class="month_picker_Option">August</div>
+                            <div class="month_picker_Option">September</div>
+                            <div class="month_picker_Option">October</div>
+                            <div class="month_picker_Option">November</div>
+                            <div class="month_picker_Option">December</div>
+                        </div>
+                        <span class="done_with_Month_Picker">Done</span>
+                    </div>
+                    <input id="DateOfBirt_Year" type="tel" placeholder="0000" maxlength="4">
+                </div>
+                <button id="genderpage" class="classBtn_Button nextbtn1">Next</button>
+            </div>
+        </div>
+        <div class="pages signuppage2">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img src="icons/male-user.png" class="create_Account_Logo" id="Male_Or_Female">
+                </div>
+                <h1 class="logintitle">Gender</h1>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="genderc">
+                    <div class="genderflex"><label for="male">Male</label><span class="gender active" id="male"></span>
+                    </div>
+                    <div class="genderflex"><label for="female">Female</label><span class="gender" id="female"></span>
+                    </div>
+                    <p class="genderSex">male</p>
+                </div>
+                <button id="passwordpage" class="classBtn_Button nextbtn1">Next</button>
+            </div>
+        </div>
+        <div class="pages signuppage3">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img src="lavinstaphotos/eagle.png" class="create_Account_Logo"></div>
+                <h1 class="logintitle">Create Password</h1>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="loginspace">
+                    <input type="password" name="" id="makepassword" placeholder="Create Password">
+                    <span class="password_Visibility create_Pass_Visible">
+                        <small class="visible">SP</small>
+                    </span>
+                </div>
+                <div class="loginspace">
+                    <input type="password" name="" id="confirmpassword" placeholder="Confirm Password"><span
+                        class="password_Visibility confirm_Pass_Visible">
+                        <Small class="visible">SP</Small>
+                    </span>
+                </div>
+                <button id="verificationpage" class="classBtn_Button nextbtn1">Next</button>
+                <p class="loginconsole_Validiation"></p>
+            </div>
+        </div>
+        <div class="pages signuppage4">
+            <div class="style_Top_Popup">
+                <div class="signuplogo"><img src="lavinstaphotos/eagle.png" class="create_Account_Logo"></div>
+                <h1 class="logintitle">Verify Password</h1>
+            </div>
+            <div class="style_Bottom_Popup">
+                <div class="verify_Box loginspace">
+                    <input id="verify" type="text" maxlength="5" placeholder="Enter Code">
+                </div>
+                <div class="inputbox" style="display: none;">
+                    <p class="verification_console"></p>
+                </div>
+                <button id="deliver_Code" class="classBtn_Button forgotpasswordbtn" type="submit">Get Code</button>
+                <button id="welcomepage" class="classBtn_Button nextbtn1">Create My Account</button>
+            </div>
+        </div>
+        <div class="pages holdallpage">
+            <div class="style_Top_Popup">
+                <div class="holdalllistcolumn" id="holdalllistcolumn"></div>
+            </div>
+            <div class="style_Bottom_Popup">
+                <button id="exit_Shortcut_LogIn" class="classBtn_Button exit_Shortcut_LogIn">Login</button>
+                <p class="recentlogconsole"></p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

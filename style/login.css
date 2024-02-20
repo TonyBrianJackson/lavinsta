@@ -1,0 +1,887 @@
+.entiresignupandloginpage {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 0px;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: none;
+}
+.entiresignupandloginpage::before {
+    content: '';
+    width: 2000px;
+    height: 2000px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to right,#1059d8,#04befe);
+    top: -10%;
+    right: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.entiresignupandloginpage::after {
+    content: '';
+    width: 2000px;
+    height: 2000px;
+    position: absolute;
+    border-radius: 120%;
+    background: linear-gradient(-45deg,#2f6fdd,#04befe);
+    top: -40%;
+    right: 10%;
+    transform: translateY(-50%);
+}
+.unique_background {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    border-radius: 0px;
+    box-shadow: none;
+    border: none;
+    background: none;
+    z-index: 2;
+}
+
+.form {
+    background: rgba(0, 0, 0, 0.233);
+    min-height: 100vh;
+    height: max-content;
+    max-height: max-content;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 0px;
+}
+
+.signuplogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-width: 5px;
+    border-color: #000000;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.signuplogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: none;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+#Male_Or_Female,
+.create_Account_Logo {
+    background: var(--color-white);
+}
+
+.loginbtn2 {
+    padding: 10px 40px;
+    border-radius: 30px;
+    box-shadow: rgba(250, 247, 247, 0.17) 9px -76px 5px 0px inset, rgba(94, 92, 92, 0.555) 0px 12px 10px 0px inset, rgba(247, 241, 241, 0.1) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 0px 0px, rgba(0, 0, 0, 0.09) 0px 0px 0px;
+    background: #33FFFF;
+    cursor: pointer;
+    display: none;
+}
+
+.loginconsole_Validiation,
+.Verify_Password_Console,
+.loginconsole,
+.recentlogconsole,
+.genderSex {
+    border: none;
+    box-shadow: none;
+    color: var(--color-white);
+    border-radius: 0px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.valuesOfDateOfBirth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    width: 100%;
+}
+
+.date_picker_container_month,
+.date_picker_container {
+    width: 100%;
+    height: max-content;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    border-radius: 0px;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.date_picker_container_month header,
+.date_picker_container header {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    background: var(--color-dark);
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+}
+
+.date_picker_container_month header span,
+.date_picker_container header span {
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 10px;
+    background: var(--color-dark);
+    color: var(--color-white);
+    border-color: var(--color-white);
+    border-width: 2px;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.month_picker,
+.day_picker {
+    width: 100%;
+    height: max-content;
+    display: grid;
+    padding: 3px;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-radius: 0px;
+    background: var(--color-dark);
+    border: none;
+    box-shadow: none;
+}
+
+.month_picker {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.month_picker div,
+.day_picker div {
+    display: block;
+    text-align: center;
+    background: var(--color-dark);
+    color: var(--color-white);
+    border-color: var(--color-white);
+    border-width: 2px;
+    box-shadow: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.month_picker_Option.active,
+.day_Option.active {
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+.done_with_Date_Picker,
+.done_with_Month_Picker {
+    display: block;
+    text-align: center;
+    border-color: var(--color-white);
+    box-shadow: none;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: var(--color-white);
+    background: var(--color-success);
+    cursor: pointer;
+}
+
+.done_with_Month_Picker {
+    width: 100%;
+}
+
+.done_with_Month_Picker:hover,
+.done_with_Date_Picker:hover {
+    color: var(--color-success);
+    background: var(--color-white);
+}
+
+.day_picker div:hover {
+    background: var(--color-white);
+    color: var(--color-dark);
+    border-color: var(--color-dark);
+}
+
+.valuesOfDateOfBirth p {
+    border: none;
+    box-shadow: none;
+    color: var(--color-white);
+    border-radius: 0px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 0px 3px;
+}
+
+.pages {
+    width: 35vw;
+    min-height: 70vh;
+    height: max-content;
+    max-height: max-content;
+    background: var(--color-very-light);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    margin: 0px 50px;
+    border-radius: 10px;
+    box-shadow: var(--light-box-shadow);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border: none;
+    z-index: 3;
+}
+
+.style_Top_Popup {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 0px 50px 0px 0px;
+    background: var(--color-white);
+    box-shadow: none;
+    border: none;
+}
+
+.style_Bottom_Popup {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 0px 0px 0px 50px;
+    background: var(--color-dark);
+    box-shadow: none;
+    border: none;
+}
+
+.pages.loginpage {
+    display: flex;
+}
+
+.selectoption {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    overflow: hidden;
+    margin: 5px 0px;
+}
+
+.selectoption input {
+    width: 90px;
+    display: block;
+    text-align: center;
+    border-radius: 0px;
+    background: var(--color-dark);
+    color: var(--color-white);
+    font-size: 17px;
+    border: none;
+}
+
+.selectoption input::placeholder {
+    color: var(--color-white);
+}
+
+
+.pages.holdallpage {
+    max-height: 77vh;
+}
+
+.holdalllistcolumn {
+    height: 45vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.dob {
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-size: 17px;
+}
+
+.title_logs_Flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.logintitle {
+    width: 100%;
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-size: 17px;
+    display: block;
+    text-align: center;
+    color: var(--color-dark);
+}
+
+.login_title_LogIn.logintitle {
+    width: 70%;
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-size: 17px;
+    display: block;
+    text-align: left;
+    color: var(--color-dark);
+}
+
+.loginspace {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5px;
+    border-radius: 30px;
+    box-shadow: none;
+    background: rgba(245, 245, 245, 0.007);
+    position: relative;
+    border-color: var(--color-white);
+}
+
+.loginspace input {
+    height: 45px;
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 30px;
+    border: none;
+    color: #ffffffff;
+}
+
+.verify_Box.loginspace input {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1rem;
+    font-weight: 900;
+}
+
+.verify_Box.loginspace input::placeholder {
+    letter-spacing: 0.5rem;
+}
+
+.forgot_Password_Page .loginspace:nth-child(1),
+.loginpage .loginspace input,
+.signuppage .loginspace:nth-child(3) input {
+    width: 90%;
+}
+
+.user_Phone_Reset,
+.login_phone,
+.Phone_textBox {
+    display: none;
+}
+
+.user_Email_Reset,
+.login_email,
+.email_textBox {
+    display: block;
+}
+
+.email_textBoxactive {
+    display: none;
+}
+
+.Phone_textBoxactive {
+    display: block;
+}
+
+.loginspace input::placeholder {
+    color: #ffffffff;
+}
+
+.forgot_Password_Page .loginspace .use_Phone_Reset,
+.loginpage .loginspace .use_user_Phone,
+.signuppage .loginspace .use_Phone_Number,
+.password_Visibility {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 90px;
+    width: 30px;
+    height: 30px;
+    border-style: solid;
+    border-width: 3px;
+    cursor: pointer;
+    background: #33FFFF;
+    overflow: hidden;
+    box-shadow: rgba(250, 247, 247, 0.17) 9px -76px 5px 0px inset, rgba(94, 92, 92, 0.555) 0px 12px 10px 0px inset, rgba(247, 241, 241, 0.1) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 0px 0px, rgba(0, 0, 0, 0.09) 0px 0px 0px;
+}
+
+.forgot_Password_Page .loginspace .use_Phone_Reset small,
+.loginpage .loginspace .use_user_Phone small,
+.signuppage .loginspace .use_Phone_Number small,
+.password_Visibility small {
+    outline: none;
+    box-shadow: none;
+    background: none;
+    border-radius: 0px;
+    border: none;
+    color: var(--color-white);
+}
+
+.classBtn_Button {
+    width: 100%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 30px;
+    box-shadow: none;
+    border-width: 1px;
+    background: var(--color-dark);
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.classBtn_Button:hover {
+    background: var(--color-white);
+    color: var(--color-dark);
+    border-color: var(--color-dark);
+    opacity: .7;
+}
+
+.genderc {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.genderflex {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    margin: 10px;
+    padding: 10px;
+}
+
+.genderflex label {
+    display: block;
+    text-align: center;
+    background: none;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    color: #ffffffff;
+}
+
+.gender {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border-style: solid;
+    border-width: 3px;
+    cursor: pointer;
+}
+
+.gender.active {
+    background: #33FFFF;
+    box-shadow: rgba(250, 247, 247, 0.17) 9px -76px 5px 0px inset, rgba(94, 92, 92, 0.555) 0px 12px 10px 0px inset, rgba(247, 241, 241, 0.1) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 0px 0px, rgba(0, 0, 0, 0.09) 0px 0px 0px;
+}
+
+.inputbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5px;
+    border-radius: 30px;
+    box-shadow: none;
+    background: rgba(245, 245, 245, 0.007);
+    position: relative;
+}
+
+.reset_Console,
+.verification_console {
+    display: none;
+    pointer-events: none;
+    opacity: hidden;
+    visibility: hidden;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-size: 18px;
+    font-weight: bolder;
+    width: 100%;
+    height: 100%;
+    background: none;
+    color: var(--color-white);
+    border-radius: 0px;
+    box-shadow: none;
+    border: none;
+}
+
+.accountbrief {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow: none;
+    overflow: hidden;
+    margin: 2px 0px;
+}
+
+.holdalllistcolumn .accountbrief:first-child {
+    border-radius: 10px 50px 10px 10px;
+}
+
+.holdalllistcolumn .accountbrief:last-child {
+    border-radius: 10px 10px 10px 50px;
+}
+
+.leftsectionofaccountbrief {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border-width: 4px;
+    border-color: #000000;
+}
+
+.leftsectionofaccountbrief img {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: none;
+    overflow: hidden;
+    display: block;
+    object-fit: cover;
+    background: none;
+}
+
+.rightsectionofaccountbrief {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
+    width: 70%;
+    height: 100%;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+.briefaccountsname {
+    width: 100%;
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    margin: 5px;
+    color: #000000;
+}
+
+.accountremoveconnectgrid {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: none;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
+
+}
+
+.accountremoveconnectgrid span {
+    padding: 7px 3px;
+    display: block;
+    text-align: center;
+    border: none;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+    font-size: 13px;
+    color: #ffffffff;
+    font-weight: 500;
+    border-radius: 30px;
+    width: 100px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.accountloginbtn {
+    background: #CC66FF;
+}
+
+.flexerLogger {
+    width: 25%;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.recent_Logs_call {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--color-dark);
+    background: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.recent_Logs_call svg {
+    border: none;
+    background: none;
+    border-radius: 0px;
+}
+
+.recent_Logs_call svg path {
+    fill: var(--color-dark);
+}
+
+/*MOBILE DEVICES*/
+@media (min-width: 0px) and (max-width: 539px) {
+    .signuplogo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .accountbrief {
+        height: max-content;
+        padding: 10px;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .leftsectionofaccountbrief {
+        width: 70px;
+        height: 70px;
+    }
+
+    .rightsectionofaccountbrief {
+        width: 70%;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .accountremoveconnectgrid span {
+        width: 130px;
+        padding: 10px;
+    }
+
+    .briefaccountsname {
+        font-size: 18px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .pages {
+        width: 100vw;
+        min-height: 100vh;
+        background: var(--color-very-light);
+        margin: 0;
+        padding: 15px;
+        border-radius: 0px;
+    }
+
+    .pages.holdallpage {
+        max-height: 80vh;
+    }
+
+    .holdalllistcolumn {
+        height: 70vh;
+    }
+
+    .style_Top_Popup,
+    .style_Bottom_Popup {
+        padding: 15px;
+    }
+
+    .loginspace input {
+        height: 50px;
+    }
+
+    .classBtn_Button {
+        height: 50px;
+        margin: 5px 0px;
+    }
+}
+
+/*MINI LAPTOPS AND TABLETS*/
+@media (min-width: 540px) and (max-width: 560px) {
+    .signuplogo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .accountbrief {
+        height: max-content;
+        padding: 10px;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .leftsectionofaccountbrief {
+        width: 90px;
+        height: 90px;
+    }
+
+    .rightsectionofaccountbrief {
+        width: 70%;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .accountremoveconnectgrid span {
+        width: 130px;
+        padding: 10px;
+    }
+
+    .briefaccountsname {
+        font-size: 18px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .pages {
+        width: 75vw;
+        min-height: max-content;
+        background: var(--color-very-light);
+        margin: 0px;
+        border-radius: 30px;
+    }
+
+    .loginspace input {
+        height: 50px;
+    }
+
+    .classBtn_Button {
+        height: 50px;
+        margin: 5px 0px;
+    }
+
+    .pages.holdallpage {
+        display: none;
+    }
+
+}

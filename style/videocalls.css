@@ -1,0 +1,728 @@
+.videocallspopup {
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    left:0;
+    top:0;
+    border: none;
+    box-shadow: none;
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 600;
+    background: var(--color-light);
+    border-radius:0px;
+}
+.flex {
+    display: flex;
+}
+.none {
+    display: none;
+}
+.mainvideocallmenupopup {
+    width:90vw;
+    height:90vh;
+    overflow:hidden;
+    position:relative;
+    border: none;
+    background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
+    box-shadow: var(--color-dark) 0px 2px 4px 0px, var(--color-dark) 0px 2px 16px 0px;
+}
+.videocontainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    overflow: hidden;
+    background: none;
+    box-shadow: none;
+}
+.videocontainer video {
+    width:100%;
+    height:100%;
+    border: none;
+    box-shadow: none;
+    object-fit: cover;
+    background: none;
+    display:block;
+}
+.videocallcover {
+    width:100%;
+    height:100%;
+    border-radius:0px;
+    background:none;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    position:absolute;
+    border: none;
+    box-shadow: none;
+    top:0;
+    left:0;
+}
+.videocallbottom {
+    min-width: 120px;
+    width: max-content;
+    height: max-content;
+    background: none;
+    border:none;
+    overflow:hidden;
+    box-shadow: none;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position:absolute;
+    bottom:0;
+    padding:10px;
+}
+.videocallsnavi {
+    width: 50px;
+    height:50px;
+    border-radius:50%;
+    background:none;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+}
+.videocallbottom div {
+    width: 100px;
+    padding: 10px;
+    border-radius:10px;
+    background: none;
+    display:block;
+    text-align: center;
+    box-shadow: none;
+    border-width: 3px;
+    border-color: var(--color-bright);
+    color: var(--color-bright);
+    cursor: pointer;
+    transition: all 400ms ease-in;
+}
+.videocallbottom span {
+    padding: 30px;
+    margin: 0px 10px;
+    border-radius:50%;
+    background: none;
+    display:block;
+    text-align: center;
+    box-shadow: none;
+    overflow: visible;
+    text-overflow: none;
+    border-width: 3px;
+    border-color: var(--color-bright);
+    color: var(--color-bright);
+    cursor: pointer;
+    transition: all 400ms ease-in;
+}
+.videocallbottom div:hover,
+.videocallbottom span:hover {
+    transition: all 400ms ease-in;
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+.videocallsnavi.unmute {
+    display:none;
+}
+.videocallsnavi.mute {
+    display:flex;
+}
+.videocallsnavi svg {
+    width:25px;
+    height:25px;
+    border-radius:0px;
+    border:none;
+    background:none;
+    box-shadow: none;
+    overflow:hidden;
+}
+.videocallsnavi svg path {
+    fill:#ffffffff;
+    transition: all 300ms ease;
+}
+.videocallsnavi.end svg,
+.videocallsnavi.accept svg {
+    width:40px;
+    height:40px;
+    border-radius:0px;
+    border:none;
+    background:none;
+    box-shadow: none;
+    overflow:hidden;
+}
+.videocallsnavi:hover svg path {
+    fill:#33FFFF;
+    transition: all 300ms ease;
+    transform: scale(1.02);
+}
+.videocallsnavi:hover {
+    background:#0000001f;
+    transition: all 300ms ease;
+    border:none;
+}
+.videocallsheader {
+    height:30px;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    border-radius:0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background:none;
+    border:none;
+    box-shadow: none;
+    overflow:hidden;
+}
+.videocallsheader > div {
+    width:max-content;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    right:0;
+    border-radius:0px;
+    background:none;
+    border:none;
+    box-shadow: none;
+}
+.videocallsheader > div > span {
+    font-size:18px;
+    color:#ffffffff;
+    display:block;
+    text-align: center;
+    padding:10px 15px;
+    border:none;
+    background:rgba(255, 255, 255, 0.151);
+    border-radius:0px;
+    font-weight:400;
+    cursor:pointer;
+    box-shadow: none;
+
+}
+
+.videocallsheader > div > span:hover {
+    background:tomato;
+    transition: all 300ms ease;
+}
+.callacceptingmesg {
+    border:none;
+    box-shadow: none;
+    overflow:hidden;
+    border-radius: 0px;
+    display:block;
+    text-align: center;
+    background:none;
+    color:#33FFFF;
+    font-weight:500;
+    position:absolute;
+    letter-spacing: 0.5rem;
+}
+.callslist {
+    position: fixed;
+    width:25vw;
+    height:72vh;
+    padding:10px;
+    top:11%;
+    left: 2px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow:hidden;
+    background: var(--color-light);
+    box-shadow: none;
+    z-index: 302;
+}
+
+.calllistcolumn {
+    border:none;
+    width:100%;
+    height:96%;
+    overflow: hidden;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+}
+.userscallslistcolumn {
+    padding: 5px;
+    border:none;
+    width:100%;
+    height:100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display:grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    background: none;
+    box-shadow: none;
+}
+
+.callistnavi {
+    width:55px;
+    height:30px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow:hidden;
+    box-shadow: none;
+    background:#33ffff70;
+    cursor:pointer;
+    border-radius: 4px;
+    border:none; 
+}
+.callistnavi svg {
+    width:25px;
+    height:25px;
+    border:none;
+    background:none;
+    box-shadow: none;
+    overflow: visible;
+}
+.callistnavi svg path {
+    fill:#ffffffff;
+}
+.endedmesg {
+    width:200px;
+    height:100px;
+    position:absolute;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:rgba(255, 255, 255, 0.308);
+    padding:30px;
+    z-index: 1;
+}
+.endedmesg span {
+    display:block;
+    text-align: center;
+    border-radius:0px;
+    border:none;
+    box-shadow: none;
+    background:none;
+    overflow: hidden;
+    font-size:30px;
+    font-weight:500;
+    color:#ffffffff;
+}
+.videocallnotificationcenter {
+    position:absolute;
+    right:10px;
+    bottom:10px;
+    min-height:0px;
+    max-height:max-content;
+    width:240px;
+    padding:10px;
+    background:none;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border:none;
+    box-shadow: none;
+    overflow:hidden;
+}
+.notificationpackage {
+    width:100%;
+    height:max-content;
+    padding:10px;
+    display:flex;
+    flex-direction:row;
+    align-items: left;
+    justify-content: center;
+    background:#0000002f;
+    box-shadow: none;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    margin:2px 0px;
+}
+.notipackleft {
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    border-width:4px;
+    border-color:#000000;
+    background:#000000;
+}
+.notipackleft img {
+    width:100%;
+    height:100%;
+    border:none;
+    background:#ffffffff;
+    border-radius:0px;
+    display:block;
+    text-align: center;
+    object-fit: cover;
+    box-shadow: none;
+    overflow:hidden;
+}
+.notipackright {
+    width:65%;
+    height:100%;
+    max-height: max-content;
+    border:none;
+    background:none;
+    border-radius:0px;
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    box-shadow: none;
+    overflow:hidden;
+}
+.title {
+    background:none;
+    border-radius:0px;
+    display:block;
+    text-align: center;
+    object-fit: cover;
+    box-shadow: none;
+    overflow:hidden;
+    color:#ffffffff;
+    font-weight:900;
+    font-size:normal;
+}
+
+.actualnotificationmesg {
+    border:none;
+    background:none;
+    border-radius:0px;
+    display:block;
+    text-align: center;
+    object-fit: cover;
+    box-shadow: none;
+    overflow:hidden;
+    color:#ffffffff;
+    font-weight:500;
+    font-size:12px;
+}
+.myvideotransmissioncenter {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 130px;
+    border-width: 3px;
+    border-color: var(--color-bright);
+    color: var(--color-bright);
+}
+.myvideotransmissioncenter video {
+    background: none;
+    border: none;
+    display: block;
+    box-shadow: none;
+    object-fit: cover;
+}
+.videocallspopup {
+    display: none;
+}
+/* callin' notification*/
+.thecallingcontact {
+    width: max-content;
+    background: var(--color-white);
+    min-height: 70px;
+    max-height: max-content;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    padding: 10px;
+}
+.thecallingcontact > span {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+    border-width: 5px;
+    border-radius: 50%;
+    overflow: hidden;
+    border-color: lightgreen;
+    margin: 0px 5px;
+}
+.thecallingcontact > span img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 0px;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.thecallingcontact > div {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: none;
+    background: none;
+    border: none;
+}
+.thecallingcontact > div p {
+    color: var(--color-dark);
+    font-size: large;
+    box-shadow: none;
+    background: none;
+    overflow: hidden;
+    border: none;
+    width: 90%;
+    margin: 0px 5px;
+    display: block;
+    text-align: left;
+    border-radius: 0px;
+    font-weight: normal;
+}
+.mutedtext {
+    width: 90%;
+    color: var(--color-dark);
+    font-size: small;
+    box-shadow: none;
+    background: none;
+    overflow: hidden;
+    border: none;
+    margin: 0px 5px;
+    display: block;
+    text-align: left;
+    border-radius: 0px;
+    font-weight: normal; 
+}
+.callactioncenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.callactioncenter > span {
+    width: 100%;
+    padding: 10px;
+    font-size: normal;
+    font-weight: bolder;
+    color: var(--color-dark);
+    border-radius: 30px;
+    display: block;
+    text-align: center;
+    margin: 0px 5px;
+}
+.callactioncenter > span:nth-child(1) {
+    background: lightgreen;
+}
+.callactioncenter > span:nth-child(2) {
+    background: var(--color-danger);
+}
+.usersuniversalnotificationcenter {
+    width: 100%;
+    min-height: 100px;
+    max-height: max-content;
+    border-radius: 0px;
+    background:rgba(0, 0, 0, 0.93);
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+.callnotificationcenteractive {
+    display: flex;
+    top: 0;
+    left: 0;
+    transition: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.friendcontact {
+    width: 100%;
+    background: var(--color-white);
+    height: 70px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: var(--block-box-shadow);
+}
+.contacttail {
+    width: 75%;
+    height: 100%;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contactname {
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    display: block;
+    overflow: hidden;
+    text-align: left;
+    color: var(--color-dark);
+    width: 80%;
+    margin: 0px 5px;
+}
+.callbutton {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    box-shadow: none;
+    border-radius: 30px;
+    display: block;
+    text-align: center;
+    border-width: 3px;
+    background: var(--color-white);
+    border-color: var(--color-dark);
+    color: var(--color-dark);
+    cursor: pointer;
+    transition: 400ms all ease-in;
+}
+.callbutton:hover {
+    transition: 400ms all ease-in;
+    background: var(--color-dark);
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+.callbutton:active {
+    background: var(--color-dark);
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+.contacthead {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: none;
+    border-width: 4px;
+    margin: 4px;
+    box-shadow: none;
+    border-color: var(--color-dark);
+}
+.contacthead img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+@media (min-width: 100px) and (max-width: 539px) {
+    .friendcontact {
+        box-shadow: none;
+        height: max-content;
+    }
+    .contactname {
+        font-size: 17px;
+    }
+    .contacthead {
+        width: 60px;
+        height: 60px;
+    }
+    .myvideotransmissioncenter {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+    }
+    .thecallingcontact > div {
+        flex-direction: column;
+    }
+    .calllistexit {
+        font-size: 22px;
+    }
+    .videocallspopup {
+        z-index: 600;
+        padding: 0;
+        margin: 0;
+        border-radius: 0px;
+        background: none;
+        box-shadow: none;
+        border: none;
+    }
+    .videocallbottom {
+        min-width:70%;
+        max-width: 100%;
+    }
+    .mainvideocallmenupopup {
+        border-radius: 0px;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        border-radius: 0px;
+    }
+    .videocontainer {
+        border-radius: 0px;
+    }
+    .videocontainer video {
+        border-radius: 0px;
+    }
+    .callslist {
+        height: 100vh;
+        width: 100vw;
+        left: 0;
+        top: 0;
+        margin: 0;
+        border-radius: 0px;
+        box-shadow: none;
+        display: none;
+    }
+    .callslistactive {
+        height: 100vh;
+        width: 100vw;
+        left: 0;
+        top: 0;
+        margin: 0;
+        border-radius: 0px;
+        box-shadow: none;
+        z-index: 4;
+        display: flex;
+    }
+}

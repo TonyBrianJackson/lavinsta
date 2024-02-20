@@ -1,0 +1,38 @@
+:root {
+    --color-white-verylight: 100%;
+    --dark-color-verylight: 17%;
+    --color-light-verylight: 89%;
+
+    --color-white: hsl(252, 30%, var(--color-white-verylight));
+    --second-color-white: hsl(252, 30%, 100%);
+    --color-light: hsl(252, 30%, var(--color-light-verylight));
+    --second-color-light: hsl(252, 30%, 89%);
+    --color-very-light:rgba(255, 255, 255, 0.384);
+    --color-gray: hsl(252, 15%, 65%);
+    --color-primary: hsl(252, 75%, 60%);
+    --color-secondary: hsl(252, 100%, 90%);
+    --color-success: hsl(120, 95%, 65%);
+    --color-bright: #FF1493;
+    --color-bright-2: #aF1493;
+    --color-danger: hsl(0, 95%, 65%);
+    --color-dark: hsl(252, 30%, var(--dark-color-verylight));
+    --second-color-dark: hsl(252, 30%, 17%);
+    --color-black: hsl(252, 30%, 10%);
+    --second-color-black: hsl(0, 0%, 34%);
+    --color-chat-blue: hsl(100, 100%, 50%);
+    --color-very-danger: hsl(350, 75%, 50%);
+    --color-yellow: hsl(52, 80%, 70%);
+    --color-sky-blue: hsl(205, 100%, 20%);
+    --color-deep-blue: hsl(240, 100%, 50%);
+    --color-purple: hsl(270, 100%, 50%);
+    --color-pink: hsl(295, 100%, 50%);
+    --giant-box-shadow: rgba(250, 247, 247, 0.17) 9px -76px 5px 0px inset, rgba(94, 92, 92, 0.555) 0px -12px 10px 0px inset, rgba(247, 241, 241, 0.1) 0px 0px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 98px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    --giant-box-shadow-2: rgba(250, 247, 247, 0.17) 9px -76px 5px 0px inset, rgba(94, 92, 92, 0.555) 0px 12px 10px 0px inset, rgba(247, 241, 241, 0.1) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 0px 0px, rgba(0, 0, 0, 0.09) 0px 0px 0px;
+    --block-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    --dark-block-box-shadow: var(--color-dark) 0px 1px 2px 0px, var(--color-dark) 0px 1px 3px 1px;
+    --light-box-shadow: 6px 12px 24px rgba(0, 0, 255, 0.116),
+    -6px -12px 24px  rgba(0, 0, 255, 0.116);
+}
+.Funcy_Box_Shadow {
+    box-shadow: var(--color-bright-2) 0px 2px 4px 0px, var(--color-bright-2) 0px 2px 16px 0px;
+}

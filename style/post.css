@@ -1,0 +1,425 @@
+.photosskeleton {
+    height:70px;
+    width:60px;
+    border-radius:10px;
+    margin:5px 0px;
+    box-shadow: none;
+    border:none;
+    display:block;
+    background:black;
+}
+.gridpostskeleton {
+    height:70px;
+    width: 64px;
+    border-radius:10px;
+    border:none;
+    display:block;
+    background: var(--color-white);
+    box-shadow: var(--block-box-shadow);
+}
+.gridpostskeletonlarge {
+    height:250px;
+    width:200px;
+    border-radius:10px;
+    border:none;
+    box-shadow: none;
+    display:block;
+    background:black;
+    cursor:pointer;
+    transition: all 2s;
+    padding:10px;
+    margin:20px;
+}
+.photosskeleton:nth-child(1),
+.photosskeleton:nth-child(2),
+.photosskeleton:nth-child(3),
+.photosskeleton:nth-child(4) {
+    animation: shine 600ms linear infinite alternate;
+}
+.photosskeleton:nth-child(5),
+.photosskeleton:nth-child(6),
+.photosskeleton:nth-child(7),
+.photosskeleton:nth-child(8) {
+    animation: shine 600ms linear infinite alternate-reverse;
+}
+.photosskeleton:nth-child(9),
+.photosskeleton:nth-child(10),
+.photosskeleton:nth-child(11),
+.photosskeleton:nth-child(12) {
+    animation: shine 600ms linear infinite alternate;
+}
+
+
+
+@keyframes expand {
+    from {
+        background:#f8f6f1be;
+    }
+    to {
+        background:#b3b0b0a1;
+    }
+}
+@keyframes time {
+    from {
+        background:#f8f6f1be;
+        width:50px;
+    }
+    to {
+        background:#b3b0b0a1;
+        width:250px;
+    }
+}
+@keyframes contract {
+    from {
+        background:#f8f6f1be;
+        width:100px;
+    }
+    to {
+        background:#b3b0b0a1;
+        width:300px;
+    }
+}
+@keyframes resize {
+    from {
+        background:#f8f6f1be;
+        width:50px;
+    }
+    to {
+        background:#b3b0b0a1;
+        width:150px;
+    }
+}
+@keyframes restate {
+    from {
+        background:#f8f6f1be;
+        width:350px;
+    }
+    to {
+        background:#b3b0b0a1;
+        width:150px;
+    }
+}
+
+
+
+
+
+
+
+@keyframes shine {
+    from {
+        background:#f8f6f1be;
+    }
+    to {
+        background:#b3b0b0a1;
+    }
+}
+@keyframes glow {
+    from {
+        background:#f8f6f1be;
+    }
+    to {
+        background:#b3b0b0a1;
+    }
+}
+
+@keyframes flash {
+    from {
+        background:#f8f6f1be;
+    }
+    to {
+        background:#b3b0b0a1;
+    }
+}
+@keyframes glowname {
+    from {
+        background:#f8f6f1be;
+    }
+    to {
+        background:#b3b0b0a1;
+    }
+}
+
+@keyframes glowimage {
+    from {
+        background:#f8f6f1be;
+    }
+    to {
+        background:#b3b0b0a1;
+    }
+}
+
+.timelineviddoeskeleton {
+    width: 95%;
+    height:100px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:5px;
+    margin:5px 0px;
+    position:relative;
+    background:none;    
+    border:none;
+    box-shadow: none;
+    overflow:hidden;
+    animation:  600ms linear infinite alternate;
+}
+.skeletontop {
+    background:none;
+    overflow:hidden;
+    box-shadow: none;
+    border:none;
+    width:100%;
+    height:50%;
+    border-radius:0px;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+}
+.videoskirt {
+    width:40%;
+    height:100%;
+    box-shadow: none;
+    overflow:hidden;
+    cursor:pointer;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background:none;    
+    border:none;
+    padding:4px 6px;
+    position:relative;
+    animation: video 600ms linear infinite alternate-reverse;
+
+}
+.videoinforskirt {
+    width:60%;
+    height:100%;
+    border-radius:0px;
+    overflow:hidden;
+    box-shadow:none;
+    background:none;
+    border:none;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+.videophotoskirt {
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    background:none;
+    overflow:hidden;
+    box-shadow:none;
+    border:none;
+    display:block;
+    margin:2px;
+    animation: glowphoto 600ms linear infinite alternate;
+
+}
+.videonameskirt {
+    height:10px;
+    width:90%;
+    border-radius:30px;
+    background:none;
+    overflow:hidden;
+    box-shadow:none;
+    border:none;
+    display:block;
+    animation: musicname 600ms linear infinite alternate-reverse;
+}
+.skeletonbottom {
+    background:none;
+    overflow:hidden;
+    box-shadow: none;
+    border:none;
+    width:100%;
+    height:50%;
+    border-radius:0px;
+    display:flex;
+    flex-direction: column;
+    align-items:left;
+    justify-content: center;  
+}
+.videotitleskirt1 {
+    height:10px;
+    width:90%;
+    border-radius:30px;
+    background:none;
+    overflow:hidden;
+    box-shadow:none;
+    border:none;
+    display:block;
+    margin:2px;
+    animation: musictitle 600ms linear infinite alternate;
+
+}
+.videotitleskirt2 {
+    height:10px;
+    width:70%;
+    border-radius:30px;
+    background:none;
+    overflow:hidden;
+    box-shadow:none;
+    border:none;
+    display:block;
+    margin:2px;
+    animation: musictype 600ms linear infinite alternate;
+
+}
+.videotitleskirt3 {
+    height:10px;
+    width:40%;
+    border-radius:30px;
+    background:none;
+    overflow:hidden;
+    box-shadow:none;
+    border:none;
+    display:block;
+    margin:2px;
+    animation: musictype 600ms linear infinite alternate-reverse;
+
+}
+
+@media (min-width: 280px) and (max-width: 539px) {
+    .timelineviddoeskeleton {
+
+    }
+    .videoskirt {
+
+    }
+    .postskelton {
+        margin: 10px 0px;
+    }
+    .skeletonname,
+    .time,
+    .skeletontitle1,
+    .skeletontitle2 {
+        width: 100%;
+        margin: 5px 0px;
+        padding: 0px;
+    }
+    .skeletonname {
+        margin: 5px;
+    }
+
+    .skeletonshead {
+        align-items: flex-start;
+        width: 100%;
+        padding: 0px;
+        margin: 0;
+    }
+    .skeletonnameandimg {
+        align-items: center;
+        justify-content: start;
+    }
+    .photosskeleton {
+        width: 95px;
+        height: 125px;
+    }
+    @keyframes time {
+        from {
+            background:#f8f6f1be;
+            width:100px;
+        }
+        to {
+            background:#b3b0b0a1;
+            width:250px;
+        }
+    }
+    @keyframes contract {
+        from {
+            background:#f8f6f1be;
+            width:200px;
+        }
+        to {
+            background:#b3b0b0a1;
+            width:60px;
+        }
+    }
+    @keyframes resize {
+        from {
+            background:#f8f6f1be;
+            width:50px;
+        }
+        to {
+            background:#b3b0b0a1;
+            width:250px;
+        }
+    }
+    @keyframes restate {
+        from {
+            background:#f8f6f1be;
+            width: 70px;
+        }
+        to {
+            background:#b3b0b0a1;
+            width:250px;
+        }
+    }
+}
+@media (min-width: 540px) and (max-width: 560px) {
+    .videoskirt {
+        height: 100%;
+    }
+    .timelineviddoeskeleton {
+        height: 200px;
+    }
+    .videophotoskirt {
+        width: 40px;
+        height: 40px;
+    }
+    .videonameskirt,
+    .videotitleskirt1,
+    .videotitleskirt2,
+    .videotitleskirt3 {
+        height: 15px;
+        margin: 5px 0px; 
+    }
+}
+
+@keyframes glowphoto {
+    from{
+        background:#999595;
+    } to {
+        background:#88888891;
+    }
+}
+@keyframes musictype {
+    from{
+        background:#999595;
+    } to {
+        background:#88888891;
+    }
+}
+@keyframes musictitle {
+    from{
+        background:#999595;
+    } to {
+        background:#88888891;
+    }
+}
+@keyframes musicname {
+    from{
+        background:#999595;
+    } to {
+        background:#88888891;
+    }
+}
+@keyframes musicskeleton {
+    from{
+        background:#111111;
+    } to {
+        background:#2c2c2cb7;
+    }
+}
+@keyframes video {
+    from{
+        background:#999595;
+    } to {
+        background:#88888891;
+    }
+};

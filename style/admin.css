@@ -1,0 +1,399 @@
+.users_Popup {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25vw;
+    height: 85vh;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+    background: none;
+    box-shadow: none;
+    z-index: inherit;
+    padding: 10px;
+}
+
+.users_Popup>header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    background: none;
+    box-shadow: none;
+    border: none;
+    position: relative;
+    padding: 5px;
+}
+
+.users_Popup_Assist>header {
+    justify-content: left;
+    gap: 0px 5px;
+}
+
+
+.users_Popup>div {
+    background: var(--color-white);
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    border: none;
+    box-shadow: var(--block-box-shadow);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    height: 92%;
+    padding: 10px;
+}
+
+/*USERS*/
+.user {
+    width: 100%;
+    height: max-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-light);
+    border: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+.introduction_Grid,
+.user_Top_Visible_Part {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.introduction_Grid {
+    padding: 0;
+    border-radius: 0px;
+}
+
+.introduction_Grid>p {
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    display: block;
+    text-align: left;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.introduction_Grid>p:nth-child(3) {
+    margin: 5px 0px;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: var(--color-secondary);
+}
+
+.introduction_Grid>div,
+.user_Top_Visible_Part>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+.introduction_Grid>div>div,
+.user_Top_Visible_Part>div>div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+    border-width: 3px;
+    border-color: var(--color-dark);
+    margin: 5px;
+}
+
+.introduction_Grid>div>div>img,
+.user_Top_Visible_Part>div>div>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+.introduction_Grid>div>span,
+.user_Top_Visible_Part>div>span {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 80%;
+    border-radius: 0px;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+.introduction_Grid>div>span>strong,
+.user_Top_Visible_Part>div>span>strong {
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    display: block;
+    text-align: left;
+    color: var(--color-dark);
+    font-weight: 900;
+}
+
+.introduction_Grid>div>span>i,
+.user_Top_Visible_Part>div>span>i {
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    display: block;
+    text-align: left;
+    color: var(--color-dark);
+}
+
+.user_Top_Visible_Part>span {
+    display: block;
+    text-align: center;
+    border-width: 3px;
+    border-color: var(--color-dark);
+    background: var(--color-white);
+    color: var(--color-dark);
+    border-radius: 30px;
+    box-shadow: none;
+    padding: 8px 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.user_Bottom_Invisible_Part {
+    height: 0px;
+    width: 100%;
+    displaY: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+.user_Bottom_Invisible_Part_Active {
+    height: max-content;
+    padding: 5px;
+}
+
+.spaces_Grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    box-shadow: none;
+    width: 100%;
+    height: max-content;
+}
+
+.spaces_Grid>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: var(--color-white);
+    box-shadow: none;
+    border: none;
+    border-radius: 30px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.spaces_Grid>div>textarea,
+.spaces_Grid>div>input {
+    background: none;
+    box-shadow: none;
+    border: none;
+    width: 100%;
+    border-radius: 30px;
+    color: var(--color-dark);
+    padding: 5px;
+}
+
+.spaces_Grid>div>input:nth-child(1) {
+    width: 90%;
+}
+
+.spaces_Grid>div .Visible,
+.spaces_Grid>div .In_Visible {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.spaces_Grid>div>span:hover {
+    background: var(--color-bright);
+    transition: all 300ms;
+    border-radius: 50%;
+}
+
+.spaces_Grid>div .Visible {
+    background: var(--color-bright);
+    border-radius: 50%;
+}
+
+.spaces_Grid>div .In_Visible {
+    background: none;
+    border-radius: 0px;
+}
+
+.spaces_Grid>div>span>img {
+    display: block;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+}
+
+.spaces_Grid>div:last-child {
+    border-radius: 15px;
+    height: max-content;
+}
+
+.spaces_Grid>div>textarea {
+    border-radius: 15px;
+}
+
+.admin_Tool_Grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 4px;
+    width: 100%;
+    border-radius: 0px;
+    gap: 0px 5px;
+}
+
+/*loading... page*/
+.loadingsection {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
+    background: rgba(255, 255, 255, 0.397);
+    box-shadow: none;
+    border: none;
+    z-index: 4000;
+}
+
+.loadingsection span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 50%;
+    height: 5px;
+    border-radius: 0px;
+    background: var(--color-bright);
+    box-shadow: none;
+    border: none;
+    overflow: visible;
+}
+
+@media (min-width: 0px) and (max-width: 539px) {
+    .users_Popup {
+        width: 100vw;
+        height: 100vh;
+        box-shadow: none;
+        border-radius: 0px;
+        background: var(--color-white);
+        top: 0;
+        z-index: 331;
+    }
+
+    .users_Popup>header {
+        justify-content: space-between;
+    }
+
+    .users_Popup>div {
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    .introduction_Grid>div>div,
+    .user_Top_Visible_Part>div>div {
+        width: 70px;
+        height: 70px;
+        border-with: 4px;
+    }
+
+    .introduction_Grid>div>span>i,
+    .user_Top_Visible_Part>div>span>i,
+    .introduction_Grid>div>span>strong,
+    .user_Top_Visible_Part>div>span>strong {
+        font-size: 19px;
+    }
+
+    .user_Top_Visible_Part>span {
+        padding: 12px 10px;
+        width: 70%;
+    }
+
+    .spaces_Grid>div>textarea,
+    .spaces_Grid>div>input {
+        padding: 10px;
+        font-size: 17px;;
+    }
+}
