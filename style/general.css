@@ -644,6 +644,27 @@
     border-color: var(--color-white);  
 }
 @media (min-width: 0px) and (max-width: 539px) {
+    .search_result {
+        border-radius: 10px;
+        box-shadow: none;
+    }
+    .search_result > div > div {
+        width: 40px;
+        height: 40px;
+    }
+    .search_result > p {
+        font-size: 4.44444vw;
+    }
+    .griditems {
+        width: 100%;
+        min-height: 150px;
+        height: 20vh;
+        padding: 7px;
+        border-radius: 25px;
+    }
+    .griditems > img {
+        border-radius: 25px;
+    }
     .editingmessage {
         left: 18%;
     }
@@ -824,11 +845,6 @@
     .enterlogoutpagebtn {
         padding: 13px;
         border-radius: 30px;
-    }
-
-    .griditems {
-        width: 100%;
-        height: 150px;
     }
 
     .commentmesg,

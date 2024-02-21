@@ -1267,6 +1267,9 @@
         color: var(--color-dark);
     }
 
+    .voicechat .headerbtns,
+    .chatfloat .headerbtns,
+    .userschatbox .headerbtns,
     .voicechat .headerbtns {
         width: 45px;
         height: 45px;
@@ -1327,13 +1330,20 @@
 
     .chatblock {
         box-shadow: none;
-        border-radius: 25px;
+        border-radius: 10px;
     }
 
     .chatblocktail p {
         font-size: 5.77777777vw;
+        font-weight: 700;
     }
 
+    .chatcount {
+        font-size: 4.55vw;
+        left: -13px;
+        top: -10px;
+        right: unset;
+    }
     .chataudiptimegrid span,
     .chattext {
         font-size: 4.55vw;

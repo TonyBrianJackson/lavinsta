@@ -494,6 +494,7 @@
 .profileinput {
     display: none;
 }
+
 /*PROFILE SETTINGS SETUP POPUP*/
 .profilesettingculomn {
     width: 100%;
@@ -509,6 +510,7 @@
     grid-template-columns: 1fr;
     place-items: center;
 }
+
 .hold_Options {
     width: 100%;
     display: grid;
@@ -520,6 +522,7 @@
     box-shadow: none;
     border-radius: 0px;
 }
+
 .editactivatenationality {
     border-radius: 10px;
     background: var(--color-dark);
@@ -533,6 +536,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .editactivatenationality a {
     color: var(--color-white);
     border: none;
@@ -542,13 +546,16 @@
     display: block;
     text-align: center;
 }
+
 .editactivatenationality:hover {
     border: 2px solid var(--color-dark);
     background: var(--color-white);
 }
+
 .editactivatenationality:hover a {
     color: var(--color-dark);
 }
+
 /*PROFILE UPLOAD POPUP*/
 .profilebtnsettings,
 .uploadprofilepicturepopup {
@@ -830,6 +837,7 @@
     box-shadow: none;
     overflow: visible;
 }
+
 .newtobeuploadprofilepicture {
     width: 100px;
     height: 100px;
@@ -2784,7 +2792,7 @@
 .unsent_Request {}
 
 .sent_Request {
-    background: var(--color-black); 
+    background: var(--color-black);
 }
 
 .connected {
@@ -2836,6 +2844,7 @@
     .header {
         flex-direction: column;
         height: max-content;
+        max-height: max-content;
         padding: 5px;
     }
 
@@ -2846,13 +2855,49 @@
         box-shadow: none;
         border: none;
     }
-
+    .headerright {
+        flex: 1;
+        margin: 0;
+    }
+    .header .headerright .headerbtns {
+        width: 100%;
+        border-radius: 0px;
+        border: none;
+        margin: 0;
+    }
     .post {
+        width: 100%;
+        border-radius: 0px;
+        padding: 0px;
         box-shadow: none;
     }
+
+    .nameandimg {
+        margin: 0px;
+    }
+
+    .updatingprofilepicturetext {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .postmain {
+        border-radius: 0px;
+    }
+
+    .adgridimagecontainer img,
+    .mainimg,
+    .mainvideo,
+    .newSvideos,
+    .reelvidtowatch,
+    .videotowatch {
+        object-fit: contain;
+    }
+
     .posttitle {
         font-size: 4.222vw;
     }
+
     .authorsImg {
         width: 3rem;
         height: 3rem;
@@ -2863,12 +2908,18 @@
     .postelapsedtime {
         font-size: 4.222vw;
     }
+
     .postername {
         font-size: 4.7777vw;
     }
+
     .autoplaymode,
     .qualitymode {
         font-size: 5.89vw;
+    }
+
+    .navigatiofloatcontainer {
+        gap: 5px 0px;
     }
     .headerbtns.livecapture,
     .headerbtns.postwriterfloatitems,
@@ -2876,8 +2927,17 @@
         box-shadow: var(--block-box-shadow);
         border: none;
         padding: 5px;
+        width: 50px;
+        height: 50px;
+        margin: 0;
     }
-
+    .postwriterfloatactive {
+        gap: 0px 10px;
+        width: 60%;
+    }
+    .smallscreenpostwriter {
+        gap: 0px 5px;
+    }
     .floatactive {
         height: 55vh;
     }
@@ -3043,10 +3103,11 @@
     .commentsection,
     .replyroomculomn {
         display: grid;
-        place-items: flex-start;
+        place-items: initial;
         overflow-x: hidden;
         overflow-y: scroll;
-        height: 93%;
+        height: 83%;
+        margin: 2px 0px;
     }
 
     .replyroomculomn {
@@ -3063,30 +3124,34 @@
         z-index: 1;
         background: var(--color-light);
     }
+
     .headerbtns.sharegridlike {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
+        margin: 0;
     }
-    
+
     .headerbtns.sharegridliked {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
+        margin: 0;
     }
-    .newcommentinput{
+
+    .newcommentinput {
         width: 90%;
-        height: 55px;
+        height: max-content;
         box-shadow: none;
         border-style: solid;
         border-width: 1px;
         border-color: var(--color-secondary);
-        margin: 5px 0px;
         gap: 0px 10px;
-        min-height: 55px;
+        min-height: 60px;
         border: none;
         overflow: hidden;
         background: var(--color-light);
         display: flex;
     }
+
     .newcommentinput input {
         width: 70%;
         height: 100%;
@@ -3095,11 +3160,14 @@
         border: none;
         background: var(--color-white);
     }
+
     .newcommentinput .headerbtns {
-        width: 60px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
         color: var(--color-dark);
+        margin: 0;
     }
+
     .sharegridlike {
         height: 42px;
         width: 42px;
@@ -3241,6 +3309,7 @@
         padding: 5px;
         height: max-content;
     }
+
     .menutabs,
     .accountdelettabs,
     .deletedtabs,
@@ -3250,11 +3319,6 @@
         border-radius: 10px;
         height: 70px;
         box-shadow: none;
-    }
-
-    .bottomsub {
-        padding: 5px;
-        height: 50px
     }
 
     .commentinput {
@@ -3304,10 +3368,6 @@
         height: 70px;
     }
 
-    .postwriterfloatactive {
-        margin-left: 5px;
-    }
-
     .addstory,
     .mystory {
         width: 115px;
@@ -3318,26 +3378,6 @@
         width: 100%;
         padding: 0px;
     }
-
-    .post {
-        width: 100%;
-        border-radius: 0px;
-        padding: 0px
-    }
-
-    .nameandimg {
-        margin: 0px;
-    }
-
-    .updatingprofilepicturetext {
-        font-size: 15px;
-        font-weight: 500;
-    }
-
-    .postmain {
-        border-radius: 0px;
-    }
-
 
     .person,
     .friendconnectrequest {
@@ -3377,9 +3417,11 @@
         overflow-y: scroll;
         overflow-x: hidden;
     }
+
     .subactions {
         min-height: max-content;
     }
+
     .profilepicturefilterpopup,
     .coverpicturefilterpopup {
         z-index: 541;
@@ -3517,9 +3559,11 @@
     .hold_Options {
         margin: 5px;
     }
+
     .editactivatenationality {
         width: 100%;
     }
+
     .edit_Tab_ProfileSettings_Edit,
     .editactivatenationality {
         box-shadow: none;
@@ -3585,13 +3629,78 @@
         width: 50px;
         height: 50px;
     }
-    .userconnectgrid > div .sent_Request,
-    .userconnectgrid > div .connected {
+
+    .userconnectgrid>div .sent_Request,
+    .userconnectgrid>div .connected {
         background: var(--color-black);
     }
 
     .navigatiofloatcontainer {
         right: 15px;
+    }
+}
+@media (min-width: 0px) and (max-width: 300px) {
+    .commentroomsection,
+    .commentsection {
+        height: 88%;
+    }
+    .headerbtns.sharegridlike {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+    }
+
+    .headerbtns.sharegridliked {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+    }
+
+    .newcommentinput {
+        width: 100%;
+        height: max-content;
+        box-shadow: none;
+        gap: 0px 5px;
+        min-height: 30px;
+        border: none;
+        overflow: hidden;
+        background: var(--color-light);
+        display: flex;
+    }
+
+    .newcommentinput input {
+        width: 80%;
+        height: 100%;
+        font-size: 15px;
+        box-shadow: none;
+        border: none;
+        background: var(--color-white);
+    }
+
+    .newcommentinput .headerbtns {
+        width: 45px;
+        height: 45px;
+        margin: 0;
+
+        color: var(--color-dark);
+    }
+
+    .shareandlikecommentflex {
+        flex: 1;
+    }
+
+    .commentinput>div,
+    .shareandlikecommentflex>div {
+        width: 100%;
+        height: 40px;
+        border: 1px solid var(--color-dark);
+    }
+
+    .commentinput>div>img,
+    .shareandlikecommentflex>div>img {
+        width: 25px;
+        height: 25px;
+        overflow: visible;
     }
 }
 
@@ -3695,11 +3804,23 @@
     .header {
         flex-direction: column;
         height: max-content;
+        max-height: max-content;
         padding: 8px;
     }
 
     .headermiddle {
-        display: none;
+        padding: 5px;
+        height: max-content;
+    }
+
+    .headersearch input,
+    .searchbar input {
+        padding: 20px;
+    }
+
+    .headersearch input::placeholder,
+    .searchbar input::placeholder {
+        font-size: 1.3rem;
     }
 
     .headerleft {
@@ -3757,11 +3878,6 @@
 
     .posttitle {
         font-size: 15px;
-    }
-
-    .likes111,
-    .opencommentboxactivate {
-        width: 30px;
     }
 
     .profilepicturefilterpopup,
@@ -4315,19 +4431,23 @@
         height: 650px;
         max-height: 95.5vh;
     }
+
     .gridpostlarge {
         padding: 10px;
     }
-    .gridpostlarge .gridpostImgCover > div {
+
+    .gridpostlarge .gridpostImgCover>div {
         width: 30px;
         height: 30px;
         bottom: 20px;
         right: 20px;
     }
-    .gridpostlarge .gridpostImgCover > div > img {
+
+    .gridpostlarge .gridpostImgCover>div>img {
         width: 25px;
         height: 25px;
     }
+
     .profile_Cliantlarge,
     .profilelarge {
         border-radius: 0px;
@@ -4522,7 +4642,7 @@
         padding: 0px;
     }
 
-    .newcommentinput{
+    .newcommentinput {
         width: 90%;
         height: 50px;
         box-shadow: none;
@@ -4739,6 +4859,7 @@
         height: max-content;
         width: 70vw;
     }
+
     .gridpost {
         height: 155px;
     }

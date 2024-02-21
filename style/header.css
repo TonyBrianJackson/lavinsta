@@ -1,6 +1,7 @@
 .header {
     width:100%;
-    height:52px;
+    height:max-content;
+    max-height: 60px;
     position: fixed;
     top:0;
     left:0;
@@ -17,6 +18,7 @@
     border-radius:0px;
     overflow:visible;
     transition: all 2s;
+    padding: 5px;
 }
 .lavinstalogo,
 .lavinstvideopagelogo {
@@ -129,7 +131,7 @@
 }
 .headersearch {
     width:76%;
-    height:76%;
+    height: 100%;
     border:none;
     display:flex;
     flex-direction: row;
@@ -137,12 +139,9 @@
     justify-content: center;
     overflow: visible;
     border-radius:50px;
-    padding:5px;
     background: var(--color-light);
     cursor:pointer;
     box-shadow: none;
-
-
 }
 .headersearch input,
 .searchbar input {
@@ -156,6 +155,7 @@
     cursor:pointer;
     overflow:visible;
     color:var(--color-dark);
+    padding:10px;
 }
 .headersearch input::placeholder,
 .searchbar input::placeholder {
@@ -189,7 +189,7 @@
 }
 .headerright {
     border-style:solid;
-    width:28%;
+    width:30%;
     height:100%;
     display:flex;
     flex-direction: row;

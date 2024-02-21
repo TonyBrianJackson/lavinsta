@@ -120,6 +120,7 @@ body {
     right: -10px;
     top: 0;
 }
+
 .userschatcount {
     padding: 9px 9px;
 }
@@ -327,7 +328,7 @@ main {
     min-height: 100vh;
     height: max-content;
     position: sticky;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 0px;
     box-shadow: none;
     border-radius: 0px;
@@ -2239,7 +2240,6 @@ main {
 }
 
 .postername {
-    width: 80%;
     display: block;
     text-align: left;
     border: none;
@@ -2405,11 +2405,13 @@ main {
     display: block;
     text-align: center;
 }
+
 .gridpostimagecontainer .headerbtns {
     position: absolute;
     right: 25px;
     top: 2px;
 }
+
 .adgrid .head .more,
 .gridpostimagecontainer .more {
     top: 5px;
@@ -2760,17 +2762,6 @@ main {
     background: none;
 }
 
-.likes111,
-.opencommentboxactivate {
-    width: 25px;
-    border: none;
-    border-radius: 0px;
-    background: none;
-    box-shadow: none;
-    cursor: pointer;
-    z-index: 1;
-}
-
 .opencommentboxactivate:hover .sharevideophotocomment {
     width: 40px;
     height: 120px;
@@ -2846,7 +2837,7 @@ main {
 .shareandlikecommentflex {
     width: 70%;
     height: 100%;
-    gap: 30px;
+    gap: 0px 40px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -2859,20 +2850,36 @@ main {
     box-shadow: none;
 }
 
-.shareandlikecommentflexactive {
-    width: 0px;
-    height: 100%;
-    gap: 40px;
+.commentinput>div,
+.shareandlikecommentflex>div {
+    width: 30px;
+    height: 30px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 300ms ease-in;
     border: none;
     background: none;
     overflow: hidden;
     border-radius: 0px;
     box-shadow: none;
+}
+
+.commentinput>div>img,
+.shareandlikecommentflex>div>img {
+    width: 25px;
+    display: block;
+    border: none;
+    border-radius: 0px;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.shareandlikecommentflexactive {
+    width: 0px;
+    height: 100%;
 }
 
 .humburgermenu {
@@ -3142,47 +3149,9 @@ a {
     box-shadow: none;
     overflow: visible;
 }
+
 .taskbarSwitchCntainer.requests_sentrequest {
     justify-content: center;
-}
-.taskbar_Switch {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    border-style: solid;
-    border-width: 3px;
-    cursor: pointer;
-    position: relative;
-    overflow: visible;
-    background: var(--color-bright-2);
-    box-shadow: var(--giant-box-shadow-2);
-    margin: 0px 2.5px;
-}
-
-.taskbar_Switch .toolpit {
-    display: block;
-    text-align: center;
-    padding: 5px 10px;
-    white-space: nowrap;
-    border-radius: 5px;
-    position: absolute;
-    left: 50%;
-    bottom: -40px;
-    transform: translate(-50%);
-    background: var(--color-dark);
-    color: var(--color-white);
-    pointer-events: none;
-    opacity: 0;
-    transition: all ease 300ms;
-}
-
-.taskbar_Switch:hover .toolpit {
-    opacity: 1;
-    transition: all ease 300ms;
-}
-
-.taskbar_Switch.active {
-    background: var(--color-bright);
 }
 
 .settingsheader {
@@ -4077,121 +4046,6 @@ a {
     position: relative;
     cursor: pointer;
 }
-
-
-.saveddeletedplay {
-    width: 60px;
-    height: 60px;
-    border-radius: 200px;
-    background: rgba(255, 255, 255, 0.336);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none;
-    border: none;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.saveddeletedplay img {
-    width: 40px;
-    height: 40px;
-    border-radius: 0px;
-    background: none;
-    box-shadow: none;
-    border: none;
-    overflow: visible;
-}
-
-.deletevideocover {
-    background: #00000000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 0px;
-    box-shadow: none;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.deletedstoryvideoplayer {
-    width: 100%;
-    height: 100%;
-    border-radius: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #00000000;
-    box-shadow: none;
-    border: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-
-.deletedviableImg {
-    border: none;
-    background: none;
-    box-shadow: none;
-    overflow: visible;
-    border-radius: 0px;
-    width: 100%;
-    height: 100%;
-    display: inline-flex;
-    object-fit: cover;
-}
-
-
-.deletedtimelinevideo,
-.deletedprofilepicture,
-.deletedphoto,
-.deletedtextPost,
-.deletednewstoryupload,
-.deletenewstoryuploadcontainer {
-    width: 100%;
-    font-size: normal;
-    border: none;
-    box-shadow: none;
-    background: none;
-    overflow: hidden;
-    border-radius: 0px;
-    ;
-}
-
-.deletedbottomsub,
-.deletedreacts,
-.deletedhead,
-.deletedpostmenu {
-    display: none;
-    border-radius: 0px;
-    background: none;
-    box-shadow: none;
-    border: none;
-}
-
-.deletedpost {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0px;
-    background: none;
-    box-shadow: none;
-    border: none;
-}
-
 
 .settingstabs a {
     margin: 5px;
@@ -8616,11 +8470,39 @@ a {
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .bottomsub {
+        height: max-content;
+        padding: 10px 5px;
+    }
+
+    .shareandlikecommentflex {
+        gap: 0;
+        width: 50%;
+        flex: .8;
+    }
+    .shareandlikecommentflexactive {
+        flex: 0;
+    }
+    .shareandlikecommentflex>div {
+        width: 100%;
+        height: 40px;
+    }
+    .commentinput>div {
+        width: 40px;
+        height: 40px;
+    }
+    .commentinput>div>img,
+    .shareandlikecommentflex>div>img {
+        width: 30px;
+        height: 30px;
+    }
+
     .imgcontainer {
         width: 3.5rem;
         height: 3.5rem;
-        margin:0px 4px; 
+        margin: 0px 4px;
     }
+
     .smallprofile a span,
     .smallprofile a p {
         font-size: 4.99vw;
@@ -8631,12 +8513,14 @@ a {
         font-size: 4.5vw;
         color: var(--color-dark);
     }
+
     .navigationheader>span {
         margin-left: 5px;
         font-size: 25px;
         font-weight: 900;
     }
 
+    .video_Seach_Path,
     .searchpath {
         height: 100vh;
         width: 100vw;
@@ -8644,16 +8528,45 @@ a {
         left: 0;
         top: 0;
         box-shadow: none;
-        background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
+        background: var(--color-light);
     }
 
     .video_Seach_Path {
         z-index: 302;
     }
-
-    .search_result {
+    .mainsearchbar {
+        background: var(--color-white);
         box-shadow: none;
-        border-radius: 0px;
+        border: none;
+    }
+    .headersearchflex,
+    .headersearchflex1 {
+        height: max-content;
+        min-height: 60px;
+        max-height: 60px;
+        flex: 1;
+        gap: 0px 5px;
+    }
+    .searchheadericons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 100%;
+        border-radius: 10px;
+        font-size: 22px;
+        font-weight: 900;
+        border: none;
+        box-shadow: none;
+    }
+    .searchheadericons.active {
+        box-shadow: none;
+        border: none;
+    }
+    .searchheadericons svg {
+        width: 30px;
+        height: 30px;
     }
 
     .searchlink {
@@ -9088,6 +9001,7 @@ a {
         z-index: 750;
         background: var(--color-light);
         padding: 0;
+        overflow: hidden;
     }
 
     .itemsviewclosebutton {
@@ -9451,8 +9365,7 @@ a {
     .recycletabarchies span,
     .recycletab p,
     .recycletab p b,
-    .recycletabarchies p
-    .recycletabarchies p b {
+    .recycletabarchies p .recycletabarchies p b {
         font-size: 7.99vw;
     }
 

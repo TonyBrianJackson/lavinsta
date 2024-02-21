@@ -2,7 +2,7 @@
 .notificationtab,
 .chattab {
     position: fixed;
-    top: 55px;
+    top: 60px;
     left: 4px;
     width: 240px;
     height: 500px;
@@ -121,10 +121,6 @@
     color: var(--color-dark);
 }
 
-.peoplebtn.headerpeoplebtns {
-    width: max-content;
-}
-
 .msgbtn {
     width: 50%;
 }
@@ -162,12 +158,14 @@
     border: none;
 }
 
+.b_Buttons.active svg path,
 .msgbtn.active svg path,
 .notibtn.active svg path,
 .peoplebtn.active svg path {
     fill: var(--color-white);
 }
 
+.b_Buttons img,
 .msgbtn img,
 .notibtn img,
 .peoplebtn img {
@@ -179,6 +177,7 @@
     overflow: visible;
 }
 
+.b_Buttons svg,
 .peoplebtn svg,
 .msgbtn svg,
 .notibtn svg {
@@ -192,7 +191,7 @@
 .peoplesearchbar,
 .chatsearchbar,
 .notificationsearchbar {
-    width: 100%;
+    width: 90%;
     height: 40px;
     display: flex;
     align-items: center;
@@ -998,7 +997,55 @@
     transition: 300ms;
 }
 
+.chatNavigationHeader.navigationheader,
+.peopleNavigation.navigationheader {
+    display: none;
+    padding: 10px;
+}
 @media (min-width: 0px) and (max-width: 539px) {
+    .chatNavigationHeader.navigationheader,
+    .peopleNavigation.navigationheader {
+        display: flex;
+    }
+
+    .headerbtns.b_Buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 100%;
+        border-radius: 10px;
+        font-size: 22px;
+        font-weight: 900;
+    }
+
+    .headerbtns.b_Buttons> svg{
+        width: 30px;
+        height: 30px;
+    }
+    .chatheader.generalheader,
+    .peopleHeader.generalheader {
+        display: none;
+    }
+    .peopleculomn,
+    .peoplerequestculomn,
+    .sentrequestculomn,
+    .peoplelistculomn,
+    .generalculomn,
+    .msgculomn,
+    .groupmsgculomn,
+    .generalculomn3 {
+        height: 70%;
+    }
+
+    .divider {
+        height: max-content;
+        overflow: hidden;
+    }
+    .msgbtn {
+        display: none;
+    }
     .photogallery {
         top: 0;
         left: 0;
@@ -1218,34 +1265,6 @@
         border-style: solid;
         border-width: 3px;
         border-color: var(--color-dark);
-    }
-
-    .peoplebtn.headerbtns {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 45px;
-        width: 100%;
-    }
-
-    .peoplebtn.headerbtns>svg {
-        width: 30px;
-        height: 30px;
-    }
-
-    .peopleculomn,
-    .peoplerequestculomn,
-    .sentrequestculomn,
-    .peoplelistculomn,
-    .generalculomn,
-    .groupmsgculomn,
-    .generalculomn3 {
-        height: 80vh;
-    }
-
-    .divider {
-        height: 15vh;
     }
 
     .msgbtn svg,
