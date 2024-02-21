@@ -2843,15 +2843,11 @@
 @media (min-width: 0px) and (max-width: 539px) {
     .header {
         flex-direction: column;
-        height: max-content;
+        justify-content: center;
+        min-height: 80px;
         max-height: max-content;
-        padding: 5px;
-        top: 35px;
     }
-    .headerleft {
-        width: 100%;
-        display: flex;
-    }
+
     .headerbtns {
         width: 40px;
         height: 40px;
@@ -2869,6 +2865,18 @@
         border-radius: 0px;
         border: none;
         margin: 0;
+    }
+    .headermiddle.middle_video_header,
+    .headermiddle {
+        display: none;
+        width: 100%;
+    }
+
+    .headerleft,
+    .headerright,
+    .headerleft.middle_video_header,
+    .headerright.middle_video_header {
+        width: 100%;
     }
     .post {
         width: 100%;
@@ -2970,18 +2978,6 @@
         white-space: nowrap;
     }
 
-    .headermiddle.middle_video_header,
-    .headermiddle {
-        display: none;
-        width: 100%;
-    }
-
-    .headerleft,
-    .headerright,
-    .headerleft.middle_video_header,
-    .headerright.middle_video_header {
-        width: 100%;
-    }
 
     .profile_Cliant,
     .profile {
