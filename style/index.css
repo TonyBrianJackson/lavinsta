@@ -211,7 +211,6 @@ body {
 
 main {
     position: relative;
-    top: 40px;
     border: none;
     border-radius: 0px;
     box-shadow: none;
@@ -221,9 +220,13 @@ main {
     grid-template-columns: 1fr;
     place-items: center;
     width: 100vw;
+    margin-top: 55px;
     overflow: hidden;
 }
-
+main .header {
+    position: relative;
+    width: 100%;
+}
 .container {
     display: grid;
     grid-template-columns: 25vw 50vw 25vw;
