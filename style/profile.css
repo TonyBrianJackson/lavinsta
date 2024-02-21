@@ -2846,9 +2846,10 @@
         height: max-content;
         max-height: max-content;
         padding: 5px;
-        top: 50px;
+        top: 35px;
     }
     .headerleft {
+        width: 100%;
         display: flex;
     }
     .headerbtns {
@@ -2859,6 +2860,7 @@
         border: none;
     }
     .headerright {
+        width: 100%;
         flex: 1;
         margin: 0;
     }
