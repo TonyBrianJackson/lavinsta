@@ -320,7 +320,7 @@ function active_user_render() {
                     });
                     taskbar_Switch.addEventListener('click', () => {
                         if (user.user_TaskBar_Mode === true) {
-                            taskbar_Switch.classList.remove('active');
+                            taskbar_Switch.innerHTML = '&times;';
                             document.querySelector('.footer_task_bar').style.display = 'none';
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === data.user_Id) {
@@ -329,7 +329,7 @@ function active_user_render() {
                                 }
                             });
                         } else {
-                            taskbar_Switch.classList.add('active');
+                            taskbar_Switch.innerHTML = '&check;';
                             document.querySelector('.footer_task_bar').style.display = 'flex';
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === data.user_Id) {
@@ -343,10 +343,10 @@ function active_user_render() {
 
                 function CheckOnAllOtherThings() {
                     if (user.user_TaskBar_Mode === true) {
-                        taskbar_Switch.classList.add('active');
+                        taskbar_Switch.innerHTML = '&check;';
                         document.querySelector('.footer_task_bar').style.display = 'flex';
                     } else {
-                        taskbar_Switch.classList.remove('active');
+                        taskbar_Switch.innerHTML = '&times;';
                         document.querySelector('.footer_task_bar').style.display = 'none';
                     }
                 }
@@ -392,7 +392,7 @@ function active_user_render() {
                                     notification_isChecked: false,
                                     notification_View: false,
                                 });
-                                localStorage.setItem('LogInFormData',JSON.stringify(LogInFormData));
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                             }
                         });
                     });
@@ -461,8 +461,6 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
                                 sharecount: 0,
                                 attribute: 'public photo',
                                 likeactive: true,
@@ -490,10 +488,8 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
+                                views: [],
                                 sharecount: 0,
-                                viewcount: 0,
                                 attribute: 'public video',
                                 likeactive: true,
                                 commentactive: true,
@@ -520,8 +516,6 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
                                 sharecount: 0,
                                 attribute: 'public text',
                                 likeactive: true,
@@ -568,8 +562,6 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
                                 sharecount: 0,
                                 attribute: 'profile photo',
                                 filter: document.querySelector('.profilefiltertitle').textContent,
@@ -628,8 +620,6 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
                                 sharecount: 0,
                                 attribute: 'cover photo',
                                 filter: document.querySelector('.coverfiltertitle').textContent,
@@ -675,8 +665,6 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
                                 sharecount: 0,
                                 attribute: 'timeline photo',
                                 likeactive: true,
@@ -716,10 +704,7 @@ function active_user_render() {
                                 comments: [],
                                 views: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
                                 sharecount: 0,
-                                viewcount: 0,
                                 attribute: 'timeline video',
                                 likeactive: true,
                                 commentactive: true,
@@ -744,10 +729,8 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
+                                views: [],
                                 sharecount: 0,
-                                viewcount: 0,
                                 attribute: 'public video',
                                 likeactive: true,
                                 commentactive: true,
@@ -795,8 +778,6 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
                                 sharecount: 0,
                                 attribute: 'timeline text',
                                 likeactive: true,
@@ -839,12 +820,9 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
+                                views: [],
                                 sharecount: 0,
                                 attribute: 'public short',
-                                savecount: 0,
-                                viewcount: 0,
                                 likeactive: true,
                                 commentactive: true,
                                 shareactive: true,
@@ -870,12 +848,9 @@ function active_user_render() {
                                 likes: [],
                                 comments: [],
                                 shares: [],
-                                likecount: 0,
-                                commentcount: 0,
+                                views: [],
                                 sharecount: 0,
                                 attribute: 'public short',
-                                savecount: 0,
-                                viewcount: 0,
                                 likeactive: true,
                                 commentactive: true,
                                 shareactive: true,
@@ -896,14 +871,12 @@ function active_user_render() {
                             time: new Date().getTime(),
                             posterId: user.user_Id,
                             id: id,
-                            saveId: id,
-                            nonesaveId: id + id,
-                            likecount: 0,
-                            commentcount: 0,
                             sharecount: 0,
+                            likes: [],
+                            comments: [],
+                            shares: [],
+                            views: [],
                             attribute: 'public short',
-                            savecount: 0,
-                            viewcount: 0,
                             likeactive: true,
                             commentactive: true,
                             shareactive: true,
@@ -955,10 +928,10 @@ function active_user_render() {
                             id: id,
                             time: new Date().getTime(),
                             date: trackingDate,
-                            likecount: 0,
-                            commentcount: 0,
                             sharecount: 0,
-                            savedcount: 0,
+                            likes: [],
+                            comments: [],
+                            shares: [],
                             likeactive: true,
                             commentactive: true,
                             shareactive: true,
@@ -980,10 +953,10 @@ function active_user_render() {
                             id: id,
                             time: new Date().getTime(),
                             date: trackingDate,
-                            likecount: 0,
-                            commentcount: 0,
                             sharecount: 0,
-                            savedcount: 0,
+                            likes: [],
+                            comments: [],
+                            shares: [],
                             likeactive: true,
                             commentactive: true,
                             shareactive: true,
@@ -1005,10 +978,10 @@ function active_user_render() {
                             id: id,
                             time: new Date().getTime(),
                             date: trackingDate,
-                            likecount: 0,
-                            commentcount: 0,
                             sharecount: 0,
-                            savedcount: 0,
+                            likes: [],
+                            comments: [],
+                            shares: [],
                             likeactive: true,
                             commentactive: true,
                             shareactive: true,

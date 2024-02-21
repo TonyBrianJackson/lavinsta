@@ -73,8 +73,8 @@ function createPhotosGadget() {
                         makeLike();
                     });
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             gadgetlike.id = data.user_Id + photo.id;
                         });
@@ -388,8 +388,8 @@ function createPhotosGadget() {
                     });
 
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             gadgetlike.id = data.user_Id + photo.id;
                         });
@@ -701,8 +701,8 @@ function createPhotosGadget() {
                     });
 
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             gadgetlike.id = data.user_Id + photo.id;
                         });
@@ -1025,8 +1025,8 @@ function createAdsGadget() {
                     });
 
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             gadgetlike.id = data.user_Id + photo.id;
                         });
@@ -1339,8 +1339,8 @@ function createAdsGadget() {
                     });
 
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             gadgetlike.id = data.user_Id + photo.id;
                         });
@@ -1653,8 +1653,8 @@ function createAdsGadget() {
                     });
 
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             gadgetlike.id = data.user_Id + photo.id;
                         });

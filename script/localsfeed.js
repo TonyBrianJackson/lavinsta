@@ -416,13 +416,25 @@ function createPhotoPostOnTimeLine() {
                 let postelapsedtime = document.createElement('span');
                 let postattributation = document.createElement('span');
 
+                let first_Child_1 = document.createElement('div');
+                let first_Child_2 = document.createElement('div');
+                let first_Child_3 = document.createElement('div');
+                let first_Child_4 = document.createElement('div');
+
                 let likes1 = document.createElement('img');
                 let likes2 = document.createElement('img');
                 let likes3 = document.createElement('img');
                 let likes4 = document.createElement('img');
-                let shareandlikecommentflex = document.createElement('div');
-                let opencommentboxactivate = document.createElement('img');
 
+                first_Child_1.appendChild(likes1);
+                first_Child_2.appendChild(likes2);
+                first_Child_3.appendChild(likes3);
+                first_Child_4.appendChild(likes4);
+
+                let shareandlikecommentflex = document.createElement('div');
+                let last_Child = document.createElement('div');
+                let opencommentboxactivate = document.createElement('img');
+                last_Child.appendChild(opencommentboxactivate);
 
                 //LIVE COUNTS
                 let livecountgrid = document.createElement('div');
@@ -477,7 +489,7 @@ function createPhotoPostOnTimeLine() {
                     postmenu.classList.toggle('postmenuactive');
                 });
 
-                likes3.addEventListener('click', () => {
+                first_Child_3.addEventListener('click', () => {
                     document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
                         if (popup.id === photo.id) {
                             popup.style.display = 'flex';
@@ -546,7 +558,7 @@ function createPhotoPostOnTimeLine() {
                 }
                 checkIfPostIsLiked();
 
-                likes4.addEventListener('click', () => {
+                first_Child_4.addEventListener('click', () => {
                     if (commentinputinput.value) {
                         set_Comment_Data(photo.id, commentinputinput.value);
                         CreationOfComments();
@@ -555,7 +567,7 @@ function createPhotoPostOnTimeLine() {
                     commentinput.classList.toggle('commentinputactive');
                     shareandlikecommentflex.classList.toggle('shareandlikecommentflexactive');
                 });
-                likes2.id = feedcolumn.id + photo.id;
+                first_Child_4.id = feedcolumn.id + photo.id;
                 livelikecount.classList.add('livelikecount');
 
                 LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -720,15 +732,18 @@ function createPhotoPostOnTimeLine() {
 
                 title.textContent = photo.title;
                 sub.appendChild(commentinput);
-                shareandlikecommentflex.appendChild(opencommentboxactivate);
-                shareandlikecommentflex.appendChild(likes1);
-                shareandlikecommentflex.appendChild(likes2);
-                shareandlikecommentflex.appendChild(likes3);
+                shareandlikecommentflex.appendChild(last_Child);
+                shareandlikecommentflex.appendChild(first_Child_1);
+                shareandlikecommentflex.appendChild(first_Child_2);
+                shareandlikecommentflex.appendChild(first_Child_3);
+
+                
+
                 sub.appendChild(shareandlikecommentflex);
                 opencommentboxactivate.src = 'icons/send (2).png';
                 opencommentboxactivate.classList.add('opencommentboxactivate');
                 shareandlikecommentflex.classList.add('shareandlikecommentflex');
-                opencommentboxactivate.addEventListener('click', () => {
+                last_Child.addEventListener('click', () => {
                     shareandlikecommentflex.classList.toggle('shareandlikecommentflexactive');
                     commentinput.classList.toggle('commentinputactive');
                     commentinputinput.focus();
@@ -749,7 +764,7 @@ function createPhotoPostOnTimeLine() {
 
 
                 commentinput.appendChild(commentinputinput);
-                commentinput.appendChild(likes4);
+                commentinput.appendChild(first_Child_4);
                 commentinputinput.placeholder = 'Add a comment';
 
 
@@ -990,10 +1005,10 @@ function createPhotoPostOnTimeLine() {
                     }
                 }
 
-                likes2.addEventListener('click', () => {
+                first_Child_2.addEventListener('click', () => {
                     makeLike();
                 });
-                likes1.addEventListener('click', () => {
+                first_Child_1.addEventListener('click', () => {
                     document.querySelectorAll('.commentsectioncontainer').forEach(container => {
                         if (container.id === photo.id) {
                             sessionStorage.setItem('activepage', container.id);

@@ -405,11 +405,11 @@ function create_Comment_Sections_TimeLinePost() {
                     let option_Name4 = document.createElement('span');
                     let option_Name5 = document.createElement('span');
 
-                    let option_Name1_headerBtns = document.createElement('div');
-                    let option_Name2_headerBtns = document.createElement('div');
-                    let option_Name3_headerBtns = document.createElement('div');
-                    let option_Name4_headerBtns = document.createElement('div');
-                    let option_Name5_headerBtns = document.createElement('div');
+                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name2_HeaderBtns = document.createElement('div');
+                    let option_Name3_HeaderBtns = document.createElement('div');
+                    let option_Name4_HeaderBtns = document.createElement('div');
+                    let option_Name5_HeaderBtns = document.createElement('div');
 
                     let option_Name1_Img = document.createElement('img');
                     let option_Name2_Img = document.createElement('img');
@@ -424,17 +424,17 @@ function create_Comment_Sections_TimeLinePost() {
                     postshare_Popup_Column.appendChild(option_First_Child4);
                     postshare_Popup_Column.appendChild(option_First_Child5);
 
-                    option_First_Child1.appendChild(option_Name1_headerBtns);
-                    option_First_Child2.appendChild(option_Name2_headerBtns);
-                    option_First_Child3.appendChild(option_Name3_headerBtns);
-                    option_First_Child4.appendChild(option_Name4_headerBtns);
-                    option_First_Child5.appendChild(option_Name5_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child2.appendChild(option_Name2_HeaderBtns);
+                    option_First_Child3.appendChild(option_Name3_HeaderBtns);
+                    option_First_Child4.appendChild(option_Name4_HeaderBtns);
+                    option_First_Child5.appendChild(option_Name5_HeaderBtns);
 
-                    option_Name1_headerBtns.appendChild(option_Name1_Img);
-                    option_Name2_headerBtns.appendChild(option_Name2_Img);
-                    option_Name3_headerBtns.appendChild(option_Name3_Img);
-                    option_Name4_headerBtns.appendChild(option_Name4_Img);
-                    option_Name5_headerBtns.appendChild(option_Name5_Img);
+                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
+                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
+                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
+                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
 
                     option_First_Child1.appendChild(option_Name1);
                     option_First_Child2.appendChild(option_Name2);
@@ -442,14 +442,14 @@ function create_Comment_Sections_TimeLinePost() {
                     option_First_Child4.appendChild(option_Name4);
                     option_First_Child5.appendChild(option_Name5);
 
-                    option_Name1_headerBtns.classList.add('headerbtns');
-                    option_Name2_headerBtns.classList.add('headerbtns');
-                    option_Name3_headerBtns.classList.add('headerbtns');
-                    option_Name4_headerBtns.classList.add('headerbtns');
-                    option_Name5_headerBtns.classList.add('headerbtns');
+                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name2_HeaderBtns.classList.add('headerbtns');
+                    option_Name3_HeaderBtns.classList.add('headerbtns');
+                    option_Name4_HeaderBtns.classList.add('headerbtns');
+                    option_Name5_HeaderBtns.classList.add('headerbtns');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
-                    
+
 
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to timeline';
@@ -862,6 +862,22 @@ function create_Comment_Sections_TimeLinePost() {
                     let option_Name6 = document.createElement('span');
                     let option_Name7 = document.createElement('span');
 
+                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name2_HeaderBtns = document.createElement('div');
+                    let option_Name3_HeaderBtns = document.createElement('div');
+                    let option_Name4_HeaderBtns = document.createElement('div');
+                    let option_Name5_HeaderBtns = document.createElement('div');
+                    let option_Name6_HeaderBtns = document.createElement('div');
+                    let option_Name7_HeaderBtns = document.createElement('div');
+
+                    let option_Name1_Img = document.createElement('img');
+                    let option_Name2_Img = document.createElement('img');
+                    let option_Name3_Img = document.createElement('img');
+                    let option_Name4_Img = document.createElement('img');
+                    let option_Name5_Img = document.createElement('img');
+                    let option_Name6_Img = document.createElement('img');
+                    let option_Name7_Img = document.createElement('img');
+
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -870,6 +886,22 @@ function create_Comment_Sections_TimeLinePost() {
                     postshare_Popup_Column.appendChild(option_First_Child5);
                     postshare_Popup_Column.appendChild(option_First_Child6);
                     postshare_Popup_Column.appendChild(option_First_Child7);
+
+                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child2.appendChild(option_Name2_HeaderBtns);
+                    option_First_Child3.appendChild(option_Name3_HeaderBtns);
+                    option_First_Child4.appendChild(option_Name4_HeaderBtns);
+                    option_First_Child5.appendChild(option_Name5_HeaderBtns);
+                    option_First_Child6.appendChild(option_Name6_HeaderBtns);
+                    option_First_Child7.appendChild(option_Name7_HeaderBtns);
+
+                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
+                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
+                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
+                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
+                    option_Name6_HeaderBtns.appendChild(option_Name6_Img);
+                    option_Name7_HeaderBtns.appendChild(option_Name7_Img);
 
                     option_First_Child1.appendChild(option_Name1);
                     option_First_Child2.appendChild(option_Name2);
@@ -886,6 +918,24 @@ function create_Comment_Sections_TimeLinePost() {
                     option_Name5.textContent = 'add to photo';
                     option_Name6.textContent = 'advance';
                     option_Name7.textContent = 'report post';
+
+                    option_Name1_Img.src = 'icons/recreate.png';
+                    option_Name2_Img.src = 'icons/home.png';
+                    option_Name3_Img.src = 'newicons/handcuff.png';
+                    option_Name4_Img.src = 'newicons/promotion.png';
+                    option_Name5_Img.src = 'icons/image(0).png';
+                    option_Name6_Img.src = 'icons/discover.png';
+                    option_Name7_Img.src = 'newicons/medical-report.png';
+
+                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name2_HeaderBtns.classList.add('headerbtns');
+                    option_Name3_HeaderBtns.classList.add('headerbtns');
+                    option_Name4_HeaderBtns.classList.add('headerbtns');
+                    option_Name5_HeaderBtns.classList.add('headerbtns');
+                    option_Name6_HeaderBtns.classList.add('headerbtns');
+                    option_Name7_HeaderBtns.classList.add('headerbtns');
+
+                    postshare_Pop_up_Close.classList.add('headerbtns');
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -1164,6 +1214,18 @@ function create_Comment_Sections_TimeLinePost() {
                     let option_Name4 = document.createElement('span');
                     let option_Name5 = document.createElement('span');
 
+                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name2_HeaderBtns = document.createElement('div');
+                    let option_Name3_HeaderBtns = document.createElement('div');
+                    let option_Name4_HeaderBtns = document.createElement('div');
+                    let option_Name5_HeaderBtns = document.createElement('div');
+
+                    let option_Name1_Img = document.createElement('img');
+                    let option_Name2_Img = document.createElement('img');
+                    let option_Name3_Img = document.createElement('img');
+                    let option_Name4_Img = document.createElement('img');
+                    let option_Name5_Img = document.createElement('img');
+
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -1171,17 +1233,43 @@ function create_Comment_Sections_TimeLinePost() {
                     postshare_Popup_Column.appendChild(option_First_Child4);
                     postshare_Popup_Column.appendChild(option_First_Child5);
 
+                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child2.appendChild(option_Name2_HeaderBtns);
+                    option_First_Child3.appendChild(option_Name3_HeaderBtns);
+                    option_First_Child4.appendChild(option_Name4_HeaderBtns);
+                    option_First_Child5.appendChild(option_Name5_HeaderBtns);
+
+                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
+                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
+                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
+                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
+
                     option_First_Child1.appendChild(option_Name1);
                     option_First_Child2.appendChild(option_Name2);
                     option_First_Child3.appendChild(option_Name3);
                     option_First_Child4.appendChild(option_Name4);
                     option_First_Child5.appendChild(option_Name5);
 
+                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name2_HeaderBtns.classList.add('headerbtns');
+                    option_Name3_HeaderBtns.classList.add('headerbtns');
+                    option_Name4_HeaderBtns.classList.add('headerbtns');
+                    option_Name5_HeaderBtns.classList.add('headerbtns');
+
+                    postshare_Pop_up_Close.classList.add('headerbtns');
+
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to timeline';
                     option_Name3.textContent = 'add to short';
                     option_Name4.textContent = 'advance';
                     option_Name5.textContent = 'report post';
+
+                    option_Name1_img.src = 'icons/recreate.png';
+                    option_Name2_img.src = 'icons/home.png';
+                    option_Name3_img.src = 'icons/stopwatch.png';
+                    option_Name4_img.src = 'icons/discover.png';
+                    option_Name5_img.src = 'newicons/mediacal-report.png';
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -1375,21 +1463,53 @@ function create_Comment_Sections_TimeLinePost() {
                     let option_Name3 = document.createElement('span');
                     let option_Name4 = document.createElement('span');
 
+                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name2_HeaderBtns = document.createElement('div');
+                    let option_Name3_HeaderBtns = document.createElement('div');
+                    let option_Name4_HeaderBtns = document.createElement('div');
+
+                    let option_Name1_Img = document.createElement('img');
+                    let option_Name2_Img = document.createElement('img');
+                    let option_Name3_Img = document.createElement('img');
+                    let option_Name4_Img = document.createElement('img');
+
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
                     postshare_Popup_Column.appendChild(option_First_Child4);
 
+                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child2.appendChild(option_Name2_HeaderBtns);
+                    option_First_Child3.appendChild(option_Name3_HeaderBtns);
+                    option_First_Child4.appendChild(option_Name4_HeaderBtns);
+
+                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
+                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
+                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
+                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+
                     option_First_Child1.appendChild(option_Name1);
                     option_First_Child2.appendChild(option_Name2);
                     option_First_Child3.appendChild(option_Name3);
                     option_First_Child4.appendChild(option_Name4);
 
+                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name2_HeaderBtns.classList.add('headerbtns');
+                    option_Name3_HeaderBtns.classList.add('headerbtns');
+                    option_Name4_HeaderBtns.classList.add('headerbtns');
+
+                    postshare_Pop_up_Close.classList.add('headerbtns');
+
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'advance';
                     option_Name4.textContent = 'report post';
+
+                    option_Name1_Img.src = 'icons/recreate.png';
+                    option_Name2_Img.src = 'icons/web-content.png';
+                    option_Name3_Img.src = 'icons/discover.png';
+                    option_Name4_Img.src = 'newicons/medical-report.png';
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -1540,21 +1660,53 @@ function create_Comment_Sections_TimeLinePost() {
                     let option_Name3 = document.createElement('span');
                     let option_Name4 = document.createElement('span');
 
+                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name2_HeaderBtns = document.createElement('div');
+                    let option_Name3_HeaderBtns = document.createElement('div');
+                    let option_Name4_HeaderBtns = document.createElement('div');
+
+                    let option_Name1_Img = document.createElement('img');
+                    let option_Name2_Img = document.createElement('img');
+                    let option_Name3_Img = document.createElement('img');
+                    let option_Name4_Img = document.createElement('img');
+
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
                     postshare_Popup_Column.appendChild(option_First_Child4);
 
+                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child2.appendChild(option_Name2_HeaderBtns);
+                    option_First_Child3.appendChild(option_Name3_HeaderBtns);
+                    option_First_Child4.appendChild(option_Name4_HeaderBtns);
+
+                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
+                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
+                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
+                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+
                     option_First_Child1.appendChild(option_Name1);
                     option_First_Child2.appendChild(option_Name2);
                     option_First_Child3.appendChild(option_Name3);
                     option_First_Child4.appendChild(option_Name4);
 
+                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name2_HeaderBtns.classList.add('headerbtns');
+                    option_Name3_HeaderBtns.classList.add('headerbtns');
+                    option_Name4_HeaderBtns.classList.add('headerbtns');
+
+                    postshare_Pop_up_Close.classList.add('headerbtns');
+
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to timeline';
                     option_Name3.textContent = 'advance';
                     option_Name4.textContent = 'report post';
+
+                    option_Name1_Img.src = 'icons/recreate.png';
+                    option_Name2_Img.src = 'icons/home.png';
+                    option_Name3_Img.src = 'icons/discover.png';
+                    option_Name4_Img.src = 'newicons/medical-report.png';
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -1715,6 +1867,22 @@ function create_Comment_Sections_TimeLinePost() {
                     let option_Name6 = document.createElement('span');
                     let option_Name7 = document.createElement('span');
 
+                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name2_HeaderBtns = document.createElement('div');
+                    let option_Name3_HeaderBtns = document.createElement('div');
+                    let option_Name4_HeaderBtns = document.createElement('div');
+                    let option_Name5_HeaderBtns = document.createElement('div');
+                    let option_Name6_HeaderBtns = document.createElement('div');
+                    let option_Name7_HeaderBtns = document.createElement('div');
+
+                    let option_Name1_Img = document.createElement('img');
+                    let option_Name2_Img = document.createElement('img');
+                    let option_Name3_Img = document.createElement('img');
+                    let option_Name4_Img = document.createElement('img');
+                    let option_Name5_Img = document.createElement('img');
+                    let option_Name6_Img = document.createElement('img');
+                    let option_Name7_Img = document.createElement('img');
+
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -1724,6 +1892,22 @@ function create_Comment_Sections_TimeLinePost() {
                     postshare_Popup_Column.appendChild(option_First_Child6);
                     postshare_Popup_Column.appendChild(option_First_Child7);
 
+                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child2.appendChild(option_Name2_HeaderBtns);
+                    option_First_Child3.appendChild(option_Name3_HeaderBtns);
+                    option_First_Child4.appendChild(option_Name4_HeaderBtns);
+                    option_First_Child5.appendChild(option_Name5_HeaderBtns);
+                    option_First_Child6.appendChild(option_Name6_HeaderBtns);
+                    option_First_Child7.appendChild(option_Name7_HeaderBtns);
+
+                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
+                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
+                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
+                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
+                    option_Name6_HeaderBtns.appendChild(option_Name6_Img);
+                    option_Name7_HeaderBtns.appendChild(option_Name7_Img);
+
                     option_First_Child1.appendChild(option_Name1);
                     option_First_Child2.appendChild(option_Name2);
                     option_First_Child3.appendChild(option_Name3);
@@ -1732,6 +1916,16 @@ function create_Comment_Sections_TimeLinePost() {
                     option_First_Child6.appendChild(option_Name6);
                     option_First_Child7.appendChild(option_Name7);
 
+                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name2_HeaderBtns.classList.add('headerbtns');
+                    option_Name3_HeaderBtns.classList.add('headerbtns');
+                    option_Name4_HeaderBtns.classList.add('headerbtns');
+                    option_Name5_HeaderBtns.classList.add('headerbtns');
+                    option_Name6_HeaderBtns.classList.add('headerbtns');
+                    option_Name7_HeaderBtns.classList.add('headerbtns');
+
+                    postshare_Pop_up_Close.classList.add('headerbtns');
+
                     option_Name1.textContent = 'add to timeline';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'add to crime';
@@ -1739,6 +1933,14 @@ function create_Comment_Sections_TimeLinePost() {
                     option_Name5.textContent = 'add to photo';
                     option_Name6.textContent = 'advance';
                     option_Name7.textContent = 'report post';
+
+                    option_Name1_Img.src = 'icons/home.png';
+                    option_Name2_Img.src = 'icons/web-content.png';
+                    option_Name3_Img.src = 'newicons/handcuff.png';
+                    option_Name4_Img.src = 'newicons/promotion.png';
+                    option_Name5_Img.src = 'icons/image(0).png';
+                    option_Name6_Img.src = 'icons/discover.png';
+                    option_Name7_Img.src = 'newicons/medical-report.png';
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -2255,7 +2457,7 @@ function create_Comment_Sections_TimeLinePost() {
             });
         }
         deleting_Post_Script();
-        function createShare_Photo_Popup() {
+        function Media_Comment_Popup() {
             let sharephotolabelinput = document.createElement('input');
             let sharevideolabelinput = document.createElement('input');
 
@@ -2576,7 +2778,7 @@ function create_Comment_Sections_TimeLinePost() {
         }
         //popup
 
-        createShare_Photo_Popup();
+        Media_Comment_Popup();
 
         commentsection.id = photo.id;
         commentsectioncontainer.id = photo.id;

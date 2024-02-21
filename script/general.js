@@ -529,20 +529,40 @@ msgbtn.forEach(item => {
             document.querySelector('.chatsearchbar').style.display = 'flex';
             document.querySelector('#general_smart_Chat').classList.add('active');
         } if (item.id != 'community_smart_Chat') {
-            document.querySelector('.create_Community').style.display = 'none';
             document.querySelector('.groupmsgculomn').style.display = 'none';
             document.querySelector('.chatsearchbar1').style.display = 'none';
             document.querySelector('#community_smart_Chat').classList.remove('active');
         } else {
             sessionStorage.setItem('activepage', 'community_smart_Chat');
-            document.querySelector('.create_Community').style.display = 'flex';
             document.querySelector('.groupmsgculomn').style.display = 'flex';
             document.querySelector('.chatsearchbar1').style.display = 'flex';
             document.querySelector('#community_smart_Chat').classList.add('active');
         }
-    })
+    });
 });
-
+document.querySelectorAll('.mesgBtn').forEach(item => {
+    item.addEventListener('click', () => {
+        if (item.classList.contains('general_smart_Chat')) {
+            document.querySelector('.msgculomn').style.display = 'none';
+            document.querySelector('.chatsearchbar').style.display = 'none';
+            document.querySelector('#general_smart_Chat').classList.remove('active');
+        } else {
+            sessionStorage.setItem('activepage', 'general_smart_Chat');
+            document.querySelector('.msgculomn').style.display = 'flex';
+            document.querySelector('.chatsearchbar').style.display = 'flex';
+            document.querySelector('#general_smart_Chat').classList.add('active');
+        } if (item.classList.contains('community_smart_Chat')) {
+            document.querySelector('.groupmsgculomn').style.display = 'none';
+            document.querySelector('.chatsearchbar1').style.display = 'none';
+            document.querySelector('#community_smart_Chat').classList.remove('active');
+        } else {
+            sessionStorage.setItem('activepage', 'community_smart_Chat');
+            document.querySelector('.groupmsgculomn').style.display = 'flex';
+            document.querySelector('.chatsearchbar1').style.display = 'flex';
+            document.querySelector('#community_smart_Chat').classList.add('active');
+        }
+    });
+});
 const peoplebtn = document.querySelectorAll('.peoplebtn');
 peoplebtn.forEach(item => {
     item.addEventListener('click', () => {

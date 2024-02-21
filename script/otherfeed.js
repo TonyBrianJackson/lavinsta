@@ -109,8 +109,8 @@ function createOtherPost() {
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         });
 
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 if (photo.posterId !== data.user_Id) {
                                     more.remove();
@@ -333,8 +333,8 @@ function createOtherPost() {
                     checkIfPostIsLiked();
 
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             advertlike.id = data.user_Id + photo.id;
                         });
@@ -553,8 +553,8 @@ function createOtherPost() {
                         });
 
 
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 if (photo.posterId !== data.user_Id) {
                                     more.remove();
@@ -777,8 +777,8 @@ function createOtherPost() {
                     }
                     checkIfPostIsLiked();
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             advertlike.id = data.user_Id + photo.id;
                         });
@@ -996,8 +996,8 @@ function createOtherPost() {
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         });
 
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 if (photo.posterId !== data.user_Id) {
                                     more.remove();
@@ -1221,8 +1221,8 @@ function createOtherPost() {
                     }
                     checkIfPostIsLiked();
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             advertlike.id = data.user_Id + photo.id;
                         });
@@ -1335,6 +1335,12 @@ function createOtherPost() {
 const savedOtherPost = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
 if (Array.isArray(savedOtherPost)) {
     Feeds_Data_Base = savedOtherPost;
+    Feeds_Data_Base.forEach(feed => {
+        feed.likes = [];
+        feed.comments = [];
+        feed.shares = [];
+        localStorage.setItem('Feeds_Data_Base',JSON.stringify(Feeds_Data_Base));
+    });
     createOtherPost();
 } else {
     Feeds_Data_Base = [];

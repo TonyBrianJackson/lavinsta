@@ -276,8 +276,8 @@ function createPublicFeed() {
                         timelinetotaltime.classList.add('timelinecurrenttime');
 
                         function checkifviews() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     let views = photo.views;
                                     views.forEach(count => {
@@ -442,13 +442,26 @@ function createPublicFeed() {
                     let postelapsedtime = document.createElement('span');
                     let postattributation = document.createElement('span');
 
+                    let first_Child_1 = document.createElement('div');
+                    let first_Child_2 = document.createElement('div');
+                    let first_Child_3 = document.createElement('div');
+                    let first_Child_4 = document.createElement('div');
+    
                     let likes1 = document.createElement('img');
                     let likes2 = document.createElement('img');
                     let likes3 = document.createElement('img');
                     let likes4 = document.createElement('img');
+    
+                    first_Child_1.appendChild(likes1);
+                    first_Child_2.appendChild(likes2);
+                    first_Child_3.appendChild(likes3);
+                    first_Child_4.appendChild(likes4);
+    
                     let shareandlikecommentflex = document.createElement('div');
+                    let last_Child = document.createElement('div');
                     let opencommentboxactivate = document.createElement('img');
-
+                    last_Child.appendChild(opencommentboxactivate);
+    
                     let commentinput = document.createElement('div');
                     let commentinputinput = document.createElement('input');
 
@@ -507,7 +520,7 @@ function createPublicFeed() {
                     });
 
 
-                    likes3.addEventListener('click', () => {
+                    first_Child_3.addEventListener('click', () => {
                         document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
                             if (popup.id === photo.id) {
                                 popup.style.display = 'flex';
@@ -722,7 +735,7 @@ function createPublicFeed() {
                     post.id = photo.id;
                     commentinputinput.id = photo.id;
 
-                    likes4.addEventListener('click', () => {
+                    first_Child_4.addEventListener('click', () => {
                         if (commentinputinput.value) {
                             set_Comment_Data(photo.id, commentinputinput.value);
                             CreationOfComments();
@@ -747,25 +760,26 @@ function createPublicFeed() {
                     main.setAttribute(`id`, 'main');
                     sub.classList.add('bottomsub');
                     sub.appendChild(commentinput);
-                    sub.appendChild(likes1);
-                    sub.appendChild(likes2);
-                    sub.appendChild(likes3);
+                    first_Child_1.appendChild(likes1);
+                    first_Child_2.appendChild(likes2);
+                    first_Child_3.appendChild(likes3);
 
                     sub.appendChild(commentinput);
                     commentinput.classList.add('commentinput');
                     commentinput.appendChild(commentinputinput);
-                    commentinput.appendChild(likes4);
+                    commentinput.appendChild(first_Child_4);
                     commentinputinput.placeholder = 'Add a comment';
 
-                    shareandlikecommentflex.appendChild(opencommentboxactivate);
-                    shareandlikecommentflex.appendChild(likes1);
-                    shareandlikecommentflex.appendChild(likes2);
-                    shareandlikecommentflex.appendChild(likes3);
+                    shareandlikecommentflex.appendChild(last_Child);
+                    shareandlikecommentflex.appendChild(first_Child_1);
+                    shareandlikecommentflex.appendChild(first_Child_2);
+                    shareandlikecommentflex.appendChild(first_Child_3);
+
                     sub.appendChild(shareandlikecommentflex);
                     opencommentboxactivate.src = 'icons/send (2).png';
                     opencommentboxactivate.classList.add('opencommentboxactivate');
                     shareandlikecommentflex.classList.add('shareandlikecommentflex');
-                    opencommentboxactivate.addEventListener('click', () => {
+                    last_Child.addEventListener('click', () => {
                         shareandlikecommentflex.classList.toggle('shareandlikecommentflexactive');
                         commentinput.classList.toggle('commentinputactive');
                         commentinputinput.focus();
@@ -796,8 +810,8 @@ function createPublicFeed() {
 
                     function getIconsOnDarkMode() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === data.user_Id) {
@@ -923,8 +937,8 @@ function createPublicFeed() {
                     function pushSavedphotos() {
                         if (abc1.innerText == 'Save') {
                             const newId = '' + new Date().getTime();
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -952,8 +966,8 @@ function createPublicFeed() {
                         newSaved_Script();
                     });
 
-                    livelikecount.textContent = photo.likecount;
-                    livecommentcount.textContent = photo.commentcount;
+                    livelikecount.textContent = photo.likes.length;
+                    livecommentcount.textContent = photo.comments.length;
                     livesharecount.textContent = photo.sharecount;
 
                     livelikecount.id = photo.id;
@@ -1007,11 +1021,11 @@ function createPublicFeed() {
                         }
                     }
 
-                    likes2.addEventListener('click', () => {
+                    first_Child_2.addEventListener('click', () => {
                         makeLike();
                     });
                     //COMMENT ASSPECT
-                    likes1.addEventListener('click', () => {
+                    first_Child_1.addEventListener('click', () => {
                         document.querySelectorAll('.commentsectioncontainer').forEach(container => {
                             if (container.id === photo.id) {
                                 sessionStorage.setItem('activepage', container.id);
