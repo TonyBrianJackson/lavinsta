@@ -440,7 +440,7 @@
         </nav>
     </main>
     <section class="publicfeedpage">
-        <header class="publicfeedheader">
+        <header class="header publicfeedheader">
             <div class="headerleft public">
                 <div class="lavinstalogo">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -859,7 +859,7 @@
         </div>
     </section>
     <section class="reelsmainpage">
-        <header class="publicfeedheader">
+        <header class="header publicfeedheader">
             <div class="headerleft public">
                 <div class="lavinstalogo">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1069,7 +1069,7 @@
         </div>
     </section>
     <section class="photogallery">
-        <header class="publicfeedheader">
+        <header class="header publicfeedheader">
             <div class="headerleft public">
                 <div class="lavinstalogo">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -2018,60 +2018,64 @@
         </div>
     </div>
     <div class="chattab">
-        <header class="navigationheader">
-            <span class="chatpopupclosebtn">&LeftArrow;</span>
-            <div class="taskbarSwitchCntainer">
-                <span class="taskbar_Switch">
-                    <span class="toolpit toggle_TaskBar">Toggle Taskbar</span>
-                </span>
-                <span style="display: none;" class="create_Community headerbtns">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0"
-                        viewBox="0 0 6.35 6.35" style="enable-background:new 0 0 512 512" xml:space="preserve">
-                        <g>
-                            <path fill-rule="evenodd"
-                                d="M3.181.264A2.92 2.92 0 0 0 .264 3.18a2.922 2.922 0 0 0 2.917 2.917 2.92 2.92 0 0 0 2.915-2.917A2.919 2.919 0 0 0 3.18.264zm0 .53A2.38 2.38 0 0 1 5.566 3.18 2.382 2.382 0 0 1 3.18 5.566 2.384 2.384 0 0 1 .794 3.179 2.383 2.383 0 0 1 3.181.794zm-.004 1.057a.265.265 0 0 0-.263.27v.794h-.793a.265.265 0 0 0-.028 0 .266.266 0 0 0 .028.53h.793v.794a.265.265 0 0 0 .531 0v-.793h.794a.265.265 0 0 0 0-.531h-.794v-.794a.265.265 0 0 0-.268-.27z"
-                                paint-order="stroke fill markers" fill="#000000" data-original="#000000"></path>
-                        </g>
-                    </svg>
-                    <span class="toolpit addcommunity_TaskBar">Create Chat Group</span>
-                </span>
+        <header class="chatNavigationHeader navigationheader">
+            <div class="headerbtns b_Buttons chatpopupclosebtn">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="m498.195 222.695-.035-.035L289.305 13.813C280.402 4.905 268.566 0 255.977 0c-12.59 0-24.426 4.902-33.332 13.809L13.898 222.55c-.07.07-.14.144-.21.215-18.282 18.386-18.25 48.218.09 66.558 8.378 8.383 19.445 13.238 31.277 13.746.48.047.965.07 1.453.07h8.324v153.7C54.832 487.254 79.578 512 110 512h81.71c8.282 0 15-6.715 15-15V376.5c0-13.879 11.29-25.168 25.169-25.168h48.195c13.88 0 25.168 11.29 25.168 25.168V497c0 8.285 6.715 15 15 15h81.711c30.422 0 55.168-24.746 55.168-55.16v-153.7h7.719c12.586 0 24.422-4.902 33.332-13.808 18.36-18.371 18.367-48.254.023-66.637zm0 0" fill="#000000" data-original="#000000"></path></g></svg>
             </div>
+            <div class="headerbtns b_Buttons mesgBtn general_smart_Chat">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M21.646 14.048c2.575 0 4.668-2.094 4.668-4.668S24.221 4.71 21.646 4.71s-4.668 2.095-4.668 4.669 2.094 4.668 4.668 4.668zM21.65 15.548c-.941 0-1.841.151-2.676.449a1 1 0 0 0-.607 1.277c.17.475.66.724 1.141.626.046-.01.092-.004.138-.02a5.96 5.96 0 0 1 2.004-.332c1.7 0 3.295.66 4.493 1.857A6.313 6.313 0 0 1 28 23.898c0 .372-.145.72-.407.984a1.37 1.37 0 0 1-.973.407h-5.38c-.07 0-.132.026-.198.04a.986.986 0 0 0-.802.96 1 1 0 0 0 1 1h5.38c.9 0 1.747-.353 2.387-.993.64-.64.993-1.491.993-2.398a8.3 8.3 0 0 0-2.443-5.907 8.297 8.297 0 0 0-5.907-2.443zM10.354 14.048c2.574 0 4.668-2.094 4.668-4.668S12.928 4.71 10.354 4.71 5.686 6.806 5.686 9.38s2.093 4.668 4.668 4.668zM5.383 27.285h9.942a3.387 3.387 0 0 0 3.383-3.383c0-4.606-3.748-8.354-8.354-8.354S2 19.296 2 23.902a3.387 3.387 0 0 0 3.383 3.383z" fill="#000000" opacity="1" data-original="#000000"></path></g></svg>
+            </div>
+            <div class="headerbtns b_Buttons mesgBtn community_smart_Chat">
+                <img src="icons/group-chat.png">
+            </div>
+            <div class="headerbtns b_Buttons create_Community">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0"
+                    viewBox="0 0 6.35 6.35" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                    <g>
+                        <path fill-rule="evenodd"
+                            d="M3.181.264A2.92 2.92 0 0 0 .264 3.18a2.922 2.922 0 0 0 2.917 2.917 2.92 2.92 0 0 0 2.915-2.917A2.919 2.919 0 0 0 3.18.264zm0 .53A2.38 2.38 0 0 1 5.566 3.18 2.382 2.382 0 0 1 3.18 5.566 2.384 2.384 0 0 1 .794 3.179 2.383 2.383 0 0 1 3.181.794zm-.004 1.057a.265.265 0 0 0-.263.27v.794h-.793a.265.265 0 0 0-.028 0 .266.266 0 0 0 .028.53h.793v.794a.265.265 0 0 0 .531 0v-.793h.794a.265.265 0 0 0 0-.531h-.794v-.794a.265.265 0 0 0-.268-.27z"
+                            paint-order="stroke fill markers" fill="#000000" data-original="#000000"></path>
+                    </g>
+                </svg>
+                <span class="toolpit addcommunity_TaskBar">Create Chat Group</span>
+            </div>
+            <div class="headerbtns b_Buttons taskbar_Switch">&checkmark;</div>
         </header>
+        <div class="chatsearchbar">
+            <input autocomplete="off" type="search" placeholder="search chat">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                <g>
+                    <path
+                        d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                    <path
+                        d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                </g>
+            </svg>
+        </div>
+        <div class="chatsearchbar1">
+            <input autocomplete="off" type="search" placeholder="search communities">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                <g>
+                    <path
+                        d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                    <path
+                        d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                </g>
+            </svg>
+        </div>
         <div class="msgculomn"></div>
         <div class="groupmsgculomn"></div>
         <div class="divider">
-            <div class="chatsearchbar">
-                <input autocomplete="off" type="search" placeholder="search chat">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
-                    style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                    <g>
-                        <path
-                            d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                        <path
-                            d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                    </g>
-                </svg>
-            </div>
-            <div class="chatsearchbar1">
-                <input autocomplete="off" type="search" placeholder="search communities">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
-                    style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                    <g>
-                        <path
-                            d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                        <path
-                            d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                    </g>
-                </svg>
-            </div>
-            <div class="generalheader" style="display: flex;">
+            <div class="chatheader generalheader" style="display: flex;">
                 <div id="general_smart_Chat" class="msgbtn active">general</div>
                 <div id="community_smart_Chat" class="msgbtn">community</div>
             </div>
@@ -2092,7 +2096,6 @@
         <header class="navigationheader">
             <span class="notificationpopupclosebtn">&LeftArrow;</span>
         </header>
-        <div class="generalnotificationculomn"></div>
         <div class="notificationsearchbar">
             <input autocomplete="off" type="search" placeholder="search notification">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -2108,6 +2111,7 @@
                 </g>
             </svg>
         </div>
+        <div class="generalnotificationculomn"></div>
     </div>
     <div class="post_making_upload_popup sidebarcontents">
         <header>
@@ -4152,78 +4156,89 @@
     </div>
     <!-----------------PEOPLE---------------->
     <div class="people">
-        <header class="navigationheader">
-            <span class="peopleleftarrow">&LeftArrow;</span>
-            <div class="taskbarSwitchCntainer requests_sentrequest">
-
+        <header class="peopleNavigation navigationheader">
+            <div class="peopleleftarrow headerbtns b_Buttons">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="m498.195 222.695-.035-.035L289.305 13.813C280.402 4.905 268.566 0 255.977 0c-12.59 0-24.426 4.902-33.332 13.809L13.898 222.55c-.07.07-.14.144-.21.215-18.282 18.386-18.25 48.218.09 66.558 8.378 8.383 19.445 13.238 31.277 13.746.48.047.965.07 1.453.07h8.324v153.7C54.832 487.254 79.578 512 110 512h81.71c8.282 0 15-6.715 15-15V376.5c0-13.879 11.29-25.168 25.169-25.168h48.195c13.88 0 25.168 11.29 25.168 25.168V497c0 8.285 6.715 15 15 15h81.711c30.422 0 55.168-24.746 55.168-55.16v-153.7h7.719c12.586 0 24.422-4.902 33.332-13.808 18.36-18.371 18.367-48.254.023-66.637zm0 0" fill="#000000" data-original="#000000"></path></g></svg>
+            </div>
+            <div id="lavinstapeople" class="headerbtns b_Buttons peoplebtn active">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><linearGradient id="a" x1="12.25" x2="12.25" y1="4" y2="20.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#67b270"></stop><stop offset="1" stop-color="#4ca2cc"></stop></linearGradient><g fill="url(#a)"><path d="M6 7.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0z" fill=""></path><path d="M13.1 4.382c.864.86 1.4 2.052 1.4 3.368s-.535 2.508-1.4 3.368a3.75 3.75 0 1 0 0-6.736zM3 16.75A3.75 3.75 0 0 1 6.75 13h6a3.75 3.75 0 1 1 0 7.5h-6A3.75 3.75 0 0 1 3 16.75z" fill=""></path><path d="M17.5 16.75a4.728 4.728 0 0 1-.877 2.75h1.127a3.75 3.75 0 1 0 0-7.5h-5a4.75 4.75 0 0 1 4.75 4.75z" fill=""></path></g></g></svg>
+            </div>
+            <div id="peoplerequest" class="headerbtns b_Buttons peoplebtn">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 64 64" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M22.791 31.318c-2.509 0-5.017-.955-7.016-2.866-3.725-3.561-7.173-9.889-6.48-16.002.181-1.599.594-3.709 2.19-5.851 2.708-3.634 6.802-5.726 11.23-5.74h.046c4.451 0 8.579 2.085 11.33 5.727 1.607 2.157 2.02 4.266 2.2 5.864l.005.045c.585 6.191-2.837 12.476-6.488 15.958-2 1.91-4.509 2.865-7.017 2.865zm-.029-25.459h-.03c-2.84.009-5.479 1.368-7.238 3.729-.706.947-1.063 1.939-1.231 3.425-.475 4.191 2.14 9.122 4.968 11.825 2.063 1.971 5.061 1.971 7.128-.002 3.279-3.127 5.317-7.995 4.963-11.846-.169-1.472-.525-2.458-1.229-3.402-1.787-2.366-4.462-3.729-7.331-3.729zM39.803 55.267c-.577 1.666-2.146 2.874-4.006 2.874H9.771a4.26 4.26 0 0 1-4.255-4.255v-1.947c0-3.842 1.792-7.405 4.676-9.299a11.033 11.033 0 0 1 6.077-1.814h13.032c.263 0 .524.01.785.028a19.347 19.347 0 0 1-.167-2.409c0-.88.08-1.74.195-2.59-.27-.014-.54-.029-.812-.029H16.269c-3.146 0-6.196.911-8.821 2.635C3.108 41.311.516 46.35.516 51.94v1.947c0 5.104 4.152 9.255 9.255 9.255h26.026c3.967 0 7.349-2.513 8.663-6.027a19.253 19.253 0 0 1-4.657-1.848z" fill="#000000" opacity="1" data-original="#000000" class=""></path><path d="M49.201 52.728c-7.875 0-14.282-6.407-14.282-14.283 0-7.875 6.407-14.282 14.282-14.282 7.876 0 14.283 6.407 14.283 14.282s-6.407 14.283-14.283 14.283zm0-23.566c-5.118 0-9.282 4.164-9.282 9.282 0 5.119 4.164 9.283 9.282 9.283 5.119 0 9.283-4.164 9.283-9.283 0-5.118-4.164-9.282-9.283-9.282z" fill="#000000" opacity="1" data-original="#000000" class=""></path><path d="M53.053 35.945h-1.352v-1.352a2.5 2.5 0 1 0-5 0v1.352h-1.352a2.5 2.5 0 1 0 0 5h1.352v1.352a2.5 2.5 0 1 0 5 0v-1.352h1.352a2.5 2.5 0 1 0 0-5z" fill="#000000" opacity="1" data-original="#000000" class=""></path></g></svg>
+            </div>
+            <div id="sent_requests" class="headerbtns b_Buttons peoplebtn">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M512 208.79 0 0l104.395 208.79L0 417.581zM62.437 57.835 395.848 193.8H130.419zm67.981 165.945h265.434L62.437 359.746zm0 0" fill="#000000" opacity="1" data-original="#000000" class=""></path></g></svg>
+            </div>
+            <div id="peoplelist" class="headerbtns b_Buttons peoplebtn">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M21.646 14.048c2.575 0 4.668-2.094 4.668-4.668S24.221 4.71 21.646 4.71s-4.668 2.095-4.668 4.669 2.094 4.668 4.668 4.668zM21.65 15.548c-.941 0-1.841.151-2.676.449a1 1 0 0 0-.607 1.277c.17.475.66.724 1.141.626.046-.01.092-.004.138-.02a5.96 5.96 0 0 1 2.004-.332c1.7 0 3.295.66 4.493 1.857A6.313 6.313 0 0 1 28 23.898c0 .372-.145.72-.407.984a1.37 1.37 0 0 1-.973.407h-5.38c-.07 0-.132.026-.198.04a.986.986 0 0 0-.802.96 1 1 0 0 0 1 1h5.38c.9 0 1.747-.353 2.387-.993.64-.64.993-1.491.993-2.398a8.3 8.3 0 0 0-2.443-5.907 8.297 8.297 0 0 0-5.907-2.443zM10.354 14.048c2.574 0 4.668-2.094 4.668-4.668S12.928 4.71 10.354 4.71 5.686 6.806 5.686 9.38s2.093 4.668 4.668 4.668zM5.383 27.285h9.942a3.387 3.387 0 0 0 3.383-3.383c0-4.606-3.748-8.354-8.354-8.354S2 19.296 2 23.902a3.387 3.387 0 0 0 3.383 3.383z" fill="#000000" opacity="1" data-original="#000000"></path></g></svg>
             </div>
         </header>
+        <div class="peoplesearchbar">
+            <input autocomplete="off" type="search" id="peoplepagesearchpeople" placeholder="search people">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                <g>
+                    <path
+                        d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                    <path
+                        d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                </g>
+            </svg>
+        </div>
+        <div class="peoplesearchbar1">
+            <input autocomplete="off" type="search" id="peoplerequestsearchbar" placeholder="search requests">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                <g>
+                    <path
+                        d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                    <path
+                        d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                </g>
+            </svg>
+        </div>
+        <div class="peoplesearchbar2">
+            <input autocomplete="off" type="search" id="friendlistsearch" placeholder="search friends">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                <g>
+                    <path
+                        d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                    <path
+                        d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                </g>
+            </svg>
+        </div>
+        <div class="peoplesearchbar3">
+            <input autocomplete="off" type="search" id="sentrequestsearchbar" placeholder="search sent">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                <g>
+                    <path
+                        d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                    <path
+                        d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
+                        fill="#000000" data-original="#000000" class=""></path>
+                </g>
+            </svg>
+        </div>
         <div class="peopleculomn"></div>
         <div class="peoplerequestculomn"></div>
         <div class="sentrequestculomn"></div>
         <div class="peoplelistculomn"></div>
         <div class="divider">
-            <div class="peoplesearchbar">
-                <input autocomplete="off" type="search" id="peoplepagesearchpeople" placeholder="search people">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
-                    style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                    <g>
-                        <path
-                            d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                        <path
-                            d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                    </g>
-                </svg>
-            </div>
-            <div class="peoplesearchbar1">
-                <input autocomplete="off" type="search" id="peoplerequestsearchbar" placeholder="search requests">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
-                    style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                    <g>
-                        <path
-                            d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                        <path
-                            d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                    </g>
-                </svg>
-            </div>
-            <div class="peoplesearchbar2">
-                <input autocomplete="off" type="search" id="friendlistsearch" placeholder="search friends">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
-                    style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                    <g>
-                        <path
-                            d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                        <path
-                            d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                    </g>
-                </svg>
-            </div>
-            <div class="peoplesearchbar3">
-                <input autocomplete="off" type="search" id="sentrequestsearchbar" placeholder="search sent">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512"
-                    style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                    <g>
-                        <path
-                            d="M225.474 0C101.151 0 0 101.151 0 225.474c0 124.33 101.151 225.474 225.474 225.474 124.33 0 225.474-101.144 225.474-225.474C450.948 101.151 349.804 0 225.474 0zm0 409.323c-101.373 0-183.848-82.475-183.848-183.848S124.101 41.626 225.474 41.626s183.848 82.475 183.848 183.848-82.475 183.849-183.848 183.849z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                        <path
-                            d="M505.902 476.472 386.574 357.144c-8.131-8.131-21.299-8.131-29.43 0-8.131 8.124-8.131 21.306 0 29.43l119.328 119.328A20.74 20.74 0 0 0 491.187 512a20.754 20.754 0 0 0 14.715-6.098c8.131-8.124 8.131-21.306 0-29.43z"
-                            fill="#000000" data-original="#000000" class=""></path>
-                    </g>
-                </svg>
-            </div>
-            <header class="generalheader">
+            <header class="peopleHeader generalheader">
                 <div id="lavinstapeople" class="headerbtns peoplebtn active">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><linearGradient id="a" x1="12.25" x2="12.25" y1="4" y2="20.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#67b270"></stop><stop offset="1" stop-color="#4ca2cc"></stop></linearGradient><g fill="url(#a)"><path d="M6 7.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0z" fill=""></path><path d="M13.1 4.382c.864.86 1.4 2.052 1.4 3.368s-.535 2.508-1.4 3.368a3.75 3.75 0 1 0 0-6.736zM3 16.75A3.75 3.75 0 0 1 6.75 13h6a3.75 3.75 0 1 1 0 7.5h-6A3.75 3.75 0 0 1 3 16.75z" fill=""></path><path d="M17.5 16.75a4.728 4.728 0 0 1-.877 2.75h1.127a3.75 3.75 0 1 0 0-7.5h-5a4.75 4.75 0 0 1 4.75 4.75z" fill=""></path></g></g></svg>
                 </div>
