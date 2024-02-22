@@ -1443,7 +1443,7 @@ function createMoreCommentOptions() {
 
                 let commentattachmenticon = document.createElement('div');
                 let commentattachImg = document.createElement('img');
-        
+
                 let sendimg = document.createElement('img');
                 newcommentinputsend.appendChild(sendimg);
                 sendimg.src = 'icons/send.png';
@@ -1558,7 +1558,7 @@ function createMoreCommentOptions() {
                     let confirmationtext = document.createElement('p');
                     let confirmationtrue = document.createElement('span');
                     let confirmationfalse = document.createElement('span');
-                    confirmationtext.textContent = 'Are You Sure You Want To Delete This Comment?';
+                    confirmationtext.textContent = 'Are You Sure You Want To Delete This Comment ?';
                     confirmationtrue.textContent = 'Yes';
                     confirmationfalse.textContent = 'No';
                     document.body.appendChild(confirmation_popup);
@@ -1698,7 +1698,6 @@ function createMoreCommentOptions() {
                                                 time: new Date().getTime(),
                                                 date: trackingDate,
                                                 inputId: postId,
-                                                likecount: 0,
                                                 likes: []
                                             });
                                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
@@ -1964,7 +1963,6 @@ function set_Comment_Reply_Data(id, postId, posterId, relationId, target, type, 
                                 posterId: data.user_Id,
                                 id: id,
                                 inputId: postId,
-                                likecount: 0,
                                 likes: []
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));

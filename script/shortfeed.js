@@ -513,8 +513,8 @@ function Create_Short() {
                     shortcommentinput.value = '';
                 });
                 like.id = photo.id;
-                livecommentcount.textContent = photo.commentcount;
-                livelikecount.textContent = photo.likecount;
+                livecommentcount.textContent = photo.comments.length;
+                livelikecount.textContent = photo.likes.length;
                 livelikecount.id = photo.id;
                 livecommentcount.id = photo.id;
                 livelikecount.classList.add('livelikecount');
@@ -572,9 +572,9 @@ function Create_Short() {
                         }
                     });
                     if (photo.isText === true) {
-                        like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like','post_Like')
+                        like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                     } else {
-                        like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like','post_Like')
+                        like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                     }
                     createlikesrecordlist();
                 }

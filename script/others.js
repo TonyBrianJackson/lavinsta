@@ -6,7 +6,7 @@ function create_Message(messages) {
     savingmessage.classList.add('savingmessage');
     setTimeout(() => {
         savingmessage.remove();
-    }, 2000);
+    }, 3500);
 }
 
 function shareMessage() {

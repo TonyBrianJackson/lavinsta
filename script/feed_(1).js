@@ -196,8 +196,8 @@ function createPublicGridShortVideo() {
                     commentandlikesharelivelikesflex.appendChild(gridshortcommentcount);
                     commentandlikesharelivelikesflex.appendChild(viewscount);
                     commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
-                    gridshortlikecount.textContent = shortVideo.likecount + 'likes';
-                    gridshortcommentcount.textContent = shortVideo.commentcount + 'comments';
+                    gridshortlikecount.textContent = shortVideo.likes.length + 'likes';
+                    gridshortcommentcount.textContent = shortVideo.comments.length + 'comments';
                     gridshortlikecount.classList.add('gridvideolikecount');
                     gridshortcommentcount.classList.add('gridshortcommentcount');
                     viewscount.classList.add('viewscount');
@@ -474,8 +474,8 @@ function creategridreel() {
                     commentandlikesharelivelikesflex.appendChild(gridshortcommentcount);
                     commentandlikesharelivelikesflex.appendChild(viewscount);
                     commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
-                    gridshortlikecount.textContent = shortVideo.likecount + 'likes';
-                    gridshortcommentcount.textContent = shortVideo.commentcount + 'comments';
+                    gridshortlikecount.textContent = shortVideo.likes.length + 'likes';
+                    gridshortcommentcount.textContent = shortVideo.comments.length + 'comments';
 
                     let view_Count_Extension = '';
                     viewscount.textContent = `${photo.views.length}${view_Count_Extension} views`;

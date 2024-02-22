@@ -580,9 +580,9 @@ function createMain_GridPost() {
             live_Comment_Count_Container.classList.add('live_Counts');
             live_Share_Count_Container.classList.add('live_Counts');
 
-            gridlikecount.textContent = photo.likes.length;;
-            gridcommentcount.textContent = photo.commentcount;
-            gridsharecount.textContent = photo.sharecount;
+            gridlikecount.textContent = photo.likes.length;
+            gridcommentcount.textContent = photo.comments.length;
+            gridsharecount.textContent = photo.shares.length;
 
             gridlikecount.classList.add('gridlike');
             gridcommentcount.classList.add('gridcommentcount');
@@ -716,9 +716,9 @@ function createMain_GridPost() {
                 }
 
                 if (photo.isText === true) {
-                    like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like','post_Like')
+                    like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                 } else {
-                    like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like','post_Like')
+                    like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                 }
                 createlikesrecordlist();
             }

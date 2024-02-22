@@ -329,7 +329,7 @@ function create_Active_Account() {
                     }
                     getActiveUser();
 
-                    document.addEventListener('click',()=> {
+                    document.addEventListener('click', () => {
                         getActiveUser();
                     });
                     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -873,7 +873,17 @@ function create_Active_Account() {
                 function usersCount() {
                     function clickToTerminateCount() {
                         //home page
-                        lavinstafeeds.addEventListener('click', () => {
+                        function disablephotocount() {
+                            document.querySelectorAll('.photocount').forEach(count => {
+                                if (count.id === profile.user_Id) {
+                                    count.textContent = 0;
+                                    count.style.display = 'none';
+                                    profile.my_PhotoCount = count.textContent;
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                }
+                            });
+                        }
+                        function disablefeedcount() {
                             document.querySelectorAll('.feedcount').forEach(count => {
                                 if (count.id === profile.user_Id) {
                                     count.textContent = 0;
@@ -881,125 +891,69 @@ function create_Active_Account() {
                                     profile.my_FeedsCount = count.textContent;
                                     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                 }
-                            })
+                            });
+                        }
+                        function disableshortcount() {
+                            document.querySelectorAll('.shortcount').forEach(count => {
+                                if (count.id === profile.user_Id) {
+                                    count.textContent = 0;
+                                    count.style.display = 'none';
+                                    profile.my_ShortCount = count.textContent;
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                }
+                            });
+                        }
+                        lavinstafeeds.addEventListener('click', () => {
+                            disablefeedcount();
                         });
                         lavinstaimages.addEventListener('click', () => {
-                            document.querySelectorAll('.photocount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_PhotoCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disablephotocount();
+                        });
+                        document.querySelector('#lav_Insta_images').addEventListener('click', () => {
+                            disablephotocount();
                         });
                         reels.addEventListener('click', () => {
-                            document.querySelectorAll('.shortcount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_ShortCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disableshortcount();
                         });
-
+                        document.querySelector('#lav_Insta_public').addEventListener('click',()=> {
+                            disablefeedcount();
+                        });
+                        document.querySelector('#lav_Insta_short').addEventListener('click',()=> {
+                            disableshortcount();
+                        });
                         //public page
                         lavinsta_images_pages.addEventListener('click', () => {
-                            document.querySelectorAll('.photocount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_PhotoCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disablephotocount();
                         });
                         lavinstaReelsPage.addEventListener('click', () => {
-                            document.querySelectorAll('.shortcount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_ShortCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disableshortcount();
                         });
 
                         //short page
                         lavinsta_PublicPage.addEventListener('click', () => {
-                            document.querySelectorAll('.feedcount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_FeedsCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disablefeedcount();
                         });
                         lavinsta_images.addEventListener('click', () => {
-                            document.querySelectorAll('.photocount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_PhotoCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disablephotocount();
                         });
 
                         //photo page
                         lavinsta_Public_Page.addEventListener('click', () => {
-                            document.querySelectorAll('.feedcount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_FeedsCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disablefeedcount();
                         });
                         view_Short_Page.addEventListener('click', () => {
-                            document.querySelectorAll('.shortcount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_ShortCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disableshortcount();
                         });
 
                         //video page
                         lavinsta_feeds_Icon.addEventListener('click', () => {
-                            document.querySelectorAll('.feedcount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_FeedsCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disablefeedcount();
                         });
                         lavinstaimages_gallery.addEventListener('click', () => {
-                            document.querySelectorAll('.photocount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_PhotoCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disablephotocount();
                         });
                         reelspageopen.addEventListener('click', () => {
-                            document.querySelectorAll('.shortcount').forEach(count => {
-                                if (count.id === profile.user_Id) {
-                                    count.textContent = 0;
-                                    count.style.display = 'none';
-                                    profile.my_ShortCount = count.textContent;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            })
+                            disableshortcount();
                         });
                     }
                     clickToTerminateCount();
@@ -1009,16 +963,21 @@ function create_Active_Account() {
                         let userspeoplecount = document.createElement('span');
                         let usersfeedcount = document.createElement('span');
                         let usersvideocount = document.createElement('span');
+                        let otherphotocount = document.createElement('span');
+                        let otherpubliccount = document.createElement('span');
+                        let othershortcount = document.createElement('span');
 
                         let feedcount = document.createElement('span');
                         let photocount = document.createElement('span');
                         let shortcount = document.createElement('span');
-
                         usersnotificationcount.id = profile.user_Id;
                         userschatcount.id = profile.user_Id;
                         userspeoplecount.id = profile.user_Id;
                         usersfeedcount.id = profile.user_Id;
                         usersvideocount.id = profile.user_Id;
+                        otherphotocount.id = profile.user_Id;
+                        otherpubliccount.id = profile.user_Id;
+                        othershortcount.id = profile.user_Id;
 
                         feedcount.id = profile.user_Id;
                         photocount.id = profile.user_Id;
@@ -1030,7 +989,9 @@ function create_Active_Account() {
                         peoplecount.appendChild(userspeoplecount);
                         home.appendChild(usersfeedcount);
                         video.appendChild(usersvideocount);
-
+                        document.querySelector('#lav_Insta_images').appendChild(otherphotocount);
+                        document.querySelector('#lav_Insta_public').appendChild(otherpubliccount);
+                        document.querySelector('#lav_Insta_short').appendChild(othershortcount);
                         lavinstafeeds.appendChild(feedcount);
                         lavinstaimages.appendChild(photocount);
                         reels.appendChild(shortcount);
@@ -1040,6 +1001,7 @@ function create_Active_Account() {
                         } else {
                             feedcount.textContent = profile.my_FeedsCount;
                         } if (profile.my_PhotoCount > 9) {
+                            otherphotocount.textContent = `${9}+`;
                             photocount.textContent = `${9}+`;
                         } else {
                             photocount.textContent = profile.my_PhotoCount;
@@ -1072,7 +1034,7 @@ function create_Active_Account() {
                                     notifications.forEach(notification => {
                                         if (notification.notification_View !== true) {
                                             notification.notification_View = true;
-                                            localStorage.setItem('LogInFormData',JSON.stringify(LogInFormData));
+                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                         }
                                     });
                                 }
@@ -1084,17 +1046,23 @@ function create_Active_Account() {
                             });
                         });
 
-
                         userschatcount.textContent = '';
-                        userspeoplecount.textContent = profile.my_PeopleCount;
+                        userspeoplecount.textContent = profile.user_ConnectRequest.length;
                         usersfeedcount.textContent = profile.my_Home_FeedsCount;
                         usersvideocount.textContent = profile.my_VideosCount;
+                        otherphotocount.textContent = profile.my_PhotoCount;
+                        otherpubliccount.textContent = profile.my_FeedsCount;
+                        othershortcount.textContent = profile.my_ShortCount;
+
 
                         usersnotificationcount.classList.add('userscount');
                         userschatcount.classList.add('userscount');
                         userspeoplecount.classList.add('userscount');
                         usersfeedcount.classList.add('userscount');
                         usersvideocount.classList.add('userscount');
+                        otherphotocount.classList.add('userscount');
+                        otherpubliccount.classList.add('userscount');
+                        othershortcount.classList.add('userscount');
 
                         feedcount.classList.add('userscount');
                         photocount.classList.add('userscount');
@@ -1109,6 +1077,9 @@ function create_Active_Account() {
                         userspeoplecount.classList.add('userspeoplecount');
                         usersfeedcount.classList.add('usersfeedcount');
                         usersvideocount.classList.add('usersvideocount');
+                        otherphotocount.classList.add('photocount');
+                        otherpubliccount.classList.add('usersfeedcount');
+                        othershortcount.classList.add('shortcount');
                         function countsDisplay() {
                             if (usersnotificationcount.textContent < 1) {
                                 usersnotificationcount.style.display = 'none';
@@ -1132,16 +1103,22 @@ function create_Active_Account() {
                                 usersvideocount.style.display = 'block';
                             } if (profile.my_FeedsCount < 1) {
                                 feedcount.style.display = 'none';
+                                otherpubliccount.style.display = 'none';
                             } else if (profile.my_FeedsCount > 0) {
                                 feedcount.style.display = 'block';
+                                otherpubliccount.style.display = 'block';
                             } if (profile.my_PhotoCount < 1) {
                                 photocount.style.display = 'none';
+                                otherphotocount.style.display = 'none';
                             } else if (profile.my_PhotoCount > 0) {
                                 photocount.style.display = 'block';
+                                otherphotocount.style.display = 'block';
                             } if (profile.my_ShortCount < 1) {
                                 shortcount.style.display = 'none';
+                                othershortcount.style.display = 'none';
                             } else if (profile.my_ShortCount > 0) {
                                 shortcount.style.display = 'block';
+                                othershortcount.style.display = 'block';
                             }
                         }
                         countsDisplay();
@@ -1736,7 +1713,7 @@ function createAdvanceSwitchPage() {
                     function getActiveUser() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        
+
                         ActiveUser_Account.forEach(data => {
                             LogInFormData.forEach(activeuser => {
                                 if (data.user_Id === activeuser.user_Id) {

@@ -959,7 +959,7 @@ function createPhotoPostOnTimeLine() {
 
                 livelikecount.textContent = photo.likes.length;
                 livecommentcount.textContent = photo.comments.length;
-                livesharecount.textContent = photo.sharecount;
+                livesharecount.textContent = photo.shares.length;
 
                 livelikecount.id = photo.id;
 
@@ -979,9 +979,9 @@ function createPhotoPostOnTimeLine() {
                         }
                     });
                     if (photo.isText === true) {
-                        like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                        like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                     } else {
-                        like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                        like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                     }
                     createlikesrecordlist();
                 }
@@ -1048,6 +1048,7 @@ function createPhotoPostOnTimeLine() {
                     view_Profile(photo.posterId);
                 });
             }
+            document.querySelector('.postcontainer').style.display = 'none';
         });
     });
 }
@@ -1148,14 +1149,13 @@ function set_Comment_Data(postId, input) {
                                 inputId: textBox.id,
                                 time: new Date().getTime(),
                                 date: trackingDate,
-                                commentcount: 0,
-                                likecount: 0,
                                 likes: [],
                                 comments: []
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                             pushNotification(data.user_Id, feed.id, feed.title, id);
                             commentcount(postId, comments.length);
+                            create_Message('Successfully');
                         }
                     }
                 });

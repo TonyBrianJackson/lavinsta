@@ -3,8 +3,8 @@ function create_Comment_Sections_TimeLinePost() {
 
         function create_share_Popup() {
             function shareNotification(id, isStory, caption) {
-                if (Array.isArray(ActiveAccount)) {
-                    ActiveUser_Account = ActiveAccount;
+                if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(activeUser => {
                         LogInFormData.forEach(user_data => {
                             let connections = user_data.user_Connection;
@@ -29,6 +29,27 @@ function create_Comment_Sections_TimeLinePost() {
                             });
                         });
                     });
+                }
+                document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
+                    popup.style.display = 'none';
+                });
+            }
+            function Web_Share(title,text,url) {
+                if (navigator.share) {
+                    const share_DataBase = {
+                        title: title,
+                        text: text,
+                        url: url
+                    };
+                    navigator.share(share_DataBase)
+                    .then(()=> {
+                        create_Message('Shared Successfully');
+                        document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
+                            popup.style.display = 'none';
+                        });
+                    }).catch(err => {
+                        create_Message(err);
+                    })
                 }
             }
             if (photo.type == 'timeline') {
@@ -156,8 +177,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushShareToPhotos() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -173,14 +194,14 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
                                                 filter: photo.filter
-                                            })
+                                            });
                                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
@@ -189,8 +210,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushShareToAdverts() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -206,9 +227,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -222,8 +243,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushShareToCrime() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -239,9 +260,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -255,8 +276,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -272,9 +293,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -288,8 +309,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -305,21 +326,22 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
                                                 filter: photo.filter
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
                                 });
                             }
                         }
+
                         function event_Listeners() {
                             option_First_Child1.addEventListener('click', (event) => {
                                 shareMessage();
@@ -365,6 +387,9 @@ function create_Comment_Sections_TimeLinePost() {
                                     createGridPost();
                                     increasesharecount();
                                 }, 3000);
+                            });
+                            option_First_Child6.addEventListener('click',()=> {
+                                Web_Share('lavinsta',photo.title,window.Location);
                             });
                             option_First_Child7.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -491,8 +516,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -508,9 +533,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 viewcount: 0,
                                                 likeactive: true,
                                                 commentactive: true,
@@ -525,8 +550,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushtoshort() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -542,9 +567,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 viewcount: 0,
                                                 likeactive: true,
                                                 commentactive: true,
@@ -558,8 +583,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -583,7 +608,7 @@ function create_Comment_Sections_TimeLinePost() {
                                                 commentactive: true,
                                                 shareactive: true,
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -617,6 +642,9 @@ function create_Comment_Sections_TimeLinePost() {
                                     createPublicGridPost();
                                     increasesharecount();
                                 }, 3000);
+                            });
+                            option_First_Child4.addEventListener('click',()=> {
+                                Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child5.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -730,8 +758,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -749,9 +777,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 themeMode: photo.themeMode,
                                                 fontMode: photo.fontMode,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true
@@ -765,8 +793,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -784,14 +812,14 @@ function create_Comment_Sections_TimeLinePost() {
                                                 themeMode: photo.themeMode,
                                                 fontMode: photo.fontMode,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -816,6 +844,9 @@ function create_Comment_Sections_TimeLinePost() {
                                     createPublicGridPost();
                                     increasesharecount();
                                 }, 3000);
+                            });
+                            option_First_Child3.addEventListener('click',()=> {
+                                Web_Share(photo.title, photo.Property_Src, window.location);
                             });
                             option_First_Child4.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -965,8 +996,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushShareToPhotos() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -982,9 +1013,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -998,8 +1029,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushShareToAdverts() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1015,9 +1046,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -1031,8 +1062,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushShareToCrime() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1048,9 +1079,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -1064,8 +1095,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1081,9 +1112,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -1097,8 +1128,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1114,15 +1145,15 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
                                                 filter: photo.filter
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -1174,6 +1205,9 @@ function create_Comment_Sections_TimeLinePost() {
                                     createGridPost();
                                     increasesharecount();
                                 }, 3000);
+                            });
+                            option_First_Child6.addEventListener('click',()=> {
+                                Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child7.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -1299,8 +1333,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1316,9 +1350,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 viewcount: 0,
                                                 likeactive: true,
                                                 commentactive: true,
@@ -1333,8 +1367,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushtoshort() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1350,9 +1384,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 viewcount: 0,
                                                 likeactive: true,
                                                 commentactive: true,
@@ -1366,8 +1400,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1391,7 +1425,7 @@ function create_Comment_Sections_TimeLinePost() {
                                                 commentactive: true,
                                                 shareactive: true,
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -1425,6 +1459,9 @@ function create_Comment_Sections_TimeLinePost() {
                                     createPublicGridPost();
                                     increasesharecount();
                                 }, 3000);
+                            });
+                            option_First_Child4.addEventListener('click',()=> {
+                                Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child5.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -1539,8 +1576,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1556,9 +1593,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 viewcount: 0,
                                                 likeactive: true,
                                                 commentactive: true,
@@ -1572,8 +1609,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1597,7 +1634,7 @@ function create_Comment_Sections_TimeLinePost() {
                                                 commentactive: true,
                                                 shareactive: true,
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -1622,6 +1659,9 @@ function create_Comment_Sections_TimeLinePost() {
                                     createPublicGridPost();
                                     increasesharecount();
                                 }, 3000);
+                            });
+                            option_First_Child3.addEventListener('click',()=> {
+                                Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child4.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -1735,8 +1775,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1754,9 +1794,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 themeMode: photo.themeMode,
                                                 fontMode: photo.fontMode,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true
@@ -1770,8 +1810,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1789,14 +1829,14 @@ function create_Comment_Sections_TimeLinePost() {
                                                 themeMode: photo.themeMode,
                                                 fontMode: photo.fontMode,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -1821,6 +1861,9 @@ function create_Comment_Sections_TimeLinePost() {
                                     createPublicGridPost();
                                     increasesharecount();
                                 }, 3000);
+                            });
+                            option_First_Child3.addEventListener('click',()=> {
+                                Web_Share(photo.title, photo.Property_Src, window.location);
                             });
                             option_First_Child4.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -1970,8 +2013,8 @@ function create_Comment_Sections_TimeLinePost() {
                         }
 
                         function pushShareToPhotos() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1987,9 +2030,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -2003,8 +2046,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushShareToAdverts() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -2020,9 +2063,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -2036,8 +2079,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushShareToCrime() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -2053,9 +2096,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -2069,8 +2112,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushRepost() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -2086,9 +2129,9 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -2102,8 +2145,8 @@ function create_Comment_Sections_TimeLinePost() {
                             }
                         }
                         function pushtopublic() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -2119,15 +2162,15 @@ function create_Comment_Sections_TimeLinePost() {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
                                                 filter: photo.filter
                                             });
-                                            localStorage.setItem('createPublicFeed', JSON.stringify(createPublicFeed));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -2245,8 +2288,8 @@ function create_Comment_Sections_TimeLinePost() {
                 });
 
                 function pushreport() {
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === data.user_Id) {
@@ -2324,8 +2367,8 @@ function create_Comment_Sections_TimeLinePost() {
             editingpopupclosebtn.addEventListener('click', () => {
                 editpopup.style.display = 'none';
             });
-            if (Array.isArray(ActiveAccount)) {
-                ActiveUser_Account = ActiveAccount;
+            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                 ActiveUser_Account.forEach(data => {
                     if (photo.posterId !== data.user_Id) {
                         editpopup.remove();
@@ -2373,7 +2416,7 @@ function create_Comment_Sections_TimeLinePost() {
             let confirmationtext = document.createElement('p');
             let confirmationtrue = document.createElement('span');
             let confirmationfalse = document.createElement('span');
-            confirmationtext.textContent = 'Are You Sure You Want To Deleted';
+            confirmationtext.textContent = 'Are You Sure You Want To Delete ?';
             confirmationtrue.textContent = 'Yes';
             confirmationfalse.textContent = 'No';
             document.body.appendChild(confirmation_popup);
@@ -2674,8 +2717,6 @@ function create_Comment_Sections_TimeLinePost() {
                                             inputId: Property_Src.id,
                                             time: new Date().getTime(),
                                             date: trackingDate,
-                                            commentcount: 0,
-                                            likecount: 0,
                                             likes: [],
                                             comments: []
                                         });
@@ -2783,8 +2824,8 @@ function create_Comment_Sections_TimeLinePost() {
         commentsection.id = photo.id;
         commentsectioncontainer.id = photo.id;
         newcommentinputinput.id = photo.id;
-        if (Array.isArray(ActiveAccount)) {
-            ActiveUser_Account = ActiveAccount;
+        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
             ActiveUser_Account.forEach(data => {
                 sharegridlike.id = data.user_Id + photo.id;
             });
@@ -2879,13 +2920,12 @@ function create_Comment_Sections_TimeLinePost() {
                     count.classList.remove('like_count');
                 }
             });
-            const id = '' + new Date().getTime();
             sharegridlike.classList.add('sharegridliked');
             sharegridlike.classList.remove('sharegridlike');
             if (photo.isText === true) {
-                like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
             } else {
-                like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
             }
             createlikesrecordlist();
         }
@@ -2916,8 +2956,8 @@ function create_Comment_Sections_TimeLinePost() {
         }
         function getIconsOnDarkMode() {
             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-            if (Array.isArray(ActiveAccount)) {
-                ActiveUser_Account = ActiveAccount;
+            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                 ActiveUser_Account.forEach(data => {
                     LogInFormData.forEach(user => {
                         if (user.user_Id === data.user_Id) {
@@ -3006,7 +3046,6 @@ function like_Post(postId, caption, id, posterId, type, target) {
                     Feeds_Data_Base.forEach(feed => {
                         if (feed.id === postId) {
                             let likes = feed.likes;
-                            const id = '' + new Date().getTime();
                             likes.push({
                                 postId: postId,
                                 posterId: data.user_Id,
@@ -3014,12 +3053,12 @@ function like_Post(postId, caption, id, posterId, type, target) {
                                 time: new Date().getTime(),
                                 date: trackingDate
                             });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                             document.querySelectorAll('.live_Like_Counters').forEach(count => {
                                 if (count.id === postId) {
-                                    count.textContent = likes.length;
+                                    count.textContent = feed.likes.length;
                                 }
                             });
-                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         }
                     });
                 });
@@ -3090,12 +3129,12 @@ function Unlike_Post(postId) {
                             }
                         });
                         feed.likes = likes;
+                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         document.querySelectorAll('.live_Like_Counters').forEach(count => {
                             if (count.id === postId) {
                                 count.textContent = likes.length;
                             }
                         });
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                     }
                 });
             });

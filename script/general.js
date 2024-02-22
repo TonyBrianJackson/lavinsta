@@ -67,10 +67,10 @@ floatItems.forEach(item => {
             document.querySelector('.hamburgermenupopup').classList.remove('hamburgermenupopupactive');
         } else {
             document.querySelector('.hamburgermenupopup').classList.toggle('hamburgermenupopupactive');
-        } if (item.id !='lav_Insta_create') {
-            document.querySelector('.sidebarcontents').style.display = 'none';
+        } if (item.id !='lav_Insta_short') {
+            document.querySelector('.reelsmainpage').style.display = 'none';
         } else {
-            document.querySelector('.sidebarcontents').style.display = 'flex';
+            document.querySelector('.reelsmainpage').style.display = 'flex';
         }
     })
 });

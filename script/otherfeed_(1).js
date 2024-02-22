@@ -32,8 +32,8 @@ function createPhotosGadget() {
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
                     gadgetsidepannel.appendChild(gadgetcomment);
                     gadgetsidepannel.appendChild(live_Comment_Count_Container);
-                    livecommentcount.textContent = photo.commentcount;
-                    livelikecount.textContent = photo.likecount;
+                    livecommentcount.textContent = photo.comments.length;
+                    livelikecount.textContent = photo.likes.length;
 
                     livelikecount.classList.add('livelikecount');
 
@@ -94,19 +94,6 @@ function createPhotosGadget() {
                             }
                         });
 
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) + 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
-
                         document.querySelectorAll('.sharegridlike').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridliked');
@@ -115,9 +102,9 @@ function createPhotosGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         if (photo.isText === true) {
-                            like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         } else {
-                            like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
                         createlikesrecordlist();
                     }
@@ -134,18 +121,7 @@ function createPhotosGadget() {
                                 count.classList.add('like_count');
                             }
                         });
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) - 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
+
                         document.querySelectorAll('.sharegridliked').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridlike');
@@ -347,8 +323,8 @@ function createPhotosGadget() {
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
                     gadgetsidepannel.appendChild(gadgetcomment);
                     gadgetsidepannel.appendChild(live_Comment_Count_Container);
-                    livecommentcount.textContent = photo.commentcount;
-                    livelikecount.textContent = photo.likecount;
+                    livecommentcount.textContent = photo.comments.length;
+                    livelikecount.textContent = photo.likes.length;
 
                     livecommentcount.id = photo.id;
                     livelikecount.id = photo.id;
@@ -356,7 +332,7 @@ function createPhotosGadget() {
                     livelikecount.classList.add('livelikecount');
 
                     livelikecount.classList.add('live_Like_Counters');
-                    
+
                     livecommentcount.classList.add('live_Comment_Counters');
 
                     livecommentcount.classList.add('livecommentcount');
@@ -409,19 +385,6 @@ function createPhotosGadget() {
                             }
                         });
 
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) + 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
-
                         document.querySelectorAll('.sharegridlike').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridliked');
@@ -430,9 +393,9 @@ function createPhotosGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         if (photo.isText === true) {
-                            like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         } else {
-                            like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
                         createlikesrecordlist();
                     }
@@ -449,18 +412,7 @@ function createPhotosGadget() {
                                 count.classList.add('like_count');
                             }
                         });
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) - 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
+
                         document.querySelectorAll('.sharegridliked').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridlike');
@@ -660,13 +612,13 @@ function createPhotosGadget() {
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
                     gadgetsidepannel.appendChild(gadgetcomment);
                     gadgetsidepannel.appendChild(live_Comment_Count_Container);
-                    livecommentcount.textContent = photo.commentcount;
-                    livelikecount.textContent = photo.likecount;
+                    livecommentcount.textContent = photo.comments.length;
+                    livelikecount.textContent = photo.likes.length;
 
                     livelikecount.classList.add('livelikecount');
 
                     livelikecount.classList.add('live_Like_Counters');
-                    
+
                     livecommentcount.classList.add('live_Comment_Counters');
 
                     livecommentcount.classList.add('livecommentcount');
@@ -722,19 +674,6 @@ function createPhotosGadget() {
                             }
                         });
 
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) + 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
-
                         document.querySelectorAll('.sharegridlike').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridliked');
@@ -743,9 +682,9 @@ function createPhotosGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         if (photo.isText === true) {
-                            like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         } else {
-                            like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
                         createlikesrecordlist();
                     }
@@ -762,18 +701,7 @@ function createPhotosGadget() {
                                 count.classList.add('like_count');
                             }
                         });
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) - 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
+
                         document.querySelectorAll('.sharegridliked').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridlike');
@@ -984,13 +912,13 @@ function createAdsGadget() {
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
                     gadgetsidepannel.appendChild(gadgetcomment);
                     gadgetsidepannel.appendChild(live_Comment_Count_Container);
-                    livecommentcount.textContent = photo.commentcount;
-                    livelikecount.textContent = photo.likecount;
+                    livecommentcount.textContent = photo.comments.length;
+                    livelikecount.textContent = photo.likes.length;
 
                     livelikecount.classList.add('livelikecount');
 
                     livelikecount.classList.add('live_Like_Counters');
-                    
+
                     livecommentcount.classList.add('live_Comment_Counters');
 
                     livecommentcount.classList.add('livecommentcount');
@@ -1046,19 +974,6 @@ function createAdsGadget() {
                             }
                         });
 
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) + 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
-
                         document.querySelectorAll('.sharegridlike').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridliked');
@@ -1067,9 +982,9 @@ function createAdsGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         if (photo.isText === true) {
-                            like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         } else {
-                            like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
                         createlikesrecordlist();
                     }
@@ -1086,18 +1001,7 @@ function createAdsGadget() {
                                 count.classList.add('like_count');
                             }
                         });
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) - 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
+
                         document.querySelectorAll('.sharegridliked').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridlike');
@@ -1298,13 +1202,13 @@ function createAdsGadget() {
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
                     gadgetsidepannel.appendChild(gadgetcomment);
                     gadgetsidepannel.appendChild(live_Comment_Count_Container);
-                    livecommentcount.textContent = photo.commentcount;
-                    livelikecount.textContent = photo.likecount;
+                    livecommentcount.textContent = photo.comments.length;
+                    livelikecount.textContent = photo.likes.length;
 
                     livelikecount.classList.add('livelikecount');
 
                     livelikecount.classList.add('live_Like_Counters');
-                    
+
                     livecommentcount.classList.add('live_Comment_Counters');
 
                     livecommentcount.classList.add('livecommentcount');
@@ -1360,19 +1264,6 @@ function createAdsGadget() {
                             }
                         });
 
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) + 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
-
                         document.querySelectorAll('.sharegridlike').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridliked');
@@ -1381,9 +1272,9 @@ function createAdsGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         if (photo.isText === true) {
-                            like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         } else {
-                            like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
                         createlikesrecordlist();
                     }
@@ -1400,18 +1291,7 @@ function createAdsGadget() {
                                 count.classList.add('like_count');
                             }
                         });
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) - 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
+
                         document.querySelectorAll('.sharegridliked').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridlike');
@@ -1612,13 +1492,13 @@ function createAdsGadget() {
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
                     gadgetsidepannel.appendChild(gadgetcomment);
                     gadgetsidepannel.appendChild(live_Comment_Count_Container);
-                    livecommentcount.textContent = photo.commentcount;
-                    livelikecount.textContent = photo.likecount;
+                    livecommentcount.textContent = photo.comments.length;
+                    livelikecount.textContent = photo.likes.length;
 
                     livelikecount.classList.add('livelikecount');
 
                     livelikecount.classList.add('live_Like_Counters');
-                    
+
                     livecommentcount.classList.add('live_Comment_Counters');
 
                     livecommentcount.classList.add('livecommentcount');
@@ -1674,19 +1554,6 @@ function createAdsGadget() {
                             }
                         });
 
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) + 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
-
                         document.querySelectorAll('.sharegridlike').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridliked');
@@ -1695,9 +1562,9 @@ function createAdsGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         if (photo.isText === true) {
-                            like_Post(photo.id, photo.Property_Src, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         } else {
-                            like_Post(photo.id, photo.title, id, photo.posterId, 'post_Like', 'post_Like')
+                            like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
                         createlikesrecordlist();
                     }
@@ -1714,18 +1581,7 @@ function createAdsGadget() {
                                 count.classList.add('like_count');
                             }
                         });
-                        document.querySelectorAll('.gridlike').forEach(count => {
-                            if (count.id === photo.id) {
-                                count.textContent = parseInt(count.textContent) - 1;
-                                photo.likecount = count.textContent;
-                                document.querySelectorAll('.livelikecount').forEach(live_count => {
-                                    if (live_count.id === photo.id) {
-                                        live_count.textContent = count.textContent;
-                                    }
-                                });
-                                livelikecount.textContent = count.textContent;
-                            }
-                        });
+
                         document.querySelectorAll('.sharegridliked').forEach(likebutton => {
                             if (likebutton.id === column.id + photo.id) {
                                 likebutton.classList.add('sharegridlike');

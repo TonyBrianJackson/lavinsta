@@ -128,8 +128,8 @@ function creategridvideo() {
                     commentandlikesharelivelikesflex.appendChild(gridshortcommentcount);
                     commentandlikesharelivelikesflex.appendChild(viewscount);
                     commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
-                    gridshortlikecount.textContent = gridvideo.likecount + 'likes';
-                    gridshortcommentcount.textContent = gridvideo.commentcount + 'comments';
+                    gridshortlikecount.textContent = gridvideo.likes.length + 'likes';
+                    gridshortcommentcount.textContent = gridvideo.comments.length + 'comments';
                     let view_Count_Extension = '';
                     viewscount.textContent = `${gridvideo.views.length}${view_Count_Extension} views`;
 
@@ -414,8 +414,8 @@ function create_TimeLine_G_Video() {
                     commentandlikesharelivelikesflex.appendChild(gridshortcommentcount);
                     commentandlikesharelivelikesflex.appendChild(viewscount);
                     commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
-                    gridshortlikecount.textContent = gridvideo.likecount + 'likes';
-                    gridshortcommentcount.textContent = gridvideo.commentcount + 'comments';
+                    gridshortlikecount.textContent = gridvideo.likes.length + 'likes';
+                    gridshortcommentcount.textContent = gridvideo.comments.length + 'comments';
 
                     let view_Count_Extension = '';
                     viewscount.textContent = `${gridvideo.views.length}${view_Count_Extension} views`;
