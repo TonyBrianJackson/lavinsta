@@ -2844,8 +2844,12 @@
     .header {
         flex-direction: column;
         justify-content: center;
-        min-height: 80px;
         max-height: max-content;
+    }
+
+    .headerbtns.toggleBtn,
+    .headerbtns.items.advance {
+        display: flex;
     }
 
     .headerbtns {
@@ -2855,16 +2859,25 @@
         box-shadow: none;
         border: none;
     }
+
     .headerright {
         width: 100%;
         flex: 1;
         margin: 0;
     }
+
     .header .headerright .headerbtns {
         width: 100%;
         border-radius: 0px;
         border: none;
         margin: 0;
+    }
+    .header .headerright .headerbtns .userscount {
+        right: 5px;
+        border: 2px solid var(--color-white);
+    }
+    .header .headerright .headerbtns svg {
+        width: 40px;
     }
     .headermiddle.middle_video_header,
     .headermiddle {
@@ -2878,6 +2891,14 @@
     .headerright.middle_video_header {
         width: 100%;
     }
+
+    .pagename,
+    .logoname,
+    .lastlogo {
+        letter-spacing: 1.5vw;
+        font-size: 8.55555vw;
+    }
+
     .post {
         width: 100%;
         border-radius: 0px;
@@ -2919,10 +2940,12 @@
 
     .postattributation,
     .postelapsedtime {
-        font-size: 4.222vw;
+        color: #cfcfc2;
+        font-size: 3.222vw;
     }
 
     .postername {
+        max-width: 80%;
         font-size: 4.7777vw;
     }
 
@@ -2931,11 +2954,9 @@
         font-size: 5.89vw;
     }
 
-    .navigatiofloatcontainer {
-        gap: 5px 0px;
-    }
     .headerbtns.livecapture,
     .headerbtns.postwriterfloatitems,
+    .headerbtns.toggleBtn,
     .headerbtns.items {
         box-shadow: var(--block-box-shadow);
         border: none;
@@ -2944,15 +2965,76 @@
         height: 50px;
         margin: 0;
     }
+
+    .headerbtns.toggleBtn,
+    .headerbtns.items {
+        width: 100%;
+        border-radius: 10px;
+        font-weight: 900;
+        font-size: 19px;
+    }
+    .header.headerbtns > svg {
+        width: 40px;
+        height: 40px;
+    }
+    .headerbtns.toggleBtn:hover,
+    .headerbtns.items:hover {
+        transform:scale(1);
+    }
+    .headerbtns.items .userscount {
+        right: 20px;
+        top: 5px;
+        border: 2px solid var(--color-white);
+    }
+    .headerbtns.items .userschatcount {
+        right: 30px;
+        top: 10px;
+    }
+    .headerbtns.items:nth-child(1) {
+        border-radius: 25px 0px 0px 0px;
+    }
+    .headerbtns.items:nth-child(4) {
+        border-radius: 0px 25px 0px 0px;
+    }
+    .float {
+        width: 100%;
+        height: 0px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5px;
+        place-items: center;
+        transform: rotate(90deg);
+        z-index: 1;
+        background: var(--color-light);
+        padding: 10px;
+        border-radius: 25px 25px 0px 0px;
+    }
+
+    .floatactive {
+        transform: rotate(0deg);
+        justify-content: center;
+    }
+
+    .navigatiofloatcontainer {
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        width: max-content;
+        z-index: 555;
+    }
+
     .postwriterfloatactive {
         gap: 0px 10px;
         width: 60%;
     }
+
     .smallscreenpostwriter {
         gap: 0px 5px;
     }
+
     .floatactive {
-        height: 55vh;
+        height: max-content;
+        width: 100vw;
     }
 
     .postwritermaster {
@@ -2970,6 +3052,9 @@
         border: none;
         border-width: 3px;
         border-color: var(--color-dark);
+        position: absolute;
+        right: 15px;
+        bottom: 25px;
     }
 
     .feedsloadingtext {
@@ -2986,12 +3071,24 @@
         left: 0;
         top: 0;
         height: 100vh;
+        min-height: 100dvh;
         display: none;
         background: var(--color-light);
         z-index: 330;
         padding: 0px;
     }
 
+    .userprofileheader {
+        height: max-content;
+        background: none;
+        min-height: 40px;
+    }
+
+    .userprofileexit {
+        font-size: 30px;
+        margin-left: 13px;
+        font-weight: 900;
+    }
     .profilepic {
         width: 120px;
         height: 120px;
@@ -3074,14 +3171,13 @@
     .chatsearchbar1,
     .notificationsearchbar {
         width: 90%;
-        height: 55px;
-        min-height: 55px;
+        height: 40px;
+        min-height: 40px;
         box-shadow: none;
         border-style: solid;
         border-width: 1px;
         border-color: var(--color-light);
         margin: 5px 0px;
-
     }
 
     .commentsectioncontainer,
@@ -3238,10 +3334,6 @@
         font-size: 20px;
     }
 
-    .navigatiofloatcontainer {
-        z-index: 555;
-    }
-
     .usersprofile {
         width: 100%;
         padding: 0px;
@@ -3349,7 +3441,7 @@
     }
 
     .middlesection {
-        margin-top: 40px;
+        margin-top: 60px;
     }
 
     .statusbarcontainer {
@@ -3480,16 +3572,6 @@
         color: #ffffffff;
     }
 
-    .userprofileheader {
-        height: max-content;
-        background: none;
-    }
-
-    .userprofileexit {
-        font-size: 30px;
-        margin-left: 13px;
-        font-weight: 900;
-    }
 
     .videouploadpopupclose,
     .livepurposeclosebtn,
@@ -3520,12 +3602,6 @@
         z-index: 340;
         right: 0;
         top: 0;
-    }
-
-    .pagename,
-    .logoname,
-    .lastlogo {
-        font-size: 23px;
     }
 
     .profilebtnsettings {
@@ -3635,16 +3711,15 @@
     .userconnectgrid>div .connected {
         background: var(--color-black);
     }
-
-    .navigatiofloatcontainer {
-        right: 15px;
-    }
 }
+
 @media (min-width: 0px) and (max-width: 300px) {
+
     .commentroomsection,
     .commentsection {
         height: 88%;
     }
+
     .headerbtns.sharegridlike {
         width: 40px;
         height: 40px;

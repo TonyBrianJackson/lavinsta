@@ -104,7 +104,10 @@ body {
     position: relative;
     border-style: solid;
 }
-
+.headerbtns.toggleBtn,
+.headerbtns.items.advance {
+    display: none;
+}
 .userscount {
     position: absolute;
     background: var(--color-very-danger);
@@ -2198,6 +2201,7 @@ main .header {
     overflow: visible;
     border-radius: 0px;
     margin: 0px 10px;
+    gap: 5px;
 }
 
 .authorsImg {
@@ -2210,7 +2214,6 @@ main .header {
     background: none;
     overflow: hidden;
     cursor: pointer;
-    margin: 0px 5px;
     object-fit: cover;
 
 }
@@ -2257,8 +2260,7 @@ main .header {
 }
 
 .posttitle {
-    width: 88%;
-    height: 100%;
+    width: 100%;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -2272,15 +2274,6 @@ main .header {
 }
 
 .posttitlemoreorless {
-    width: 88%;
-    height: 100%;
-    height: max-content;
-    max-height: max-content;
-    border: none;
-    box-shadow: none;
-    background: none;
-    border-radius: 0px;
-    overflow: visible;
     display: block;
     text-align: left;
 }
@@ -2757,12 +2750,13 @@ main .header {
 .reelvidtowatch,
 .videotowatch {
     width: 100%;
-    height: max-content;
+    height: 100%;
     overflow: hidden;
     border-radius: 0px;
     border: none;
     box-shadow: none;
     background: none;
+    object-fit: cover;
 }
 
 .opencommentboxactivate:hover .sharevideophotocomment {
