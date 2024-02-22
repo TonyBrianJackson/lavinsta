@@ -152,19 +152,21 @@
 .editingmessage {
     position: fixed;
     top: 40%;
-    left: 40%;
+    left: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: none;
     box-shadow: none;
+    background: var(--color-white);
     overflow: hidden;
     width: 241px;
     padding: 10px;
     height: max-content;
     border-radius: 0px;
-    z-index: 530;
+    z-index: 585;
+    transform: translate(-50%);
 }
 
 .editingmessage p {
@@ -720,7 +722,7 @@
 
     .searchpath {
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         z-index: 330;
         border-radius: 0px;
         left: 0;
@@ -759,8 +761,8 @@
 
     .logoutpopup {
         width: 100vw;
-        height: 100vh;
-        max-height: 100vh;
+        height: 100%;
+        max-height: 100%;
         bottom: 0px;
         left: 0px;
         border-radius: 0px;
@@ -790,13 +792,30 @@
 
     .confirmation_popup {
         width: 241px;
-        height: 20vh;
+        height: max-content;
+        max-height: 20vh;
         position: fixed;
         top: 40%;
-        border-style: solid;
+        border: none;
         border-radius: 10px;
         z-index: 751;
         background: var(--color-white);
+        box-shadow: none;
+    }
+    .confirmationflex span {
+        border-radius: 10px;
+        box-shadow: none;
+        border: 2px solid var(--color-dark);
+    }
+    .confirmationflex span:nth-child(2) {
+        color: var(--color-dark);
+    }
+    .confirmationtrue {
+        background: var(--color-dark);
+    }
+    .confirmationfalse {
+        background: var(--color-white);
+        color: var(--color-dark);
     }
 }
 
