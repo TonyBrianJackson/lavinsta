@@ -793,6 +793,12 @@ function createPhotoPostOnTimeLine() {
 
                 postmenu.classList.add('postmenu');
 
+                title.addEventListener('click', () => {
+                    if (title.textContent.length > 294) {
+                        title.classList.toggle('posttitlemoreorless');
+                    }
+                });
+
                 function getIconsOnDarkMode() {
                     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {

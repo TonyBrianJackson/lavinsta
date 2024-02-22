@@ -1,80 +1,76 @@
+function removeItemsActiveClasses() {
+    document.querySelectorAll('.items').forEach(item=> {
+        item.classList.remove('active');
+    })
+}
+
 const floatItems = document.querySelectorAll('.items');
 floatItems.forEach(item => {
     item.addEventListener('click', () => {
+        removeItemsActiveClasses();
+        item.classList.add('active');
         if (item.id != 'home') {
-            document.querySelector('#home').classList.remove('active');
         } else {
             createrefresh_Loader();
             sessionStorage.setItem('activepage', 'home');
-            document.querySelector('#home').classList.add('active');
             document.title = 'home';
-            document.querySelector('.people').style.display = 'none';
-            document.querySelector('.photogallery').style.display = 'none';
-            document.querySelector('.hamburgermenupopup').classList.remove('hamburgermenupopupactive');
-            document.querySelector('.publicfeedpage').style.display = 'none';
-            document.querySelector('.reelsmainpage').style.display = 'none';
         } if (item.id != 'people') {
-            document.querySelector('#people').classList.remove('active');
             document.querySelector('.people').style.display = 'none';
         } else {
             loadPage();
             sessionStorage.setItem('activepage', 'people');
-            document.querySelector('#people').classList.add('active');
             document.querySelector('.people').style.display = 'flex';
-            document.querySelector('.photogallery').style.display = 'none';
-            document.querySelector('.publicfeedpage').style.display = 'none';
-            document.querySelector('.reelsmainpage').style.display = 'none';
             document.title = 'people';
 
         } if (item.id != 'chat') {
-            document.querySelector('#chat').classList.remove('active');
             document.querySelector('.chattab').style.display = 'none';
         } else {
             loadPage();
             sessionStorage.setItem('activepage', 'chattab');
-            document.querySelector('#chat').classList.add('active');
             document.querySelector('.chattab').style.display = 'flex';
-            document.querySelector('.photogallery').style.display = 'none';
-            document.querySelector('.publicfeedpage').style.display = 'none';
-            document.querySelector('.reelsmainpage').style.display = 'none';
             document.title = 'messages';
         } if (item.id != 'notification') {
-            document.querySelector('#notification').classList.remove('active');
             document.querySelector('.notificationtab').style.display = 'none';
         } else {
             loadPage();
             sessionStorage.setItem('activepage', 'notificationtab');
-            document.querySelector('#notification').classList.add('active');
             document.querySelector('.notificationtab').style.display = 'flex';
-            document.querySelector('.photogallery').style.display = 'none';
-            document.querySelector('.publicfeedpage').style.display = 'none';
-            document.querySelector('.reelsmainpage').style.display = 'none';
             document.title = 'notifications';
         } if (item.id != 'video') {
-            document.querySelector('#video').classList.remove('active');
             document.querySelector('.videopagebackground').style.display = 'none';
         } else {
             loadPage();
             sessionStorage.setItem('activepage', 'videopagebackground');
-            document.querySelector('#video').classList.add('active');
             document.querySelector('.videopagebackground').style.display = 'flex';
-            document.querySelector('.photogallery').style.display = 'none';
-            document.querySelector('.publicfeedpage').style.display = 'none';
-            document.querySelector('.reelsmainpage').style.display = 'none';
             document.title = 'lavinsta videos';
-
         } if (item.id != 'profile') {
-            document.querySelector('#profile').classList.remove('active');
             document.querySelector('.profile').style.display = 'none';
         } else {
             loadPage();
             sessionStorage.setItem('activepage', 'profile');
-            document.querySelector('#profile').classList.add('active');
             document.querySelector('.profile').style.display = 'flex';
-            document.querySelector('.photogallery').style.display = 'none';
-            document.querySelector('.publicfeedpage').style.display = 'none';
-            document.querySelector('.reelsmainpage').style.display = 'none';
             document.title = 'profile';
+        } if (item.id !='lav_Insta_images') {
+            document.querySelector('.photogallery').style.display = 'none';
+        } else {
+            document.querySelector('.photogallery').style.display = 'flex';
+        } if (item.id !='lav_Insta_public') {
+            document.querySelector('.publicfeedpage').style.display = 'none';
+        } else {
+            document.querySelector('.publicfeedpage').style.display = 'none';
+        } if (item.id !='lav_Insta_search') {
+            document.querySelector('.main_Seach_Path').style.display = 'none';
+        } else {
+            document.querySelector('.main_Seach_Path').style.display = 'flex';
+        } if (item.id !='lav_Insta_menu') {
+            document.querySelector('.hamburgermenupopup').classList.add('hamburgermenupopup');
+            document.querySelector('.hamburgermenupopup').classList.remove('hamburgermenupopupactive');
+        } else {
+            document.querySelector('.hamburgermenupopup').classList.toggle('hamburgermenupopupactive');
+        } if (item.id !='lav_Insta_create') {
+            document.querySelector('.sidebarcontents').style.display = 'none';
+        } else {
+            document.querySelector('.sidebarcontents').style.display = 'flex';
         }
     })
 });
@@ -292,6 +288,10 @@ const maSter = document.querySelector('.master');
 const Float = document.querySelector('#float');
 const main_Master_Center = document.querySelector('.main_Master_Center');
 maSter.addEventListener('click', (event) => {
+    Float.classList.toggle('floatactive');
+    main_Master_Center.classList.toggle('main_Master_Centeractive');
+});
+document.querySelector('.headerbtns.toggleBtn.advance').addEventListener('click',()=> {
     Float.classList.toggle('floatactive');
     main_Master_Center.classList.toggle('main_Master_Centeractive');
 });
@@ -710,18 +710,6 @@ document.querySelector('#create_Advert_purpose').addEventListener('click', () =>
     document.querySelector('.uploadphadscrpop').style.display = 'flex';
 });
 function opene_Search_Popup() {
-    const recall_Public_searchpath = document.querySelector('#recall_Public_searchpath');
-    const recall_reel_searchpath = document.querySelector('#recall_reel_searchpath');
-    const headermiddle_public = document.querySelector('.headermiddle.public');
-    const headermiddle_reel = document.querySelector('.headermiddle.reelmiddleheader');
-    recall_Public_searchpath.addEventListener('click', () => {
-        headermiddle_public.classList.toggle('headermiddle_publicactive');
-        document.querySelector('.public_Search_Bar').focus();
-    });
-    recall_reel_searchpath.addEventListener('click', () => {
-        headermiddle_reel.classList.toggle('headermiddle_publicactive');
-        document.querySelector('.ReelPage_Search_Bar').focus();
-    });
     const searchmoveback = document.querySelector('.searchmoveback');
     const recallsearchpath = document.querySelector('#recallsearchpath');
     searchmoveback.addEventListener('click', () => {
@@ -919,10 +907,6 @@ publicpostuploadexit.addEventListener('click', () => {
 
 document.querySelector('#toggle_advert_sidebar').addEventListener('click', () => {
     document.querySelector('.photosidebar').classList.toggle('sidebaractive');
-});
-document.querySelector('#recall_Gallery_searchpath').addEventListener('click', () => {
-    document.querySelector('.photoheader_middle').classList.toggle('headermiddle_publicactive');
-    document.querySelector('.gallery_Search_Bar').focus();
 });
 document.querySelector('.create_Community').addEventListener('click', () => {
     document.querySelector('.create_Commnunity_Popup').style.display = 'flex';
