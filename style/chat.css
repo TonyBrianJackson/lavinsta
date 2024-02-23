@@ -1212,6 +1212,9 @@
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .headerbtns:hover {
+        transform: scale(1);
+    }
     .userchatroom {
         top: 0;
         left: 0;
@@ -1228,6 +1231,7 @@
     .Community_chatroomcolumn,
     .userchatroomcolumn {
         padding: 10px;
+        height: 89%;
     }
 
     .voicechat,
@@ -1235,18 +1239,26 @@
         width: 90%;
         height: 55px;
         box-shadow: none;
-        border-style: solid;
-        border-width: 1px;
-        border-color: var(--color-secondary);
+        border: 1px solid var(--color-gray);
         margin: 5px 0px;
     }
 
     .options,
-    .voicechat,
-    .userschatbox {
-        gap: 0px 10px;
+    .voicechat {
+        gap: 0px;
         min-height: 55px;
         border: none;
+        overflow: hidden;
+        background: var(--color-light);
+        display: flex;
+    }
+
+    .mesgBox,
+    .userschatbox {
+        min-height: 45px;
+        height: 45px;
+        border: none;
+        box-shadow: none;
         overflow: hidden;
         background: var(--color-light);
         display: flex;
@@ -1258,7 +1270,6 @@
         bottom: 75px;
     }
 
-    .options .headerbtns,
     .voicechat .headerbtns,
     .chatfloat .headerbtns,
     .userschatbox .headerbtns {
@@ -1266,13 +1277,16 @@
         height: 55px;
         color: var(--color-dark);
     }
-
+    .memberscontainer.community_profile .headerbtns,
+    .options .headerbtns,
     .voicechat .headerbtns,
     .chatfloat .headerbtns,
     .userschatbox .headerbtns,
     .voicechat .headerbtns {
         width: 45px;
         height: 45px;
+        border: 1px solid var(--color-gray);
+        color: var(--color-dark);
     }
 
     .options .headerbtns>img,
@@ -1291,16 +1305,27 @@
         background: var(--color-dark);
         color: var(--color-white);
     }
-
+    .mesgBox input,
     .userschatbox input {
         width: 70%;
         height: 100%;
         font-size: 15px;
         box-shadow: none;
-        border: none;
+        border: 1px solid var(--color-gray);
         background: var(--color-white);
     }
-
+    .memberscontainer.community_profile .caption {
+        min-height: 45px;
+        height: 45px;
+        border: 1px solid var(--color-gray);
+    }
+    .mesgBox {
+        border: 1px solid var(--color-gray);
+    }
+    .mesgBox input {
+        width: 100%;
+        border: none;
+    }
     .attributation_Container .caption,
     .attributation_Container .attribute,
     .chattext {
@@ -1308,7 +1333,7 @@
     }
 
     .userchatheader {
-        min-height: 80px;
+        min-height: 50px;
         height: max-content;
         width: 100%;
         padding: 5px;
@@ -1325,7 +1350,8 @@
     }
 
     .userchatheader strong:nth-child(2) {
-        font-size: 4.77777777vw;
+        font-size: 3.77777777vw;
+        font-weight: 500;
     }
 
     .chatblock {
@@ -1334,7 +1360,7 @@
     }
 
     .chatblocktail p {
-        font-size: 5.77777777vw;
+        font-size: 4.333333vw;
         font-weight: 700;
     }
 
@@ -1344,18 +1370,21 @@
         top: -10px;
         right: unset;
     }
+
     .chataudiptimegrid span,
     .chattext {
-        font-size: 4.55vw;
+        font-size: 3.99999999vw;
     }
 
     .friendschatstime,
     .mychatstime,
     .community_chat_sample,
     .chatsample {
-        font-size: 5.3333vw;
+        font-size: 3.5555vw;
     }
-
+    .chatsample {
+        width: 100%;
+    }
     .friendschataudio img,
     .mychataudio img {
         width: 25px;
@@ -1381,8 +1410,15 @@
     .mychataudio,
     .mychat,
     .friendschat {
-        padding: 15px;
+        padding: 12px;
         border-radius: 30px;
+    }
+    .friendschataudio,
+    .mychataudio {
+        padding: 5px 10px;
+    }
+    .memberscontainer.community_profile {
+        background: var(--color-light);
     }
 }
 

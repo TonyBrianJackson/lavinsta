@@ -1,3 +1,7 @@
+/*fonts importing*/
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -2271,6 +2275,7 @@ main .header {
     border-radius: 0px;
     color: var(--color-dark);
     font-weight: 500;
+    font-family: roboto;
 }
 
 .posttitlemoreorless {
@@ -9004,12 +9009,13 @@ a {
     }
 
     .itemsviewclosebutton {
-        background: #ffffffff;
-        color: var(--color-black);
+        background: none;
+        color: #ffffffff;
         right: 10px;
         top: 11px;
         z-index: 5;
-        font-size: 20px;
+        font-size: 25px;
+        font-weight: 400;
     }
 
     .gridpostimgwideview,

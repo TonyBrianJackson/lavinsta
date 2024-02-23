@@ -716,12 +716,27 @@
     width: 100px;
     margin: 2px;
     cursor: pointer;
+    transition: 300ms all ease;
 }
 
-.accountloginbtn {
-    background: #CC66FF;
+.accountremoveconnectgrid span:nth-child(1) {
+    background: var(--color-dark);
+    color: var(--color-white);
 }
-
+.accountremoveconnectgrid span:nth-child(2) {
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+.accountremoveconnectgrid span:nth-child(1):hover {
+    background: var(--color-white);
+    color: var(--color-dark);
+    transition: 300ms all ease;
+}
+.accountremoveconnectgrid span:nth-child(2):hover {
+    background: var(--color-dark);
+    transition: 300ms all ease;
+    color: var(--color-white);
+}
 .flexerLogger {
     width: 25%;
     background: none;

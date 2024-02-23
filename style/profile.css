@@ -2804,6 +2804,11 @@
     filter: invert(330%);
 }
 
+.uploadprofilepicturepopup .subactions .profilefilterbtn,
+.uploadprofilepicturepopup .subactions .profilepictureuploadbtn {
+    display: block;
+}
+
 @media (min-width: 100px) and (max-width: 800px) {
 
     .post,
@@ -2855,9 +2860,11 @@
     .headerbtns {
         width: 40px;
         height: 40px;
-        margin: 0px 10px;
+        margin: 0px;
         box-shadow: none;
         border: none;
+        font-weight: 900;
+        font-size: 23px;
     }
 
     .headerright {
@@ -2934,6 +2941,8 @@
 
     .posttitle {
         font-size: 4.222vw;
+        font-family: poppins;
+        font-weight: 200;
     }
 
     .authorsImg {
@@ -2958,6 +2967,7 @@
         font-size: 5.89vw;
     }
 
+    .headerbtns.sidebarlinks,
     .headerbtns.livecapture,
     .headerbtns.postwriterfloatitems,
     .headerbtns.toggleBtn,
@@ -2975,12 +2985,25 @@
         width: 100%;
         border-radius: 10px;
         font-weight: 900;
-        font-size: 19px;
+        font-size: 23px;
     }
 
     .header.headerbtns>svg {
         width: 40px;
         height: 40px;
+    }
+
+    .commentdelete.headerbtns {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        box-shadow: var(--giant-box-shadow);
+        font-size: 20px;
+        border: 2px solid var(--color-white);
+    }
+
+    .headerbtns.sidebarlinks>svg {
+        width: 30px;
     }
 
     .headerbtns.toggleBtn:hover,
@@ -2989,14 +3012,20 @@
     }
 
     .headerbtns.items .userscount {
-        right: 20px;
-        top: 5px;
+        right: 15px;
+        top: 2px;
         border: 2px solid var(--color-white);
     }
 
     .headerbtns.items .userschatcount {
         right: 30px;
         top: 10px;
+    }
+
+    .header .headerbtns .userscount {
+        right: 32px;
+        top: -10px;
+        border: 2px solid var(--color-white);
     }
 
     .headerbtns.items:nth-child(1) {
@@ -3199,6 +3228,7 @@
         left: 0;
         top: 0;
         border-radius: 0px;
+        background: var(--color-light);
     }
 
     .commentsectioncontaineractive {
@@ -3215,7 +3245,7 @@
         place-items: initial;
         overflow-x: hidden;
         overflow-y: scroll;
-        height: 83%;
+        height: 85%;
         margin: 2px 0px;
     }
 
@@ -3235,26 +3265,25 @@
     }
 
     .headerbtns.sharegridlike {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         margin: 0;
+        border: 1px solid var(--color-gray);
     }
 
     .headerbtns.sharegridliked {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         margin: 0;
+        border: 1px solid var(--color-gray);
     }
 
     .newcommentinput {
         width: 90%;
         height: max-content;
         box-shadow: none;
-        border-style: solid;
-        border-width: 1px;
-        border-color: var(--color-secondary);
         gap: 0px 10px;
-        min-height: 60px;
+        min-height: 45px;
         border: none;
         overflow: hidden;
         background: var(--color-light);
@@ -3266,20 +3295,16 @@
         height: 100%;
         font-size: 15px;
         box-shadow: none;
-        border: none;
+        border: 1px solid var(--color-gray);
         background: var(--color-white);
     }
 
     .newcommentinput .headerbtns {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         color: var(--color-dark);
         margin: 0;
-    }
-
-    .sharegridlike {
-        height: 42px;
-        width: 42px;
+        border: 1px solid var(--color-gray);
     }
 
     .topactivities span {
@@ -3439,9 +3464,7 @@
     .commentinputactive {
         width: 70%;
         box-shadow: none;
-        border-style: solid;
-        border-width: 1px;
-        border-color: var(--color-light);
+        border: 1px solid var(--color-light);
     }
 
     .toolpit {
@@ -3483,10 +3506,12 @@
         width: 100%;
         padding: 0px;
     }
+
     .postcontainer.timeline_Feeds {
         min-height: max-content;
         margin: 10px;
     }
+
     .person,
     .friendconnectrequest {
         box-shadow: none;
@@ -3513,7 +3538,7 @@
     .uploadprofilepicturepopup {
         width: 90vw;
         height: max-content;
-        max-height: 100vh;
+        max-height: 100%;
         box-shadow: var(--light-box-shadow);
         background: var(--color-light);
         z-index: 540;
@@ -3528,12 +3553,19 @@
 
     .subactions {
         min-height: max-content;
+        max-height: max-content;
+    }
+
+    .uploadprofilepicturepopup .subactions .profilefilterbtn,
+    .uploadprofilepicturepopup .subactions .profilepictureuploadbtn {
+        display: none;
     }
 
     .profilepicturefilterpopup,
     .coverpicturefilterpopup {
         z-index: 541;
-        height: 100vh;
+        width: 100vw;
+        height: 100%;
         border-radius: 0px;
         box-shadow: none;
     }

@@ -935,66 +935,9 @@
     border-radius: 0px;
     box-shadow: none;
     display: block;
-    font-weight: bolder;
+    font-weight: 900;
     color: var(--color-dark);
-    position: absolute;
     cursor: pointer;
-    right: 5px;
-    top: 2px;
-}
-
-.notificationdelete {
-    background: #aaaaaa;
-    width: 35px;
-    height: 35px;
-    border: none;
-    box-shadow: var(--giant-box-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: none;
-    position: absolute;
-    right: 25px;
-    top: 2px;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: 300ms;
-}
-
-.notificationdelete img {
-    width: 20px;
-    height: 20px;
-    margin-left: 2px;
-    border: none;
-    background: none;
-    box-shadow: none;
-    display: block;
-    border-radius: 0px;
-    overflow: none;
-}
-
-.notificationdeleteactive {
-    background: #aaaaaa;
-    width: 35px;
-    height: 35px;
-    border: none;
-    box-shadow: var(--giant-box-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: none;
-    position: absolute;
-    right: 25px;
-    top: 2px;
-    cursor: pointer;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    transition: 300ms;
 }
 
 .chatNavigationHeader.navigationheader,
@@ -1133,7 +1076,7 @@
     .notificationmore {
         font-size: 17px;
         font-weight: 900;
-        line-height: 1rem;
+        line-height: 3rem;
     }
 
     .notificationhead {
@@ -1250,7 +1193,7 @@
 
     .notificationblock {
         box-shadow: none;
-        border-radius: 0px;
+        border-radius: 15px;
         border: none;
     }
 

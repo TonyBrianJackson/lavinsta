@@ -161,7 +161,9 @@
     box-shadow: none;
     background: var(--color-white);
     overflow: hidden;
-    width: 241px;
+    min-width: 241px;
+    width: max-content;
+    max-width: 100%;
     padding: 10px;
     height: max-content;
     border-radius: 0px;
@@ -824,13 +826,18 @@
     .commentpostcontainer,
     .replypostcontainer {
         box-shadow: none;
+        background: var(--color-gray);
+        border-radius: 25px;
     }
 
     .commentpost,
     .replypost {
         font-size: 15px;
+        color: #ffffffff;
     }
-
+    .mentionedUser {
+        font-size: 17px;
+    }
     .logoutpopup {
         top: 0;
         left: 0;
