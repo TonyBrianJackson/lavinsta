@@ -542,7 +542,7 @@ msgbtn.forEach(item => {
 });
 document.querySelectorAll('.mesgBtn').forEach(item => {
     item.addEventListener('click', () => {
-        if (item.classList.contains('general_smart_Chat')) {
+        if (item.id !='friendschatbtns') {
             document.querySelector('.msgculomn').style.display = 'none';
             document.querySelector('.chatsearchbar').style.display = 'none';
             document.querySelector('#general_smart_Chat').classList.remove('active');
@@ -551,7 +551,7 @@ document.querySelectorAll('.mesgBtn').forEach(item => {
             document.querySelector('.msgculomn').style.display = 'flex';
             document.querySelector('.chatsearchbar').style.display = 'flex';
             document.querySelector('#general_smart_Chat').classList.add('active');
-        } if (item.classList.contains('community_smart_Chat')) {
+        } if (item.id !='communitychatbtns') {
             document.querySelector('.groupmsgculomn').style.display = 'none';
             document.querySelector('.chatsearchbar1').style.display = 'none';
             document.querySelector('#community_smart_Chat').classList.remove('active');

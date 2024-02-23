@@ -42,7 +42,23 @@ if (Array.isArray(ActiveAccount)) {
 document.querySelectorAll('input').forEach(input => {
     input.autocomplete = 'off';
 });
-
+function fetchUrl() {
+    let Array = [{
+        firstName: 'Tony',
+        surName: 'Jackson',
+        id: new Date().getTime()
+    }];
+    const url = 'database/users.json';
+    fetch(url,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Array)
+    }).then(res => res.json())
+    .then(data => console.log(data))
+}
+// fetchUrl();
 function savedData() {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
