@@ -12,7 +12,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    
+
     <!------script tags------>
     <script defer src="script/users.js"></script>
     <script defer src="script/create_auth.js"></script>
@@ -99,7 +99,7 @@
                 </svg>
                 <span class="toolpit">Lavinsta Feeds</span>
             </a>
-            <a class="headerbtns homepageheaderbtns" id="recallsearchpath">
+            <a class="headerbtns homepageheaderbtns popup_search" id="recallsearchpath">
                 <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
                     <path
                         d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
@@ -442,7 +442,7 @@
                     </svg>
                     <span class="toolpit">Create</span>
                 </div>
-                <div class="headerbtns" id="recall_Public_searchpath">
+                <div class="headerbtns popup_search" id="recall_Public_searchpath">
                     <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
                         <path
                             d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
@@ -703,7 +703,7 @@
                     </svg>
                     <span class="toolpit">Create</span>
                 </div>
-                <div class="headerbtns" id="recall_reel_searchpath">
+                <div class="headerbtns popup_search" id="recall_reel_searchpath">
                     <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
                         <path
                             d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
@@ -850,7 +850,7 @@
                     </svg>
                     <span class="toolpit">Create</span>
                 </div>
-                <div class="headerbtns" id="recall_Gallery_searchpath">
+                <div class="headerbtns popup_search" id="recall_Gallery_searchpath">
                     <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512">
                         <path
                             d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
@@ -1474,18 +1474,20 @@
                 <div class="Exitpage_Arrow accinfobackarrow">&LeftArrow;</div>
                 <div class="qualitymode">Accounts Info</div>
             </header>
-            <div class="inputregular InfoPage_Input Information_Page"><input autocomplete="off" type="text"
-                    id="firtnamechanged" value="" placeholder="First Name"></div>
-            <div class="inputregular InfoPage_Input Information_Page"><input autocomplete="off" type="text"
-                    id="surnamechanges" value="" placeholder="Surname"></div>
-            <div class="inputregular InfoPage_Input Information_Page"><input type="email" id="accountemail" value=""
-                    placeholder="email"></div>
-            <div class="inputregular InfoPage_Input Information_Page"><input type="tel" id="accountphonenumber" value=""
-                    placeholder="phone"></div>
-            <div class="inputregular InfoPage_Input Information_Page"><input type="password" id="accountpassword"
-                    value="" placeholder="enter password">
+            <div class="universalcolumn">
+                <div class="inputregular InfoPage_Input Information_Page"><input autocomplete="off" type="text"
+                        id="firtnamechanged" value="" placeholder="First Name"></div>
+                <div class="inputregular InfoPage_Input Information_Page"><input autocomplete="off" type="text"
+                        id="surnamechanges" value="" placeholder="Surname"></div>
+                <div class="inputregular InfoPage_Input Information_Page"><input type="email" id="accountemail" value=""
+                        placeholder="email"></div>
+                <div class="inputregular InfoPage_Input Information_Page"><input type="tel" id="accountphonenumber"
+                        value="" placeholder="phone"></div>
+                <div class="inputregular InfoPage_Input Information_Page"><input type="password" id="accountpassword"
+                        value="" placeholder="enter password">
+                </div>
+                <span class="savechanges">Save Changes</span>
             </div>
-            <span class="savechanges">Save Changes</span>
         </div>
         <div class="savedpage">
             <header class="settingsheader">
@@ -1499,63 +1501,71 @@
                 <span class="Exitpage_Arrow themecustomizationexit">&LeftArrow;</span>
                 <div class="qualitymode">Theme</div>
             </header>
-            <div id="defaultMode" class="themechoice"><span class="themename">default</span><span id="defaulttheme"
-                    class="themeactive-1 active"></span></div>
-            <div id="darkMode" class="themechoice"><span class="themename">dark mode</span><span id="darkmode"
-                    class="themeactive-2"></span></div>
-            <div id="LightOffMode" class="themechoice"><span class="themename">light Off</span><span id="lightOff"
-                    class="themeactive-3"></span></div>
+            <div class="universalcolumn">
+                <div id="defaultMode" class="themechoice"><span class="themename">default</span><span id="defaulttheme"
+                        class="themeactive-1 active"></span></div>
+                <div id="darkMode" class="themechoice"><span class="themename">dark mode</span><span id="darkmode"
+                        class="themeactive-2"></span></div>
+                <div id="LightOffMode" class="themechoice"><span class="themename">light Off</span><span id="lightOff"
+                        class="themeactive-3"></span></div>
+            </div>
         </div>
         <div class="securitytab">
             <header class="settingsheader">
                 <span class="Exitpage_Arrow securitybackarrow">&LeftArrow;</span>
                 <div class="qualitymode">Reset Password</div>
             </header>
-            <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
-                    id="Old_Create_Password_Input" placeholder="Enter Old Password"></div>
-            <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
-                    id="Old_Confirm_Password_Input" placeholder="Confirm Old Password"></div>
-            <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
-                    id="New_Create_Password_Input" placeholder="Create New Password"></div>
-            <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
-                    id="New_Confirm_Password_Input" placeholder="Confirm New Password"></div>
-            <span class="securityreset">Save Changes</span>
+            <div class="universalcolumn">
+                <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
+                        id="Old_Create_Password_Input" placeholder="Enter Old Password"></div>
+                <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
+                        id="Old_Confirm_Password_Input" placeholder="Confirm Old Password"></div>
+                <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
+                        id="New_Create_Password_Input" placeholder="Create New Password"></div>
+                <div class="inputregular input_Security SecurityTabs_Input"><input type="password"
+                        id="New_Confirm_Password_Input" placeholder="Confirm New Password"></div>
+                <span class="securityreset">Save Changes</span>
+            </div>
         </div>
         <div class="videoqualitytab">
             <header class="settingsheader">
                 <span class="Exitpage_Arrow backarrow">&LeftArrow;</span>
                 <div class="qualitymode">Video Quality Mode</div>
             </header>
-            <span class="qualities"><span class="qualityproperty">High Quality</span><span id="hightquality"
-                    class="sectionactive"></span></span>
-            <span class="qualities"><span class="qualityproperty">Medium Quality</span><span id="mediumquality"
-                    class="sectionactive active"></span></span>
-            <span class="qualities"><span class="qualityproperty">low Quality</span><span id="lowquality"
-                    class="sectionactive"></span></span>
-            <hr>
-            <div class="autoplaymode">Autoplay Mode</div>
-            <span class="qualities"><span class="qualityproperty">Mobile Data</span><span id="mobiledata"
-                    class="autoplay"></span></span>
-            <span class="qualities"><span class="qualityproperty">Wi-Fi</span><span id="wifi"
-                    class="autoplay active"></span></span>
+            <div class="universalcolumn">
+                <div class="qualities"><span class="qualityproperty">High Quality</span><span id="hightquality"
+                        class="sectionactive"></span></div>
+                <div class="qualities"><span class="qualityproperty">Medium Quality</span><span id="mediumquality"
+                        class="sectionactive active"></span></div>
+                <div class="qualities"><span class="qualityproperty">low Quality</span><span id="lowquality"
+                        class="sectionactive"></span></div>
+                <hr>
+                <div class="autoplaymode">Autoplay Mode</div>
+                <div class="qualities"><span class="qualityproperty">Mobile Data</span><span id="mobiledata"
+                        class="autoplay"></span></div>
+                <div class="qualities"><span class="qualityproperty">Wi-Fi</span><span id="wifi"
+                        class="autoplay active"></span></div>
+            </div>
         </div>
         <div class="datasavingtab">
             <header class="settingsheader"><span class="Exitpage_Arrow datasavingbackarrow">&LeftArrow;</span>
                 <div class="autoplaymode">Data Saving</div>
             </header>
-            <div class="datasavingtabs">
-                <div class="datasavingflex">
-                    <span class="activate">Turn On</span><span id="activateit" class="datasavingactive active"></span>
+            <div class="universalcolumn">
+                <div class="datasavingtabs">
+                    <div class="datasavingflex">
+                        <span class="activate">Turn On</span><span id="activateit" class="datasavingactive active"></span>
+                    </div>
+                    <hr class="datasavinghr">
+                    <p>When data saving is turned on, browser's performance slow down</p>
                 </div>
-                <hr class="datasavinghr">
-                <p>When data saving is turned on, browser's performance slow down</p>
-            </div>
-            <div class="datasavingtabs">
-                <div class="datasavingflex">
-                    <span class="activate">Turn Off</span><span id="deactivateit" class="datasavingactive"></span>
+                <div class="datasavingtabs">
+                    <div class="datasavingflex">
+                        <span class="activate">Turn Off</span><span id="deactivateit" class="datasavingactive"></span>
+                    </div>
+                    <hr class="datasavinghr">
+                    <p>When data saving is turned off, browser's performance speeds up</p>
                 </div>
-                <hr class="datasavinghr">
-                <p>When data saving is turned off, browser's performance speeds up</p>
             </div>
         </div>
         <div class="recycletabs">
@@ -1563,22 +1573,26 @@
                 <span class="Exitpage_Arrow recyclebackarrow">&LeftArrow;</span>
                 <div class="autoplaymode">Recycle</div>
             </header>
-            <div class="recycletab"><span>Recycle Bin</span>
-                <hr>
-                <p>When items are <b>deleted</b> they are kept in this <b>bin</b>, such item <b>cannot</b> be
-                    <b>restored</b>
-                    <hr><span>Text Post's</span> are permanently deleted
-                </p>
+            <div class="universalcolumn">
+                <div class="recycletab"><span>Recycle Bin</span>
+                    <hr>
+                    <p>When items are <b>deleted</b> they are kept in this <b>bin</b>, such item <b>cannot</b> be
+                        <b>restored</b>
+                        <hr><span>Text Post's</span> are permanently deleted
+                    </p>
+                </div>
+                <div class="recycletabarchies"><span>Advance</span>
+                    <hr>
+                    <p>You Can visit <b>Memories</b> to view your <b>Stories Archive</b> and <b>Post Archive</b></p>
+                </div>
             </div>
-            <div class="recycletabarchies"><span>Advance</span>
-                <hr>
-                <p>You Can visit <b>Memories</b> to view your <b>Stories Archive</b> and <b>Post Archive</b></p>
-            </div>
-            <div class="recyclebin">
-                <header class="settingsheader">
-                    <span class="Exitpage_Arrow recyclebinbackarrow">&LeftArrow;</span>
-                    <div class="autoplaymode">Recycle Bin</div>
-                </header>
+        </div>
+        <div class="recyclebin">
+            <header class="settingsheader">
+                <span class="Exitpage_Arrow recyclebinbackarrow">&LeftArrow;</span>
+                <div class="autoplaymode">Recycle Bin</div>
+            </header>
+            <div class="universalcolumn">
                 <div id="deletepst" class="deletedtabs"><span>Deleted Post</span></div>
                 <div id="deletestoss" class="deletedtabs"><span>Deleted Stories</span></div>
             </div>
@@ -1620,7 +1634,9 @@
                 <span class="Exitpage_Arrow accountdelete">&LeftArrow;</span>
                 <div class="autoplaymode">Delete Account</div>
             </header>
-            <div id="deleteaccount" class="accountdelettabs"><a href="#">Delete Account</a></div>
+            <div class="universalcolumn">
+                <div id="deleteaccount" class="accountdelettabs"><a href="#">Delete Account</a></div>
+            </div>
         </div>
         <div class="deleteaccountpopup">
             <header class="settingsheader">

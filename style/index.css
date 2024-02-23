@@ -2204,7 +2204,7 @@ main .header {
     justify-content: left;
     overflow: visible;
     border-radius: 0px;
-    margin: 0px 10px;
+    margin: 0px;
     gap: 5px;
 }
 
@@ -3036,7 +3036,7 @@ a {
     top: 0;
     display: none;
     align-items: center;
-    justify-content: center;
+    justify-content: initial;
     flex-direction: column;
     background: var(--color-light);
     box-shadow: none;
@@ -3044,7 +3044,20 @@ a {
     border: none;
     border-radius: 0px;
 }
-
+.universalcolumn {
+    width: 100%;
+    padding: 5px;
+    box-shadow: none;
+    background: none;
+    overflow: hidden;
+    border: none;
+    border-radius: 0px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: initial;
+}
 .usersreportpopup,
 .userssecuritypopup {
     width: 100%;
@@ -3158,9 +3171,7 @@ a {
 
 .settingsheader {
     width: 100%;
-    position: absolute;
     height: max-content;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -3180,7 +3191,6 @@ a {
 .settingspage,
 .savedpage {
     z-index: 450;
-    justify-content: baseline;
 }
 
 .themecustomizationpopup,
@@ -3191,15 +3201,13 @@ a {
 .recyclebin {
     z-index: 455;
     min-height: 100%;
-    justify-content: baseline;
+    justify-content: initial;
 }
 
-.deletedcomment,
 .deletedpostsss,
 .deletedstoriessss {
     z-index: 460;
     min-height: 100%;
-    justify-content: baseline;
 }
 
 .Exitpage_Arrow {
@@ -3592,7 +3600,7 @@ a {
     width: 100%;
     height: 100%;
     max-height: 100%;
-    justify-content: space-between;
+    justify-content: initial;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3613,7 +3621,7 @@ a {
     gap: 5px;
     padding: 5px;
     grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
+    place-items: initial;
     border: none;
     background: none;
     box-shadow: none;
@@ -3889,7 +3897,7 @@ a {
     top: 0;
     display: none;
     align-items: center;
-    justify-content: center;
+    justify-content: initial;
     flex-direction: column;
     background: var(--color-light);
     box-shadow: none;
@@ -4090,8 +4098,7 @@ a {
 
 }
 
-.securitytab>span,
-.accountinfopage>span {
+.universalcolumn>span {
     display: block;
     text-align: center;
     width: 100%;
@@ -8579,11 +8586,12 @@ a {
     }
 
     .inputregular {
+        width: 100%;
+        height: max-content;
         box-shadow: none;
-        border-style: solid;
-        border-width: 3px;
-        border-color: var(--color-dark);
-        border-radius: 30px;
+        min-height: 45px;
+        height: 45px;
+        border: 1px solid var(--color-gray);
         background: var(--color-white);
     }
 
@@ -8595,15 +8603,13 @@ a {
         color: var(--color-dark);
     }
 
-    .securitytab>span,
-    .accountinfopage>span {
-        box-shadow: none;
-        border-width: 3px;
-        border-style: solid;
-        background: var(--color-dark);
-        color: var(--color-white);
-        border-color: var(--color-white);
+        .universalcolumn>span {
+        padding: 12px 15px;
         font-size: 4.8vw;
+        box-shadow: none;
+        border: none;
+        background: var(--color-dark);
+        color: #ffffffff;
     }
 
     .Exitpage_Arrow {

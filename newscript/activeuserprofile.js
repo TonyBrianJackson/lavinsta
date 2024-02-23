@@ -49,14 +49,20 @@ function fetchUrl() {
         id: new Date().getTime()
     }];
     const url = 'database/users.json';
-    fetch(url,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(Array)
-    }).then(res => res.json())
-    .then(data => console.log(data))
+    function pushData() {
+        fetch(url,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(Array)
+        });
+    }
+    pushData();
+    function getData() {
+        fetch(url).then(res => res.json()).then(data => console.log(data));
+    }
+    getData();
 }
 // fetchUrl();
 function savedData() {

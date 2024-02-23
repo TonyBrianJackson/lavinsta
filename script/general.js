@@ -711,40 +711,23 @@ document.querySelector('#create_Advert_purpose').addEventListener('click', () =>
 });
 function opene_Search_Popup() {
     const searchmoveback = document.querySelector('.searchmoveback');
-    const recallsearchpath = document.querySelector('#recallsearchpath');
     searchmoveback.addEventListener('click', () => {
         let main_Seach_Path = document.querySelector('.main_Seach_Path');
         main_Seach_Path.style.display = 'none';
-        document.querySelector('.people').style.display = 'none';
-        document.querySelector('.photogallery').style.display = 'none';
-        document.querySelector('.profile').style.display = 'none';
-        document.querySelector('.chattab').style.display = 'none';
-        document.querySelector('.notificationtab').style.display = 'none';
         sessionStorage.setItem('activepage', 'home');
     });
-    recallsearchpath.addEventListener('click', () => {
+    function OpenSearchPath() {
         loadPage();
         sessionStorage.setItem('activepage', 'homesearch');
         let main_Seach_Path = document.querySelector('.main_Seach_Path');
         main_Seach_Path.style.display = 'flex';
-        document.querySelector('.people').style.display = 'none';
-        document.querySelector('.photogallery').style.display = 'none';
-        document.querySelector('.profile').style.display = 'none';
-        document.querySelector('.chattab').style.display = 'none';
-        document.querySelector('.notificationtab').style.display = 'none';
+    }
+    document.querySelectorAll('.popup_search').forEach(button => {
+        button.addEventListener('click',()=> {
+            OpenSearchPath();
+        });
     });
-    const opensearchpath = document.querySelector('#opensearchpath');
-    opensearchpath.addEventListener('click', () => {
-        loadPage();
-        sessionStorage.setItem('activepage', 'homesearch');
-        let main_Seach_Path = document.querySelector('.main_Seach_Path');
-        main_Seach_Path.style.display = 'flex';
-        document.querySelector('.people').style.display = 'none';
-        document.querySelector('.photogallery').style.display = 'none';
-        document.querySelector('.profile').style.display = 'none';
-        document.querySelector('.chattab').style.display = 'none';
-        document.querySelector('.notificationtab').style.display = 'none';
-    });
+
     //video search popup
     const video_Search_Path_Exit = document.querySelector('.video_Search_Path_Exit');
     const video_Seach_Path = document.querySelector('.video_Seach_Path');

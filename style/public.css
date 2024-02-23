@@ -818,7 +818,7 @@
         border-radius: 0px;
         display: none;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         padding: 5px;
     }
 
@@ -883,7 +883,7 @@
     .reelpagecreate {
         top: 0;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         left: -800px;
         border-radius: 0px;
         transition: 800ms left;

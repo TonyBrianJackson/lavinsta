@@ -53,12 +53,6 @@
     z-index: 1;
 }
 
-.post_making_upload_popup.videouploadpopup,
-.post_making_upload_popup.uploadphadscrpop,
-.post_making_upload_popup.public_Create {
-    z-index: 303;
-}
-
 .uploadpreviewcontainer {
     height: 200px;
     width: 100%;
@@ -108,10 +102,6 @@
 .Text_PostTextArea textarea::placeholder,
 .caption textarea::placeholder {
     color: var(--color-dark);
-}
-
-textarea {
-    border-color: rgba(211, 211, 211, 0.445);
 }
 
 /*Advert photo crime*/
@@ -230,7 +220,8 @@ textarea {
     padding: 10px;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%);
     width: 100%;
     height: 100%;
     border-radius: 0px;
@@ -562,24 +553,29 @@ textarea {
     display: block;
     object-fit: cover;
 }
+
 button {
     padding: 10px;
 }
+
 .subactions>button:nth-child(1),
 .--create-1 {
     display: block;
     background: #FF33FF;
 }
+
 .subactions>button:nth-child(2),
 .--create-2 {
     background: #FF1493;
     display: none;
 }
+
 .subactions>button:nth-child(3),
 .--create-3 {
     background: #4169E1;
     display: none;
 }
+
 .subactions>button:nth-child(4),
 .--create-4 {
     background: #FFFF66;
@@ -599,20 +595,14 @@ button {
     outline: none;
     padding: 10px;
 }
-
-.uploadpreviewcontainer .Text_PostTextArea {
-    width: 100%;
-    height: 100%;
+.Text_PostTextArea.PublicText,
+.Text_PostTextArea.textarea {
     display: none;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    border: none;
-    background: var(--color-white);
 }
 
-.uploadpreviewcontainer .Text_PostTextArea textarea {
+.Text_PostTextArea textarea {
     background: none;
     box-shadow: none;
     resize: none;
@@ -673,10 +663,18 @@ button {
         height: 100%;
         gap: 40px 0px;
     }
+
     .textthemepopup,
     .textFont {
+        width: 90%;
+        height: 90%;
         box-shadow: none;
-        border: none;
+        border: 3px solid var(--color-dark);
+        border-radius: 10px;
+    }
+    .textthemepopup nav,
+    .textFont nav {
+        box-shadow: none;
     }
     .post_making_upload_popup {
         width: 90vw;
@@ -735,7 +733,6 @@ button {
         height: 45px;
         border: 1px solid var(--color-gray);
         background: var(--color-white);
-        border: none;
         margin: 5px 0px;
     }
 
@@ -752,21 +749,41 @@ button {
         padding: 20px;
         height: max-content;
         min-height: 250px;
-        color: var(--color-dark);
-        border-color: var(--color-white);
+        border: none;
+        border-radius: 0vmax;
+        background: none;
     }
 
     .uploadpreviewcontainer>div {
         width: 100%;
         height: 200px;
-        padding: 0;
+        padding: 10px;
         box-shadow: none;
         background: none;
         overflow: hidden;
+        box-shadow: none;
+        border: 3px solid var(--color-dark);
+        background: var(--color-white);
     }
+    .Text_PostTextArea.PublicText,
+    .Text_PostTextArea.textarea {
+        border: 3px solid var(--color-dark);
+    }
+    .uploadphadscrpop .uploadpreviewcontainer > div,
+    .uploadpreviewcontainer>div:nth-child(1) {
+        border-radius: 50%;
+        width: 130px;
+        height: 130px;
+        box-shadow: none;
+        border: 3px solid var(--color-dark);
+        background: var(--color-white);
 
+    }
+    .uploadpreviewcontainer>div> img {
+        border-radius: 50%;
+    }
     .subactions>button,
-    .post_making_upload_popup>button {
+    .subactions>button:nth-child(1) {
         width: 100%;
         box-shadow: none;
         border: none;
@@ -778,22 +795,23 @@ button {
         padding: 16px 15px;
         font-size: 4.8vw;
     }
-
+    .subactions>button:nth-child(1),
     .--create-1 {
         display: block;
         background: var(--color-dark);
     }
 
+    .subactions>button:nth-child(2),
     .--create-2 {
         background: var(--color-dark);
         display: none;
     }
-
+    .subactions>button:nth-child(3),
     .--create-3 {
         background: var(--color-dark);
         display: none;
     }
-
+    .subactions>button:nth-child(4),
     .--create-4 {
         background: var(--color-dark);
         display: none;
