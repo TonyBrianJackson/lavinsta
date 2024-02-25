@@ -943,33 +943,8 @@ function create_Admins_Notification() {
                     delete_User_Img.src = 'newicons/delete.png';
                     admin_Tool_Grid.classList.add('admin_Tool_Grid');
 
-                    function View_The_Post() {
-                        let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                        itemsviewonlargescale.forEach(largecontainer => {
-                            if (largecontainer.id === notification.post_Id) {
-                                let gridpostloader = document.createElement('section');
-                                let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                largecontainer.appendChild(gridpostloader);
-                                gridpostloader.appendChild(mainloadersvg);
-                                mainloadersvg.appendChild(mainloadercircle);
-                                mainloadercircle.setAttribute('cy', '30');
-                                mainloadercircle.setAttribute('cx', '30');
-                                mainloadercircle.setAttribute('r', '30');
-                                gridpostloader.classList.add('gridpostloader');
-                                gridpostloader.id = notification.post_Id;
-                                document.body.appendChild(largecontainer);
-                                largecontainer.style.display = 'flex';
-                                setTimeout(() => {
-                                    gridpostloader.remove();
-                                }, 2000);
-                            } else {
-                                largecontainer.style.display = 'none';
-                            }
-                        });
-                    }
                     make_Admin.addEventListener('click', () => {
-                        View_The_Post();
+                        createMain_GridPost(notification.post_Id);
                     });
                     log_In.addEventListener('click', () => {
                         document.querySelectorAll('.profile_Cliant').forEach(profile_Popup => {

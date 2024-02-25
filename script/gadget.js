@@ -34,7 +34,7 @@ function create_Comment_Sections_TimeLinePost() {
                     popup.style.display = 'none';
                 });
             }
-            function Web_Share(title,text,url) {
+            function Web_Share(title, text, url) {
                 if (navigator.share) {
                     const share_DataBase = {
                         title: title,
@@ -42,14 +42,14 @@ function create_Comment_Sections_TimeLinePost() {
                         url: url
                     };
                     navigator.share(share_DataBase)
-                    .then(()=> {
-                        create_Message('Shared Successfully');
-                        document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
-                            popup.style.display = 'none';
-                        });
-                    }).catch(err => {
-                        create_Message(err);
-                    })
+                        .then(() => {
+                            create_Message('Shared Successfully');
+                            document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
+                                popup.style.display = 'none';
+                            });
+                        }).catch(err => {
+                            create_Message(err);
+                        })
                 }
             }
             if (photo.type == 'timeline') {
@@ -388,8 +388,8 @@ function create_Comment_Sections_TimeLinePost() {
                                     increasesharecount();
                                 }, 3000);
                             });
-                            option_First_Child6.addEventListener('click',()=> {
-                                Web_Share('lavinsta',photo.title,window.Location);
+                            option_First_Child6.addEventListener('click', () => {
+                                Web_Share('lavinsta', photo.title, window.Location);
                             });
                             option_First_Child7.addEventListener('click', (event) => {
                                 document.querySelectorAll('.reportcontainer').forEach(popup => {
@@ -643,7 +643,7 @@ function create_Comment_Sections_TimeLinePost() {
                                     increasesharecount();
                                 }, 3000);
                             });
-                            option_First_Child4.addEventListener('click',()=> {
+                            option_First_Child4.addEventListener('click', () => {
                                 Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child5.addEventListener('click', (event) => {
@@ -845,7 +845,7 @@ function create_Comment_Sections_TimeLinePost() {
                                     increasesharecount();
                                 }, 3000);
                             });
-                            option_First_Child3.addEventListener('click',()=> {
+                            option_First_Child3.addEventListener('click', () => {
                                 Web_Share(photo.title, photo.Property_Src, window.location);
                             });
                             option_First_Child4.addEventListener('click', (event) => {
@@ -1206,7 +1206,7 @@ function create_Comment_Sections_TimeLinePost() {
                                     increasesharecount();
                                 }, 3000);
                             });
-                            option_First_Child6.addEventListener('click',()=> {
+                            option_First_Child6.addEventListener('click', () => {
                                 Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child7.addEventListener('click', (event) => {
@@ -1460,7 +1460,7 @@ function create_Comment_Sections_TimeLinePost() {
                                     increasesharecount();
                                 }, 3000);
                             });
-                            option_First_Child4.addEventListener('click',()=> {
+                            option_First_Child4.addEventListener('click', () => {
                                 Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child5.addEventListener('click', (event) => {
@@ -1660,7 +1660,7 @@ function create_Comment_Sections_TimeLinePost() {
                                     increasesharecount();
                                 }, 3000);
                             });
-                            option_First_Child3.addEventListener('click',()=> {
+                            option_First_Child3.addEventListener('click', () => {
                                 Web_Share('lavinsta', photo.title, window.location);
                             });
                             option_First_Child4.addEventListener('click', (event) => {
@@ -1862,7 +1862,7 @@ function create_Comment_Sections_TimeLinePost() {
                                     increasesharecount();
                                 }, 3000);
                             });
-                            option_First_Child3.addEventListener('click',()=> {
+                            option_First_Child3.addEventListener('click', () => {
                                 Web_Share(photo.title, photo.Property_Src, window.location);
                             });
                             option_First_Child4.addEventListener('click', (event) => {
@@ -2391,15 +2391,17 @@ function create_Comment_Sections_TimeLinePost() {
                 }, 3000);
             }
             function postIsEdited() {
-                if (photo.id === editingisdone.id) {
-                    if (photo.isText) {
-                        photo.Property_Src = editinput.value;
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    } else {
-                        photo.title = editinput.value;
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                Feeds_Data_Base.forEach(feed => {
+                    if (feed.id === photo.id) {
+                        if (photo.isText) {
+                            photo.Property_Src = editinput.value;
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                        } else {
+                            photo.title = editinput.value;
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                        }
                     }
-                }
+                });
             }
             editingisdone.id = photo.id
             editingisdone.addEventListener('click', () => {
@@ -2442,17 +2444,32 @@ function create_Comment_Sections_TimeLinePost() {
                         let trash = user.user_Trash;
                         const id = '' + new Date().getTime();
                         if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
-                            trash.push({
-                                isPhoto: true,
-                                posterId: photo.posterId,
-                                title: photo.title,
-                                Property_Src: photo.Property_Src,
-                                filter: photo.filter,
-                                id: id,
-                                date: trackingDate,
-                                time: new Date().getTime()
-                            });
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            if (photo.children) {
+                                trash.push({
+                                    isPhoto: true,
+                                    posterId: photo.posterId,
+                                    title: photo.title,
+                                    Property_Src: photo.Property_Src,
+                                    children: photo.children,
+                                    filter: photo.filter,
+                                    id: id,
+                                    date: trackingDate,
+                                    time: new Date().getTime()
+                                });
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            } else {
+                                trash.push({
+                                    isPhoto: true,
+                                    posterId: photo.posterId,
+                                    title: photo.title,
+                                    Property_Src: photo.Property_Src,
+                                    filter: photo.filter,
+                                    id: id,
+                                    date: trackingDate,
+                                    time: new Date().getTime()
+                                });
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            }
                         } else if (photo.isVideo) {
                             trash.push({
                                 isVideo: true,
@@ -2896,7 +2913,7 @@ function create_Comment_Sections_TimeLinePost() {
             makeLike();
         });
         sharegridview.addEventListener('click', () => {
-            View_The_Post(photo.id);
+            createMain_GridPost(photo.id, photo.Property_Src);
             commentsectioncontainer.classList.toggle('commentsectioncontaineractive');
         });
         sharegridshare.addEventListener('click', () => {

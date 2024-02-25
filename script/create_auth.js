@@ -3,6 +3,7 @@ const createReel = document.querySelector('.createReel');
 
 // large screen post uploading
 const Photopostbtn3 = document.getElementById('photopostbtn');
+const multipostbtn = document.getElementById('multipostbtn');
 const videopostbtn3 = document.getElementById('videopostbtn');
 const shortpostbtn3 = document.getElementById('shortpostbtn');
 const postBtn = document.getElementById('postbtn');
@@ -16,12 +17,16 @@ const videoPostBtn = document.getElementById('addvideo');
 const postadvert = document.querySelector('.postadvert');
 const postcrime = document.querySelector('.postcrime');
 const postworldwidephoto = document.querySelector('.postworldwidephoto');
-
+//multiple
+const multiplepostworldwidephoto = document.querySelector('.multiplepostworldwidephoto');
+const multiplepostadvert = document.querySelector('.multiplepostadvert');
+const multiplepostcrime = document.querySelector('.multiplepostcrime');
 //theme settinngs
 const coverpictureuploadbtn = document.querySelector('.coverpictureuploadbtn');
 const profilepictureuploadbtn = document.querySelector('.profilepictureuploadbtn');
 
 const publicphotoupload = document.querySelector('.publicphotoupload');
+const publicmultipleupload = document.querySelector('.publicmultipleupload');
 const publicvideoupload = document.querySelector('.publicvideoupload');
 const publictextupload = document.querySelector('.publictextupload');
 
@@ -65,6 +70,7 @@ function itemsDisplaySettings() {
         shortpostbtn3.style.display = 'none';
         postBtn.style.display = 'none';
         Photopostbtn3.style.display = 'block';
+        multipostbtn.style.display = 'none';
     });
     document.getElementById('videol').addEventListener('click', () => {
         let smallphoto1 = document.querySelector('.smallphoto1');
@@ -80,6 +86,7 @@ function itemsDisplaySettings() {
         shortpostbtn3.style.display = 'none';
         postBtn.style.display = 'none';
         Photopostbtn3.style.display = 'none';
+        multipostbtn.style.display = 'none';
     });
     document.getElementById('shortl').addEventListener('click', () => {
         let smallphoto1 = document.querySelector('.smallphoto1');
@@ -95,6 +102,7 @@ function itemsDisplaySettings() {
         shortpostbtn3.style.display = 'block';
         postBtn.style.display = 'none';
         Photopostbtn3.style.display = 'none';
+        multipostbtn.style.display = 'none';
     });
     document.getElementById('textl').addEventListener('click', () => {
         let smallphoto1 = document.querySelector('.smallphoto1');
@@ -109,6 +117,7 @@ function itemsDisplaySettings() {
         shortpostbtn3.style.display = 'none';
         postBtn.style.display = 'block';
         Photopostbtn3.style.display = 'none';
+        multipostbtn.style.display = 'none';
         document.querySelector('#maintextPoster').focus();
     });
 }
@@ -473,6 +482,34 @@ function active_user_render() {
                             Increase_FeedCount();
                         }
                     }
+                    function pushmultiplePhotoFeed(children) {
+                        const id = '' + new Date().getTime();
+                        if (document.querySelector('.publicimagepreview').src) {
+                            Feeds_Data_Base.push({
+                                type: 'public',
+                                isPhoto: true,
+                                title: document.querySelector('.publictitleinput').value,
+                                Property_Src: document.querySelector('.publicimagepreview').src,
+                                date: trackingDate,
+                                time: new Date().getTime(),
+                                posterId: user.user_Id,
+                                id: id,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                children: children,
+                                sharecount: 0,
+                                attribute: 'public photo',
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base))
+                            shareNotification(id, false, 'added a photo in feeds');
+                            Increase_FeedCount();
+                        }
+                    }
                     function pushVideoFeed() {
                         const id = '' + new Date().getTime();
                         if (document.querySelector('.publicvideopreview').src) {
@@ -530,22 +567,196 @@ function active_user_render() {
                             Increase_FeedCount();
                         }
                     }
-                    //post functions 
+                    //multiple
+
+                    function push_Multiple(children) {
+                        const id = '' + new Date().getTime();
+                        if (document.getElementById('photophoto').src) {
+                            Feeds_Data_Base.push({
+                                type: 'timeline',
+                                isPhoto: true,
+                                Property_Src: document.getElementById('photophoto').src,
+                                title: document.getElementById('title').value,
+                                date: trackingDate,
+                                time: new Date().getTime(),
+                                posterId: user.user_Id,
+                                id: id,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                children: children,
+                                sharecount: 0,
+                                attribute: 'timeline photo',
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                            shareNotification(id, false, 'added a photo to timeline');
+                        }
+                    }
+                    function push_Multiple_Photo(children) {
+                        const id = '' + new Date().getTime();
+                        if (document.querySelector('#srcworldwidephoto').src) {
+                            Feeds_Data_Base.push({
+                                type: 'other',
+                                Property_Src: document.querySelector('#srcworldwidephoto').src,
+                                title: document.querySelector('#worldwidecaptionbox').value,
+                                posterId: user.user_Id,
+                                id: id,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                sharecount: 0,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                children: children,
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                isPhoto: true,
+                                attribute: 'lavinsta photo',
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                            shareNotification(id, false, 'posted in lavinsta photos');
+                            Increase_PhotoCount();
+                        }
+                    }
+                    function push_Multiple_Advert(children) {
+                        const id = '' + new Date().getTime();
+                        if (document.querySelector('#srcadvertphoto').src) {
+                            Feeds_Data_Base.push({
+                                type: 'other',
+                                Property_Src: document.querySelector('#srcadvertphoto').src,
+                                title: document.querySelector('#worldwidecaptionbox').value,
+                                posterId: user.user_Id,
+                                id: id,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                sharecount: 0,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                children: children,
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                isAdvert: true,
+                                attribute: 'advert',
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                            shareNotification(id, false, 'posted an advert');
+                            Increase_PhotoCount();
+                        }
+                    }
+                    function push_Multiple_Crime(children) {
+                        const id = '' + new Date().getTime();
+                        if (document.querySelector('#srccrimephoto').src) {
+                            Feeds_Data_Base.push({
+                                type: 'other',
+                                Property_Src: document.querySelector('#srccrimephoto').src,
+                                title: document.querySelector('#worldwidecaptionbox').value,
+                                posterId: user.user_Id,
+                                id: id,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                sharecount: 0,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                children: children,
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                isCrime: true,
+                                attribute: 'crime',
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                            shareNotification(id, false, 'posted a crime');
+                            Increase_PhotoCount();
+                        }
+                    }
+                    //post functions
+                    publicmultipleupload.addEventListener('click', () => {
+                        pushmultiplePhotoFeed(emptyArr);
+                        document.querySelector('.publictitleinput').value = '';
+                        Creation_Mark_Photo(document.querySelector('.publicimagepreview').src, 'creating post...');
+                        emptyArr = [];
+                        document.getElementById('title').value = '';
+                        document.querySelectorAll('.multipleimages').forEach(item => {
+                            item.remove();
+                        });
+                        publicmultipleupload.style.display = 'none';
+                        document.querySelector('.createpublicpostpopup').style.display = 'none';
+                    });
+                    multipostbtn.addEventListener('click', () => {
+                        push_Multiple(emptyArr);
+                        emptyArr = [];
+                        Creation_Mark_Photo(document.getElementById('photophoto').src, 'creating post...');
+                        document.getElementById('title').value = '';
+                        document.querySelectorAll('.multipleimages').forEach(item => {
+                            item.remove();
+                        });
+                        multipostbtn.style.display = 'none';
+                        Sidebarcontent.style.display = 'none';
+                    });
+                    multiplepostworldwidephoto.addEventListener('click',()=> {
+                        push_Multiple_Photo(emptyArr);
+                        Creation_Mark_Photo(document.querySelector('#srcworldwidephoto').src, 'creating post...');
+                        emptyArr = [];
+                        document.getElementById('worldwidecaptionbox').value = '';
+                        document.querySelectorAll('.multipleimages').forEach(item => {
+                            item.remove();
+                        });
+                        multiplepostworldwidephoto.style.display = 'none';
+                        document.querySelector('.uploadphadscrpop').style.display = 'none';
+                    });
+                    multiplepostadvert.addEventListener('click',()=> {
+                        push_Multiple_Advert(emptyArr);
+                        Creation_Mark_Photo(document.querySelector('#srcadvertphoto').src, 'creating post...');
+                        emptyArr = [];
+                        document.getElementById('worldwidecaptionbox').value = '';
+                        document.querySelectorAll('.multipleimages').forEach(item => {
+                            item.remove();
+                        });
+                        multiplepostadvert.style.display = 'none';
+                        document.querySelector('.uploadphadscrpop').style.display = 'none';
+                    });
+                    multiplepostcrime.addEventListener('click',()=> {
+                        push_Multiple_Crime(emptyArr);
+                        Creation_Mark_Photo(document.querySelector('#srccrimephoto').src, 'creating post...');
+                        emptyArr = [];
+                        document.getElementById('worldwidecaptionbox').value = '';
+                        document.querySelectorAll('.multipleimages').forEach(item => {
+                            item.remove();
+                        });
+                        multiplepostcrime.style.display = 'none';
+                        document.querySelector('.uploadphadscrpop').style.display = 'none';
+                    });
+
+
                     publicphotoupload.addEventListener('click', () => {
                         pushPhotoFeed();
                         document.querySelector('.publictitleinput').value = '';
                         Creation_Mark_Photo(document.querySelector('.publicimagepreview').src, 'creating post...');
+                        document.querySelector('.createpublicpostpopup').style.display = 'none';
                     });
                     publicvideoupload.addEventListener('click', () => {
                         pushVideoFeed();
                         document.querySelector('.publictitleinput').value = '';
                         Creation_Mark_Video(document.querySelector('.publicvideopreview').src, 'creating post...');
+                        document.querySelector('.createpublicpostpopup').style.display = 'none';
                     });
                     publictextupload.addEventListener('click', () => {
                         pushTextFeed();
                         Creation_Mark_Text(document.querySelector('.publictextpreview').value, 'creating post...');
                         document.querySelector('.publictitleinput').value = '';
                         document.querySelector('.publictextpreview').value = '';
+                        document.querySelector('.createpublicpostpopup').style.display = 'none';
                     });
                     function push() {
                         const id = '' + new Date().getTime();
@@ -920,78 +1131,84 @@ function active_user_render() {
                     //advert, photos and crime uploading
                     function pushAdvert() {
                         const id = '' + new Date().getTime();
-                        Feeds_Data_Base.push({
-                            type: 'other',
-                            Property_Src: document.querySelector('#srcadvertphoto').src,
-                            title: document.querySelector('#worldwidecaptionbox').value,
-                            posterId: user.user_Id,
-                            id: id,
-                            time: new Date().getTime(),
-                            date: trackingDate,
-                            sharecount: 0,
-                            likes: [],
-                            comments: [],
-                            shares: [],
-                            likeactive: true,
-                            commentactive: true,
-                            shareactive: true,
-                            isAdvert: true,
-                            attribute: 'advert',
-                            filter: 'default',
-                        });
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                        shareNotification(id, false, 'posted an advert');
-                        Increase_PhotoCount();
+                        if (document.querySelector('#srcadvertphoto').src) {
+                            Feeds_Data_Base.push({
+                                type: 'other',
+                                Property_Src: document.querySelector('#srcadvertphoto').src,
+                                title: document.querySelector('#worldwidecaptionbox').value,
+                                posterId: user.user_Id,
+                                id: id,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                sharecount: 0,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                isAdvert: true,
+                                attribute: 'advert',
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                            shareNotification(id, false, 'posted an advert');
+                            Increase_PhotoCount();
+                        }
                     }
                     function pushworldwidephoto() {
                         const id = '' + new Date().getTime();
-                        Feeds_Data_Base.push({
-                            type: 'other',
-                            Property_Src: document.getElementById('srcworldwidephoto').src,
-                            title: document.getElementById('worldwidecaptionbox').value,
-                            posterId: user.user_Id,
-                            id: id,
-                            time: new Date().getTime(),
-                            date: trackingDate,
-                            sharecount: 0,
-                            likes: [],
-                            comments: [],
-                            shares: [],
-                            likeactive: true,
-                            commentactive: true,
-                            shareactive: true,
-                            isPhoto: true,
-                            attribute: 'lavinsta photos',
-                            filter: 'default',
-                        });
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                        shareNotification(id, false, 'posted in lavinsta photos');
-                        Increase_PhotoCount();
+                        if (document.getElementById('srcworldwidephoto').src) {
+                            Feeds_Data_Base.push({
+                                type: 'other',
+                                Property_Src: document.getElementById('srcworldwidephoto').src,
+                                title: document.getElementById('worldwidecaptionbox').value,
+                                posterId: user.user_Id,
+                                id: id,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                sharecount: 0,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                isPhoto: true,
+                                attribute: 'lavinsta photos',
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                            shareNotification(id, false, 'posted in lavinsta photos');
+                            Increase_PhotoCount();
+                        }
                     };
                     function pushCrime() {
                         const id = '' + new Date().getTime();
-                        Feeds_Data_Base.push({
-                            type: 'other',
-                            Property_Src: document.querySelector('#srccrimephoto').src,
-                            title: document.querySelector('#worldwidecaptionbox').value,
-                            posterId: user.user_Id,
-                            id: id,
-                            time: new Date().getTime(),
-                            date: trackingDate,
-                            sharecount: 0,
-                            likes: [],
-                            comments: [],
-                            shares: [],
-                            likeactive: true,
-                            commentactive: true,
-                            shareactive: true,
-                            isCrime: true,
-                            attribute: 'crime',
-                            filter: 'default',
-                        });
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                        shareNotification(id, false, 'posted a crime');
-                        Increase_PhotoCount();
+                        if (document.querySelector('#srccrimephoto').src) {
+                            Feeds_Data_Base.push({
+                                type: 'other',
+                                Property_Src: document.querySelector('#srccrimephoto').src,
+                                title: document.querySelector('#worldwidecaptionbox').value,
+                                posterId: user.user_Id,
+                                id: id,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                sharecount: 0,
+                                likes: [],
+                                comments: [],
+                                shares: [],
+                                likeactive: true,
+                                commentactive: true,
+                                shareactive: true,
+                                isCrime: true,
+                                attribute: 'crime',
+                                filter: 'default',
+                            });
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                            shareNotification(id, false, 'posted a crime');
+                            Increase_PhotoCount();
+                        }
                     }
                     function postAdvert() {
                         pushAdvert();
@@ -1009,37 +1226,13 @@ function active_user_render() {
                         Creation_Mark_Photo(document.getElementById('srccrimephoto').src, 'publishing crime...');
                     }
                     postcrime.addEventListener('click', () => {
-                        if (document.querySelector('#srccrimephoto').src) {
-                            postCrime();
-                            setTimeout(() => {
-                                createOtherPost();
-                                createPhotosGadget();
-                                createAdsGadget();
-                                createOtherGridPost();
-                            }, 3000);
-                        }
+                        postCrime();
                     });
                     postadvert.addEventListener('click', () => {
-                        if (document.querySelector('#srcadvertphoto').src) {
-                            postAdvert();
-                            setTimeout(() => {
-                                createOtherPost();
-                                createPhotosGadget();
-                                createAdsGadget();
-                                createOtherGridPost();
-                            }, 3000);
-                        }
+                        postAdvert();
                     });
                     postworldwidephoto.addEventListener('click', () => {
-                        if (document.getElementById('srcworldwidephoto').src) {
-                            postphoto();
-                            setTimeout(() => {
-                                createOtherPost();
-                                createPhotosGadget();
-                                createAdsGadget();
-                                createOtherGridPost();
-                            }, 3000);
-                        }
+                        postphoto();
                     });
                     function uploadstatus() {
                         function pushphotostories() {

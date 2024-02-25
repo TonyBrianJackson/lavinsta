@@ -8,8 +8,8 @@
     <title>Lavinsta</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="lavinstaphotos/eagle.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -502,7 +502,16 @@
                 <div class="popup_Names_Container"><strong>Create Public Post</strong></div>
             </header>
             <div class="uploadpreviewcontainer">
-                <div class="publicPhoto"><img class="publicimagepreview"></div>
+                <div class="publicPhoto">
+                    <img class="publicimagepreview">
+                    <nav class="masterflexer publicflexer">
+                        <nav class="flexibleElement publicflexelement"></nav>
+                    </nav>
+                    <div class="type_attribute">
+                        <div>select multiple</div>
+                        <label for="multiplepublicinput" id="check_multi" class="check_multi">&check;</label>
+                    </div>
+                </div>
                 <div class="publicVideo"><video class="publicvideopreview"></video></div>
                 <div class="Text_PostTextArea PublicText">
                     <textarea class="publictextpreview" placeholder="type something"></textarea>
@@ -568,6 +577,8 @@
                     </svg>
                     <span>Text</span>
                 </label>
+                <input multiple type="file" class="mutedpublicinput" id="multiplepublicinput"
+                    onchange="multiplepublicfiles(event)" accept="image/*">
                 <input type="file" class="mutedpublicinput" id="publicphotopostinput"
                     onchange="getPublicUploadPhoto(event)" accept="image/*">
                 <input type="file" class="mutedpublicinput" id="publicvideopostinput"
@@ -580,6 +591,7 @@
                 <button class="--create-1 publicphotoupload">upload</button>
                 <button class="--create-2 publicvideoupload">upload</button>
                 <button class="--create-3 publictextupload">upload</button>
+                <button class="--create-4 publicmultipleupload">upload</button>
             </div>
         </nav>
         <div class="publicvideosidebar">
@@ -1554,7 +1566,8 @@
             <div class="universalcolumn">
                 <div class="datasavingtabs">
                     <div class="datasavingflex">
-                        <span class="activate">Turn On</span><span id="activateit" class="datasavingactive active"></span>
+                        <span class="activate">Turn On</span><span id="activateit"
+                            class="datasavingactive active"></span>
                     </div>
                     <hr class="datasavinghr">
                     <p>When data saving is turned on, browser's performance slow down</p>
@@ -1764,7 +1777,16 @@
             <div class="popup_Names_Container"><strong>Create Post</strong></div>
         </header>
         <div class="uploadpreviewcontainer">
-            <div class="smallphoto1"><img id="photophoto"></div>
+            <div class="smallphoto1">
+                <img id="photophoto">
+                <nav class="masterflexer homepageflexer">
+                    <nav class="flexibleElement homepageflexelement"></nav>
+                </nav>
+                <div class="type_attribute">
+                    <div>select multiple</div>
+                    <label for="multiplephotopostinput" id="check_multi" class="check_multi">&check;</label>
+                </div>
+            </div>
             <div class="smallvideo2"><video id="videovideo"></video></div>
             <div class="shortvideo3"><video id="shortvideovideo"></video></div>
             <div class="Text_PostTextArea textarea">
@@ -1815,6 +1837,8 @@
                 </svg>
                 <span>Photo</span>
                 <input type="file" id="photopostinput" onchange="rewindfile(event)" accept="image/*">
+                <input multiple type="file" id="multiplephotopostinput" onchange="multiplefiles(event)"
+                    accept="image/*">
             </label>
             <label id="videol" for="videoinput1" class="sidebarcontent">
                 <svg id="Layer_1" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"
@@ -1849,6 +1873,7 @@
             <button class="--create-2" id="videopostbtn">Post</button>
             <button class="--create-3" id="shortpostbtn">Post</button>
             <button class="--create-4" id="postbtn">Post</button>
+            <button class="--create-5" id="multipostbtn">Post</button>
         </div>
     </div>
     <div class="logoutpopup"><span class="popupclose logoutpopupclose">&LeftArrow;</span>
@@ -1871,9 +1896,36 @@
             <div class="popup_Names_Container"><strong>Create Other Post</strong></div>
         </header>
         <div class="uploadpreviewcontainer">
-            <div class="lavinstaphotopreview"><img id="srcworldwidephoto"></div>
-            <div class="lavinstaadvertpreview"><img id="srcadvertphoto"></div>
-            <div class="lavinstacrimepreview"><img id="srccrimephoto"></div>
+            <div class="lavinstaphotopreview">
+                <img id="srcworldwidephoto">
+                <nav class="masterflexer photoflexer">
+                    <nav class="flexibleElement photoflexelement"></nav>
+                </nav>
+                <div class="type_attribute">
+                    <div>select multiple</div>
+                    <label for="multiple_worldwidephotoinput" id="check_multi" class="check_multi">&check;</label>
+                </div>
+            </div>
+            <div class="lavinstaadvertpreview">
+                <img id="srcadvertphoto">
+                <nav class="masterflexer advertflexer">
+                    <nav class="flexibleElement advertflexelement"></nav>
+                </nav>
+                <div class="type_attribute">
+                    <div>select multiple</div>
+                    <label for="multiple_adverstinput" id="check_multi" class="check_multi">&check;</label>
+                </div>
+            </div>
+            <div class="lavinstacrimepreview">
+                <img id="srccrimephoto">
+                <nav class="masterflexer crimeflexer">
+                    <nav class="flexibleElement crimeflexelement"></nav>
+                </nav>
+                <div class="type_attribute">
+                    <div>select multiple</div>
+                    <label for="multiple_crimepostinput" id="check_multi" class="check_multi">&check;</label>
+                </div>
+            </div>
         </div>
         <div class="clickAndUploadContainer">
             <label class="--uploadlabel worldwidelabel" for="worldwidephotoinput">
@@ -1921,9 +1973,14 @@
                 </svg>
                 <span>choose crime</span>
             </label>
-            <input type="file" id="worldwidephotoinput" onchange="postwordwide(event)">
-            <input type="file" id="adverstinput" onchange="uploadadvert(event)">
-            <input type="file" id="crimepostinput" onchange="uploadcrime(event)">
+            <input type="file" id="worldwidephotoinput" onchange="postwordwide(event)" accept="image/*">
+            <input type="file" id="adverstinput" onchange="uploadadvert(event)" accept="image/*">
+            <input type="file" id="crimepostinput" onchange="uploadcrime(event)" accept="image/*">
+
+            <!-------multiple files------->
+            <input style="display: none;" multiple type="file" id="multiple_worldwidephotoinput" onchange="multiplephotosfiles(event)" accept="image/*">
+            <input style="display: none;" multiple type="file" id="multiple_adverstinput" onchange="multipleadvertsfiles(event)" accept="image/*">
+            <input style="display: none;" multiple type="file" id="multiple_crimepostinput" onchange="multiplecrimesfiles(event)" accept="image/*">
         </div>
         <div class="subactions">
             <div class="caption">
@@ -1932,6 +1989,9 @@
             <button class="--create-1 postworldwidephoto">post</button>
             <button class="--create-2 postadvert">post</button>
             <button class="--create-3 postcrime">post</button>
+            <button class="--create-4 multiplepostworldwidephoto">post</button>
+            <button class="--create-5 multiplepostadvert">post</button>
+            <button class="--create-6 multiplepostcrime">post</button>
         </div>
     </div>
 
@@ -2236,7 +2296,7 @@
                     </g>
                 </svg>
             </label>
-            <input class="profileinput" type="file" id="profileuploader" onchange="readfile(event)">
+            <input class="profileinput" type="file" id="profileuploader" onchange="readfile(event)" accept="image/*">
         </div>
         <div class="coverlargercontainer">
             <div class="newtobeuploadcoverpicture"><img id="uploadingdefaultcoverphoto" src="icons/male-user.png"
@@ -2284,7 +2344,7 @@
                     </g>
                 </svg>
             </label>
-            <input class="profileinput" type="file" id="coverphotouploader" onchange="reload(event)">
+            <input class="profileinput" type="file" id="coverphotouploader" onchange="reload(event)" accept="image/*">
         </div>
         <div class="subactions">
             <div class="caption">
@@ -3817,7 +3877,9 @@
             </header>
         </div>
     </div>
+
     <footer class="taskbar footer_task_bar"></footer>
+
     <!--------<iframe class="time_Iframe" src="time.html" frameborder="10"></iframe>----->
 
     <div class="post_making_upload_popup actualstorypopup">
@@ -3861,6 +3923,7 @@
             <button class="--create-2 videostoryuploader" id="videostoryuploader">upload video</button>
         </div>
     </div>
+
 </body>
 
 </html>

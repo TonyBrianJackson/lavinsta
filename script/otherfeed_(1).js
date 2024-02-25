@@ -197,7 +197,7 @@ function createPhotosGadget() {
                     });
 
                     worldwideImageGadget.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src);
                     });
                     const startTime = function () {
                         let time;
@@ -583,7 +583,7 @@ function createPhotosGadget() {
                     Poster_Details();
 
                     worldwideImageGadget.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src);
                     });
                 } if (photo.isCrime) {
                     let worldwidegadgethead = document.createElement('div');
@@ -872,7 +872,7 @@ function createPhotosGadget() {
                     Poster_Details();
 
                     worldwideImageGadget.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src);
                     });
                 }
             }
@@ -1173,7 +1173,7 @@ function createAdsGadget() {
                     Poster_Details();
 
                     worldwideImageGadget.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src);
                     });
                 } if (photo.isAdvert) {
                     let worldwidegadgethead = document.createElement('div');
@@ -1463,7 +1463,7 @@ function createAdsGadget() {
                     Poster_Details();
 
                     worldwideImageGadget.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src);
                     });
                 } if (photo.isCrime) {
                     let worldwidegadgethead = document.createElement('div');
@@ -1753,7 +1753,7 @@ function createAdsGadget() {
                     Poster_Details();
 
                     worldwideImageGadget.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src);
                     });
                 }
             }

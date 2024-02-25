@@ -214,6 +214,7 @@ body {
 
 ::-webkit-scrollbar {
     width: 0px;
+    height: 0px;
 }
 
 main {
@@ -2537,7 +2538,46 @@ main .header {
     justify-content: center;
     margin: 0px;
 }
-
+.children_Tile_Box {
+    position: absolute;
+    right: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: none;
+    box-shadow: none;
+    border: none;
+    width: 60px;
+    height: 100%;
+    place-content: initial;
+}
+.children_Tile_Box::-webkit-scrollbar {
+    width: 5px;
+}
+.children_Tile_Box > div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    background: var(--color-white);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.children_Tile_Box > div > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: inherit;
+}
 .textPost {
     font-size: 2rem;
     width: 100%;
@@ -4244,7 +4284,7 @@ a {
     width: 245px;
     height: 91vh;
     position: fixed;
-    top: 55px;
+    top: 60px;
     left: -250px;
     border-radius: 10px;
     padding: 10px;
@@ -4351,7 +4391,7 @@ a {
     display: block;
     text-align: left;
     color: var(--color-dark);
-    background: var(--color-very-light);
+    background: var(--color-white);
     box-shadow: var(--giant-box-shadow);
     border-radius: 30px;
     padding: 10px 5px;
@@ -7329,17 +7369,28 @@ a {
     overflow-y: scroll;
     z-index: 2;
 }
-
-.tile span {
-    display: none;
+.another_Tile_Box {
+    width: 100%;
+    height: max-content;
+    border: 3px solid var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+    border-radius: 25px;
+}
+.another_Tile_Box .tile {
+    padding: 5px;
+    background: var(--color-white);
 }
 
 .tile {
-    border-width: 3px;
-    border-color: var(--color-dark);
+    background: var(--color-dark);
+    padding: 5px;
     overflow: hidden;
     width: 50px;
-    ;
     height: 50px;
     border-radius: 50%;
     margin: 5px;
@@ -7368,12 +7419,11 @@ a {
 .tile video {
     border: none;
     background: none;
-    overflow: visible;
+    overflow: hidden;
     object-fit: cover;
     width: 100%;
-    ;
     height: 100%;
-    border-radius: 0px;
+    border-radius: 50%;
 }
 
 .tileText {

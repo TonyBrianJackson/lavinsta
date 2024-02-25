@@ -3,18 +3,22 @@ function getActiveInputs() {
     selectposttype.forEach(button => {
         button.addEventListener('click', () => {
             if (button.classList.contains('label--1')) {
+                publicmultipleupload.style.display = 'none';
                 document.querySelector('.publicPhoto').style.display = 'flex';
                 document.querySelector('.publicphotoupload').style.display = 'block';
             } else {
                 document.querySelector('.publicPhoto').style.display = 'none';
                 document.querySelector('.publicphotoupload').style.display = 'none';
             } if (button.classList.contains('label--2')) {
+                publicmultipleupload.style.display = 'none';
                 document.querySelector('.publicVideo').style.display = 'flex';
                 document.querySelector('.publicvideoupload').style.display = 'block';
             } else {
+                publicmultipleupload.style.display = 'none';
                 document.querySelector('.publicVideo').style.display = 'none';
                 document.querySelector('.publicvideoupload').style.display = 'none';
             } if (button.classList.contains('label--3')) {
+                publicmultipleupload.style.display = 'none';
                 document.querySelector('.PublicText').style.display = 'flex';
                 document.querySelector('.publictextupload').style.display = 'block';
             } else {
@@ -88,7 +92,7 @@ function createPublicFeed() {
                         mainimg.src = photo.Property_Src;
                         mainimg.classList.add('mainimg');
                         mainimg.addEventListener('click', () => {
-                            View_The_Post(photo.id);
+                            createMain_GridPost(photo.id, mainimg.src);
                         });
                         function pushSavedData() {
                             postmenu.classList.toggle('postmenuactive');
@@ -101,6 +105,27 @@ function createPublicFeed() {
                         xyz.addEventListener('click', () => {
                             pushSavedData();
                         });
+                        function create_Multi_Tile() {
+                            let children_Tile_Box = document.createElement('nav');
+                            let children = photo.children;
+                            main.appendChild(children_Tile_Box);
+                            children_Tile_Box.classList.add('children_Tile_Box');
+                            children.forEach(child => {
+                                let tile = document.createElement('div');
+                                let image = document.createElement('img');
+                                children_Tile_Box.appendChild(tile);
+                                tile.appendChild(image);
+                                image.src = child.Property_Src;
+                                tile.id = child.Child_Id;
+                                tile.addEventListener('click', () => {
+                                    loader(main);
+                                    mainimg.src = image.src;
+                                });
+                            });
+                        }
+                        if (photo.children) {
+                            create_Multi_Tile();
+                        }
                         function filter_PostImage() {
                             if (photo.filter == 'default') {
                                 mainimg.classList.add('--color-default');

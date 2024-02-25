@@ -7,36 +7,36 @@ const timelineviddoeskeleton = document.querySelectorAll('.timelineviddoeskeleto
 function requestDisplayNone() {
     let postskelton = document.querySelector('.postskelton');
     let gridpostskeleton = document.querySelectorAll('.gridpostskeleton');
-    postskelton.style.display = 'none';   
-    gridpostskeleton.forEach(skets =>{
+    postskelton.style.display = 'none';
+    gridpostskeleton.forEach(skets => {
         skets.style.display = 'none';
     });
 }
 
 function regularItemDisplay() {
     const postwriterfloatitems = document.querySelectorAll('.postwriterfloatitems');
-    postwriterfloatitems.forEach(item =>{
-        item.addEventListener('click',()=>{
+    postwriterfloatitems.forEach(item => {
+        item.addEventListener('click', () => {
             document.querySelector('.sidebarcontents').style.display = 'flex';
-            if (item.id!='smallphotopost') {
+            if (item.id != 'smallphotopost') {
                 document.querySelector('.smallphoto1').style.display = 'none';
-                Photopostbtn3.style.display = 'none';            
+                Photopostbtn3.style.display = 'none';
             } else {
                 document.querySelector('.smallphoto1').style.display = 'flex';
-                Photopostbtn3.style.display = 'block'; 
-            } if (item.id!='smallvideopost') {
+                Photopostbtn3.style.display = 'block';
+            } if (item.id != 'smallvideopost') {
                 document.querySelector('.smallvideo2').style.display = 'none';
                 videopostbtn3.style.display = 'none';
             } else {
                 document.querySelector('.smallvideo2').style.display = 'flex';
                 videopostbtn3.style.display = 'block';
-            } if (item.id!='smallshortvideopost') {
+            } if (item.id != 'smallshortvideopost') {
                 document.querySelector('.shortvideo3').style.display = 'none';
                 shortpostbtn3.style.display = 'none';
             } else {
                 document.querySelector('.shortvideo3').style.display = 'flex';
                 shortpostbtn3.style.display = 'block';
-            } if (item.id!='smalltextposter') {
+            } if (item.id != 'smalltextposter') {
                 document.querySelector('.textarea').style.display = 'none';
                 postBtn.style.display = 'none';
             } else {
@@ -50,13 +50,13 @@ regularItemDisplay();
 
 function TimeLineTextPostThemes() {
     const textpostactionmenu = document.querySelectorAll('.textpostactionmenu');
-    textpostactionmenu.forEach(button =>{
-        button.addEventListener('click',()=>{
-            if (button.id!='TextthemeMode') {
+    textpostactionmenu.forEach(button => {
+        button.addEventListener('click', () => {
+            if (button.id != 'TextthemeMode') {
                 document.querySelector('.sidebar_Create').style.display = 'none';
             } else {
                 document.querySelector('.sidebar_Create').style.display = 'flex';
-            } if (button.id !='TextThemeFont') {
+            } if (button.id != 'TextThemeFont') {
                 document.querySelector('.sidebar_Theme_Text_Font').style.display = 'none';
             } else {
                 document.querySelector('.sidebar_Theme_Text_Font').style.display = 'flex';
@@ -66,33 +66,33 @@ function TimeLineTextPostThemes() {
     const sidetextthemeitems = document.querySelectorAll('.sidetextthemeitems');
     let sidebar_Mode_Theme_Title = document.querySelector('.sidebar_Mode_Theme_Title');
     function removeactiveclassesHere() {
-        sidetextthemeitems.forEach(item =>{
+        sidetextthemeitems.forEach(item => {
             item.classList.remove('active');
         });
     }
     const sidebarfontname = document.querySelectorAll('.--sidebarfontname');
     let sidebar_Mode_Font_Title = document.querySelector('.sidebar_Mode_Font_Title');
     function removeactiveclassesThere() {
-        sidebarfontname.forEach(item =>{
+        sidebarfontname.forEach(item => {
             item.classList.remove('active');
         })
     }
-    sidebarfontname.forEach(item =>{
-        item.addEventListener('click',()=>{
+    sidebarfontname.forEach(item => {
+        item.addEventListener('click', () => {
             removeactiveclassesThere();
             sidebar_Mode_Font_Title.textContent = item.textContent;
             item.classList.add('active');
         });
     });
-    sidebar_Mode_Theme_Title.addEventListener('click',()=>{
+    sidebar_Mode_Theme_Title.addEventListener('click', () => {
         document.querySelector('.sidebar_Create').style.display = 'none';
     });
-    sidebar_Mode_Font_Title.addEventListener('click',()=>{
+    sidebar_Mode_Font_Title.addEventListener('click', () => {
         document.querySelector('.sidebar_Theme_Text_Font').style.display = 'none';
     });
-    
-    sidetextthemeitems.forEach(item =>{
-        item.addEventListener('click',()=>{
+
+    sidetextthemeitems.forEach(item => {
+        item.addEventListener('click', () => {
             sidebar_Mode_Theme_Title.textContent = item.textContent;
             removeactiveclassesHere();
             item.classList.add('active');
@@ -102,13 +102,13 @@ function TimeLineTextPostThemes() {
 TimeLineTextPostThemes();
 function PublicTextPostThemes() {
     const textpostpublic = document.querySelectorAll('.textpostpublic');
-    textpostpublic.forEach(button =>{
-        button.addEventListener('click',()=>{
-            if (button.id!='TextthemeMode') {
+    textpostpublic.forEach(button => {
+        button.addEventListener('click', () => {
+            if (button.id != 'TextthemeMode') {
                 document.querySelector('.public_Create').style.display = 'none';
             } else {
                 document.querySelector('.public_Create').style.display = 'flex';
-            } if (button.id !='TextThemeFont') {
+            } if (button.id != 'TextThemeFont') {
                 document.querySelector('.Theme_Text_Font').style.display = 'none';
             } else {
                 document.querySelector('.Theme_Text_Font').style.display = 'flex';
@@ -118,33 +118,33 @@ function PublicTextPostThemes() {
     const publictextthemeitems = document.querySelectorAll('.publictextthemeitems');
     let public_Mode_Theme_Title = document.querySelector('.public_Mode_Theme_Title');
     function removeactiveclassesHere() {
-        publictextthemeitems.forEach(item =>{
+        publictextthemeitems.forEach(item => {
             item.classList.remove('active');
         });
     }
     const publicfontname = document.querySelectorAll('.--publicfontname');
     let public_Mode_Font_Title = document.querySelector('.public_Mode_Font_Title');
     function removeactiveclassesThere() {
-        publicfontname.forEach(item =>{
+        publicfontname.forEach(item => {
             item.classList.remove('active');
         })
     }
-    publicfontname.forEach(item =>{
-        item.addEventListener('click',()=>{
+    publicfontname.forEach(item => {
+        item.addEventListener('click', () => {
             removeactiveclassesThere();
             public_Mode_Font_Title.textContent = item.textContent;
             item.classList.add('active');
         });
     });
-    public_Mode_Theme_Title.addEventListener('click',()=>{
+    public_Mode_Theme_Title.addEventListener('click', () => {
         document.querySelector('.public_Create').style.display = 'none';
     });
-    public_Mode_Font_Title.addEventListener('click',()=>{
+    public_Mode_Font_Title.addEventListener('click', () => {
         document.querySelector('.Theme_Text_Font').style.display = 'none';
     });
-    
-    publictextthemeitems.forEach(item =>{
-        item.addEventListener('click',()=>{
+
+    publictextthemeitems.forEach(item => {
+        item.addEventListener('click', () => {
             public_Mode_Theme_Title.textContent = item.textContent;
             removeactiveclassesHere();
             item.classList.add('active');
@@ -159,7 +159,7 @@ const reelpagevideo = document.querySelector('#reelpagevideo');
 function accessFile() {
     const reader = new FileReader();
     reader.readAsDataURL(reelpageshortuploader.files[0]);
-    reader.onload = function() {
+    reader.onload = function () {
         document.querySelector('#reelpagevideo').src = reader.result;
     }
 }
@@ -167,7 +167,7 @@ function accessFile() {
 function CommunityProfileImage() {
     const reader = new FileReader();
     reader.readAsDataURL(document.querySelector('#com_profile').files[0]);
-    reader.onload = function() {
+    reader.onload = function () {
         document.querySelector('#com_profilesrc').src = reader.result;
     }
 }
@@ -268,6 +268,152 @@ function rewindfile() {
         document.getElementById('photophoto').src = preader.result;
     }
 };
+let emptyArr = [];
+function multiplefiles() {
+    emptyArr = [];
+    const choice = document.querySelector('#multiplephotopostinput');    
+    for (let i = 0; i < choice.files.length; i++) {
+        let ImageContainer = document.createElement('div');
+        let image = document.createElement('img');
+        const reader = new FileReader();
+        reader.readAsDataURL(choice.files[i]);
+        reader.onload = () => {
+            Photopostbtn3.style.display = 'none';
+            multipostbtn.style.display = 'block';
+            document.querySelector('.homepageflexer').style.display = 'flex';
+            document.querySelector('.homepageflexelement').appendChild(ImageContainer);
+            ImageContainer.appendChild(image);
+            ImageContainer.length = emptyArr.length;
+            image.length = emptyArr.length;
+            ImageContainer.classList.add('multipleimages');
+            image.src = reader.result;
+            emptyArr.push({
+                Property_Src: image.src,
+                Child_Id: new Date().getTime()
+            });
+            document.getElementById('photophoto').src = reader.result;
+            ImageContainer.addEventListener('click', () => {
+                document.getElementById('photophoto').src = image.src;
+            });
+        }
+    }
+}
+function multiplepublicfiles() {
+    emptyArr = [];
+    const choice = document.querySelector('#multiplepublicinput');    
+    for (let i = 0; i < choice.files.length; i++) {
+        let ImageContainer = document.createElement('div');
+        let image = document.createElement('img');
+        const reader = new FileReader();
+        reader.readAsDataURL(choice.files[i]);
+        reader.onload = () => {
+            publicphotoupload.style.display = 'none';
+            publicmultipleupload.style.display = 'block';
+            document.querySelector('.publicflexer').style.display = 'flex';
+            document.querySelector('.publicflexelement').appendChild(ImageContainer);
+            ImageContainer.appendChild(image);
+            ImageContainer.length = emptyArr.length;
+            image.length = emptyArr.length;
+            ImageContainer.classList.add('multipleimages');
+            image.src = reader.result;
+            emptyArr.push({
+                Property_Src: image.src,
+                Child_Id: new Date().getTime()
+            });
+            document.querySelector('.publicimagepreview').src = reader.result;
+            ImageContainer.addEventListener('click', () => {
+                document.querySelector('.publicimagepreview').src = image.src;
+            });
+        }
+    }
+}
+function multiplephotosfiles() {
+    emptyArr = [];
+    const choice = document.querySelector('#multiple_worldwidephotoinput');    
+    for (let i = 0; i < choice.files.length; i++) {
+        let ImageContainer = document.createElement('div');
+        let image = document.createElement('img');
+        const reader = new FileReader();
+        reader.readAsDataURL(choice.files[i]);
+        reader.onload = () => {
+            postworldwidephoto.style.display = 'none';
+            multiplepostworldwidephoto.style.display = 'block';
+            document.querySelector('.photoflexer').style.display = 'flex';
+            document.querySelector('.photoflexelement').appendChild(ImageContainer);
+            ImageContainer.appendChild(image);
+            ImageContainer.length = emptyArr.length;
+            image.length = emptyArr.length;
+            ImageContainer.classList.add('multipleimages');
+            image.src = reader.result;
+            emptyArr.push({
+                Property_Src: image.src,
+                Child_Id: new Date().getTime()
+            });
+            document.querySelector('#srcworldwidephoto').src = reader.result;
+            ImageContainer.addEventListener('click', () => {
+                document.querySelector('#srcworldwidephoto').src = image.src;
+            });
+        }
+    }
+}
+function multipleadvertsfiles() {
+    emptyArr = [];
+    const choice = document.querySelector('#multiple_adverstinput');    
+    for (let i = 0; i < choice.files.length; i++) {
+        let ImageContainer = document.createElement('div');
+        let image = document.createElement('img');
+        const reader = new FileReader();
+        reader.readAsDataURL(choice.files[i]);
+        reader.onload = () => {
+            postadvert.style.display = 'none';
+            multiplepostadvert.style.display = 'block';
+            document.querySelector('.advertflexer').style.display = 'flex';
+            document.querySelector('.advertflexelement').appendChild(ImageContainer);
+            ImageContainer.appendChild(image);
+            ImageContainer.length = emptyArr.length;
+            image.length = emptyArr.length;
+            ImageContainer.classList.add('multipleimages');
+            image.src = reader.result;
+            emptyArr.push({
+                Property_Src: image.src,
+                Child_Id: new Date().getTime()
+            });
+            document.querySelector('#srcadvertphoto').src = reader.result;
+            ImageContainer.addEventListener('click', () => {
+                document.querySelector('#srcadvertphoto').src = image.src;
+            });
+        }
+    }
+}
+function multiplecrimesfiles() {
+    emptyArr = [];
+    const choice = document.querySelector('#multiple_crimepostinput');    
+    for (let i = 0; i < choice.files.length; i++) {
+        let ImageContainer = document.createElement('div');
+        let image = document.createElement('img');
+        const reader = new FileReader();
+        reader.readAsDataURL(choice.files[i]);
+        reader.onload = () => {
+            postcrime.style.display = 'none';
+            multiplepostcrime.style.display = 'block';
+            document.querySelector('.crimeflexer').style.display = 'flex';
+            document.querySelector('.crimeflexelement').appendChild(ImageContainer);
+            ImageContainer.appendChild(image);
+            ImageContainer.length = emptyArr.length;
+            image.length = emptyArr.length;
+            ImageContainer.classList.add('multipleimages');
+            image.src = reader.result;
+            emptyArr.push({
+                Property_Src: image.src,
+                Child_Id: new Date().getTime()
+            });
+            document.querySelector('#srccrimephoto').src = reader.result;
+            ImageContainer.addEventListener('click', () => {
+                document.querySelector('#srccrimephoto').src = image.src;
+            });
+        }
+    }
+}
 
 //VIDEO FUNCTION
 function reloadfile() {

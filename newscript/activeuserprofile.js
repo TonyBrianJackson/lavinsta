@@ -60,6 +60,7 @@ function fetchUrl() {
     }
     pushData();
     function getData() {
+        const newURL = 'https://github.com/TonyBrianJackson/lavinsta/blob/main/database/users.json'
         fetch(url).then(res => res.json()).then(data => console.log(data));
     }
     getData();

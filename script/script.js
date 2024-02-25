@@ -61,33 +61,8 @@ function All_Search_On_Home() {
                                     searchListColumn.innerHTML += Html;
                                     document.querySelectorAll('.search_result').forEach(result => {
                                         result.addEventListener('click', () => {
-                                            function view_Post() {
-                                                let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                                itemsviewonlargescale.forEach(largecontainer => {
-                                                    if (largecontainer.id === result.id) {
-                                                        let gridpostloader = document.createElement('section');
-                                                        let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                        let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                        largecontainer.appendChild(gridpostloader);
-                                                        gridpostloader.appendChild(mainloadersvg);
-                                                        mainloadersvg.appendChild(mainloadercircle);
-                                                        mainloadercircle.setAttribute('cy', '30');
-                                                        mainloadercircle.setAttribute('cx', '30');
-                                                        mainloadercircle.setAttribute('r', '30');
-                                                        gridpostloader.classList.add('gridpostloader');
-                                                        gridpostloader.id = result.id;
-                                                        document.body.appendChild(largecontainer);
-                                                        largecontainer.style.display = 'flex';
-                                                        setTimeout(() => {
-                                                            gridpostloader.remove();
-                                                        }, 2000);
-                                                    } else {
-                                                        largecontainer.style.display = 'none';
-                                                    }
-                                                });
-                                            }
-                                            view_Post();
-                                        })
+                                            createMain_GridPost(result.id, result.Property_Src);
+                                        });
                                     });
                                 }
                             }
@@ -118,33 +93,8 @@ function All_Search_On_Home() {
                                     searchListColumn.innerHTML += Html;
                                     document.querySelectorAll('.search_result').forEach(result => {
                                         result.addEventListener('click', () => {
-                                            function view_Post() {
-                                                let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                                itemsviewonlargescale.forEach(largecontainer => {
-                                                    if (largecontainer.id === result.id) {
-                                                        let gridpostloader = document.createElement('section');
-                                                        let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                        let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                        largecontainer.appendChild(gridpostloader);
-                                                        gridpostloader.appendChild(mainloadersvg);
-                                                        mainloadersvg.appendChild(mainloadercircle);
-                                                        mainloadercircle.setAttribute('cy', '30');
-                                                        mainloadercircle.setAttribute('cx', '30');
-                                                        mainloadercircle.setAttribute('r', '30');
-                                                        gridpostloader.classList.add('gridpostloader');
-                                                        gridpostloader.id = result.id;
-                                                        document.body.appendChild(largecontainer);
-                                                        largecontainer.style.display = 'flex';
-                                                        setTimeout(() => {
-                                                            gridpostloader.remove();
-                                                        }, 2000);
-                                                    } else {
-                                                        largecontainer.style.display = 'none';
-                                                    }
-                                                });
-                                            }
-                                            view_Post();
-                                        })
+                                            createMain_GridPost(result.id, result.Property_Src);
+                                        });
                                     });
                                 }
                             }
@@ -175,33 +125,8 @@ function All_Search_On_Home() {
                                     searchListColumn.innerHTML += Html;
                                     document.querySelectorAll('.search_result').forEach(result => {
                                         result.addEventListener('click', () => {
-                                            function view_Post() {
-                                                let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                                itemsviewonlargescale.forEach(largecontainer => {
-                                                    if (largecontainer.id === result.id) {
-                                                        let gridpostloader = document.createElement('section');
-                                                        let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                        let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                        largecontainer.appendChild(gridpostloader);
-                                                        gridpostloader.appendChild(mainloadersvg);
-                                                        mainloadersvg.appendChild(mainloadercircle);
-                                                        mainloadercircle.setAttribute('cy', '30');
-                                                        mainloadercircle.setAttribute('cx', '30');
-                                                        mainloadercircle.setAttribute('r', '30');
-                                                        gridpostloader.classList.add('gridpostloader');
-                                                        gridpostloader.id = result.id;
-                                                        document.body.appendChild(largecontainer);
-                                                        largecontainer.style.display = 'flex';
-                                                        setTimeout(() => {
-                                                            gridpostloader.remove();
-                                                        }, 2000);
-                                                    } else {
-                                                        largecontainer.style.display = 'none';
-                                                    }
-                                                });
-                                            }
-                                            view_Post();
-                                        })
+                                            createMain_GridPost(result.id, result.Property_Src);
+                                        });
                                     });
                                 }
                             }
@@ -231,33 +156,8 @@ function All_Search_On_Home() {
                                 searchListColumn.innerHTML += Html;
                                 document.querySelectorAll('.search_result').forEach(result => {
                                     result.addEventListener('click', () => {
-                                        function view_Post() {
-                                            let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                            itemsviewonlargescale.forEach(largecontainer => {
-                                                if (largecontainer.id === result.id) {
-                                                    let gridpostloader = document.createElement('section');
-                                                    let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                    largecontainer.appendChild(gridpostloader);
-                                                    gridpostloader.appendChild(mainloadersvg);
-                                                    mainloadersvg.appendChild(mainloadercircle);
-                                                    mainloadercircle.setAttribute('cy', '30');
-                                                    mainloadercircle.setAttribute('cx', '30');
-                                                    mainloadercircle.setAttribute('r', '30');
-                                                    gridpostloader.classList.add('gridpostloader');
-                                                    gridpostloader.id = result.id;
-                                                    document.body.appendChild(largecontainer);
-                                                    largecontainer.style.display = 'flex';
-                                                    setTimeout(() => {
-                                                        gridpostloader.remove();
-                                                    }, 2000);
-                                                } else {
-                                                    largecontainer.style.display = 'none';
-                                                }
-                                            });
-                                        }
-                                        view_Post();
-                                    })
+                                        createMain_GridPost(result.id, result.Property_Src);
+                                    });
                                 });
                             }
                         }
@@ -286,7 +186,7 @@ function All_Search_On_Home() {
                         searchListColumn.innerHTML += Html;
                     }
                     document.querySelectorAll('.search_result').forEach(result => {
-                        result.addEventListener('click',()=> {
+                        result.addEventListener('click', () => {
                             let usersprofile = document.querySelectorAll('.profile_Cliant');
                             usersprofile.forEach(profile => {
                                 if (result.id === profile.id) {
@@ -370,7 +270,7 @@ function All_Search_On_Home() {
     main_Search_Bar_Home_search_Bar.addEventListener('input', OnVideo1);
     Home_Home_Search_Bar_main_Home_Search_Bar.addEventListener('input', OnPhoto);
     main_Search_Bar_Home_search_Bar.addEventListener('input', OnPhoto1);
-    
+
     function pushsuggesion() {
         const id = '' + new Date().getTime();
         if (Array.isArray(ActiveAccount)) {
@@ -509,7 +409,7 @@ All_Search_On_Home();
 function All_Search_On_Video() {
     const Videos_Search_Bar_In_Search_Box = document.querySelector('.Videos_Search_Bar_In_Search-Box');
     const randomvideosearch = document.querySelector('#randomvideosearch');
-    
+
     function advancesearch_Method() {
         if (document.querySelector('#homesearch').classList.contains('active')) {
             const Videos_Search_Bar_In_Search_Box = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar').value.toLowerCase();
@@ -542,7 +442,7 @@ function All_Search_On_Video() {
                                         });
                                     });
                                     document.querySelectorAll('.videoseachresultname').forEach(result => {
-                                        result.addEventListener('click',()=> {
+                                        result.addEventListener('click', () => {
                                             let usersprofile = document.querySelectorAll('.profile_Cliant');
                                             usersprofile.forEach(profile => {
                                                 if (result.id === profile.id) {
@@ -894,22 +794,31 @@ reeLabel.addEventListener('click', () => {
 function activatebuttons() {
     let uploadlabel = document.querySelectorAll('.--uploadlabel');
     uploadlabel.forEach(label => {
-        label.addEventListener('click',() => {
+        label.addEventListener('click', () => {
             if (label.classList.contains('worldwidelabel')) {
                 postworldwidephoto.style.display = 'block';
-                document.querySelector('.lavinstaphotopreview').style.display = 'block';
+                multiplepostworldwidephoto.style.display = 'none';
+                multiplepostadvert.style.display = 'none';
+                multiplepostcrime.style.display = 'none';
+                document.querySelector('.lavinstaphotopreview').style.display = 'flex';
             } else {
                 postworldwidephoto.style.display = 'none';
                 document.querySelector('.lavinstaphotopreview').style.display = 'none';
             } if (label.classList.contains('advertlabel')) {
                 postadvert.style.display = 'block';
-                document.querySelector('.lavinstaadvertpreview').style.display = 'block';
+                multiplepostworldwidephoto.style.display = 'none';
+                multiplepostadvert.style.display = 'none';
+                multiplepostcrime.style.display = 'none';
+                document.querySelector('.lavinstaadvertpreview').style.display = 'flex';
             } else {
                 postadvert.style.display = 'none';
                 document.querySelector('.lavinstaadvertpreview').style.display = 'none';
             } if (label.classList.contains('crimelabel')) {
                 postcrime.style.display = 'block';
-                document.querySelector('.lavinstacrimepreview').style.display = 'block';
+                multiplepostworldwidephoto.style.display = 'none';
+                multiplepostadvert.style.display = 'none';
+                multiplepostcrime.style.display = 'none';
+                document.querySelector('.lavinstacrimepreview').style.display = 'flex';
             } else {
                 postcrime.style.display = 'none';
                 document.querySelector('.lavinstacrimepreview').style.display = 'none';
@@ -961,7 +870,7 @@ confirmationfalse.addEventListener('click', () => {
 confirmationtrue.addEventListener('click', () => {
     confirmation_popup.style.display = 'none';
     location.href = 'login.html';
-    localStorage.setItem('ActiveUser_Account',JSON.stringify(ActiveUser_Account));
+    localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));
 })
 enterlogoutpagebtn.addEventListener('click', () => {
     confirmation_popup.style.display = 'flex';

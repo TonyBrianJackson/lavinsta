@@ -418,13 +418,13 @@
 .lavinstacrime_Img_Container {
     border-color: rgba(0, 0, 255, 0.13);
     width: 100%;
-    height: 100%;
+    height: 95%;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 15px;
-    place-items: center;
-    justify-content: center;
+    place-items: initial;
+    justify-content: initial;
     box-shadow: none;
     background: none;
     border: none;

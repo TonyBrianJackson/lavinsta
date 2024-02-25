@@ -146,6 +146,7 @@
     display: none;
 }
 
+
 .clickAndUploadContainer>div svg,
 .clickAndUploadContainer label svg,
 .clickAndUploadContainer label img {
@@ -155,8 +156,8 @@
     box-shadow: none;
     background: none;
     overflow: visible;
-    margin: 10px;
     display: block;
+    margin: 5px;
 }
 
 .clickAndUploadContainer>div svg path,
@@ -582,6 +583,18 @@ button {
     display: none;
 }
 
+.--create-5,
+.subactions>button:nth-child(5) {
+    display: none;
+    background: #FF33FF;
+}
+
+.--create-6,
+.subactions>button:nth-child(6) {
+    display: none;
+    background: #FFFF66;
+}
+
 .uploadpreviewcontainer>div {
     width: 100%;
     height: 100%;
@@ -592,9 +605,12 @@ button {
     background: var(--color-white);
     border: none;
     display: flex;
+    flex-direction: column;
     outline: none;
     padding: 10px;
+    position: relative;
 }
+
 .Text_PostTextArea.PublicText,
 .Text_PostTextArea.textarea {
     display: none;
@@ -613,6 +629,100 @@ button {
     font-weight: 900;
     color: var(--color-dark);
     background: none;
+}
+
+.uploadpreviewcontainer>div .type_attribute {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    border: none;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
+    gap: 5px;
+    position: relative;
+}
+
+.uploadpreviewcontainer>div>nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: initial;
+    background: none;
+    height: 100%;
+    width: max-content;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: none;
+    box-shadow: none;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.uploadpreviewcontainer>div>nav>nav {
+    width: 50px;
+    height: max-content;
+    border-style: none;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    background: none;
+    box-shadow: none;
+    overflow: scroll;
+    gap: 5px 0px;
+}
+
+.type_attribute>div,
+.type_attribute>label {
+    border: none;
+    background: none;
+    box-shadow: none;
+    display: block;
+    text-align: center;
+}
+
+.type_attribute>label {
+    z-index: 3;
+}
+
+.check_multi {
+    font-weight: 900;
+    font-size: 19px;
+    color: var(--color-dark);
+    padding: 4px 7px;
+    cursor: pointer;
+}
+
+.type_attribute>div:nth-child(3) {
+    display: none;
+}
+
+.multipleimages {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-dark);
+    background: none;
+    box-shadow: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.multipleimages>img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    object-fit: cover;
+    background: none;
+    box-shadow: none;
+    border-radius: 50%;
 }
 
 .uploadpreviewcontainer>div:nth-child(2),
@@ -672,10 +782,12 @@ button {
         border: 3px solid var(--color-dark);
         border-radius: 10px;
     }
+
     .textthemepopup nav,
     .textFont nav {
         box-shadow: none;
     }
+
     .post_making_upload_popup {
         width: 90vw;
         height: max-content;
@@ -765,23 +877,13 @@ button {
         border: 3px solid var(--color-dark);
         background: var(--color-white);
     }
+
     .Text_PostTextArea.PublicText,
     .Text_PostTextArea.textarea {
         border: 3px solid var(--color-dark);
     }
-    .uploadphadscrpop .uploadpreviewcontainer > div,
-    .uploadpreviewcontainer>div:nth-child(1) {
-        border-radius: 50%;
-        width: 130px;
-        height: 130px;
-        box-shadow: none;
-        border: 3px solid var(--color-dark);
-        background: var(--color-white);
 
-    }
-    .uploadpreviewcontainer>div> img {
-        border-radius: 50%;
-    }
+
     .subactions>button,
     .subactions>button:nth-child(1) {
         width: 100%;
@@ -795,6 +897,7 @@ button {
         padding: 16px 15px;
         font-size: 4.8vw;
     }
+
     .subactions>button:nth-child(1),
     .--create-1 {
         display: block;
@@ -806,15 +909,29 @@ button {
         background: var(--color-dark);
         display: none;
     }
+
     .subactions>button:nth-child(3),
     .--create-3 {
         background: var(--color-dark);
         display: none;
     }
+
     .subactions>button:nth-child(4),
     .--create-4 {
         background: var(--color-dark);
         display: none;
+    }
+
+    .--create-5,
+    .subactions>button:nth-child(5) {
+        display: none;
+        background: var(--color-dark);
+    }
+
+    .--create-6,
+    .subactions>button:nth-child(6) {
+        display: none;
+        background: var(--color-dark);
     }
 
     .gridpost_Radius {

@@ -241,8 +241,30 @@ function createOtherPost() {
                     column.appendChild(adgrid);
                     adgrid.appendChild(head);
                     adgrid.appendChild(adgridimagecontainer);
-                    adgrid.appendChild(advertactionbar);
                     adgridimagecontainer.appendChild(adImg);
+                    adgridimagecontainer.appendChild(advertactionbar);
+
+                    function create_Multi_Tile() {
+                        let children_Tile_Box = document.createElement('nav');
+                        let children = photo.children;
+                        adgridimagecontainer.appendChild(children_Tile_Box);
+                        children_Tile_Box.classList.add('children_Tile_Box');
+                        children.forEach(child => {
+                            let tile = document.createElement('div');
+                            let image = document.createElement('img');
+                            children_Tile_Box.appendChild(tile);
+                            tile.appendChild(image);
+                            image.src = child.Property_Src;
+                            tile.id = child.Child_Id;
+                            tile.addEventListener('click', () => {
+                                loader(adgridimagecontainer);
+                                adImg.src = image.src;
+                            });
+                        });
+                    }
+                    if (photo.children) {
+                        create_Multi_Tile();
+                    }
 
                     advertactionbar.classList.add('advertactionbar');
                     head.classList.add('head');
@@ -404,32 +426,8 @@ function createOtherPost() {
                         }
                     }
 
-                    function View_The_Post() {
-                        document.querySelectorAll('.itemsviewonlargescale').forEach(container => {
-                            if (container.id === photo.id) {
-                                document.body.appendChild(container);
-                                function Loader() {
-                                    let gridpostloader = document.createElement('section');
-                                    let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                    container.appendChild(gridpostloader);
-                                    gridpostloader.appendChild(mainloadersvg);
-                                    mainloadersvg.appendChild(mainloadercircle);
-                                    mainloadercircle.setAttribute('cy', '30');
-                                    mainloadercircle.setAttribute('cx', '30');
-                                    mainloadercircle.setAttribute('r', '30');
-                                    gridpostloader.classList.add('gridpostloader');
-                                    container.style.display = 'flex';
-                                    setTimeout(() => {
-                                        gridpostloader.remove();
-                                    }, 2000);
-                                }
-                                Loader();
-                            }
-                        });
-                    }
                     adImg.addEventListener('click', () => {
-                        View_The_Post();
+                        createMain_GridPost(photo.id, adImg.src);
                     });
 
                     function showOnAndOffActivitiesOnGridPost() {
@@ -683,11 +681,34 @@ function createOtherPost() {
                     posttitle.textContent = photo.title;
                     livelikecount.textContent = photo.likes.length;
                     livecommentcount.textContent = photo.comments.length;
+
                     column.appendChild(adgrid);
                     adgrid.appendChild(head);
                     adgrid.appendChild(adgridimagecontainer);
-                    adgrid.appendChild(advertactionbar);
                     adgridimagecontainer.appendChild(adImg);
+                    adgridimagecontainer.appendChild(advertactionbar);
+
+                    function create_Multi_Tile() {
+                        let children_Tile_Box = document.createElement('nav');
+                        let children = photo.children;
+                        adgridimagecontainer.appendChild(children_Tile_Box);
+                        children_Tile_Box.classList.add('children_Tile_Box');
+                        children.forEach(child => {
+                            let tile = document.createElement('div');
+                            let image = document.createElement('img');
+                            children_Tile_Box.appendChild(tile);
+                            tile.appendChild(image);
+                            image.src = child.Property_Src;
+                            tile.id = child.Child_Id;
+                            tile.addEventListener('click', () => {
+                                loader(adgridimagecontainer);
+                                adImg.src = image.src;
+                            });
+                        });
+                    }
+                    if (photo.children) {
+                        create_Multi_Tile();
+                    }
                     livelikecount.classList.add('livelikecount');
                     livecommentcount.classList.add('livecommentcount');
                     advertactionbar.classList.add('advertactionbar');
@@ -848,32 +869,8 @@ function createOtherPost() {
                         }
                     }
 
-                    function View_The_Post() {
-                        document.querySelectorAll('.itemsviewonlargescale').forEach(container => {
-                            if (container.id === photo.id) {
-                                document.body.appendChild(container);
-                                function Loader() {
-                                    let gridpostloader = document.createElement('section');
-                                    let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                    container.appendChild(gridpostloader);
-                                    gridpostloader.appendChild(mainloadersvg);
-                                    mainloadersvg.appendChild(mainloadercircle);
-                                    mainloadercircle.setAttribute('cy', '30');
-                                    mainloadercircle.setAttribute('cx', '30');
-                                    mainloadercircle.setAttribute('r', '30');
-                                    gridpostloader.classList.add('gridpostloader');
-                                    container.style.display = 'flex';
-                                    setTimeout(() => {
-                                        gridpostloader.remove();
-                                    }, 2000);
-                                }
-                                Loader();
-                            }
-                        });
-                    }
                     adImg.addEventListener('click', () => {
-                        View_The_Post();
+                        createMain_GridPost(photo.id, adImg.src);
                     });
 
                     function showOnAndOffActivitiesOnGridPost() {
@@ -1125,11 +1122,34 @@ function createOtherPost() {
                         filter_PostImage();
                     }
                     Poster_Details();
+
                     column.appendChild(adgrid);
                     adgrid.appendChild(head);
                     adgrid.appendChild(adgridimagecontainer);
-                    adgrid.appendChild(advertactionbar);
                     adgridimagecontainer.appendChild(adImg);
+                    adgridimagecontainer.appendChild(advertactionbar);
+
+                    function create_Multi_Tile() {
+                        let children_Tile_Box = document.createElement('nav');
+                        let children = photo.children;
+                        adgridimagecontainer.appendChild(children_Tile_Box);
+                        children_Tile_Box.classList.add('children_Tile_Box');
+                        children.forEach(child => {
+                            let tile = document.createElement('div');
+                            let image = document.createElement('img');
+                            children_Tile_Box.appendChild(tile);
+                            tile.appendChild(image);
+                            image.src = child.Property_Src;
+                            tile.id = child.Child_Id;
+                            tile.addEventListener('click', () => {
+                                loader(adgridimagecontainer);
+                                adImg.src = image.src;
+                            });
+                        });
+                    }
+                    if (photo.children) {
+                        create_Multi_Tile();
+                    }
                     livelikecount.classList.add('livelikecount');
                     livecommentcount.classList.add('livecommentcount');
                     advertactionbar.classList.add('advertactionbar');
@@ -1291,32 +1311,8 @@ function createOtherPost() {
                         }
                     }
 
-                    function View_The_Post() {
-                        document.querySelectorAll('.itemsviewonlargescale').forEach(container => {
-                            if (container.id === photo.id) {
-                                document.body.appendChild(container);
-                                function Loader() {
-                                    let gridpostloader = document.createElement('section');
-                                    let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                    container.appendChild(gridpostloader);
-                                    gridpostloader.appendChild(mainloadersvg);
-                                    mainloadersvg.appendChild(mainloadercircle);
-                                    mainloadercircle.setAttribute('cy', '30');
-                                    mainloadercircle.setAttribute('cx', '30');
-                                    mainloadercircle.setAttribute('r', '30');
-                                    gridpostloader.classList.add('gridpostloader');
-                                    container.style.display = 'flex';
-                                    setTimeout(() => {
-                                        gridpostloader.remove();
-                                    }, 2000);
-                                }
-                                Loader();
-                            }
-                        });
-                    }
                     adImg.addEventListener('click', () => {
-                        View_The_Post();
+                        createMain_GridPost(photo.id, adImg.src);
                     });
 
                     function showOnAndOffActivitiesOnGridPost() {

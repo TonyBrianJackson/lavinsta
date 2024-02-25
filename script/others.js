@@ -39,10 +39,13 @@ function Creation_Mark_Photo(mark_Image, mark_Text) {
         setTimeout(() => {
             updatingmessage.remove();
         }, 2000);
+        createOtherPost();
+        createPhotosGadget();
         createPublicFeed();
-        createPublicGridPost();
         createPhotoPostOnTimeLine();
         createGridPost();
+        createPublicGridPost();
+        createOtherGridPost();
     }, 3000);
 }
 function Creation_Mark_Video(mark_Image, mark_Text) {

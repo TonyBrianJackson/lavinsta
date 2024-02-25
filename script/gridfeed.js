@@ -146,7 +146,7 @@ function createGridPost() {
                     gridpostImgCover.classList.add('gridpostImgCover');
                     gridpost.classList.add('gridpost');
                     gridpost.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src);
                     });
                 }
             }
@@ -303,7 +303,7 @@ function createPublicGridPost() {
                     gridpostImgCover.classList.add('gridpostImgCover');
                     gridpost.classList.add('gridpost');
                     gridpost.addEventListener('click', () => {
-                        View_The_Post(photo.id);
+                        createMain_GridPost(photo.id);
                     });
                 }
             }
@@ -363,7 +363,7 @@ function createOtherGridPost() {
                         gridpostImgCover.classList.add('gridpostImgCover');
                         gridpost.classList.add('gridpost');
                         gridpost.addEventListener('click', () => {
-                            View_The_Post(photo.id);
+                            createMain_GridPost(photo.id);
                         });
                     }
                 }

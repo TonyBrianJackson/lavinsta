@@ -281,18 +281,18 @@
     display: flex;
     border: none;
     padding: 10px;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     background: var(--color-white);
     cursor: pointer;
     transition: all ease-in-out 300ms;
-    position: relative;
+    border-radius: 25px;
 }
 
 .adgridimagecontainer {
     width: 100%;
-    height: 390px;
+    height: 200px;
     border: none;
     box-shadow: none;
     background: none;
@@ -300,46 +300,55 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: inherit;
+    position: relative;
+    overflow: hidden;
 }
 
 .advertactionbar {
     position: absolute;
     right: 10px;
-    bottom: 20px;
+    bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: none;
     height: max-content;
-    width: 80px;
+    width: 50px;
     border-radius: 0px;
     box-shadow: none;
     background: none;
 }
 
 .advertactionbar>div {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 3px solid var(--color-dark);
     background: none;
     box-shadow: none;
     border-radius: 50%;
 }
 
 .advertactionbar>div>img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     display: block;
     border: none;
     overflow: visible;
     background: none;
     border-radius: 0px;
     box-shadow: none;
+}
+
+.advertactionbar .like_count_active,
+.advertactionbar .like_count,
+.advertactionbar .counts {
+    width: 100%;
 }
 
 .adgridimagecontainer img {
@@ -351,7 +360,20 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: inherit;
+}
+
+.adgridimagecontainer .children_Tile_Box {
+    width: 50px;
+    height: 90%;
+    left: 10px;
+    right: initial;
+    gap: 5px;
+}
+
+.adgridimagecontainer .children_Tile_Box>div {
+    width: 40px;
+    height: 40px;
 }
 
 .griditems p {
@@ -366,8 +388,15 @@
 .adgrid:hover,
 .griditems:hover {
     transition: all ease-in-out 300ms;
-    border-radius: 10px;
+}
+
+.adgridimagecontainer:hover>img {
+    transform: scale(1.2);
     opacity: .9;
+}
+
+.adgrid .head .posttitle {
+    -webkit-line-clamp: 2;
 }
 
 .griditems img,
@@ -2950,9 +2979,11 @@
         height: 3rem;
         border: 1px solid var(--color-gray);
     }
-    .commentnameandimg > div {
+
+    .commentnameandimg>div {
         border: 1px solid var(--color-gray);
     }
+
     .postattributation,
     .postelapsedtime {
         color: #919191;
@@ -3533,6 +3564,57 @@
 
     .adgridimagecontainer {
         border-radius: 0px;
+        height: max-content;
+    }
+
+    .advertactionbar {
+        width: 80px;
+    }
+
+    .advertactionbar>div {
+        width: 45px;
+        height: 45px;
+        background: var(--color-black);
+        box-shadow: none;
+        border-style: solid;
+        border-width: 3px;
+        border-color: #ffffffff;
+    }
+
+    .advertactionbar>div>img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .adgridimagecontainer .children_Tile_Box {
+        width: 60px;
+        height: 90%;
+        left: 10px;
+        right: initial;
+        gap: 5px;
+    }
+    
+    .adgridimagecontainer .children_Tile_Box>div {
+        width: 50px;
+        height: 50px;
+    }
+
+    .advertactionbar .like_count_active,
+    .advertactionbar .like_count,
+    .advertactionbar .counts {
+        width: 70px;
+        padding: 5px 10px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        box-shadow: none;
+        overflow: visible;
+        margin: 3px 0px;
+        cursor: pointer;
+        position: relative;
     }
 
     .profilepicturefilterpopup,
@@ -3759,9 +3841,12 @@
         background: var(--color-black);
     }
 }
-
+@media (min-width: 0px) and (max-width: 420px) {
+    .middlesection {
+        margin-top: 45px;
+    }
+}
 @media (min-width: 0px) and (max-width: 300px) {
-
     .commentroomsection,
     .commentsection {
         height: 88%;
