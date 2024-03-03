@@ -202,6 +202,10 @@ function createPublicGridShortVideo() {
                     gridshortcommentcount.classList.add('gridshortcommentcount');
                     viewscount.classList.add('viewscount');
 
+                    gridshortlikecount.addEventListener('click',() => {
+                        LikePopupsAndMore(shortVideo.id,'postlike');
+                    });
+
                     let view_Count_Extension = '';
                     viewscount.textContent = `${photo.views.length}${view_Count_Extension} views`;
 
@@ -476,6 +480,10 @@ function creategridreel() {
                     commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
                     gridshortlikecount.textContent = shortVideo.likes.length + 'likes';
                     gridshortcommentcount.textContent = shortVideo.comments.length + 'comments';
+
+                    gridshortlikecount.addEventListener('click',() => {
+                        LikePopupsAndMore(shortVideo.id,'postlike');
+                    });
 
                     let view_Count_Extension = '';
                     viewscount.textContent = `${photo.views.length}${view_Count_Extension} views`;

@@ -59,13 +59,7 @@ function createPhotosGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        })
+                        LikePopupsAndMore(photo.id,'postlike');
                     });
                     livelikecount.classList.add('livelikecount');
                     livecommentcount.classList.add('livecommentcount');
@@ -106,7 +100,6 @@ function createPhotosGadget() {
                         } else {
                             like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
-                        createlikesrecordlist();
                     }
                     function decideLeft() {
                         document.querySelectorAll('.live_Like_Count_active').forEach(count => {
@@ -130,7 +123,6 @@ function createPhotosGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         Unlike_Post(photo.id);
-                        createlikesrecordlist();
                     }
                     function makeLike() {
                         if (live_Like_Count_Container.classList.contains('like_count')) {
@@ -186,14 +178,8 @@ function createPhotosGadget() {
                     worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
                     worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
                     gadgetcomment.addEventListener('click', () => {
-                        document.querySelectorAll('.commentsectioncontainer').forEach(commentArea => {
-                            if (commentArea.id === photo.id) {
-                                commentArea.classList.toggle('commentsectioncontaineractive');
-                            } else {
-                                commentArea.classList.add('commentsectioncontainer');
-                                commentArea.classList.remove('commentsectioncontaineractive');
-                            }
-                        })
+                        create_Comment_room(photo.id);
+                        sessionStorage.setItem('activepage', photo.id);
                     });
 
                     worldwideImageGadget.addEventListener('click', () => {
@@ -350,13 +336,7 @@ function createPhotosGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        })
+                        LikePopupsAndMore(photo.id,'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -397,7 +377,6 @@ function createPhotosGadget() {
                         } else {
                             like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
-                        createlikesrecordlist();
                     }
                     function decideLeft() {
                         document.querySelectorAll('.live_Like_Count_active').forEach(count => {
@@ -421,7 +400,6 @@ function createPhotosGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         Unlike_Post(photo.id);
-                        createlikesrecordlist();
                     }
                     function makeLike() {
                         if (live_Like_Count_Container.classList.contains('like_count')) {
@@ -476,14 +454,8 @@ function createPhotosGadget() {
                     worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
                     worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
                     gadgetcomment.addEventListener('click', () => {
-                        document.querySelectorAll('.commentsectioncontainer').forEach(commentArea => {
-                            if (commentArea.id === photo.id) {
-                                commentArea.classList.toggle('commentsectioncontaineractive');
-                            } else {
-                                commentArea.classList.add('commentsectioncontainer');
-                                commentArea.classList.remove('commentsectioncontaineractive');
-                            }
-                        })
+                        create_Comment_room(photo.id);
+                        sessionStorage.setItem('activepage', photo.id);
                     });
 
                     const startTime = function () {
@@ -639,13 +611,7 @@ function createPhotosGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        })
+                        LikePopupsAndMore(photo.id,'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -686,7 +652,6 @@ function createPhotosGadget() {
                         } else {
                             like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
-                        createlikesrecordlist();
                     }
                     function decideLeft() {
                         document.querySelectorAll('.live_Like_Count_active').forEach(count => {
@@ -710,7 +675,6 @@ function createPhotosGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         Unlike_Post(photo.id);
-                        createlikesrecordlist();
                     }
                     function makeLike() {
                         if (live_Like_Count_Container.classList.contains('like_count')) {
@@ -765,14 +729,8 @@ function createPhotosGadget() {
                     worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
                     worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
                     gadgetcomment.addEventListener('click', () => {
-                        document.querySelectorAll('.commentsectioncontainer').forEach(commentArea => {
-                            if (commentArea.id === photo.id) {
-                                commentArea.classList.toggle('commentsectioncontaineractive');
-                            } else {
-                                commentArea.classList.add('commentsectioncontainer');
-                                commentArea.classList.remove('commentsectioncontaineractive');
-                            }
-                        })
+                        create_Comment_room(photo.id);
+                        sessionStorage.setItem('activepage', photo.id);
                     });
 
                     const startTime = function () {
@@ -939,13 +897,7 @@ function createAdsGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        })
+                        LikePopupsAndMore(photo.id,'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -986,7 +938,6 @@ function createAdsGadget() {
                         } else {
                             like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
-                        createlikesrecordlist();
                     }
                     function decideLeft() {
                         document.querySelectorAll('.live_Like_Count_active').forEach(count => {
@@ -1010,7 +961,6 @@ function createAdsGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         Unlike_Post(photo.id);
-                        createlikesrecordlist();
                     }
                     function makeLike() {
                         if (live_Like_Count_Container.classList.contains('like_count')) {
@@ -1066,14 +1016,8 @@ function createAdsGadget() {
                     worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
 
                     gadgetcomment.addEventListener('click', () => {
-                        document.querySelectorAll('.commentsectioncontainer').forEach(commentArea => {
-                            if (commentArea.id === photo.id) {
-                                commentArea.classList.toggle('commentsectioncontaineractive');
-                            } else {
-                                commentArea.classList.add('commentsectioncontainer');
-                                commentArea.classList.remove('commentsectioncontaineractive');
-                            }
-                        })
+                        create_Comment_room(photo.id);
+                        sessionStorage.setItem('activepage', photo.id);
                     });
 
                     const startTime = function () {
@@ -1229,13 +1173,7 @@ function createAdsGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        })
+                        LikePopupsAndMore(photo.id,'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1276,7 +1214,6 @@ function createAdsGadget() {
                         } else {
                             like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
-                        createlikesrecordlist();
                     }
                     function decideLeft() {
                         document.querySelectorAll('.live_Like_Count_active').forEach(count => {
@@ -1300,7 +1237,6 @@ function createAdsGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         Unlike_Post(photo.id);
-                        createlikesrecordlist();
                     }
                     function makeLike() {
                         if (live_Like_Count_Container.classList.contains('like_count')) {
@@ -1356,14 +1292,8 @@ function createAdsGadget() {
                     worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
 
                     gadgetcomment.addEventListener('click', () => {
-                        document.querySelectorAll('.commentsectioncontainer').forEach(commentArea => {
-                            if (commentArea.id === photo.id) {
-                                commentArea.classList.toggle('commentsectioncontaineractive');
-                            } else {
-                                commentArea.classList.add('commentsectioncontainer');
-                                commentArea.classList.remove('commentsectioncontaineractive');
-                            }
-                        })
+                        create_Comment_room(photo.id);
+                        sessionStorage.setItem('activepage', photo.id);
                     });
 
                     const startTime = function () {
@@ -1519,13 +1449,7 @@ function createAdsGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        })
+                        LikePopupsAndMore(photo.id,'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1566,7 +1490,6 @@ function createAdsGadget() {
                         } else {
                             like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                         }
-                        createlikesrecordlist();
                     }
                     function decideLeft() {
                         document.querySelectorAll('.live_Like_Count_active').forEach(count => {
@@ -1590,7 +1513,6 @@ function createAdsGadget() {
                         });
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         Unlike_Post(photo.id);
-                        createlikesrecordlist();
                     }
                     function makeLike() {
                         if (live_Like_Count_Container.classList.contains('like_count')) {
@@ -1646,14 +1568,8 @@ function createAdsGadget() {
                     worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
 
                     gadgetcomment.addEventListener('click', () => {
-                        document.querySelectorAll('.commentsectioncontainer').forEach(commentArea => {
-                            if (commentArea.id === photo.id) {
-                                commentArea.classList.toggle('commentsectioncontaineractive');
-                            } else {
-                                commentArea.classList.add('commentsectioncontainer');
-                                commentArea.classList.remove('commentsectioncontaineractive');
-                            }
-                        })
+                        create_Comment_room(photo.id);
+                        sessionStorage.setItem('activepage', photo.id);
                     });
 
                     const startTime = function () {

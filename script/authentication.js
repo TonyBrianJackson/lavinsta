@@ -62,115 +62,115 @@ function AllOtherThingsAboutPassword() {
         });
     });
     document.querySelector('.create_Pass_Visible').addEventListener('click', () => {
-        if (document.getElementById('makepassword').value) {
-            let indicator = document.querySelector('.create_Pass_Visible small');
-            if (indicator.classList.contains('visible')) {
-                indicator.classList.add('hidden');
-                indicator.classList.remove('visible');
-                document.getElementById('makepassword').type = 'text';
-                indicator.textContent = 'HP';
-            } else {
-                indicator.classList.remove('hidden');
-                indicator.classList.add('visible');
-                document.getElementById('makepassword').type = 'password';
-                indicator.textContent = 'SP';
-            }
+        let indicator = document.querySelector('.create_Pass_Visible small');
+        if (indicator.classList.contains('visible')) {
+            indicator.classList.add('hidden');
+            indicator.classList.remove('visible');
+            document.getElementById('makepassword').type = 'text';
+            document.getElementById('makepassword').focus();
+            indicator.textContent = 'HP';
+        } else {
+            indicator.classList.remove('hidden');
+            indicator.classList.add('visible');
+            document.getElementById('makepassword').type = 'password';
+            document.getElementById('makepassword').focus();
+            indicator.textContent = 'SP';
         }
     });
     document.querySelector('.confirm_Pass_Visible').addEventListener('click', () => {
-        if (document.getElementById('confirmpassword').value) {
-            let indicator = document.querySelector('.confirm_Pass_Visible small');
-            if (indicator.classList.contains('visible')) {
-                indicator.classList.add('hidden');
-                indicator.classList.remove('visible');
-                document.getElementById('confirmpassword').type = 'text';
-                indicator.textContent = 'HP';
-            } else {
-                indicator.classList.remove('hidden');
-                indicator.classList.add('visible');
-                document.getElementById('confirmpassword').type = 'password';
-                indicator.textContent = 'SP';
-            }
+        let indicator = document.querySelector('.confirm_Pass_Visible small');
+        if (indicator.classList.contains('visible')) {
+            indicator.classList.add('hidden');
+            indicator.classList.remove('visible');
+            document.getElementById('confirmpassword').type = 'text';
+            document.getElementById('confirmpassword').focus();
+            indicator.textContent = 'HP';
+        } else {
+            indicator.classList.remove('hidden');
+            indicator.classList.add('visible');
+            document.getElementById('confirmpassword').type = 'password';
+            document.getElementById('confirmpassword').focus();
+            indicator.textContent = 'SP';
         }
     });
     document.querySelector('.login_Password_Visible').addEventListener('click', () => {
-        if (document.getElementById('userspassword').value) {
-            let indicator = document.querySelector('.login_Password_Visible small');
-            if (indicator.classList.contains('visible')) {
-                indicator.classList.add('hidden');
-                indicator.classList.remove('visible');
-                document.getElementById('userspassword').type = 'text';
-                indicator.textContent = 'HP';
-            } else {
-                indicator.classList.remove('hidden');
-                indicator.classList.add('visible');
-                document.getElementById('userspassword').type = 'password';
-                indicator.textContent = 'SP';
-            }
+        let indicator = document.querySelector('.login_Password_Visible small');
+        if (indicator.classList.contains('visible')) {
+            indicator.classList.add('hidden');
+            indicator.classList.remove('visible');
+            document.getElementById('userspassword').type = 'text';
+            document.getElementById('userspassword').focus();
+            indicator.textContent = 'HP';
+        } else {
+            indicator.classList.remove('hidden');
+            indicator.classList.add('visible');
+            document.getElementById('userspassword').type = 'password';
+            document.getElementById('userspassword').focus();
+            indicator.textContent = 'SP';
         }
     });
     document.querySelector('.reset_Create_Password_Visible').addEventListener('click', () => {
-        if (document.getElementById('users_Reset_Password_Reset').value) {
-            let indicator = document.querySelector('.reset_Create_Password_Visible small');
-            if (indicator.classList.contains('visible')) {
-                indicator.classList.add('hidden');
-                indicator.classList.remove('visible');
-                document.getElementById('users_Reset_Password_Reset').type = 'text';
-                indicator.textContent = 'HP';
-            } else {
-                indicator.classList.remove('hidden');
-                indicator.classList.add('visible');
-                document.getElementById('users_Reset_Password_Reset').type = 'password';
-                indicator.textContent = 'SP';
-            }
+        let indicator = document.querySelector('.reset_Create_Password_Visible small');
+        if (indicator.classList.contains('visible')) {
+            indicator.classList.add('hidden');
+            indicator.classList.remove('visible');
+            document.getElementById('users_Reset_Password_Reset').type = 'text';
+            document.getElementById('users_Reset_Password_Reset').focus();
+            indicator.textContent = 'HP';
+        } else {
+            indicator.classList.remove('hidden');
+            indicator.classList.add('visible');
+            document.getElementById('users_Reset_Password_Reset').type = 'password';
+            document.getElementById('users_Reset_Password_Reset').focus();
+            indicator.textContent = 'SP';
         }
     });
     document.querySelector('.reset_Confirm_Password_Visible').addEventListener('click', () => {
-        if (document.getElementById('Users_Confirm_Password_Reset').value) {
-            let indicator = document.querySelector('.reset_Confirm_Password_Visible small');
-            if (indicator.classList.contains('visible')) {
-                indicator.classList.add('hidden');
-                indicator.classList.remove('visible');
-                document.getElementById('Users_Confirm_Password_Reset').type = 'text';
-                indicator.textContent = 'HP';
-            } else {
-                indicator.classList.remove('hidden');
-                indicator.classList.add('visible');
-                document.getElementById('Users_Confirm_Password_Reset').type = 'password';
-                indicator.textContent = 'SP';
-            }
+        let indicator = document.querySelector('.reset_Confirm_Password_Visible small');
+        if (indicator.classList.contains('visible')) {
+            indicator.classList.add('hidden');
+            indicator.classList.remove('visible');
+            document.getElementById('Users_Confirm_Password_Reset').type = 'text';
+            document.getElementById('Users_Confirm_Password_Reset').focus();
+            indicator.textContent = 'HP';
+        } else {
+            indicator.classList.remove('hidden');
+            indicator.classList.add('visible');
+            document.getElementById('Users_Confirm_Password_Reset').type = 'password';
+            document.getElementById('Users_Confirm_Password_Reset').focus();
+            indicator.textContent = 'SP';
         }
     });
     document.querySelector('.admin_keyVisibility').addEventListener('click', () => {
-        if (document.getElementById('AdminsKeyVerificationBox_Key_N0ts3t').value) {
-            let indicator = document.querySelector('.admin_keyVisibility small');
-            if (indicator.classList.contains('visible')) {
-                indicator.classList.add('hidden');
-                indicator.classList.remove('visible');
-                document.getElementById('AdminsKeyVerificationBox_Key_N0ts3t').type = 'text';
-                indicator.textContent = 'HP';
-            } else {
-                indicator.classList.remove('hidden');
-                indicator.classList.add('visible');
-                document.getElementById('AdminsKeyVerificationBox_Key_N0ts3t').type = 'password';
-                indicator.textContent = 'SP';
-            }
+        let indicator = document.querySelector('.admin_keyVisibility small');
+        if (indicator.classList.contains('visible')) {
+            indicator.classList.add('hidden');
+            indicator.classList.remove('visible');
+            document.getElementById('AdminsKeyVerificationBox_Key_N0ts3t').type = 'text';
+            document.getElementById('AdminsKeyVerificationBox_Key_N0ts3t').focus();
+            indicator.textContent = 'HP';
+        } else {
+            indicator.classList.remove('hidden');
+            indicator.classList.add('visible');
+            document.getElementById('AdminsKeyVerificationBox_Key_N0ts3t').type = 'password';
+            document.getElementById('AdminsKeyVerificationBox_Key_N0ts3t').focus();
+            indicator.textContent = 'SP';
         }
     });
     document.querySelector('.CEO_keyVisibility').addEventListener('click', () => {
-        if (document.getElementById('CEOsKeyVerificationBox_key_N0ts3t').value) {
-            let indicator = document.querySelector('.CEO_keyVisibility small');
-            if (indicator.classList.contains('visible')) {
-                indicator.classList.add('hidden');
-                indicator.classList.remove('visible');
-                document.getElementById('CEOsKeyVerificationBox_key_N0ts3t').type = 'text';
-                indicator.textContent = 'HP';
-            } else {
-                indicator.classList.remove('hidden');
-                indicator.classList.add('visible');
-                document.getElementById('CEOsKeyVerificationBox_key_N0ts3t').type = 'password';
-                indicator.textContent = 'SP';
-            }
+        let indicator = document.querySelector('.CEO_keyVisibility small');
+        if (indicator.classList.contains('visible')) {
+            indicator.classList.add('hidden');
+            indicator.classList.remove('visible');
+            document.getElementById('CEOsKeyVerificationBox_key_N0ts3t').type = 'text';
+            document.getElementById('CEOsKeyVerificationBox_key_N0ts3t').focus();
+            indicator.textContent = 'HP';
+        } else {
+            indicator.classList.remove('hidden');
+            indicator.classList.add('visible');
+            document.getElementById('CEOsKeyVerificationBox_key_N0ts3t').type = 'password';
+            document.getElementById('CEOsKeyVerificationBox_key_N0ts3t').focus();
+            indicator.textContent = 'SP';
         }
     });
 }
@@ -202,7 +202,7 @@ const newtrackingDate = newday.getDate() + ' ' + newmonth[newday.getMonth()] + '
 //     input.autocomplete = 'off';
 // });
 // import { writeFile } from 'fs';
-// import { usersdatabase } from 'database/users.json';
+// import usersdatabase  from '../database/users.json' assert {type: 'json'};
 // console.log(usersdatabase);
 function pushformdata() {
     const UserId = '' + new Date().getTime();
@@ -276,12 +276,12 @@ function pushformdata() {
         my_ChatCount: 0,
         my_VideosCount: 0
     });
-    const finished = (error) => {
-        if (error) {
-            console.error(error);
-            return;
-        }
-    };
+    // const finished = (error) => {
+    //     if (error) {
+    //         console.error(error);
+    //         return;
+    //     }
+    // };
     // writeFile(usersdatabase, JSON.stringify(LogInFormData, null, 2), finished);
     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
 }

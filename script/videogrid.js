@@ -132,7 +132,9 @@ function creategridvideo() {
                     gridshortcommentcount.textContent = gridvideo.comments.length + 'comments';
                     let view_Count_Extension = '';
                     viewscount.textContent = `${gridvideo.views.length}${view_Count_Extension} views`;
-
+                    gridshortlikecount.addEventListener('click',() => {
+                        LikePopupsAndMore(gridvideo.id,'postlike');
+                    });
                     gridshortlikecount.classList.add('gridvideolikecount');
                     gridshortcommentcount.classList.add('gridshortcommentcount');
                     viewscount.classList.add('viewscount');
@@ -416,6 +418,10 @@ function create_TimeLine_G_Video() {
                     commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
                     gridshortlikecount.textContent = gridvideo.likes.length + 'likes';
                     gridshortcommentcount.textContent = gridvideo.comments.length + 'comments';
+
+                    gridshortlikecount.addEventListener('click',() => {
+                        LikePopupsAndMore(gridvideo.id,'postlike');
+                    });
 
                     let view_Count_Extension = '';
                     viewscount.textContent = `${gridvideo.views.length}${view_Count_Extension} views`;

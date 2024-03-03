@@ -48,7 +48,10 @@
         -6px -12px 24px rgba(0, 0, 255, 0.116);
     z-index: 512;
 }
-
+.post_making_upload_popup.chatuploadpopup,
+.post_making_upload_popup.mediacommentspopup {
+    display: flex;
+}
 .sidebarcontents {
     z-index: 1;
 }

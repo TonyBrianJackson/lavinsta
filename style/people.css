@@ -125,6 +125,7 @@
     width: 50%;
 }
 
+.b_Buttons.active,
 .msgbtn.active,
 .notibtn.active,
 .peoplebtn.active {
@@ -597,7 +598,8 @@
     box-shadow: none;
 }
 
-.personAddandBlockFlex span {
+.personAddandBlockFlex span,
+.personAddandBlockFlex button {
     width: 100%;
     padding: 8px 5px;
     display: block;
@@ -610,16 +612,18 @@
 }
 
 .personblockbutton,
-.persondeclinebutton,
 .personaddbutton,
 .personacceptbutton {
-    background: var(--color-white);
+    background: var(--color-dark);
     border-color: var(--color-dark);
+    color: var(--color-white);
+}
+.persondeclinebutton {
+    background: white;
+    border: none;
     color: var(--color-dark);
 }
-
 .personblockbutton:hover,
-.persondeclinebutton:hover,
 .personaddbutton:hover,
 .personacceptbutton:hover,
 .personaddbutton:hover {
@@ -1037,7 +1041,8 @@
         box-shadow: none;
     }
 
-    .personAddandBlockFlex span {
+    .personAddandBlockFlex span,
+    .personAddandBlockFlex button {
         padding: 8px 5px;
         display: block;
         text-align: center;
@@ -1385,7 +1390,8 @@
         border-radius: 30px;
     }
 
-    .personAddandBlockFlex span {
+    .personAddandBlockFlex span,
+    .personAddandBlockFlex button {
         width: 100%;
         padding: 8px 5px;
         display: block;

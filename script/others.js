@@ -206,21 +206,115 @@ function createReport() {
     });
 }
 
-function createlikesrecordlist() {
-    let likerecordcolumn = document.querySelectorAll('.likerecordcolumn');
-    likerecordcolumn.forEach(column => {
-        column.innerHTML = '';
-        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-        Feeds_Data_Base.forEach(feed => {
-            if (feed.id === column.id) {
-                let likes = feed.likes;
+function createpostLikeLicense(container, locationId) {
+    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+    Feeds_Data_Base.forEach(feed => {
+        if (feed.id === locationId) {
+            let likes = feed.likes;
+            likes.forEach(license => {
+                let personlikerecord = document.createElement('div');
+                let personitemsflex = document.createElement('div');
+                let personlikerecordimg = document.createElement('img');
+                let persontimeanddate = document.createElement('span');
+                let personlikerecordname = document.createElement('p');
+                container.appendChild(personlikerecord);
+                personlikerecord.appendChild(personitemsflex);
+                personlikerecord.appendChild(persontimeanddate);
+                personitemsflex.appendChild(personlikerecordimg);
+                personitemsflex.appendChild(personlikerecordname);
+                const startTime = function () {
+                    let time;
+                    let timeresult = new Date().getTime();
+                    let miliseconds = timeresult - license.time;
+                    var token;
+                    var moment = 'ago';
+                    let maintime;
+
+                    time = miliseconds / 1000;
+                    if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
+                        token = 'month';
+                        maintime = time / 2419200;
+                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                    } if (time <= 60 * 60 * 24 * 7 * 4) {
+                        token = 'week';
+                        maintime = time / 604800;
+                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                    } if (time <= 60 * 60 * 24 * 7) {
+                        token = 'day';
+                        maintime = time / 86400;
+                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                    } if (time <= 60 * 60 * 24) {
+                        token = 'hr';
+                        maintime = time / 3600;
+                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                    } if (time <= 60 * 60) {
+                        token = 'min';
+                        maintime = time / 60;
+                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                    } if (time <= 60) {
+                        token = 'sec';
+                        maintime = time;
+                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                    }
+                }
+                startTime();
+                personlikerecordname.addEventListener('click', () => {
+                    createUsersProfile(license.posterId);
+                });
+                personlikerecord.classList.add('personlikerecord');
+
+                function Poster_Details() {
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === license.posterId) {
+                            personlikerecordimg.src = user.user_ProfilePicture;
+                            personlikerecordname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                            function filter_Image() {
+                                //profile_filter 
+                                if (user.user_ProfilePicture_Filter == 'default') {
+                                    personlikerecordimg.classList.add('--color-default');
+                                } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                    personlikerecordimg.classList.add('--color-gray');
+                                } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                    personlikerecordimg.classList.add('--color-contrast');
+                                } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                    personlikerecordimg.classList.add('--color-bright');
+                                } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                    personlikerecordimg.classList.add('--color-blur');
+                                } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                    personlikerecordimg.classList.add('--color-invert');
+                                } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                    personlikerecordimg.classList.add('--color-sepia');
+                                } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                    personlikerecordimg.classList.add('--color-hue-rotate');
+                                } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                    personlikerecordimg.classList.add('--color-opacity');
+                                } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                    personlikerecordimg.classList.add('--color-satulate');
+                                }
+                            }
+                            filter_Image();
+                        }
+                    });
+                }
+                Poster_Details();
+            });
+        }
+    });
+}
+function createcommentsLikeLicense(container, locationId) {
+    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+    Feeds_Data_Base.forEach(feed => {
+        let comments = feed.comments;
+        comments.forEach(comment => {
+            if (comment.id === locationId) {
+                let likes = comment.likes;
                 likes.forEach(license => {
                     let personlikerecord = document.createElement('div');
                     let personitemsflex = document.createElement('div');
                     let personlikerecordimg = document.createElement('img');
                     let persontimeanddate = document.createElement('span');
                     let personlikerecordname = document.createElement('p');
-                    column.appendChild(personlikerecord);
+                    container.appendChild(personlikerecord);
                     personlikerecord.appendChild(personitemsflex);
                     personlikerecord.appendChild(persontimeanddate);
                     personitemsflex.appendChild(personlikerecordimg);
@@ -262,7 +356,7 @@ function createlikesrecordlist() {
                     }
                     startTime();
                     personlikerecordname.addEventListener('click', () => {
-                        view_Profile(license.posterId);
+                        createUsersProfile(license.posterId);
                     });;
                     personlikerecord.classList.add('personlikerecord');
 
@@ -305,216 +399,142 @@ function createlikesrecordlist() {
         });
     });
 }
-createlikesrecordlist();
-function CreationOfCommentsLikeLicense() {
-    let commentlikeLicenseColumn = document.querySelectorAll('.commentlikeLicenseColumn');
-    commentlikeLicenseColumn.forEach(column => {
-        column.innerHTML = '';
-        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-        Feeds_Data_Base.forEach(feed => {
-                let comments = feed.comments;
-                comments.forEach(comment => {
-                    let likes = comment.likes;
-                    likes.forEach(license => {
-                        if (license.postId === column.id) {
-                            let personlikerecord = document.createElement('div');
-                            let personitemsflex = document.createElement('div');
-                            let personlikerecordimg = document.createElement('img');
-                            let persontimeanddate = document.createElement('span');
-                            let personlikerecordname = document.createElement('p');
-                            column.appendChild(personlikerecord);
-                            personlikerecord.appendChild(personitemsflex);
-                            personlikerecord.appendChild(persontimeanddate);
-                            personitemsflex.appendChild(personlikerecordimg);
-                            personitemsflex.appendChild(personlikerecordname);
-                            const startTime = function () {
-                                let time;
-                                let timeresult = new Date().getTime();
-                                let miliseconds = timeresult - license.time;
-                                var token;
-                                var moment = 'ago';
-                                let maintime;
+function removePopup() {
+    document.querySelectorAll('.likerecordpopup').forEach(popup => {
+        popup.remove();
+    });
+}
+function LikePopupsAndMore(locationId,type) {
+    removePopup();
+    let likerecorderpopupheader = document.createElement('header');
+    let likerecordpopup = document.createElement('nav');
+    let likerecordcolumn = document.createElement('div');
+    let likerecorderexit = document.createElement('span');
+    document.body.appendChild(likerecordpopup);
+    likerecordpopup.appendChild(likerecorderpopupheader);
+    likerecordpopup.appendChild(likerecordcolumn);
+    likerecorderpopupheader.appendChild(likerecorderexit);
+    likerecorderexit.innerHTML = '&LeftArrow;';
+    likerecorderpopupheader.classList.add('likerecorderpopupheader');
+    likerecorderexit.classList.add('likerecorderexit');
+    likerecorderexit.classList.add('Exitpage_Arrow');
+    likerecordpopup.classList.add('likerecordpopup');
+    likerecordcolumn.classList.add('likerecordcolumn');
+    likerecorderexit.addEventListener('click', () => {
+        likerecordpopup.remove();
+    });
+    likerecordpopup.style.display = 'flex';
+    likerecordpopup.id = locationId;
+    likerecordcolumn.id = locationId;
+    if (type == 'postlike') {
+        createpostLikeLicense(likerecordcolumn, locationId);
+    } if (type == 'commentlike') {
+        createcommentsLikeLicense(likerecordcolumn, locationId);
+    } if (type == 'commentreplylike') {
+        CreationOfCommentsRepliesLikesLicense(likerecordcolumn, locationId);
+    }
+}
+function CreationOfCommentsRepliesLikesLicense(container,locationId) {
+    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+    Feeds_Data_Base.forEach(feed => {
+        let comments = feed.comments;
+        comments.forEach(comment => {
+            let commentreplies = comment.comments;
+            commentreplies.forEach(reply => {
+                let likes = reply.likes;
+                likes.forEach(license => {
+                    if (license.postId === locationId) {
+                        let personlikerecord = document.createElement('div');
+                        let personitemsflex = document.createElement('div');
+                        let personlikerecordimg = document.createElement('img');
+                        let persontimeanddate = document.createElement('span');
+                        let personlikerecordname = document.createElement('p');
+                        container.appendChild(personlikerecord);
+                        personlikerecord.appendChild(personitemsflex);
+                        personlikerecord.appendChild(persontimeanddate);
+                        personitemsflex.appendChild(personlikerecordimg);
+                        personitemsflex.appendChild(personlikerecordname);
+                        const startTime = function () {
+                            let time;
+                            let timeresult = new Date().getTime();
+                            let miliseconds = timeresult - license.time;
+                            var token;
+                            var moment = 'ago';
+                            let maintime;
 
-                                time = miliseconds / 1000;
-                                if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
-                                    token = 'month';
-                                    maintime = time / 2419200;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60 * 24 * 7 * 4) {
-                                    token = 'week';
-                                    maintime = time / 604800;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60 * 24 * 7) {
-                                    token = 'day';
-                                    maintime = time / 86400;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60 * 24) {
-                                    token = 'hr';
-                                    maintime = time / 3600;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60) {
-                                    token = 'min';
-                                    maintime = time / 60;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60) {
-                                    token = 'sec';
-                                    maintime = time;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                }
+                            time = miliseconds / 1000;
+                            if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
+                                token = 'month';
+                                maintime = time / 2419200;
+                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            } if (time <= 60 * 60 * 24 * 7 * 4) {
+                                token = 'week';
+                                maintime = time / 604800;
+                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            } if (time <= 60 * 60 * 24 * 7) {
+                                token = 'day';
+                                maintime = time / 86400;
+                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            } if (time <= 60 * 60 * 24) {
+                                token = 'hr';
+                                maintime = time / 3600;
+                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            } if (time <= 60 * 60) {
+                                token = 'min';
+                                maintime = time / 60;
+                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            } if (time <= 60) {
+                                token = 'sec';
+                                maintime = time;
+                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                             }
-                            startTime();
-                            personlikerecordname.addEventListener('click', () => {
-                                view_Profile(license.posterId);
-                            });;
-                            personlikerecord.classList.add('personlikerecord');
-
-                            function Poster_Details() {
-                                LogInFormData.forEach(user => {
-                                    if (user.user_Id === license.posterId) {
-                                        personlikerecordimg.src = user.user_ProfilePicture;
-                                        personlikerecordname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
-                                        function filter_Image() {
-                                            //profile_filter 
-                                            if (user.user_ProfilePicture_Filter == 'default') {
-                                                personlikerecordimg.classList.add('--color-default');
-                                            } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                                personlikerecordimg.classList.add('--color-gray');
-                                            } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                                personlikerecordimg.classList.add('--color-contrast');
-                                            } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                                personlikerecordimg.classList.add('--color-bright');
-                                            } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                                personlikerecordimg.classList.add('--color-blur');
-                                            } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                                personlikerecordimg.classList.add('--color-invert');
-                                            } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                                personlikerecordimg.classList.add('--color-sepia');
-                                            } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                                personlikerecordimg.classList.add('--color-hue-rotate');
-                                            } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                                personlikerecordimg.classList.add('--color-opacity');
-                                            } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                                personlikerecordimg.classList.add('--color-satulate');
-                                            }
-                                        }
-                                        filter_Image();
-                                    }
-                                });
-                            }
-                            Poster_Details();
                         }
-                    });
+                        startTime();
+                        personlikerecordname.addEventListener('click', () => {
+                            createUsersProfile(license.posterId);
+                        });;
+                        personlikerecord.classList.add('personlikerecord');
+
+                        function Poster_Details() {
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === license.posterId) {
+                                    personlikerecordimg.src = user.user_ProfilePicture;
+                                    personlikerecordname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    function filter_Image() {
+                                        //profile_filter 
+                                        if (user.user_ProfilePicture_Filter == 'default') {
+                                            personlikerecordimg.classList.add('--color-default');
+                                        } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                            personlikerecordimg.classList.add('--color-gray');
+                                        } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                            personlikerecordimg.classList.add('--color-contrast');
+                                        } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                            personlikerecordimg.classList.add('--color-bright');
+                                        } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                            personlikerecordimg.classList.add('--color-blur');
+                                        } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                            personlikerecordimg.classList.add('--color-invert');
+                                        } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                            personlikerecordimg.classList.add('--color-sepia');
+                                        } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                            personlikerecordimg.classList.add('--color-hue-rotate');
+                                        } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                            personlikerecordimg.classList.add('--color-opacity');
+                                        } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                            personlikerecordimg.classList.add('--color-satulate');
+                                        }
+                                    }
+                                    filter_Image();
+                                }
+                            });
+                        }
+                        Poster_Details();
+                    }
                 });
+            })
         });
     });
 }
-CreationOfCommentsLikeLicense();
-function CreationOfCommentsRepliesLikesLicense() {
-    let commentlikerepliesLicenseColumn = document.querySelectorAll('.commentlikerepliesLicenseColumn');
-    commentlikerepliesLicenseColumn.forEach(column => {
-        column.innerHTML = '';
-        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-        Feeds_Data_Base.forEach(feed => {
-            let comments = feed.comments;
-            comments.forEach(comment => {
-                let commentreplies = comment.comments;
-                commentreplies.forEach(reply => {
-                    let likes = reply.likes;
-                    likes.forEach(license => {
-                        if (license.postId === column.id) {
-                            let personlikerecord = document.createElement('div');
-                            let personitemsflex = document.createElement('div');
-                            let personlikerecordimg = document.createElement('img');
-                            let persontimeanddate = document.createElement('span');
-                            let personlikerecordname = document.createElement('p');
-                            column.appendChild(personlikerecord);
-                            personlikerecord.appendChild(personitemsflex);
-                            personlikerecord.appendChild(persontimeanddate);
-                            personitemsflex.appendChild(personlikerecordimg);
-                            personitemsflex.appendChild(personlikerecordname);
-                            const startTime = function () {
-                                let time;
-                                let timeresult = new Date().getTime();
-                                let miliseconds = timeresult - license.time;
-                                var token;
-                                var moment = 'ago';
-                                let maintime;
-
-                                time = miliseconds / 1000;
-                                if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
-                                    token = 'month';
-                                    maintime = time / 2419200;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60 * 24 * 7 * 4) {
-                                    token = 'week';
-                                    maintime = time / 604800;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60 * 24 * 7) {
-                                    token = 'day';
-                                    maintime = time / 86400;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60 * 24) {
-                                    token = 'hr';
-                                    maintime = time / 3600;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60 * 60) {
-                                    token = 'min';
-                                    maintime = time / 60;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                } if (time <= 60) {
-                                    token = 'sec';
-                                    maintime = time;
-                                    persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                                }
-                            }
-                            startTime();
-                            personlikerecordname.addEventListener('click', () => {
-                                view_Profile(license.posterId);
-                            });;
-                            personlikerecord.classList.add('personlikerecord');
-
-                            function Poster_Details() {
-                                LogInFormData.forEach(user => {
-                                    if (user.user_Id === license.posterId) {
-                                        personlikerecordimg.src = user.user_ProfilePicture;
-                                        personlikerecordname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
-                                        function filter_Image() {
-                                            //profile_filter 
-                                            if (user.user_ProfilePicture_Filter == 'default') {
-                                                personlikerecordimg.classList.add('--color-default');
-                                            } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                                personlikerecordimg.classList.add('--color-gray');
-                                            } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                                personlikerecordimg.classList.add('--color-contrast');
-                                            } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                                personlikerecordimg.classList.add('--color-bright');
-                                            } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                                personlikerecordimg.classList.add('--color-blur');
-                                            } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                                personlikerecordimg.classList.add('--color-invert');
-                                            } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                                personlikerecordimg.classList.add('--color-sepia');
-                                            } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                                personlikerecordimg.classList.add('--color-hue-rotate');
-                                            } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                                personlikerecordimg.classList.add('--color-opacity');
-                                            } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                                personlikerecordimg.classList.add('--color-satulate');
-                                            }
-                                        }
-                                        filter_Image();
-                                    }
-                                });
-                            }
-                            Poster_Details();
-                        }
-                    });
-                })
-            });
-        });
-    });
-}
-CreationOfCommentsRepliesLikesLicense();
 
 function createArchivepost() {
     let userstoryarchievecolumn = document.querySelectorAll('.userstoryarchievecolumn');
@@ -581,7 +601,7 @@ function createArchivepost() {
                                 }
                             });
                             confirmation_popup.style.display = 'none';
-                            localStorage.setItem('trash', JSON.stringify(trash));
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                             createArchivepost();
                             creategridpostimagecontaineringTile();
                         });
@@ -701,7 +721,7 @@ function createArchivepost() {
                                 }
                             });
                             confirmation_popup.style.display = 'none';
-                            localStorage.setItem('trash', JSON.stringify(trash));
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                             createArchivepost();
 
                             creategridpostimagecontaineringTile();

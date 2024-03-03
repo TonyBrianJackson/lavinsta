@@ -133,7 +133,9 @@ if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
 }
 
 function active_user_render() {
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     LogInFormData.forEach(user => {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
         ActiveUser_Account.forEach(data => {
             if (user.user_Id === data.user_Id) {
                 document.getElementById('firtnamechanged').value = user.user_Firstname;
@@ -156,13 +158,8 @@ function active_user_render() {
                     document.querySelector('.topkeepsuggession.homesearchList').innerHTML = `<div class="both_Search_Popup homesearch_List" id="${user.user_Id}"></div>`;
                     document.querySelector('.topkeepsuggession.videosearchList').innerHTML = `<div class="both_Search_Popup videosearch_List" id="${user.user_Id}"></div>`;
                     document.querySelector('.generalnotificationculomn').innerHTML = `<div class="usersnotificationcoulmn" id="${user.user_Id}"></div>`;
-                    document.querySelector('.msgculomn').innerHTML = `<div class="userschatcontainer" id="${user.user_Id}"></div>`;
-                    document.querySelector('.groupmsgculomn').innerHTML = `<div class="userCommunityChatContainer" id="${user.user_Id}"></div>`;
+                    
                     document.querySelector('.footer_task_bar').innerHTML = `<nav class="chattaskbar" id="${user.user_Id}"></nav>`;
-                    document.querySelector('.peoplerequestculomn').innerHTML = `<div class="usersfriendrequestcolumn" id="${user.user_Id}"></div>`;
-                    document.querySelector('.sentrequestculomn').innerHTML = `<div class="usersentrequestcolumn" id="${user.user_Id}"></div>`;
-                    document.querySelector('.peoplelistculomn').innerHTML = `<div class="usersfriendlistcolumn" id="${user.user_Id}"></div>`;
-                    document.querySelector('.peopleculomn').innerHTML = `<div class="userpeoplecolumn" id="${user.user_Id}"></div>`;
 
                     document.querySelector('.calllistcolumn').innerHTML = `<div class="userscallslistcolumn" id="${user.user_Id}"></div>`;
 

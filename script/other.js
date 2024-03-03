@@ -7,417 +7,26 @@ function create_Trash_Items() {
         LogInFormData.forEach(user => {
             if (user.user_Id === column.id) {
                 let trashItem = user.user_Trash;
-                trashItem.forEach(element => {
-                    if (column.id === element.posterId) {
-                        if (element.isPhoto) {
-                            let griditems = document.createElement('div');
+                trashItem.forEach(photo => {
+                    if (column.id === photo.posterId) {
+                        let griditems = document.createElement('div');
+                        column.appendChild(griditems);
+                        griditems.classList.add('griditems');
+                        if (photo.type == 'photo') {
                             let gridimg = document.createElement('img');
-                            let gridpostimagetoview = document.createElement('img');
-                            let gridpostimagecontainer = document.createElement('div');
-                            let saveddelete = document.createElement('img');
-                            let gridpostcaption = document.createElement('span');
-                            let savedtilebox = document.createElement('nav');
-                            let savedtime = document.createElement('span');
-                            let saveddeletebtn = document.createElement('span');
-                            let gridposttitlecover = document.createElement('span');
-                            savedtime.textContent = element.date;
-                            gridposttitlecover.appendChild(gridpostcaption);
-                            saveddeletebtn.appendChild(saveddelete);
-                            saveddelete.src = 'newicons/trash-can.png';
-                            gridposttitlecover.classList.add('gridposttitlecover');
-                            savedtime.classList.add('savedtime');
-                            saveddeletebtn.classList.add('saveddeletebtn');
-                            saveddeletebtn.classList.add('headerbtns');
-                            //DELETE CONFIRMATION POPUP
-                            let confirmation_popup = document.createElement('div');
-                            let confirmationflex = document.createElement('div');
-                            let confirmationflex1 = document.createElement('div');
-                            let confirmationtext = document.createElement('p');
-                            let confirmationtrue = document.createElement('span');
-                            let confirmationfalse = document.createElement('span');
-                            confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-                            confirmationtrue.textContent = 'Yes';
-                            confirmationfalse.textContent = 'No';
-                            document.body.appendChild(confirmation_popup);
-                            confirmation_popup.appendChild(confirmationflex);
-                            confirmation_popup.appendChild(confirmationflex1);
-                            confirmationflex.appendChild(confirmationtext);
-                            confirmationflex1.appendChild(confirmationtrue);
-                            confirmationflex1.appendChild(confirmationfalse);
-                            confirmation_popup.classList.add('confirmation_popup');
-                            confirmationflex.classList.add('confirmationflex');
-                            confirmationflex1.classList.add('confirmationflex');
-                            confirmationtrue.classList.add('confirmationtrue');
-                            confirmationfalse.classList.add('confirmationfalse');
-                            confirmationfalse.addEventListener('click', () => {
-                                confirmation_popup.style.display = 'none';
-                            });
-                            saveddeletebtn.addEventListener('click', () => {
-                                confirmation_popup.style.display = 'flex';
-                            });
-                            confirmationtrue.id = element.id
-                            confirmationtrue.addEventListener('click', () => {
-                                trashItem = trashItem.filter((element) => {
-                                    if (element.id === confirmationtrue.id) {
-                                        return false;
-                                    } else {
-                                        return true
-                                    }
-                                });
-                                confirmation_popup.style.display = 'none';
-                                localStorage.setItem('trashItem', JSON.stringify(trashItem));
-                                create_Trash_Items();
-                                creategridpostimagecontaineringTile();
-                            });
-                            column.appendChild(griditems);
-                            griditems.classList.add('griditems');
-                            gridpostimagecontainer.classList.add('gridpostimagecontainer');
-                            gridpostimagetoview.classList.add('gridpostimagetoview');
                             griditems.appendChild(gridimg);
-                            gridpostimagecontainer.appendChild(savedtime);
-                            gridpostimagecontainer.appendChild(saveddeletebtn);
-                            gridpostimagecontainer.appendChild(gridpostimagetoview);
-                            gridpostimagecontainer.appendChild(gridposttitlecover);
-                            gridpostimagecontainer.appendChild(savedtilebox);
-                            gridpostimagecontainer.style.display = 'flex';
-                            savedtilebox.classList.add('savedtilebox');
-                            savedtilebox.classList.add('UXer_TrUXheDTYle_bX');
-        
-                            gridpostcaption.classList.add('gridpostcaption');
-                            gridpostcaption.textContent = element.title;
-                            gridimg.src = element.Property_Src;
-                            gridpostimagetoview.src = element.Property_Src;
-                            savedtilebox.id = element.posterId + 'UXer_TrUXheDTYle_bX';
+                            gridimg.src = photo.Property_Src;
                             gridimg.classList.add('gridimg');
-                            savedtilebox.classList.add('savedtilebox');
-                            savedtilebox.classList.add('UXer_TrUXheDTYle_bX');
-                            let itemsviewclosebutton = document.createElement('span');
-                            let itemsviewonlargescale = document.createElement('section');
-                            let largescalewideviewcontainer = document.createElement('div');
-        
-                            document.body.appendChild(itemsviewonlargescale);
-                            itemsviewonlargescale.appendChild(itemsviewclosebutton);
-                            itemsviewonlargescale.appendChild(largescalewideviewcontainer);
-                            largescalewideviewcontainer.appendChild(gridpostimagecontainer);
-                            itemsviewclosebutton.innerHTML = '&times;';
-                            itemsviewonlargescale.id = element.id + element.posterId;
-                            itemsviewonlargescale.classList.add('itemsviewonlargescale');
-                            largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
-                            itemsviewclosebutton.classList.add('itemsviewclosebutton');
-                            itemsviewclosebutton.addEventListener('click', () => {
-                                document.querySelectorAll('.confirmation_popup').forEach(popup => {
-                                    popup.style.display = 'none';
-                                });
-                                itemsviewonlargescale.style.display = 'none';
-                            });
-                            griditems.addEventListener('click', () => {
-                                itemsviewonlargescale.style.display = 'flex';
-                            });
-                        } if (element.isVideo) {
-                            let griditems = document.createElement('div');
-                            let savedvideo = document.createElement('video');
-                            let gridpostimagecontainer = document.createElement('div');
-                            let saveddelete = document.createElement('img');
-                            let gridpostcaption = document.createElement('span');
-                            let savedtime = document.createElement('span');
-                            let saveddeletebtn = document.createElement('span');
-                            let gridposttitlecover = document.createElement('span');
-                            savedtime.textContent = element.date;
-                            gridposttitlecover.appendChild(gridpostcaption);
-                            saveddeletebtn.appendChild(saveddelete);
-                            saveddelete.src = 'newicons/trash-can.png';
-                            gridposttitlecover.classList.add('gridposttitlecover');
-                            savedtime.classList.add('savedtime');
-                            saveddeletebtn.classList.add('saveddeletebtn');
-                            saveddeletebtn.classList.add('headerbtns');
-                            //videoplayer
-        
-                            let gridpostimagetoview = document.createElement('video');
-                            let gridpostcover = document.createElement('div');
-                            let gridpostplaybtn = document.createElement('div');
-                            let gridpostpausebtn = document.createElement('div');
-                            let deletedreelvideopauseimg = document.createElement('img');
-                            let deletedreelvideoplayimg = document.createElement('img');
-                            let bottomvideocontrols = document.createElement('div');
-                            let savedprogressarea = document.createElement('div');
-                            let savedprogressbar = document.createElement('span');
-                            let savedtimegrid = document.createElement('div');
-                            let savedcurrenttime = document.createElement('span');
-                            let savedtotaltime = document.createElement('span');
-                            let savedmute = document.createElement('img');
-                            let savedunmute = document.createElement('img');
-                            let savedtilebox = document.createElement('nav');
-        
-                            //DELETE CONFIRMATION POPUP
-                            let confirmation_popup = document.createElement('div');
-                            let confirmationflex = document.createElement('div');
-                            let confirmationflex1 = document.createElement('div');
-                            let confirmationtext = document.createElement('p');
-                            let confirmationtrue = document.createElement('span');
-                            let confirmationfalse = document.createElement('span');
-                            confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-                            confirmationtrue.textContent = 'Yes';
-                            confirmationfalse.textContent = 'No';
-                            document.body.appendChild(confirmation_popup);
-                            confirmation_popup.appendChild(confirmationflex);
-                            confirmation_popup.appendChild(confirmationflex1);
-                            confirmationflex.appendChild(confirmationtext);
-                            confirmationflex1.appendChild(confirmationtrue);
-                            confirmationflex1.appendChild(confirmationfalse);
-                            confirmation_popup.classList.add('confirmation_popup');
-                            confirmationflex.classList.add('confirmationflex');
-                            confirmationflex1.classList.add('confirmationflex');
-                            confirmationtrue.classList.add('confirmationtrue');
-                            confirmationfalse.classList.add('confirmationfalse');
-                            confirmationfalse.addEventListener('click', () => {
-                                confirmation_popup.style.display = 'none';
-                            });
-                            saveddeletebtn.addEventListener('click', () => {
-                                confirmation_popup.style.display = 'flex';
-                            });
-                            confirmationtrue.id = element.id
-                            confirmationtrue.addEventListener('click', () => {
-                                trashItem = trashItem.filter((element) => {
-                                    if (element.id === confirmationtrue.id) {
-                                        return false;
-                                    } else {
-                                        return true
-                                    }
-                                });
-                                confirmation_popup.style.display = 'none';
-                                localStorage.setItem('trashItem', JSON.stringify(trashItem));
-                                create_Trash_Items();
-        
-                                creategridpostimagecontaineringTile();
-                            });
-        
-                            column.appendChild(griditems);
-        
-                            griditems.appendChild(savedvideo);
-                            griditems.appendChild(gridpostimagecontainer);
-                            gridpostimagecontainer.appendChild(savedtime);
-                            gridpostimagecontainer.appendChild(saveddeletebtn);
-                            gridpostimagecontainer.appendChild(gridpostimagetoview);
-                            gridpostimagecontainer.appendChild(gridpostcover);
-                            gridpostimagecontainer.appendChild(gridposttitlecover);
-                            gridpostimagecontainer.appendChild(savedtilebox);
-        
-                            gridpostcover.appendChild(gridpostplaybtn);
-                            gridpostcover.appendChild(gridpostpausebtn);
-                            gridpostcover.appendChild(savedmute);
-                            gridpostcover.appendChild(savedunmute);
-                            gridpostcover.appendChild(bottomvideocontrols);
-                            gridpostcover.style.display = 'flex';
-                            gridpostimagecontainer.style.display = 'flex';
-                            savedvideo.src = element.Property_Src;
-                            gridpostimagetoview.src = element.Property_Src;
-                            gridpostcaption.textContent = element.title;
-        
-                            griditems.classList.add('griditems');
-                            gridpostimagecontainer.classList.add('gridpostimagecontainer');
-        
-                            savedtilebox.classList.add('savedtilebox');
-                            savedtilebox.classList.add('UXer_TrUXheDTYle_bX');
-        
-                            gridpostcaption.classList.add('gridpostcaption');
-                            saveddelete.classList.add('saveddelete');
-        
-                            deletedreelvideoplayimg.src = 'icons/play-button.png';
-                            deletedreelvideopauseimg.src = 'icons/pause.png';
-                            savedmute.src = 'icons/audio.png';
-                            savedunmute.src = 'icons/mute.png';
-                            saveddelete.src = 'newicons/trash-can.png';
-        
-                            gridpostpausebtn.style.display = 'none';
-                            savedunmute.style.display = 'none';
-        
-                            bottomvideocontrols.appendChild(savedprogressarea);
-                            bottomvideocontrols.appendChild(savedtimegrid);
-                            gridpostplaybtn.appendChild(deletedreelvideoplayimg);
-                            gridpostpausebtn.appendChild(deletedreelvideopauseimg);
-                            savedprogressarea.appendChild(savedprogressbar);
-                            savedtimegrid.appendChild(savedcurrenttime);
-                            savedtimegrid.appendChild(savedtotaltime);
-                            savedcurrenttime.innerHTML = '00' + ':' + '00';
-                            savedtotaltime.innerHTML = '00' + ':' + '00';
-                            gridpostplaybtn.addEventListener('click', () => {
-                                gridpostimagetoview.play();
-                                gridpostplaybtn.style.display = 'none';
-                                gridpostpausebtn.style.display = 'flex';
-                            });
-        
-                            gridpostpausebtn.addEventListener('click', () => {
-                                gridpostimagetoview.pause();
-                                gridpostplaybtn.style.display = 'flex';
-                                gridpostpausebtn.style.display = 'none';
-                            });
-        
-                            savedmute.addEventListener('click', () => {
-                                savedmute.style.display = 'none';
-                                savedunmute.style.display = 'flex';
-                                gridpostimagetoview.volume = 0;
-                            });
-                            savedunmute.addEventListener('click', () => {
-                                savedmute.style.display = 'flex';
-                                savedunmute.style.display = 'none';
-                                gridpostimagetoview.volume = 1;
-                            });
-                            gridpostimagetoview.addEventListener('loadeddata', (e) => {
-                                let videoDuration = e.target.duration;
-                                let totalmin = Math.floor(videoDuration / 60);
-                                let totalsec = Math.floor(videoDuration % 60);
-                                // if seconds are < 10 add 0;
-                                totalmin < 10 ? totalmin = "0" + totalmin : totalmin;
-                                // if seconds are < 10 add 0;
-                                totalsec < 10 ? totalsec = "0" + totalsec : totalsec;
-                                savedtotaltime.innerHTML = `${totalmin} : ${totalsec}`;
-                            });
-                            gridpostimagetoview.addEventListener('timeupdate', (e) => {
-                                let savedreelvideocurrenttime = e.target.currentTime;
-                                let currentMin = Math.floor(savedreelvideocurrenttime / 60);
-                                let currentSec = Math.floor(savedreelvideocurrenttime % 60);
-                                // if seconds are < 10 add 0;
-                                currentMin < 10 ? currentMin = "0" + currentMin : currentMin;
-                                // if seconds are < 10 add 0;
-                                currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
-                                savedcurrenttime.innerHTML = `${currentMin} : ${currentSec}`;
-        
-                                //progress bar
-                                let videoDuration = event.target.duration;
-                                let progressvalue = (savedreelvideocurrenttime / videoDuration) * 100;
-                                savedprogressbar.style.width = `${progressvalue}%`;
-        
-                            });
-                            gridpostimagetoview.addEventListener('ended', () => {
-                                gridpostplaybtn.style.display = 'flex';
-                                gridpostpausebtn.style.display = 'none';
-                            });
-                            savedprogressarea.addEventListener('click', () => {
-                                let videoDuration = gridpostimagetoview.duration;
-                                progressbarwidthvalue = savedprogressarea.clientWidth;
-                                let clickOffSetx = event.offsetX;
-                                gridpostimagetoview.currentTime = (clickOffSetx / progressbarwidthvalue) * videoDuration;
-                            });
-        
-        
-        
-                            savedmute.classList.add('savedmute');
-                            savedunmute.classList.add('savedmute');
-                            savedprogressarea.classList.add('savedprogressarea');
-                            savedprogressbar.classList.add('savedprogressbar');
-                            savedtimegrid.classList.add('savedtimegrid');
-                            savedtotaltime.classList.add('savedcurrenttime');
-                            savedcurrenttime.classList.add('savedcurrenttime');
-                            gridpostimagetoview.classList.add('gridpostimagetoview');
-                            gridpostplaybtn.classList.add('gridpostplaybtn');
-                            gridpostpausebtn.classList.add('gridpostplaybtn');
-                            bottomvideocontrols.classList.add('bottomvideocontrols');
-                            gridpostcover.classList.add('gridpostcover');
-                            griditems.classList.add('griditems');
-                            gridpostimagecontainer.classList.add('gridpostimagecontainer');
-        
-                            let itemsviewclosebutton = document.createElement('span');
-                            let itemsviewonlargescale = document.createElement('section');
-                            let largescalewideviewcontainer = document.createElement('div');
-        
-                            document.body.appendChild(itemsviewonlargescale);
-                            itemsviewonlargescale.appendChild(itemsviewclosebutton);
-                            itemsviewonlargescale.appendChild(largescalewideviewcontainer);
-                            largescalewideviewcontainer.appendChild(gridpostimagecontainer);
-                            itemsviewclosebutton.innerHTML = '&times;';
-                            itemsviewonlargescale.id = element.id + element.posterId;
-                            itemsviewonlargescale.classList.add('itemsviewonlargescale');
-                            largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
-                            itemsviewclosebutton.classList.add('itemsviewclosebutton');
-                            itemsviewclosebutton.addEventListener('click', () => {
-                                document.querySelectorAll('.confirmation_popup').forEach(popup => {
-                                    popup.style.display = 'none';
-                                });
-                                itemsviewonlargescale.style.display = 'none';
-                            });
-                            griditems.addEventListener('click', () => {
-                                itemsviewonlargescale.style.display = 'flex';
-                            });
-        
-                            savedtilebox.id = element.posterId + 'UXer_TrUXheDTYle_bX';
+                        } if (photo.type == 'video') {
+                            let gridimg = document.createElement('img');
+                            griditems.appendChild(gridimg);
+                            gridimg.src = photo.Property_Src;
+                            gridimg.classList.add('gridimg');
                         }
-                        function creategridpostimagecontaineringTile() {
-                            document.querySelectorAll('.savedtilebox.UXer_TrUXheDTYle_bX').forEach(tilebox => {
-                                tilebox.innerHTML = '';
-                                if (trashItem) {
-                                    trashItem.forEach(photo => {
-                                        if (tilebox.id === photo.posterId + 'UXer_TrUXheDTYle_bX') {
-                                            if (photo.isPhoto) {
-                                                let savedtile = document.createElement('div');
-                                                let savedtileImg = document.createElement('img');
-                                                tilebox.appendChild(savedtile);
-                                                savedtile.appendChild(savedtileImg);
-                                                savedtileImg.src = photo.Property_Src;
-                                                savedtile.classList.add('savedtile');
-                                                savedtile.addEventListener('click', () => {
-                                                    document.querySelectorAll('.itemsviewonlargescale').forEach(popup => {
-                                                        if (popup.id === photo.id + photo.posterId) {
-                                                            function Loader() {
-                                                                let gridpostloader = document.createElement('section');
-                                                                let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                                let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                                popup.appendChild(gridpostloader);
-                                                                gridpostloader.appendChild(mainloadersvg);
-                                                                mainloadersvg.appendChild(mainloadercircle);
-                                                                mainloadercircle.setAttribute('cy', '30');
-                                                                mainloadercircle.setAttribute('cx', '30');
-                                                                mainloadercircle.setAttribute('r', '30');
-                                                                gridpostloader.classList.add('gridpostloader');
-                                                                setTimeout(() => {
-                                                                    gridpostloader.remove();
-                                                                }, 2000);
-                                                            }
-                                                            Loader();
-                                                            popup.style.display = 'flex';
-                                                        } else {
-                                                            popup.style.display = 'none';
-                                                        }
-                                                    })
-                                                });
-                                            } if (photo.isVideo) {
-                                                let savedtile = document.createElement('div');
-                                                let savedtileImg = document.createElement('video');
-                                                tilebox.appendChild(savedtile);
-                                                savedtile.appendChild(savedtileImg);
-                                                savedtileImg.src = photo.Property_Src;
-                                                savedtile.classList.add('savedtile');
-                                                savedtile.addEventListener('click', () => {
-                                                    document.querySelectorAll('.itemsviewonlargescale').forEach(popup => {
-                                                        if (popup.id === photo.id + photo.posterId) {
-                                                            function Loader() {
-                                                                let gridpostloader = document.createElement('section');
-                                                                let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                                let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                                popup.appendChild(gridpostloader);
-                                                                gridpostloader.appendChild(mainloadersvg);
-                                                                mainloadersvg.appendChild(mainloadercircle);
-                                                                mainloadercircle.setAttribute('cy', '30');
-                                                                mainloadercircle.setAttribute('cx', '30');
-                                                                mainloadercircle.setAttribute('r', '30');
-                                                                gridpostloader.classList.add('gridpostloader');
-                                                                setTimeout(() => {
-                                                                    gridpostloader.remove();
-                                                                }, 2000);
-                                                            }
-                                                            Loader();
-                                                            popup.style.display = 'flex';
-                                                        } else {
-                                                            popup.style.display = 'none';
-                                                        }
-                                                    })
-                                                });
-                                            }
-                                        }
-                                    });
-                                }
-                            })
-                        }
-                        creategridpostimagecontaineringTile();
+                        griditems.addEventListener('click', () => {
+                            create_Main_Trash_Items(photo.id);
+                        });
+                        createTilePost(photo.posterId);
                     }
                 });
             }
@@ -425,8 +34,353 @@ function create_Trash_Items() {
     });
 }
 create_Trash_Items();
+async function create_Main_Trash_Items(locationId) {
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    LogInFormData.forEach(user => {
+        let Trash = user.user_Trash;
+        Trash.forEach(photo => {
+            if (locationId === photo.id) {
+                if (photo.id === locationId) {
+                    let saveddelete = document.createElement('img');
+                    let savedtilebox = document.createElement('nav');
+                    let savedtime = document.createElement('span');
+                    let saveddeletebtn = document.createElement('span');
+
+                    let itemsviewclosebutton = document.createElement('span');
+                    let itemsviewonlargescale = document.createElement('section');
+                    let largescalewideviewcontainer = document.createElement('div');
+                    let gridpostcaption = document.createElement('p');
+                    //viewing gridpost
+                    let gridpostimagecontainer = document.createElement('div');
+                    let gridposttitlecover = document.createElement('span');
+                    let gridposttime = document.createElement('b');
+                    function delete_DELETED_story() {
+                        let confirmation_popup = document.createElement('div');
+                        let confirmationflex = document.createElement('div');
+                        let confirmationflex1 = document.createElement('div');
+                        let confirmationtext = document.createElement('p');
+                        let confirmationtrue = document.createElement('span');
+                        let confirmationfalse = document.createElement('span');
+                        confirmationtext.textContent = 'Are You Sure You Want To Delete';
+                        confirmationtrue.textContent = 'Yes';
+                        confirmationfalse.textContent = 'No';
+                        document.body.appendChild(confirmation_popup);
+                        confirmation_popup.appendChild(confirmationflex);
+                        confirmation_popup.appendChild(confirmationflex1);
+                        confirmationflex.appendChild(confirmationtext);
+                        confirmationflex1.appendChild(confirmationtrue);
+                        confirmationflex1.appendChild(confirmationfalse);
+                        confirmation_popup.classList.add('confirmation_popup');
+                        confirmationflex.classList.add('confirmationflex');
+                        confirmationflex1.classList.add('confirmationflex');
+                        confirmationtrue.classList.add('confirmationtrue');
+                        confirmationfalse.classList.add('confirmationfalse');
+                        confirmationfalse.addEventListener('click', () => {
+                            confirmation_popup.style.display = 'none';
+                        });
+                        saveddeletebtn.addEventListener('click', () => {
+                            confirmation_popup.style.display = 'flex';
+                        });
+                        confirmationtrue.id = photo.id
+                        confirmationtrue.addEventListener('click', () => {
+                            LogInFormData.forEach(data => {
+                                let usertrash = data.user_Trash;
+                                usertrash = usertrash.filter(story => {
+                                    if (story.id === confirmationtrue.id) {
+                                        return false;
+                                    } else {
+                                        return true;
+                                    }
+                                });
+                                data.user_Trash = usertrash;
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            });
+                            create_Trash_Items();
+                            confirmation_popup.style.display = 'none';
+                            createTilePost(photo.posterId);
+                        });
+                        itemsviewclosebutton.addEventListener('click', () => {
+                            confirmation_popup.remove();
+                        });
+                    }
+                    delete_DELETED_story();
+                    itemsviewonlargescale.style.display = 'flex';
+
+                    loader(itemsviewonlargescale, photo.id);
+                    if (photo.type == 'photo') {
+                        let gridpostimagetoview = document.createElement('img');
+                        gridpostimagecontainer.appendChild(gridpostimagetoview);
+                        gridpostimagetoview.src = photo.Property_Src;
+                        gridpostimagetoview.id = photo.id;
+                        gridpostimagetoview.classList.add('gridpostimagetoview');
+                        function filter_PostImage() {
+                            if (photo.filter == 'default') {
+                                gridpostimagetoview.classList.add('--color-default');
+                            } else if (photo.filter == 'gray') {
+                                gridpostimagetoview.classList.add('--color-gray');
+                            } else if (photo.filter == 'contrast') {
+                                gridpostimagetoview.classList.add('--color-contrast');
+                            } else if (photo.filter == 'bright') {
+                                gridpostimagetoview.classList.add('--color-bright');
+                            } else if (photo.filter == 'blur') {
+                                gridpostimagetoview.classList.add('--color-blur');
+                            } else if (photo.filter == 'invert') {
+                                gridpostimagetoview.classList.add('--color-invert');
+                            } else if (photo.filter == 'sepia') {
+                                gridpostimagetoview.classList.add('--color-sepia');
+                            } else if (photo.filter == 'hue-rotate') {
+                                gridpostimagetoview.classList.add('--color-hue-rotate');
+                            } else if (photo.filter == 'opacity') {
+                                gridpostimagetoview.classList.add('--color-opacity');
+                            } else if (photo.filter == 'satulate') {
+                                gridpostimagetoview.classList.add('--color-satulate');
+                            }
+                        }
+                        filter_PostImage();
+                    } if (photo.type == 'text') {
+                        let gridposttextToview = document.createElement('p');
+                        gridpostimagecontainer.appendChild(gridposttextToview);
+                        gridposttextToview.classList.add('gridposttextToview');
+                        gridposttextToview.textContent = photo.Property_Src;
+
+                        gridposttextToview.style.display = 'block';
+                        function textGridPostTextTheme() {
+                            function textThemeBackGround() {
+                                if (photo.themeMode == 'default') {
+                                    gridposttextToview.classList.add('themedefault');
+                                } else if (photo.themeMode == 'claimer') {
+                                    gridposttextToview.classList.add('themeclaimer');
+                                } else if (photo.themeMode == 'wriser') {
+                                    gridposttextToview.classList.add('themewriser');
+                                } else if (photo.themeMode == 'xriphor') {
+                                    gridposttextToview.classList.add('themexriphor');
+                                } else if (photo.themeMode == 'nophia') {
+                                    gridposttextToview.classList.add('themenophia');
+                                } else if (photo.themeMode == 'oracle') {
+                                    gridposttextToview.classList.add('themeoracle');
+                                } else if (photo.themeMode == 'folah') {
+                                    gridposttextToview.classList.add('themefolah');
+                                } else if (photo.themeMode == 'grino') {
+                                    gridposttextToview.classList.add('themegrino');
+                                } else if (photo.themeMode == 'rhisxos') {
+                                    gridposttextToview.classList.add('themerhisxos');
+                                } else if (photo.themeMode == 'nicklezol') {
+                                    gridposttextToview.classList.add('themenicklezol');
+                                    gridposttextToview.classList.add('gridposttextToviewWhite');
+                                    gridposttextToview.classList.add('themenicklezoltext');
+                                } else if (photo.themeMode == 'mirox') {
+                                    gridposttextToview.classList.add('thememirox');
+                                } else if (photo.themeMode == 'xosiphor') {
+                                    gridposttextToview.classList.add('themexosiphor');
+                                } else if (photo.themeMode == 'rhicode') {
+                                    gridposttextToview.classList.add('themerhicode');
+                                    gridposttextToview.classList.add('gridposttextToviewWhite');
+                                } else if (photo.themeMode == 'srccod') {
+                                    gridposttextToview.classList.add('themesrccode');
+                                    gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                } else if (photo.themeMode == 'xporiah') {
+                                    gridposttextToview.classList.add('themexporiah');
+                                    gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                } else if (photo.themeMode == 'niph') {
+                                    gridposttextToview.classList.add('themeniph');
+                                    gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                }
+                            }
+                            textThemeBackGround();
+                            function textThemeFont() {
+                                if (photo.fontMode == 'Default') {
+                                    gridposttextToview.classList.add('TextDefault');
+                                } else if (photo.fontMode == 'Times') {
+                                    gridposttextToview.classList.add('TextTimes');
+                                } else if (photo.fontMode == 'Arial') {
+                                    gridposttextToview.classList.add('TextArial');
+                                } else if (photo.fontMode == 'Cursive') {
+                                    gridposttextToview.classList.add('TextCursive');
+                                } else if (photo.fontMode == 'Great Vibes') {
+                                    gridposttextToview.classList.add('TextGreatVibes');
+                                }
+                            }
+                            textThemeFont();
+                        }
+                        textGridPostTextTheme();
+
+                    } if (photo.type == 'video') {
+                        let gridpostimagetoview = document.createElement('video');
+                        let gridpostcover = document.createElement('div');
+                        let gridpostbottomcontrols = document.createElement('div');
+                        let gridpostprogressarea = document.createElement('span');
+                        let gridpostprogressbar = document.createElement('span');
+                        let gridposttimegrid = document.createElement('div');
+                        let gridposttotaltime = document.createElement('span');
+                        let gridpostcurrenttime = document.createElement('span');
+                        let gridpostplaybtn = document.createElement('span');
+                        let gridpostpausebtn = document.createElement('span');
+                        let gridpostplayicon = document.createElement('img');
+                        let gridpostpauseicon = document.createElement('img');
+                        gridpostimagecontainer.appendChild(gridpostimagetoview);
+                        gridpostimagecontainer.appendChild(gridpostcover);
+                        gridpostimagetoview.src = photo.Property_Src;
+                        gridpostimagetoview.classList.add('gridpostimagetoview');
+
+                        gridpostcover.appendChild(gridpostplaybtn);
+                        gridpostcover.appendChild(gridpostpausebtn);
+                        gridpostcover.appendChild(gridpostbottomcontrols);
+                        gridpostbottomcontrols.appendChild(gridpostprogressarea);
+                        gridpostbottomcontrols.appendChild(gridposttimegrid);
+
+                        gridpostcover.style.display = 'flex';
+                        gridpostpausebtn.style.display = 'none';
+                        gridpostprogressarea.appendChild(gridpostprogressbar);
+                        gridposttimegrid.appendChild(gridpostcurrenttime);
+                        gridposttimegrid.appendChild(gridposttotaltime);
+                        gridpostplaybtn.appendChild(gridpostplayicon);
+                        gridpostpausebtn.appendChild(gridpostpauseicon);
 
 
+                        gridpostplayicon.src = 'icons/play-button.png'
+                        gridpostpauseicon.src = 'icons/pause.png'
+                        gridpostplaybtn.classList.add('gridpostplaybtn');
+                        gridpostpausebtn.classList.add('gridpostplaybtn');
+                        gridpostbottomcontrols.classList.add('gridpostbottomcontrols');
+                        gridpostcover.classList.add('gridpostcover');
+                        gridpostprogressarea.classList.add('gridpostprogressarea');
+                        gridpostprogressbar.classList.add('gridpostprogressbar');
+                        gridposttimegrid.classList.add('gridposttimegrid');
+                        gridposttotaltime.classList.add('gridposttotaltime');
+                        gridpostcurrenttime.classList.add('gridposttotaltime');
+
+
+                        gridpostplaybtn.addEventListener('click', () => {
+                            gridpostimagetoview.play();
+                        });
+                        gridpostpausebtn.addEventListener('click', () => {
+                            gridpostimagetoview.pause();
+                        });
+                        gridpostimagetoview.addEventListener('play', () => {
+                            gridpostpausebtn.style.display = 'flex';
+                            gridpostplaybtn.style.display = 'none';
+                        });
+                        gridpostimagetoview.addEventListener('pause', () => {
+                            gridpostpausebtn.style.display = 'none';
+                            gridpostplaybtn.style.display = 'flex';
+                        });
+                        gridpostimagetoview.addEventListener('loadeddata', (e) => {
+                            let videoDuration = e.target.duration;
+                            let totalMin = Math.floor(videoDuration / 60);
+                            let totalSec = Math.floor(videoDuration % 60);
+
+                            //if totalmin are less than 10 add 0 at the beginning;
+                            totalMin < 10 ? totalMin = "0" + totalMin : totalMin;
+                            //if totalmin are less than 10 add 0 at the beginning;
+                            totalSec < 10 ? totalSec = "0" + totalSec : totalSec;
+                            gridposttotaltime.innerHTML = `${totalMin} : ${totalSec}`;
+                        });
+                        gridpostimagetoview.addEventListener('timeupdate', (e) => {
+                            let currentVideoTime = e.target.currentTime;
+                            let currentMin = Math.floor(currentVideoTime / 60);
+                            let currentSec = Math.floor(currentVideoTime % 60);
+
+                            //if totalmin are less than 10 add 0 at the beginning;
+                            currentMin < 10 ? currentMin = "0" + currentMin : currentMin;
+                            //if totalmin are less than 10 add 0 at the beginning;
+                            currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
+                            gridpostcurrenttime.innerHTML = `${currentMin} : ${currentSec}`;
+
+                            //progress bar
+                            let videoDuration = event.target.duration;
+                            let progressvalue = (currentVideoTime / videoDuration) * 100;
+                            gridpostprogressbar.style.width = `${progressvalue}%`;
+
+                        });
+
+                        gridpostimagetoview.addEventListener('ended', () => {
+                            gridpostplaybtn.style.display = 'flex';
+                            gridpostpausebtn.style.display = 'none';
+                        });
+
+                        //duration events
+                        gridpostprogressarea.addEventListener('click', () => {
+                            let videoDuration = gridpostimagetoview.duration;
+                            progressbarwidthvalue = gridpostprogressarea.clientWidth;
+                            let clickOffSetx = event.offsetX;
+                            gridpostimagetoview.currentTime = (clickOffSetx / progressbarwidthvalue) * videoDuration;
+                        });
+
+                    }
+                    savedtime.textContent = photo.date;
+                    gridpostcaption.textContent = photo.title;
+                    saveddeletebtn.appendChild(saveddelete);
+                    saveddelete.src = 'newicons/trash-can.png';
+                    savedtime.classList.add('savedtime');
+                    saveddeletebtn.classList.add('saveddeletebtn');
+                    saveddeletebtn.classList.add('headerbtns');
+
+                    savedtilebox.classList.add('savedtilebox');
+                    savedtilebox.classList.add('UXer_TrUXheDTYle_bX');
+                    savedtilebox.id = photo.posterId + 'UXer_TrUXheDTYle_bX';
+
+                    gridposttime.classList.add('gridposttime');
+
+                    gridposttitlecover.appendChild(gridpostcaption);
+                    gridposttitlecover.classList.add('gridposttitlecover');
+                    gridpostcaption.classList.add('gridpostcaption');
+                    gridpostimagecontainer.appendChild(gridposttitlecover);
+                    gridpostimagecontainer.appendChild(savedtime);
+                    gridpostimagecontainer.appendChild(saveddeletebtn);
+                    gridpostimagecontainer.appendChild(savedtilebox);
+
+                    itemsviewonlargescale.appendChild(largescalewideviewcontainer);
+                    itemsviewonlargescale.appendChild(itemsviewclosebutton);
+                    largescalewideviewcontainer.appendChild(gridpostimagecontainer);
+                    gridpostimagecontainer.classList.add('gridpostimagecontainer');
+                    largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
+                    itemsviewclosebutton.classList.add('itemsviewclosebutton');
+                    itemsviewonlargescale.classList.add('itemsviewonlargescale');
+                    gridpostimagecontainer.style.display = 'flex';
+                    itemsviewclosebutton.innerHTML = '&times;';
+                    document.body.appendChild(itemsviewonlargescale);
+                    largescalewideviewcontainer.id = photo.id;
+                    itemsviewonlargescale.id = photo.id;
+
+                    itemsviewclosebutton.addEventListener('click', () => {
+                        itemsviewonlargescale.remove();
+                    });
+                    createTilePost(photo.posterId);
+                }
+            }
+        });
+    });
+}
+function createTilePost(locationId) {
+    document.querySelectorAll('.savedtilebox.UXer_TrUXheDTYle_bX').forEach(tilebox => {
+        tilebox.innerHTML = '';
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        LogInFormData.forEach(user => {
+            let Trash = user.user_Trash;
+            Trash.forEach(photo => {
+                if (tilebox.id === photo.posterId + 'UXer_TrUXheDTYle_bX') {
+                    if (photo.posterId === locationId) {
+                        let savedtile = document.createElement('div');
+                        if (photo.type == 'photo') {
+                            let savedtileImg = document.createElement('img');
+                            savedtile.appendChild(savedtileImg);
+                            savedtileImg.src = photo.Property_Src;
+                        } if (photo.type == 'video') {
+                            let savedtileImg = document.createElement('video');
+                            savedtile.appendChild(savedtileImg);
+                            savedtileImg.src = photo.Property_Src;
+                        }
+                        tilebox.appendChild(savedtile);
+                        savedtile.classList.add('savedtile');
+                        savedtile.addEventListener('click', () => {
+                            create_Main_Trash_Items(photo.id);
+                        });
+                    }
+                }
+            });
+        });
+    })
+}
 function newSaved_Script() {
     let savedculomn = document.querySelectorAll('.savedculomn');
     const SavedVideos_Column = document.querySelectorAll('.SavedVideos_Column');
@@ -453,78 +407,12 @@ function newSaved_Script() {
                                     griditems.classList.add('griditems');
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.src = feed.Property_Src;
-
-                                    function view_SavedPost() {
-                                        let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                        itemsviewonlargescale.forEach(largecontainer => {
-                                            if (largecontainer.id === feed.id) {
-                                                let gridpostloader = document.createElement('section');
-                                                let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                largecontainer.appendChild(gridpostloader);
-                                                gridpostloader.appendChild(mainloadersvg);
-                                                mainloadersvg.appendChild(mainloadercircle);
-                                                mainloadercircle.setAttribute('cy', '30');
-                                                mainloadercircle.setAttribute('cx', '30');
-                                                mainloadercircle.setAttribute('r', '30');
-                                                gridpostloader.classList.add('gridpostloader');
-                                                gridpostloader.id = feed.id;
-                                                document.body.appendChild(largecontainer);
-                                                largecontainer.style.display = 'flex';
-                                                setTimeout(() => {
-                                                    gridpostloader.remove();
-                                                }, 2000);
-                                            } else {
-                                                largecontainer.style.display = 'none';
-                                            }
-                                        });
-                                    }
-                                    griditems.addEventListener('click', event => {
-                                        view_SavedPost();
+                                    deletebutton.addEventListener('click', () => {
+                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                     });
-                                    function deleting_Post_Script() {
-                                        let confirmation_popup = document.createElement('div');
-                                        let confirmationflex = document.createElement('div');
-                                        let confirmationflex1 = document.createElement('div');
-                                        let confirmationtext = document.createElement('p');
-                                        let confirmationtrue = document.createElement('span');
-                                        let confirmationfalse = document.createElement('span');
-                                        confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-                                        confirmationtrue.textContent = 'Yes';
-                                        confirmationfalse.textContent = 'No';
-                                        document.body.appendChild(confirmation_popup);
-                                        confirmation_popup.appendChild(confirmationflex);
-                                        confirmation_popup.appendChild(confirmationflex1);
-                                        confirmationflex.appendChild(confirmationtext);
-                                        confirmationflex1.appendChild(confirmationtrue);
-                                        confirmationflex1.appendChild(confirmationfalse);
-                                        confirmation_popup.classList.add('confirmation_popup');
-                                        confirmationflex.classList.add('confirmationflex');
-                                        confirmationflex1.classList.add('confirmationflex');
-                                        confirmationtrue.classList.add('confirmationtrue');
-                                        confirmationfalse.classList.add('confirmationfalse');
-                                        confirmationfalse.addEventListener('click', () => {
-                                            confirmation_popup.style.display = 'none';
-                                        });
-                                        deletebutton.addEventListener('click', () => {
-                                            confirmation_popup.style.display = 'flex';
-                                        });
-                                        confirmation_popup.id = photo.id;
-                                        confirmationtrue.id = photo.id;
-                                        confirmationtrue.addEventListener('click', () => {
-                                            savedItems = savedItems.filter((photo) => {
-                                                if (photo.id === confirmationtrue.id) {
-                                                    return false;
-                                                } else {
-                                                    return true;
-                                                }
-                                            });
-                                            newSaved_Script();
-                                            confirmation_popup.style.display = 'none';
-                                            localStorage.setItem('savedItems', JSON.stringify(savedItems));
-                                        });
-                                    }
-                                    deleting_Post_Script();
+                                    griditems.addEventListener('click', event => {
+                                        createMain_GridPost(feed.id, feed.Property_Src);
+                                    });
                                     function filter_Image() {
                                         if (feed.filter == 'default') {
                                             gridimg.classList.add('--color-default');
@@ -562,84 +450,12 @@ function newSaved_Script() {
                                     griditems.classList.add('griditems');
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.src = feed.Property_Src;
-
-                                    function view_SavedPost() {
-                                        let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                        itemsviewonlargescale.forEach(largecontainer => {
-                                            if (largecontainer.id === feed.id) {
-                                                let gridpostloader = document.createElement('section');
-                                                let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                largecontainer.appendChild(gridpostloader);
-                                                gridpostloader.appendChild(mainloadersvg);
-                                                mainloadersvg.appendChild(mainloadercircle);
-                                                mainloadercircle.setAttribute('cy', '30');
-                                                mainloadercircle.setAttribute('cx', '30');
-                                                mainloadercircle.setAttribute('r', '30');
-                                                gridpostloader.classList.add('gridpostloader');
-                                                gridpostloader.id = feed.id;
-                                                document.body.appendChild(largecontainer);
-                                                largecontainer.style.display = 'flex';
-                                                setTimeout(() => {
-                                                    gridpostloader.remove();
-                                                }, 2000);
-                                            } else {
-                                                largecontainer.style.display = 'none';
-                                            }
-                                        });
-                                    }
-                                    griditems.addEventListener('click', event => {
-                                        view_SavedPost();
+                                    deletebutton.addEventListener('click', () => {
+                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                     });
-                                    function deleting_Post_Script() {
-                                        let confirmation_popup = document.createElement('div');
-                                        let confirmationflex = document.createElement('div');
-                                        let confirmationflex1 = document.createElement('div');
-                                        let confirmationtext = document.createElement('p');
-                                        let confirmationtrue = document.createElement('span');
-                                        let confirmationfalse = document.createElement('span');
-                                        confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-                                        confirmationtrue.textContent = 'Yes';
-                                        confirmationfalse.textContent = 'No';
-                                        document.body.appendChild(confirmation_popup);
-                                        confirmation_popup.appendChild(confirmationflex);
-                                        confirmation_popup.appendChild(confirmationflex1);
-                                        confirmationflex.appendChild(confirmationtext);
-                                        confirmationflex1.appendChild(confirmationtrue);
-                                        confirmationflex1.appendChild(confirmationfalse);
-                                        confirmation_popup.classList.add('confirmation_popup');
-                                        confirmationflex.classList.add('confirmationflex');
-                                        confirmationflex1.classList.add('confirmationflex');
-                                        confirmationtrue.classList.add('confirmationtrue');
-                                        confirmationfalse.classList.add('confirmationfalse');
-                                        confirmationfalse.addEventListener('click', () => {
-                                            confirmation_popup.style.display = 'none';
-                                        });
-                                        deletebutton.addEventListener('click', () => {
-                                            confirmation_popup.style.display = 'flex';
-                                        });
-                                        confirmation_popup.id = photo.id;
-                                        confirmationtrue.id = photo.id;
-                                        confirmationtrue.addEventListener('click', () => {
-                                            savedItems = savedItems.filter((photo) => {
-                                                if (photo.id === confirmationtrue.id) {
-                                                    return false;
-                                                } else {
-                                                    return true;
-                                                }
-                                            });
-                                            LogInFormData.forEach(data => {
-                                                if (data.user_Id === photo.savedId) {
-                                                    let alreadysaved = data.user_Saved;
-                                                    alreadysaved = savedItems;
-                                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                                }
-                                            });
-                                            newSaved_Script();
-                                            confirmation_popup.style.display = 'none';
-                                        });
-                                    }
-                                    deleting_Post_Script();
+                                    griditems.addEventListener('click', event => {
+                                        createMain_GridPost(feed.id, feed.Property_Src);
+                                    });
                                 } if (feed.isText) {
                                     let griditems = document.createElement('div');
                                     let gridimg = document.createElement('p');
@@ -653,78 +469,12 @@ function newSaved_Script() {
                                     griditems.classList.add('griditems');
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.textContent = feed.Property_Src;
-
-                                    function view_SavedPost() {
-                                        let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                        itemsviewonlargescale.forEach(largecontainer => {
-                                            if (largecontainer.id === feed.id) {
-                                                let gridpostloader = document.createElement('section');
-                                                let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                largecontainer.appendChild(gridpostloader);
-                                                gridpostloader.appendChild(mainloadersvg);
-                                                mainloadersvg.appendChild(mainloadercircle);
-                                                mainloadercircle.setAttribute('cy', '30');
-                                                mainloadercircle.setAttribute('cx', '30');
-                                                mainloadercircle.setAttribute('r', '30');
-                                                gridpostloader.classList.add('gridpostloader');
-                                                gridpostloader.id = feed.id;
-                                                document.body.appendChild(largecontainer);
-                                                largecontainer.style.display = 'flex';
-                                                setTimeout(() => {
-                                                    gridpostloader.remove();
-                                                }, 2000);
-                                            } else {
-                                                largecontainer.style.display = 'none';
-                                            }
-                                        });
-                                    }
-                                    griditems.addEventListener('click', event => {
-                                        view_SavedPost();
+                                    deletebutton.addEventListener('click', () => {
+                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                     });
-                                    function deleting_Post_Script() {
-                                        let confirmation_popup = document.createElement('div');
-                                        let confirmationflex = document.createElement('div');
-                                        let confirmationflex1 = document.createElement('div');
-                                        let confirmationtext = document.createElement('p');
-                                        let confirmationtrue = document.createElement('span');
-                                        let confirmationfalse = document.createElement('span');
-                                        confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-                                        confirmationtrue.textContent = 'Yes';
-                                        confirmationfalse.textContent = 'No';
-                                        document.body.appendChild(confirmation_popup);
-                                        confirmation_popup.appendChild(confirmationflex);
-                                        confirmation_popup.appendChild(confirmationflex1);
-                                        confirmationflex.appendChild(confirmationtext);
-                                        confirmationflex1.appendChild(confirmationtrue);
-                                        confirmationflex1.appendChild(confirmationfalse);
-                                        confirmation_popup.classList.add('confirmation_popup');
-                                        confirmationflex.classList.add('confirmationflex');
-                                        confirmationflex1.classList.add('confirmationflex');
-                                        confirmationtrue.classList.add('confirmationtrue');
-                                        confirmationfalse.classList.add('confirmationfalse');
-                                        confirmationfalse.addEventListener('click', () => {
-                                            confirmation_popup.style.display = 'none';
-                                        });
-                                        deletebutton.addEventListener('click', () => {
-                                            confirmation_popup.style.display = 'flex';
-                                        });
-                                        confirmation_popup.id = photo.id;
-                                        confirmationtrue.id = photo.id;
-                                        confirmationtrue.addEventListener('click', () => {
-                                            savedItems = savedItems.filter((photo) => {
-                                                if (photo.id === confirmationtrue.id) {
-                                                    return false;
-                                                } else {
-                                                    return true;
-                                                }
-                                            });
-                                            newSaved_Script();
-                                            confirmation_popup.style.display = 'none';
-                                            localStorage.setItem('savedItems', JSON.stringify(savedItems));
-                                        });
-                                    }
-                                    deleting_Post_Script();
+                                    griditems.addEventListener('click', event => {
+                                        createMain_GridPost(feed.id, feed.Property_Src);
+                                    });
                                     function textGridPostTextTheme() {
                                         function textThemeBackGround() {
                                             if (feed.themeMode == 'default') {
@@ -851,13 +601,7 @@ function newSaved_Script() {
                                     reelgridusersphoto.classList.add('reelgridusersphoto');
 
                                     gridvideoremove.addEventListener('click', () => {
-                                        document.querySelectorAll('.confirmation_popup').forEach(popup => {
-                                            if (popup.id === photo.id) {
-                                                popup.style.display = 'flex';
-                                            } else {
-                                                popup.style.display = 'none';
-                                            }
-                                        });
+                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                         gridvideomenu.classList.toggle('gridmenuactive');
                                     });
                                     gridvideoremove.appendChild(gridmenudeleteimg);
@@ -968,6 +712,52 @@ function newSaved_Script() {
             });
         });
     });
+    function deleting_Post_Script(savedItems,LogInFormData,locationId,id) {
+        let confirmation_popup = document.createElement('div');
+        let confirmationflex = document.createElement('div');
+        let confirmationflex1 = document.createElement('div');
+        let confirmationtext = document.createElement('p');
+        let confirmationtrue = document.createElement('span');
+        let confirmationfalse = document.createElement('span');
+        confirmationtext.textContent = 'Are You Sure You Want To Deleted';
+        confirmationtrue.textContent = 'Yes';
+        confirmationfalse.textContent = 'No';
+        document.body.appendChild(confirmation_popup);
+        confirmation_popup.appendChild(confirmationflex);
+        confirmation_popup.appendChild(confirmationflex1);
+        confirmationflex.appendChild(confirmationtext);
+        confirmationflex1.appendChild(confirmationtrue);
+        confirmationflex1.appendChild(confirmationfalse);
+        confirmation_popup.classList.add('confirmation_popup');
+        confirmationflex.classList.add('confirmationflex');
+        confirmationflex1.classList.add('confirmationflex');
+        confirmationtrue.classList.add('confirmationtrue');
+        confirmationfalse.classList.add('confirmationfalse');
+        confirmationfalse.addEventListener('click', () => {
+            confirmation_popup.style.display = 'none';
+        });
+        confirmation_popup.style.display = 'flex';
+
+        confirmation_popup.id = id;
+        confirmationtrue.id = id;
+        confirmationtrue.addEventListener('click', () => {
+            LogInFormData = LogInFormData.filter(data => {
+                if (data.user_Id === locationId) {
+                    savedItems = savedItems.filter((photo) => {
+                        if (photo.id === confirmationtrue.id) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                    data.user_Saved = savedItems;
+                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                    newSaved_Script();
+                    confirmation_popup.remove();
+                }
+            });
+        });
+    }
 }
 if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
     Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));

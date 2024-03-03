@@ -61,74 +61,6 @@ function createNotifications() {
                         }
                     }
                     startTime();
-                    function pushViewers() {
-                        storiesphotosArray.forEach(story => {
-                            if (story.id === notification.id) {
-                                if (Array.isArray(ActiveAccount)) {
-                                    ActiveUser_Account = ActiveAccount;
-                                    ActiveUser_Account.forEach(data => {
-                                        LogInFormData.forEach(user => {
-                                            if (user.user_Id === data.user_Id) {
-                                                const id = '' + new Date().getTime();
-                                                if (user.user_Id === story.posterId) {
-                                                    null;
-                                                    return false;
-                                                } else {
-                                                    function pushstatusviews() {
-                                                        statusview.push({
-                                                            postId: story.id,
-                                                            posterId: user.user_Id,
-                                                            name: user.user_Firstname + ' ' + user.user_Surname,
-                                                            img: user.user_ProfilePicture,
-                                                            id: user.user_Id + story.id,
-                                                            time: new Date().getTime(),
-                                                            date: trackingDate
-                                                        });
-                                                        localStorage.setItem('statusview', JSON.stringify(statusview));
-                                                    }
-    
-                                                    function removeOddViewLicenseOut() {
-                                                        if (Array.isArray(ActiveAccount)) {
-                                                            ActiveUser_Account = ActiveAccount;
-                                                            ActiveUser_Account.forEach(data => {
-                                                                LogInFormData.forEach(user => {
-                                                                    if (user.user_Id === data.user_Id) {
-                                                                        statusview = statusview.filter(license => {
-                                                                            if (license.id === user.user_Id + story.id) {
-                                                                                return false;
-                                                                            } else {
-                                                                                return true;
-                                                                            }
-                                                                        });
-                                                                        localStorage.setItem('statusview', JSON.stringify(statusview));
-                                                                        pushstatusviews();
-                                                                        CreateStatusViews();
-                                                                    }
-                                                                });
-                                                            });
-                                                        }
-                                                    }
-                                                    removeOddViewLicenseOut();
-                                                    document.querySelectorAll('.viewcount').forEach(count => {
-                                                        if (count.id === story.id) {
-                                                            if (count.classList.contains('viewcount')) {
-                                                                count.textContent = parseInt(count.textContent) + 1;
-                                                                story.statusviewers = count.textContent;
-                                                                localStorage.setItem('storiesphotosArray', JSON.stringify(storiesphotosArray));
-                                                                count.classList.add('storyviewed');
-                                                                count.classList.remove('viewcount');
-                                                            }
-                                                        }
-                                                    });
-                                                    return true;
-                                                }
-                                            }
-                                        });
-                                    });
-                                }
-                            }
-                        });
-                    }
                     function GetPosterInfo() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
@@ -137,12 +69,8 @@ function createNotifications() {
                                 if (notification.type == 'comment') {
                                     notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>added a comment to your post "${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
-                                        let commentspopup = document.querySelectorAll('.commentsectioncontainer');
-                                        commentspopup.forEach(popup => {
-                                            if (popup.id === notification.postId) {
-                                                popup.classList.toggle('commentsectioncontaineractive');
-                                            }
-                                        });
+                                        create_Comment_room(notification.postId);
+                                        sessionStorage.setItem('activepage', notification.postId);
                                     });
                                     document.addEventListener('visibilitychange', () => {
                                         var state = document.visibilityState;
@@ -166,30 +94,7 @@ function createNotifications() {
                                 } if (notification.type == 'post_Like') {
                                     notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>liked your post "${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
-                                        let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                        itemsviewonlargescale.forEach(largecontainer => {
-                                            if (largecontainer.id === notification.postId) {
-                                                let gridpostloader = document.createElement('section');
-                                                let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                largecontainer.appendChild(gridpostloader);
-                                                gridpostloader.appendChild(mainloadersvg);
-                                                mainloadersvg.appendChild(mainloadercircle);
-                                                mainloadercircle.setAttribute('cy', '30');
-                                                mainloadercircle.setAttribute('cx', '30');
-                                                mainloadercircle.setAttribute('r', '30');
-                                                gridpostloader.classList.add('gridpostloader');
-                                                gridpostloader.id = notification.id;
-                                                document.body.appendChild(largecontainer);
-                                                largecontainer.style.display = 'flex';
-                                                pushViewers();
-                                                setTimeout(() => {
-                                                    gridpostloader.remove();
-                                                }, 2000);
-                                            } else {
-                                                largecontainer.style.display = 'none';
-                                            }
-                                        });
+                                        createMain_GridPost(notification.postId);
                                     });
                                     document.addEventListener('visibilitychange', () => {
                                         var state = document.visibilityState;
@@ -201,12 +106,8 @@ function createNotifications() {
                                 } if (notification.type == 'comment_Like') {
                                     notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>liked your comment "${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
-                                        let commentspopup = document.querySelectorAll('.commentsectioncontainer');
-                                        commentspopup.forEach(popup => {
-                                            if (popup.id === notification.postId) {
-                                                popup.classList.toggle('commentsectioncontaineractive');
-                                            }
-                                        });
+                                        create_Comment_room(notification.postId);
+                                        sessionStorage.setItem('activepage', notification.postId);
                                     });
                                     document.addEventListener('visibilitychange', () => {
                                         var state = document.visibilityState;
@@ -222,12 +123,7 @@ function createNotifications() {
                                         notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>replied to your comment "${notification.caption}"`;
                                     }
                                     notificationcaption.addEventListener('click', () => {
-                                        let commentspopup = document.querySelectorAll('.commentroomsection');
-                                        commentspopup.forEach(popup => {
-                                            if (popup.id === notification.postId) {
-                                                popup.classList.toggle('commentroomsectionactive');
-                                            }
-                                        });
+                                        create_Comment_Reply_room(notification.postId);
                                     });
                                     document.addEventListener('visibilitychange', () => {
                                         var state = document.visibilityState;
@@ -247,30 +143,8 @@ function createNotifications() {
                                             document.querySelector('#livestreaming').classList.add('active');
                                             document.querySelector('#trendingvideos').classList.remove('active');
                                         } else {
-                                            let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                            itemsviewonlargescale.forEach(largecontainer => {
-                                                if (largecontainer.id === notification.id) {
-                                                    let gridpostloader = document.createElement('section');
-                                                    let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                    largecontainer.appendChild(gridpostloader);
-                                                    gridpostloader.appendChild(mainloadersvg);
-                                                    mainloadersvg.appendChild(mainloadercircle);
-                                                    mainloadercircle.setAttribute('cy', '30');
-                                                    mainloadercircle.setAttribute('cx', '30');
-                                                    mainloadercircle.setAttribute('r', '30');
-                                                    gridpostloader.classList.add('gridpostloader');
-                                                    gridpostloader.id = notification.id;
-                                                    document.body.appendChild(largecontainer);
-                                                    largecontainer.style.display = 'flex';
-                                                    pushViewers();
-                                                    setTimeout(() => {
-                                                        gridpostloader.remove();
-                                                    }, 2000);
-                                                } else {
-                                                    largecontainer.style.display = 'none';
-                                                }
-                                            });
+                                            create_Main_Stories(notification.id);
+                                            createMain_GridPost(notification.id);
                                         }
                                     });
                                     document.addEventListener('visibilitychange', () => {
@@ -283,12 +157,7 @@ function createNotifications() {
                                 } if (notification.type == 'comment_ReplyLike') {
                                     notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>liked your comment reply "${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
-                                        let commentspopup = document.querySelectorAll('.commentroomsection');
-                                        commentspopup.forEach(popup => {
-                                            if (popup.id === notification.postId) {
-                                                popup.classList.toggle('commentroomsectionactive');
-                                            }
-                                        });
+                                        create_Comment_Reply_room(notification.relationId);
                                     });
                                     document.addEventListener('visibilitychange', () => {
                                         var state = document.visibilityState;

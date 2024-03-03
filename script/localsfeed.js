@@ -1,13 +1,11 @@
 setTimeout(() => {
     if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
         Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+        get_Comment_Active_Page();
         createPhotoPostOnTimeLine();
         createGridPost();
         createPublicGridPost();
         createOtherGridPost();
-        createMain_GridPost();
-        create_Comment_Sections_TimeLinePost();
-        get_Comment_Active_Page();
     } else {
         Feeds_Data_Base = [];
     }
@@ -480,44 +478,20 @@ function createPhotoPostOnTimeLine() {
                 share_toolpit.classList.add('toolpit');
 
                 mno.addEventListener('click', () => {
-                    document.querySelectorAll('.reportcontainer').forEach(popup => {
-                        if (popup.id === photo.id) {
-                            popup.style.display = 'flex';
-                        } else {
-                            popup.style.display = 'none';
-                        }
-                    });
+                    create_reportScript(photo.id);
                     postmenu.classList.toggle('postmenuactive');
                 });
                 rst.addEventListener('click', () => {
-                    document.querySelectorAll('.editpopup').forEach(popup => {
-                        if (popup.id === photo.id) {
-                            popup.style.display = 'flex';
-                        } else {
-                            popup.style.display = 'none';
-                        }
-                    });
+                    editingPostText(photo.id);
                     postmenu.classList.toggle('postmenuactive');
                 });
                 pqr.addEventListener('click', () => {
-                    document.querySelectorAll('.confirmation_popup').forEach(popup => {
-                        if (popup.id === photo.id) {
-                            popup.style.display = 'flex';
-                        } else {
-                            popup.style.display = 'none';
-                        }
-                    });
+                    delete_Timeline_Post(Feeds_Data_Base, photo.id);
                     postmenu.classList.toggle('postmenuactive');
                 });
 
                 first_Child_3.addEventListener('click', () => {
-                    document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
-                        if (popup.id === photo.id) {
-                            popup.style.display = 'flex';
-                        } else {
-                            popup.style.display = 'none';
-                        }
-                    });
+                    create_share_Popup(photo.id);
                 });
 
                 main.appendChild(livecountgrid);
@@ -554,13 +528,7 @@ function createPhotoPostOnTimeLine() {
                 livesharecount.id = photo.id;
 
                 live_Like_Count_Container.addEventListener('click', () => {
-                    document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                        if (popup.id === photo.id) {
-                            popup.style.display = 'flex';
-                        } else {
-                            popup.style.display = 'none';
-                        }
-                    })
+                    LikePopupsAndMore(photo.id,'postlike');
                 });
 
                 function checkIfPostIsLiked() {
@@ -582,7 +550,6 @@ function createPhotoPostOnTimeLine() {
                 first_Child_4.addEventListener('click', () => {
                     if (commentinputinput.value) {
                         set_Comment_Data(photo.id, commentinputinput.value);
-                        CreationOfComments();
                     }
                     commentinputinput.value = '';
                     commentinput.classList.toggle('commentinputactive');
@@ -626,23 +593,11 @@ function createPhotoPostOnTimeLine() {
 
                 sharevideophotocomment.classList.add('sharevideophotocomment');
                 sharevideo.addEventListener('click', () => {
-                    document.querySelectorAll('.sharephotocomentcontainer').forEach(container => {
-                        if (container.id === photo.id) {
-                            container.style.display = 'flex';
-                        } else {
-                            container.style.display = 'none';
-                        }
-                    });
+                    Media_Comment_Popup(photo.id, photo.posterId);
                 });
 
                 sharephoto.addEventListener('click', () => {
-                    document.querySelectorAll('.sharephotocomentcontainer').forEach(container => {
-                        if (container.id === photo.id) {
-                            container.style.display = 'flex';
-                        } else {
-                            container.style.display = 'none';
-                        }
-                    });
+                    Media_Comment_Popup(photo.id, photo.posterId);
                 });
                 post.appendChild(head);
                 post.appendChild(postmenu);
@@ -1004,7 +959,6 @@ function createPhotoPostOnTimeLine() {
                     } else {
                         like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                     }
-                    createlikesrecordlist();
                 }
                 function decideLeft() {
                     document.querySelectorAll('.live_Like_Count_active').forEach(count => {
@@ -1022,7 +976,6 @@ function createPhotoPostOnTimeLine() {
                         }
                     });
                     Unlike_Post(photo.id);
-                    createlikesrecordlist();
                 }
                 function makeLike() {
                     if (live_Like_Count_Container.classList.contains('like_count')) {
@@ -1036,12 +989,8 @@ function createPhotoPostOnTimeLine() {
                     makeLike();
                 });
                 first_Child_1.addEventListener('click', () => {
-                    document.querySelectorAll('.commentsectioncontainer').forEach(container => {
-                        if (container.id === photo.id) {
-                            sessionStorage.setItem('activepage', container.id);
-                            container.classList.toggle('commentsectioncontaineractive');
-                        }
-                    });
+                    create_Comment_room(photo.id);
+                    sessionStorage.setItem('activepage', photo.id);
                 });
 
                 more.addEventListener('click', (event) => {
@@ -1063,10 +1012,10 @@ function createPhotoPostOnTimeLine() {
                 }
                 showOnAndOffActivities();
                 authorsImg.addEventListener('click', () => {
-                    view_Profile(photo.posterId);
+                    createUsersProfile(photo.posterId);
                 });
                 name.addEventListener('click', () => {
-                    view_Profile(photo.posterId);
+                    createUsersProfile(photo.posterId);
                 });
             }
             document.querySelector('.postcontainer').style.display = 'none';
@@ -1174,7 +1123,7 @@ function set_Comment_Data(postId, input) {
                                 comments: []
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                            pushNotification(data.user_Id, feed.id, feed.title, id);
+                            pushNotification(feed.posterId, feed.id, feed.title, id);
                             commentcount(postId, comments.length);
                             create_Message('Successfully');
                         }
@@ -1184,6 +1133,13 @@ function set_Comment_Data(postId, input) {
         }
     }
     pushcommentData(postId, input);
+    document.querySelectorAll('.commentsection').forEach(section => {
+        if (section.id === postId) {
+            CreationOfComments(section,postId);
+        } else {
+            CreationOfComments(postId);
+        }
+    });
     function commentcount(postId, count_length) {
         document.querySelectorAll('.live_Comment_Counters').forEach(count => {
             if (count.id === postId) {
@@ -1193,10 +1149,9 @@ function set_Comment_Data(postId, input) {
     }
 }
 function get_Comment_Active_Page() {
-    let comment_Popup = document.querySelectorAll('.commentsectioncontainer');
-    comment_Popup.forEach(container => {
-        if (container.id === sessionStorage.getItem('activepage')) {
-            container.classList.add('commentsectioncontaineractive');
+    Feeds_Data_Base.forEach(feed => {
+        if (feed.id === sessionStorage.getItem('activepage')) {
+            create_Comment_room(feed.id);
         }
     });
 }

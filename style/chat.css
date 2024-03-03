@@ -156,7 +156,7 @@
 .memberscontainer {
     width: 95%;
     height: 100%;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -441,7 +441,7 @@
     height: 500px;
     border-radius: 25px;
     padding: 10px;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -449,11 +449,11 @@
     box-shadow: none;
     border: none;
     position: fixed;
-    top: 55px;
+    top: 60px;
     z-index: 512;
-    overflow: hidden;
+    overflow-x: visible;
+    overflow-y: hidden;
 }
-
 .Community_chatroomcolumn,
 .userchatroomcolumn {
     display: grid;
@@ -771,7 +771,6 @@
     top: 0;
     display: block;
     position: absolute;
-    z-index: 1;
 }
 
 .chatCover>span {

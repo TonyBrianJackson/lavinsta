@@ -753,134 +753,23 @@ function create_Active_Account() {
                 let userprofileminimizer = document.createElement('span');
                 let userpostgridcontainer = document.createElement('nav');
                 let userpostgrid = document.createElement('div');
-                let userpublicpostgrid = document.createElement('div');
-                let userotherspostgrid = document.createElement('div');
-                let usersinfopro = document.createElement('nav');
+                
                 let userfriendlist = document.createElement('nav');
                 let userfriendListColumn = document.createElement('div');
                 let userfollowerlist = document.createElement('nav');
-                let usersinfoheader = document.createElement('header');
                 let usersfriendlistheader = document.createElement('header');
                 let usersfollowerslistheader = document.createElement('header');
-                let userinfoexit = document.createElement('span');
                 let userfriendlistexit = document.createElement('span');
                 let userfollowersexit = document.createElement('span');
-                usersinfoheader.appendChild(userinfoexit);
                 usersfriendlistheader.appendChild(userfriendlistexit);
                 usersfollowerslistheader.appendChild(userfollowersexit);
-                usersinfoheader.classList.add('XyFireRecTorFas');
                 usersfriendlistheader.classList.add('XyFireRecTorFas');
                 usersfollowerslistheader.classList.add('XyFireRecTorFas');
 
-                function usersInformation() {
-                    function CityInfo() {
-                        let InforMationCenter = document.createElement('div');
-                        let Info = document.createElement('div');
-                        let center = document.createElement('div');
-                        let value = document.createElement('span');
-
-
-                        usersinfopro.appendChild(InforMationCenter);
-                        InforMationCenter.appendChild(Info);
-                        InforMationCenter.appendChild(center);
-                        center.appendChild(value);
-                        InforMationCenter.classList.add('chosedplace');
-                        Info.classList.add('subject');
-                        center.classList.add('alwaysflex');
-                        value.classList.add('cityset');
-                        Info.textContent = 'City';
-                        value.textContent = profile.user_Location;
-                    }
-                    CityInfo();
-                    function GenderInfo() {
-                        let InforMationCenter = document.createElement('div');
-                        let Info = document.createElement('div');
-                        let center = document.createElement('div');
-                        let value = document.createElement('span');
-
-
-                        usersinfopro.appendChild(InforMationCenter);
-                        InforMationCenter.appendChild(Info);
-                        InforMationCenter.appendChild(center);
-                        center.appendChild(value);
-                        InforMationCenter.classList.add('chosedplace');
-                        Info.classList.add('subject');
-                        center.classList.add('alwaysflex');
-                        value.classList.add('cityset');
-                        Info.textContent = 'Gender';
-                        value.textContent = profile.user_Gender;
-                    }
-                    GenderInfo();
-                    function DateOFBirthInfo() {
-                        let InforMationCenter = document.createElement('div');
-                        let Info = document.createElement('div');
-                        let center = document.createElement('div');
-                        let value = document.createElement('span');
-
-
-                        usersinfopro.appendChild(InforMationCenter);
-                        InforMationCenter.appendChild(Info);
-                        InforMationCenter.appendChild(center);
-                        center.appendChild(value);
-                        InforMationCenter.classList.add('chosedplace');
-                        Info.classList.add('subject');
-                        center.classList.add('alwaysflex');
-                        value.classList.add('cityset');
-                        Info.textContent = 'Date Of Birth';
-                        value.textContent = profile.user_Dateofbirth;
-                    }
-                    DateOFBirthInfo();
-                    function BioInfo() {
-                        let InforMationCenter = document.createElement('div');
-                        let Info = document.createElement('div');
-                        let center = document.createElement('div');
-                        let value = document.createElement('span');
-
-
-                        usersinfopro.appendChild(InforMationCenter);
-                        InforMationCenter.appendChild(Info);
-                        InforMationCenter.appendChild(center);
-                        center.appendChild(value);
-                        InforMationCenter.classList.add('chosedplace');
-                        Info.classList.add('subject');
-                        center.classList.add('alwaysflex');
-                        value.classList.add('cityset');
-                        Info.textContent = 'Bio';
-                        value.textContent = profile.user_Bio;
-                    }
-                    BioInfo();
-                    function DateCreated() {
-                        let InforMationCenter = document.createElement('div');
-                        let Info = document.createElement('div');
-                        let center = document.createElement('div');
-                        let value = document.createElement('span');
-
-
-                        usersinfopro.appendChild(InforMationCenter);
-                        InforMationCenter.appendChild(Info);
-                        InforMationCenter.appendChild(center);
-                        center.appendChild(value);
-                        InforMationCenter.classList.add('chosedplace');
-                        Info.classList.add('subject');
-                        center.classList.add('alwaysflex');
-                        value.classList.add('cityset');
-                        Info.textContent = 'Date Created';
-                        value.textContent = profile.date_Created;
-                    }
-                    DateCreated();
-                }
-                usersInformation();
-
                 //profile picture and cover photo uploader.
-                document.body.appendChild(usersinfopro);
                 document.body.appendChild(userfriendlist);
                 document.body.appendChild(userfollowerlist);
                 userpostgridcontainer.appendChild(userpostgrid);
-                userpostgridcontainer.appendChild(userpublicpostgrid);
-                userpostgridcontainer.appendChild(userotherspostgrid);
-
-                userpublicpostgrid.id = profile.user_Id;
-                userotherspostgrid.id = profile.user_Id;
 
                 userbioblock.appendChild(userbioinfor);
                 userbioblock.classList.add('bioblock');
@@ -1321,13 +1210,10 @@ function create_Active_Account() {
                 userfriendListColumn.id = profile.user_Id;
                 //users statusbar
 
-                userinfoexit.innerHTML = '&LeftArrow;';
                 userfriendlistexit.innerHTML = '&LeftArrow;';
                 userfollowersexit.innerHTML = '&LeftArrow;';
                 userfollowersexit.classList.add('userfollowersexit');
                 userfriendlistexit.classList.add('userfollowersexit');
-                userinfoexit.classList.add('userfollowersexit');
-                usersinfopro.classList.add('infopro');
                 userfriendlist.classList.add('Friendlisttabs');
                 userfollowerlist.classList.add('followerslisttabs');
                 userfriendListColumn.classList.add('userfriendListColumn');
@@ -1335,43 +1221,27 @@ function create_Active_Account() {
                 userfriendlist.appendChild(usersfriendlistheader);
                 userfriendlist.appendChild(userfriendListColumn);
                 userfollowerlist.appendChild(usersfollowerslistheader);
-                userinfoexit.addEventListener('click', () => {
-                    usersinfopro.style.display = 'none';
-                });
+
                 userfriendlistexit.addEventListener('click', () => {
                     userfriendlist.style.display = 'none';
                 });
                 userfollowersexit.addEventListener('click', () => {
                     userfollowerlist.style.display = 'none';
                 });
-                usersinfopro.id = profile.user_Id;
                 userfriendlist.id = profile.user_Id;
                 userfollowerlist.id = profile.user_Id;
                 user_Friends_View_Container.id = profile.user_Id;
                 user_Information_View_Container.id = profile.user_Id;
 
-                usersinfopro.classList.add('infopro');
                 userfriendlist.classList.add('Friendlisttabs');
                 userfollowerlist.classList.add('followerslisttabs');
 
                 user_Friends_View_Container.addEventListener('click', (e) => {
-                    if (userfriendlist.id !== user_Friends_View_Container.id) {
-                        userfriendlist.style.display = 'none';
-                    } else {
-                        userfriendlist.style.display = 'flex';
-                        usersinfopro.style.display = 'none';
-                        userfollowerlist.style.display = 'none';
-                    }
+                    createFriends(profile.user_Id);
                 });
 
                 user_Information_View_Container.addEventListener('click', () => {
-                    if (usersinfopro.id !== user_Information_View_Container.id) {
-                        usersinfopro.style.display = 'none';
-                    } else {
-                        usersinfopro.style.display = 'flex';
-                        userfriendlist.style.display = 'none';
-                        userfollowerlist.style.display = 'none';
-                    }
+                    usersInformation(profile.user_Id)
                 });
                 usertopactivity.appendChild(usertopactivitytimeline);
                 usertopactivity.appendChild(usertopactivitypublic);
@@ -1414,9 +1284,7 @@ function create_Active_Account() {
                 usersname.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
                 if (profile.user_CoverPhoto) {
                     usercoverphoto.src = profile.user_CoverPhoto;
-                    usersinfopro.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
                 } else {
-                    usercoverphoto.src = 'icons/male-user.png';
                     usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
                 } if (profile.user_ProfilePicture) {
                     userprofilepicture.src = profile.user_ProfilePicture;
@@ -1486,8 +1354,6 @@ function create_Active_Account() {
 
                 userpostgridcontainer.classList.add('postgridcontainer');
                 userpostgrid.classList.add('postgrid');
-                userpublicpostgrid.classList.add('userpublicpostgrid');
-                userotherspostgrid.classList.add('userotherspostgrid');
                 userbioinfor.classList.add('userbioinfor');
                 userprofileminimizer.classList.add('userprofileminimizer');
                 function expandProfile() {
@@ -1501,8 +1367,6 @@ function create_Active_Account() {
                     userspreviewflex.classList.toggle('previewflexlarge');
                     userpostgridcontainer.classList.toggle('postgridcontainerlarge');
                     userpostgrid.classList.toggle('postgridlarge');
-                    userpublicpostgrid.classList.toggle('userpublicpostgridlarge');
-                    userotherspostgrid.classList.toggle('userotherspostgridlarge');
                     userprofileminimizer.classList.toggle('userprofileminimizerlarge');
                     userprofileexit.classList.toggle('userprofileexitlarge');
                     userconnectgrid.classList.toggle('userconnectgridlarge');
@@ -1520,81 +1384,31 @@ function create_Active_Account() {
                     });
                     expandProfile();
                 });
-                function loadergridpost() {
-                    document.querySelectorAll('.userspostgridloader').forEach(loader => {
-                        loader.remove();
-                    });
-                }
                 usertopactivitytimeline.addEventListener('click', () => {
-                    loadergridpost();
-                    let userspostgridloader = document.createElement('div');
-                    let mainpostgridloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                    let mainpostgridcircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-                    userpostgridcontainer.appendChild(userspostgridloader);
-                    userspostgridloader.appendChild(mainpostgridloader);
-                    mainpostgridloader.appendChild(mainpostgridcircle);
-                    mainpostgridcircle.setAttribute('cx', '30');
-                    mainpostgridcircle.setAttribute('cy', '30');
-                    mainpostgridcircle.setAttribute('r', '30');
-                    userspostgridloader.classList.add('userspostgridloader');
-                    userspostgridloader.id = profile.user_Id;
+                    loader(userpostgridcontainer);
                     usertopactivitytimeline.classList.add('active');
                     usertopactivitypublic.classList.remove('active');
                     usertopactivityothers.classList.remove('active');
                     setTimeout(() => {
-                        userspostgridloader.remove();
-                        userpublicpostgrid.style.display = 'none';
-                        userotherspostgrid.style.display = 'none';
-                        userpostgrid.style.display = 'grid';
+                        createGridPost(profile.user_Id,userpostgrid);
                     }, 2000);
                 });
                 usertopactivitypublic.addEventListener('click', () => {
-                    loadergridpost();
-                    let userspostgridloader = document.createElement('div');
-                    let mainpostgridloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                    let mainpostgridcircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-                    userpostgridcontainer.appendChild(userspostgridloader);
-                    userspostgridloader.appendChild(mainpostgridloader);
-                    mainpostgridloader.appendChild(mainpostgridcircle);
-                    mainpostgridcircle.setAttribute('cx', '30');
-                    mainpostgridcircle.setAttribute('cy', '30');
-                    mainpostgridcircle.setAttribute('r', '30');
-                    userspostgridloader.classList.add('userspostgridloader');
-                    userspostgridloader.id = profile.user_Id;
+                    loader(userpostgridcontainer);
                     usertopactivitytimeline.classList.remove('active');
                     usertopactivitypublic.classList.add('active');
                     usertopactivityothers.classList.remove('active');
                     setTimeout(() => {
-                        userspostgridloader.remove();
-                        userpostgrid.style.display = 'none';
-                        userotherspostgrid.style.display = 'none';
-                        userpublicpostgrid.style.display = 'grid';
+                        createPublicGridPost(profile.user_Id,userpostgrid);
                     }, 2000);
                 });
                 usertopactivityothers.addEventListener('click', () => {
-                    loadergridpost();
-                    let userspostgridloader = document.createElement('div');
-                    let mainpostgridloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                    let mainpostgridcircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-                    userpostgridcontainer.appendChild(userspostgridloader);
-                    userspostgridloader.appendChild(mainpostgridloader);
-                    mainpostgridloader.appendChild(mainpostgridcircle);
-                    mainpostgridcircle.setAttribute('cx', '30');
-                    mainpostgridcircle.setAttribute('cy', '30');
-                    mainpostgridcircle.setAttribute('r', '30');
-                    userspostgridloader.classList.add('userspostgridloader');
-                    userspostgridloader.id = profile.user_Id;
+                    loader(userpostgridcontainer);
                     usertopactivitytimeline.classList.remove('active');
                     usertopactivitypublic.classList.remove('active');
                     usertopactivityothers.classList.add('active');
                     setTimeout(() => {
-                        userspostgridloader.remove();
-                        userpostgrid.style.display = 'none';
-                        userpublicpostgrid.style.display = 'none';
-                        userotherspostgrid.style.display = 'grid';
+                        createOtherGridPost(profile.user_Id,userpostgrid);
                     }, 2000);
                 });
                 userprofileexit.classList.add('userprofileexit');
@@ -1633,6 +1447,7 @@ function create_Active_Account() {
 
                 userbioinfor.id = profile.user_Id;
                 usercoverphoto.id = profile.user_Id;
+                createGridPost(profile.user_Id,userpostgrid);
             }
         });
     });
@@ -2062,9 +1877,6 @@ function getActivePage() {
         if (activepage == 'videopagebackground') {
             document.querySelector('.profile').style.display = 'none';
             document.querySelector('.videopagebackground').style.display = 'flex';
-        } else if (activepage == 'people') {
-            document.querySelector('.profile').style.display = 'none';
-            document.querySelector('.people').style.display = 'flex';
         } else if (activepage == 'chattab') {
             document.querySelector('.profile').style.display = 'none';
             document.querySelector('.chattab').style.display = 'flex';
@@ -2114,24 +1926,6 @@ function getActivePage() {
         } else if (activepage == 'gallery') {
             document.querySelector('.videopagebackground').style.display = 'flex';
             document.querySelector('.gallery').style.display = 'flex';
-        } else if (activepage == 'general_smart_Chat' || activepage == 'chattab_Smartchat') {
-            document.querySelector('.profile').style.display = 'none';
-            document.querySelector('.chattab').style.display = 'flex';
-            document.querySelector('.msgculomn').style.display = 'flex';
-            document.querySelector('.chatsearchbar').style.display = 'flex';
-            document.querySelector('#general_smart_Chat').classList.add('active');
-        } else if (activepage == 'community_smart_Chat' || activepage == 'chattab_Community') {
-            document.querySelector('.profile').style.display = 'none';
-            document.querySelector('.chattab').style.display = 'flex';
-
-            document.querySelector('.msgculomn').style.display = 'none';
-            document.querySelector('.chatsearchbar').style.display = 'none';
-            document.querySelector('#general_smart_Chat').classList.remove('active');
-
-            document.querySelector('.create_Community').style.display = 'flex';
-            document.querySelector('.groupmsgculomn').style.display = 'flex';
-            document.querySelector('.chatsearchbar1').style.display = 'flex';
-            document.querySelector('#community_smart_Chat').classList.add('active');
         }
     }
 }

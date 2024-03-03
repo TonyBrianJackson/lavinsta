@@ -288,8 +288,11 @@
     cursor: pointer;
     transition: all ease-in-out 300ms;
     border-radius: 25px;
+    position: relative;
 }
-
+.adgrid .head:nth-child(1) {
+    padding: 0;
+}
 .adgridimagecontainer {
     width: 100%;
     height: 200px;
@@ -1308,7 +1311,7 @@
     width: 250px;
     height: 92vh;
     position: fixed;
-    top: 53px;
+    top: 60px;
     left: 2px;
     display: flex;
     align-items: center;
@@ -1326,7 +1329,6 @@
 }
 
 .profile_Cliant {
-    display: none;
     z-index: 304;
 }
 
@@ -2248,13 +2250,16 @@
     background-position: center;
     background-size: cover;
 }
-
+.infopro {
+    display: flex;
+}
+.userinfocolumn,
 .userfriendListColumn {
     padding: 5px;
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
-    height: 100%;
+    height: 96%;
     background: none;
     border: none;
     box-shadow: none;
@@ -3150,7 +3155,9 @@
         z-index: 330;
         padding: 0px;
     }
-
+    .profile_Cliant {
+        display: flex;
+    }
     .userprofileheader {
         height: max-content;
         background: none;
@@ -4129,7 +4136,9 @@
         margin: 0px;
         z-index: 350;
     }
-
+    .profile_Cliant {
+        display: flex;
+    }
     .secondprofileculomn {
         width: 100%;
         margin: 0;
@@ -4451,7 +4460,9 @@
         background: linear-gradient(to right, var(--color-light), var(--color-gray));
         height: 95.5vh;
     }
-
+    .profile_Cliant {
+        display: flex;
+    }
     .postgridcontainer {
         min-height: 60vh;
     }
@@ -4633,7 +4644,9 @@
         height: 650px;
         max-height: 95.5vh;
     }
-
+    .profile_Cliant {
+        display: flex;
+    }
     .gridpostlarge {
         padding: 10px;
     }
@@ -4768,17 +4781,19 @@
     .profile_Cliant,
     .profile {
         display: none;
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
         top: 0;
         left: 0;
         border-radius: 0px;
     }
-
+    .profile_Cliant {
+        display: flex;
+    }
     .usersprofile {
         display: none;
-        height: 100vh;
-        width: 100vw;
+        height: 96%;
+        width: 100%;
         top: 0;
         left: 0;
         border-radius: 0px;

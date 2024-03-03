@@ -38,7 +38,11 @@ function createMain_GridPost(LocationId, Property_Src) {
                 if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo || photo.isAdvert || photo.isCrime) {
                     let gridpostimagetoview = document.createElement('img');
                     gridpostimagecontainer.appendChild(gridpostimagetoview);
-                    gridpostimagetoview.src = Property_Src;
+                    if (Property_Src) {
+                        gridpostimagetoview.src = Property_Src;
+                    } else {
+                        gridpostimagetoview.src = photo.Property_Src;
+                    }
                     gridpostimagetoview.id = photo.id;
                     gridpostimagetoview.classList.add('gridpostimagetoview');
                     function filter_PostImage() {
@@ -361,23 +365,12 @@ function createMain_GridPost(LocationId, Property_Src) {
                     option_Name3.textContent = 'Turn Off Comments';
                     option_Name4.textContent = 'Turn Off Votes';
                     option_Name5.textContent = 'Turn Off Shares';
+
                     option_First_Child1.addEventListener('click', () => {
-                        document.querySelectorAll('.editpopup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        });
+                        editingPostText(photo.id);
                     });
                     option_First_Child2.addEventListener('click', () => {
-                        document.querySelectorAll('.confirmation_popup').forEach(popup => {
-                            if (popup.id === photo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        });
+                        delete_Timeline_Post(Feeds_Data_Base, photo.id);
                     });
                     option_First_Child3.addEventListener('click', () => {
                         Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
@@ -644,24 +637,11 @@ function createMain_GridPost(LocationId, Property_Src) {
 
                 gridpostcomment.id = photo.id;
                 gridpostcomment.addEventListener('click', () => {
-                    let commentsection = document.querySelectorAll('.commentsectioncontainer');
-                    commentsection.forEach(section => {
-                        if (section.id === gridpostcomment.id) {
-                            section.classList.toggle('commentsectioncontaineractive');
-                        } else {
-                            section.classList.remove('commentsectioncontaineractive');
-                            section.classList.add('commentsectioncontainer');
-                        }
-                    });
+                    create_Comment_room(photo.id);
+                    sessionStorage.setItem('activepage', photo.id);
                 });
                 gridpostshare.addEventListener('click', () => {
-                    document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
-                        if (popup.id === photo.id) {
-                            popup.style.display = 'flex';
-                        } else {
-                            popup.style.display = 'none';
-                        }
-                    });
+                    create_share_Popup(photo.id);
                 });
 
                 if (Array.isArray(ActiveAccount)) {
@@ -688,13 +668,7 @@ function createMain_GridPost(LocationId, Property_Src) {
                 checkIfPostIsLiked();
 
                 live_Like_Count_Container.addEventListener('click', () => {
-                    document.querySelectorAll('.likerecordpopup').forEach(popup => {
-                        if (popup.id === photo.id) {
-                            popup.style.display = 'flex';
-                        } else {
-                            popup.style.display = 'none';
-                        }
-                    })
+                    LikePopupsAndMore(photo.id,'postlike');
                 });
 
                 function decideRight() {
@@ -724,7 +698,6 @@ function createMain_GridPost(LocationId, Property_Src) {
                     } else {
                         like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
                     }
-                    createlikesrecordlist();
                 }
                 function decideLeft() {
                     live_Like_Count_Container.classList.remove('live_Like_Count_active');
@@ -749,7 +722,6 @@ function createMain_GridPost(LocationId, Property_Src) {
                     }
 
                     Unlike_Post(photo.id);
-                    createlikesrecordlist();
                 }
 
                 function makeLike() {
@@ -766,7 +738,7 @@ function createMain_GridPost(LocationId, Property_Src) {
                 gridcomment.addEventListener('click', () => {
                     if (gridinputinput.value) {
                         set_Comment_Data(photo.id, gridinputinput.value);
-                        CreationOfComments();
+                        CreationOfComments(photo.id);
                     }
                     gridinputinput.value = '';
                 });
@@ -797,6 +769,183 @@ function createMain_GridPost(LocationId, Property_Src) {
             }
             createGridPostTile(LocationId);
         }
+    });
+}
+async function create_Random_Items(locationId, posterId, caption, Property_Src, type, generictype, elapsedtime) {
+    function displayelement(display) {
+        if (generictype == 'comment') {
+            document.querySelectorAll('.commentroomsectionactive').forEach(container => {
+                container.style.display = display;
+            });
+            document.querySelectorAll('.commentsectioncontaineractive').forEach(container => {
+                container.style.display = display;
+            });
+        } if (generictype == 'chatroom') {
+            document.querySelectorAll('.userchatroom').forEach(container => {
+                container.style.display = display;
+            });
+        }
+    }
+    displayelement('none');
+    let saveddelete = document.createElement('img');
+    let savedtilebox = document.createElement('nav');
+    let savedtime = document.createElement('span');
+    let saveddeletebtn = document.createElement('span');
+
+    let itemsviewclosebutton = document.createElement('span');
+    let itemsviewonlargescale = document.createElement('section');
+    let largescalewideviewcontainer = document.createElement('div');
+    let gridpostcaption = document.createElement('p');
+    //viewing gridpost
+    let gridpostimagecontainer = document.createElement('div');
+    let gridposttitlecover = document.createElement('span');
+    let gridposttime = document.createElement('b');
+    itemsviewonlargescale.style.display = 'flex';
+
+    loader(itemsviewonlargescale, locationId);
+    if (type == 'photo') {
+        let gridpostimagetoview = document.createElement('img');
+        gridpostimagecontainer.appendChild(gridpostimagetoview);
+        gridpostimagetoview.src = Property_Src;
+        gridpostimagetoview.classList.add('gridpostimagetoview');
+    } if (type == 'video') {
+        let gridpostimagetoview = document.createElement('video');
+        let gridpostcover = document.createElement('div');
+        let gridpostbottomcontrols = document.createElement('div');
+        let gridpostprogressarea = document.createElement('span');
+        let gridpostprogressbar = document.createElement('span');
+        let gridposttimegrid = document.createElement('div');
+        let gridposttotaltime = document.createElement('span');
+        let gridpostcurrenttime = document.createElement('span');
+        let gridpostplaybtn = document.createElement('span');
+        let gridpostpausebtn = document.createElement('span');
+        let gridpostplayicon = document.createElement('img');
+        let gridpostpauseicon = document.createElement('img');
+        gridpostimagecontainer.appendChild(gridpostimagetoview);
+        gridpostimagecontainer.appendChild(gridpostcover);
+        gridpostimagetoview.src = Property_Src;
+        gridpostimagetoview.classList.add('gridpostimagetoview');
+
+        gridpostcover.appendChild(gridpostplaybtn);
+        gridpostcover.appendChild(gridpostpausebtn);
+        gridpostcover.appendChild(gridpostbottomcontrols);
+        gridpostbottomcontrols.appendChild(gridpostprogressarea);
+        gridpostbottomcontrols.appendChild(gridposttimegrid);
+
+        gridpostcover.style.display = 'flex';
+        gridpostpausebtn.style.display = 'none';
+        gridpostprogressarea.appendChild(gridpostprogressbar);
+        gridposttimegrid.appendChild(gridpostcurrenttime);
+        gridposttimegrid.appendChild(gridposttotaltime);
+        gridpostplaybtn.appendChild(gridpostplayicon);
+        gridpostpausebtn.appendChild(gridpostpauseicon);
+
+
+        gridpostplayicon.src = 'icons/play-button.png'
+        gridpostpauseicon.src = 'icons/pause.png'
+        gridpostplaybtn.classList.add('gridpostplaybtn');
+        gridpostpausebtn.classList.add('gridpostplaybtn');
+        gridpostbottomcontrols.classList.add('gridpostbottomcontrols');
+        gridpostcover.classList.add('gridpostcover');
+        gridpostprogressarea.classList.add('gridpostprogressarea');
+        gridpostprogressbar.classList.add('gridpostprogressbar');
+        gridposttimegrid.classList.add('gridposttimegrid');
+        gridposttotaltime.classList.add('gridposttotaltime');
+        gridpostcurrenttime.classList.add('gridposttotaltime');
+
+
+        gridpostplaybtn.addEventListener('click', () => {
+            gridpostimagetoview.play();
+        });
+        gridpostpausebtn.addEventListener('click', () => {
+            gridpostimagetoview.pause();
+        });
+        gridpostimagetoview.addEventListener('play', () => {
+            gridpostpausebtn.style.display = 'flex';
+            gridpostplaybtn.style.display = 'none';
+        });
+        gridpostimagetoview.addEventListener('pause', () => {
+            gridpostpausebtn.style.display = 'none';
+            gridpostplaybtn.style.display = 'flex';
+        });
+        gridpostimagetoview.addEventListener('loadeddata', (e) => {
+            let videoDuration = e.target.duration;
+            let totalMin = Math.floor(videoDuration / 60);
+            let totalSec = Math.floor(videoDuration % 60);
+
+            //if totalmin are less than 10 add 0 at the beginning;
+            totalMin < 10 ? totalMin = "0" + totalMin : totalMin;
+            //if totalmin are less than 10 add 0 at the beginning;
+            totalSec < 10 ? totalSec = "0" + totalSec : totalSec;
+            gridposttotaltime.innerHTML = `${totalMin} : ${totalSec}`;
+        });
+        gridpostimagetoview.addEventListener('timeupdate', (e) => {
+            let currentVideoTime = e.target.currentTime;
+            let currentMin = Math.floor(currentVideoTime / 60);
+            let currentSec = Math.floor(currentVideoTime % 60);
+
+            //if totalmin are less than 10 add 0 at the beginning;
+            currentMin < 10 ? currentMin = "0" + currentMin : currentMin;
+            //if totalmin are less than 10 add 0 at the beginning;
+            currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
+            gridpostcurrenttime.innerHTML = `${currentMin} : ${currentSec}`;
+
+            //progress bar
+            let videoDuration = event.target.duration;
+            let progressvalue = (currentVideoTime / videoDuration) * 100;
+            gridpostprogressbar.style.width = `${progressvalue}%`;
+
+        });
+
+        gridpostimagetoview.addEventListener('ended', () => {
+            gridpostplaybtn.style.display = 'flex';
+            gridpostpausebtn.style.display = 'none';
+        });
+
+        //duration events
+        gridpostprogressarea.addEventListener('click', () => {
+            let videoDuration = gridpostimagetoview.duration;
+            progressbarwidthvalue = gridpostprogressarea.clientWidth;
+            let clickOffSetx = event.offsetX;
+            gridpostimagetoview.currentTime = (clickOffSetx / progressbarwidthvalue) * videoDuration;
+        });
+
+    }
+    savedtime.textContent = elapsedtime;
+    gridpostcaption.textContent = caption;
+    saveddeletebtn.appendChild(saveddelete);
+    saveddelete.src = 'newicons/trash-can.png';
+    savedtime.classList.add('savedtime');
+    saveddeletebtn.classList.add('saveddeletebtn');
+    saveddeletebtn.classList.add('headerbtns');
+
+    savedtilebox.classList.add('savedtilebox');
+    savedtilebox.classList.add('UXer_TrUXheDTYle_bX');
+    savedtilebox.id = posterId + 'UXer_TrUXheDTYle_bX';
+
+    gridposttime.classList.add('gridposttime');
+
+    gridposttitlecover.appendChild(gridpostcaption);
+    gridposttitlecover.classList.add('gridposttitlecover');
+    gridpostcaption.classList.add('gridpostcaption');
+    gridpostimagecontainer.appendChild(gridposttitlecover);
+    gridpostimagecontainer.appendChild(savedtime);
+    gridpostimagecontainer.appendChild(savedtilebox);
+
+    itemsviewonlargescale.appendChild(largescalewideviewcontainer);
+    itemsviewonlargescale.appendChild(itemsviewclosebutton);
+    largescalewideviewcontainer.appendChild(gridpostimagecontainer);
+    gridpostimagecontainer.classList.add('gridpostimagecontainer');
+    largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
+    itemsviewclosebutton.classList.add('itemsviewclosebutton');
+    itemsviewonlargescale.classList.add('itemsviewonlargescale');
+    gridpostimagecontainer.style.display = 'flex';
+    itemsviewclosebutton.innerHTML = '&times;';
+    document.body.appendChild(itemsviewonlargescale);
+
+    itemsviewclosebutton.addEventListener('click', () => {
+        itemsviewonlargescale.remove();
+        displayelement('flex');
     });
 }
 function createGridPostTile(locationId) {
@@ -841,7 +990,7 @@ function createGridPostTile(locationId) {
                             }
                             filter_Image();
                             tile.addEventListener('click', () => {
-                                createMain_GridPost(gridphoto.id,gridphoto.Property_Src);
+                                createMain_GridPost(gridphoto.id, gridphoto.Property_Src);
                             });
                         } if (gridphoto.isVideo || gridphoto.isShort) {
                             let tile = document.createElement('a');
@@ -953,7 +1102,7 @@ function createGridPostTile(locationId) {
                                     tileImg.classList.add('tileimg');
                                     tile.classList.add('tile');
                                     tile.addEventListener('click', () => {
-                                        createMain_GridPost(gridphoto.id,feed.Property_Src);
+                                        createMain_GridPost(gridphoto.id, feed.Property_Src);
                                     });
                                 });
                             }
@@ -1116,7 +1265,7 @@ function createGridPostTile(locationId) {
                                     tileImg.classList.add('tileimg');
                                     tile.classList.add('tile');
                                     tile.addEventListener('click', () => {
-                                        createMain_GridPost(gridphoto.id,feed.Property_Src);
+                                        createMain_GridPost(gridphoto.id, feed.Property_Src);
                                     });
                                 });
                             }
@@ -1167,7 +1316,7 @@ function createGridPostTile(locationId) {
                             }
                             filter_Image();
                             tile.addEventListener('click', () => {
-                                createMain_GridPost(gridphoto.id);
+                                createMain_GridPost(gridphoto.id, gridphoto.Property_Src);
                             });
                         } if (gridphoto.children) {
                             if (gridphoto.id === locationId) {
@@ -1186,7 +1335,7 @@ function createGridPostTile(locationId) {
                                     tileImg.classList.add('tileimg');
                                     tile.classList.add('tile');
                                     tile.addEventListener('click', () => {
-                                        createMain_GridPost(gridphoto.id,feed.Property_Src);
+                                        createMain_GridPost(gridphoto.id, feed.Property_Src);
                                     });
                                 });
                             }
@@ -1201,6 +1350,21 @@ function loader(container, LocationId) {
     document.querySelectorAll('.itemsviewonlargescale').forEach(item => {
         item.remove();
     });
+    let gridpostloader = document.createElement('section');
+    let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    container.appendChild(gridpostloader);
+    gridpostloader.appendChild(mainloadersvg);
+    mainloadersvg.appendChild(mainloadercircle);
+    mainloadercircle.setAttribute('cy', '30');
+    mainloadercircle.setAttribute('cx', '30');
+    mainloadercircle.setAttribute('r', '30');
+    gridpostloader.classList.add('gridpostloader');
+    setTimeout(() => {
+        gridpostloader.remove();
+    }, 2000);
+}
+function external_loader(container) {
     let gridpostloader = document.createElement('section');
     let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');

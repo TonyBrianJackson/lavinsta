@@ -231,6 +231,7 @@
     padding: 10px;
     width: max-content;
     max-width: 100%;
+    border-radius: 25px;
 }
 
 .nextcommentcontainer,
@@ -399,7 +400,7 @@
     height: max-content;
     padding: 20px;
     border-radius: 15px;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;

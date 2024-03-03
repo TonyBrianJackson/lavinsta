@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -108,10 +109,12 @@ body {
     position: relative;
     border-style: solid;
 }
+
 .headerbtns.toggleBtn,
 .headerbtns.items.advance {
     display: none;
 }
+
 .userscount {
     position: absolute;
     background: var(--color-very-danger);
@@ -231,10 +234,12 @@ main {
     margin-top: 55px;
     overflow: hidden;
 }
+
 main .header {
     position: relative;
     width: 100%;
 }
+
 .container {
     display: grid;
     grid-template-columns: 25vw 50vw 25vw;
@@ -2538,6 +2543,7 @@ main .header {
     justify-content: center;
     margin: 0px;
 }
+
 .children_Tile_Box {
     position: absolute;
     right: 10px;
@@ -2552,10 +2558,12 @@ main .header {
     height: 100%;
     place-content: initial;
 }
+
 .children_Tile_Box::-webkit-scrollbar {
     width: 5px;
 }
-.children_Tile_Box > div {
+
+.children_Tile_Box>div {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -2568,7 +2576,8 @@ main .header {
     align-items: center;
     justify-content: center;
 }
-.children_Tile_Box > div > img {
+
+.children_Tile_Box>div>img {
     width: 100%;
     height: 100%;
     display: block;
@@ -2578,6 +2587,7 @@ main .header {
     box-shadow: none;
     border-radius: inherit;
 }
+
 .textPost {
     font-size: 2rem;
     width: 100%;
@@ -3084,6 +3094,7 @@ a {
     border: none;
     border-radius: 0px;
 }
+
 .universalcolumn {
     width: 100%;
     padding: 5px;
@@ -3098,6 +3109,7 @@ a {
     align-items: center;
     justify-content: initial;
 }
+
 .usersreportpopup,
 .userssecuritypopup {
     width: 100%;
@@ -4298,6 +4310,7 @@ a {
     border-color: var(--color-dark);
     background: var(--color-light);
     box-shadow: none;
+    overflow-x: visible;
     visibility: hidden;
     pointer-events: none;
     transition: 800ms left;
@@ -4327,6 +4340,7 @@ a {
     grid-template-columns: 1fr;
     place-items: center;
     color: var(--color-dark);
+    position: relative;
 }
 
 .commentroomclose {
@@ -4385,6 +4399,7 @@ a {
     background: none;
     box-shadow: none;
     border: none;
+    overflow: visible;
 }
 
 .newcommentinput input {
@@ -6981,10 +6996,7 @@ a {
 /*photovideocomment popup*/
 
 .commentpostimgcontainer,
-.commentpostvdieocontainer,
-.replypostvideo,
-.replypostimgcontainer,
-.replypostvideocontainer {
+.commentpostvdieocontainer {
     border: none;
     display: flex;
     align-items: center;
@@ -6997,12 +7009,11 @@ a {
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    border-radius: 25px;
 }
 
 .commentpostimgcontainer img,
-.commentpostvdieocontainer video,
-.replypostvideocontainer video,
-.replypostimgcontainer img {
+.commentpostvdieocontainer video {
     width: 100%;
     height: 100%;
     display: block;
@@ -7011,10 +7022,10 @@ a {
     background: none;
     box-shadow: none;
     border: none;
+    border-radius: 25px;
 }
 
-.commentvideoplayer,
-.replyvideoplayer {
+.commentvideoplayer {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -7030,8 +7041,7 @@ a {
     justify-content: center;
 }
 
-.commentplay,
-.replycommentplay {
+.commentplay {
     border: none;
     background: none;
     box-shadow: none;
@@ -7056,8 +7066,7 @@ a {
     overflow: visible;
 }
 
-.commentpostimg,
-.replypostimg {
+.commentpostimg {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -7369,6 +7378,7 @@ a {
     overflow-y: scroll;
     z-index: 2;
 }
+
 .another_Tile_Box {
     width: 100%;
     height: max-content;
@@ -7381,6 +7391,7 @@ a {
     box-shadow: none;
     border-radius: 25px;
 }
+
 .another_Tile_Box .tile {
     padding: 5px;
     background: var(--color-white);
@@ -8116,7 +8127,7 @@ a {
     width: 25vw;
     height: 91vh;
     position: fixed;
-    top: 55px;
+    top: 60px;
     left: 2px;
     border-radius: 10px;
     padding: 10px;
@@ -8220,13 +8231,13 @@ a {
 .reportcontainer {
     position: fixed;
     left: 5px;
-    top: 55px;
+    top: 60px;
     padding: 20px;
     width: 240px;
     height: 250px;
     z-index: 521;
     background: var(--color-light);
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -8531,6 +8542,16 @@ a {
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .sharevideophotocommentactive {
+        gap: 5px;
+    }
+    .commentroomsectionreloadloader,
+    .commentsectionreloadloader,
+    .usershareloader {
+        height: 80px;
+        background: inherit;
+    }
+
     .bottomsub {
         height: max-content;
         padding: 10px 5px;
@@ -8541,17 +8562,21 @@ a {
         width: 50%;
         flex: .8;
     }
+
     .shareandlikecommentflexactive {
         flex: 0;
     }
+
     .shareandlikecommentflex>div {
         width: 100%;
         height: 40px;
     }
+
     .commentinput>div {
         width: 40px;
         height: 40px;
     }
+
     .commentinput>div>img,
     .shareandlikecommentflex>div>img {
         width: 25px;
@@ -8595,11 +8620,13 @@ a {
     .video_Seach_Path {
         z-index: 302;
     }
+
     .mainsearchbar {
         background: var(--color-white);
         box-shadow: none;
         border: none;
     }
+
     .headersearchflex,
     .headersearchflex1 {
         height: max-content;
@@ -8608,6 +8635,7 @@ a {
         flex: 1;
         gap: 0px 5px;
     }
+
     .searchheadericons {
         display: flex;
         flex-direction: column;
@@ -8621,10 +8649,12 @@ a {
         border: none;
         box-shadow: none;
     }
+
     .searchheadericons.active {
         box-shadow: none;
         border: none;
     }
+
     .searchheadericons svg {
         width: 30px;
         height: 30px;
@@ -8653,7 +8683,7 @@ a {
         color: var(--color-dark);
     }
 
-        .universalcolumn>span {
+    .universalcolumn>span {
         padding: 12px 15px;
         font-size: 4.8vw;
         box-shadow: none;
@@ -9093,7 +9123,7 @@ a {
         border-radius: 0px;
     }
 
-    .gridpostimgwideview > img,
+    .gridpostimgwideview>img,
     .gridpostimagetoview {
         border-radius: 0px;
         object-fit: contain;

@@ -7,16 +7,12 @@ const chatMessage = JSON.parse(localStorage.getItem('myChatMsg'));
 const communities = JSON.parse(localStorage.getItem('myCommunities'));
 const User_Connection_Request = JSON.parse(localStorage.getItem('myFriendRequest'));
 
-if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
-    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-    createUsersMainProfile();
-} else {
-    LogInFormData = [];
-}
 
-function createUsersMainProfile() {
-    if (LogInFormData)
-        LogInFormData.forEach(profile => {
+function createUsersProfile(locationId) {
+    sessionStorage.setItem('activepage',locationId);
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    LogInFormData.forEach(profile => {
+        if (profile.user_Id === locationId) {
             let userprofileheader = document.createElement('header');
             let userprofileexit = document.createElement('span');
             let profile_Cliant = document.createElement('div');
@@ -77,178 +73,96 @@ function createUsersMainProfile() {
             user_Friends_View_Container.classList.add('user_Friends_View_Container');
             user_Information_View_Container.classList.add('user_Information_View_Container');
             user_More_Option_Views.classList.add('user_More_Option_Views');
-            function send_friend_request() {
-                if (Array.isArray(User_Connection_Request)) {
-                    myFriendRequest = User_Connection_Request;
-                    userconnect_Container.addEventListener('click', () => {
-                        if (userconnect_Container.classList.contains('unsent_Request')) {
-                            userconnect_Container.classList.add('sent_Request');
-                            userconnect_Container.classList.remove('unsent_Request');
-                            function pushrequest(user_Id,) {
+            function send_friend_request(user_Id) {
+                userconnect_Container.addEventListener('click', () => {
+                    if (userconnect_Container.classList.contains('unsent_Request')) {
+                        userconnect_Container.classList.add('sent_Request');
+                        userconnect_Container.classList.remove('unsent_Request');
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(data => {
+                            function pushrequest() {
                                 const id = '' + new Date().getTime();
-                                myFriendRequest.push({
-                                    id: id,
-                                    connectionId: user_Id,
-                                    recieversId: profile.user_Id,
-                                    time: new Date().getTime(),
-                                    requestView: false,
-                                });
-                                localStorage.setItem('myFriendRequest', JSON.stringify(myFriendRequest));
+                                if (data.user_Id === profile.user_Id) {
+                                    let connections = data.user_ConnectRequest;
+                                    connections.push({
+                                        id: id,
+                                        connectionId: user_Id,
+                                        recieversId: profile.user_Id,
+                                        time: new Date().getTime(),
+                                        requestView: false,
+                                    });
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                } if (data.user_Id === user_Id) {
+                                    let connections = data.user_SentRequest;
+                                    connections.push({
+                                        id: id,
+                                        connectionId: user_Id,
+                                        recieversId: profile.user_Id,
+                                        time: new Date().getTime(),
+                                        requestView: false,
+                                    });
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                }
                             }
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            ActiveUser_Account.forEach(user => {
-                                pushrequest(user.user_Id);
-                            });
-                            createRequest();
-                            function increaseCount() {
-                                LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                                LogInFormData.forEach(member => {
-                                    let peoplecount = document.querySelectorAll('.userspeoplecount');
-                                    peoplecount.forEach(count => {
-                                        if (count.id === userconnect_Container.id && member.user_Id === userconnect_Container.id) {
-                                            count.style.display = 'block';
-                                            count.textContent = parseInt(count.textContent) + 1;
-                                            member.my_PeopleCount = count.textContent;
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            pushrequest();
+                        });
+                    } else if (userconnect_Container.classList.contains('sent_Request')) {
+                        userconnect_Container.classList.remove('sent_Request');
+                        userconnect_Container.classList.add('unsent_Request');
+                        function removerequest() {
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            LogInFormData.forEach(data => {
+                                if (data.user_Id === profile.user_Id) {
+                                    let connections = data.user_ConnectRequest;
+                                    connections = connections.filter(connection => {
+                                        if (connection.connectionId === user_Id) {
+                                            return false;
+                                        } else {
+                                            return true;
                                         }
-                                    })
-                                });
-                            }
-                            increaseCount();
-                        } else if (userconnect_Container.classList.contains('sent_Request')) {
-                            userconnect_Container.classList.remove('sent_Request');
-                            userconnect_Container.classList.add('unsent_Request');
-                            function removerequest() {
-                                myFriendRequest = myFriendRequest.filter(request => {
-                                    if (request.recieversId === userconnect_Container.id) {
-                                        return false;
-                                    } else {
-                                        return true;
-                                    }
-                                })
-                                localStorage.setItem('myFriendRequest', JSON.stringify(myFriendRequest));
-                            }
-                            removerequest();
-                            createRequest();
-                            function decreasecount() {
-                                if (LogInFormData) {
-                                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));;
-                                    LogInFormData.forEach(member => {
-                                        let peoplecount = document.querySelectorAll('.userspeoplecount');
-                                        peoplecount.forEach(count => {
-                                            if (count.id === userconnect_Container.id && member.user_Id === userconnect_Container.id) {
-                                                count.style.display = 'block';
-                                                count.textContent = parseInt(count.textContent) - 1;
-                                                member.my_PeopleCount = count.textContent;
-                                            }
-                                        })
-                                    })
+                                    });
                                     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            }
-                            decreasecount();
-                        }
-                    });
-                } else {
-                    myFriendRequest = [];
-                    userconnect_Container.addEventListener('click', () => {
-                        if (userconnect_Container.classList.contains('unsent_Request')) {
-                            userconnect_Container.classList.add('sent_Request');
-                            userconnect_Container.classList.remove('unsent_Request');
-                            const id = '' + new Date().getTime();
-                            function pushrequest(user_Id,) {
-                                const id = '' + new Date().getTime();
-                                myFriendRequest.push({
-                                    id: id,
-                                    connectionId: user_Id,
-                                    recieversId: profile.user_Id,
-                                    time: new Date().getTime(),
-                                    requestView: false,
-                                });
-                                localStorage.setItem('myFriendRequest', JSON.stringify(myFriendRequest));
-                            }
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            ActiveUser_Account.forEach(user => {
-                                pushrequest(user.user_Id);
-                            });
-                            createRequest();
-                            function increaseCount() {
-                                if (LogInFormData) {
-                                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));;
-                                    LogInFormData.forEach(member => {
-                                        let peoplecount = document.querySelectorAll('.userspeoplecount');
-                                        peoplecount.forEach(count => {
-                                            if (count.id === userconnect_Container.id && member.user_Id === userconnect_Container.id) {
-                                                count.style.display = 'block';
-                                                count.textContent = parseInt(count.textContent) + 1;
-                                                member.my_PeopleCount = count.textContent;
-                                            }
-                                        })
-                                    })
+                                } if (data.user_Id === user_Id) {
+                                    let connections = data.user_SentRequest;
+                                    connections = connections.filter(connection => {
+                                        if (connection.recieversId === profile.user_Id) {
+                                            return false;
+                                        } else {
+                                            return true;
+                                        }
+                                    });
                                     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            }
-                            increaseCount();
-                        } else if (userconnect_Container.classList.contains('sent_Request')) {
-                            userconnect_Container.classList.remove('sent_Request');
-                            userconnect_Container.classList.add('unsent_Request');
-                            myFriendRequest = myFriendRequest.filter(request => {
-                                if (request.recieversId === userconnect_Container.id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            })
-                            localStorage.setItem('myFriendRequest', JSON.stringify(myFriendRequest));
-                            createRequest();
-                            function decreasecount() {
-                                if (LogInFormData) {
-                                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));;
-                                    LogInFormData.forEach(member => {
-                                        let peoplecount = document.querySelectorAll('.userspeoplecount');
-                                        peoplecount.forEach(count => {
-                                            if (count.id === userconnect_Container.id && member.user_Id === userconnect_Container.id) {
-                                                count.style.display = 'block';
-                                                count.textContent = parseInt(count.textContent) - 1;
-                                                member.my_PeopleCount = count.textContent;
-                                            }
-                                        })
-                                    })
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            }
-                            decreasecount();
-                        }
-                    });
-                }
-                function checkRequest() {
-                    ActiveUser_Account.forEach(user => {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('myFriendRequest')))) {
-                            myFriendRequest = JSON.parse(localStorage.getItem('myFriendRequest'));
-                            myFriendRequest.forEach(request => {
-                                if (user.user_Id === request.connectionId) {
-                                    if (request.recieversId === userconnect_Container.id && user.user_Id === request.connectionId) {
-                                        userconnect_Container.classList.add('sent_Request');
-                                        userconnect_Container.classList.remove('unsent_Request');
-                                    } if (request.connectionId === userconnect_Container.id && request.recieversId === user.user_Id) {
-                                        userconnect_Container.classList.remove('sent_Request');
-                                        userconnect_Container.classList.add('unsent_Request');
-                                    }
                                 }
                             });
                         }
-                    });
-                }
-                if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    checkRequest();
-                } else {
-                    ActiveUser_Account = [];
-                }
+                        removerequest();
+                    }
+                });
             }
-            send_friend_request();
+            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+            ActiveUser_Account.forEach(user => {
+                send_friend_request(user.user_Id);
+                checkRequest(user.user_Id);
+            });
+            function checkRequest(user_Id) {
+                LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                LogInFormData.forEach(data => {
+                    if (data.user_Id === user_Id) {
+                        let connections = data.user_ConnectRequest;
+                        connections.forEach(connection => {
+                            if (connection.recieversId === profile.user_Id) {
+                                userconnect_Container.classList.add('sent_Request');
+                                userconnect_Container.classList.remove('unsent_Request');
+                            } else {
+                                userconnect_Container.classList.remove('sent_Request');
+                                userconnect_Container.classList.add('unsent_Request');
+                            }
+                        })
+                    }
+                });
+            }
             function Un_friend() {
-                userconnect_Container.addEventListener('click',()=> {
+                userconnect_Container.addEventListener('click', () => {
                     if (userconnect_Container.classList.contains('connected')) {
                         userconnect_Container.classList.add('unsent_Request');
                         userconnect_Container.classList.remove('connected');
@@ -267,7 +181,7 @@ function createUsersMainProfile() {
                                             }
                                         });
                                         user.user_Connection = connections;
-                                        localStorage.setItem('LogInFormData',JSON.stringify(LogInFormData));
+                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                     }
                                 } if (user.user_Id === data.user_Id) {
                                     let connections = user.user_Connection;
@@ -280,7 +194,7 @@ function createUsersMainProfile() {
                                             }
                                         });
                                         user.user_Connection = connections;
-                                        localStorage.setItem('LogInFormData',JSON.stringify(LogInFormData));
+                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                     }
                                 }
                             });
@@ -307,6 +221,10 @@ function createUsersMainProfile() {
                         }
                     });
                 }
+                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                ActiveUser_Account.forEach(user => {
+                    send_friend_request();
+                });
                 if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     checkRequest();
@@ -318,127 +236,63 @@ function createUsersMainProfile() {
 
             function createchatRoom_Button() {
                 ActiveUser_Account.forEach(user => {
-                    myFriends = myFriendArray;
-                    if (Array.isArray(JSON.parse(localStorage.getItem('myFriends')))) {
-                        myFriends = JSON.parse(localStorage.getItem('myFriends'));
-                        myFriends.forEach(friend => {
-                            if (friend.friendId_Receivers === user.user_Id && friend.friendId_Connectors === profile.user_Id) {
-                                let user_Chat_Room = document.createElement('span');
-                                let user_Chat_Room_Img = document.createElement('img');
-                                user_Connection_Grid_Inner.appendChild(user_Chat_Room);
-                                user_Chat_Room.appendChild(user_Chat_Room_Img);
-                                user_Chat_Room_Img.src = 'icons/more icons/chat.png';
-                                user_Chat_Room.classList.add('headerbtns');
-                                user_Chat_Room.id = friend.friendId_Connectors + friend.friendId_Receivers;
-                                function decreasecount() {
-                                    let messagecounts = document.querySelectorAll('.chatcount');
-                                    messagecounts.forEach(count => {
-                                        if (count.id === friend.inputId) {
-                                            count.textContent = 0;
-                                            friend.sendserCounts = count.textContent;
-                                            count.style.display = 'none';
-                                            localStorage.setItem('myFriends', JSON.stringify(myFriends));
-                                        }
-                                    });
-                                    document.querySelectorAll('.userchatroom').forEach(chatroom => {
-                                        if (user_Chat_Room.id === chatroom.id) {
-                                            chatroom.style.display = 'flex';
-                                            chatroom.classList.add('Funcy_Box_Shadow');
-                                            setTimeout(() => {
-                                                chatroom.classList.remove('Funcy_Box_Shadow');
-                                            }, 2000);
-                                            sessionStorage.setItem('activepage', chatroom.id);
-                                            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
-                                        }
-                                    });
-                                    if (JSON.parse(localStorage.getItem('myChatMsg'))) {
-                                        myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
-                                        myChatMsg.forEach(chat => {
-                                            if (chat.friendId_Receivers + chat.chat_ReceiverId === user_Chat_Room.id) {
-                                                myFriends = myFriendArray;
-                                                chat.chatvisibilty = 'seen';
-                                                localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    LogInFormData.forEach(data => {
+                        if (data.user_Id === user.user_Id) {
+                            let friends = data.user_Connection;
+                            friends.forEach(friend => {
+                                if (friend.connectionId === profile.user_Id) {
+                                    let user_Chat_Room = document.createElement('span');
+                                    let user_Chat_Room_Img = document.createElement('img');
+                                    user_Connection_Grid_Inner.appendChild(user_Chat_Room);
+                                    user_Chat_Room.appendChild(user_Chat_Room_Img);
+                                    user_Chat_Room_Img.src = 'icons/more icons/chat.png';
+                                    user_Chat_Room.classList.add('headerbtns');
+                                    user_Chat_Room.id = friend.connectionId + data.user_Id;
+                                    function decreasecount() {
+                                        create_Chat_Rooms(friend.connectionId + user.user_Id, friend.connectionId, data.user_Id, friend.status);
+                                        document.querySelectorAll('.userchatroom').forEach(chatroom => {
+                                            if (user_Chat_Room.id === chatroom.id) {
+                                                chatroom.classList.add('Funcy_Box_Shadow');
+                                                setTimeout(() => {
+                                                    chatroom.classList.remove('Funcy_Box_Shadow');
+                                                }, 2000);
+                                                sessionStorage.setItem('activepage', friend.connectionId + user.user_Id);
+                                                document.querySelector('.navigatiofloatcontainer').style.display = 'none';
                                             }
                                         });
-                                    }
-
-                                    if (LogInFormData) {
-                                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));;
-                                        LogInFormData.forEach(user => {
-                                            let userschatcount = document.querySelectorAll('.userschatcount');
-                                            userschatcount.forEach(count => {
-                                                if (count.id === friend.friendId_Receivers && user.user_Id === friend.friendId_Receivers) {
-                                                    count.style.display = 'none';
-                                                    user.user_ChatView = true;
-                                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                        if (JSON.parse(localStorage.getItem('myChatMsg'))) {
+                                            myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
+                                            myChatMsg.forEach(chat => {
+                                                if (chat.friendId_Receivers + chat.chat_ReceiverId === user_Chat_Room.id) {
+                                                    chat.chatvisibilty = 'seen';
+                                                    localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
                                                 }
-                                            })
-                                        })
-                                    }
-                                }
-                                user_Chat_Room.addEventListener('click', () => {
-                                    decreasecount();
-                                });
-                            } if (friend.friendId_Connectors === user.user_Id && friend.friendId_Receivers === profile.user_Id) {
-                                let user_Chat_Room = document.createElement('span');
-                                let user_Chat_Room_Img = document.createElement('img');
-                                user_Connection_Grid_Inner.appendChild(user_Chat_Room);
-                                user_Chat_Room.appendChild(user_Chat_Room_Img);
-                                user_Chat_Room_Img.src = 'icons/more icons/chat.png';
-                                user_Chat_Room.classList.add('headerbtns');
-                                user_Chat_Room.id = friend.friendId_Receivers + friend.friendId_Connectors;
-                                function decreasecount() {
-                                    let messagecounts = document.querySelectorAll('.chatcount');
-                                    messagecounts.forEach(count => {
-                                        if (count.id === friend.input2Id) {
-                                            count.textContent = 0;
-                                            friend.sendserCounts = count.textContent;
-                                            count.style.display = 'none';
-                                            localStorage.setItem('myFriends', JSON.stringify(myFriends));
+                                            });
                                         }
-                                    });
-                                    document.querySelectorAll('.userchatroom').forEach(chatroom => {
-                                        if (user_Chat_Room.id === chatroom.id) {
-                                            chatroom.style.display = 'flex';
-                                            chatroom.classList.add('Funcy_Box_Shadow');
-                                            setTimeout(() => {
-                                                chatroom.classList.remove('Funcy_Box_Shadow');
-                                            }, 2000);
-                                            sessionStorage.setItem('activepage', chatroom.id);
-                                            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
-                                        }
-                                    });
-                                    if (JSON.parse(localStorage.getItem('myChatMsg'))) {
-                                        myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
-                                        myChatMsg.forEach(chat => {
-                                            if (chat.friendId_Receivers + chat.chat_ReceiverId === user_Chat_Room.id) {
-                                                myFriends = myFriendArray;
-                                                chat.chatvisibilty = 'seen';
-                                                localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
-                                            }
-                                        });
-                                    }
 
-                                    if (LogInFormData) {
-                                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));;
-                                        LogInFormData.forEach(user => {
-                                            let userschatcount = document.querySelectorAll('.userschatcount');
-                                            userschatcount.forEach(count => {
-                                                if (count.id === friend.friendId_Receivers && user.user_Id === friend.friendId_Receivers) {
-                                                    count.style.display = 'none';
-                                                    user.user_ChatView = true;
-                                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                                }
+                                        if (LogInFormData) {
+                                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));;
+                                            LogInFormData.forEach(user => {
+                                                let userschatcount = document.querySelectorAll('.userschatcount');
+                                                userschatcount.forEach(count => {
+                                                    if (count.id === friend.friendId_Receivers && user.user_Id === friend.friendId_Receivers) {
+                                                        count.style.display = 'none';
+                                                        user.user_ChatView = true;
+                                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                                    }
+                                                })
                                             })
-                                        })
+                                        }
                                     }
+                                    user_Chat_Room.addEventListener('click', () => {
+                                        decreasecount();
+                                    });
+
                                 }
-                                user_Chat_Room.addEventListener('click', () => {
-                                    decreasecount();
-                                });
-                            }
-                        });
-                    }
+                            })
+                        }
+                    });
                 });
             }
             if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -465,135 +319,23 @@ function createUsersMainProfile() {
             let userprofileminimizer = document.createElement('span');
             let userpostgridcontainer = document.createElement('nav');
             let userpostgrid = document.createElement('div');
-            let userpublicpostgrid = document.createElement('div');
-            let userotherspostgrid = document.createElement('div');
-            let usersinfopro = document.createElement('nav');
+
             let userfriendlist = document.createElement('nav');
             let userfriendListColumn = document.createElement('div');
             let userfollowerlist = document.createElement('nav');
-            let usersinfoheader = document.createElement('header');
             let usersfriendlistheader = document.createElement('header');
             let usersfollowerslistheader = document.createElement('header');
-            let userinfoexit = document.createElement('span');
             let userfriendlistexit = document.createElement('span');
             let userfollowersexit = document.createElement('span');
-            usersinfoheader.appendChild(userinfoexit);
             usersfriendlistheader.appendChild(userfriendlistexit);
             usersfollowerslistheader.appendChild(userfollowersexit);
-            usersinfoheader.classList.add('XyFireRecTorFas');
             usersfriendlistheader.classList.add('XyFireRecTorFas');
             usersfollowerslistheader.classList.add('XyFireRecTorFas');
-            usersinfopro.appendChild(usersinfoheader);
-
-            function usersInformation() {
-                function CityInfo() {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
-
-
-                    usersinfopro.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'City';
-                    value.textContent = profile.user_Location;
-                }
-                CityInfo();
-                function GenderInfo() {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
-
-
-                    usersinfopro.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Gender';
-                    value.textContent = profile.user_Gender;
-                }
-                GenderInfo();
-                function DateOFBirthInfo() {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
-
-
-                    usersinfopro.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Date Of Birth';
-                    value.textContent = profile.user_Dateofbirth;
-                }
-                DateOFBirthInfo();
-                function BioInfo() {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
-
-
-                    usersinfopro.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Bio';
-                    value.textContent = profile.user_Bio;
-                }
-                BioInfo();
-                function DateCreated() {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
-
-
-                    usersinfopro.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Date Created';
-                    value.textContent = profile.date_Created;
-                }
-                DateCreated();
-            }
-            usersInformation();
 
             //profile picture and cover photo uploader.
-            document.body.appendChild(usersinfopro);
             document.body.appendChild(userfriendlist);
             document.body.appendChild(userfollowerlist);
             userpostgridcontainer.appendChild(userpostgrid);
-            userpostgridcontainer.appendChild(userpublicpostgrid);
-            userpostgridcontainer.appendChild(userotherspostgrid);
-
-            userpublicpostgrid.id = profile.user_Id;
-            userotherspostgrid.id = profile.user_Id;
 
             userbioblock.appendChild(userbioinfor);
             userbioblock.classList.add('bioblock');
@@ -684,13 +426,10 @@ function createUsersMainProfile() {
             userfriendlist.id = profile.user_Id;
             userfriendListColumn.id = profile.user_Id;
 
-            userinfoexit.innerHTML = '&LeftArrow;';
             userfriendlistexit.innerHTML = '&LeftArrow;';
             userfollowersexit.innerHTML = '&LeftArrow;';
             userfollowersexit.classList.add('userfollowersexit');
             userfriendlistexit.classList.add('userfollowersexit');
-            userinfoexit.classList.add('userfollowersexit');
-            usersinfopro.classList.add('infopro');
             userfriendlist.classList.add('Friendlisttabs');
             userfollowerlist.classList.add('followerslisttabs');
             userfriendListColumn.classList.add('userfriendListColumn');
@@ -698,44 +437,27 @@ function createUsersMainProfile() {
             userfriendlist.appendChild(usersfriendlistheader);
             userfriendlist.appendChild(userfriendListColumn);
             userfollowerlist.appendChild(usersfollowerslistheader);
-            userinfoexit.addEventListener('click', () => {
-                usersinfopro.style.display = 'none';
-            });
+
             userfriendlistexit.addEventListener('click', () => {
                 userfriendlist.style.display = 'none';
             });
             userfollowersexit.addEventListener('click', () => {
                 userfollowerlist.style.display = 'none';
             });
-            usersinfopro.id = profile.user_Id;
             userfriendlist.id = profile.user_Id;
             userfollowerlist.id = profile.user_Id;
             user_Friends_View_Container.id = profile.user_Id;
             user_Information_View_Container.id = profile.user_Id;
 
-            usersinfopro.classList.add('infopro');
             userfriendlist.classList.add('Friendlisttabs');
             userfollowerlist.classList.add('followerslisttabs');
-
-            user_Friends_View_Container.addEventListener('click', (e) => {
-                if (userfriendlist.id !== user_Friends_View_Container.id) {
-                    userfriendlist.style.display = 'none';
-                } else {
-                    userfriendlist.style.display = 'flex';
-                    usersinfopro.style.display = 'none';
-                    userfollowerlist.style.display = 'none';
-                }
-            });
-
             user_Information_View_Container.addEventListener('click', () => {
-                if (usersinfopro.id !== user_Information_View_Container.id) {
-                    usersinfopro.style.display = 'none';
-                } else {
-                    usersinfopro.style.display = 'flex';
-                    userfriendlist.style.display = 'none';
-                    userfollowerlist.style.display = 'none';
-                }
+                usersInformation(profile.user_Id);
             });
+            user_Friends_View_Container.addEventListener('click', (e) => {
+                createFriends(profile.user_Id);
+            });
+
             usertopactivity.appendChild(usertopactivitytimeline);
             usertopactivity.appendChild(usertopactivitypublic);
             usertopactivity.appendChild(usertopactivityothers);
@@ -778,10 +500,8 @@ function createUsersMainProfile() {
             usersname.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
             if (profile.user_CoverPhoto) {
                 usercoverphoto.src = profile.user_CoverPhoto;
-                usersinfopro.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
             } else {
                 usercoverphoto.src = 'icons/male-user.png';
-                usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
             } if (profile.user_ProfilePicture) {
                 userprofilepicture.src = profile.user_ProfilePicture;
             } else {
@@ -837,8 +557,6 @@ function createUsersMainProfile() {
             filter_Image_Cover();
             userpostgridcontainer.classList.add('postgridcontainer');
             userpostgrid.classList.add('postgrid');
-            userpublicpostgrid.classList.add('userpublicpostgrid');
-            userotherspostgrid.classList.add('userotherspostgrid');
             userbioinfor.classList.add('userbioinfor');
             userprofileminimizer.classList.add('userprofileminimizer');
             function expandProfile() {
@@ -853,8 +571,6 @@ function createUsersMainProfile() {
                 userspreviewflex.classList.toggle('previewflexlarge');
                 userpostgridcontainer.classList.toggle('postgridcontainerlarge');
                 userpostgrid.classList.toggle('postgridlarge');
-                userpublicpostgrid.classList.toggle('userpublicpostgridlarge');
-                userotherspostgrid.classList.toggle('userotherspostgridlarge');
                 userprofileminimizer.classList.toggle('userprofileminimizerlarge');
                 userprofileexit.classList.toggle('userprofileexitlarge');
                 userconnectgrid.classList.toggle('userconnectgridlarge');
@@ -872,81 +588,31 @@ function createUsersMainProfile() {
                 });
                 expandProfile();
             });
-            function loadergridpost() {
-                document.querySelectorAll('.userspostgridloader').forEach(loader => {
-                    loader.remove();
-                });
-            }
             usertopactivitytimeline.addEventListener('click', () => {
-                loadergridpost();
-                let userspostgridloader = document.createElement('div');
-                let mainpostgridloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                let mainpostgridcircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-                userpostgridcontainer.appendChild(userspostgridloader);
-                userspostgridloader.appendChild(mainpostgridloader);
-                mainpostgridloader.appendChild(mainpostgridcircle);
-                mainpostgridcircle.setAttribute('cx', '30');
-                mainpostgridcircle.setAttribute('cy', '30');
-                mainpostgridcircle.setAttribute('r', '30');
-                userspostgridloader.classList.add('userspostgridloader');
-                userspostgridloader.id = profile.user_Id;
+                loader(userpostgridcontainer);
                 usertopactivitytimeline.classList.add('active');
                 usertopactivitypublic.classList.remove('active');
                 usertopactivityothers.classList.remove('active');
                 setTimeout(() => {
-                    userspostgridloader.remove();
-                    userpublicpostgrid.style.display = 'none';
-                    userotherspostgrid.style.display = 'none';
-                    userpostgrid.style.display = 'grid';
+                    createGridPost(profile.user_Id,userpostgrid);
                 }, 2000);
             });
             usertopactivitypublic.addEventListener('click', () => {
-                loadergridpost();
-                let userspostgridloader = document.createElement('div');
-                let mainpostgridloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                let mainpostgridcircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-                userpostgridcontainer.appendChild(userspostgridloader);
-                userspostgridloader.appendChild(mainpostgridloader);
-                mainpostgridloader.appendChild(mainpostgridcircle);
-                mainpostgridcircle.setAttribute('cx', '30');
-                mainpostgridcircle.setAttribute('cy', '30');
-                mainpostgridcircle.setAttribute('r', '30');
-                userspostgridloader.classList.add('userspostgridloader');
-                userspostgridloader.id = profile.user_Id;
+                loader(userpostgridcontainer);
                 usertopactivitytimeline.classList.remove('active');
                 usertopactivitypublic.classList.add('active');
                 usertopactivityothers.classList.remove('active');
                 setTimeout(() => {
-                    userspostgridloader.remove();
-                    userpostgrid.style.display = 'none';
-                    userotherspostgrid.style.display = 'none';
-                    userpublicpostgrid.style.display = 'grid';
+                    createPublicGridPost(profile.user_Id,userpostgrid);
                 }, 2000);
             });
             usertopactivityothers.addEventListener('click', () => {
-                loadergridpost();
-                let userspostgridloader = document.createElement('div');
-                let mainpostgridloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                let mainpostgridcircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-                userpostgridcontainer.appendChild(userspostgridloader);
-                userspostgridloader.appendChild(mainpostgridloader);
-                mainpostgridloader.appendChild(mainpostgridcircle);
-                mainpostgridcircle.setAttribute('cx', '30');
-                mainpostgridcircle.setAttribute('cy', '30');
-                mainpostgridcircle.setAttribute('r', '30');
-                userspostgridloader.classList.add('userspostgridloader');
-                userspostgridloader.id = profile.user_Id;
+                loader(userpostgridcontainer);
                 usertopactivitytimeline.classList.remove('active');
                 usertopactivitypublic.classList.remove('active');
                 usertopactivityothers.classList.add('active');
                 setTimeout(() => {
-                    userspostgridloader.remove();
-                    userpostgrid.style.display = 'none';
-                    userpublicpostgrid.style.display = 'none';
-                    userotherspostgrid.style.display = 'grid';
+                    createOtherGridPost(profile.user_Id,userpostgrid);
                 }, 2000);
             });
             userprofileexit.classList.add('userprofileexit');
@@ -965,7 +631,7 @@ function createUsersMainProfile() {
             profile_Cliant.classList.add('profile_Cliant');
             userprofilecolumn.classList.add('secondprofileculomn');
             userprofileexit.addEventListener('click', () => {
-                profile_Cliant.style.display = 'none';
+                profile_Cliant.remove();
                 sessionStorage.setItem('activepage', 'home');
                 document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
             });
@@ -977,5 +643,253 @@ function createUsersMainProfile() {
 
             userbioinfor.id = profile.user_Id;
             usercoverphoto.id = profile.user_Id;
-        });
+            loader(profile_Cliant);
+            createGridPost(profile.user_Id,userpostgrid);
+        }
+    });
+}
+
+function usersInformation(locationId) {
+    removeInfopage();
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    LogInFormData.forEach(profile => {
+        if (profile.user_Id === locationId) {
+            function createOtherInformation(locationId) {
+                let usersinfopro = document.createElement('session');
+                let userinfocolumn = document.createElement('div');
+                let userinfoexit = document.createElement('span');
+                let usersinfoheader = document.createElement('header');
+                document.body.appendChild(usersinfopro);
+                usersinfopro.appendChild(usersinfoheader);
+                usersinfopro.appendChild(userinfocolumn);
+                usersinfoheader.appendChild(userinfoexit);
+                usersinfopro.classList.add('infopro');
+                userinfocolumn.classList.add('userinfocolumn');
+                usersinfoheader.classList.add('XyFireRecTorFas');
+                userinfoexit.classList.add('userfollowersexit');
+                userinfoexit.innerHTML = '&LeftArrow;';
+                usersinfopro.id = locationId;
+                userinfoexit.addEventListener('click', () => {
+                    usersinfopro.remove();
+                });
+                CityInfo(userinfocolumn);
+                GenderInfo(userinfocolumn);
+                DateOFBirthInfo(userinfocolumn);
+                BioInfo(userinfocolumn);
+                DateCreated(userinfocolumn);
+                if (data.user_CoverPhoto) {
+                    usersinfopro.style.backgroundImage = "url(" + data.user_CoverPhoto + ")";
+                } else {
+                    usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                }
+            }
+            createOtherInformation();
+            function CityInfo(session) {
+                let InforMationCenter = document.createElement('div');
+                let Info = document.createElement('div');
+                let center = document.createElement('div');
+                let value = document.createElement('span');
+
+
+                session.appendChild(InforMationCenter);
+                InforMationCenter.appendChild(Info);
+                InforMationCenter.appendChild(center);
+                center.appendChild(value);
+                InforMationCenter.classList.add('chosedplace');
+                Info.classList.add('subject');
+                center.classList.add('alwaysflex');
+                value.classList.add('cityset');
+                Info.textContent = 'City';
+                value.textContent = profile.user_Location;
+            }
+            function GenderInfo(session) {
+                let InforMationCenter = document.createElement('div');
+                let Info = document.createElement('div');
+                let center = document.createElement('div');
+                let value = document.createElement('span');
+
+
+                session.appendChild(InforMationCenter);
+                InforMationCenter.appendChild(Info);
+                InforMationCenter.appendChild(center);
+                center.appendChild(value);
+                InforMationCenter.classList.add('chosedplace');
+                Info.classList.add('subject');
+                center.classList.add('alwaysflex');
+                value.classList.add('cityset');
+                Info.textContent = 'Gender';
+                value.textContent = profile.user_Gender;
+            }
+            function DateOFBirthInfo(session) {
+                let InforMationCenter = document.createElement('div');
+                let Info = document.createElement('div');
+                let center = document.createElement('div');
+                let value = document.createElement('span');
+
+
+                session.appendChild(InforMationCenter);
+                InforMationCenter.appendChild(Info);
+                InforMationCenter.appendChild(center);
+                center.appendChild(value);
+                InforMationCenter.classList.add('chosedplace');
+                Info.classList.add('subject');
+                center.classList.add('alwaysflex');
+                value.classList.add('cityset');
+                Info.textContent = 'Date Of Birth';
+                value.textContent = profile.user_Dateofbirth;
+            }
+            function BioInfo(session) {
+                let InforMationCenter = document.createElement('div');
+                let Info = document.createElement('div');
+                let center = document.createElement('div');
+                let value = document.createElement('span');
+
+
+                session.appendChild(InforMationCenter);
+                InforMationCenter.appendChild(Info);
+                InforMationCenter.appendChild(center);
+                center.appendChild(value);
+                InforMationCenter.classList.add('chosedplace');
+                Info.classList.add('subject');
+                center.classList.add('alwaysflex');
+                value.classList.add('cityset');
+                Info.textContent = 'Bio';
+                value.textContent = profile.user_Bio;
+            }
+            function DateCreated(session) {
+                let InforMationCenter = document.createElement('div');
+                let Info = document.createElement('div');
+                let center = document.createElement('div');
+                let value = document.createElement('span');
+
+
+                session.appendChild(InforMationCenter);
+                InforMationCenter.appendChild(Info);
+                InforMationCenter.appendChild(center);
+                center.appendChild(value);
+                InforMationCenter.classList.add('chosedplace');
+                Info.classList.add('subject');
+                center.classList.add('alwaysflex');
+                value.classList.add('cityset');
+                Info.textContent = 'Date Created';
+                value.textContent = profile.date_Created;
+            }
+        }
+    });
+}
+function createFriends(locationId) {
+    removeInfopage();
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    LogInFormData.forEach(data => {
+        if (data.user_Id === locationId) {
+            function createOtherInformation(locationId) {
+                let usersinfopro = document.createElement('session');
+                let userinfocolumn = document.createElement('div');
+                let userinfoexit = document.createElement('span');
+                let usersinfoheader = document.createElement('header');
+                document.body.appendChild(usersinfopro);
+                usersinfopro.appendChild(usersinfoheader);
+                usersinfopro.appendChild(userinfocolumn);
+                usersinfoheader.appendChild(userinfoexit);
+                usersinfopro.classList.add('infopro');
+                userinfocolumn.classList.add('userinfocolumn');
+                usersinfoheader.classList.add('XyFireRecTorFas');
+                userinfoexit.classList.add('userfollowersexit');
+                userinfoexit.innerHTML = '&LeftArrow;';
+                usersinfopro.id = locationId;
+                userinfoexit.addEventListener('click', () => {
+                    usersinfopro.remove();
+                });
+                if (data.user_CoverPhoto) {
+                    usersinfopro.style.backgroundImage = "url(" + data.user_CoverPhoto + ")";
+                } else {
+                    usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                }
+                friends(userinfocolumn);
+            }
+            createOtherInformation();
+            function friends(column) {
+                let connections = data.user_Connection;
+                connections.forEach(connect => {
+                    let friendcontainer = document.createElement('div');
+                    let friendsLeft = document.createElement('span');
+                    let friendsRight = document.createElement('div');
+                    let friendProfilePicture = document.createElement('img');
+                    let friendname = document.createElement('p');
+                    let frienddisconnect = document.createElement('span');
+                    friendsLeft.appendChild(friendProfilePicture);
+                    column.appendChild(friendcontainer);
+                    friendcontainer.appendChild(friendsLeft);
+                    friendcontainer.appendChild(friendsRight);
+                    friendsRight.appendChild(friendname);
+                    friendsRight.appendChild(frienddisconnect);
+                    friendname.id = connect.connectionId;
+                    frienddisconnect.id = connect.id;
+                    friendProfilePicture.id = connect.connectionId;
+
+                    function getDetails() {
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(user => {
+                            if (user.user_Id === connect.connectionId) {
+                                friendProfilePicture.src = user.user_ProfilePicture;
+                                friendname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                                function filter_Image() {
+                                    //profile_filter 
+                                    if (user.user_ProfilePicture_Filter == 'default') {
+                                        friendProfilePicture.classList.add('--color-default');
+                                    } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                        friendProfilePicture.classList.add('--color-gray');
+                                    } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                        friendProfilePicture.classList.add('--color-contrast');
+                                    } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                        friendProfilePicture.classList.add('--color-bright');
+                                    } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                        friendProfilePicture.classList.add('--color-blur');
+                                    } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                        friendProfilePicture.classList.add('--color-invert');
+                                    } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                        friendProfilePicture.classList.add('--color-sepia');
+                                    } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                        friendProfilePicture.classList.add('--color-hue-rotate');
+                                    } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                        friendProfilePicture.classList.add('--color-opacity');
+                                    } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                        friendProfilePicture.classList.add('--color-satulate');
+                                    }
+                                }
+                                filter_Image();
+                            }
+                        });
+                    }
+                    getDetails();
+
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                        ActiveUser_Account.forEach(user => {
+                            if (user.user_Id === connect.connectionId) {
+                                frienddisconnect.textContent = 'my profile';
+                            } else {
+                                frienddisconnect.textContent = 'view profile';
+                            }
+                        });
+                    }
+
+                    frienddisconnect.addEventListener('click', () => {
+                        createUsersProfile(connect.connectionId);
+                    });
+                    frienddisconnect.classList.add('frienddisconnect');
+                    friendsRight.classList.add('friendsRight');
+                    friendname.classList.add('friendname');
+                    friendsLeft.classList.add('friendsLeft');
+                    friendcontainer.classList.add('friendcontainer');
+                    friendProfilePicture.classList.add('friendProfilePicture');
+                });
+            }
+        }
+    });
+}
+function removeInfopage() {
+    document.querySelectorAll('.infopro').forEach(page => {
+        page.remove();
+    });
 }

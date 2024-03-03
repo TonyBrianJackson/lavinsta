@@ -18,17 +18,18 @@ floatItems.forEach(item => {
             document.querySelector('.people').style.display = 'none';
         } else {
             loadPage();
-            sessionStorage.setItem('activepage', 'people');
+            sessionStorage.setItem('activepage', 'lavinstapeople');
             document.querySelector('.people').style.display = 'flex';
             document.title = 'people';
-
+            secondcreatePeople();
         } if (item.id != 'chat') {
             document.querySelector('.chattab').style.display = 'none';
         } else {
             loadPage();
-            sessionStorage.setItem('activepage', 'chattab');
+            sessionStorage.setItem('activepage','general_smart_Chat');
             document.querySelector('.chattab').style.display = 'flex';
             document.title = 'messages';
+            secondchatcontainers();
         } if (item.id != 'notification') {
             document.querySelector('.notificationtab').style.display = 'none';
         } else {
@@ -517,87 +518,71 @@ recyclebackarrow.addEventListener('click', () => {
     document.querySelector('.recycletabs').style.display = 'none';
 })
 const msgbtn = document.querySelectorAll('.msgbtn');
+function removeActiveMesg(mesgactiveclass) {
+    mesgactiveclass.forEach(item => {
+        item.classList.remove('active');
+    });
+}
 msgbtn.forEach(item => {
     item.addEventListener('click', () => {
+        removeActiveMesg(msgbtn);
+        item.classList.add('active');
         if (item.id != 'general_smart_Chat') {
-            document.querySelector('.msgculomn').style.display = 'none';
             document.querySelector('.chatsearchbar').style.display = 'none';
-            document.querySelector('#general_smart_Chat').classList.remove('active');
         } else {
             sessionStorage.setItem('activepage', 'general_smart_Chat');
-            document.querySelector('.msgculomn').style.display = 'flex';
             document.querySelector('.chatsearchbar').style.display = 'flex';
-            document.querySelector('#general_smart_Chat').classList.add('active');
         } if (item.id != 'community_smart_Chat') {
-            document.querySelector('.groupmsgculomn').style.display = 'none';
             document.querySelector('.chatsearchbar1').style.display = 'none';
-            document.querySelector('#community_smart_Chat').classList.remove('active');
         } else {
             sessionStorage.setItem('activepage', 'community_smart_Chat');
-            document.querySelector('.groupmsgculomn').style.display = 'flex';
             document.querySelector('.chatsearchbar1').style.display = 'flex';
-            document.querySelector('#community_smart_Chat').classList.add('active');
         }
     });
 });
 document.querySelectorAll('.mesgBtn').forEach(item => {
     item.addEventListener('click', () => {
-        if (item.id !='friendschatbtns') {
-            document.querySelector('.msgculomn').style.display = 'none';
+        removeActiveMesg(document.querySelectorAll('.mesgBtn'));
+        item.classList.add('active');
+        if (item.id !='general_smart_Chat') {
             document.querySelector('.chatsearchbar').style.display = 'none';
-            document.querySelector('#general_smart_Chat').classList.remove('active');
         } else {
             sessionStorage.setItem('activepage', 'general_smart_Chat');
-            document.querySelector('.msgculomn').style.display = 'flex';
             document.querySelector('.chatsearchbar').style.display = 'flex';
-            document.querySelector('#general_smart_Chat').classList.add('active');
-        } if (item.id !='communitychatbtns') {
-            document.querySelector('.groupmsgculomn').style.display = 'none';
+        } if (item.id !='community_smart_Chat') {
             document.querySelector('.chatsearchbar1').style.display = 'none';
-            document.querySelector('#community_smart_Chat').classList.remove('active');
         } else {
             sessionStorage.setItem('activepage', 'community_smart_Chat');
-            document.querySelector('.groupmsgculomn').style.display = 'flex';
             document.querySelector('.chatsearchbar1').style.display = 'flex';
-            document.querySelector('#community_smart_Chat').classList.add('active');
         }
     });
 });
 const peoplebtn = document.querySelectorAll('.peoplebtn');
+function removeClassActive() {
+    peoplebtn.forEach(btn => {
+        btn.classList.remove('active');
+    })
+}
 peoplebtn.forEach(item => {
     item.addEventListener('click', () => {
+        removeClassActive();
+        item.classList.add('active');
         if (item.id != 'lavinstapeople') {
-            document.querySelector('.peopleculomn').style.display = 'none';
             document.querySelector('.peoplesearchbar').style.display = 'none';
-            document.querySelector('#lavinstapeople').classList.remove('active');
         } else {
-            document.querySelector('.peopleculomn').style.display = 'flex';
             document.querySelector('.peoplesearchbar').style.display = 'flex';
-            document.querySelector('#lavinstapeople').classList.add('active');
         } if (item.id != 'peoplerequest') {
-            document.querySelector('.peoplerequestculomn').style.display = 'none';
             document.querySelector('.peoplesearchbar1').style.display = 'none';
-            document.querySelector('#peoplerequest').classList.remove('active');
         } else {
-            document.querySelector('.peoplerequestculomn').style.display = 'flex';
             document.querySelector('.peoplesearchbar1').style.display = 'flex';
-            document.querySelector('#peoplerequest').classList.add('active');
         } if (item.id != 'sent_requests') {
-            document.querySelector('#sent_requests').classList.remove('active');
-            document.querySelector('.sentrequestculomn').style.display = 'none';
             document.querySelector('.peoplesearchbar3').style.display = 'none';
         } else {
-            document.querySelector('#sent_requests').classList.add('active');
-            document.querySelector('.sentrequestculomn').style.display = 'flex';
             document.querySelector('.peoplesearchbar3').style.display = 'flex';
         } if (item.id != 'peoplelist') {
-            document.querySelector('.peoplelistculomn').style.display = 'none';
             document.querySelector('.peoplesearchbar2').style.display = 'none';
-            document.querySelector('#peoplelist').classList.remove('active');
         } else {
-            document.querySelector('.peoplelistculomn').style.display = 'flex';
             document.querySelector('.peoplesearchbar2').style.display = 'flex';
-            document.querySelector('#peoplelist').classList.add('active');
         }
     })
 });
