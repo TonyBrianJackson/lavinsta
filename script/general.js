@@ -376,6 +376,7 @@ storiesuploader.forEach(item => {
             let videostoryuploader = document.querySelector('.videostoryuploader');
             videostoryuploader.style.display = 'none';
             photostoryuploader.style.display = 'block';
+            document.querySelector('.multiplestoryuploader').style.display = 'none';
         }
         if (item.id != 'storyvideolabel') {
             document.querySelector('.storyuploadcontainervideo').style.display = 'none';
@@ -385,6 +386,7 @@ storiesuploader.forEach(item => {
             let videostoryuploader = document.querySelector('.videostoryuploader');
             videostoryuploader.style.display = 'block';
             photostoryuploader.style.display = 'none';
+            document.querySelector('.multiplestoryuploader').style.display = 'none';
         }
     })
 });

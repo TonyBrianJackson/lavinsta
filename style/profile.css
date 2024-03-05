@@ -2939,9 +2939,10 @@
     .pagename,
     .logoname,
     .lastlogo {
-        letter-spacing: 1vw;
+        letter-spacing: 0.5vw;
         font-size: 8.55555vw;
         font-style: normal;
+        font-family: poppins;
     }
 
     .post {

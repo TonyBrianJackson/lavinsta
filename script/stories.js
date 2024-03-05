@@ -393,8 +393,8 @@ function createStoriesPhotos() {
                     if (storystatus.type == 'photo') {
                         let newstoryupload = document.createElement('img');
                         newstoryuploadcontainer.appendChild(newstoryupload);
-                        newstoryupload.src = storystatus.Property_Src;
                         newstoryupload.classList.add('newstoryupload');
+                        newstoryupload.src = storystatus.Property_Src;
                     } if (storystatus.type == 'video') {
                         let newstoryupload = document.createElement('video');
                         newstoryuploadcontainer.appendChild(newstoryupload);
@@ -420,7 +420,11 @@ function createStoriesPhotos() {
                     newstoryuploadcontainer.addEventListener('click', () => {
                         create_Main_Stories(storystatus.id, storystatus.Property_Src);
                     });
-
+                    document.querySelectorAll('.storycount').forEach(count => {
+                        if (count.id === storystatus.posterId) {
+                            count.textContent = userdata.user_Stories.length;
+                        }
+                    });
                     function Poster_Details() {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === storystatus.posterId) {
@@ -1170,8 +1174,6 @@ function CreateStatusViews() {
 
 setTimeout(() => {
     createStoriesPhotos();
-    create_Main_Stories();
-    AllOtherThingsAboutStories();
     Send_This_Story_To_Archieve();
 }, 5000);
 function Send_This_Story_To_Archieve() {

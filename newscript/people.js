@@ -66,10 +66,11 @@ function reset() {
         // data.user_SentRequest = [];
         // data.user_Story_Trash = [];
         // data.user_Stories = [];
+        // data.user_Notifications = [];
         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
     });
 }
-
+// reset();
 //users friends List
 document.querySelector('#notification').addEventListener('click', () => {
     if (ActiveUser_Account) {
@@ -115,11 +116,7 @@ function create_StatusBar() {
                 useraddstoryimg.id = profile.user_Id;
                 useraddstatus.id = profile.user_Id;
                 userstatusbar.id = profile.user_Id;
-                if (storycount.textContent < 0) {
-                    storycount.textContent = 0;
-                    profile.my_StoryCount = storycount.textContent;
-                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                } if (storycount.textContent == 0) {
+                if (storycount.textContent == 0) {
                     mystory.style.display = 'none';
                 } else {
                     mystory.style.display = 'flex';

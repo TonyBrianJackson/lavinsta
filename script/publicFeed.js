@@ -89,7 +89,6 @@ function createPublicFeed() {
                     if (photo.isPhoto) {
                         let mainimg = document.createElement('img');
                         main.appendChild(mainimg);
-                        mainimg.src = photo.Property_Src;
                         mainimg.classList.add('mainimg');
                         mainimg.addEventListener('click', () => {
                             createMain_GridPost(photo.id, mainimg.src);
@@ -125,6 +124,12 @@ function createPublicFeed() {
                         }
                         if (photo.children) {
                             create_Multi_Tile();
+                            let children = photo.children;
+                            for (let i = 0; i < children.length; i++) {
+                                mainimg.src = children[0].Property_Src;
+                            }
+                        } else {
+                            mainimg.src = photo.Property_Src;
                         }
                         function filter_PostImage() {
                             if (photo.filter == 'default') {

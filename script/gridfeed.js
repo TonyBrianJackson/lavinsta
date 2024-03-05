@@ -11,9 +11,16 @@ function createGridPost(locationId, gridsection) {
                 if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
                     let gridpostimg = document.createElement('img');
                     gridpost.appendChild(gridpostimg);
-                    gridpostimg.src = photo.Property_Src;
                     gridpostimg.classList.add('gridpostimg');
                     Img_Inidcator_Img.src = 'icons/image(0).png';
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            gridpostimg.src = children[0].Property_Src;
+                        }
+                    } else {
+                        gridpostimg.src = photo.Property_Src;
+                    }
                     function filter_Image() {
                         if (photo.filter == 'default') {
                             gridpostimg.classList.add('--color-default');
@@ -144,7 +151,7 @@ function createGridPost(locationId, gridsection) {
                 gridpostImgCover.classList.add('gridpostImgCover');
                 gridpost.classList.add('gridpost');
                 gridpost.addEventListener('click', () => {
-                    createMain_GridPost(photo.id, photo.Property_Src);
+                    createMain_GridPost(photo.id, photo.Property_Src,'home');
                 });
             }
         }
@@ -163,9 +170,16 @@ function createPublicGridPost(locationId, gridsection) {
                 if (photo.isPhoto) {
                     let gridpostimg = document.createElement('img');
                     gridpost.appendChild(gridpostimg);
-                    gridpostimg.src = photo.Property_Src;
                     gridpostimg.classList.add('gridpostimg');
                     Img_Inidcator_Img.src = 'icons/image(0).png';
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            gridpostimg.src = children[0].Property_Src;
+                        }
+                    } else {
+                        gridpostimg.src = photo.Property_Src;
+                    }
                     function filter_Image() {
                         if (photo.filter == 'default') {
                             gridpostimg.classList.add('--color-default');
@@ -298,7 +312,7 @@ function createPublicGridPost(locationId, gridsection) {
                 gridpostImgCover.classList.add('gridpostImgCover');
                 gridpost.classList.add('gridpost');
                 gridpost.addEventListener('click', () => {
-                    createMain_GridPost(photo.id);
+                    createMain_GridPost(photo.id, photo.Property_Src,'home');
                 });
             }
         }
@@ -318,9 +332,16 @@ function createOtherGridPost(locationId, gridsection) {
                     if (photo.isPhoto || photo.isAdvert || photo.isCrime) {
                         let gridpostimg = document.createElement('img');
                         gridpost.appendChild(gridpostimg);
-                        gridpostimg.src = photo.Property_Src;
                         gridpostimg.classList.add('gridpostimg');
                         Img_Inidcator_Img.src = 'icons/image(0).png';
+                        if (photo.children) {
+                            let children = photo.children;
+                            for (let i = 0; i < children.length; i++) {
+                                gridpostimg.src = children[0].Property_Src;
+                            }
+                        } else {
+                            gridpostimg.src = photo.Property_Src;
+                        }
                         function filter_Image() {
                             if (photo.filter == 'default') {
                                 gridpostimg.classList.add('--color-default');
@@ -354,7 +375,7 @@ function createOtherGridPost(locationId, gridsection) {
                     gridpostImgCover.classList.add('gridpostImgCover');
                     gridpost.classList.add('gridpost');
                     gridpost.addEventListener('click', () => {
-                        createMain_GridPost(photo.id);
+                        createMain_GridPost(photo.id, photo.Property_Src,'home');
                     });
                 }
             }

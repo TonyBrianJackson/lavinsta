@@ -222,6 +222,7 @@
     border-color: rgba(211, 211, 211, 0.644);
     border-width: 2px;
 }
+
 .toolpit {
     display:block;
     text-align:center;
@@ -253,6 +254,10 @@
     overflow:visible;
     width: 21px;
     height: 21px;
+}
+.headerbtns.create_plus svg {
+    width: 15px;
+    height: 15px;
 }
 .headerbtns svg path {
     fill: var(--color-dark);

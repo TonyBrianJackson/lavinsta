@@ -7980,7 +7980,8 @@ a {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 240px;
+    width: max-content;
+    max-width: 240px;
     height: max-content;
     padding: 10px;
     border: none;
@@ -8542,6 +8543,9 @@ a {
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .updatingmessage {
+        max-width: 90vw;
+    }
     .sharevideophotocommentactive {
         gap: 5px;
     }

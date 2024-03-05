@@ -503,7 +503,7 @@ function active_user_render() {
                                 filter: 'default',
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base))
-                            shareNotification(id, false, 'added a photo in feeds');
+                            shareNotification(id, false, `added ${children.length} photos to public feeds`);
                             Increase_FeedCount();
                         }
                     }
@@ -568,11 +568,11 @@ function active_user_render() {
 
                     function push_Multiple(children) {
                         const id = '' + new Date().getTime();
-                        if (document.getElementById('photophoto').src) {
+                        if (Array.isArray(children)) {
                             Feeds_Data_Base.push({
                                 type: 'timeline',
                                 isPhoto: true,
-                                Property_Src: document.getElementById('photophoto').src,
+                                Property_Src: '',
                                 title: document.getElementById('title').value,
                                 date: trackingDate,
                                 time: new Date().getTime(),
@@ -590,15 +590,15 @@ function active_user_render() {
                                 filter: 'default',
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                            shareNotification(id, false, 'added a photo to timeline');
+                            shareNotification(id, false, `added ${children.length} photos to timeline`);
                         }
                     }
                     function push_Multiple_Photo(children) {
                         const id = '' + new Date().getTime();
-                        if (document.querySelector('#srcworldwidephoto').src) {
+                        if (Array.isArray(children)) {
                             Feeds_Data_Base.push({
                                 type: 'other',
-                                Property_Src: document.querySelector('#srcworldwidephoto').src,
+                                Property_Src: '',
                                 title: document.querySelector('#worldwidecaptionbox').value,
                                 posterId: user.user_Id,
                                 id: id,
@@ -617,16 +617,16 @@ function active_user_render() {
                                 filter: 'default',
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                            shareNotification(id, false, 'posted in lavinsta photos');
+                            shareNotification(id, false, `added ${children.length} photos to lavinsta photos`);
                             Increase_PhotoCount();
                         }
                     }
                     function push_Multiple_Advert(children) {
                         const id = '' + new Date().getTime();
-                        if (document.querySelector('#srcadvertphoto').src) {
+                        if (Array.isArray(children)) {
                             Feeds_Data_Base.push({
                                 type: 'other',
-                                Property_Src: document.querySelector('#srcadvertphoto').src,
+                                Property_Src: '',
                                 title: document.querySelector('#worldwidecaptionbox').value,
                                 posterId: user.user_Id,
                                 id: id,
@@ -645,16 +645,16 @@ function active_user_render() {
                                 filter: 'default',
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                            shareNotification(id, false, 'posted an advert');
+                            shareNotification(id, false, `posted ${children.length} adverts`);
                             Increase_PhotoCount();
                         }
                     }
                     function push_Multiple_Crime(children) {
                         const id = '' + new Date().getTime();
-                        if (document.querySelector('#srccrimephoto').src) {
+                        if (Array.isArray(children)) {
                             Feeds_Data_Base.push({
                                 type: 'other',
-                                Property_Src: document.querySelector('#srccrimephoto').src,
+                                Property_Src: '',
                                 title: document.querySelector('#worldwidecaptionbox').value,
                                 posterId: user.user_Id,
                                 id: id,
@@ -673,7 +673,7 @@ function active_user_render() {
                                 filter: 'default',
                             });
                             localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                            shareNotification(id, false, 'posted a crime');
+                            shareNotification(id, false, `posted ${children.length} crime photo`);
                             Increase_PhotoCount();
                         }
                     }
@@ -1276,18 +1276,25 @@ function active_user_render() {
                                 }
                             });
                         }
-                        function increase_StoryCount() {
-                            let storycount = document.querySelectorAll('.storycount');
+                        function pushMultipleStories(Property_Src,id) {
                             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            LogInFormData.forEach(users_d => {
-                                storycount.forEach(count => {
-                                    if (users_d.user_Id === user.user_Id && count.id === users_d.user_Id) {
-                                        count.style.display = 'block';
-                                        count.textContent = users_d.user_Stories.length;
-                                    }
-                                });
+                            LogInFormData.forEach(userdata => {
+                                if (userdata.user_Id === user.user_Id) {
+                                    let stories = userdata.user_Stories;
+                                    stories.push({
+                                        type: 'photo',
+                                        Property_Src: Property_Src,
+                                        title: document.getElementById('storytitlebox').value,
+                                        id: id,
+                                        posterId: user.user_Id,
+                                        time: new Date().getTime(),
+                                        views: [],
+                                        statusviewers: 0,
+                                        filter: 'default',
+                                    });
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                }
                             });
-
                         }
                         function uploadVideoToStory() {
                             pushvideostories();
@@ -1299,7 +1306,6 @@ function active_user_render() {
                                     }, 2000);
                                 }
                             });
-                            increase_StoryCount();
                             Creation_Mark_Video_Story(document.querySelector('#storyvideopreview').src, 'publishing status...');
                             document.getElementById('storytitlebox').value = '';
                         };
@@ -1313,18 +1319,51 @@ function active_user_render() {
                                     }, 2000);
                                 }
                             });
-                            increase_StoryCount();
                             document.getElementById('storytitlebox').value = '';
                             Creation_Mark_Photo_Story(document.getElementById('storyphotopreview').src, 'publishing status...');
+                        };
+                        function PostmultipleStory() {
+                            if (emptyArr.length > 40) {
+                                create_Message("must not be greater than 40");
+                            } else {
+                                var id = '' + new Date().getTime();
+                                for (let i = 0; i < emptyArr.length; i++) {
+                                    id = '' + new Date().getTime();
+                                    pushMultipleStories(emptyArr[i].Property_Src,id);
+                                    Creation_Mark_Photo_Story(emptyArr[i].Property_Src, 'publishing status...');
+                                }
+                                shareNotification(id, true, `added ${emptyArr.length} photos to story`,emptyArr.length);
+                            }
+                            let mystory = document.querySelectorAll('.mystory');
+                            mystory.forEach(story => {
+                                if (story.id === user.user_Id) {
+                                    setTimeout(() => {
+                                        story.style.display = 'flex';
+                                    }, 2000);
+                                }
+                            });
+                            document.getElementById('storytitlebox').value = '';
                         };
                         VideoUploadStory.addEventListener('click', () => {
                             if (document.querySelector('#storyvideopreview').src) {
                                 uploadVideoToStory();
+                                document.querySelector('.actualstorypopup').style.display = 'none';
                             }
                         });
                         UploadStory.addEventListener('click', () => {
                             if (document.querySelector('#storyphotopreview').src) {
                                 PostStory();
+                                document.querySelector('.actualstorypopup').style.display = 'none';
+                            }
+                        });
+                        document.querySelector('.multiplestoryuploader').addEventListener('click',()=> {
+                            if (Array.isArray(emptyArr)) {
+                                PostmultipleStory();
+                                emptyArr = [];
+                                document.querySelectorAll('.multipleimages').forEach(item => {
+                                    item.remove();
+                                });
+                                document.querySelector('.actualstorypopup').style.display = 'none';
                             }
                         });
                     }

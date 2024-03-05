@@ -178,7 +178,6 @@ function createOtherPost() {
                     head.appendChild(postelapsedtime);
                     nameandimg.appendChild(authorsImg);
                     nameandimg.appendChild(postername);
-                    adImg.src = photo.Property_Src;
                     livelikecount.textContent = photo.likes.length;
                     livecommentcount.textContent = photo.comments.length;
                     column.appendChild(adgrid);
@@ -281,6 +280,12 @@ function createOtherPost() {
                     }
                     if (photo.children) {
                         create_Multi_Tile();
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            adImg.src = children[0].Property_Src;
+                        }
+                    } else {
+                        adImg.src = photo.Property_Src;
                     }
 
                     advertactionbar.classList.add("advertactionbar");
@@ -710,7 +715,6 @@ function createOtherPost() {
                     head.appendChild(postelapsedtime);
                     nameandimg.appendChild(authorsImg);
                     nameandimg.appendChild(postername);
-                    adImg.src = photo.Property_Src;
 
                     function Poster_Details() {
                         LogInFormData.forEach((user) => {
@@ -782,17 +786,14 @@ function createOtherPost() {
                     adgridimagecontainer.appendChild(adImg);
                     adgridimagecontainer.appendChild(advertactionbar);
 
-                    if (photo.title !== "") {
-                        let titlehead = document.createElement("header");
-                        let posttitle = document.createElement("p");
-                        adgrid.appendChild(titlehead);
-                        titlehead.appendChild(posttitle);
-                        posttitle.textContent = photo.title;
-                        posttitle.classList.add("posttitle");
-                        titlehead.classList.add("head");
-                        posttitle.addEventListener("click", () => {
-                            posttitle.classList.toggle("posttitlemoreorless");
-                        });
+                    if (photo.children) {
+                        create_Multi_Tile();
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            adImg.src = children[0].Property_Src;
+                        }
+                    } else {
+                        adImg.src = photo.Property_Src;
                     }
 
                     function create_Multi_Tile() {
@@ -1246,7 +1247,6 @@ function createOtherPost() {
                     head.appendChild(postelapsedtime);
                     nameandimg.appendChild(authorsImg);
                     nameandimg.appendChild(postername);
-                    adImg.src = photo.Property_Src;
                     livelikecount.textContent = photo.likes.length;
                     livecommentcount.textContent = photo.comments.length;
                     function Poster_Details() {
@@ -1349,6 +1349,12 @@ function createOtherPost() {
                     }
                     if (photo.children) {
                         create_Multi_Tile();
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            adImg.src = children[0].Property_Src;
+                        }
+                    } else {
+                        adImg.src = photo.Property_Src;
                     }
                     livelikecount.classList.add("livelikecount");
                     livecommentcount.classList.add("livecommentcount");

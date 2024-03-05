@@ -24,24 +24,28 @@ function regularItemDisplay() {
             } else {
                 document.querySelector('.smallphoto1').style.display = 'flex';
                 Photopostbtn3.style.display = 'block';
+                document.querySelector('.multipostbtn').style.display = 'none';
             } if (item.id != 'smallvideopost') {
                 document.querySelector('.smallvideo2').style.display = 'none';
                 videopostbtn3.style.display = 'none';
             } else {
                 document.querySelector('.smallvideo2').style.display = 'flex';
                 videopostbtn3.style.display = 'block';
+                document.querySelector('.multipostbtn').style.display = 'none';
             } if (item.id != 'smallshortvideopost') {
                 document.querySelector('.shortvideo3').style.display = 'none';
                 shortpostbtn3.style.display = 'none';
             } else {
                 document.querySelector('.shortvideo3').style.display = 'flex';
                 shortpostbtn3.style.display = 'block';
+                document.querySelector('.multipostbtn').style.display = 'none';
             } if (item.id != 'smalltextposter') {
                 document.querySelector('.textarea').style.display = 'none';
                 postBtn.style.display = 'none';
             } else {
                 document.querySelector('.textarea').style.display = 'flex';
                 postBtn.style.display = 'block';
+                document.querySelector('.multipostbtn').style.display = 'none';
             }
         })
     });
@@ -410,6 +414,37 @@ function multiplecrimesfiles() {
             document.querySelector('#srccrimephoto').src = reader.result;
             ImageContainer.addEventListener('click', () => {
                 document.querySelector('#srccrimephoto').src = image.src;
+            });
+        }
+    }
+}
+function multiplestory() {
+    emptyArr = [];
+    const choice = document.querySelector('#multiplestory_input');    
+    for (let i = 0; i < choice.files.length; i++) {
+        let ImageContainer = document.createElement('div');
+        let image = document.createElement('img');
+        const reader = new FileReader();
+        reader.readAsDataURL(choice.files[i]);
+        reader.onload = () => {
+            document.querySelector('.photostoryuploader').style.display = 'none';
+            document.querySelector('.videostoryuploader').style.display = 'none';
+            document.querySelector('.multiplestoryuploader').style.display = 'block';
+
+            document.querySelector('.storyflexer').style.display = 'flex';
+            document.querySelector('.storyflexelement').appendChild(ImageContainer);
+            ImageContainer.appendChild(image);
+            ImageContainer.length = emptyArr.length;
+            image.length = emptyArr.length;
+            ImageContainer.classList.add('multipleimages');
+            image.src = reader.result;
+            emptyArr.push({
+                Property_Src: image.src,
+                Child_Id: new Date().getTime()
+            });
+            document.querySelector('#storyphotopreview').src = reader.result;
+            ImageContainer.addEventListener('click', () => {
+                document.querySelector('#storyphotopreview').src = image.src;
             });
         }
     }

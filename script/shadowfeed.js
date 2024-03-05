@@ -1,4 +1,4 @@
-function createMain_GridPost(LocationId, Property_Src) {
+function createMain_GridPost(LocationId, Property_Src,generictype) {
     Feeds_Data_Base.forEach(photo => {
         if (photo.id === LocationId) {
             if (photo.type == 'timeline' || photo.type == 'public' || photo.type == 'other') {
@@ -41,7 +41,14 @@ function createMain_GridPost(LocationId, Property_Src) {
                     if (Property_Src) {
                         gridpostimagetoview.src = Property_Src;
                     } else {
-                        gridpostimagetoview.src = photo.Property_Src;
+                        if (photo.children) {
+                            let children = photo.children;
+                            for (let i = 0; i < children.length; i++) {
+                                gridpostimagetoview.src = children[0].Property_Src;
+                            }
+                        } else {
+                            gridpostimagetoview.src = photo.Property_Src;
+                        }
                     }
                     gridpostimagetoview.id = photo.id;
                     gridpostimagetoview.classList.add('gridpostimagetoview');
@@ -767,7 +774,7 @@ function createMain_GridPost(LocationId, Property_Src) {
                 }
                 showOnAndOffActivitiesOnGridPost();
             }
-            createGridPostTile(LocationId);
+            createGridPostTile(LocationId,generictype);
         }
     });
 }
@@ -948,7 +955,7 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
         displayelement('flex');
     });
 }
-function createGridPostTile(locationId) {
+function createGridPostTile(locationId,generictype) {
     let tilebox_Timeline = document.querySelectorAll('.tilebox_Timeline');
     tilebox_Timeline.forEach(tilecontainer => {
         if (Feeds_Data_Base) {
@@ -962,9 +969,16 @@ function createGridPostTile(locationId) {
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tileImg);
                             tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
-                            tileImg.src = gridphoto.Property_Src;
                             tileImg.classList.add('tileimg');
                             tile.classList.add('tile');
+                            if (gridphoto.children) {
+                                let children = gridphoto.children;
+                                for (let i = 0; i < children.length; i++) {
+                                    tileImg.src = children[0].Property_Src;
+                                }
+                            } else {
+                                tileImg.src = gridphoto.Property_Src;
+                            }
                             function filter_Image() {
                                 if (gridphoto.filter == 'default') {
                                     tileImg.classList.add('--color-default');
@@ -990,7 +1004,7 @@ function createGridPostTile(locationId) {
                             }
                             filter_Image();
                             tile.addEventListener('click', () => {
-                                createMain_GridPost(gridphoto.id, gridphoto.Property_Src);
+                                createMain_GridPost(gridphoto.id, tileImg.src);
                             });
                         } if (gridphoto.isVideo || gridphoto.isShort) {
                             let tile = document.createElement('a');
@@ -1125,9 +1139,16 @@ function createGridPostTile(locationId) {
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tileImg);
                             tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
-                            tileImg.src = gridphoto.Property_Src;
                             tileImg.classList.add('tileimg');
                             tile.classList.add('tile');
+                            if (gridphoto.children) {
+                                let children = gridphoto.children;
+                                for (let i = 0; i < children.length; i++) {
+                                    tileImg.src = children[0].Property_Src;
+                                }
+                            } else {
+                                tileImg.src = gridphoto.Property_Src;
+                            }
                             function filter_Image() {
                                 if (gridphoto.filter == 'default') {
                                     tileImg.classList.add('--color-default');
@@ -1153,7 +1174,7 @@ function createGridPostTile(locationId) {
                             }
                             filter_Image();
                             tile.addEventListener('click', () => {
-                                createMain_GridPost(gridphoto.id);
+                                createMain_GridPost(gridphoto.id,tileImg.src);
                             });
                         } if (gridphoto.isVideo || gridphoto.isShort) {
                             let tile = document.createElement('a');
@@ -1288,9 +1309,16 @@ function createGridPostTile(locationId) {
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tileImg);
                             tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
-                            tileImg.src = gridphoto.Property_Src;
                             tileImg.classList.add('tileimg');
                             tile.classList.add('tile');
+                            if (gridphoto.children) {
+                                let children = gridphoto.children;
+                                for (let i = 0; i < children.length; i++) {
+                                    tileImg.src = children[0].Property_Src;
+                                }
+                            } else {
+                                tileImg.src = gridphoto.Property_Src;
+                            }
                             function filter_Image() {
                                 if (gridphoto.filter == 'default') {
                                     tileImg.classList.add('--color-default');
@@ -1316,7 +1344,7 @@ function createGridPostTile(locationId) {
                             }
                             filter_Image();
                             tile.addEventListener('click', () => {
-                                createMain_GridPost(gridphoto.id, gridphoto.Property_Src);
+                                createMain_GridPost(gridphoto.id, tileImg.src);
                             });
                         } if (gridphoto.children) {
                             if (gridphoto.id === locationId) {

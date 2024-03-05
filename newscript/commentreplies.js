@@ -1121,41 +1121,6 @@ function createcommentreplys(section, locationId) {
         });
     });
 }
-function createMoreCommentReplyOptions() {
-    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-    Feeds_Data_Base.forEach(feed => {
-        let comments = feed.comments;
-        comments.forEach(maincomment => {
-            let commentreplies = maincomment.comments;
-            commentreplies.forEach(comment => {
-                function create_LikePopup() {
-                    let commentrepliesLikesHeader = document.createElement('header');
-                    let commentreplieslikeexit = document.createElement('span');
-                    let commentlikerepliesLicensePopup = document.createElement('div');
-                    let commentlikerepliesLicenseColumn = document.createElement('div');
-                    document.body.appendChild(commentlikerepliesLicensePopup);
-
-                    commentlikerepliesLicensePopup.classList.add('commentlikerepliesLicensePopup');
-                    commentlikerepliesLicenseColumn.classList.add('commentlikerepliesLicenseColumn');
-                    commentrepliesLikesHeader.classList.add('commentrepliesLikesHeader');
-                    commentreplieslikeexit.classList.add('Exitpage_Arrow');
-                    commentlikerepliesLicensePopup.appendChild(commentrepliesLikesHeader);
-                    commentlikerepliesLicensePopup.appendChild(commentlikerepliesLicenseColumn);
-                    commentrepliesLikesHeader.appendChild(commentreplieslikeexit);
-                    commentreplieslikeexit.innerHTML = '&LeftArrow;';
-                    commentlikerepliesLicenseColumn.id = comment.id;
-                    commentlikerepliesLicensePopup.id = comment.id;
-
-                    commentreplieslikeexit.addEventListener('click', () => {
-                        commentlikerepliesLicensePopup.style = 'display: none';
-                    });
-                }
-                create_LikePopup();
-            });
-        });
-    });
-}
-
 function like_Comment_Reply(postId, relationId, longrelationId) {
     function pushLikeLicense(postId, relationId, longrelationId) {
         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -1300,16 +1265,3 @@ function delete_Comments_Replies(Feeds_Data_Base, relationId, postId, locationId
         });
     }
 }
-function create_This_Comment_Replies() {
-    if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
-        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-        createcommentreplys();
-        createMoreCommentReplyOptions();
-        LikePopupsAndMore(comment.id,'commentreplylike');
-    } else {
-        Feeds_Data_Base = []
-    }
-}
-setTimeout(() => {
-    create_This_Comment_Replies();
-}, 11000);

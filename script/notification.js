@@ -279,18 +279,23 @@ function createNotifications() {
                         first_Optionimg.src = 'newicons/trash-can.png';
                         first_Option.id = notification.trackingId + notification.id;
                         first_Option.addEventListener('click', () => {
-                            notifications = notifications.filter(notification => {
-                                if (first_Option.id === notification.trackingId + notification.id) {
-                                    return false;
-                                } else {
-                                    return true;
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === notification.trackingId) {
+                                    let notifications = user.user_Notifications;
+                                    notifications = notifications.filter(notification => {
+                                        if (first_Option.id === notification.trackingId + notification.id) {
+                                            return false;
+                                        } else {
+                                            return true;
+                                        }
+                                    });
+                                    user.user_Notifications = notifications;
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                    createNotifications();
+                                    options.remove();
                                 }
-                            });
-                            data.user_Notifications = notifications;
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            createNotifications();
-                            options.remove();
-                            create_Community_Chat_Messages();
+                            })
                         });
                         exit.addEventListener('click', () => {
                             options.remove();
