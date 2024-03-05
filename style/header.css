@@ -259,6 +259,7 @@
     width: 15px;
     height: 15px;
 }
+.headerbtns.create_plus svg path,
 .headerbtns svg path {
     fill: var(--color-dark);
 }
