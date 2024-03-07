@@ -163,9 +163,15 @@ function createPhotosGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
-                    worldwideImageGadget.src = photo.Property_Src;
                     attributation.textContent = photo.attribute;
-
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            worldwideImageGadget.src = children[0].Property_Src;
+                        }
+                    } else {
+                        worldwideImageGadget.src = photo.Property_Src;
+                    }
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
                     elapsedTime.classList.add('elapsedTime');
@@ -440,7 +446,6 @@ function createPhotosGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
-                    worldwideImageGadget.src = photo.Property_Src;
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -457,7 +462,14 @@ function createPhotosGadget() {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
-
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            worldwideImageGadget.src = children[0].Property_Src;
+                        }
+                    } else {
+                        worldwideImageGadget.src = photo.Property_Src;
+                    }
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -715,7 +727,6 @@ function createPhotosGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
-                    worldwideImageGadget.src = photo.Property_Src;
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -732,7 +743,14 @@ function createPhotosGadget() {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
-
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            worldwideImageGadget.src = children[0].Property_Src;
+                        }
+                    } else {
+                        worldwideImageGadget.src = photo.Property_Src;
+                    }
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -1001,7 +1019,6 @@ function createAdsGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
-                    worldwideImageGadget.src = photo.Property_Src;
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1019,7 +1036,14 @@ function createAdsGadget() {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
-
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            worldwideImageGadget.src = children[0].Property_Src;
+                        }
+                    } else {
+                        worldwideImageGadget.src = photo.Property_Src;
+                    }
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -1277,7 +1301,6 @@ function createAdsGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
-                    worldwideImageGadget.src = photo.Property_Src;
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1295,7 +1318,14 @@ function createAdsGadget() {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
-
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            worldwideImageGadget.src = children[0].Property_Src;
+                        }
+                    } else {
+                        worldwideImageGadget.src = photo.Property_Src;
+                    }
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -1553,7 +1583,6 @@ function createAdsGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
-                    worldwideImageGadget.src = photo.Property_Src;
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1571,7 +1600,15 @@ function createAdsGadget() {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
-
+                    
+                    if (photo.children) {
+                        let children = photo.children;
+                        for (let i = 0; i < children.length; i++) {
+                            worldwideImageGadget.src = children[0].Property_Src;
+                        }
+                    } else {
+                        worldwideImageGadget.src = photo.Property_Src;
+                    }
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();

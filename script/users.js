@@ -2,10 +2,8 @@
 let myFriends = [];
 let myChatMsg = [];
 let myCommunities = [];
-const myFriendArray = JSON.parse(localStorage.getItem('myFriends'));
 const chatMessage = JSON.parse(localStorage.getItem('myChatMsg'));
 const communities = JSON.parse(localStorage.getItem('myCommunities'));
-const User_Connection_Request = JSON.parse(localStorage.getItem('myFriendRequest'));
 
 
 function createUsersProfile(locationId) {

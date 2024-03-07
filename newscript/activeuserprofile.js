@@ -50,7 +50,7 @@ function fetchUrl() {
     }];
     const url = 'database/users.json';
     function pushData() {
-        fetch(url,{
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -753,7 +753,7 @@ function create_Active_Account() {
                 let userprofileminimizer = document.createElement('span');
                 let userpostgridcontainer = document.createElement('nav');
                 let userpostgrid = document.createElement('div');
-                
+
                 let userfriendlist = document.createElement('nav');
                 let userfriendListColumn = document.createElement('div');
                 let userfollowerlist = document.createElement('nav');
@@ -827,10 +827,10 @@ function create_Active_Account() {
                         reels.addEventListener('click', () => {
                             disableshortcount();
                         });
-                        document.querySelector('#lav_Insta_public').addEventListener('click',()=> {
+                        document.querySelector('#lav_Insta_public').addEventListener('click', () => {
                             disablefeedcount();
                         });
-                        document.querySelector('#lav_Insta_short').addEventListener('click',()=> {
+                        document.querySelector('#lav_Insta_short').addEventListener('click', () => {
                             disableshortcount();
                         });
                         //public page
@@ -1390,7 +1390,7 @@ function create_Active_Account() {
                     usertopactivitypublic.classList.remove('active');
                     usertopactivityothers.classList.remove('active');
                     setTimeout(() => {
-                        createGridPost(profile.user_Id,userpostgrid);
+                        createGridPost(profile.user_Id, userpostgrid);
                     }, 2000);
                 });
                 usertopactivitypublic.addEventListener('click', () => {
@@ -1399,7 +1399,7 @@ function create_Active_Account() {
                     usertopactivitypublic.classList.add('active');
                     usertopactivityothers.classList.remove('active');
                     setTimeout(() => {
-                        createPublicGridPost(profile.user_Id,userpostgrid);
+                        createPublicGridPost(profile.user_Id, userpostgrid);
                     }, 2000);
                 });
                 usertopactivityothers.addEventListener('click', () => {
@@ -1408,7 +1408,7 @@ function create_Active_Account() {
                     usertopactivitypublic.classList.remove('active');
                     usertopactivityothers.classList.add('active');
                     setTimeout(() => {
-                        createOtherGridPost(profile.user_Id,userpostgrid);
+                        createOtherGridPost(profile.user_Id, userpostgrid);
                     }, 2000);
                 });
                 userprofileexit.classList.add('userprofileexit');
@@ -1447,7 +1447,7 @@ function create_Active_Account() {
 
                 userbioinfor.id = profile.user_Id;
                 usercoverphoto.id = profile.user_Id;
-                createGridPost(profile.user_Id,userpostgrid);
+                createGridPost(profile.user_Id, userpostgrid);
             }
         });
     });
@@ -1574,6 +1574,28 @@ function createAdvanceSwitchPage() {
                             });
                         });
                     }
+                    getActiveUser();
+                    function logoutUser() {
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                        ActiveUser_Account.forEach(data => {
+                            LogInFormData.forEach(activeuser => {
+                                if (data.user_Id === activeuser.user_Id) {
+                                    let connection = activeuser.user_Connection;
+                                    connection.forEach(connect => {
+                                        if (connect.connectionId === data.user_Id) {
+                                            connect.status = new Date().getTime();
+                                            activeuser.user_Is_Online = false;
+                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    }
+                    if (navigator.onLine === false) {
+                        logoutUser();
+                    }
                     shortcutloginbutton.addEventListener('click', (e) => {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
@@ -1587,7 +1609,7 @@ function createAdvanceSwitchPage() {
                                     setCookie('External_Details', user.user_Id, 30);
                                 }
                                 pushActiveAccount();
-                                getActiveUser();
+                                logoutUser();
                                 location.href = 'index.html';
                             }
                         });

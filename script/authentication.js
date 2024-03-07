@@ -225,6 +225,7 @@ function pushformdata() {
         user_Bio: '',
         user_Location: '',
         user_Mode: 'defaultTheme',
+        user_Play: 'default',
         user_Is_Online: false,
         user_Is_Ghost: false,
         user_Is_CEO: CEO_Mode,
@@ -262,19 +263,7 @@ function pushformdata() {
         my_FeedsCount: 0,
         my_PhotoCount: 0,
         my_ShortCount: 0,
-        //story count
-        my_StoryCount: 0,
-        //feeds count
         my_Home_FeedsCount: 0,
-        //people count
-        my_PeopleCount: 0,
-        my_FriendRequestCount: 0,
-        my_FriendListCount: 0,
-        //notification count
-        my_NotificationCount: 0,
-        //messagescount
-        my_ChatCount: 0,
-        my_VideosCount: 0
     });
     // const finished = (error) => {
     //     if (error) {

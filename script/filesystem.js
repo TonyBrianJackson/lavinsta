@@ -20,32 +20,32 @@ function regularItemDisplay() {
             document.querySelector('.sidebarcontents').style.display = 'flex';
             if (item.id != 'smallphotopost') {
                 document.querySelector('.smallphoto1').style.display = 'none';
-                Photopostbtn3.style.display = 'none';
+                Photopostbtn.style.display = 'none';
             } else {
                 document.querySelector('.smallphoto1').style.display = 'flex';
-                Photopostbtn3.style.display = 'block';
-                document.querySelector('.multipostbtn').style.display = 'none';
+                Photopostbtn.style.display = 'block';
+                document.querySelector('#multipostbtn').style.display = 'none';
             } if (item.id != 'smallvideopost') {
                 document.querySelector('.smallvideo2').style.display = 'none';
-                videopostbtn3.style.display = 'none';
+                videopostbtn.style.display = 'none';
             } else {
                 document.querySelector('.smallvideo2').style.display = 'flex';
-                videopostbtn3.style.display = 'block';
-                document.querySelector('.multipostbtn').style.display = 'none';
+                videopostbtn.style.display = 'block';
+                document.querySelector('#multipostbtn').style.display = 'none';
             } if (item.id != 'smallshortvideopost') {
                 document.querySelector('.shortvideo3').style.display = 'none';
-                shortpostbtn3.style.display = 'none';
+                shortpostbtn.style.display = 'none';
             } else {
                 document.querySelector('.shortvideo3').style.display = 'flex';
-                shortpostbtn3.style.display = 'block';
-                document.querySelector('.multipostbtn').style.display = 'none';
+                shortpostbtn.style.display = 'block';
+                document.querySelector('#multipostbtn').style.display = 'none';
             } if (item.id != 'smalltextposter') {
                 document.querySelector('.textarea').style.display = 'none';
                 postBtn.style.display = 'none';
             } else {
                 document.querySelector('.textarea').style.display = 'flex';
                 postBtn.style.display = 'block';
-                document.querySelector('.multipostbtn').style.display = 'none';
+                document.querySelector('#multipostbtn').style.display = 'none';
             }
         })
     });
@@ -274,179 +274,219 @@ function rewindfile() {
 };
 let emptyArr = [];
 function multiplefiles() {
-    emptyArr = [];
-    const choice = document.querySelector('#multiplephotopostinput');    
-    for (let i = 0; i < choice.files.length; i++) {
-        let ImageContainer = document.createElement('div');
-        let image = document.createElement('img');
-        const reader = new FileReader();
-        reader.readAsDataURL(choice.files[i]);
-        reader.onload = () => {
-            Photopostbtn3.style.display = 'none';
-            multipostbtn.style.display = 'block';
-            document.querySelector('.homepageflexer').style.display = 'flex';
-            document.querySelector('.homepageflexelement').appendChild(ImageContainer);
-            ImageContainer.appendChild(image);
-            ImageContainer.length = emptyArr.length;
-            image.length = emptyArr.length;
-            ImageContainer.classList.add('multipleimages');
-            image.src = reader.result;
-            emptyArr.push({
-                Property_Src: image.src,
-                Child_Id: new Date().getTime()
-            });
-            document.getElementById('photophoto').src = reader.result;
-            ImageContainer.addEventListener('click', () => {
-                document.getElementById('photophoto').src = image.src;
-            });
+    const choice = document.querySelector('#multiplephotopostinput');
+    if (choice.files.length > 1) {
+        removeImgContainer();
+        emptyArr = [];
+        for (let i = 0; i < choice.files.length; i++) {
+            let ImageContainer = document.createElement('div');
+            let image = document.createElement('img');
+            const reader = new FileReader();
+            reader.readAsDataURL(choice.files[i]);
+            reader.onload = () => {
+                document.querySelector('.homepageflexer').style.display = 'flex';
+                document.querySelector('.homepageflexelement').appendChild(ImageContainer);
+                ImageContainer.appendChild(image);
+                ImageContainer.length = emptyArr.length;
+                image.length = emptyArr.length;
+                ImageContainer.classList.add('multipleimages');
+                image.src = reader.result;
+                emptyArr.push({
+                    Property_Src: image.src,
+                    Child_Id: new Date().getTime()
+                });
+                Photopostbtn.style.display = 'none';
+                multipostbtn.style.display = 'block';
+
+                document.getElementById('photophoto').src = reader.result;
+                ImageContainer.addEventListener('click', () => {
+                    document.getElementById('photophoto').src = image.src;
+                });
+            }
         }
+    } else {
+        create_Message("should be atleast 2");
     }
 }
 function multiplepublicfiles() {
-    emptyArr = [];
-    const choice = document.querySelector('#multiplepublicinput');    
-    for (let i = 0; i < choice.files.length; i++) {
-        let ImageContainer = document.createElement('div');
-        let image = document.createElement('img');
-        const reader = new FileReader();
-        reader.readAsDataURL(choice.files[i]);
-        reader.onload = () => {
-            publicphotoupload.style.display = 'none';
-            publicmultipleupload.style.display = 'block';
-            document.querySelector('.publicflexer').style.display = 'flex';
-            document.querySelector('.publicflexelement').appendChild(ImageContainer);
-            ImageContainer.appendChild(image);
-            ImageContainer.length = emptyArr.length;
-            image.length = emptyArr.length;
-            ImageContainer.classList.add('multipleimages');
-            image.src = reader.result;
-            emptyArr.push({
-                Property_Src: image.src,
-                Child_Id: new Date().getTime()
-            });
-            document.querySelector('.publicimagepreview').src = reader.result;
-            ImageContainer.addEventListener('click', () => {
-                document.querySelector('.publicimagepreview').src = image.src;
-            });
+    const choice = document.querySelector('#multiplepublicinput');
+    if (choice.files.length > 1) {
+        removeImgContainer();
+        emptyArr = [];
+        for (let i = 0; i < choice.files.length; i++) {
+            let ImageContainer = document.createElement('div');
+            let image = document.createElement('img');
+            const reader = new FileReader();
+            reader.readAsDataURL(choice.files[i]);
+            reader.onload = () => {
+                document.querySelector('.publicflexer').style.display = 'flex';
+                document.querySelector('.publicflexelement').appendChild(ImageContainer);
+                ImageContainer.appendChild(image);
+                ImageContainer.length = emptyArr.length;
+                image.length = emptyArr.length;
+                ImageContainer.classList.add('multipleimages');
+                image.src = reader.result;
+                emptyArr.push({
+                    Property_Src: image.src,
+                    Child_Id: new Date().getTime()
+                });
+                publicphotoupload.style.display = 'none';
+                publicmultipleupload.style.display = 'block';
+
+                document.querySelector('.publicimagepreview').src = reader.result;
+                ImageContainer.addEventListener('click', () => {
+                    document.querySelector('.publicimagepreview').src = image.src;
+                });
+            }
         }
+    } else {
+        create_Message("should be atleast 2");
     }
 }
 function multiplephotosfiles() {
-    emptyArr = [];
-    const choice = document.querySelector('#multiple_worldwidephotoinput');    
-    for (let i = 0; i < choice.files.length; i++) {
-        let ImageContainer = document.createElement('div');
-        let image = document.createElement('img');
-        const reader = new FileReader();
-        reader.readAsDataURL(choice.files[i]);
-        reader.onload = () => {
-            postworldwidephoto.style.display = 'none';
-            multiplepostworldwidephoto.style.display = 'block';
-            document.querySelector('.photoflexer').style.display = 'flex';
-            document.querySelector('.photoflexelement').appendChild(ImageContainer);
-            ImageContainer.appendChild(image);
-            ImageContainer.length = emptyArr.length;
-            image.length = emptyArr.length;
-            ImageContainer.classList.add('multipleimages');
-            image.src = reader.result;
-            emptyArr.push({
-                Property_Src: image.src,
-                Child_Id: new Date().getTime()
-            });
-            document.querySelector('#srcworldwidephoto').src = reader.result;
-            ImageContainer.addEventListener('click', () => {
-                document.querySelector('#srcworldwidephoto').src = image.src;
-            });
+    const choice = document.querySelector('#multiple_worldwidephotoinput');
+    if (choice.files.length > 1) {
+        removeImgContainer();
+        emptyArr = [];
+        for (let i = 0; i < choice.files.length; i++) {
+            let ImageContainer = document.createElement('div');
+            let image = document.createElement('img');
+            const reader = new FileReader();
+            reader.readAsDataURL(choice.files[i]);
+            reader.onload = () => {
+                document.querySelector('.photoflexer').style.display = 'flex';
+                document.querySelector('.photoflexelement').appendChild(ImageContainer);
+                ImageContainer.appendChild(image);
+                ImageContainer.length = emptyArr.length;
+                image.length = emptyArr.length;
+                ImageContainer.classList.add('multipleimages');
+                image.src = reader.result;
+                emptyArr.push({
+                    Property_Src: image.src,
+                    Child_Id: new Date().getTime()
+                });
+                postworldwidephoto.style.display = 'none';
+                multiplepostworldwidephoto.style.display = 'block';
+
+                document.querySelector('#srcworldwidephoto').src = reader.result;
+                ImageContainer.addEventListener('click', () => {
+                    document.querySelector('#srcworldwidephoto').src = image.src;
+                });
+            }
         }
+    } else {
+        create_Message("should be atleast 2");
     }
 }
 function multipleadvertsfiles() {
-    emptyArr = [];
-    const choice = document.querySelector('#multiple_adverstinput');    
-    for (let i = 0; i < choice.files.length; i++) {
-        let ImageContainer = document.createElement('div');
-        let image = document.createElement('img');
-        const reader = new FileReader();
-        reader.readAsDataURL(choice.files[i]);
-        reader.onload = () => {
-            postadvert.style.display = 'none';
-            multiplepostadvert.style.display = 'block';
-            document.querySelector('.advertflexer').style.display = 'flex';
-            document.querySelector('.advertflexelement').appendChild(ImageContainer);
-            ImageContainer.appendChild(image);
-            ImageContainer.length = emptyArr.length;
-            image.length = emptyArr.length;
-            ImageContainer.classList.add('multipleimages');
-            image.src = reader.result;
-            emptyArr.push({
-                Property_Src: image.src,
-                Child_Id: new Date().getTime()
-            });
-            document.querySelector('#srcadvertphoto').src = reader.result;
-            ImageContainer.addEventListener('click', () => {
-                document.querySelector('#srcadvertphoto').src = image.src;
-            });
+    const choice = document.querySelector('#multiple_adverstinput');
+    if (choice.files.length > 1) {
+        removeImgContainer();
+        emptyArr = [];
+        for (let i = 0; i < choice.files.length; i++) {
+            let ImageContainer = document.createElement('div');
+            let image = document.createElement('img');
+            const reader = new FileReader();
+            reader.readAsDataURL(choice.files[i]);
+            reader.onload = () => {
+                document.querySelector('.advertflexer').style.display = 'flex';
+                document.querySelector('.advertflexelement').appendChild(ImageContainer);
+                ImageContainer.appendChild(image);
+                ImageContainer.length = emptyArr.length;
+                image.length = emptyArr.length;
+                ImageContainer.classList.add('multipleimages');
+                image.src = reader.result;
+                emptyArr.push({
+                    Property_Src: image.src,
+                    Child_Id: new Date().getTime()
+                });
+                postadvert.style.display = 'none';
+                multiplepostadvert.style.display = 'block';
+
+                document.querySelector('#srcadvertphoto').src = reader.result;
+                ImageContainer.addEventListener('click', () => {
+                    document.querySelector('#srcadvertphoto').src = image.src;
+                });
+            }
         }
+    } else {
+        create_Message("should be atleast 2");
     }
 }
 function multiplecrimesfiles() {
-    emptyArr = [];
-    const choice = document.querySelector('#multiple_crimepostinput');    
-    for (let i = 0; i < choice.files.length; i++) {
-        let ImageContainer = document.createElement('div');
-        let image = document.createElement('img');
-        const reader = new FileReader();
-        reader.readAsDataURL(choice.files[i]);
-        reader.onload = () => {
-            postcrime.style.display = 'none';
-            multiplepostcrime.style.display = 'block';
-            document.querySelector('.crimeflexer').style.display = 'flex';
-            document.querySelector('.crimeflexelement').appendChild(ImageContainer);
-            ImageContainer.appendChild(image);
-            ImageContainer.length = emptyArr.length;
-            image.length = emptyArr.length;
-            ImageContainer.classList.add('multipleimages');
-            image.src = reader.result;
-            emptyArr.push({
-                Property_Src: image.src,
-                Child_Id: new Date().getTime()
-            });
-            document.querySelector('#srccrimephoto').src = reader.result;
-            ImageContainer.addEventListener('click', () => {
-                document.querySelector('#srccrimephoto').src = image.src;
-            });
+    const choice = document.querySelector('#multiple_crimepostinput');
+    if (choice.files.length > 1) {
+        removeImgContainer();
+        emptyArr = [];
+        for (let i = 0; i < choice.files.length; i++) {
+            let ImageContainer = document.createElement('div');
+            let image = document.createElement('img');
+            const reader = new FileReader();
+            reader.readAsDataURL(choice.files[i]);
+            reader.onload = () => {
+                document.querySelector('.crimeflexer').style.display = 'flex';
+                document.querySelector('.crimeflexelement').appendChild(ImageContainer);
+                ImageContainer.appendChild(image);
+                ImageContainer.length = emptyArr.length;
+                image.length = emptyArr.length;
+                ImageContainer.classList.add('multipleimages');
+                image.src = reader.result;
+                emptyArr.push({
+                    Property_Src: image.src,
+                    Child_Id: new Date().getTime()
+                });
+                postcrime.style.display = 'none';
+                multiplepostcrime.style.display = 'block';
+                document.querySelector('#srccrimephoto').src = reader.result;
+                ImageContainer.addEventListener('click', () => {
+                    document.querySelector('#srccrimephoto').src = image.src;
+                });
+            }
         }
+    } else {
+        create_Message("should be atleast 2");
     }
 }
+function removeImgContainer() {
+    document.querySelectorAll('.multipleimages').forEach(container => {
+        container.remove();
+    });
+}
 function multiplestory() {
-    emptyArr = [];
-    const choice = document.querySelector('#multiplestory_input');    
-    for (let i = 0; i < choice.files.length; i++) {
-        let ImageContainer = document.createElement('div');
-        let image = document.createElement('img');
-        const reader = new FileReader();
-        reader.readAsDataURL(choice.files[i]);
-        reader.onload = () => {
-            document.querySelector('.photostoryuploader').style.display = 'none';
-            document.querySelector('.videostoryuploader').style.display = 'none';
-            document.querySelector('.multiplestoryuploader').style.display = 'block';
+    const choice = document.querySelector('#multiplestory_input');
+    if (choice.files.length > 1) {
+        removeImgContainer();
+        emptyArr = [];
+        for (let i = 0; i < choice.files.length; i++) {
+            let ImageContainer = document.createElement('div');
+            let image = document.createElement('img');
+            const reader = new FileReader();
+            reader.readAsDataURL(choice.files[i]);
+            reader.onload = () => {
+                document.querySelector('.storyflexer').style.display = 'flex';
+                document.querySelector('.storyflexelement').appendChild(ImageContainer);
+                ImageContainer.appendChild(image);
+                ImageContainer.length = emptyArr.length;
+                image.length = emptyArr.length;
+                ImageContainer.classList.add('multipleimages');
+                image.src = reader.result;
+                emptyArr.push({
+                    Property_Src: image.src,
+                    Child_Id: new Date().getTime()
+                });
 
-            document.querySelector('.storyflexer').style.display = 'flex';
-            document.querySelector('.storyflexelement').appendChild(ImageContainer);
-            ImageContainer.appendChild(image);
-            ImageContainer.length = emptyArr.length;
-            image.length = emptyArr.length;
-            ImageContainer.classList.add('multipleimages');
-            image.src = reader.result;
-            emptyArr.push({
-                Property_Src: image.src,
-                Child_Id: new Date().getTime()
-            });
-            document.querySelector('#storyphotopreview').src = reader.result;
-            ImageContainer.addEventListener('click', () => {
-                document.querySelector('#storyphotopreview').src = image.src;
-            });
+                document.querySelector('.photostoryuploader').style.display = 'none';
+                document.querySelector('.videostoryuploader').style.display = 'none';
+                document.querySelector('.multiplestoryuploader').style.display = 'block';
+
+                document.querySelector('#storyphotopreview').src = reader.result;
+                ImageContainer.addEventListener('click', () => {
+                    document.querySelector('#storyphotopreview').src = image.src;
+                });
+            }
         }
+    } else {
+        create_Message("should be atleast 2");
     }
 }
 

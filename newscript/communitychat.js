@@ -742,6 +742,7 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
         }
     }
     userchatreciepientname.classList.add('userchatreciepientname');
+    document.querySelector('.navigatiofloatcontainer').style.display = 'none';
     userschatexit.addEventListener('click', () => {
         userchatroom.remove();
         sessionStorage.setItem('activepage', 'community_smart_Chat');

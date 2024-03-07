@@ -473,13 +473,13 @@ function create_share_Popup(locationId) {
 
 
                     option_Name1.textContent = 'repost';
-                    option_Name2.textContent = 'add to timeline';
+                    option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'add to short';
                     option_Name4.textContent = 'advance';
                     option_Name5.textContent = 'report post';
 
                     option_Name1_Img.src = 'icons/recreate.png';
-                    option_Name2_Img.src = 'icons/home.png';
+                    option_Name2_Img.src = 'icons/web-content.png';
                     option_Name3_Img.src = 'icons/stopwatch.png';
                     option_Name4_Img.src = 'icons/discover.png';
                     option_Name5_Img.src = 'newicons/medical-report.png';
@@ -532,7 +532,7 @@ function create_share_Popup(locationId) {
                                                 likes: [],
                                                 comments: [],
                                                 shares: [],
-                                                viewcount: 0,
+                                                views: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -566,7 +566,7 @@ function create_share_Popup(locationId) {
                                                 likes: [],
                                                 comments: [],
                                                 shares: [],
-                                                viewcount: 0,
+                                                views: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -596,9 +596,10 @@ function create_share_Popup(locationId) {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                viewcount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
+                                                views: [],
                                                 sharecount: 0,
                                                 likeactive: true,
                                                 commentactive: true,
@@ -1331,7 +1332,7 @@ function create_share_Popup(locationId) {
                                                 likes: [],
                                                 comments: [],
                                                 shares: [],
-                                                viewcount: 0,
+                                                views: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -1365,7 +1366,7 @@ function create_share_Popup(locationId) {
                                                 likes: [],
                                                 comments: [],
                                                 shares: [],
-                                                viewcount: 0,
+                                                views: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -1395,10 +1396,10 @@ function create_share_Popup(locationId) {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                viewcount: 0,
-                                                sharecount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
+                                                views: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -1530,7 +1531,6 @@ function create_share_Popup(locationId) {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
-
                         function increasesharecount() {
                             document.querySelectorAll('.gridsharecount').forEach(count => {
                                 if (count.id === photo.id) {
@@ -1568,7 +1568,7 @@ function create_share_Popup(locationId) {
                                                 likes: [],
                                                 comments: [],
                                                 shares: [],
-                                                viewcount: 0,
+                                                views: [],
                                                 likeactive: true,
                                                 commentactive: true,
                                                 shareactive: true,
@@ -1598,9 +1598,10 @@ function create_share_Popup(locationId) {
                                                 time: new Date().getTime(),
                                                 posterId: user.user_Id,
                                                 id: id,
-                                                likecount: 0,
-                                                commentcount: 0,
-                                                viewcount: 0,
+                                                likes: [],
+                                                comments: [],
+                                                shares: [],
+                                                views: [],
                                                 sharecount: 0,
                                                 likeactive: true,
                                                 commentactive: true,

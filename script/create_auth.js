@@ -2,10 +2,10 @@ const savedpage = document.querySelector('.savedpage');
 const createReel = document.querySelector('.createReel');
 
 // large screen post uploading
-const Photopostbtn3 = document.getElementById('photopostbtn');
+const Photopostbtn = document.getElementById('photopostbtn');
 const multipostbtn = document.getElementById('multipostbtn');
-const videopostbtn3 = document.getElementById('videopostbtn');
-const shortpostbtn3 = document.getElementById('shortpostbtn');
+const videopostbtn = document.getElementById('videopostbtn');
+const shortpostbtn = document.getElementById('shortpostbtn');
 const postBtn = document.getElementById('postbtn');
 
 //video player videos uploading script
@@ -66,10 +66,10 @@ function itemsDisplaySettings() {
         smallphoto1.style.display = 'flex';
         smallvideo2.style.display = 'none';
         shortvideo3.style.display = 'none';
-        videopostbtn3.style.display = 'none';
-        shortpostbtn3.style.display = 'none';
+        videopostbtn.style.display = 'none';
+        shortpostbtn.style.display = 'none';
         postBtn.style.display = 'none';
-        Photopostbtn3.style.display = 'block';
+        Photopostbtn.style.display = 'block';
         multipostbtn.style.display = 'none';
     });
     document.getElementById('videol').addEventListener('click', () => {
@@ -82,10 +82,10 @@ function itemsDisplaySettings() {
         smallphoto1.style.display = 'none';
         smallvideo2.style.display = 'flex';
         shortvideo3.style.display = 'none';
-        videopostbtn3.style.display = 'block';
-        shortpostbtn3.style.display = 'none';
+        videopostbtn.style.display = 'block';
+        shortpostbtn.style.display = 'none';
         postBtn.style.display = 'none';
-        Photopostbtn3.style.display = 'none';
+        Photopostbtn.style.display = 'none';
         multipostbtn.style.display = 'none';
     });
     document.getElementById('shortl').addEventListener('click', () => {
@@ -98,10 +98,10 @@ function itemsDisplaySettings() {
         smallphoto1.style.display = 'none';
         smallvideo2.style.display = 'none';
         shortvideo3.style.display = 'flex';
-        videopostbtn3.style.display = 'none';
-        shortpostbtn3.style.display = 'block';
+        videopostbtn.style.display = 'none';
+        shortpostbtn.style.display = 'block';
         postBtn.style.display = 'none';
-        Photopostbtn3.style.display = 'none';
+        Photopostbtn.style.display = 'none';
         multipostbtn.style.display = 'none';
     });
     document.getElementById('textl').addEventListener('click', () => {
@@ -113,10 +113,10 @@ function itemsDisplaySettings() {
         smallphoto1.style.display = 'none';
         smallvideo2.style.display = 'none';
         shortvideo3.style.display = 'none';
-        videopostbtn3.style.display = 'none';
-        shortpostbtn3.style.display = 'none';
+        videopostbtn.style.display = 'none';
+        shortpostbtn.style.display = 'none';
         postBtn.style.display = 'block';
-        Photopostbtn3.style.display = 'none';
+        Photopostbtn.style.display = 'none';
         multipostbtn.style.display = 'none';
         document.querySelector('#maintextPoster').focus();
     });
@@ -345,6 +345,23 @@ function active_user_render() {
                             });
                         }
                     });
+                    document.querySelector('.autoplay').addEventListener('click',()=> {
+                        LogInFormData.forEach(user => {
+                            if (user.user_Id === data.user_Id) {
+                                if (document.querySelector('.autoplay').classList.contains('active')) {
+                                    document.getElementById('autoplay').classList.remove('active');
+                                    user.user_Play = 'default';
+                                    document.querySelector('.qualityproperty.playmode').textContent = 'Off';
+                                    ResavedData();
+                                } else {
+                                    document.getElementById('autoplay').classList.add('active');
+                                    user.user_Play = 'autoplay';
+                                    document.querySelector('.qualityproperty.playmode').textContent = 'On';
+                                    ResavedData();
+                                }
+                            }
+                        });
+                    });
                 }
 
                 function CheckOnAllOtherThings() {
@@ -354,6 +371,13 @@ function active_user_render() {
                     } else {
                         taskbar_Switch.innerHTML = '&times;';
                         document.querySelector('.footer_task_bar').style.display = 'none';
+                    }
+                    if (user.user_Play == 'autoplay') {
+                        document.getElementById('autoplay').classList.add('active');
+                        document.querySelector('.qualityproperty.playmode').textContent = 'On';
+                    } else {
+                        document.getElementById('autoplay').classList.remove('active');
+                        document.querySelector('.qualityproperty.playmode').textContent = 'Off';
                     }
                 }
                 CheckOnAllOtherThings();
@@ -890,7 +914,7 @@ function active_user_render() {
                         document.getElementById('title').value = '';
                         Sidebarcontent.style.display = 'none';
                     };
-                    Photopostbtn3.addEventListener('click', () => {
+                    Photopostbtn.addEventListener('click', () => {
                         if (document.getElementById('photophoto').src) {
                             addPhoto();
                         }
@@ -965,7 +989,7 @@ function active_user_render() {
                             postGridVideo();
                         }
                     });
-                    videopostbtn3.addEventListener('click', () => {
+                    videopostbtn.addEventListener('click', () => {
                         if (document.getElementById('videovideo').src) {
                             PostVideo();
                         }
@@ -1110,7 +1134,7 @@ function active_user_render() {
                         Creation_Mark_Video(document.querySelector('#videovid').src, 'creating post...');
                         document.getElementById('videotitle').value = '';
                     }
-                    shortpostbtn3.addEventListener('click', () => {
+                    shortpostbtn.addEventListener('click', () => {
                         if (document.getElementById('shortvideovideo').src) {
                             PostShort();
                         }

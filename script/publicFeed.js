@@ -353,6 +353,7 @@ function createPublicFeed() {
                         timelinevideo.addEventListener('play', () => {
                             timelinebottomplay.style.display = 'none';
                             timelinebottompause.style.display = 'flex';
+                            increaseviewscount(photo.id);
                         });
                         timelinevideo.addEventListener('pause', () => {
                             timelinebottomplay.style.display = 'flex';
@@ -360,7 +361,6 @@ function createPublicFeed() {
                         });
                         timelinebottomplay.addEventListener('click', () => {
                             timelinevideo.play();
-                            increaseviewscount(photo.id);
                         });
                         timelinebottompause.addEventListener('click', () => {
                             timelinevideo.pause();

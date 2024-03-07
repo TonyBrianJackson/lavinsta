@@ -305,6 +305,7 @@ function Create_Short() {
                 mainreel.addEventListener('play', () => {
                     reelbutton.style.display = 'none';
                     reelbuttons.style.display = 'flex';
+                    increaseviewscount(photo.id);
                 });
                 mainreel.addEventListener('pause', () => {
                     reelbutton.style.display = 'flex';
@@ -312,7 +313,6 @@ function Create_Short() {
                 });
                 reelbutton.addEventListener('click', () => {
                     mainreel.play();
-                    increaseviewscount(photo.id);
                 });
                 reelbuttons.addEventListener('click', () => {
                     mainreel.pause();

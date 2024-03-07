@@ -1,13 +1,7 @@
 
-let myFriendRequest = [];
+create_StatusBar();
 
 function create_ThisPeople_List() {
-    if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
-        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-        create_StatusBar();
-    } else {
-        LogInFormData = [];
-    }
     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
     ActiveUser_Account.forEach(user => {
         let userpeoplecolumn = document.createElement('div');
@@ -67,6 +61,7 @@ function reset() {
         // data.user_Story_Trash = [];
         // data.user_Stories = [];
         // data.user_Notifications = [];
+        // data.user_Play = 'default';
         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
     });
 }
@@ -88,6 +83,8 @@ document.querySelector('#notification').addEventListener('click', () => {
 });
 
 function create_StatusBar() {
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
     ActiveUser_Account.forEach(user => {
         LogInFormData.forEach(profile => {
             if (user.user_Id === profile.user_Id) {

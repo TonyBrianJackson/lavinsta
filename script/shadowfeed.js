@@ -215,7 +215,6 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                     checkifviews();
 
                     gridpostplaybtn.addEventListener('click', () => {
-                        increaseviewscount(photo.id);
                         gridpostimagetoview.play();
                     });
                     gridpostpausebtn.addEventListener('click', () => {
@@ -224,6 +223,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                     gridpostimagetoview.addEventListener('play', () => {
                         gridpostpausebtn.style.display = 'flex';
                         gridpostplaybtn.style.display = 'none';
+                        increaseviewscount(photo.id);
                     });
                     gridpostimagetoview.addEventListener('pause', () => {
                         gridpostpausebtn.style.display = 'none';

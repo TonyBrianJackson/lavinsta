@@ -426,21 +426,7 @@ sectionactive.forEach(item => {
         }
     })
 });
-const autoplay = document.querySelectorAll('.autoplay');
-autoplay.forEach(item => {
-    item.addEventListener('click', () => {
-        if (item.id != 'mobiledata') {
-            document.getElementById('mobiledata').classList.remove('active');
-        } else {
-            document.getElementById('mobiledata').classList.add('active');
-        }
-        if (item.id != 'wifi') {
-            document.getElementById('wifi').classList.remove('active');
-        } else {
-            document.getElementById('wifi').classList.add('active');
-        }
-    })
-});
+
 const datasavingactive = document.querySelectorAll('.datasavingactive');
 datasavingactive.forEach(item => {
     item.addEventListener('click', () => {

@@ -318,6 +318,7 @@ function createPhotoPostOnTimeLine() {
                     timelinevideo.addEventListener('play', () => {
                         timelinebottomplay.style.display = 'none';
                         timelinebottompause.style.display = 'flex';
+                        increaseviewscount(photo.id);
                     });
                     timelinevideo.addEventListener('pause', () => {
                         timelinebottomplay.style.display = 'flex';
@@ -325,7 +326,6 @@ function createPhotoPostOnTimeLine() {
                     });
                     timelinebottomplay.addEventListener('click', () => {
                         timelinevideo.play();
-                        increaseviewscount(photo.id);
                     });
                     timelinebottompause.addEventListener('click', () => {
                         timelinevideo.pause();
@@ -346,6 +346,17 @@ function createPhotoPostOnTimeLine() {
                         timelinemute.style.display = 'flex';
                         timelineunmute.style.display = 'none';
                     });
+                    // LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    // LogInFormData.forEach(user => {
+                    //     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    //     ActiveUser_Account.forEach(data => {
+                    //         if (user.user_Id === data.user_Id) {
+                    //             if (user.user_Play == 'autoplay') {
+                    //                 timelinevideo.autoplay = true;
+                    //             }
+                    //         }
+                    //     });
+                    // });
                     timelinevideo.classList.add('mainvideo');
                     timelinevideocover.classList.add('timelinevideocover');
                     timelinemute.classList.add('timelinemute');

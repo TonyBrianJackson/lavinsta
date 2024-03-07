@@ -559,10 +559,10 @@
                 <div class="caption">
                     <input autocomplete="off" class="publictitleinput" type="text" placeholder="add caption">
                 </div>
-                <button class="--create-1 publicphotoupload">upload</button>
-                <button class="--create-2 publicvideoupload">upload</button>
-                <button class="--create-3 publictextupload">upload</button>
-                <button class="--create-4 publicmultipleupload">upload</button>
+                <button class="--create-1 publicphotoupload">Post Photo</button>
+                <button class="--create-2 publicvideoupload">Post Video</button>
+                <button class="--create-3 publictextupload">Post Text</button>
+                <button class="--create-4 publicmultipleupload">Post Photos</button>
             </div>
         </nav>
         <div class="publicvideosidebar">
@@ -1476,10 +1476,8 @@
                         class="sectionactive"></span></div>
                 <hr>
                 <div class="autoplaymode">Autoplay Mode</div>
-                <div class="qualities"><span class="qualityproperty">Mobile Data</span><span id="mobiledata"
+                <div class="qualities"><span class="qualityproperty playmode">Off</span><span id="autoplay"
                         class="autoplay"></span></div>
-                <div class="qualities"><span class="qualityproperty">Wi-Fi</span><span id="wifi"
-                        class="autoplay active"></span></div>
             </div>
         </div>
         <div class="datasavingtab">
@@ -1690,9 +1688,12 @@
         </header>
         <label for="com_profile" class="com_container"><img id="com_profilesrc" src="icons/group-chat.png"></label>
         <input style="display: none;" type="file" id="com_profile" onchange="CommunityProfileImage()">
-        <div class="caption"><input class="communityname_TextBox" autocomplete="off" type="text"
-                placeholder="communtity name"></div>
-        <button class="--create-1 create_Community_Button">Create Community</button>
+        <div class="caption">
+            <input class="communityname_TextBox" autocomplete="off" type="text" placeholder="communtity name">
+        </div>
+        <div class="subactions">
+            <button class="--create-1 create_Community_Button">Create Community</button>
+        </div>
     </div>
     <div class="notificationtab">
         <header class="navigationheader">
@@ -1809,11 +1810,11 @@
         </div>
         <div class="subactions">
             <div class="caption"><input autocomplete="off" id="title" placeholder="Add Caption"></div>
-            <button class="--create-1" id="photopostbtn">Post</button>
-            <button class="--create-2" id="videopostbtn">Post</button>
-            <button class="--create-3" id="shortpostbtn">Post</button>
-            <button class="--create-4" id="postbtn">Post</button>
-            <button class="--create-5" id="multipostbtn">Post</button>
+            <button class="--create-1" id="photopostbtn">Post Photo</button>
+            <button class="--create-2" id="videopostbtn">Post Video</button>
+            <button class="--create-3" id="shortpostbtn">Post Short</button>
+            <button class="--create-4" id="postbtn">Post Text</button>
+            <button class="--create-5" id="multipostbtn">Post Photos</button>
         </div>
     </div>
     <div class="logoutpopup"><span class="popupclose logoutpopupclose">&LeftArrow;</span>
@@ -1929,12 +1930,12 @@
             <div class="caption">
                 <input autocomplete="off" id="worldwidecaptionbox" placeholder="Add Caption">
             </div>
-            <button class="--create-1 postworldwidephoto">post</button>
-            <button class="--create-2 postadvert">post</button>
-            <button class="--create-3 postcrime">post</button>
-            <button class="--create-4 multiplepostworldwidephoto">post</button>
-            <button class="--create-5 multiplepostadvert">post</button>
-            <button class="--create-6 multiplepostcrime">post</button>
+            <button class="--create-1 postworldwidephoto">Post Photo</button>
+            <button class="--create-2 postadvert">Post Advert</button>
+            <button class="--create-3 postcrime">Post Crime</button>
+            <button class="--create-4 multiplepostworldwidephoto">Post Photos</button>
+            <button class="--create-5 multiplepostadvert">Post Adverts</button>
+            <button class="--create-6 multiplepostcrime">Post Crimes</button>
         </div>
     </div>
 

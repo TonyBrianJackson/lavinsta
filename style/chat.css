@@ -1211,6 +1211,23 @@
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .taskbar {
+        left: unset;
+        bottom: 90px;
+        right: 5px;
+        height: 55vh;
+        width: max-content;
+        display: flex;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding: 0;
+    }
+    .taskbar .chattaskbar {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow-x: visible;
+        overflow-y: scroll;
+    }
     .headerbtns:hover {
         transform: scale(1);
     }

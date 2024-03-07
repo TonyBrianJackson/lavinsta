@@ -1877,6 +1877,7 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     });
 
     userchatreciepientname.classList.add('userchatreciepientname');
+    document.querySelector('.navigatiofloatcontainer').style.display = 'none';
     userschatexit.addEventListener('click', () => {
         userchatroom.remove();
         sessionStorage.setItem('activepage', 'general_smart_Chat');
@@ -1946,43 +1947,33 @@ function createChatTaskBar() {
                         task_Count.style.display = 'block';
                     }
                     function decreasecount() {
-                        document.querySelectorAll('.userchatroom').forEach(chatroom => {
-                            if (connect.connectionId + data.user_Id === chatroom.id) {
-                                chatroom.style.display = 'flex';
-                                sessionStorage.setItem('activepage', chatroom.id);
-                                document.querySelector('.navigatiofloatcontainer').style.display = 'none';
-                            } else {
-                                chatroom.style.display = 'none';
-                            }
-                            document.querySelectorAll('.chatcount').forEach(count => {
-                                if (count.id === data.user_Id + connect.connectionId) {
-                                    count.style.display = 'none';
-                                }
-                            });
-                            if (Array.isArray(JSON.parse(localStorage.getItem('myChatMsg')))) {
-                                myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
-                                myChatMsg.forEach(chat => {
-                                    if (chat.chat_receiver + chat.posterId === task_Friend.id && chat.posterId !== data.user_Id) {
-                                        chat.chatvisibilty = 'seen';
-                                        localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
-                                    }
-                                });
-                            }
-
-                            if (LogInFormData) {
-                                LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                                LogInFormData.forEach(user => {
-                                    let userschatcount = document.querySelectorAll('.userschatcount');
-                                    userschatcount.forEach(count => {
-                                        if (count.id === connect.connectionId && user.user_Id === connect.connectionId) {
-                                            count.style.display = 'none';
-                                            user.user_ChatView = true;
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                        }
-                                    })
-                                })
+                        create_Chat_Rooms(connect.connectionId + data.user_Id, connect.connectionId, data.user_Id, connect.status);
+                        sessionStorage.setItem('activepage', connect.connectionId + data.user_Id);
+                        document.querySelectorAll('.chatcount').forEach(count => {
+                            if (count.id === data.user_Id + connect.connectionId) {
+                                count.style.display = 'none';
                             }
                         });
+                        if (Array.isArray(JSON.parse(localStorage.getItem('myChatMsg')))) {
+                            myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
+                            myChatMsg.forEach(chat => {
+                                if (chat.chat_receiver + chat.posterId === task_Friend.id && chat.posterId !== data.user_Id) {
+                                    chat.chatvisibilty = 'seen';
+                                    localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
+                                }
+                            });
+                        }
+
+                        if (LogInFormData) {
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === connect.connectionId) {
+                                    user.user_ChatView = true;
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                }
+                            })
+                        }
+
                     }
                     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                     LogInFormData.forEach(user => {
