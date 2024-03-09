@@ -30,7 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--color-light);
+    background: hsl(5, 85%, 20%);
     box-shadow: none;
     z-index: 302;
 }
@@ -422,7 +422,7 @@
     height: 95%;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
     place-items: initial;
     justify-content: initial;

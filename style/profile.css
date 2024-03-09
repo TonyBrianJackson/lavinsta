@@ -276,27 +276,34 @@
 .adgrid {
     width: 100%;
     height: max-content;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: none;
     overflow: hidden;
     display: flex;
     border: none;
     padding: 10px;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--color-white);
+    background: none;
     cursor: pointer;
     transition: all ease-in-out 300ms;
     border-radius: 25px;
     position: relative;
+}
+.adgrid .head .nameandimg > img {
+    border: 3px solid #ffffffff;
+}
+.adgrid .head> b,
+.adgrid .head .nameandimg > p {
+    color: #ffffffff;
 }
 .adgrid .head:nth-child(1) {
     padding: 0;
 }
 .adgridimagecontainer {
     width: 100%;
-    height: 200px;
-    border: none;
+    height: 60vh;
+    border: 3px solid var(--color-white);
     box-shadow: none;
     background: none;
     display: flex;
@@ -400,6 +407,7 @@
 
 .adgrid .head .posttitle {
     -webkit-line-clamp: 2;
+    color: #ffffffff;
 }
 
 .griditems img,

@@ -1015,10 +1015,13 @@
 
 @media (min-width: 561px) and (max-width: 800px) {
     .headermiddle {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
     }
     .headerleft,
     .headerright {
+        flex: 1;
         width: max-content;
     }
 

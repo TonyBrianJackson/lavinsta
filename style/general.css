@@ -510,7 +510,18 @@
     gap: 5px;
     border-radius: 0px;
 }
-
+.search_result > small {
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    overflow: hidden;
+    background: none;
+    color: var(--color-dark);
+    font-size: 10px;
+    width: 100%;
+    display: block;
+    text-align: left;
+}
 .search_result>div>div {
     width: 30px;
     height: 30px;
@@ -901,7 +912,9 @@
     .headermiddle.middle_video_header,
     .headermiddle.photoheader_middle,
     .headermiddle {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .headerright.middle_video_header,
