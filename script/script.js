@@ -1,312 +1,477 @@
 const PostGrid = document.getElementById('Postgrid');
 const gridpostlargeviewcontainer = document.querySelector('.gridpostlargeviewcontainer');
 const gridpostimgwideview = document.querySelector('.gridpostimgwideview');
-const Home_Home_Search_Bar_main_Home_Search_Bar = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar');
-const main_Search_Bar_Home_search_Bar = document.querySelector('.main_Search_Bar_Home_search_Bar');
+const search_textBox = document.querySelector('.search_textBox');
+const home_search_TextBox = document.querySelector('.home_search_TextBox');
 const mainsearchbarsvg = document.querySelector('.homeMainSearchBar svg');
 const VideoMainSearchBarSvg = document.querySelector('.VideoMainSearchBar svg');
 let searchsuggessionlist = [];
 
 function All_Search_On_Home() {
     const Home_Search_Icon = document.querySelectorAll('.Home_Search_Icon');
+    function removesearchactiveclassList() {
+        Home_Search_Icon.forEach(item => {
+            item.classList.remove('active');
+        });
+    }
     Home_Search_Icon.forEach(item => {
         item.addEventListener('click', () => {
+            removesearchactiveclassList();
             if (item.id != 'homesearch') {
-                document.querySelector('#homesearch').classList.remove('active');
             } else {
-                document.querySelector('#homesearch').classList.add('active');
+                item.classList.add('active');
                 advancesearch_Method();
             } if (item.id != 'peoplesearch') {
-                document.querySelector('#peoplesearch').classList.remove('active');
             } else {
-                document.querySelector('#peoplesearch').classList.add('active');
+                item.classList.add('active');
                 searchpeople();
             } if (item.id != 'feedsearch') {
-                document.querySelector('#feedsearch').classList.remove('active');
             } else {
-                document.querySelector('#feedsearch').classList.add('active');
+                item.classList.add('active');
                 search_feeds_Post();
             } if (item.id != 'videosearch') {
-                document.querySelector('#videosearch').classList.remove('active');
             } else {
-                document.querySelector('#videosearch').classList.add('active');
+                item.classList.add('active');
                 search_Reels_On_Home();
             } if (item.id != 'photosearch') {
-                document.querySelector('#photosearch').classList.remove('active');
             } else {
                 document.querySelector('#photosearch').classList.add('active');
                 searcphotos();
+            } if (item.id != 'recentsearchlist') {
+            } else {
+                item.classList.add('active');
+                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                ActiveUser_Account.forEach(user => {
+                    createsuggesion(user.user_Id);
+                });
             }
         });
     });
 
+    function localFeedSearch() {
+        if (document.querySelector('.search_textBox').value) {
+            const Textvalue = document.querySelector('.search_textBox');
+            document.querySelectorAll('.post').forEach(photo => {
+                Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+                Feeds_Data_Base.find(post => {
+                    if (post.type == 'timeline') {
+                        if (post.isPhoto || post.isProfile_Photo || post.isCover_Photo || post.isVideo) {
+                            let splitedTitle = post.title.split(" , ");
+                            let splitedText = Textvalue.value.split(" , ");
+                            splitedTitle.forEach(dataTitle => {
+                                splitedText.forEach(TextTitle => {
+                                    let titleType = dataTitle.toLowerCase();
+                                    let textType = TextTitle.toLowerCase();
+                                    if (titleType.indexOf(textType) != -1) {
+                                        if (photo.id === post.id) {
+                                            photo.style.display = 'flex';
+                                        } else {
+                                            photo.style.display = 'none';
+                                        }
+                                    }
+                                })
+                            })
+                        } else if (post.isText) {
+                            let splitedTitle = post.Property_Src.split(" , ");
+                            let splitedText = Textvalue.value.split(" , ");
+                            splitedTitle.forEach(dataTitle => {
+                                splitedText.forEach(TextTitle => {
+                                    let titleType = dataTitle.toLowerCase();
+                                    let textType = TextTitle.toLowerCase();
+                                    if (titleType.indexOf(textType) != -1) {
+                                        if (photo.id === post.id) {
+                                            photo.style.display = 'flex';
+                                        } else {
+                                            photo.style.display = 'none';
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            });
+        }
+    }
     function advancesearch_Method() {
         if (document.querySelector('#homesearch').classList.contains('active')) {
-            const Home_Home_Search_Bar_main_Home_Search_Bar_Value = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar').value.toLowerCase();
-            document.querySelectorAll('.homesearch_List').forEach(searchListColumn => {
-                searchListColumn.innerHTML = '';
-                Feeds_Data_Base.forEach(post => {
-                    if (post.type == 'timeline') {
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === post.posterId) {
-                                let Html;
-                                if (post.title.indexOf(Home_Home_Search_Bar_main_Home_Search_Bar_Value) != -1) {
-                                    Html = `<div class="search_result" id="${post.id}">
-                                                <div>
-                                                    <div><img src="${user.user_ProfilePicture}"></div>
-                                                    <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
-                                                </div>
-                                                <p>${post.title}</p>
-                                            </div>`;
-                                    searchListColumn.innerHTML += Html;
-                                    document.querySelectorAll('.search_result').forEach(result => {
-                                        result.addEventListener('click', () => {
-                                            createMain_GridPost(result.id, result.Property_Src);
-                                        });
-                                    });
-                                }
-                            }
-                        });
-                    }
-                });
-            });
-        }
-    };
-    function search_feeds_Post() {
-        if (document.querySelector('#feedsearch').classList.contains('active')) {
-            const Home_Home_Search_Bar_main_Home_Search_Bar_Value = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar').value.toLowerCase();
-            document.querySelectorAll('.homesearch_List').forEach(searchListColumn => {
-                searchListColumn.innerHTML = '';
-                Feeds_Data_Base.forEach(post => {
-                    if (post.type == 'public') {
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === post.posterId) {
-                                let Html;
-                                if (post.title.indexOf(Home_Home_Search_Bar_main_Home_Search_Bar_Value) != -1) {
-                                    Html = `<div class="search_result" id="${post.id}">
-                                                <div>
-                                                    <div><img src="${user.user_ProfilePicture}"></div>
-                                                    <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
-                                                </div>
-                                                <p>${post.title}</p>
-                                            </div>`;
-                                    searchListColumn.innerHTML += Html;
-                                    document.querySelectorAll('.search_result').forEach(result => {
-                                        result.addEventListener('click', () => {
-                                            createMain_GridPost(result.id, result.Property_Src);
-                                        });
-                                    });
-                                }
-                            }
-                        });
-                    }
-                });
-            });
-        }
-    };
-    function search_Reels_On_Home() {
-        if (document.querySelector('#videosearch').classList.contains('active')) {
-            const Home_Home_Search_Bar_main_Home_Search_Bar_Value = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar').value.toLowerCase();
-            document.querySelectorAll('.homesearch_List').forEach(searchListColumn => {
-                searchListColumn.innerHTML = '';
-                Feeds_Data_Base.forEach(post => {
-                    LogInFormData.forEach(user => {
-                        if (post.isShort || post.isVideo) {
-                            if (user.user_Id === post.posterId) {
-                                let Html;
-                                if (post.title.indexOf(Home_Home_Search_Bar_main_Home_Search_Bar_Value) != -1) {
-                                    Html = `<div class="search_result" id="${post.id}">
-                                                <div>
-                                                    <div><img src="${user.user_ProfilePicture}"></div>
-                                                    <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
-                                                </div>
-                                                <p>${post.title}</p>
-                                            </div>`;
-                                    searchListColumn.innerHTML += Html;
-                                    document.querySelectorAll('.search_result').forEach(result => {
-                                        result.addEventListener('click', () => {
-                                            createMain_GridPost(result.id, result.Property_Src);
-                                        });
-                                    });
-                                }
-                            }
-                        }
-                    });
-                });
-            });
-        }
-    };
-    function searcphotos() {
-        if (document.querySelector('#photosearch').classList.contains('active')) {
-            const Home_Home_Search_Bar_main_Home_Search_Bar_Value = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar').value.toLowerCase();
-            document.querySelectorAll('.homesearch_List').forEach(searchListColumn => {
-                searchListColumn.innerHTML = '';
-                OthersPostArray.forEach(post => {
-                    LogInFormData.forEach(user => {
+            if (document.querySelector('.search_textBox').value) {
+                const Textvalue = document.querySelector('.search_textBox');
+                document.querySelector('.homesearch_List').innerHTML = '';
+                LogInFormData.forEach(user => {
+                    Feeds_Data_Base.find(post => {
                         if (user.user_Id === post.posterId) {
-                            let Html;
-                            if (post.title.indexOf(Home_Home_Search_Bar_main_Home_Search_Bar_Value) != -1) {
-                                Html = `<div class="search_result" id="${post.id}">
-                                            <div>
-                                                <div><img src="${user.user_ProfilePicture}"></div>
-                                                <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
-                                            </div>
-                                            <p>${post.title}</p>
-                                        </div>`;
-                                searchListColumn.innerHTML += Html;
+                            if (post.type) {
+                                let searchResult;
+                                if (post.isPhoto || post.isAdvert || post.isCrime || post.isVideo || post.isShort) {
+                                    let splitedTitle = post.title.split(" , ");
+                                    let splitedText = Textvalue.value.split(" , ");
+                                    splitedTitle.forEach(dataTitle => {
+                                        splitedText.forEach(TextTitle => {
+                                            let titleType = dataTitle.toLowerCase();
+                                            let textType = TextTitle.toLowerCase();
+                                            if (titleType.indexOf(textType) != -1) {
+                                                searchResult =
+                                                    `<div class="search_result" id="${post.id}">
+                                                    <div>
+                                                        <div><img src="${user.user_ProfilePicture}"></div>
+                                                        <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
+                                                    </div>
+                                                    <small>${post.attribute}</small>
+                                                    <p>${post.title}</p>
+                                                </div>`;
+                                                document.querySelector('.homesearch_List').innerHTML += searchResult;
+                                            }
+                                        })
+                                    })
+                                } else if (post.isText) {
+                                    let splitedTitle = post.Property_Src.split(" , ");
+                                    let splitedText = Textvalue.value.split(" , ");
+                                    splitedTitle.forEach(dataTitle => {
+                                        splitedText.forEach(TextTitle => {
+                                            let titleType = dataTitle.toLowerCase();
+                                            let textType = TextTitle.toLowerCase();
+                                            if (titleType.indexOf(textType) != -1) {
+                                                searchResult =
+                                                    `<div class="search_result" id="${post.id}">
+                                                    <div>
+                                                        <div><img src="${user.user_ProfilePicture}"></div>
+                                                        <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
+                                                    </div>
+                                                    <small>${post.attribute}</small>
+                                                    <p>${post.Property_Src}</p>
+                                                </div>`;
+                                                document.querySelector('.homesearch_List').innerHTML += searchResult;
+                                            }
+                                        });
+                                    });
+                                }
                                 document.querySelectorAll('.search_result').forEach(result => {
                                     result.addEventListener('click', () => {
-                                        createMain_GridPost(result.id, result.Property_Src);
+                                        createMain_GridPost(result.id);
                                     });
                                 });
                             }
                         }
                     });
                 });
-            });
+            }
+        }
+    };
+    function search_feeds_Post() {
+        if (document.querySelector('#feedsearch').classList.contains('active')) {
+            if (document.querySelector('.search_textBox').value) {
+                const Textvalue = document.querySelector('.search_textBox');
+                document.querySelector('.homesearch_List').innerHTML = '';
+                Feeds_Data_Base.find(post => {
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === post.posterId) {
+                            if (post.type == 'public') {
+                                if (post.isText) {
+                                    let splitedTitle = post.Property_Src.split(" , ");
+                                    let splitedText = Textvalue.value.split(" , ");
+                                    splitedTitle.forEach(dataTitle => {
+                                        splitedText.forEach(TextTitle => {
+                                            let titleType = dataTitle.toLowerCase();
+                                            let textType = TextTitle.toLowerCase();
+                                            if (titleType.indexOf(textType) != -1) {
+                                                let searchResult;
+                                                searchResult =
+                                                    `<div class="search_result" id="${post.id}">
+                                                    <div>
+                                                        <div><img src="${user.user_ProfilePicture}"></div>
+                                                        <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
+                                                    </div>
+                                                    <small>${post.attribute}</small>
+                                                    <p>${post.Property_Src}</p>
+                                                </div>`;
+                                                document.querySelector('.homesearch_List').innerHTML += searchResult;
+                                            }
+                                        });
+                                    });
+                                } if (post.isPhoto || post.isAdvert || post.isCrime || post.isVideo || post.isShort) {
+                                    let splitedTitle = post.title.split(" , ");
+                                    let splitedText = Textvalue.value.split(" , ");
+                                    splitedTitle.forEach(dataTitle => {
+                                        splitedText.forEach(TextTitle => {
+                                            let titleType = dataTitle.toLowerCase();
+                                            let textType = TextTitle.toLowerCase();
+                                            if (titleType.indexOf(textType) != -1) {
+                                                let searchResult;
+                                                searchResult =
+                                                    `<div class="search_result" id="${post.id}">
+                                                    <div>
+                                                        <div><img src="${user.user_ProfilePicture}"></div>
+                                                        <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
+                                                    </div>
+                                                    <small>${post.attribute}</small>
+                                                    <p>${post.title}</p>
+                                                </div>`;
+                                                document.querySelector('.homesearch_List').innerHTML += searchResult;
+                                            }
+                                        })
+                                    })
+                                }
+                                document.querySelectorAll('.search_result').forEach(result => {
+                                    result.addEventListener('click', () => {
+                                        createMain_GridPost(result.id);
+                                    });
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+        }
+    };
+    function search_Reels_On_Home() {
+        if (document.querySelector('#videosearch').classList.contains('active')) {
+            if (document.querySelector('.search_textBox').value) {
+                const Textvalue = document.querySelector('.search_textBox');
+                document.querySelector('.homesearch_List').innerHTML = '';
+                Feeds_Data_Base.find(post => {
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === post.posterId) {
+                            if (post.isVideo || post.isShort) {
+                                if (post.title) {
+                                    let splitedTitle = post.title.split(" , ");
+                                    let splitedText = Textvalue.value.split(" , ");
+                                    splitedTitle.forEach(dataTitle => {
+                                        splitedText.forEach(TextTitle => {
+                                            let titleType = dataTitle.toLowerCase();
+                                            let textType = TextTitle.toLowerCase();
+                                            if (titleType.indexOf(textType) != -1) {
+                                                let searchResult;
+                                                searchResult =
+                                                    `<div class="search_result" id="${post.id}">
+                                                    <div>
+                                                        <div><img src="${user.user_ProfilePicture}"></div>
+                                                        <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
+                                                    </div>
+                                                    <small>${post.attribute}</small>
+                                                    <p>${post.title}</p>
+                                                </div>`;
+                                                document.querySelector('.homesearch_List').innerHTML += searchResult;
+                                            }
+                                        })
+                                    })
+                                }
+                                document.querySelectorAll('.search_result').forEach(result => {
+                                    result.addEventListener('click', () => {
+                                        createMain_GridPost(result.id);
+                                    });
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+        }
+    };
+    function searcphotos() {
+        if (document.querySelector('#photosearch').classList.contains('active')) {
+            if (document.querySelector('.search_textBox').value) {
+                const Textvalue = document.querySelector('.search_textBox');
+                document.querySelector('.homesearch_List').innerHTML = '';
+                Feeds_Data_Base.find(post => {
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === post.posterId) {
+                            if (post.type == 'other') {
+                                if (post.title) {
+                                    let splitedTitle = post.title.split(" , ");
+                                    let splitedText = Textvalue.value.split(" , ");
+                                    splitedTitle.forEach(dataTitle => {
+                                        splitedText.forEach(TextTitle => {
+                                            let titleType = dataTitle.toLowerCase();
+                                            let textType = TextTitle.toLowerCase();
+                                            if (titleType.indexOf(textType) != -1) {
+                                                let searchResult;
+                                                searchResult =
+                                                    `<div class="search_result" id="${post.id}">
+                                                    <div>
+                                                        <div><img src="${user.user_ProfilePicture}"></div>
+                                                        <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
+                                                    </div>
+                                                    <small>${post.attribute}</small>
+                                                    <p>${post.title}</p>
+                                                </div>`;
+                                                document.querySelector('.homesearch_List').innerHTML += searchResult;
+                                            }
+                                        })
+                                    })
+                                }
+                                document.querySelectorAll('.search_result').forEach(result => {
+                                    result.addEventListener('click', () => {
+                                        createMain_GridPost(result.id);
+                                    });
+                                });
+                            }
+                        }
+                    });
+                });
+            }
         }
     };
     function searchpeople() {
         if (document.querySelector('#peoplesearch').classList.contains('active')) {
-            const Home_Home_Search_Bar_main_Home_Search_Bar_Value = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar').value.toLowerCase();
-            document.querySelectorAll('.homesearch_List').forEach(searchListColumn => {
-                searchListColumn.innerHTML = '';
+            if (document.querySelector('.search_textBox').value) {
+                const Textvalue = document.querySelector('.search_textBox');
+                document.querySelector('.homesearch_List').innerHTML = '';
                 LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                LogInFormData.forEach(user => {
+                LogInFormData.find(user => {
                     let Html;
-                    let username = user.user_Firstname;
-                    if (username.indexOf(Home_Home_Search_Bar_main_Home_Search_Bar_Value) != -1) {
-                        Html = `<div class="search_result" id="${user.user_Id}">
+                    let username = user.user_Firstname + ' ' + user.user_Surname;
+                    let splitedusername = username.toLowerCase().split(" , ");
+                    let splitedText = Textvalue.value.toLowerCase().split(" , ");
+                    splitedusername.forEach(name => {
+                        splitedText.forEach(text => {
+                            if (name.indexOf(text) != -1) {
+                                Html =
+                                    `<div class="search_result" id="${user.user_Id}">
                                     <div>
                                         <div><img src="${user.user_ProfilePicture}"></div>
                                         <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
                                     </div>
                                     <p>${user.user_Bio}</p>
                                 </div>`;
-                        searchListColumn.innerHTML += Html;
-                    }
-                    document.querySelectorAll('.search_result').forEach(result => {
-                        result.addEventListener('click', () => {
-                            let usersprofile = document.querySelectorAll('.profile_Cliant');
-                            usersprofile.forEach(profile => {
-                                if (result.id === profile.id) {
-                                    let usersprofileloader = document.createElement('section');
-                                    let mainprofilesvgloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                    profile.appendChild(usersprofileloader);
-                                    usersprofileloader.appendChild(mainprofilesvgloader);
-                                    mainprofilesvgloader.appendChild(mainloadercircle);
-                                    mainloadercircle.setAttribute('cy', '30');
-                                    mainloadercircle.setAttribute('cx', '30');
-                                    mainloadercircle.setAttribute('r', '30');
-                                    usersprofileloader.classList.add('usersprofileloader');
-                                    profile.style.display = 'flex';
-                                    LogInFormData.forEach(data => {
-                                        if (data.user_Id === result.id) {
-                                            document.title = data.user_Firstname + ' ' + data.user_Surname;
-                                        }
-                                    })
-                                    sessionStorage.setItem('activepage', result.id);
-                                    setTimeout(() => {
-                                        usersprofileloader.remove();
-                                    }, 3000);
-                                } else {
-                                    profile.style.display = 'none';
-                                }
-                            });
+                                document.querySelector('.homesearch_List').innerHTML += Html;
+                            }
                         });
                     });
                 });
-            });
+                document.querySelectorAll('.search_result').forEach(result => {
+                    result.addEventListener('click', () => {
+                        createUsersProfile(result.id);
+                    });
+                });
+            }
         }
     };
+
+    document.addEventListener('keypress', (e) => {
+        if (document.querySelector('.search_textBox').value) {
+            if (e.key == 'Enter') {
+                pushsuggesion();
+                if (document.querySelector('#homesearch').classList.contains('active')) {
+                    advancesearch_Method();
+                } else if (document.querySelector('#feedsearch').classList.contains('active')) {
+                    search_feeds_Post();
+                } else if (document.querySelector('#videosearch').classList.contains('active')) {
+                    search_Reels_On_Home();
+                } else if (document.querySelector('#photosearch').classList.contains('active')) {
+                    searcphotos();
+                } else if (document.querySelector('#peoplesearch').classList.contains('active')) {
+                    searchpeople();
+                }
+            }
+        }
+    });
+    if (document.querySelector('#recentsearchlist').classList.contains('active')) {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(user => {
+            createsuggesion(user.user_Id);
+        });
+    }
+    //keyup functions***
+    document.querySelector('.search_textBox')
     function text_Visibility(innerValue) {
-        main_Search_Bar_Home_search_Bar.value = innerValue.target.value;
+        home_search_TextBox.value = innerValue.target.value;
         advancesearch_Method();
     };
     function text_Visibility1(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         advancesearch_Method();
+        localFeedSearch();
     };
     function OnPeople(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         searchpeople();
     };
     function OnPeople1(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         searchpeople();
     };
     function OnFeed(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         search_feeds_Post();
     };
     function OnFeed1(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         search_feeds_Post();
     };
     function OnVideo(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         search_Reels_On_Home();
     };
     function OnVideo1(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         search_Reels_On_Home();
     };
     function OnPhoto(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         searcphotos();
     };
     function OnPhoto1(innerValue) {
-        Home_Home_Search_Bar_main_Home_Search_Bar.value = innerValue.target.value;
+        search_textBox.value = innerValue.target.value;
         searcphotos();
     };
-    Home_Home_Search_Bar_main_Home_Search_Bar.addEventListener('input', text_Visibility);
-    main_Search_Bar_Home_search_Bar.addEventListener('input', text_Visibility1);
-    Home_Home_Search_Bar_main_Home_Search_Bar.addEventListener('input', OnPeople);
-    main_Search_Bar_Home_search_Bar.addEventListener('input', OnPeople1);
-    Home_Home_Search_Bar_main_Home_Search_Bar.addEventListener('input', OnFeed);
-    main_Search_Bar_Home_search_Bar.addEventListener('input', OnFeed1);
-    Home_Home_Search_Bar_main_Home_Search_Bar.addEventListener('input', OnVideo);
-    main_Search_Bar_Home_search_Bar.addEventListener('input', OnVideo1);
-    Home_Home_Search_Bar_main_Home_Search_Bar.addEventListener('input', OnPhoto);
-    main_Search_Bar_Home_search_Bar.addEventListener('input', OnPhoto1);
+    search_textBox.addEventListener('input', text_Visibility);
+    home_search_TextBox.addEventListener('input', text_Visibility1);
+    search_textBox.addEventListener('input', OnPeople);
+    home_search_TextBox.addEventListener('input', OnPeople1);
+    search_textBox.addEventListener('input', OnFeed);
+    home_search_TextBox.addEventListener('input', OnFeed1);
+    search_textBox.addEventListener('input', OnVideo);
+    home_search_TextBox.addEventListener('input', OnVideo1);
+    search_textBox.addEventListener('input', OnPhoto);
+    home_search_TextBox.addEventListener('input', OnPhoto1);
 
-    function pushsuggesion() {
+    function pushsuggesion(activeuser) {
         const id = '' + new Date().getTime();
-        if (Array.isArray(ActiveAccount)) {
-            ActiveUser_Account = ActiveAccount;
-            ActiveUser_Account.forEach(data => {
-                LogInFormData.forEach(user => {
-                    if (user.user_Id === data.user_Id) {
-                        if (Home_Home_Search_Bar_main_Home_Search_Bar.value) {
-                            searchsuggessionlist.push({
-                                isHomeSearch: true,
-                                title: Home_Home_Search_Bar_main_Home_Search_Bar.value.toLowerCase(),
-                                id: id,
-                                search_Id: user.user_Id
-                            });
-                            localStorage.setItem('searchsuggessionlist', JSON.stringify(searchsuggessionlist));
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        LogInFormData.forEach(user => {
+            if (user.user_Id === activeuser) {
+                let user_Recent_Search = user.user_Recent_Search;
+                function filtersearch() {
+                    user_Recent_Search = user_Recent_Search.filter(search => {
+                        if (search.title.toLowerCase() === search_textBox.value.toLowerCase()) {
+                            return false;
+                        } else {
+                            return true;
                         }
+                    });
+                    user.user_Recent_Search = user_Recent_Search;
+                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                    submitlist();
+                }
+                function submitlist() {
+                    if (search_textBox.value) {
+                        user_Recent_Search.push({
+                            title: search_textBox.value.toLowerCase(),
+                            id: id,
+                        });
+                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                     }
-                });
-            });
-        }
+                }
+                filtersearch();
+            }
+        });
     };
     function pushVideoSearch_Suggession() {
         const id = '' + new Date().getTime();
-        if (Array.isArray(ActiveAccount)) {
-            ActiveUser_Account = ActiveAccount;
+        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
             ActiveUser_Account.forEach(data => {
                 LogInFormData.forEach(user => {
                     if (user.user_Id === data.user_Id) {
+                        let user_Recent_Search = user.user_Recent_Video_Search;
                         if (document.querySelector('.Videos_Search_Bar_In_Search-Box').value) {
-                            searchsuggessionlist.push({
-                                isVideoSearch: true,
+                            user_Recent_Search.push({
                                 title: document.querySelector('.Videos_Search_Bar_In_Search-Box').value.toLowerCase(),
                                 id: id,
-                                search_Id: user.user_Id
                             });
-                            localStorage.setItem('searchsuggessionlist', JSON.stringify(searchsuggessionlist));
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                         }
                     }
                 });
@@ -315,55 +480,76 @@ function All_Search_On_Home() {
     };
 
     mainsearchbarsvg.addEventListener('click', () => {
-        pushsuggesion();
-        createsuggesion();
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        ActiveUser_Account.forEach(data => {
+            LogInFormData.forEach(user => {
+                if (user.user_Id === data.user_Id) {
+                    pushsuggesion(data.user_Id);
+                    createsuggesion(data.user_Id);
+                }
+            });
+        });
     });
     VideoMainSearchBarSvg.addEventListener('click', () => {
-        pushVideoSearch_Suggession();
-        createsuggesion();
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        ActiveUser_Account.forEach(data => {
+            LogInFormData.forEach(user => {
+                if (user.user_Id === data.user_Id) {
+                    let user_Recent_Search = user.user_Recent_Video_Search;
+                    user_Recent_Search.forEach(recent => {
+                        if (recent.title !== document.querySelector('.Videos_Search_Bar_In_Search-Box').value.toLowerCase()) {
+                            pushVideoSearch_Suggession();
+                        }
+                    })
+                }
+            });
+        });
     });
-    const searchlinksaved = JSON.parse(localStorage.getItem('searchsuggessionlist'));
-    if (Array.isArray(searchlinksaved)) {
-        searchsuggessionlist = searchlinksaved;
-        createsuggesion();
-    } else {
-        searchsuggessionlist = [];
-    }
 
-    function createsuggesion() {
+    function createsuggesion(userId) {
         document.querySelectorAll('.homesearch_List').forEach(searchListColumn => {
             searchListColumn.innerHTML = '';
-            searchsuggessionlist.forEach(suggession => {
-                if (searchListColumn.id === suggession.search_Id) {
-                    if (suggession.isHomeSearch) {
+            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+            LogInFormData.forEach(user => {
+                if (searchListColumn.id === userId) {
+                    let userhomesearchlist = user.user_Recent_Search;
+                    userhomesearchlist.forEach(search => {
                         let searchlink = document.createElement('div');
                         let suggessiontext = document.createElement('p');
                         let removesuggession = document.createElement('span');
                         searchListColumn.appendChild(searchlink);
                         searchlink.classList.add('searchlink');
-                        suggessiontext.textContent = suggession.title;
+                        suggessiontext.textContent = search.title;
                         searchlink.appendChild(suggessiontext);
                         searchlink.appendChild(removesuggession);
                         removesuggession.classList.add('removesuggession');
                         removesuggession.innerHTML = '&times;';
-                        removesuggession.id = suggession.id;
+                        removesuggession.id = search.id;
                         removesuggession.addEventListener('click', () => {
-                            searchsuggessionlist = searchsuggessionlist.filter((suggession) => {
-                                if (suggession.id === removesuggession.id) {
-                                    return false;
-                                } else {
-                                    return true;
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            LogInFormData.forEach(data => {
+                                if (data.user_Id === userId) {
+                                    let searchList = data.user_Recent_Search;
+                                    searchList = searchList.filter(list => {
+                                        if (list.id === removesuggession.id) {
+                                            return false;
+                                        } else {
+                                            return true;
+                                        }
+                                    });
+                                    data.user_Recent_Search = searchList;
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                    createsuggesion(data.user_Id);
                                 }
                             });
-                            localStorage.setItem('searchsuggessionlist', JSON.stringify(searchsuggessionlist));
-                            createsuggesion();
-                        })
+                        });
                         suggessiontext.addEventListener('click', (valuechanges) => {
-                            homesearchbar.value = suggessiontext.textContent;
-                            Home_Home_Search_Bar_main_Home_Search_Bar.value = suggessiontext.textContent;
+                            search_textBox.value = suggessiontext.textContent;
                             advancesearch_Method();
                         });
-                    }
+                    });
                 }
             });
         });
@@ -371,35 +557,28 @@ function All_Search_On_Home() {
             searchListColumn.innerHTML = '';
             searchsuggessionlist.forEach(suggession => {
                 if (searchListColumn.id === suggession.search_Id) {
-                    if (suggession.isVideoSearch) {
+                    let userhomesearchlist = user.user_Recent_Video_Search;
+                    userhomesearchlist.forEach(search => {
                         let searchlink = document.createElement('div');
                         let suggessiontext = document.createElement('p');
                         let removesuggession = document.createElement('span');
                         searchListColumn.appendChild(searchlink);
                         searchlink.classList.add('searchlink');
-                        suggessiontext.textContent = suggession.title;
+                        suggessiontext.textContent = search.title;
                         searchlink.appendChild(suggessiontext);
                         searchlink.appendChild(removesuggession);
                         removesuggession.classList.add('removesuggession');
                         removesuggession.innerHTML = '&times;';
-                        removesuggession.id = suggession.id;
+                        removesuggession.id = search.id;
                         removesuggession.addEventListener('click', () => {
-                            searchsuggessionlist = searchsuggessionlist.filter((suggession) => {
-                                if (suggession.id === removesuggession.id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            });
-                            localStorage.setItem('searchsuggessionlist', JSON.stringify(searchsuggessionlist));
-                            createsuggesion();
-                        })
+
+                        });
                         suggessiontext.addEventListener('click', (valuechanges) => {
                             homesearchbar.value = suggessiontext.textContent;
-                            Home_Home_Search_Bar_main_Home_Search_Bar.value = suggessiontext.textContent;
+                            search_textBox.value = suggessiontext.textContent;
                             advancesearch_Method();
                         });
-                    }
+                    });
                 }
             });
         });
@@ -412,7 +591,7 @@ function All_Search_On_Video() {
 
     function advancesearch_Method() {
         if (document.querySelector('#homesearch').classList.contains('active')) {
-            const Videos_Search_Bar_In_Search_Box = document.querySelector('.Home_Home_Search_Bar_main_Home_Search_Bar').value.toLowerCase();
+            const Videos_Search_Bar_In_Search_Box = document.querySelector('.search_textBox').value.toLowerCase();
             document.querySelectorAll('.videosearch_List').forEach(searchListColumn => {
                 searchListColumn.innerHTML = '';
                 Feeds_Data_Base.forEach(post => {
@@ -524,6 +703,7 @@ function All_Search_On_Video() {
     Videos_Search_Bar_In_Search_Box.addEventListener('input', text_Visibility1);
 }
 All_Search_On_Video();
+
 const postcontainer = document.querySelector('.postcontainer');
 const CurrentTime = document.querySelector('#CurrentTime');
 const totalDuration = document.querySelector('#totalDuration');

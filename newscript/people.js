@@ -61,6 +61,8 @@ function reset() {
         // data.user_Story_Trash = [];
         // data.user_Stories = [];
         // data.user_Notifications = [];
+        // data.user_Recent_Search = [];
+        // data.user_Recent_Video_Search = [];
         // data.user_Play = 'default';
         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
     });

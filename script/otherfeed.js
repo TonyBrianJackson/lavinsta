@@ -446,9 +446,7 @@ function createOtherPost() {
                             }
                         });
 
-                        document
-                            .querySelectorAll(".sharegridlike")
-                            .forEach((likebutton) => {
+                        document.querySelectorAll(".sharegridlike").forEach((likebutton) => {
                                 if (likebutton.id === column.id + photo.id) {
                                     likebutton.classList.add("sharegridliked");
                                     likebutton.classList.remove("sharegridlike");

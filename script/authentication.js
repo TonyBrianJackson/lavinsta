@@ -247,6 +247,8 @@ function pushformdata() {
             my_PhotoCount: 0,
             my_ShortCount: 0,
         },
+        user_Recent_Search: [],
+        user_Recent_Video_Search: [],
         user_Ids: [],
         user_Stories: [],
         user_MessageRequest: [],
