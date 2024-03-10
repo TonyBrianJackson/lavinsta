@@ -104,8 +104,7 @@
 }
 
 .headerbtns.b_Buttons,
-.notibtn,
-.peoplebtn {
+.headerbtns.peoplebtn {
     flex: 1;
     width: 33%;
     border: 2px solid var(--color-dark);
@@ -379,10 +378,12 @@
     box-shadow: none;
     background: none;
 }
+
 .peoplerequestculomn,
 .sentrequestculomn {
     display: none;
 }
+
 .userCommunityChatContainer,
 .userschatcontainer {
     border-color: rgba(0, 0, 255, 0.13);
@@ -619,11 +620,13 @@
     border-color: var(--color-dark);
     color: var(--color-white);
 }
+
 .persondeclinebutton {
     background: white;
     border: none;
     color: var(--color-dark);
 }
+
 .personblockbutton:hover,
 .personaddbutton:hover,
 .personacceptbutton:hover,
@@ -944,10 +947,13 @@
     color: var(--color-dark);
     cursor: pointer;
 }
+
 .taskbar_Switch svg {
     transform: rotate(45deg);
 }
+
 @media (min-width: 0px) and (max-width: 539px) {
+    .headerbtns.peoplebtn,
     .headerbtns.b_Buttons {
         display: flex;
         flex-direction: column;
@@ -960,14 +966,12 @@
         font-weight: 900;
     }
 
-    .headerbtns.b_Buttons> svg{
+    .headerbtns.peoplebtn> svg,
+    .headerbtns.b_Buttons>svg {
         width: 30px;
         height: 30px;
     }
-    .chatheader.generalheader,
-    .peopleHeader.generalheader {
-        display: none;
-    }
+
     .peopleculomn,
     .peoplerequestculomn,
     .sentrequestculomn,
@@ -976,16 +980,18 @@
     .msgculomn,
     .groupmsgculomn,
     .generalculomn3 {
-        height: 70%;
+        height: 90%;
     }
 
     .divider {
         height: max-content;
         overflow: hidden;
     }
+
     .msgbtn {
         display: none;
     }
+
     .photogallery {
         top: 0;
         left: 0;
@@ -1198,8 +1204,8 @@
     .notificationhead {
         border: 1px solid var(--color-gray);
     }
+
     .msgbtn,
-    .notibtn,
     .peoplebtn {
         padding: 14px 0px;
         box-shadow: none;
@@ -1295,7 +1301,6 @@
     }
 
     .msgbtn,
-    .notibtn,
     .peoplebtn {
         padding: 9px 0px;
         box-shadow: none;
