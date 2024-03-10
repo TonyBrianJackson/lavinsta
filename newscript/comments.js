@@ -1228,7 +1228,7 @@ function create_Comment_Reply_room(locationId) {
             if (comment.id === locationId) {
                 let replyroom = document.createElement('div');
                 let replyroomculomn = document.createElement('div');
-                let commentroomclose = document.createElement('span');
+                let commentmovebackward = document.createElement('span');
                 let newcommentinput = document.createElement('div');
                 let newcommentinputinput = document.createElement('input');
                 let newcommentinputsend = document.createElement('div');
@@ -1248,29 +1248,41 @@ function create_Comment_Reply_room(locationId) {
                 //extensions
                 let actitionbtnscontainer = document.createElement('div');
                 let commentactiongrid = document.createElement('div');
-                let replyroomrefresh = document.createElement('span');
-
+                let commentrefreshbtn = document.createElement('span');
+                let sharegridview = document.createElement('div');
+                let sharegridviewimg = document.createElement('img');
+                let exitimg = document.createElement('img');
+                let refreshimg = document.createElement('img');
+                commentmovebackward.appendChild(exitimg);
+                commentrefreshbtn.appendChild(refreshimg);
+                sharegridview.appendChild(sharegridviewimg);
+                exitimg.src = 'icons/undo_2.png';
+                refreshimg.src = 'icons/refresh.png';
+                sharegridviewimg.src = 'icons/focus.png';
                 replyroom.appendChild(commentactiongrid);
                 commentactiongrid.appendChild(actitionbtnscontainer);
                 replyroom.appendChild(replyroomculomn)
                 replyroom.appendChild(newcommentinput);
                 commentactiongrid.classList.add('commentactiongrid');
                 actitionbtnscontainer.classList.add('actitionbtnscontainer');
-                actitionbtnscontainer.appendChild(commentroomclose);
-                actitionbtnscontainer.appendChild(replyroomrefresh);
+                actitionbtnscontainer.appendChild(commentmovebackward);
+                actitionbtnscontainer.appendChild(commentrefreshbtn);
+                actitionbtnscontainer.appendChild(sharegridview);
 
-                commentroomclose.classList.add('headerbtns');
-                replyroomrefresh.classList.add('headerbtns');
-                commentroomclose.classList.add('sharegridlike');
-                replyroomrefresh.classList.add('sharegridlike');
-
-                replyroomrefresh.innerHTML = '&circlearrowright;';
-                commentroomclose.innerHTML = '&LeftArrow;';
+                commentmovebackward.classList.add('headerbtns');
+                commentrefreshbtn.classList.add('headerbtns');
+                sharegridview.classList.add('headerbtns');
+                commentmovebackward.classList.add('sharegridlike');
+                commentrefreshbtn.classList.add('sharegridlike');
+                sharegridview.classList.add('sharegridlike');
 
                 replyroomculomn.id = comment.id;
                 replyroom.id = comment.id;
-
-                replyroomrefresh.addEventListener('click', () => {
+                sharegridview.addEventListener('click',()=> {
+                    replyroom.remove();
+                    create_Comment_room(comment.postId);
+                });
+                commentrefreshbtn.addEventListener('click', () => {
                     replyroomculomn.innerHTML = '';
                     let commentroomsectionreloadloader = document.createElement('div');
                     replyroom.appendChild(commentroomsectionreloadloader);
@@ -1290,7 +1302,7 @@ function create_Comment_Reply_room(locationId) {
                 replyroom.classList.add('commentroomsection');
                 replyroom.classList.add('commentroomsectionactive');
                 newcommentinputinput.setAttribute(`placeholder`, 'post reply...');
-                commentroomclose.addEventListener('click', () => {
+                commentmovebackward.addEventListener('click', () => {
                     replyroom.classList.toggle('commentroomsectionactive');
                 });
                 function themeCommentMode() {
@@ -1371,7 +1383,10 @@ function Media_Comment_Reply_Popup(locationId, postId, posterId, caption) {
     let secondImg = document.createElement('img');
     let firsttext = document.createElement('span');
     let secondtext = document.createElement('span');
-
+    let exitimg = document.createElement('img');
+    photoexit.appendChild(exitimg);
+    exitimg.src = 'icons/undo.png';
+    photoexit.classList.add('headerbtns');
     clickAndUploadContainer.classList.add('clickAndUploadContainer');
     popup_Names_Container.classList.add('popup_Names_Container');
     subactions.classList.add('subactions');
@@ -1521,14 +1536,12 @@ function Media_Comment_Reply_Popup(locationId, postId, posterId, caption) {
 
     sharephotosend.textContent = 'send photo';
     sharevideosend.textContent = 'send video';
-    photoexit.innerHTML = '&LeftArrow;';
 
     captionBox.classList.add('caption');
     newphotolabel.classList.add('newphotolabel');
     newvideolabel.classList.add('newphotolabel');
     sharephotosend.classList.add('sharephotosend');
     sharevideosend.classList.add('sharephotosend');
-    photoexit.classList.add('photoexit');
     shareimagecontainer.classList.add('shareimagecontainer');
     sharevideocontainer.classList.add('shareimagecontainer');
     uploadpreviewcontainer.classList.add('uploadpreviewcontainer');

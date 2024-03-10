@@ -1912,6 +1912,7 @@ function getActivePage() {
             document.querySelector('.photogallery').style.display = 'flex';
         } else if (activepage == 'homesearch') {
             document.querySelector('.profile').style.display = 'none';
+            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
             document.querySelector('.main_Seach_Path').style.display = 'flex';
         } else if (activepage == 'hamburgermenupopup') {
             document.querySelector('.hamburgermenupopup').classList.add('hamburgermenupopupactive');

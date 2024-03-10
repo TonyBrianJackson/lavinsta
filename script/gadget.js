@@ -118,13 +118,13 @@ function create_share_Popup(locationId) {
                     option_First_Child6.appendChild(option_Name6_HeaderBtns);
                     option_First_Child7.appendChild(option_Name7_HeaderBtns);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
-                    option_First_Child5.appendChild(option_Name5);
-                    option_First_Child6.appendChild(option_Name6);
-                    option_First_Child7.appendChild(option_Name7);
+                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name2_HeaderBtns.appendChild(option_Name2);
+                    option_Name3_HeaderBtns.appendChild(option_Name3);
+                    option_Name4_HeaderBtns.appendChild(option_Name4);
+                    option_Name5_HeaderBtns.appendChild(option_Name5);
+                    option_Name6_HeaderBtns.appendChild(option_Name6);
+                    option_Name7_HeaderBtns.appendChild(option_Name7);
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
@@ -133,6 +133,14 @@ function create_share_Popup(locationId) {
                     option_Name5_HeaderBtns.classList.add('headerbtns');
                     option_Name6_HeaderBtns.classList.add('headerbtns');
                     option_Name7_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
+                    option_Name5.classList.add('toolpit');
+                    option_Name6.classList.add('toolpit');
+                    option_Name7.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -457,17 +465,23 @@ function create_share_Popup(locationId) {
                     option_Name4_HeaderBtns.appendChild(option_Name4_Img);
                     option_Name5_HeaderBtns.appendChild(option_Name5_Img);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
-                    option_First_Child5.appendChild(option_Name5);
+                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name2_HeaderBtns.appendChild(option_Name2);
+                    option_Name3_HeaderBtns.appendChild(option_Name3);
+                    option_Name4_HeaderBtns.appendChild(option_Name4);
+                    option_Name5_HeaderBtns.appendChild(option_Name5);
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
                     option_Name5_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
+                    option_Name5.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -700,15 +714,20 @@ function create_share_Popup(locationId) {
                     option_Name3_headerBtns.appendChild(option_Name3_Img);
                     option_Name4_headerBtns.appendChild(option_Name4_Img);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
+                    option_Name1_headerBtns.appendChild(option_Name1);
+                    option_Name2_headerBtns.appendChild(option_Name2);
+                    option_Name3_headerBtns.appendChild(option_Name3);
+                    option_Name4_headerBtns.appendChild(option_Name4);
 
                     option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_headerBtns.classList.add('headerbtns');
                     option_Name3_headerBtns.classList.add('headerbtns');
                     option_Name4_headerBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -919,13 +938,13 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.appendChild(option_Name6_Img);
                     option_Name7_HeaderBtns.appendChild(option_Name7_Img);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
-                    option_First_Child5.appendChild(option_Name5);
-                    option_First_Child6.appendChild(option_Name6);
-                    option_First_Child7.appendChild(option_Name7);
+                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name2_HeaderBtns.appendChild(option_Name2);
+                    option_Name3_HeaderBtns.appendChild(option_Name3);
+                    option_Name4_HeaderBtns.appendChild(option_Name4);
+                    option_Name5_HeaderBtns.appendChild(option_Name5);
+                    option_Name6_HeaderBtns.appendChild(option_Name6);
+                    option_Name7_HeaderBtns.appendChild(option_Name7);
 
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to timeline';
@@ -950,6 +969,14 @@ function create_share_Popup(locationId) {
                     option_Name5_HeaderBtns.classList.add('headerbtns');
                     option_Name6_HeaderBtns.classList.add('headerbtns');
                     option_Name7_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
+                    option_Name5.classList.add('toolpit');
+                    option_Name6.classList.add('toolpit');
+                    option_Name7.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -1258,17 +1285,23 @@ function create_share_Popup(locationId) {
                     option_Name4_HeaderBtns.appendChild(option_Name4_Img);
                     option_Name5_HeaderBtns.appendChild(option_Name5_Img);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
-                    option_First_Child5.appendChild(option_Name5);
+                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name2_HeaderBtns.appendChild(option_Name2);
+                    option_Name3_HeaderBtns.appendChild(option_Name3);
+                    option_Name4_HeaderBtns.appendChild(option_Name4);
+                    option_Name5_HeaderBtns.appendChild(option_Name5);
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
                     option_Name5_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
+                    option_Name5.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -1499,15 +1532,20 @@ function create_share_Popup(locationId) {
                     option_Name3_HeaderBtns.appendChild(option_Name3_Img);
                     option_Name4_HeaderBtns.appendChild(option_Name4_Img);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
+                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name2_HeaderBtns.appendChild(option_Name2);
+                    option_Name3_HeaderBtns.appendChild(option_Name3);
+                    option_Name4_HeaderBtns.appendChild(option_Name4);
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -1693,15 +1731,20 @@ function create_share_Popup(locationId) {
                     option_Name3_HeaderBtns.appendChild(option_Name3_Img);
                     option_Name4_HeaderBtns.appendChild(option_Name4_Img);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
+                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name2_HeaderBtns.appendChild(option_Name2);
+                    option_Name3_HeaderBtns.appendChild(option_Name3);
+                    option_Name4_HeaderBtns.appendChild(option_Name4);
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -1912,13 +1955,13 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.appendChild(option_Name6_Img);
                     option_Name7_HeaderBtns.appendChild(option_Name7_Img);
 
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
-                    option_First_Child5.appendChild(option_Name5);
-                    option_First_Child6.appendChild(option_Name6);
-                    option_First_Child7.appendChild(option_Name7);
+                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name2_HeaderBtns.appendChild(option_Name2);
+                    option_Name3_HeaderBtns.appendChild(option_Name3);
+                    option_Name4_HeaderBtns.appendChild(option_Name4);
+                    option_Name5_HeaderBtns.appendChild(option_Name5);
+                    option_Name6_HeaderBtns.appendChild(option_Name6);
+                    option_Name7_HeaderBtns.appendChild(option_Name7);
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
@@ -1927,6 +1970,14 @@ function create_share_Popup(locationId) {
                     option_Name5_HeaderBtns.classList.add('headerbtns');
                     option_Name6_HeaderBtns.classList.add('headerbtns');
                     option_Name7_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name1.classList.add('toolpit');
+                    option_Name2.classList.add('toolpit');
+                    option_Name3.classList.add('toolpit');
+                    option_Name4.classList.add('toolpit');
+                    option_Name5.classList.add('toolpit');
+                    option_Name6.classList.add('toolpit');
+                    option_Name7.classList.add('toolpit');
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
@@ -2244,8 +2295,12 @@ function create_Comment_room(locationId) {
             let actitionbtnscontainer = document.createElement('div');
             let commentactiongrid = document.createElement('div');
             let commentrefreshbtn = document.createElement('span');
-            commentrefreshbtn.innerHTML = '&circlearrowright;';
-            commentmovebackward.innerHTML = '&LeftArrow;';
+            let exitimg = document.createElement('img');
+            let refreshimg = document.createElement('img');
+            commentmovebackward.appendChild(exitimg);
+            commentrefreshbtn.appendChild(refreshimg);
+            exitimg.src = 'icons/undo_2.png';
+            refreshimg.src = 'icons/refresh.png';
             commentrefreshbtn.addEventListener('click', () => {
                 reloadLocation();
             });
@@ -2322,7 +2377,6 @@ function create_Comment_room(locationId) {
             newcommentinput.appendChild(newcommentinputinputsend);
             newcommentinputinput.setAttribute(`placeholder`, 'Add Comment');
 
-            commentmovebackward.innerHTML = '&LeftArrow;';
             commentattachmenticon.addEventListener('click', () => {
                 sharegrid.classList.toggle('sharegridactive');
             });
@@ -2507,6 +2561,7 @@ function Media_Comment_Popup(locationId, posterId) {
     let popup_Names_Container = document.createElement('div');
     let Names_title = document.createElement('strong');
     let subactions = document.createElement('div');
+    let exitimg = document.createElement('img');
 
     let clickAndUploadContainer = document.createElement('div');
     let firstImg = document.createElement('img');
@@ -2536,6 +2591,9 @@ function Media_Comment_Popup(locationId, posterId) {
     newphotolabel.appendChild(firsttext);
     newvideolabel.appendChild(secondtext);
 
+    photoexit.appendChild(exitimg);
+    photoexit.classList.add('headerbtns');
+    exitimg.src = 'icons/undo.png';
     firsttext.textContent = 'photo';
     secondtext.textContent = 'video';
 
@@ -2559,9 +2617,7 @@ function Media_Comment_Popup(locationId, posterId) {
         sharephotosend.style.display = 'none';
         shareimagecontainer.style.display = 'none';
     });
-    //classlist 
-    photoexit.innerHTML = '&LeftArrow;';
-    photoexit.classList.add('photoexit');
+    
     newphotolabel.classList.add('newphotolabel');
     newvideolabel.classList.add('newphotolabel');
     mediacommentspopup.classList.add('post_making_upload_popup');
@@ -2599,8 +2655,6 @@ function Media_Comment_Popup(locationId, posterId) {
     };
     mediacommentspopup.id = locationId;
     captioninput.id = locationId;
-
-    photoexit.classList.add('photoexit');
 
     caption.classList.add('caption');
     shareimagecontainer.classList.add('shareimagecontainer');
@@ -2827,6 +2881,9 @@ function Unlike_Post(postId) {
     removeLicense(postId)
 }
 function create_reportScript(locationId) {
+    document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
+        popup.remove();
+    });
     document.querySelectorAll('.editpopup').forEach(popup => {
         popup.remove();
     });
@@ -2856,6 +2913,7 @@ function create_reportScript(locationId) {
             function reportSubmission() {
                 let reportcontainerheader = document.createElement('header');
                 let reportcontainerexit = document.createElement('span');
+                let exitimg = document.createElement('img');
                 let reportcontainer = document.createElement('div');
                 let reporttextboxcontainer = document.createElement('div');
                 let reporttextarea = document.createElement('textarea');
@@ -2869,9 +2927,10 @@ function create_reportScript(locationId) {
                 reportsubmitbutton.textContent = 'submit report';
                 reporttextarea.placeholder = 'what is the probem...';
                 reportcontainer.id = photo.id;
-                reportcontainerexit.innerHTML = '&LeftArrow;';
+                reportcontainerexit.appendChild(exitimg);
+                exitimg.src = 'icons/undo.png';
                 reportcontainerexit.addEventListener('click', () => {
-                    reportcontainer.style.display = 'none';
+                    reportcontainer.remove();
                 });
 
                 function pushreport() {
@@ -2915,17 +2974,21 @@ function create_reportScript(locationId) {
                     pushreport();
                     reporttextarea.value = '';
                     setTimeout(() => {
-                        reportcontainer.style.display = 'none';
+                        reportcontainer.remove();
                     }, 1000);
                 });
                 reporttextboxcontainer.classList.add('reporttextboxcontainer');
                 reportcontainer.classList.add('reportcontainer');
+                reportcontainerexit.classList.add('headerbtns');
             }
             reportSubmission();
         }
     });
 }
 function editingPostText(locationId) {
+    document.querySelectorAll('.postshare_Pop_up').forEach(popup => {
+        popup.remove();
+    });
     document.querySelectorAll('.editpopup').forEach(popup => {
         popup.remove();
     });
@@ -2941,16 +3004,18 @@ function editingPostText(locationId) {
             let editingisdone = document.createElement('span');
             let editingpopupheader = document.createElement('header');
             let editingpopupclosebtn = document.createElement('span');
+            let exitimg = document.createElement('img');
             document.body.appendChild(editpopup);
             editpopup.appendChild(editingpopupheader);
             editpopup.appendChild(editinputbox);
             editpopup.appendChild(editingisdone);
             editinputbox.appendChild(editinput);
             editingpopupheader.appendChild(editingpopupclosebtn)
-            editingpopupclosebtn.innerHTML = '&times;';
+            editingpopupclosebtn.appendChild(exitimg);
+            exitimg.src = 'icons/undo.png';
             editingisdone.textContent = 'done';
             editpopup.id = photo.id;
-            editingpopupclosebtn.classList.add('editingpopupclosebtn');
+            editingpopupclosebtn.classList.add('headerbtns');
             editpopup.classList.add('editpopup');
             editingisdone.classList.add('editingisdone');
             editinputbox.classList.add('editinputbox');
@@ -2961,7 +3026,7 @@ function editingPostText(locationId) {
                 editinput.value = photo.title;
             }
             editingpopupclosebtn.addEventListener('click', () => {
-                editpopup.style.display = 'none';
+                editpopup.remove();
             });
             if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                 ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));

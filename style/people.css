@@ -103,9 +103,10 @@
     fill: rgba(255, 255, 255, 0.829);
 }
 
-.msgbtn,
+.headerbtns.b_Buttons,
 .notibtn,
 .peoplebtn {
+    flex: 1;
     width: 33%;
     border: 2px solid var(--color-dark);
     border-radius: 15px;
@@ -943,18 +944,10 @@
     color: var(--color-dark);
     cursor: pointer;
 }
-
-.chatNavigationHeader.navigationheader,
-.peopleNavigation.navigationheader {
-    display: none;
-    padding: 10px;
+.taskbar_Switch svg {
+    transform: rotate(45deg);
 }
 @media (min-width: 0px) and (max-width: 539px) {
-    .chatNavigationHeader.navigationheader,
-    .peopleNavigation.navigationheader {
-        display: flex;
-    }
-
     .headerbtns.b_Buttons {
         display: flex;
         flex-direction: column;

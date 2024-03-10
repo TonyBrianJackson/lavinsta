@@ -3,7 +3,7 @@ const gridpostlargeviewcontainer = document.querySelector('.gridpostlargeviewcon
 const gridpostimgwideview = document.querySelector('.gridpostimgwideview');
 const search_textBox = document.querySelector('.search_textBox');
 const home_search_TextBox = document.querySelector('.home_search_TextBox');
-const mainsearchbarsvg = document.querySelector('.homeMainSearchBar svg');
+const searchbtn = document.querySelector('.headerbtns.searchbutton');
 const VideoMainSearchBarSvg = document.querySelector('.VideoMainSearchBar svg');
 let searchsuggessionlist = [];
 
@@ -479,7 +479,7 @@ function All_Search_On_Home() {
         }
     };
 
-    mainsearchbarsvg.addEventListener('click', () => {
+    searchbtn.addEventListener('click', () => {
         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
         ActiveUser_Account.forEach(data => {

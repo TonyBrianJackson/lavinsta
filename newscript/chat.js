@@ -1624,6 +1624,7 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     //userchat header
     let userchatheader = document.createElement('header');
     let userschatexit = document.createElement('span');
+    let exitimg = document.createElement('img');
     let userchatreciepientname = document.createElement('strong');
     let userchatprofilepicturecontainer = document.createElement('div');
     let userschatprofilepicture = document.createElement('img');
@@ -1647,8 +1648,13 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     let voicerecordicon = document.createElement('div');
     let voicerecordiconimg = document.createElement('img');
 
+    voicerecordicon.addEventListener('click', () => {
+        chatfloat.classList.toggle('chatfloatactive');
+        create_Voice_Recording_Script(locationId, CreatorId, userchatroom);
+    });
+
     chatuploadicon.addEventListener('click', () => {
-        createUploader(locationId, trackingId, userchatroom, userchatroomcolumn, voicerecordicon, 'friends_chat');
+        createUploader(locationId, trackingId, userchatroom, userchatroomcolumn, voicerecordicon, 'friends_chat',locationId);
     });
     function hightlightchatblock() {
         LogInFormData.forEach(user => {
@@ -1786,7 +1792,9 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     usersHeaderflex.appendChild(userchatreciepientname);
     usersHeaderflex.appendChild(friendactivestatus);
     userchatprofilepicturecontainer.appendChild(userschatprofilepicture);
-    userschatexit.innerHTML = '&LeftArrow;';
+    userschatexit.appendChild(exitimg);
+    exitimg.src = 'icons/undo.png';
+    userschatexit.classList.add('headerbtns');
     usersHeaderflex.classList.add('usersHeaderflex');
     userchatheader.classList.add('userchatheader');
     userchatprofilepicturecontainer.classList.add('userchatprofilepicturecontainer');
@@ -2013,7 +2021,7 @@ function createChatTaskBar() {
         });
     });
 }
-function createUploader(locationId, CreatorId, room, chatroom, voicerecordicon, type, community_Id) {
+function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
     document.querySelectorAll('.chatuploadpopup').forEach(popup => {
         popup.remove();
     });
@@ -2055,7 +2063,10 @@ function createUploader(locationId, CreatorId, room, chatroom, voicerecordicon, 
     let firsttext = document.createElement('span');
     let secondtext = document.createElement('span');
     let thirdtext = document.createElement('span');
-
+    let exitimg = document.createElement('img');
+    photoexit.appendChild(exitimg);
+    exitimg.src = 'icons/undo.png';
+    photoexit.classList.add('headerbtns');
     clickAndUploadContainer.classList.add('clickAndUploadContainer');
     popup_Names_Container.classList.add('popup_Names_Container');
     subactions.classList.add('subactions');
@@ -2198,166 +2209,10 @@ function createUploader(locationId, CreatorId, room, chatroom, voicerecordicon, 
     uploadpreviewcontainer.classList.add('uploadpreviewcontainer');
     chatuploadpopup.classList.add('post_making_upload_popup');
     chatuploadpopup.classList.add('chatuploadpopup');
-    photoexit.classList.add('photoexit');
-    photoexit.innerHTML = '&LeftArrow;';
     photoexit.addEventListener('click', () => {
         chatuploadpopup.remove();
     });
 
-    function create_Voice_Recording_Script() {
-        let my_Audio_Records = [];
-        let voicechat = document.createElement('div');
-        let voicechataudio = document.createElement('audio');
-        let chat_audionreciever = document.createElement('audio');
-        let voicechatsend = document.createElement('div');
-        let voicechatsendimg = document.createElement('img');
-        let audiorecord_Cancel = document.createElement('span');
-        let chat_Audio_Gadget = document.createElement('div');
-        let chatplay = document.createElement('div');
-        let chatRecordplay = document.createElement('img');
-        let chatRecordPause = document.createElement('img');
-        let record_Timer = document.createElement('span');
-        chatplay.appendChild(chatRecordplay);
-        chatplay.appendChild(chatRecordPause);
-        chat_Audio_Gadget.appendChild(chatplay);
-        chat_Audio_Gadget.appendChild(record_Timer);
-        record_Timer.textContent = '00:00';
-        room.appendChild(voicechat);
-        voicechat.appendChild(audiorecord_Cancel);
-        voicechat.appendChild(chat_Audio_Gadget);
-        voicechat.appendChild(voicechataudio);
-        voicechat.appendChild(chat_audionreciever);
-        voicechat.appendChild(voicechatsend);
-        voicechatsend.appendChild(voicechatsendimg);
-        voicechat.classList.add('voicechat');
-
-        audiorecord_Cancel.classList.add('headerbtns');
-        chatplay.classList.add('headerbtns');
-        voicechatsend.classList.add('headerbtns');
-
-        voicechatsendimg.src = 'newicons/send.png';
-        voicechat.style.display = 'none';
-        audiorecord_Cancel.innerHTML = '&times;';
-
-        voicechataudio.addEventListener('timeupdate', () => {
-            let currentVideoTime = event.target.currentTime;
-            let currentMin = Math.floor(currentVideoTime / 60);
-            let currentSec = Math.floor(currentVideoTime % 60);
-            //if CurrentMin is < 10 add 0 at the beginning;
-            currentMin < 10 ? currentMin = "0" + currentMin : currentMin;
-
-            //if CurrentSec is < 10 add 0 at the beginning;
-            currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
-            record_Timer.innerHTML = ` ${currentMin} : ${currentSec}`;
-        });
-
-        chatRecordplay.src = 'icons/play.png';
-        chatRecordPause.src = 'icons/pause.png';
-        chatRecordPause.style.display = 'none';
-
-        chat_Audio_Gadget.classList.add('chat_Audio_Gadget');
-        audiorecord_Cancel.classList.add('audiorecord_Cancel');
-        function record_Chat() {
-            voicerecordicon.addEventListener('click', () => {
-                activateaudio();
-                voicechat.style.display = 'flex';
-                chatfloat.classList.toggle('chatfloatactive');
-            });
-            audiorecord_Cancel.addEventListener('click', () => {
-                voicechat.style.display = 'none';
-                voicechataudio.src = '';
-            });
-        }
-        record_Chat();
-        function activateaudio() {
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({
-                    audio: true,
-                }).then(function (stream) {
-                    voicechataudio.srcObject = stream;
-
-                    let media_Recorder = new MediaRecorder(stream);
-                    chatRecordplay.addEventListener('click', () => {
-                        voicechataudio.play();
-                        media_Recorder.start();
-                        console.log(media_Recorder.state);
-                        chatRecordplay.style.display = 'none';
-                        chatRecordPause.style.display = 'block';
-                    });
-                    function change_mediaRecorderState() {
-                        chatRecordplay.style.display = 'block';
-                        chatRecordPause.style.display = 'none';
-                        media_Recorder.stop();
-                        voicechataudio.pause();
-                        console.log(media_Recorder.state);
-                        record_Timer.textContent = '00:00';
-                    }
-                    media_Recorder.ondataavailable = function (event) {
-                        my_Audio_Records.push(event.data);
-                    }
-                    media_Recorder.onstop = function (event) {
-                        let blob = new Blob(my_Audio_Records, { type: 'audio/mp3' });
-                        let reader = new FileReader();
-                        reader.readAsDataURL(blob);
-                        reader.onload = () => {
-                            var b64 = reader.result.replace(/^data:, + base64,/, '');
-                            console.log(b64);
-                            chat_audionreciever.src = b64;
-                        }
-                        my_Audio_Records = [];
-                    }
-
-                    voicechatsend.addEventListener('click', () => {
-                        voicechat.style.display = 'none';
-                        pushVoiceChat();
-                        change_mediaRecorderState();
-                        hightlightchatblock();
-                        increaseChatCount(locationId);
-                        voicechataudio.src = '';
-                        voicechataudio.pause();
-                        if (type == 'friends_chat') {
-                            createChatMessages(chatroom, locationId, CreatorId);
-                        } if (type == 'community_chat') {
-                            create_Community_Chat_Messages(chatroom, locationId, CreatorId);
-                        }
-                    });
-                    function pushVoiceChat() {
-                        const id = '' + new Date().getTime();
-                        if (chat_audionreciever.src) {
-                            if (type == 'friends_chat') {
-                                myChatMsg.push({
-                                    isAudio: true,
-                                    voice: true,
-                                    Property_Src: chat_audionreciever.src,
-                                    id: id,
-                                    posterId: CreatorId,
-                                    chat_receiver: locationId,
-                                    time: new Date().getTime(),
-                                    date: trackingDate,
-                                    chatvisibilty: 'sent'
-                                });
-                                localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
-                            } if (type == 'community_chat') {
-                                Community_myChat_Msg.push({
-                                    isAudio: true,
-                                    voice: true,
-                                    Property_Src: chat_audionreciever.src,
-                                    id: id,
-                                    posterId: CreatorId,
-                                    chat_receiver: locationId,
-                                    time: new Date().getTime(),
-                                    date: trackingDate,
-                                    chatvisibilty: 'sent'
-                                });
-                                localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    }
-    create_Voice_Recording_Script();
     function pushphotoChat() {
         const id = '' + new Date().getTime();
         if (chatimagepreview.src) {

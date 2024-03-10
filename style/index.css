@@ -3182,11 +3182,18 @@ a {
     flex-direction: row;
     background: none;
     box-shadow: none;
-    overflow: visible;
+    overflow-x: scroll;
+    overflow-y: hidden;
     border: none;
     border-radius: 0px;
+    padding: 5px;
 }
-
+.navigationheader::-webkit-scrollbar {
+    height: 5px;
+}
+.navigationheader::-webkit-scrollbar-thumb {
+    background: var(--color-bright);
+}
 .navigationheader>span {
     font-size: 25px;
     font-weight: bolder;
@@ -6002,7 +6009,7 @@ a {
 /*SEARCH PATH*/
 .searchpath {
     position: fixed;
-    top: 55px;
+    top: 60px;
     left: 4px;
     border: none;
     width: 240px;
@@ -6014,6 +6021,7 @@ a {
     align-items: center;
     background: var(--color-light);
     box-shadow: none;
+    z-index: 330;
 }
 
 .video_Seach_Path {
@@ -6145,7 +6153,7 @@ a {
 }
 
 .mainsearchbar {
-    width: 80%;
+    width: 60%;
     height: 100%;
     border-width: 1px;
     border-color: rgb(191, 191, 207);
@@ -7265,7 +7273,6 @@ a {
     z-index: 1;
 }
 
-.videouploadpopupclose,
 .livepurposeclosebtn,
 .liveboostclosebtn {
     position: absolute;
@@ -7282,20 +7289,6 @@ a {
     cursor: pointer;
 }
 
-.searchmoveback {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    color: #000000;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    border: none;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    padding: 2px 15px;
-    cursor: pointer;
-}
 
 #uploadvideocoverphoto {
     display: none;
@@ -8237,7 +8230,8 @@ a {
     top: 60px;
     padding: 20px;
     width: 240px;
-    height: 250px;
+    min-height: 250px;
+    height: max-content;
     z-index: 521;
     background: var(--color-light);
     display: flex;
@@ -8286,26 +8280,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: left;
+    overflow: visible;
+    margin: 5px 0px;
 }
 
-.editingpopupclosebtn,
-.reportcontainer header span {
-    border: none;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    display: block;
-    text-align: center;
-    font-size: 27px;
-    font-weight: bolder;
-    color: var(--color-dark);
-    cursor: pointer;
-}
-
-.editingpopupclosebtn:hover,
-.reportcontainer header span:hover {
-    color: tomato;
-}
 
 .editingisdone,
 .reportcontainer button {
@@ -8548,9 +8526,11 @@ a {
     .updatingmessage {
         max-width: 90vw;
     }
+
     .sharevideophotocommentactive {
         gap: 5px;
     }
+
     .commentroomsectionreloadloader,
     .commentsectionreloadloader,
     .usershareloader {
@@ -9090,6 +9070,7 @@ a {
         justify-content: center;
         align-items: start;
     }
+
     .reelgridusersphoto {
         width: 35px;
         height: 35px;
@@ -9179,10 +9160,6 @@ a {
         background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
     }
 
-    .searchmoveback {
-        font-weight: 900;
-        font-size: 30px;
-    }
 
     .topkeepsuggession {
         width: 100%;

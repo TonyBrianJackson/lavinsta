@@ -236,10 +236,13 @@
     pointer-events: none;
     opacity:0;
     transition: all ease 300ms;
+    z-index: 1;
 }
 .headerbtns:hover {
     transition: all ease 300ms;
     transform:scale(1.07);
+    color: var(--color-bright);
+    border-color: var(--color-bright);
 }
 .headerbtns:hover .toolpit {
     opacity:1;

@@ -98,7 +98,7 @@ function create_Community_Chat_Menu(session, locationId) {
                             }
                         });
                         community_chat_sample.classList.remove('unchecked_Chat');
-                        if (Community_myChat_Msg) {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('Community_myChat_Msg')))) {
                             Community_myChat_Msg = JSON.parse(localStorage.getItem('Community_myChat_Msg'));
                             Community_myChat_Msg.forEach(chat => {
                                 if (chat.chat_receiver === member.community_Id && chat.posterId !== member.members_Id) {
@@ -113,7 +113,7 @@ function create_Community_Chat_Menu(session, locationId) {
         });
     });
 }
-function create_Community_Chat_Members(locationId,room) {
+function create_Community_Chat_Members(locationId, room) {
     document.querySelectorAll('.memberscontainer').forEach(container => {
         container.remove();
     });
@@ -241,7 +241,7 @@ function create_Community_Chat_Members(locationId,room) {
         });
     }
 }
-function create_Community_Profile(locationId,room) {
+function create_Community_Profile(locationId, room) {
     document.querySelectorAll('.memberscontainer').forEach(container => {
         container.remove();
     });
@@ -332,10 +332,10 @@ function create_Community_Profile(locationId,room) {
                     }
                 });
                 addmembers.addEventListener('click', () => {
-                    create_Community_Chat_Add_Members(locationId,room);
+                    create_Community_Chat_Add_Members(locationId, room);
                 });
                 viewmembers.addEventListener('click', () => {
-                    create_Community_Chat_Members(locationId,room);
+                    create_Community_Chat_Members(locationId, room);
                 });
                 uploader.onchange = update;
                 editprofile.classList.add('headerbtns');
@@ -348,7 +348,7 @@ function create_Community_Profile(locationId,room) {
         });
     }
 }
-function create_Community_Chat_Add_Members(locationId,room) {
+function create_Community_Chat_Add_Members(locationId, room) {
     document.querySelectorAll('.memberscontainer').forEach(container => {
         container.remove();
     });
@@ -409,7 +409,7 @@ function create_Community_Chat_Add_Members(locationId,room) {
                                         membertail.appendChild(membername);
                                         memberaddbutton.textContent = 'Add Member';
                                         memberblock.classList.add('memberblock');
-                                        
+
                                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                                         LogInFormData.forEach(user => {
                                             if (user.user_Id === connection.connectionId) {
@@ -484,6 +484,7 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
     //userchat header
     let userchatheader = document.createElement('header');
     let userschatexit = document.createElement('span');
+    let exitimg = document.createElement('img');
     let userchatreciepientname = document.createElement('strong');
     let userchatprofilepicturecontainer = document.createElement('div');
     let memberimage = document.createElement('img');
@@ -559,21 +560,24 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
         }
         Delete_Community();
     }
-
+    voicerecordicon.addEventListener('click', () => {
+        chatfloat.classList.toggle('chatfloatactive');
+        create_Voice_Recording_Script(locationId, creator_Id, userchatroom);
+    });
     optionviewprofile.addEventListener('click', () => {
-        create_Community_Profile(locationId,userchatroom);
+        create_Community_Profile(locationId, userchatroom);
         chatoptionpopup.classList.toggle('chatoptionpopupactive');
     });
     optionaddmembers.addEventListener('click', () => {
-        create_Community_Chat_Add_Members(locationId,userchatroom);
+        create_Community_Chat_Add_Members(locationId, userchatroom);
         chatoptionpopup.classList.toggle('chatoptionpopupactive');
     });
     optionviewmembers.addEventListener('click', () => {
-        create_Community_Chat_Members(locationId,userchatroom);
+        create_Community_Chat_Members(locationId, userchatroom);
         chatoptionpopup.classList.toggle('chatoptionpopupactive');
     });
     chatuploadicon.addEventListener('click', () => {
-        createUploader(locationId, members_Id, userchatroom,Community_chatroomcolumn, voicerecordicon, 'community_chat', locationId);
+        createUploader(locationId, members_Id, userchatroom, Community_chatroomcolumn, voicerecordicon, 'community_chat', locationId);
     });
 
     function pushChat() {
@@ -709,7 +713,9 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
     usersHeaderflex.appendChild(userchatreciepientname);
     usersHeaderflex.appendChild(friendactivestatus);
     userchatprofilepicturecontainer.appendChild(memberimage);
-    userschatexit.innerHTML = '&LeftArrow;';
+    userschatexit.appendChild(exitimg);
+    exitimg.src = 'icons/undo.png';
+    userschatexit.classList.add('headerbtns');
     usersHeaderflex.classList.add('usersHeaderflex');
     userchatheader.classList.add('userchatheader');
     userchatprofilepicturecontainer.classList.add('userchatprofilepicturecontainer');
@@ -753,6 +759,154 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
         create_Community_Chat_Messages(Community_chatroomcolumn, locationId, members_Id);
     } else {
         Community_myChat_Msg = [];
+    }
+}
+function create_Voice_Recording_Script(locationId, CreatorId, chatroom) {
+    let my_Audio_Records = [];
+    let voicechat = document.createElement('div');
+    let voicechataudio = document.createElement('audio');
+    let chat_audionreciever = document.createElement('audio');
+    let voicechatsend = document.createElement('div');
+    let voicechatsendimg = document.createElement('img');
+    let audiorecord_Cancel = document.createElement('div');
+    let audiorecord_exit_img = document.createElement('img');
+    let chat_Audio_Gadget = document.createElement('div');
+    let chatplay = document.createElement('div');
+    let chatRecordplay = document.createElement('img');
+    let chatRecordPause = document.createElement('img');
+    let record_Timer = document.createElement('span');
+    chatplay.appendChild(chatRecordplay);
+    chatplay.appendChild(chatRecordPause);
+    chat_Audio_Gadget.appendChild(chatplay);
+    record_Timer.textContent = '00:00';
+    chatroom.appendChild(voicechat);
+    voicechat.appendChild(audiorecord_Cancel);
+    voicechat.appendChild(chat_Audio_Gadget);
+    voicechat.appendChild(record_Timer);
+    voicechat.appendChild(voicechataudio);
+    voicechat.appendChild(chat_audionreciever);
+    voicechat.appendChild(voicechatsend);
+    voicechatsend.appendChild(voicechatsendimg);
+    voicechat.classList.add('voicechat');
+    audiorecord_Cancel.appendChild(audiorecord_exit_img);
+    audiorecord_Cancel.classList.add('headerbtns');
+    chatplay.classList.add('headerbtns');
+    voicechatsend.classList.add('headerbtns');
+    audiorecord_exit_img.src = 'icons/undo_2.png';
+    voicechatsendimg.src = 'newicons/send.png';
+    audiorecord_Cancel.innerHTML = '&times;';
+
+    voicechataudio.addEventListener('timeupdate', () => {
+        let currentVideoTime = event.target.currentTime;
+        let currentMin = Math.floor(currentVideoTime / 60);
+        let currentSec = Math.floor(currentVideoTime % 60);
+        //if CurrentMin is < 10 add 0 at the beginning;
+        currentMin < 10 ? currentMin = "0" + currentMin : currentMin;
+
+        //if CurrentSec is < 10 add 0 at the beginning;
+        currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
+        record_Timer.innerHTML = ` ${currentMin} : ${currentSec}`;
+    });
+
+    chatRecordplay.src = 'icons/play.png';
+    chatRecordPause.src = 'icons/pause.png';
+    chatRecordPause.style.display = 'none';
+
+    chat_Audio_Gadget.classList.add('chat_Audio_Gadget');
+    audiorecord_Cancel.classList.add('audiorecord_Cancel');
+    function record_Chat() {
+        audiorecord_Cancel.addEventListener('click', () => {
+            voicechat.remove();
+        });
+        activateaudio();
+    }
+    record_Chat();
+    function activateaudio() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({
+                audio: true,
+            }).then(function (stream) {
+                voicechataudio.srcObject = stream;
+
+                let media_Recorder = new MediaRecorder(stream);
+                chatRecordplay.addEventListener('click', () => {
+                    voicechataudio.play();
+                    media_Recorder.start();
+                    console.log(media_Recorder.state);
+                    chatRecordplay.style.display = 'none';
+                    chatRecordPause.style.display = 'block';
+                });
+                function change_mediaRecorderState() {
+                    chatRecordplay.style.display = 'block';
+                    chatRecordPause.style.display = 'none';
+                    media_Recorder.stop();
+                    voicechataudio.pause();
+                    console.log(media_Recorder.state);
+                    record_Timer.textContent = '00:00';
+                }
+                media_Recorder.ondataavailable = function (event) {
+                    my_Audio_Records.push(event.data);
+                }
+                media_Recorder.onstop = function (event) {
+                    let blob = new Blob(my_Audio_Records, { type: 'audio/mp3' });
+                    let reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onload = () => {
+                        var b64 = reader.result.replace(/^data:, + base64,/, '');
+                        console.log(b64);
+                        chat_audionreciever.src = b64;
+                    }
+                    my_Audio_Records = [];
+                }
+
+                voicechatsend.addEventListener('click', () => {
+                    voicechat.style.display = 'none';
+                    pushVoiceChat();
+                    change_mediaRecorderState();
+                    hightlightchatblock();
+                    increaseChatCount(locationId);
+                    voicechataudio.src = '';
+                    voicechataudio.pause();
+                    if (type == 'friends_chat') {
+                        createChatMessages(chatroom, locationId, CreatorId);
+                    } if (type == 'community_chat') {
+                        create_Community_Chat_Messages(chatroom, locationId, CreatorId);
+                    }
+                });
+                function pushVoiceChat() {
+                    const id = '' + new Date().getTime();
+                    if (chat_audionreciever.src) {
+                        if (type == 'friends_chat') {
+                            myChatMsg.push({
+                                isAudio: true,
+                                voice: true,
+                                Property_Src: chat_audionreciever.src,
+                                id: id,
+                                posterId: CreatorId,
+                                chat_receiver: locationId,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                chatvisibilty: 'sent'
+                            });
+                            localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
+                        } if (type == 'community_chat') {
+                            Community_myChat_Msg.push({
+                                isAudio: true,
+                                voice: true,
+                                Property_Src: chat_audionreciever.src,
+                                id: id,
+                                posterId: CreatorId,
+                                chat_receiver: locationId,
+                                time: new Date().getTime(),
+                                date: trackingDate,
+                                chatvisibilty: 'sent'
+                            });
+                            localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
+                        }
+                    }
+                }
+            });
+        }
     }
 }
 function create_Community_Chat_Messages(column, locationId, members_Id) {

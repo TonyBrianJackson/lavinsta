@@ -505,29 +505,7 @@ const recyclebackarrow = document.querySelector('.recyclebackarrow');
 recyclebackarrow.addEventListener('click', () => {
     document.querySelector('.recycletabs').style.display = 'none';
 })
-const msgbtn = document.querySelectorAll('.msgbtn');
-function removeActiveMesg(mesgactiveclass) {
-    mesgactiveclass.forEach(item => {
-        item.classList.remove('active');
-    });
-}
-msgbtn.forEach(item => {
-    item.addEventListener('click', () => {
-        removeActiveMesg(msgbtn);
-        item.classList.add('active');
-        if (item.id != 'general_smart_Chat') {
-            document.querySelector('.chatsearchbar').style.display = 'none';
-        } else {
-            sessionStorage.setItem('activepage', 'general_smart_Chat');
-            document.querySelector('.chatsearchbar').style.display = 'flex';
-        } if (item.id != 'community_smart_Chat') {
-            document.querySelector('.chatsearchbar1').style.display = 'none';
-        } else {
-            sessionStorage.setItem('activepage', 'community_smart_Chat');
-            document.querySelector('.chatsearchbar1').style.display = 'flex';
-        }
-    });
-});
+
 document.querySelectorAll('.mesgBtn').forEach(item => {
     item.addEventListener('click', () => {
         removeActiveMesg(document.querySelectorAll('.mesgBtn'));
@@ -659,11 +637,6 @@ savedbackarrow.addEventListener('click', () => {
     document.querySelector('.savedpage').style.display = 'none';
 });
 
-const peopleleftarrow = document.querySelector('.peopleleftarrow');
-peopleleftarrow.addEventListener('click', () => {
-    document.querySelector('.people').style.display = 'none';
-    sessionStorage.setItem('activepage', 'home');
-});
 const chatpopupclosebtn = document.querySelector('.chatpopupclosebtn');
 chatpopupclosebtn.addEventListener('click', () => {
     document.querySelector('.chattab').style.display = 'none';
@@ -687,13 +660,14 @@ function opene_Search_Popup() {
     searchmoveback.addEventListener('click', () => {
         let main_Seach_Path = document.querySelector('.main_Seach_Path');
         main_Seach_Path.style.display = 'none';
+        document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
         sessionStorage.setItem('activepage', 'home');
     });
     function OpenSearchPath() {
-        loadPage();
         sessionStorage.setItem('activepage', 'homesearch');
         let main_Seach_Path = document.querySelector('.main_Seach_Path');
         main_Seach_Path.style.display = 'flex';
+        document.querySelector('.navigatiofloatcontainer').style.display = 'none';
     }
     document.querySelectorAll('.popup_search').forEach(button => {
         button.addEventListener('click',()=> {
