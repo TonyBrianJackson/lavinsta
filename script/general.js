@@ -55,14 +55,18 @@ floatItems.forEach(item => {
             document.querySelector('.photogallery').style.display = 'none';
         } else {
             document.querySelector('.photogallery').style.display = 'flex';
+            sessionStorage.setItem('activepage', 'lavinstaphotos');
         } if (item.id !='lav_Insta_public') {
             document.querySelector('.publicfeedpage').style.display = 'none';
         } else {
-            document.querySelector('.publicfeedpage').style.display = 'none';
+            document.querySelector('.publicfeedpage').style.display = 'flex';
+            sessionStorage.setItem('activepage', 'lavinstafeeds');
         } if (item.id !='lav_Insta_search') {
             document.querySelector('.main_Seach_Path').style.display = 'none';
         } else {
             document.querySelector('.main_Seach_Path').style.display = 'flex';
+            sessionStorage.setItem('activepage', 'homesearch');
+            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
         } if (item.id !='lav_Insta_menu') {
             document.querySelector('.hamburgermenupopup').classList.add('hamburgermenupopup');
             document.querySelector('.hamburgermenupopup').classList.remove('hamburgermenupopupactive');
@@ -72,8 +76,9 @@ floatItems.forEach(item => {
             document.querySelector('.reelsmainpage').style.display = 'none';
         } else {
             document.querySelector('.reelsmainpage').style.display = 'flex';
+            sessionStorage.setItem('activepage', 'reelsmainpage');
         }
-    })
+    });
 });
 document.querySelector('.hamburgermenuexit').addEventListener('click', () => {
     document.querySelector('.hamburgermenupopup').classList.toggle('hamburgermenupopupactive');
@@ -523,13 +528,13 @@ document.querySelectorAll('.mesgBtn').forEach(item => {
         }
     });
 });
-const peoplebtn = document.querySelectorAll('.peoplebtn');
+const people_C_button = document.querySelectorAll('.people_C_button');
 function removeClassActive() {
-    peoplebtn.forEach(btn => {
+    people_C_button.forEach(btn => {
         btn.classList.remove('active');
     })
 }
-peoplebtn.forEach(item => {
+people_C_button.forEach(item => {
     item.addEventListener('click', () => {
         removeClassActive();
         item.classList.add('active');
@@ -810,6 +815,8 @@ document.querySelector('#lavinsta_images_pages').addEventListener('click', () =>
     document.querySelector('.photogallery').style.display = 'flex';
     document.querySelector('.publicfeedpage').style.display = 'none';
 });
+
+
 document.querySelector('#lavinsta_images').addEventListener('click', () => {
     loadPage();
     sessionStorage.setItem('activepage', 'lavinstaphotos');

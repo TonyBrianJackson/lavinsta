@@ -1,16 +1,23 @@
 // DELETED LARGESCREENPHOTO PICTURE CREATION SCRIPT 
 function create_Trash_Items() {
-    let userstrashcolumn = document.querySelectorAll('.userstrashcolumn');
-    userstrashcolumn.forEach(column => {
-        column.innerHTML = '';
+    clearItemsInTrash();
+    function createArchieves() {
+        let userstrashcolumn = document.createElement('div');
+        document.querySelector('.deletedpostsssculomn').appendChild(userstrashcolumn);
+        userstrashcolumn.classList.add('userstrashcolumn');
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(data => {
+            userstrashcolumn.id = data.user_Id;
+        });
         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        userstrashcolumn.innerHTML = '';
         LogInFormData.forEach(user => {
-            if (user.user_Id === column.id) {
+            if (user.user_Id === userstrashcolumn.id) {
                 let trashItem = user.user_Trash;
                 trashItem.forEach(photo => {
-                    if (column.id === photo.posterId) {
+                    if (userstrashcolumn.id === photo.posterId) {
                         let griditems = document.createElement('div');
-                        column.appendChild(griditems);
+                        userstrashcolumn.appendChild(griditems);
                         griditems.classList.add('griditems');
                         if (photo.type == 'photo') {
                             let gridimg = document.createElement('img');
@@ -31,9 +38,31 @@ function create_Trash_Items() {
                 });
             }
         });
+    }
+    createArchieves();
+}
+function clearItemsInTrash() {
+    document.querySelectorAll('.userstrashcolumn').forEach(column => {
+        column.remove();
     });
 }
-create_Trash_Items();
+function clearItemsInSaved() {
+    document.querySelectorAll('.savedculomn').forEach(column => {
+        column.remove();
+    });
+}
+document.querySelector('.savedbackarrow').addEventListener('click',()=> {
+    clearItemsInSaved();
+});
+document.querySelector('.Arrpost').addEventListener('click',()=> {
+    clearItemsInTrash();
+});
+document.querySelector('#deletepst').addEventListener('click',()=> {
+    create_Trash_Items();
+});
+document.querySelector('#saved').addEventListener('click',()=> {
+    newSaved_Script();
+})
 async function create_Main_Trash_Items(locationId) {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     LogInFormData.forEach(user => {
@@ -382,17 +411,23 @@ function createTilePost(locationId) {
     })
 }
 function newSaved_Script() {
-    let savedculomn = document.querySelectorAll('.savedculomn');
-    const SavedVideos_Column = document.querySelectorAll('.SavedVideos_Column');
-    savedculomn.forEach(column => {
-        column.innerHTML = '';
+    clearItemsInSaved();
+    let savedculomn = document.createElement('div');
+    document.querySelector('.savedpage').appendChild(savedculomn);
+    savedculomn.classList.add('savedculomn');
+    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+    ActiveUser_Account.forEach(data => {
+        savedculomn.id = data.user_Id;
+    });
+    function create_Saved() {
+        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
         Feeds_Data_Base.forEach(feed => {
             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
             LogInFormData.forEach(user => {
-                if (user.user_Id === column.id) {
+                if (user.user_Id === savedculomn.id) {
                     let savedItems = user.user_Saved;
                     savedItems.forEach(photo => {
-                        if (column.id === photo.savedId) {
+                        if (savedculomn.id === photo.savedId) {
                             if (feed.id === photo.postId) {
                                 if (feed.isProfile_Photo || feed.isCover_Photo || feed.isPhoto || feed.isAdvert || feed.isCrime) {
                                     let griditems = document.createElement('div');
@@ -401,14 +436,14 @@ function newSaved_Script() {
                                     let deleteimg = document.createElement('img');
                                     deletebutton.appendChild(deleteimg);
                                     deleteimg.src = 'newicons/trash-can.png';
-                                    column.appendChild(griditems);
+                                    savedculomn.appendChild(griditems);
                                     griditems.appendChild(gridimg);
                                     griditems.appendChild(deletebutton);
                                     griditems.classList.add('griditems');
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.src = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
-                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                     });
                                     griditems.addEventListener('click', event => {
                                         createMain_GridPost(feed.id, feed.Property_Src);
@@ -444,14 +479,14 @@ function newSaved_Script() {
                                     let deleteimg = document.createElement('img');
                                     deletebutton.appendChild(deleteimg);
                                     deleteimg.src = 'newicons/trash-can.png';
-                                    column.appendChild(griditems);
+                                    savedculomn.appendChild(griditems);
                                     griditems.appendChild(gridimg);
                                     griditems.appendChild(deletebutton);
                                     griditems.classList.add('griditems');
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.src = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
-                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                     });
                                     griditems.addEventListener('click', event => {
                                         createMain_GridPost(feed.id, feed.Property_Src);
@@ -463,14 +498,14 @@ function newSaved_Script() {
                                     let deleteimg = document.createElement('img');
                                     deletebutton.appendChild(deleteimg);
                                     deleteimg.src = 'newicons/trash-can.png';
-                                    column.appendChild(griditems);
+                                    savedculomn.appendChild(griditems);
                                     griditems.appendChild(gridimg);
                                     griditems.appendChild(deletebutton);
                                     griditems.classList.add('griditems');
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.textContent = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
-                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                     });
                                     griditems.addEventListener('click', event => {
                                         createMain_GridPost(feed.id, feed.Property_Src);
@@ -567,7 +602,57 @@ function newSaved_Script() {
                 }
             });
         });
+    }
+    create_Saved();
+}
+function deleting_Saved_Post_Script(savedItems,LogInFormData,locationId,id) {
+    let confirmation_popup = document.createElement('div');
+    let confirmationflex = document.createElement('div');
+    let confirmationflex1 = document.createElement('div');
+    let confirmationtext = document.createElement('p');
+    let confirmationtrue = document.createElement('span');
+    let confirmationfalse = document.createElement('span');
+    confirmationtext.textContent = 'Are You Sure You Want To Deleted';
+    confirmationtrue.textContent = 'Yes';
+    confirmationfalse.textContent = 'No';
+    document.body.appendChild(confirmation_popup);
+    confirmation_popup.appendChild(confirmationflex);
+    confirmation_popup.appendChild(confirmationflex1);
+    confirmationflex.appendChild(confirmationtext);
+    confirmationflex1.appendChild(confirmationtrue);
+    confirmationflex1.appendChild(confirmationfalse);
+    confirmation_popup.classList.add('confirmation_popup');
+    confirmationflex.classList.add('confirmationflex');
+    confirmationflex1.classList.add('confirmationflex');
+    confirmationtrue.classList.add('confirmationtrue');
+    confirmationfalse.classList.add('confirmationfalse');
+    confirmationfalse.addEventListener('click', () => {
+        confirmation_popup.style.display = 'none';
     });
+    confirmation_popup.style.display = 'flex';
+
+    confirmation_popup.id = id;
+    confirmationtrue.id = id;
+    confirmationtrue.addEventListener('click', () => {
+        LogInFormData = LogInFormData.filter(data => {
+            if (data.user_Id === locationId) {
+                savedItems = savedItems.filter((photo) => {
+                    if (photo.id === confirmationtrue.id) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+                data.user_Saved = savedItems;
+                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                newSaved_Script();
+                confirmation_popup.remove();
+            }
+        });
+    });
+}
+function createSavedVideos() {
+    const SavedVideos_Column = document.querySelectorAll('.SavedVideos_Column');
     SavedVideos_Column.forEach(column => {
         column.innerHTML = '';
         Feeds_Data_Base.forEach(feed => {
@@ -601,7 +686,7 @@ function newSaved_Script() {
                                     reelgridusersphoto.classList.add('reelgridusersphoto');
 
                                     gridvideoremove.addEventListener('click', () => {
-                                        deleting_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
                                         gridvideomenu.classList.toggle('gridmenuactive');
                                     });
                                     gridvideoremove.appendChild(gridmenudeleteimg);
@@ -712,56 +797,4 @@ function newSaved_Script() {
             });
         });
     });
-    function deleting_Post_Script(savedItems,LogInFormData,locationId,id) {
-        let confirmation_popup = document.createElement('div');
-        let confirmationflex = document.createElement('div');
-        let confirmationflex1 = document.createElement('div');
-        let confirmationtext = document.createElement('p');
-        let confirmationtrue = document.createElement('span');
-        let confirmationfalse = document.createElement('span');
-        confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-        confirmationtrue.textContent = 'Yes';
-        confirmationfalse.textContent = 'No';
-        document.body.appendChild(confirmation_popup);
-        confirmation_popup.appendChild(confirmationflex);
-        confirmation_popup.appendChild(confirmationflex1);
-        confirmationflex.appendChild(confirmationtext);
-        confirmationflex1.appendChild(confirmationtrue);
-        confirmationflex1.appendChild(confirmationfalse);
-        confirmation_popup.classList.add('confirmation_popup');
-        confirmationflex.classList.add('confirmationflex');
-        confirmationflex1.classList.add('confirmationflex');
-        confirmationtrue.classList.add('confirmationtrue');
-        confirmationfalse.classList.add('confirmationfalse');
-        confirmationfalse.addEventListener('click', () => {
-            confirmation_popup.style.display = 'none';
-        });
-        confirmation_popup.style.display = 'flex';
-
-        confirmation_popup.id = id;
-        confirmationtrue.id = id;
-        confirmationtrue.addEventListener('click', () => {
-            LogInFormData = LogInFormData.filter(data => {
-                if (data.user_Id === locationId) {
-                    savedItems = savedItems.filter((photo) => {
-                        if (photo.id === confirmationtrue.id) {
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    });
-                    data.user_Saved = savedItems;
-                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                    newSaved_Script();
-                    confirmation_popup.remove();
-                }
-            });
-        });
-    }
-}
-if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
-    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-    newSaved_Script();
-} else {
-    Feeds_Data_Base = [];
 }

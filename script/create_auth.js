@@ -163,11 +163,6 @@ function active_user_render() {
 
                     document.querySelector('.calllistcolumn').innerHTML = `<div class="userscallslistcolumn" id="${user.user_Id}"></div>`;
 
-                    document.querySelector('.storiesarchivecolumn').innerHTML += `<div class="userstoryarchievecolumn" id="${user.user_Id}"></div>`;
-                    document.querySelector('.deletedpostsssculomn').innerHTML += `<div class="userstrashcolumn" id="${user.user_Id}"></div>`;
-                    document.querySelector('.deletedstoriessssculomn').innerHTML += `<div class="userstorytrashcolumn" id="${user.user_Id}"></div>`;
-                    document.querySelector('.savedpage').innerHTML += `<div class="savedculomn" id="${user.user_Id}"></div>`;
-
                     //video player
                     document.querySelector('.trending_Videos').innerHTML = `<div class="TrendingVideos_Column" id="${user.user_Id}"></div>`;
                     document.querySelector('.live_Videos').innerHTML = `<div class="LiveVideos_Column" id="${user.user_Id}"></div>`;

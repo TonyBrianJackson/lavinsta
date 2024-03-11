@@ -1,16 +1,23 @@
 const deletedstoriessssculomn = document.querySelector('.deletedstoriessssculomn');
 
 function create_Grid_Story_Trash() {
-    let userstorytrashcolumn = document.querySelectorAll('.userstorytrashcolumn');
-    userstorytrashcolumn.forEach(column => {
+    clearItemsInTrash();
+    function createArchieves() {
+        let userstorytrashcolumn = document.createElement('div');
+        document.querySelector('.deletedstoriessssculomn').appendChild(userstorytrashcolumn);
+        userstorytrashcolumn.classList.add('userstorytrashcolumn');
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(data => {
+            userstorytrashcolumn.id = data.user_Id;
+        });
         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        userstorytrashcolumn.innerHTML = '';
         LogInFormData.forEach(user => {
-            if (user.user_Id === column.id) {
+            if (user.user_Id === userstorytrashcolumn.id) {
                 let Trash = user.user_Story_Trash;
-                column.innerHTML = '';
                 Trash.forEach(trash => {
                     let griditems = document.createElement('div');
-                    column.appendChild(griditems);
+                    userstorytrashcolumn.appendChild(griditems);
                     griditems.classList.add('griditems');
                     if (trash.type == 'photo') {
                         let gridimg = document.createElement('img');
@@ -29,7 +36,8 @@ function create_Grid_Story_Trash() {
                 });
             }
         });
-    });
+    }
+    createArchieves();
 }
 function create_Main_Story_Trash(locationId) {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -71,12 +79,11 @@ function create_Main_Story_Trash(locationId) {
                     confirmationflex1.classList.add('confirmationflex');
                     confirmationtrue.classList.add('confirmationtrue');
                     confirmationfalse.classList.add('confirmationfalse');
+                    confirmation_popup.style.display = 'flex';
                     confirmationfalse.addEventListener('click', () => {
-                        confirmation_popup.style.display = 'none';
+                        confirmation_popup.remove();
                     });
-                    saveddeletebtn.addEventListener('click', () => {
-                        confirmation_popup.style.display = 'flex';
-                    });
+
                     confirmationtrue.id = photo.id
                     confirmationtrue.addEventListener('click', () => {
                         LogInFormData.forEach(data => {
@@ -92,14 +99,16 @@ function create_Main_Story_Trash(locationId) {
                             localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                         });
                         create_Grid_Story_Trash();
-                        confirmation_popup.style.display = 'none';
+                        confirmation_popup.remove();
                         creategridpostimagecontaineringTile(photo.posterId);
                     });
                     itemsviewclosebutton.addEventListener('click', () => {
                         confirmation_popup.remove();
                     });
                 }
-                delete_DELETED_story();
+                saveddeletebtn.addEventListener('click', () => {
+                    delete_DELETED_story();
+                });
                 itemsviewonlargescale.style.display = 'flex';
 
                 loader(itemsviewonlargescale, photo.id);
@@ -371,7 +380,17 @@ function creategridpostimagecontaineringTile(locationId) {
         });
     })
 }
-create_Grid_Story_Trash();
+function clearItemsInTrash() {
+    document.querySelectorAll('.userstorytrashcolumn').forEach(column => {
+        column.remove();
+    });
+}
+document.querySelector('.Arrstories').addEventListener('click',()=> {
+    clearItemsInTrash();
+});
+document.querySelector('#deletestoss').addEventListener('click',()=> {
+    create_Grid_Story_Trash();
+});
 
 /* STORIES UPLOAD*/
 const mystory = document.querySelectorAll('.mystory');
@@ -469,98 +488,101 @@ function createStoriesPhotos() {
         });
     });
 }
-function AllOtherThingsAboutStories(locationId) {
+
+function story_Deleting(locationId) {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     LogInFormData.forEach(userdata => {
         let stories = userdata.user_Stories;
         stories.forEach(storystatus => {
             if (storystatus.id === locationId) {
-                function deleteStory() {
-                    let confirmation_popup = document.createElement('div');
-                    let confirmationflex = document.createElement('div');
-                    let confirmationflex1 = document.createElement('div');
-                    let confirmationtext = document.createElement('p');
-                    let confirmationtrue = document.createElement('span');
-                    let confirmationfalse = document.createElement('span');
-                    confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-                    confirmationtrue.textContent = 'Yes';
-                    confirmationfalse.textContent = 'No';
-                    document.body.appendChild(confirmation_popup);
-                    confirmation_popup.appendChild(confirmationflex);
-                    confirmation_popup.appendChild(confirmationflex1);
-                    confirmationflex.appendChild(confirmationtext);
-                    confirmationflex1.appendChild(confirmationtrue);
-                    confirmationflex1.appendChild(confirmationfalse);
-                    confirmation_popup.classList.add('confirmation_popup');
-                    confirmationflex.classList.add('confirmationflex');
-                    confirmationflex1.classList.add('confirmationflex');
-                    confirmationtrue.classList.add('confirmationtrue');
-                    confirmationfalse.classList.add('confirmationfalse');
-                    confirmationfalse.addEventListener('click', () => {
-                        confirmation_popup.style.display = 'none';
-                    });
-                    confirmation_popup.id = storystatus.id;
-                    confirmationtrue.id = storystatus.id;
-                    confirmation_popup.style.display = 'flex';
-
-                    function pushtrash() {
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === storystatus.posterId) {
-                                let Trash = user.user_Story_Trash;
-                                const id = '' + new Date().getTime();
-                                if (storystatus.type == 'photo') {
-                                    Trash.push({
-                                        type: 'photo',
-                                        posterId: storystatus.posterId,
-                                        Property_Src: storystatus.Property_Src,
-                                        title: storystatus.title,
-                                        id: id,
-                                        date: trackingDate
-                                    });
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                } else if (storystatus.type == 'video') {
-                                    Trash.push({
-                                        type: 'video',
-                                        posterId: storystatus.posterId,
-                                        Property_Src: storystatus.Property_Src,
-                                        title: storystatus.title,
-                                        id: id,
-                                        date: trackingDate
-                                    });
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            }
-                        });
-                    }
-                    confirmationtrue.addEventListener('click', () => {
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(userdata => {
-                            if (userdata.user_Id === storystatus.posterId) {
-                                let stories = userdata.user_Stories;
-                                pushtrash();
-                                stories = stories.filter(story => {
-                                    if (story.id === confirmationtrue.id) {
-                                        return false;
-                                    } else {
-                                        return true;
-                                    }
+                let confirmation_popup = document.createElement('div');
+                let confirmationflex = document.createElement('div');
+                let confirmationflex1 = document.createElement('div');
+                let confirmationtext = document.createElement('p');
+                let confirmationtrue = document.createElement('span');
+                let confirmationfalse = document.createElement('span');
+                confirmationtext.textContent = 'Are You Sure You Want To Deleted';
+                confirmationtrue.textContent = 'Yes';
+                confirmationfalse.textContent = 'No';
+                document.body.appendChild(confirmation_popup);
+                confirmation_popup.appendChild(confirmationflex);
+                confirmation_popup.appendChild(confirmationflex1);
+                confirmationflex.appendChild(confirmationtext);
+                confirmationflex1.appendChild(confirmationtrue);
+                confirmationflex1.appendChild(confirmationfalse);
+                confirmation_popup.classList.add('confirmation_popup');
+                confirmationflex.classList.add('confirmationflex');
+                confirmationflex1.classList.add('confirmationflex');
+                confirmationtrue.classList.add('confirmationtrue');
+                confirmationfalse.classList.add('confirmationfalse');
+                confirmationfalse.addEventListener('click', () => {
+                    confirmation_popup.style.display = 'none';
+                });
+                confirmation_popup.id = storystatus.id;
+                confirmationtrue.id = storystatus.id;
+                confirmation_popup.style.display = 'flex';
+            
+                function pushtrash() {
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === storystatus.posterId) {
+                            let Trash = user.user_Story_Trash;
+                            const id = '' + new Date().getTime();
+                            if (storystatus.type == 'photo') {
+                                Trash.push({
+                                    type: 'photo',
+                                    posterId: storystatus.posterId,
+                                    Property_Src: storystatus.Property_Src,
+                                    title: storystatus.title,
+                                    id: id,
+                                    date: trackingDate
                                 });
-                                userdata.user_Stories = stories;
                                 localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                create_Grid_Story_Trash();
-                                confirmation_popup.remove();
-                                createStoriesPhotos();
-                                CreateTileImages(storystatus.posterId);
+                            } else if (storystatus.type == 'video') {
+                                Trash.push({
+                                    type: 'video',
+                                    posterId: storystatus.posterId,
+                                    Property_Src: storystatus.Property_Src,
+                                    title: storystatus.title,
+                                    id: id,
+                                    date: trackingDate
+                                });
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                             }
-                        });
+                        }
+                    });
+                    deletestory();
+                }
+                function deletestory() {
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    LogInFormData.forEach(userdata => {
+                        if (userdata.user_Id === storystatus.posterId) {
+                            let activestories = userdata.user_Stories;
+                            activestories = activestories.filter(story => {
+                                if (story.id === confirmationtrue.id) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                            userdata.user_Stories = activestories;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            create_Grid_Story_Trash();
+                            confirmation_popup.remove();
+                            createStoriesPhotos();
+                            CreateTileImages(storystatus.posterId);
+                        }
                     });
                 }
-                deleteStory();
+                confirmationtrue.addEventListener('click', () => {
+                    pushtrash();
+                });
             }
         });
-    });
+    })
 }
+story_Deleting();
+
 async function create_Main_Stories(locationId, Property_Src) {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     LogInFormData.forEach(userdata => {
@@ -950,7 +972,7 @@ async function create_Main_Stories(locationId, Property_Src) {
                 items_Float.appendChild(items_Center);
 
                 storydelete.addEventListener('click', () => {
-                    AllOtherThingsAboutStories(locationId);
+                    story_Deleting(locationId);
                 });
                 storydelete.appendChild(storydeleteimg);
                 gridpostimagecontainer.appendChild(largenameandimg);
@@ -1180,7 +1202,7 @@ function Send_This_Story_To_Archieve() {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     LogInFormData.forEach(userdata => {
         let stories = userdata.user_Stories;
-        stories = stories.filter(story => {
+        stories.find(story => {
             let timeresult = new Date().getTime();
             let miliseconds = timeresult - story.time;
             let event = miliseconds / 1000;
@@ -1234,15 +1256,29 @@ function Send_This_Story_To_Archieve() {
                     CreateTileImages();
                 }
                 pushtrash();
-                return false
-            } else {
-                return true;
+                addtoarchieves();
             }
         });
-        userdata.user_Stories = stories;
-        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-        createStoriesPhotos();
     });
+    function addtoarchieves() {
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        LogInFormData.forEach(userdata => {
+            let stories = userdata.user_Stories;
+            stories = stories.filter(story => {
+                let timeresult = new Date().getTime();
+                let miliseconds = timeresult - story.time;
+                let event = miliseconds / 1000;
+                if (event >= 60 * 60 * 24) {
+                    return false
+                } else {
+                    return true;
+                }
+            });
+            userdata.user_Stories = stories;
+            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+            createStoriesPhotos();
+        });
+    }
 }
 const storyphotolabel = document.getElementById('storyphotolabel');
 function uploadphotostory() {

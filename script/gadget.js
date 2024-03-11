@@ -151,6 +151,7 @@ function create_share_Popup(locationId) {
                     option_Name5_Img.src = 'icons/image(0).png';
                     option_Name6_Img.src = 'icons/discover.png';
                     option_Name7_Img.src = 'newicons/medical-report.png';
+
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'add to crime';
@@ -158,6 +159,24 @@ function create_share_Popup(locationId) {
                     option_Name5.textContent = 'add to photo';
                     option_Name6.textContent = 'advance';
                     option_Name7.textContent = 'report post';
+
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                    option_Name5_Img.classList.add('darkmodeicons');
+                                    option_Name6_Img.classList.add('darkmodeicons');
+                                    option_Name7_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -498,6 +517,22 @@ function create_share_Popup(locationId) {
                     option_Name4_Img.src = 'icons/discover.png';
                     option_Name5_Img.src = 'newicons/medical-report.png';
 
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                    option_Name5_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
+
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
@@ -741,6 +776,21 @@ function create_share_Popup(locationId) {
                     option_Name3_Img.src = 'icons/discover.png';
                     option_Name4_Img.src = 'newicons/medical-report.png';
 
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
+
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
@@ -961,6 +1011,24 @@ function create_share_Popup(locationId) {
                     option_Name5_Img.src = 'icons/image(0).png';
                     option_Name6_Img.src = 'icons/discover.png';
                     option_Name7_Img.src = 'newicons/medical-report.png';
+
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                    option_Name5_Img.classList.add('darkmodeicons');
+                                    option_Name6_Img.classList.add('darkmodeicons');
+                                    option_Name7_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
@@ -1317,6 +1385,22 @@ function create_share_Popup(locationId) {
                     option_Name4_img.src = 'icons/discover.png';
                     option_Name5_img.src = 'newicons/mediacal-report.png';
 
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                    option_Name5_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
+
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
@@ -1559,6 +1643,21 @@ function create_share_Popup(locationId) {
                     option_Name3_Img.src = 'icons/discover.png';
                     option_Name4_Img.src = 'newicons/medical-report.png';
 
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
+
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
@@ -1757,6 +1856,21 @@ function create_share_Popup(locationId) {
                     option_Name2_Img.src = 'icons/home.png';
                     option_Name3_Img.src = 'icons/discover.png';
                     option_Name4_Img.src = 'newicons/medical-report.png';
+
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -1996,6 +2110,24 @@ function create_share_Popup(locationId) {
                     option_Name5_Img.src = 'icons/image(0).png';
                     option_Name6_Img.src = 'icons/discover.png';
                     option_Name7_Img.src = 'newicons/medical-report.png';
+
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    ActiveUser_Account.forEach(data => {
+                        LogInFormData.forEach(user => {
+                            if (data.user_Id === user.user_Id) {
+                                if (user.user_Mode !== "defaultTheme") {
+                                    option_Name1_Img.classList.add('darkmodeicons');
+                                    option_Name2_Img.classList.add('darkmodeicons');
+                                    option_Name3_Img.classList.add('darkmodeicons');
+                                    option_Name4_Img.classList.add('darkmodeicons');
+                                    option_Name5_Img.classList.add('darkmodeicons');
+                                    option_Name6_Img.classList.add('darkmodeicons');
+                                    option_Name7_Img.classList.add('darkmodeicons');
+                                }
+                            }
+                        });
+                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -2458,22 +2590,15 @@ function create_Comment_room(locationId) {
                     ActiveUser_Account.forEach(data => {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === data.user_Id) {
-                                if (user.user_Mode == 'defaultTheme') {
-                                    sharegridviewimg.classList.remove('darkmodeicons');
-                                    sharegridlikeimg.classList.remove('darkmodeicons');
-                                    sharegridshareimg.classList.remove('darkmodeicons');
-                                    sharegridphoto.classList.remove('darkmodeicons');
-                                    commentattachmenticon.classList.remove('darkmodeicons');
-
-                                    newcommentinputinputsend.classList.remove('darkmodeicons');
-                                } else {
+                                if (user.user_Mode !== 'defaultTheme') {
                                     sharegridviewimg.classList.add('darkmodeicons');
                                     sharegridlikeimg.classList.add('darkmodeicons');
                                     sharegridshareimg.classList.add('darkmodeicons');
                                     sharegridphoto.classList.add('darkmodeicons');
                                     commentattachmenticon.classList.add('darkmodeicons');
-
                                     newcommentinputinputsend.classList.add('darkmodeicons');
+                                    exitimg.classList.add('darkmodeicons');
+                                    refreshimg.classList.add('darkmodeicons');
                                 }
                             }
                         });
@@ -2596,7 +2721,17 @@ function Media_Comment_Popup(locationId, posterId) {
     exitimg.src = 'icons/undo.png';
     firsttext.textContent = 'photo';
     secondtext.textContent = 'video';
-
+    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    ActiveUser_Account.forEach(data => {
+        LogInFormData.forEach(user => {
+            if (data.user_Id === user.user_Id) {
+                if (user.user_Mode !== "defaultTheme") {
+                    exitimg.classList.add('darkmodeicons');
+                }
+            }
+        });
+    });
     firstImg.src = 'icons/image(0).png';
     secondImg.src = 'icons/youtube.png';
     popup_Names_Container.appendChild(Names_title);
@@ -2617,7 +2752,7 @@ function Media_Comment_Popup(locationId, posterId) {
         sharephotosend.style.display = 'none';
         shareimagecontainer.style.display = 'none';
     });
-    
+
     newphotolabel.classList.add('newphotolabel');
     newvideolabel.classList.add('newphotolabel');
     mediacommentspopup.classList.add('post_making_upload_popup');
@@ -2932,7 +3067,17 @@ function create_reportScript(locationId) {
                 reportcontainerexit.addEventListener('click', () => {
                     reportcontainer.remove();
                 });
-
+                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                ActiveUser_Account.forEach(data => {
+                    LogInFormData.forEach(user => {
+                        if (data.user_Id === user.user_Id) {
+                            if (user.user_Mode !== "defaultTheme") {
+                                exitimg.classList.add('darkmodeicons');
+                            }
+                        }
+                    });
+                });
                 function pushreport() {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
@@ -3028,14 +3173,17 @@ function editingPostText(locationId) {
             editingpopupclosebtn.addEventListener('click', () => {
                 editpopup.remove();
             });
-            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                ActiveUser_Account.forEach(data => {
-                    if (photo.posterId !== data.user_Id) {
-                        editpopup.remove();
+            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+            ActiveUser_Account.forEach(data => {
+                LogInFormData.forEach(user => {
+                    if (data.user_Id === user.user_Id) {
+                        if (user.user_Mode !== "defaultTheme") {
+                            exitimg.classList.add('darkmodeicons');
+                        }
                     }
                 });
-            }
+            });
             function EditingMessage() {
                 let editingmessage = document.createElement('div');
                 let actualeditingmessage = document.createElement('p');

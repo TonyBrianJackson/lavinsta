@@ -1311,15 +1311,11 @@ function create_Comment_Reply_room(locationId) {
                         ActiveUser_Account.forEach(data => {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === data.user_Id) {
-                                    if (user.user_Mode == 'defaultTheme') {
-                                        newcommentinputsend.classList.remove('darkmodeicons');
-                                        commentattachmenticon.classList.remove('darkmodeicons');
-                                    } else if (user.user_Mode == 'darkTheme') {
+                                    if (user.user_Mode !== 'defaultTheme') {
                                         newcommentinputsend.classList.add('darkmodeicons');
                                         commentattachmenticon.classList.add('darkmodeicons');
-                                    } else if (user.user_Mode == 'lightOffTheme') {
-                                        newcommentinputsend.classList.add('darkmodeicons');
-                                        commentattachmenticon.classList.add('darkmodeicons');
+                                        refreshimg.classList.add('darkmodeicons');
+                                        exitimg.classList.add('darkmodeicons');
                                     }
                                 }
                             });
@@ -1473,7 +1469,17 @@ function Media_Comment_Reply_Popup(locationId, postId, posterId, caption) {
             mediacommentspopup.remove();
         }
     });
-
+    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    ActiveUser_Account.forEach(data => {
+        LogInFormData.forEach(user => {
+            if (data.user_Id === user.user_Id) {
+                if (user.user_Mode !== "defaultTheme") {
+                    exitimg.classList.add('darkmodeicons');
+                }
+            }
+        });
+    });
     document.body.appendChild(mediacommentspopup);
     mediacommentspopup.appendChild(header);
     mediacommentspopup.appendChild(uploadpreviewcontainer);

@@ -1235,6 +1235,7 @@
         border-radius: 0px;
         box-shadow: none;
         border: none;
+        overflow: hidden;
     }
 
     .Community_chatroomcolumn,

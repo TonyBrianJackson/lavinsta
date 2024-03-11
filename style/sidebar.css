@@ -737,7 +737,10 @@ button {
     border-radius: 0px;
 }
 
-
+.sidebar .headerbtns:last-child() svg path {
+    width: 30px;
+    height: 30px;
+}
 @media (min-width: 280px) and (max-width: 539px) {
 
     .sidebaractive {

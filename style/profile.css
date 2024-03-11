@@ -3320,6 +3320,7 @@
         width: 45px;
         height: 45px;
         margin: 0;
+        background: var(--color-bright-2);
         border: 1px solid var(--color-gray);
     }
 
@@ -3473,7 +3474,7 @@
     }
 
     .humburgermenu {
-        padding: 0;
+        padding: 0px 5px;
         width: 100%;
         height: max-content;
         max-height: 85vh;
@@ -3572,8 +3573,18 @@
         border-radius: 0px;
         box-shadow: none;
         padding: 10px 0px;
+        background: var(--color-white);
     }
-
+    .adgrid .head .posttitle {
+        color: var(--color-dark);
+    }
+    .adgrid .head .nameandimg > img {
+        border: 1px solid var(--color-dark);
+    }
+    .adgrid .head> b,
+    .adgrid .head .nameandimg > p {
+        color: var(--color-dark);
+    }
     .adgridimagecontainer {
         border-radius: 0px;
         height: max-content;

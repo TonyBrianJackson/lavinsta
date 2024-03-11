@@ -90,37 +90,26 @@ function create_StatusBar() {
     ActiveUser_Account.forEach(user => {
         LogInFormData.forEach(profile => {
             if (user.user_Id === profile.user_Id) {
-                let userstatusbar = document.createElement('div');
-                let useraddstatus = document.createElement('div');
-                let useraddstoryimagecontainer = document.createElement('div');
+                const userstatusbar = document.querySelector('.statusbar');
                 let useraddstoryimg = document.createElement('img');
                 let storycount = document.createElement('span');
                 let mystory = document.createElement('div');
-                useraddstoryimagecontainer.appendChild(useraddstoryimg);
-                useraddstoryimagecontainer.classList.add('addstoryimagcontainer');
+                document.querySelector('.addstoryimagcontainer').appendChild(useraddstoryimg);
                 useraddstoryimg.src = profile.user_ProfilePicture;
-                userstatusbar.appendChild(useraddstatus);
                 userstatusbar.appendChild(mystory);
-                document.querySelector('.statusbarcontainer').appendChild(userstatusbar);
-                useraddstatus.appendChild(useraddstoryimagecontainer);
                 mystory.appendChild(storycount);
                 storycount.textContent = profile.user_Stories.length;
                 mystory.classList.add('mystory');
                 storycount.classList.add('storycount');
-                useraddstatus.classList.add('addstory');
-                userstatusbar.classList.add('statusbar');
                 mystory.id = profile.user_Id;
                 storycount.id = profile.user_Id;
                 useraddstoryimg.id = profile.user_Id;
-                useraddstoryimg.id = profile.user_Id;
-                useraddstatus.id = profile.user_Id;
-                userstatusbar.id = profile.user_Id;
                 if (storycount.textContent == 0) {
                     mystory.style.display = 'none';
                 } else {
                     mystory.style.display = 'flex';
                 }
-                useraddstatus.addEventListener('click', () => {
+                document.querySelector('.addstory').addEventListener('click', () => {
                     document.querySelector('.actualstorypopup').style.display = 'flex';
                 });
                 function filter_Image_Profile() {
@@ -848,6 +837,10 @@ document.querySelectorAll('.people_C_button').forEach(button => {
             }
         });
     });
+});
+document.querySelector('#peopleclosebtn').addEventListener('click',()=> {
+    document.querySelector('.people').style.display = 'none';
+    sessionStorage.setItem('activepage','home');
 });
 function secondcreatePeople() {
     removepeoplecolumn();
