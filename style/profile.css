@@ -3528,7 +3528,10 @@
     .statusbarcontainer {
         height: 200px;
     }
-
+    .beforeofmystory {
+        background: var(--color-primary);
+        transform: rotate(-50deg);
+    }
     .statusbarcontainer::-webkit-scrollbar {
         height: 0px;
     }

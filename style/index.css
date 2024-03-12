@@ -600,40 +600,31 @@ main .header {
 
 }
 
-.storycount {
+.beforeofmystory {
     position: absolute;
-    background: var(--color-primary);
-    box-shadow: none;
-    border: none;
-    left: 2px;
-    top: 2px;
-    padding: 10px;
-    color: var(--color-white);
-    z-index: 2;
-    font-family: great vibes;
-}
-
-.storycontainer1 {
+    top: -5px;
+    left: -40px;
     width: 100%;
-    height: 100%;
+    height: 50px;
+    z-index: 2;
+    background: linear-gradient(to bottom, var(--color-primary), transparent);
+    border-radius: 0px;
+    transform: rotate(-45deg);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
     border: none;
+    overflow: visible;
 }
-
-.storycontainer1 img {
-    width: 100%;
-    height: 100%;
+.storycount {
     background: none;
-    display: block;
-    object-fit: cover;
-    border: none;
     box-shadow: none;
+    border: none;
+    padding: 10px;
+    color: var(--color-white);
+    font-family: great vibes;
 }
-
 
 .statusbarcontainer {
     display: flex;
@@ -2542,7 +2533,22 @@ main .header {
     justify-content: center;
     margin: 0px;
 }
-
+.imagecontainerLoading {
+    background-size: cover;
+    background-position: center;
+    filter: 3px;
+}
+.imagecontainerLoading> .mainimg {
+    opacity: 0;
+}
+.imagecontainerLoading.loaded > .mainimg {
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+}
+.imagecontainerLoading.loaded {
+    transition: opacity 200ms ease-in-out;
+    filter: blur(0px);
+}
 .children_Tile_Box {
     position: absolute;
     right: 10px;

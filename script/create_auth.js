@@ -146,7 +146,6 @@ function active_user_render() {
                 function Create_Additional_HtmlTags() {
                     document.querySelector('.secondreelcontainer').innerHTML = `<div class="reelscontainer" id="${user.user_Id}"></div>`;
                     document.querySelector('.greatpublixpostcontainer').innerHTML = `<div class="publicpostcontainer" id="${user.user_Id}"></div>`;
-                    document.querySelector('.greatpostcontainer').innerHTML = `<div class="usersfeedcolumn" id="${user.user_Id}"></div>`;
                     document.querySelector('.publicreelside').innerHTML += `<div class="Public_video_Reel_Column" id="${user.user_Id}"></div>`;
                     document.querySelector('.advertStatusbarcontainer').innerHTML = `<div class="advertStatusbar" id="${user.user_Id}"></div>`;
                     document.querySelector('.reelsideoutercontainer').innerHTML += `<div class="rightsidefeedsothersection" id="${user.user_Id}"></div>`;

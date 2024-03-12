@@ -94,10 +94,13 @@ function create_StatusBar() {
                 let useraddstoryimg = document.createElement('img');
                 let storycount = document.createElement('span');
                 let mystory = document.createElement('div');
+                let beforeofmystory = document.createElement('div');
                 document.querySelector('.addstoryimagcontainer').appendChild(useraddstoryimg);
                 useraddstoryimg.src = profile.user_ProfilePicture;
                 userstatusbar.appendChild(mystory);
-                mystory.appendChild(storycount);
+                mystory.appendChild(beforeofmystory);
+                beforeofmystory.appendChild(storycount);
+                beforeofmystory.classList.add('beforeofmystory');
                 storycount.textContent = profile.user_Stories.length;
                 mystory.classList.add('mystory');
                 storycount.classList.add('storycount');
@@ -141,9 +144,12 @@ function create_StatusBar() {
                     connections.forEach(connect => {
                         let friendstatus = document.createElement('div');
                         let friendstorycount = document.createElement('span');
+                        let beforeoffriendstatus = document.createElement('div');
                         friendstatus.classList.add('mystory');
                         friendstorycount.classList.add('storycount');
-                        friendstatus.appendChild(friendstorycount);
+                        beforeoffriendstatus.classList.add('beforeofmystory')
+                        friendstatus.appendChild(beforeoffriendstatus);
+                        beforeoffriendstatus.appendChild(friendstorycount);
                         friendstatus.id = connect.connectionId;
                         friendstorycount.id = connect.connectionId;
                         userstatusbar.appendChild(friendstatus);

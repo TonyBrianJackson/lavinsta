@@ -1,5 +1,5 @@
 function removeItemsActiveClasses() {
-    document.querySelectorAll('.items').forEach(item=> {
+    document.querySelectorAll('.items').forEach(item => {
         item.classList.remove('active');
     })
 }
@@ -11,6 +11,7 @@ floatItems.forEach(item => {
         item.classList.add('active');
         if (item.id != 'home') {
         } else {
+            loadscreen();
             createrefresh_Loader();
             sessionStorage.setItem('activepage', 'home');
             document.title = 'home';
@@ -26,7 +27,7 @@ floatItems.forEach(item => {
             document.querySelector('.chattab').style.display = 'none';
         } else {
             loadPage();
-            sessionStorage.setItem('activepage','general_smart_Chat');
+            sessionStorage.setItem('activepage', 'general_smart_Chat');
             document.querySelector('.chattab').style.display = 'flex';
             document.title = 'messages';
             secondchatcontainers();
@@ -51,28 +52,28 @@ floatItems.forEach(item => {
             sessionStorage.setItem('activepage', 'profile');
             document.querySelector('.profile').style.display = 'flex';
             document.title = 'profile';
-        } if (item.id !='lav_Insta_images') {
+        } if (item.id != 'lav_Insta_images') {
             document.querySelector('.photogallery').style.display = 'none';
         } else {
             document.querySelector('.photogallery').style.display = 'flex';
             sessionStorage.setItem('activepage', 'lavinstaphotos');
-        } if (item.id !='lav_Insta_public') {
+        } if (item.id != 'lav_Insta_public') {
             document.querySelector('.publicfeedpage').style.display = 'none';
         } else {
             document.querySelector('.publicfeedpage').style.display = 'flex';
             sessionStorage.setItem('activepage', 'lavinstafeeds');
-        } if (item.id !='lav_Insta_search') {
+        } if (item.id != 'lav_Insta_search') {
             document.querySelector('.main_Seach_Path').style.display = 'none';
         } else {
             document.querySelector('.main_Seach_Path').style.display = 'flex';
             sessionStorage.setItem('activepage', 'homesearch');
             document.querySelector('.navigatiofloatcontainer').style.display = 'none';
-        } if (item.id !='lav_Insta_menu') {
+        } if (item.id != 'lav_Insta_menu') {
             document.querySelector('.hamburgermenupopup').classList.add('hamburgermenupopup');
             document.querySelector('.hamburgermenupopup').classList.remove('hamburgermenupopupactive');
         } else {
             document.querySelector('.hamburgermenupopup').classList.toggle('hamburgermenupopupactive');
-        } if (item.id !='lav_Insta_short') {
+        } if (item.id != 'lav_Insta_short') {
             document.querySelector('.reelsmainpage').style.display = 'none';
         } else {
             document.querySelector('.reelsmainpage').style.display = 'flex';
@@ -297,7 +298,7 @@ maSter.addEventListener('click', (event) => {
     Float.classList.toggle('floatactive');
     main_Master_Center.classList.toggle('main_Master_Centeractive');
 });
-document.querySelector('.headerbtns.toggleBtn.advance').addEventListener('click',()=> {
+document.querySelector('.headerbtns.toggleBtn.advance').addEventListener('click', () => {
     Float.classList.toggle('floatactive');
     main_Master_Center.classList.toggle('main_Master_Centeractive');
 });
@@ -515,12 +516,12 @@ document.querySelectorAll('.mesgBtn').forEach(item => {
     item.addEventListener('click', () => {
         removeActiveMesg(document.querySelectorAll('.mesgBtn'));
         item.classList.add('active');
-        if (item.id !='general_smart_Chat') {
+        if (item.id != 'general_smart_Chat') {
             document.querySelector('.chatsearchbar').style.display = 'none';
         } else {
             sessionStorage.setItem('activepage', 'general_smart_Chat');
             document.querySelector('.chatsearchbar').style.display = 'flex';
-        } if (item.id !='community_smart_Chat') {
+        } if (item.id != 'community_smart_Chat') {
             document.querySelector('.chatsearchbar1').style.display = 'none';
         } else {
             sessionStorage.setItem('activepage', 'community_smart_Chat');
@@ -675,7 +676,7 @@ function opene_Search_Popup() {
         document.querySelector('.navigatiofloatcontainer').style.display = 'none';
     }
     document.querySelectorAll('.popup_search').forEach(button => {
-        button.addEventListener('click',()=> {
+        button.addEventListener('click', () => {
             OpenSearchPath();
         });
     });
@@ -852,42 +853,16 @@ document.querySelector('.exit_Create_Community').addEventListener('click', () =>
     document.querySelector('.create_Commnunity_Popup').style.display = 'none';
 });
 function createrefresh_Loader() {
-    document.querySelectorAll('.usersfeedcolumn').forEach(feedcolumn => {
-        if (ActiveUser_Account) {
-            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-            ActiveUser_Account.forEach(user => {
-                if (user.user_Id === feedcolumn.id) {
-                    feedcolumn.innerHTML = '';
-                    document.querySelectorAll('.profile_Cliant').forEach(profile => {
-                        profile.style.display = 'none';
-                    });
-                    document.querySelectorAll('.userchatroom').forEach(chatroom => {
-                        chatroom.style.display = 'none';
-                    });
-                    let refreshloader = document.createElement('section');
-                    let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                    document.body.appendChild(refreshloader);
-                    refreshloader.appendChild(mainloadersvg);
-                    mainloadersvg.appendChild(mainloadercircle);
-                    mainloadercircle.setAttribute('cy', '30');
-                    mainloadercircle.setAttribute('cx', '30');
-                    mainloadercircle.setAttribute('r', '30');
-                    refreshloader.classList.add('refreshloader');
-                    setTimeout(() => {
-                        createStoriesPhotos();
-                        createPhotoPostOnTimeLine();
-                        createPublicFeed();
-                        createOtherPost();
-                        createGridPost();
-                        createPublicGridPost();
-                        createOtherGridPost();
-                        refreshloader.remove();
-                    }, 1000);
-                }
-            });
-        }
-    });
+    setTimeout(() => {
+        createStoriesPhotos();
+        createPhotoPostOnTimeLine();
+        createPublicFeed();
+        createOtherPost();
+        createGridPost();
+        createPublicGridPost();
+        createOtherGridPost();
+        stoploading();
+    }, 1000);
 }
 function loadPage() {
     let loadingsection = document.createElement('section');

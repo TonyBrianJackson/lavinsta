@@ -42,30 +42,55 @@ if (Array.isArray(ActiveAccount)) {
 document.querySelectorAll('input').forEach(input => {
     input.autocomplete = 'off';
 });
+function loadscreen() {
+    let loadingsection = document.createElement('section');
+    let loading_progress = document.createElement('span');
+    document.body.appendChild(loadingsection);
+    loadingsection.appendChild(loading_progress)
+    loadingsection.classList.add('loadingsection');
+}
+const newURL = 'https://github.com/TonyBrianJackson/lavinsta_databse/blob/main/users.json'
+const url = 'database/users.json';
+
 function fetchUrl() {
-    let Array = [{
-        firstName: 'Tony',
-        surName: 'Jackson',
-        id: new Date().getTime()
-    }];
-    const url = 'database/users.json';
-    function pushData() {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(Array)
-        });
+    const param = {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+            'accept': 'application/json'
+        }
     }
-    pushData();
     function getData() {
-        const newURL = 'https://github.com/TonyBrianJackson/lavinsta/blob/main/database/users.json'
-        fetch(url).then(res => res.json()).then(data => console.log(data));
+        fetch(newURL,param)
+        .then(res => res.json())
+        .then(data => console.log(data));
     }
     getData();
 }
 // fetchUrl();
+const jsonArr = [{
+    firstName: 'Tony',
+    surName: 'Jackson',
+    id: new Date().getTime()
+}];
+function pushData() {
+    fetch(newURL, {
+        method: 'POST',
+        mode: "no-cors",
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonArr)
+    });
+}
+// document.body.addEventListener('click',pushData);
+
+function stoploading() {
+    document.querySelectorAll('.loadingsection').forEach(section => {
+        section.remove();
+    });
+}
 function savedData() {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
