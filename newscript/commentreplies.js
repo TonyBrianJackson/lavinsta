@@ -36,6 +36,21 @@ function createcommentreplys(section, locationId) {
                                 if (user.user_Id === comment.trackingId) {
                                     let html = `<a href ="#/user_Id=${user.user_Id}/users_Name=${user.user_Firstname + '+' + user.user_Surname}" class="mentionedUser" id="${comment.id}" href="">${user.user_Firstname + ' ' + user.user_Surname}</a>`;
                                     commentpost.innerHTML = html + ' ' + comment.Property_Src;
+                                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                                        prefix.forEach(unit => {
+                                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                                if (unit.prefixName == 'http://') {
+                                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                                    console.log(texttitle);
+                                                    commentpost.innerHTML = newtitle;
+                                                } else {
+                                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                                    console.log(texttitle);
+                                                    commentpost.innerHTML = newtitle;
+                                                }
+                                            }
+                                        });
+                                    });
                                     document.querySelectorAll('.mentionedUser').forEach(block => {
                                         block.addEventListener('click', () => {
                                             createUsersProfile(user.user_Id);
@@ -48,6 +63,21 @@ function createcommentreplys(section, locationId) {
                             create_Mention_Comment();
                         } else {
                             commentpost.textContent = comment.Property_Src;
+                            commentpost.innerHTML.split(" ").forEach(texttitle => {
+                                prefix.forEach(unit => {
+                                    if (texttitle.indexOf(unit.prefixName) != -1) {
+                                        if (unit.prefixName == 'http://') {
+                                            let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                            console.log(texttitle);
+                                            commentpost.innerHTML = newtitle;
+                                        } else {
+                                            let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                            console.log(texttitle);
+                                            commentpost.innerHTML = newtitle;
+                                        }
+                                    }
+                                });
+                            });
                         }
                         commentdelete.addEventListener('click', () => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
@@ -608,6 +638,21 @@ function createcommentreplys(section, locationId) {
                         likecounts.classList.add('likecounts');
                         commentpostimg.src = comment.Property_Src;
                         commentpost.textContent = comment.caption;
+                        commentpost.innerHTML.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'http://') {
+                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        commentpost.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        commentpost.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
                         const startTime = function () {
                             let time;
                             let timeresult = new Date().getTime();
@@ -995,6 +1040,21 @@ function createcommentreplys(section, locationId) {
                         commentpostvideo.classList.add('commentpostimg');
                         commentpostvideo.src = comment.Property_Src;
                         commentpost.textContent = comment.caption;
+                        commentpost.innerHTML.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'http://') {
+                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        commentpost.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        commentpost.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
                         commentpostcontainer.appendChild(nextcommentcontainer);
                         commentpostvdieocontainer.appendChild(commentpostvideo);
                         commentpostvdieocontainer.appendChild(commentvideoplayer);

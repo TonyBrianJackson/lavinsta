@@ -49,6 +49,19 @@ function createChatMessages(column, locationId, CreatorId) {
                                 chattimeandstatus.appendChild(chatstime);
                                 chatmesgaitself.appendChild(chattext);
                                 chattext.textContent = mesg.Property_Src;
+                                chattext.innerHTML.split(" ").forEach(texttitle => {
+                                    prefix.forEach(unit => {
+                                        if (texttitle.indexOf(unit.prefixName) != -1) {
+                                            if (unit.prefixName == 'http://') {
+                                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                                                chattext.innerHTML = newtitle;
+                                            } else {
+                                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                                                chattext.innerHTML = newtitle;
+                                            }
+                                        }
+                                    });
+                                });
                                 const startTime = function () {
                                     let time;
                                     let timeresult = new Date().getTime();
@@ -515,7 +528,19 @@ function createChatMessages(column, locationId, CreatorId) {
                 chattimeandstatus.appendChild(chatsvisiblestatus);
                 chatmesgaitself.appendChild(chattext);
                 chattext.textContent = textmesg.Property_Src;
-
+                chattext.innerHTML.split(" ").forEach(texttitle => {
+                    prefix.forEach(unit => {
+                        if (texttitle.indexOf(unit.prefixName) != -1) {
+                            if (unit.prefixName == 'http://') {
+                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                chattext.innerHTML = newtitle;
+                            } else {
+                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                chattext.innerHTML = newtitle;
+                            }
+                        }
+                    });
+                });
                 chatmesgaitself.addEventListener('click', () => {
                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(data => {
@@ -1265,8 +1290,20 @@ function createChatMessages(column, locationId, CreatorId) {
                 attributation_Container.appendChild(caption);
                 attribute.textContent = textmesg.attribute;
                 caption.textContent = textmesg.story_title_reply;
+                caption.innerHTML.split(" ").forEach(texttitle => {
+                    prefix.forEach(unit => {
+                        if (texttitle.indexOf(unit.prefixName) != -1) {
+                            if (unit.prefixName == 'http://') {
+                                let newtitle = caption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                caption.innerHTML = newtitle;
+                            } else {
+                                let newtitle = caption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                caption.innerHTML = newtitle;
+                            }
+                        }
+                    });
+                });
                 attributation_Container.classList.add('attributation_Container');
-                caption.classList.add('caption');
                 attribute.classList.add('attribute');
 
                 chatCover.appendChild(chattypeIndicator);

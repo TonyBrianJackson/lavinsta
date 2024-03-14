@@ -196,7 +196,21 @@ function createOtherPost() {
                         posttitle.addEventListener("click", () => {
                             posttitle.classList.toggle("posttitlemoreorless");
                         });
-
+                        posttitle.innerHTML.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'http://') {
+                                        let newtitle = posttitle.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        posttitle.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = posttitle.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        posttitle.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
                     }
                     function Poster_Details() {
                         LogInFormData.forEach((user) => {
@@ -713,7 +727,33 @@ function createOtherPost() {
                     head.appendChild(postelapsedtime);
                     nameandimg.appendChild(authorsImg);
                     nameandimg.appendChild(postername);
-
+                    if (photo.title !== "") {
+                        let titlehead = document.createElement("header");
+                        let posttitle = document.createElement("p");
+                        adgrid.appendChild(titlehead);
+                        titlehead.appendChild(posttitle);
+                        posttitle.textContent = photo.title;
+                        posttitle.classList.add("posttitle");
+                        titlehead.classList.add("head");
+                        posttitle.addEventListener("click", () => {
+                            posttitle.classList.toggle("posttitlemoreorless");
+                        });
+                        posttitle.innerHTML.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'http://') {
+                                        let newtitle = posttitle.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        posttitle.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = posttitle.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        posttitle.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     function Poster_Details() {
                         LogInFormData.forEach((user) => {
                             if (user.user_Id === photo.posterId) {
@@ -1247,6 +1287,33 @@ function createOtherPost() {
                     nameandimg.appendChild(postername);
                     livelikecount.textContent = photo.likes.length;
                     livecommentcount.textContent = photo.comments.length;
+                    if (photo.title !== "") {
+                        let titlehead = document.createElement("header");
+                        let posttitle = document.createElement("p");
+                        adgrid.appendChild(titlehead);
+                        titlehead.appendChild(posttitle);
+                        posttitle.textContent = photo.title;
+                        posttitle.classList.add("posttitle");
+                        titlehead.classList.add("head");
+                        posttitle.addEventListener("click", () => {
+                            posttitle.classList.toggle("posttitlemoreorless");
+                        });
+                        posttitle.innerHTML.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'http://') {
+                                        let newtitle = posttitle.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        posttitle.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = posttitle.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        posttitle.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     function Poster_Details() {
                         LogInFormData.forEach((user) => {
                             if (user.user_Id === photo.posterId) {
@@ -1314,19 +1381,7 @@ function createOtherPost() {
                     adgrid.appendChild(adgridimagecontainer);
                     adgridimagecontainer.appendChild(adImg);
                     adgridimagecontainer.appendChild(advertactionbar);
-                    if (photo.title !== "") {
-                        let titlehead = document.createElement("header");
-                        let posttitle = document.createElement("p");
-                        adgrid.appendChild(titlehead);
-                        titlehead.appendChild(posttitle);
-                        posttitle.textContent = photo.title;
-                        posttitle.classList.add("posttitle");
-                        titlehead.classList.add("head");
-                        posttitle.addEventListener("click", () => {
-                            posttitle.classList.toggle("posttitlemoreorless");
-                        });
 
-                    }
                     function create_Multi_Tile() {
                         let children_Tile_Box = document.createElement("nav");
                         let children = photo.children;

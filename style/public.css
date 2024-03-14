@@ -392,7 +392,11 @@
     white-space: pre-wrap;
     border-radius: 0px;
 }
-
+.worldwidegadgetcaptioncover p a {
+    font-size: inherit;
+    font-weight: inherit;
+    color: var(--color-primary);
+}
 .gadgetsidepannel {
     position: absolute;
     right: 5px;

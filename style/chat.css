@@ -702,8 +702,7 @@
     border-radius: 0px 0px 15px 15px;
 }
 
-.attributation_Container .caption,
-.attributation_Container .attribute {
+.attributation_Container > p {
     font-style: italic;
     font-size: 11px;
     display: -webkit-box;
@@ -720,7 +719,7 @@
     color: #ffffffff;
 }
 
-.attributation_Container .attribute {
+.attributation_Container > p:nth-child(1) {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
     font-weight: 900;
@@ -732,7 +731,11 @@
     text-align: left;
     width: 100%;
 }
-
+.attributation_Container p > a {
+    color: var(--color-primary);
+    font-size: inherit;
+    font-weight: inherit;
+}
 .mychatphoto {
     display: flex;
     align-items: center;
@@ -909,7 +912,11 @@
     white-space: pre-wrap;
     border-radius: 0px;
 }
-
+.chattext > a {
+    color: var(--color-primary);
+    font-size: inherit;
+    font-weight: inherit;
+}
 .mychattimeandstatus,
 .friendschattimeandstatus {
     display: flex;
@@ -1332,8 +1339,7 @@
         width: 100%;
         border: none;
     }
-    .attributation_Container .caption,
-    .attributation_Container .attribute,
+    .attributation_Container > p,
     .chattext {
         font-size: 15px;
     }

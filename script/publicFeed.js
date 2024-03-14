@@ -167,6 +167,21 @@ function createPublicFeed() {
                         copyIcon.src = 'icons/copy.png';
                         main.appendChild(textPost);
                         textPost.textContent = photo.Property_Src;
+                        textPost.innerHTML.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'http://') {
+                                        let newtitle = textPost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        textPost.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = textPost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        console.log(texttitle);
+                                        textPost.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
                         textPost.classList.add('textPost');
                         copyText.addEventListener('click', () => {
                             copyTextPost(textPost.textContent);
@@ -570,7 +585,7 @@ function createPublicFeed() {
                     livesharecount.id = photo.id;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
 
                     livelikecount.classList.add('livelikecount');
@@ -741,7 +756,25 @@ function createPublicFeed() {
                     authorsImg.classList.add('authorsImg');
                     name.classList.add('postername');
                     title.classList.add('posttitle');
+
+
                     title.textContent = photo.title
+                    title.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = title.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    title.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = title.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    title.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
+
                     main.classList.add('postmain');
 
                     main.setAttribute(`id`, 'main');

@@ -95,7 +95,11 @@
     font-weight: 900;
     letter-spacing: normal;
 }
-
+.gridposttextToview > a {
+    font-size: inherit;
+    font-family: inherit;
+    color: var(--color-primary);
+}
 .gridposttextToviewWhite {
     color: var(--color-white);
 }

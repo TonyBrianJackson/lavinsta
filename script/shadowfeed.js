@@ -81,7 +81,19 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                     gridpostimagecontainer.appendChild(gridposttextToview);
                     gridposttextToview.classList.add('gridposttextToview');
                     gridposttextToview.textContent = photo.Property_Src;
-
+                    gridposttextToview.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = gridposttextToview.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    gridposttextToview.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = gridposttextToview.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    gridposttextToview.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     gridposttextToview.style.display = 'block';
                     function textGridPostTextTheme() {
                         function textThemeBackGround() {
@@ -617,6 +629,19 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 gridpostimagecontainer.classList.add('gridpostimagecontainer');
 
                 gridpostcaption.innerText = photo.title;
+                gridpostcaption.innerHTML.split(" ").forEach(texttitle => {
+                    prefix.forEach(unit => {
+                        if (texttitle.indexOf(unit.prefixName) != -1) {
+                            if (unit.prefixName == 'http://') {
+                                let newtitle = gridpostcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                gridpostcaption.innerHTML = newtitle;
+                            } else {
+                                let newtitle = gridpostcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                gridpostcaption.innerHTML = newtitle;
+                            }
+                        }
+                    });
+                });
                 gridpostcaption.classList.add('gridpostcaption');
                 gridpostcaption.addEventListener('click', () => {
                     gridpostcaption.classList.toggle('gridpostcaptionactive');

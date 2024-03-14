@@ -2186,7 +2186,11 @@ main .header {
     overflow: hidden;
     position: relative;
 }
-
+.posttitle > a {
+    color: var(--color-primary);
+    font-size: inherit;
+    font-family: inherit;
+}
 .nameandimg {
     width: 100%;
     height: max-content;
@@ -2610,7 +2614,11 @@ main .header {
     color: var(--color-dark);
     font-weight: 900;
 }
-
+.textPost > a {
+    color: var(--color-primary);
+    font-size: inherit;
+    font-weight: inherit;
+}
 .textPostmoreorless {
     height: max-content;
     font-size: 2rem;
@@ -7659,7 +7667,11 @@ a {
     white-space: pre-wrap;
     border-radius: 0px;
 }
-
+.gridpostcaption > a {
+    color: var(--color-primary);
+    font-size: inherit;
+    font-weight: inherit;
+}
 .gridpostcaptionactive {
     width: 100%;
     height: max-content;

@@ -325,7 +325,21 @@ function CreationOfComments(section, locationId) {
                     commentimg.classList.add('commentposterimg');
                     commentpost.classList.add('commentpost');
                     commentpost.textContent = comment.Property_Src;
-
+                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    commentpost.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    commentpost.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     commentreact.src = 'icons/like(0).png';
                     commentreply.src = 'icons/message.png';
                     /*LIKES&REACTS COUNTS*/
@@ -668,6 +682,21 @@ function CreationOfComments(section, locationId) {
                     commentpostimg.classList.add('commentpostimg');
                     commentpostimg.src = comment.Property_Src;
                     commentpost.textContent = comment.caption;
+                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    commentpost.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    commentpost.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     commentpostimgcontainer.appendChild(commentpostimg);
                     nextcommentcontainer.appendChild(commentpostimgcontainer);
                     nextcommentcontainer.appendChild(commentpost);
@@ -1077,6 +1106,21 @@ function CreationOfComments(section, locationId) {
                     commentpostvideo.classList.add('commentpostimg');
                     commentpostvideo.src = comment.Property_Src;
                     commentpost.textContent = comment.caption;
+                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    commentpost.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    commentpost.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     commentpostcontainer.appendChild(nextcommentcontainer);
                     commentpostvdieocontainer.appendChild(commentpostvideo);
                     commentpostvdieocontainer.appendChild(commentvideoplayer);

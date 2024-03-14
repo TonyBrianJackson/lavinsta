@@ -265,7 +265,11 @@
     background: none;
     border-radius: 0px;
 }
-
+.commentpost > a {
+    color: var(--color-primary);
+    font-size: inherit;
+    font-weight: inherit;
+}
 .commentpostmoreorless,
 .replypostactive {
     background: none;

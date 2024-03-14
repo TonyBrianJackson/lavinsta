@@ -59,7 +59,7 @@ function createPhotosGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
                     livelikecount.classList.add('livelikecount');
                     livecommentcount.classList.add('livecommentcount');
@@ -163,6 +163,21 @@ function createPhotosGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
+                    worldwidegadgetcaption.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     attributation.textContent = photo.attribute;
                     if (photo.children) {
                         let children = photo.children;
@@ -342,7 +357,7 @@ function createPhotosGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -446,6 +461,21 @@ function createPhotosGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
+                    worldwidegadgetcaption.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -623,7 +653,7 @@ function createPhotosGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -727,6 +757,21 @@ function createPhotosGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
+                    worldwidegadgetcaption.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -915,7 +960,7 @@ function createAdsGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1019,6 +1064,21 @@ function createAdsGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
+                    worldwidegadgetcaption.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1197,7 +1257,7 @@ function createAdsGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1301,6 +1361,21 @@ function createAdsGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
+                    worldwidegadgetcaption.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1479,7 +1554,7 @@ function createAdsGadget() {
                     gadgetcomment.src = 'newicons/chat.png';
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1583,6 +1658,21 @@ function createAdsGadget() {
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     worldwidegadgetcaption.textContent = photo.title;
+                    worldwidegadgetcaption.innerHTML.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'http://') {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = worldwidegadgetcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    console.log(texttitle);
+                                    worldwidegadgetcaption.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1600,7 +1690,7 @@ function createAdsGadget() {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
-                    
+
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {

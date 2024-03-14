@@ -252,6 +252,19 @@ function Create_Short() {
                 reelcommentsend.src = 'icons/send.png';
 
                 title.textContent = photo.title;
+                title.innerHTML.split(" ").forEach(texttitle => {
+                    prefix.forEach(unit => {
+                        if (texttitle.indexOf(unit.prefixName) != -1) {
+                            if (unit.prefixName == 'http://') {
+                                let newtitle = title.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                title.innerHTML = newtitle;
+                            } else {
+                                let newtitle = title.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                title.innerHTML = newtitle;
+                            }
+                        }
+                    });
+                });
                 mastersmiddle.innerHTML = '&plus;';
 
 

@@ -822,6 +822,7 @@ function removepeoplecolumn() {
 document.querySelectorAll('.people_C_button').forEach(button => {
     button.addEventListener('click', () => {
         removepeoplecolumn();
+        loadscreen();
         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
         ActiveUser_Account.forEach(user => {
             let userpeoplecolumn = document.createElement('div');
@@ -841,6 +842,7 @@ document.querySelectorAll('.people_C_button').forEach(button => {
                 createFriendList(user.user_Id, userpeoplecolumn);
                 sessionStorage.setItem('activepage','peoplelist');
             }
+            stoploading();
         });
     });
 });
