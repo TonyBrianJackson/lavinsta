@@ -1,5 +1,3 @@
-let myLocation_Url;
-let Admins_Notification = [];
 const AdminNotification = JSON.parse(localStorage.getItem('Admins_Notification'));
 if (Array.isArray(AdminNotification)) {
     Admins_Notification = AdminNotification;

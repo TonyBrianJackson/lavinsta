@@ -1,8 +1,3 @@
-let Feeds_Data_Base = [];
-
-let postReport = [];
-
-//saving videopos
 const timelineviddoeskeleton = document.querySelectorAll('.timelineviddoeskeleton');
 function requestDisplayNone() {
     let postskelton = document.querySelector('.postskelton');

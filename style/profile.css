@@ -3026,7 +3026,7 @@
         height: 50px;
         margin: 0;
     }
-
+    
     .headerbtns.toggleBtn,
     .headerbtns.items {
         width: 100%;
@@ -3112,11 +3112,12 @@
 
     .postwriterfloatactive {
         gap: 0px 10px;
-        width: 60%;
+        width: 73%;
+        margin: 0px;
     }
 
     .smallscreenpostwriter {
-        gap: 0px 5px;
+        gap: 0px 10px;
     }
 
     .floatactive {

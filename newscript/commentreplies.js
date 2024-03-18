@@ -36,16 +36,14 @@ function createcommentreplys(section, locationId) {
                                 if (user.user_Id === comment.trackingId) {
                                     let html = `<a href ="#/user_Id=${user.user_Id}/users_Name=${user.user_Firstname + '+' + user.user_Surname}" class="mentionedUser" id="${comment.id}" href="">${user.user_Firstname + ' ' + user.user_Surname}</a>`;
                                     commentpost.innerHTML = html + ' ' + comment.Property_Src;
-                                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                                    commentpost.textContent.split(" ").forEach(texttitle => {
                                         prefix.forEach(unit => {
                                             if (texttitle.indexOf(unit.prefixName) != -1) {
-                                                if (unit.prefixName == 'http://') {
-                                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                                    console.log(texttitle);
+                                                if (unit.prefixName == 'https://') {
+                                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                                     commentpost.innerHTML = newtitle;
                                                 } else {
-                                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                                    console.log(texttitle);
+                                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                                     commentpost.innerHTML = newtitle;
                                                 }
                                             }
@@ -63,15 +61,15 @@ function createcommentreplys(section, locationId) {
                             create_Mention_Comment();
                         } else {
                             commentpost.textContent = comment.Property_Src;
-                            commentpost.innerHTML.split(" ").forEach(texttitle => {
+                            commentpost.textContent.split(" ").forEach(texttitle => {
                                 prefix.forEach(unit => {
                                     if (texttitle.indexOf(unit.prefixName) != -1) {
-                                        if (unit.prefixName == 'http://') {
-                                            let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        if (unit.prefixName == 'https://') {
+                                            let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                             console.log(texttitle);
                                             commentpost.innerHTML = newtitle;
                                         } else {
-                                            let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                            let newtitle = commentpost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                             console.log(texttitle);
                                             commentpost.innerHTML = newtitle;
                                         }
@@ -248,22 +246,12 @@ function createcommentreplys(section, locationId) {
 
 
                         function themecommentMode() {
-                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                             if (Array.isArray(ActiveAccount)) {
                                 ActiveUser_Account = ActiveAccount;
                                 ActiveUser_Account.forEach(data => {
-                                    LogInFormData.forEach(user => {
-                                        if (user.user_Id === data.user_Id) {
-                                            if (user.user_Mode == 'defaultTheme') {
-                                                commentreact.classList.remove('darkmodeicons');
-                                            } else if (user.user_Mode == 'darkTheme') {
-                                                commentreact.classList.add('darkmodeicons');
-                                            } else if (user.user_Mode == 'lightOffTheme') {
-                                                commentreact.classList.add('darkmodeicons');
-                                            }
-                                        }
-                                    });
-
+                                    if (data.user_Mode !== 'defaultTheme') {
+                                        commentreact.classList.add('darkmodeicons');
+                                    }
                                 });
                             }
                         }
@@ -638,15 +626,15 @@ function createcommentreplys(section, locationId) {
                         likecounts.classList.add('likecounts');
                         commentpostimg.src = comment.Property_Src;
                         commentpost.textContent = comment.caption;
-                        commentpost.innerHTML.split(" ").forEach(texttitle => {
+                        commentpost.textContent.split(" ").forEach(texttitle => {
                             prefix.forEach(unit => {
                                 if (texttitle.indexOf(unit.prefixName) != -1) {
-                                    if (unit.prefixName == 'http://') {
-                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         console.log(texttitle);
                                         commentpost.innerHTML = newtitle;
                                     } else {
-                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        let newtitle = commentpost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         console.log(texttitle);
                                         commentpost.innerHTML = newtitle;
                                     }
@@ -1040,15 +1028,15 @@ function createcommentreplys(section, locationId) {
                         commentpostvideo.classList.add('commentpostimg');
                         commentpostvideo.src = comment.Property_Src;
                         commentpost.textContent = comment.caption;
-                        commentpost.innerHTML.split(" ").forEach(texttitle => {
+                        commentpost.textContent.split(" ").forEach(texttitle => {
                             prefix.forEach(unit => {
                                 if (texttitle.indexOf(unit.prefixName) != -1) {
-                                    if (unit.prefixName == 'http://') {
-                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         console.log(texttitle);
                                         commentpost.innerHTML = newtitle;
                                     } else {
-                                        let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        let newtitle = commentpost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         console.log(texttitle);
                                         commentpost.innerHTML = newtitle;
                                     }

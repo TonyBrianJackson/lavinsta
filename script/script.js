@@ -622,63 +622,12 @@ function All_Search_On_Video() {
                                     });
                                     document.querySelectorAll('.videoseachresultname').forEach(result => {
                                         result.addEventListener('click', () => {
-                                            let usersprofile = document.querySelectorAll('.profile_Cliant');
-                                            usersprofile.forEach(profile => {
-                                                if (result.id === profile.id) {
-                                                    let usersprofileloader = document.createElement('section');
-                                                    let mainprofilesvgloader = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                    let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                    profile.appendChild(usersprofileloader);
-                                                    usersprofileloader.appendChild(mainprofilesvgloader);
-                                                    mainprofilesvgloader.appendChild(mainloadercircle);
-                                                    mainloadercircle.setAttribute('cy', '30');
-                                                    mainloadercircle.setAttribute('cx', '30');
-                                                    mainloadercircle.setAttribute('r', '30');
-                                                    usersprofileloader.classList.add('usersprofileloader');
-                                                    profile.style.display = 'flex';
-                                                    LogInFormData.forEach(data => {
-                                                        if (data.user_Id === result.id) {
-                                                            document.title = data.user_Firstname + ' ' + data.user_Surname;
-                                                        }
-                                                    })
-                                                    sessionStorage.setItem('activepage', result.id);
-                                                    setTimeout(() => {
-                                                        usersprofileloader.remove();
-                                                    }, 3000);
-                                                } else {
-                                                    profile.style.display = 'none';
-                                                }
-                                            });
+                                            createUsersProfile(post.posterId);
                                         });
                                     });
                                     document.querySelectorAll('.viewPostButton').forEach(result => {
                                         result.addEventListener('click', () => {
-                                            function view_Post() {
-                                                let itemsviewonlargescale = document.querySelectorAll('.itemsviewonlargescale');
-                                                itemsviewonlargescale.forEach(largecontainer => {
-                                                    if (largecontainer.id === result.id) {
-                                                        let gridpostloader = document.createElement('section');
-                                                        let mainloadersvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                                                        let mainloadercircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                                                        largecontainer.appendChild(gridpostloader);
-                                                        gridpostloader.appendChild(mainloadersvg);
-                                                        mainloadersvg.appendChild(mainloadercircle);
-                                                        mainloadercircle.setAttribute('cy', '30');
-                                                        mainloadercircle.setAttribute('cx', '30');
-                                                        mainloadercircle.setAttribute('r', '30');
-                                                        gridpostloader.classList.add('gridpostloader');
-                                                        gridpostloader.id = result.id;
-                                                        document.body.appendChild(largecontainer);
-                                                        largecontainer.style.display = 'flex';
-                                                        setTimeout(() => {
-                                                            gridpostloader.remove();
-                                                        }, 2000);
-                                                    } else {
-                                                        largecontainer.style.display = 'none';
-                                                    }
-                                                });
-                                            }
-                                            view_Post();
+                                            createMain_GridPost(post.id);
                                         })
                                     });
                                 } else {

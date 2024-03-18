@@ -1,7 +1,3 @@
-let LogInFormData = [];
-let myLogsArray = [];
-const mySavedLogs = JSON.parse(localStorage.getItem('myLogsArray'));
-
 const firstName = document.getElementById('first-name');
 const surName = document.getElementById('sur-name');
 const email = document.getElementById('sign-upemail');
@@ -14,6 +10,8 @@ const login_upphone = document.getElementById('login_upphone');
 let Adminmode = false;
 let Admins_Key;
 let CEO_Mode;
+let lavinsta_Email;
+
 document.querySelector('.Verify_Admins_Key_Button').addEventListener('click', () => {
     Admins_Key = 'CyBern3tTjSnL4viNsT4rCE04dMinNC0d3';
     CEO_Mode = 'CyBern3tTjSnL4viNsT4rCE04dMinNC30C0d3';
@@ -221,6 +219,7 @@ function pushformdata() {
         user_CoverPhoto_Filter: 'default',
         user_Id: UserId,
         lavinsta_Id: lavinstaId,
+        lavinsta_Email: lavinsta_Email,
         user_Phone: '',
         user_Bio: '',
         user_Location: '',
@@ -339,10 +338,7 @@ function createAccounts() {
             sessionStorage.setItem('activepage', 'home');
             function pushLogsArray() {
                 myLogsArray.push({
-                    accountName: data.user_Firstname + ' ' + data.user_Surname,
-                    accountImg: data.user_ProfilePicture,
                     accountId: data.user_Id,
-                    account_filter: data.user_ProfilePicture_Filter
                 });
                 localStorage.setItem('myLogsArray', JSON.stringify(myLogsArray));
             }
@@ -361,6 +357,7 @@ function createAccounts() {
                 ActiveUser_Account = [];
                 ActiveUser_Account.push({
                     user_Id: data.user_Id,
+                    userMode: data.userMode
                 });
                 localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account))
             }
@@ -490,14 +487,25 @@ let verification_console = document.querySelector('.verification_console');
 function getRandomCode() {
     var minNumber = 10000;
     var maxNumber = 99999;
-    verification_console.textContent = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
-    alert(verification_console.textContent);
+    let randomcode = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
+    let new_user_Id_maile = document.querySelector('.new_user_Id_maile');
+    let username = firstName.value.toLowerCase().trim().replace(' ','.') + surName.value.toLowerCase().trim().replace(' ','');
+    
+    lavinsta_Email = `${username}${randomcode}@lavinsta`;
+
+    verification_console.textContent = randomcode;
+    new_user_Id_maile.textContent = lavinsta_Email;
+    alert(randomcode);
     function NotificationsOnly() {
         Notification.requestPermission().then(perm => {
             if (perm === 'granted') {
                 new Notification("Lavinsta", {
                     body: `your verification code is ${verification_console.textContent}`,
-                    icon: 'lavinstaphotos/eagle.png'
+                    icon: 'lavinstaphotos/eagle.png',
+                });
+                new Notification("Lavinsta", {
+                    body: `${lavinsta_Email} is your lavinsta mail address`,
+                    icon: 'lavinstaphotos/eagle.png',
                 });
             }
         });
@@ -709,10 +717,7 @@ function Reset_Password() {
                         document.querySelector('.Verify_Password_Console').style = 'color: lightgreen;';
                         function pushLogsArray() {
                             myLogsArray.push({
-                                accountName: user.user_Firstname + ' ' + user.user_Surname,
-                                accountImg: user.user_ProfilePicture,
                                 accountId: user.user_Id,
-                                account_filter: user.user_ProfilePicture_Filter
                             });
                             localStorage.setItem('myLogsArray', JSON.stringify(myLogsArray));
                         }
@@ -731,6 +736,7 @@ function Reset_Password() {
                             ActiveUser_Account = [];
                             ActiveUser_Account.push({
                                 user_Id: user.user_Id,
+                                userMode: data.userMode
                             });
                             localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account))
                         }

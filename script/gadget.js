@@ -2584,24 +2584,19 @@ function create_Comment_room(locationId) {
                 }
             });
             function getIconsOnDarkMode() {
-                LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                 if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === data.user_Id) {
-                                if (user.user_Mode !== 'defaultTheme') {
-                                    sharegridviewimg.classList.add('darkmodeicons');
-                                    sharegridlikeimg.classList.add('darkmodeicons');
-                                    sharegridshareimg.classList.add('darkmodeicons');
-                                    sharegridphoto.classList.add('darkmodeicons');
-                                    commentattachmenticon.classList.add('darkmodeicons');
-                                    newcommentinputinputsend.classList.add('darkmodeicons');
-                                    exitimg.classList.add('darkmodeicons');
-                                    refreshimg.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
+                        if (data.user_Mode !== 'defaultTheme') {
+                            sharegridviewimg.classList.add('darkmodeicons');
+                            sharegridlikeimg.classList.add('darkmodeicons');
+                            sharegridshareimg.classList.add('darkmodeicons');
+                            sharegridphoto.classList.add('darkmodeicons');
+                            commentattachImg.classList.add('darkmodeicons');
+                            sendimg.classList.add('darkmodeicons');
+                            exitimg.classList.add('darkmodeicons');
+                            refreshimg.classList.add('darkmodeicons');
+                        }
                     });
                 }
             }

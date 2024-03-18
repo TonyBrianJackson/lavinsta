@@ -131,6 +131,17 @@ function createPublicFeed() {
                         } else {
                             mainimg.src = photo.Property_Src;
                         }
+                        main.style.backgroundImage = "url(" + photo.Property_Src + ")";
+                        mainimg.loading = 'lazy';
+                        main.classList.add('imagecontainerLoading');
+                        function loaded() {
+                            main.classList.add('loaded');
+                        }
+                        if (mainimg.complete) {
+                            loaded();
+                        } else {
+                            mainimg.addEventListener('load', loaded);
+                        }
                         function filter_PostImage() {
                             if (photo.filter == 'default') {
                                 mainimg.classList.add('--color-default');
@@ -167,16 +178,14 @@ function createPublicFeed() {
                         copyIcon.src = 'icons/copy.png';
                         main.appendChild(textPost);
                         textPost.textContent = photo.Property_Src;
-                        textPost.innerHTML.split(" ").forEach(texttitle => {
+                        textPost.textContent.split(" ").forEach(texttitle => {
                             prefix.forEach(unit => {
                                 if (texttitle.indexOf(unit.prefixName) != -1) {
-                                    if (unit.prefixName == 'http://') {
-                                        let newtitle = textPost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                        console.log(texttitle);
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = textPost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         textPost.innerHTML = newtitle;
                                     } else {
-                                        let newtitle = textPost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                        console.log(texttitle);
+                                        let newtitle = textPost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         textPost.innerHTML = newtitle;
                                     }
                                 }
@@ -759,16 +768,14 @@ function createPublicFeed() {
 
 
                     title.textContent = photo.title
-                    title.innerHTML.split(" ").forEach(texttitle => {
+                    title.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'http://') {
-                                    let newtitle = title.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                if (unit.prefixName == 'https://') {
+                                    let newtitle = title.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     title.innerHTML = newtitle;
                                 } else {
-                                    let newtitle = title.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                    let newtitle = title.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     title.innerHTML = newtitle;
                                 }
                             }
@@ -826,62 +833,28 @@ function createPublicFeed() {
                     likes3.src = 'icons/share (1).png';
                     likes4.src = 'icons/send.png';
 
-
-
                     function getIconsOnDarkMode() {
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
-                                LogInFormData.forEach(user => {
-                                    if (user.user_Id === data.user_Id) {
-                                        if (user.user_Mode == 'defaultTheme') {
-                                            uvwimg.classList.remove('darkmodeicons');
-                                            abcimg.classList.remove('darkmodeicons');
-                                            mnoimg.classList.remove('darkmodeicons');
-                                            pqrimg.classList.remove('darkmodeicons');
-                                            rstimg.classList.remove('darkmodeicons');
-                                            xyzimg.classList.remove('darkmodeicons');
-
-                                            likes1.classList.remove('darkmodeicons');
-                                            likes2.classList.remove('darkmodeicons');
-                                            likes3.classList.remove('darkmodeicons');
-                                            likes4.classList.remove('darkmodeicons');
-
-                                            sharephotoimg.classList.remove('darkmodeicons');
-                                            sharevideoimg.classList.remove('darkmodeicons');
-
-                                            opencommentboxactivate.classList.remove('darkmodeicons');
-
-                                            let allgridcomment = document.querySelectorAll('.gridinput img');
-                                            allgridcomment.forEach(button => {
-                                                button.classList.remove('darkmodeicons');
-                                            });
-                                        } else {
-                                            uvwimg.classList.add('darkmodeicons');
-                                            abcimg.classList.add('darkmodeicons');
-                                            mnoimg.classList.add('darkmodeicons');
-                                            pqrimg.classList.add('darkmodeicons');
-                                            rstimg.classList.add('darkmodeicons');
-                                            xyzimg.classList.add('darkmodeicons');
-
-                                            likes1.classList.add('darkmodeicons');
-                                            likes2.classList.add('darkmodeicons');
-                                            likes3.classList.add('darkmodeicons');
-                                            likes4.classList.add('darkmodeicons');
-
-                                            sharephotoimg.classList.add('darkmodeicons');
-                                            sharevideoimg.classList.add('darkmodeicons');
-
-                                            opencommentboxactivate.classList.add('darkmodeicons');
-
-                                            let allgridcomment = document.querySelectorAll('.gridinput img');
-                                            allgridcomment.forEach(button => {
-                                                button.classList.add('darkmodeicons');
-                                            })
-                                        }
-                                    }
-                                });
+                                if (data.user_Mode !== 'defaultTheme') {
+                                    uvwimg.classList.add('darkmodeicons');
+                                    abcimg.classList.add('darkmodeicons');
+                                    mnoimg.classList.add('darkmodeicons');
+                                    pqrimg.classList.add('darkmodeicons');
+                                    rstimg.classList.add('darkmodeicons');
+                                    xyzimg.classList.add('darkmodeicons');
+    
+                                    likes1.classList.add('darkmodeicons');
+                                    likes2.classList.add('darkmodeicons');
+                                    likes3.classList.add('darkmodeicons');
+                                    likes4.classList.add('darkmodeicons');
+    
+                                    sharephotoimg.classList.add('darkmodeicons');
+                                    sharevideoimg.classList.add('darkmodeicons');
+    
+                                    opencommentboxactivate.classList.add('darkmodeicons');
+                                }
                             });
                         }
                     }

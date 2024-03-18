@@ -55,16 +55,19 @@ floatItems.forEach(item => {
         } if (item.id != 'lav_Insta_images') {
             document.querySelector('.photogallery').style.display = 'none';
         } else {
+            loadPage();
             document.querySelector('.photogallery').style.display = 'flex';
             sessionStorage.setItem('activepage', 'lavinstaphotos');
         } if (item.id != 'lav_Insta_public') {
             document.querySelector('.publicfeedpage').style.display = 'none';
         } else {
+            loadPage();
             document.querySelector('.publicfeedpage').style.display = 'flex';
             sessionStorage.setItem('activepage', 'lavinstafeeds');
         } if (item.id != 'lav_Insta_search') {
             document.querySelector('.main_Seach_Path').style.display = 'none';
         } else {
+            loadPage();
             document.querySelector('.main_Seach_Path').style.display = 'flex';
             sessionStorage.setItem('activepage', 'homesearch');
             document.querySelector('.navigatiofloatcontainer').style.display = 'none';
@@ -72,10 +75,12 @@ floatItems.forEach(item => {
             document.querySelector('.hamburgermenupopup').classList.add('hamburgermenupopup');
             document.querySelector('.hamburgermenupopup').classList.remove('hamburgermenupopupactive');
         } else {
+            loadPage();
             document.querySelector('.hamburgermenupopup').classList.toggle('hamburgermenupopupactive');
         } if (item.id != 'lav_Insta_short') {
             document.querySelector('.reelsmainpage').style.display = 'none';
         } else {
+            loadPage();
             document.querySelector('.reelsmainpage').style.display = 'flex';
             sessionStorage.setItem('activepage', 'reelsmainpage');
         }

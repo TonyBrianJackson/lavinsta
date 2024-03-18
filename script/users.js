@@ -1,11 +1,3 @@
-//arrays
-let myFriends = [];
-let myChatMsg = [];
-let myCommunities = [];
-const chatMessage = JSON.parse(localStorage.getItem('myChatMsg'));
-const communities = JSON.parse(localStorage.getItem('myCommunities'));
-
-
 function createUsersProfile(locationId) {
     sessionStorage.setItem('activepage',locationId);
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -343,6 +335,19 @@ function createUsersProfile(locationId) {
             } else {
                 userbioinfor.textContent = profile.user_Bio;
                 userbioblock.style.display = 'grid';
+                userbioinfor.textContent.split(" ").forEach(texttitle => {
+                    prefix.forEach(unit => {
+                        if (texttitle.indexOf(unit.prefixName) != -1) {
+                            if (unit.prefixName == 'https://') {
+                                let newtitle = userbioinfor.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                userbioinfor.innerHTML = newtitle;
+                            } else {
+                                let newtitle = userbioinfor.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                userbioinfor.innerHTML = newtitle;
+                            }
+                        }
+                    });
+                });
             }
 
             //userscount
@@ -675,8 +680,8 @@ function usersInformation(locationId) {
                 DateOFBirthInfo(userinfocolumn);
                 BioInfo(userinfocolumn);
                 DateCreated(userinfocolumn);
-                if (data.user_CoverPhoto) {
-                    usersinfopro.style.backgroundImage = "url(" + data.user_CoverPhoto + ")";
+                if (profile.user_CoverPhoto) {
+                    usersinfopro.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
                 } else {
                     usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
                 }

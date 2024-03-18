@@ -842,8 +842,8 @@ document.querySelectorAll('.people_C_button').forEach(button => {
                 createFriendList(user.user_Id, userpeoplecolumn);
                 sessionStorage.setItem('activepage','peoplelist');
             }
-            stoploading();
         });
+        stoploading();
     });
 });
 document.querySelector('#peopleclosebtn').addEventListener('click',()=> {

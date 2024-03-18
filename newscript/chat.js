@@ -49,15 +49,15 @@ function createChatMessages(column, locationId, CreatorId) {
                                 chattimeandstatus.appendChild(chatstime);
                                 chatmesgaitself.appendChild(chattext);
                                 chattext.textContent = mesg.Property_Src;
-                                chattext.innerHTML.split(" ").forEach(texttitle => {
+                                chattext.textContent.split(" ").forEach(texttitle => {
                                     prefix.forEach(unit => {
                                         if (texttitle.indexOf(unit.prefixName) != -1) {
-                                            if (unit.prefixName == 'http://') {
-                                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                                                chattext.innerHTML = newtitle;
+                                            if (unit.prefixName == 'https://') {
+                                                let newtitle = chattext.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                                chattext.innerHTML = newtitle;
                                             } else {
-                                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                                                chattext.innerHTML = newtitle;
+                                                let newtitle = chattext.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                                chattext.innerHTML = newtitle;
                                             }
                                         }
                                     });
@@ -528,14 +528,14 @@ function createChatMessages(column, locationId, CreatorId) {
                 chattimeandstatus.appendChild(chatsvisiblestatus);
                 chatmesgaitself.appendChild(chattext);
                 chattext.textContent = textmesg.Property_Src;
-                chattext.innerHTML.split(" ").forEach(texttitle => {
+                chattext.textContent.split(" ").forEach(texttitle => {
                     prefix.forEach(unit => {
                         if (texttitle.indexOf(unit.prefixName) != -1) {
-                            if (unit.prefixName == 'http://') {
-                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                            if (unit.prefixName == 'https://') {
+                                let newtitle = chattext.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                 chattext.innerHTML = newtitle;
                             } else {
-                                let newtitle = chattext.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                let newtitle = chattext.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                 chattext.innerHTML = newtitle;
                             }
                         }
@@ -1293,11 +1293,11 @@ function createChatMessages(column, locationId, CreatorId) {
                 caption.innerHTML.split(" ").forEach(texttitle => {
                     prefix.forEach(unit => {
                         if (texttitle.indexOf(unit.prefixName) != -1) {
-                            if (unit.prefixName == 'http://') {
+                            if (unit.prefixName == 'https://') {
                                 let newtitle = caption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                 caption.innerHTML = newtitle;
                             } else {
-                                let newtitle = caption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                let newtitle = caption.innerHTML.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                 caption.innerHTML = newtitle;
                             }
                         }
@@ -1691,7 +1691,7 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     });
 
     chatuploadicon.addEventListener('click', () => {
-        createUploader(locationId, trackingId, userchatroom, userchatroomcolumn, voicerecordicon, 'friends_chat',locationId);
+        createUploader(locationId, trackingId, userchatroom, userchatroomcolumn, voicerecordicon, 'friends_chat', locationId);
     });
     function hightlightchatblock() {
         LogInFormData.forEach(user => {
@@ -2750,6 +2750,6 @@ function secondchatcontainers() {
         userschatcontainer.classList.add('userschatcontainer');
         document.querySelector('.msgculomn').appendChild(userschatcontainer);
         userschatcontainer.id = user.user_Id;
-        createChatMenu(userschatcontainer,user.user_Id);
+        createChatMenu(userschatcontainer, user.user_Id);
     });
 }

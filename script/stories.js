@@ -922,11 +922,11 @@ async function create_Main_Stories(locationId, Property_Src) {
                 gridpostcaption.innerHTML.split(" ").forEach(texttitle => {
                     prefix.forEach(unit => {
                         if (texttitle.indexOf(unit.prefixName) != -1) {
-                            if (unit.prefixName == 'http://') {
+                            if (unit.prefixName == 'https://') {
                                 let newtitle = gridpostcaption.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                 gridpostcaption.innerHTML = newtitle;
                             } else {
-                                let newtitle = gridpostcaption.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                let newtitle = gridpostcaption.innerHTML.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                 gridpostcaption.innerHTML = newtitle;
                             }
                         }

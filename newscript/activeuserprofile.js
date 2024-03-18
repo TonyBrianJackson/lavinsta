@@ -104,249 +104,6 @@ function create_Active_Account() {
         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
         LogInFormData.forEach(profile => {
             if (user.user_Id === profile.user_Id) {
-                function ThemeSettings() {
-                    var root = document.querySelector(':root')
-                    //background variable declaration
-                    let lightcolor;
-                    let whitecolor;
-                    let darkcolor;
-                    defaultMode.addEventListener('click', () => {
-                        lightcolor = '89%';
-                        whitecolor = '100%';
-                        darkcolor = '15%';
-                        document.querySelector('.themeactive-1').classList.add('active');
-                        document.querySelector('.themeactive-2').classList.remove('active');
-                        document.querySelector('.themeactive-3').classList.remove('active');
-                        ChangeBackGround();
-                        setTimeout(() => {
-                            restoreTheme();
-                        }, 100);
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(data => {
-                            if (data.user_Id === profile.user_Id) {
-                                data.user_Mode = 'defaultTheme';
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            }
-                        });
-                    });
-                    darkMode.addEventListener('click', () => {
-                        lightcolor = '15%';
-                        whitecolor = '5%';
-                        darkcolor = '100%';
-                        document.querySelector('.themeactive-1').classList.remove('active');
-                        document.querySelector('.themeactive-2').classList.add('active');
-                        document.querySelector('.themeactive-3').classList.remove('active');
-                        ChangeBackGround();
-                        setTimeout(() => {
-                            changeIconsTheme();
-                        }, 100);
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(data => {
-                            if (data.user_Id === profile.user_Id) {
-                                data.user_Mode = 'darkTheme';
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            }
-                        });
-                    });
-                    LightOffMode.addEventListener('click', () => {
-                        lightcolor = '20%';
-                        whitecolor = '15%';
-                        darkcolor = '100%';
-                        document.querySelector('.themeactive-1').classList.remove('active');
-                        document.querySelector('.themeactive-2').classList.remove('active');
-                        document.querySelector('.themeactive-3').classList.add('active');
-                        ChangeBackGround();
-                        setTimeout(() => {
-                            changeIconsTheme();
-                        }, 100);
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(data => {
-                            if (data.user_Id === profile.user_Id) {
-                                data.user_Mode = 'lightOffTheme';
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            }
-                        });
-                    });
-                    if (profile.user_Mode == 'defaultTheme') {
-                        lightcolor = '89%';
-                        whitecolor = '100%';
-                        darkcolor = '15%';
-                        document.querySelector('.themeactive-1').classList.add('active');
-                        document.querySelector('.themeactive-2').classList.remove('active');
-                        document.querySelector('.themeactive-3').classList.remove('active');
-                        ChangeBackGround();
-                        setTimeout(() => {
-                            restoreTheme();
-                        }, 5000);
-                    } else if (profile.user_Mode == 'darkTheme') {
-                        lightcolor = '30%';
-                        whitecolor = '35%';
-                        darkcolor = '100%';
-                        document.querySelector('.themeactive-1').classList.remove('active');
-                        document.querySelector('.themeactive-2').classList.add('active');
-                        document.querySelector('.themeactive-3').classList.remove('active');
-                        ChangeBackGround();
-                        setTimeout(() => {
-                            changeIconsTheme();
-                        }, 5000);
-                    } else if (profile.user_Mode == 'lightOffTheme') {
-                        lightcolor = '5%';
-                        whitecolor = '15%';
-                        darkcolor = '100%';
-                        document.querySelector('.themeactive-1').classList.remove('active');
-                        document.querySelector('.themeactive-2').classList.remove('active');
-                        document.querySelector('.themeactive-3').classList.add('active');
-                        ChangeBackGround();
-                        setTimeout(() => {
-                            changeIconsTheme();
-                        }, 5000);
-                    }
-                    function ChangeBackGround() {
-                        root.style.setProperty('--color-light-verylight', lightcolor);
-                        root.style.setProperty('--color-white-verylight', whitecolor);
-                        root.style.setProperty('--dark-color-verylight', darkcolor);
-                    }
-                    function changeIconsTheme() {
-                        const likes111Icons = document.querySelectorAll('.likes111');
-                        const opencommentboxactivatedarkmode = document.querySelectorAll('.opencommentboxactivate');
-                        const sharegridlikedarkmore = document.querySelectorAll('.sharegridlike img');
-                        const commentreactimg = document.querySelectorAll('.commentreactimg');
-                        const replylikedarkmode = document.querySelectorAll('.replylike');
-                        const replygridphotodarkmode = document.querySelectorAll('.replygridphoto img');
-                        const newcommentsendimg = document.querySelectorAll('.newcommentinput img');
-                        const gridcommentdarkmode = document.querySelectorAll('.gridinput img');
-                        const userprofilelabel = document.querySelectorAll('.profilelabel img');
-                        const chatattachmentimg = document.querySelectorAll('.chatattachmentimg');
-                        const chatfloatitems = document.querySelectorAll('.chatfloat img');
-                        const userconnectgrid = document.querySelectorAll('.userconnectgrid span img');
-                        const usertopactivitytimeline = document.querySelectorAll('.usertopactivitytimeline img');
-                        const headerbtns = document.querySelectorAll('.headerbtns img');
-                        const admin_Tool_Grid_Img = document.querySelectorAll('.admin_Tool_Grid div img');
-                        const in_Visible_Img = document.querySelectorAll('.in_Visible_Img');
-                        const users_Popup_HeaderImg = document.querySelectorAll('.users_Popup_Header div img');
-
-                        users_Popup_HeaderImg.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        in_Visible_Img.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        admin_Tool_Grid_Img.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        usertopactivitytimeline.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        headerbtns.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        userconnectgrid.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-
-                        chatattachmentimg.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        chatfloatitems.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        userprofilelabel.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        gridcommentdarkmode.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        newcommentsendimg.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        replygridphotodarkmode.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        replylikedarkmode.forEach(icon => {
-                            icon.classList.add('darkmodeicons')
-                        });
-                        commentreactimg.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        sharegridlikedarkmore.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        opencommentboxactivatedarkmode.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                        likes111Icons.forEach(icon => {
-                            icon.classList.add('darkmodeicons');
-                        });
-                    }
-                    function restoreTheme() {
-                        const likes111Icons = document.querySelectorAll('.likes111');
-                        const opencommentboxactivatedarkmode = document.querySelectorAll('.opencommentboxactivate');
-                        const sharegridlikedarkmore = document.querySelectorAll('.sharegridlike img');
-                        const commentreactimg = document.querySelectorAll('.commentreactimg');
-                        const replylikedarkmode = document.querySelectorAll('.replylike');
-                        const newcommentsendimg = document.querySelectorAll('.newcommentinput img');
-                        const gridcommentdarkmode = document.querySelectorAll('.gridinput img');
-                        const userprofilelabel = document.querySelectorAll('.profilelabel img');
-                        const chatattachmentimg = document.querySelectorAll('.chatattachmentimg');
-                        const chatfloatitems = document.querySelectorAll('.chatfloat img');
-                        const userconnectgrid = document.querySelectorAll('.userconnectgrid span img');
-                        const usertopactivitytimeline = document.querySelectorAll('.usertopactivitytimeline img');
-                        const headerbtns = document.querySelectorAll('.headerbtns img');
-                        const admin_Tool_Grid_Img = document.querySelectorAll('.admin_Tool_Grid div img');
-                        const in_Visible_Img = document.querySelectorAll('.in_Visible_Img');
-                        const users_Popup_HeaderImg = document.querySelectorAll('.users_Popup_Header div img');
-
-                        users_Popup_HeaderImg.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        in_Visible_Img.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        admin_Tool_Grid_Img.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        usertopactivitytimeline.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        headerbtns.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        userconnectgrid.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        chatattachmentimg.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        chatfloatitems.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        userprofilelabel.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        gridcommentdarkmode.forEach(icon => {
-                            icon.classList.remove('darkmodeicons')
-                        });
-                        newcommentsendimg.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        replylikedarkmode.forEach(icon => {
-                            icon.classList.remove('darkmodeicons')
-                        });
-                        commentreactimg.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        sharegridlikedarkmore.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        opencommentboxactivatedarkmode.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                        likes111Icons.forEach(icon => {
-                            icon.classList.remove('darkmodeicons');
-                        });
-                    }
-                }
-                ThemeSettings();
                 function Online_Status() {
                     function getActiveUser() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -759,7 +516,7 @@ function create_Active_Account() {
                 userminiprofile.appendChild(usersmallprofileimagecontainer);
                 userminiprofile.appendChild(usersmallprofilea);
                 usersmallprofileimagecontainer.appendChild(usersmallimg);
-                usersmallprofileid.textContent = profile.user_Email;
+                usersmallprofileid.textContent = profile.lavinsta_Email;
                 usersmallprofilename.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
                 usersmallprofilea.href = '#';
                 usersmallprofilea.appendChild(usersmallprofilename);
@@ -799,11 +556,24 @@ function create_Active_Account() {
                 userbioblock.appendChild(userbioinfor);
                 userbioblock.classList.add('bioblock');
 
-                if (profile.user_Bio === '') {
+                if (profile.user_Bio == '') {
                     userbioblock.style.display = 'none';
                 } else {
                     userbioinfor.textContent = profile.user_Bio;
                     userbioblock.style.display = 'grid';
+                    userbioinfor.textContent.split(" ").forEach(texttitle => {
+                        prefix.forEach(unit => {
+                            if (texttitle.indexOf(unit.prefixName) != -1) {
+                                if (unit.prefixName == 'https://') {
+                                    let newtitle = userbioinfor.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    userbioinfor.innerHTML = newtitle;
+                                } else {
+                                    let newtitle = userbioinfor.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    userbioinfor.innerHTML = newtitle;
+                                }
+                            }
+                        });
+                    });
                 }
 
                 //userscount
@@ -1629,6 +1399,7 @@ function createAdvanceSwitchPage() {
                                     ActiveUser_Account = [];
                                     ActiveUser_Account.push({
                                         user_Id: user.user_Id,
+                                        user_Mode: user.user_Mode
                                     });
                                     localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));
                                     setCookie('External_Details', user.user_Id, 30);

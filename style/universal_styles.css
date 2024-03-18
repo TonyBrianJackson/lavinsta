@@ -1,3 +1,4 @@
+@import url(./root.css);
 @import url(./portal.css);
 @import url(./general.css);
 @import url(./header.css);
@@ -9,7 +10,6 @@
 @import url(./profile.css);
 @import url(./chat.css);
 @import url(./public.css);
-@import url(./root.css);
 @import url(./sidebar.css);
 @import url(./videocalls.css);
 @import url(./admin.css);

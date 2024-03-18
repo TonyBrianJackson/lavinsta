@@ -2540,7 +2540,7 @@ main .header {
 .imagecontainerLoading {
     background-size: cover;
     background-position: center;
-    filter: 3px;
+    filter: blur(4px);
 }
 .imagecontainerLoading> .mainimg {
     opacity: 0;

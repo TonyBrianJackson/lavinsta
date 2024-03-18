@@ -1,5 +1,7 @@
 const prefix = [{
-    prefixName: 'http://'
+    prefixName: 'https://'
+}, {
+    prefixName: '.http://'
 }, {
     prefixName: '.com'
 }, {
@@ -10,6 +12,64 @@ const prefix = [{
     prefixName: '.so'
 }, {
     prefixName: '.onion'
+}, {
+    prefixName: '.org'
+}, {
+    prefixName: '.ai'
+}, {
+    prefixName: '.bot'
+}, {
+    prefixName: '.xyz'
+}, {
+    prefixName: '.game'
+}, {
+    prefixName: '.inc'
+}, {
+    prefixName: '.me'
+}, {
+    prefixName: '.dev'
+}, {
+    prefixName: '.app'
+}, {
+    prefixName: '.info'
+}, {
+    prefixName: '.pro'
+}, {
+    prefixName: '.live'
+}, {
+    prefixName: '.online'
+}, {
+    prefixName: '.co'
+}, {
+    prefixName: '.tech'
+}, {
+    prefixName: '.us'
+}, {
+    prefixName: '.site'
+}, {
+    prefixName: '.vip'
+}, {
+    prefixName: '.biz'
+}, {
+    prefixName: '.art'
+}, {
+    prefixName: '.store'
+}, {
+    prefixName: '.wiki'
+}, {
+    prefixName: '.ink'
+}, {
+    prefixName: '.lol'
+}, {
+    prefixName: '.club'
+}, {
+    prefixName: '.is'
+}, {
+    prefixName: '.lavinsta'
+}, {
+    prefixName: '.memo'
+}, {
+    prefixName: '.ng'
 }]
 const savedpage = document.querySelector('.savedpage');
 const createReel = document.querySelector('.createReel');
@@ -201,12 +261,13 @@ function active_user_render() {
                             userbioinfor.forEach(bioinfo => {
                                 if (bioinfo.id === user.user_Id) {
                                     bioinfo.textContent = document.getElementById('biotextarea').value;
-                                    LogInFormData.forEach(user => {
-                                        if (user.user_Id === data.user_Id) {
-                                            user.user_Bio = document.getElementById('biotextarea').value;
-                                            ResavedData();
-                                        }
-                                    });
+                                }
+                            });
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === data.user_Id) {
+                                    user.user_Bio = document.getElementById('biotextarea').value;
+                                    ResavedData();
                                 }
                             });
                         }

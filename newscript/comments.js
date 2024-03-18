@@ -295,21 +295,10 @@ function CreationOfComments(section, locationId) {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
-                                LogInFormData.forEach(user => {
-                                    if (user.user_Id === data.user_Id) {
-                                        if (user.user_Mode == 'defaultTheme') {
-                                            commentreact.classList.remove('darkmodeicons');
-                                            commentreply.classList.remove('darkmodeicons');
-                                        } else if (user.user_Mode == 'darkTheme') {
-                                            commentreact.classList.add('darkmodeicons');
-                                            commentreply.classList.add('darkmodeicons');
-                                        } else if (user.user_Mode == 'lightOffTheme') {
-                                            commentreact.classList.add('darkmodeicons');
-                                            commentreply.classList.add('darkmodeicons');
-                                        }
-                                    }
-                                });
-
+                                if (data.user_Mode !== 'defaultTheme') {
+                                    commentreact.classList.add('darkmodeicons');
+                                    commentreply.classList.add('darkmodeicons');
+                                }
                             });
                         }
                     }
@@ -325,16 +314,14 @@ function CreationOfComments(section, locationId) {
                     commentimg.classList.add('commentposterimg');
                     commentpost.classList.add('commentpost');
                     commentpost.textContent = comment.Property_Src;
-                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                    commentpost.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'http://') {
-                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                if (unit.prefixName == 'https://') {
+                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     commentpost.innerHTML = newtitle;
                                 } else {
-                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     commentpost.innerHTML = newtitle;
                                 }
                             }
@@ -682,16 +669,14 @@ function CreationOfComments(section, locationId) {
                     commentpostimg.classList.add('commentpostimg');
                     commentpostimg.src = comment.Property_Src;
                     commentpost.textContent = comment.caption;
-                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                    commentpost.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'http://') {
-                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                if (unit.prefixName == 'https://') {
+                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     commentpost.innerHTML = newtitle;
                                 } else {
-                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     commentpost.innerHTML = newtitle;
                                 }
                             }
@@ -1106,16 +1091,14 @@ function CreationOfComments(section, locationId) {
                     commentpostvideo.classList.add('commentpostimg');
                     commentpostvideo.src = comment.Property_Src;
                     commentpost.textContent = comment.caption;
-                    commentpost.innerHTML.split(" ").forEach(texttitle => {
+                    commentpost.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'http://') {
-                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                if (unit.prefixName == 'https://') {
+                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     commentpost.innerHTML = newtitle;
                                 } else {
-                                    let newtitle = commentpost.innerHTML.replace(texttitle, `<a href="${'http://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
+                                    let newtitle = commentpost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                     commentpost.innerHTML = newtitle;
                                 }
                             }
@@ -1352,17 +1335,13 @@ function create_Comment_Reply_room(locationId) {
                 function themeCommentMode() {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        ActiveUser_Account.forEach(data => {
-                            LogInFormData.forEach(user => {
-                                if (user.user_Id === data.user_Id) {
-                                    if (user.user_Mode !== 'defaultTheme') {
-                                        newcommentinputsend.classList.add('darkmodeicons');
-                                        commentattachmenticon.classList.add('darkmodeicons');
-                                        refreshimg.classList.add('darkmodeicons');
-                                        exitimg.classList.add('darkmodeicons');
-                                    }
-                                }
-                            });
+                        ActiveUser_Account.forEach(user => {
+                            if (user.user_Mode !== 'defaultTheme') {
+                                refreshimg.classList.add('darkmodeicons');
+                                exitimg.classList.add('darkmodeicons');
+                                commentattachImg.classList.add('darkmodeicons');
+                                sendimg.classList.add('darkmodeicons');
+                            }
 
                         });
                     }
