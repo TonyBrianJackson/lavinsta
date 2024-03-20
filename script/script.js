@@ -367,10 +367,12 @@ function All_Search_On_Home() {
         }
     });
     if (document.querySelector('#recentsearchlist').classList.contains('active')) {
-        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-        ActiveUser_Account.forEach(user => {
-            createsuggesion(user.user_Id);
-        });
+        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+            ActiveUser_Account.forEach(user => {
+                createsuggesion(user.user_Id);
+            });   
+        }
     }
     //keyup functions***
     document.querySelector('.search_textBox')
@@ -990,13 +992,13 @@ function postwordwide() {
 //LOGOUT SCRIPT
 const enterlogoutpagebtn = document.querySelector('.enterlogoutpagebtn');
 const confirmation_popup = document.querySelector('.confirmation_popup');
-const confirmationtrue = document.querySelector('.confirmationtrue');
-const confirmationfalse = document.querySelector('.confirmationfalse');
-confirmationfalse.addEventListener('click', () => {
+const logoutconfirmationtrue = document.querySelector('.logoutconfirmationtrue');
+const logoutconfirmationfalse = document.querySelector('.logoutconfirmationfalse');
+logoutconfirmationfalse.addEventListener('click', () => {
     confirmation_popup.style.display = 'none';
     document.querySelector('.logoutpopup').style.display = 'none';
 })
-confirmationtrue.addEventListener('click', () => {
+logoutconfirmationtrue.addEventListener('click', () => {
     confirmation_popup.style.display = 'none';
     location.href = 'login.html';
     localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));

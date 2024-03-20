@@ -1,55 +1,56 @@
-
 create_StatusBar();
 
 function create_ThisPeople_List() {
-    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-    ActiveUser_Account.forEach(user => {
-        let userpeoplecolumn = document.createElement('div');
-        userpeoplecolumn.classList.add('userpeoplecolumn');
-        userpeoplecolumn.id = user.user_Id;
-        document.querySelector('.peopleculomn').appendChild(userpeoplecolumn);
-        var activepage = sessionStorage.getItem('activepage');
-        if (activepage == 'lavinstapeople' || activepage == 'peoplerequest' || activepage == 'sent_requests' || activepage == 'peoplelist') {
-            document.querySelector('.people').style.display = 'flex';
-            document.querySelector('.profile').style.display = 'none';
-            function removeActive() {
-                document.querySelectorAll('#lavinstapeople').forEach(item => {
-                    item.classList.remove('active');
-                });
-                document.querySelector('.peoplesearchbar').style.display = 'none';
+    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(user => {
+            let userpeoplecolumn = document.createElement('div');
+            userpeoplecolumn.classList.add('userpeoplecolumn');
+            userpeoplecolumn.id = user.user_Id;
+            document.querySelector('.peopleculomn').appendChild(userpeoplecolumn);
+            var activepage = sessionStorage.getItem('activepage');
+            if (activepage == 'lavinstapeople' || activepage == 'peoplerequest' || activepage == 'sent_requests' || activepage == 'peoplelist') {
+                document.querySelector('.people').style.display = 'flex';
+                document.querySelector('.profile').style.display = 'none';
+                function removeActive() {
+                    document.querySelectorAll('#lavinstapeople').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    document.querySelector('.peoplesearchbar').style.display = 'none';
+                }
+                if (sessionStorage.getItem('activepage') == 'lavinstapeople') {
+                    document.querySelectorAll('#lavinstapeople').forEach(item => {
+                        item.classList.add('active');
+                    });
+                    Create_People(user.user_Id, userpeoplecolumn);
+                    document.querySelector('.peoplesearchbar').style.display = 'flex';
+                } else if (sessionStorage.getItem('activepage') == 'peoplerequest') {
+                    removeActive();
+                    document.querySelectorAll('#peoplerequest').forEach(item => {
+                        item.classList.add('active');
+                    });
+                    document.querySelector('.peoplesearchbar1').style.display = 'flex';
+                    createRequest(user.user_Id, userpeoplecolumn);
+                } else if (sessionStorage.getItem('activepage') == 'sent_requests') {
+                    removeActive();
+                    document.querySelectorAll('#sent_requests').forEach(item => {
+                        item.classList.add('active');
+                    });
+                    document.querySelector('.peoplesearchbar3').style.display = 'flex';
+                    createSentRequest(user.user_Id, userpeoplecolumn);
+                } else if (sessionStorage.getItem('activepage') == 'peoplelist') {
+                    removeActive();
+                    document.querySelectorAll('#peoplelist').forEach(item => {
+                        item.classList.add('active');
+                    });
+                    document.querySelector('.peoplesearchbar2').style.display = 'flex';
+                    createFriendList(user.user_Id, userpeoplecolumn);
+                }
+            } else {
+                document.querySelector('.people').style.display = 'none';
             }
-            if (sessionStorage.getItem('activepage') == 'lavinstapeople') {
-                document.querySelectorAll('#lavinstapeople').forEach(item => {
-                    item.classList.add('active');
-                });
-                Create_People(user.user_Id, userpeoplecolumn);
-                document.querySelector('.peoplesearchbar').style.display = 'flex';
-            } else if (sessionStorage.getItem('activepage') == 'peoplerequest') {
-                removeActive();
-                document.querySelectorAll('#peoplerequest').forEach(item => {
-                    item.classList.add('active');
-                });
-                document.querySelector('.peoplesearchbar1').style.display = 'flex';
-                createRequest(user.user_Id, userpeoplecolumn);
-            } else if (sessionStorage.getItem('activepage') == 'sent_requests') {
-                removeActive();
-                document.querySelectorAll('#sent_requests').forEach(item => {
-                    item.classList.add('active');
-                });
-                document.querySelector('.peoplesearchbar3').style.display = 'flex';
-                createSentRequest(user.user_Id, userpeoplecolumn);
-            } else if (sessionStorage.getItem('activepage') == 'peoplelist') {
-                removeActive();
-                document.querySelectorAll('#peoplelist').forEach(item => {
-                    item.classList.add('active');
-                });
-                document.querySelector('.peoplesearchbar2').style.display = 'flex';
-                createFriendList(user.user_Id, userpeoplecolumn);
-            }
-        } else {
-            document.querySelector('.people').style.display = 'none';
-        }
-    });
+        });
+    }
 }
 create_ThisPeople_List();
 function reset() {
@@ -84,91 +85,112 @@ document.querySelector('#notification').addEventListener('click', () => {
     }
 });
 
-function create_StatusBar() {
-    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+function removeclones() {
     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-    ActiveUser_Account.forEach(user => {
-        LogInFormData.forEach(profile => {
-            if (user.user_Id === profile.user_Id) {
-                const userstatusbar = document.querySelector('.statusbar');
-                let useraddstoryimg = document.createElement('img');
-                let storycount = document.createElement('span');
-                let mystory = document.createElement('div');
-                let beforeofmystory = document.createElement('div');
-                document.querySelector('.addstoryimagcontainer').appendChild(useraddstoryimg);
-                useraddstoryimg.src = profile.user_ProfilePicture;
-                userstatusbar.appendChild(mystory);
-                mystory.appendChild(beforeofmystory);
-                beforeofmystory.appendChild(storycount);
-                beforeofmystory.classList.add('beforeofmystory');
-                storycount.textContent = profile.user_Stories.length;
-                mystory.classList.add('mystory');
-                storycount.classList.add('storycount');
-                mystory.id = profile.user_Id;
-                storycount.id = profile.user_Id;
-                useraddstoryimg.id = profile.user_Id;
-                if (storycount.textContent == 0) {
-                    mystory.style.display = 'none';
-                } else {
-                    mystory.style.display = 'flex';
-                }
-                document.querySelector('.addstory').addEventListener('click', () => {
-                    document.querySelector('.actualstorypopup').style.display = 'flex';
-                });
-                function filter_Image_Profile() {
-                    if (profile.user_ProfilePicture_Filter == 'default') {
-                        useraddstoryimg.classList.add('--color-default');
-                    } else if (profile.user_ProfilePicture_Filter == 'gray') {
-                        useraddstoryimg.classList.add('--color-gray');
-                    } else if (profile.user_ProfilePicture_Filter == 'contrast') {
-                        useraddstoryimg.classList.add('--color-contrast');
-                    } else if (profile.user_ProfilePicture_Filter == 'bright') {
-                        useraddstoryimg.classList.add('--color-bright');
-                    } else if (profile.user_ProfilePicture_Filter == 'blur') {
-                        useraddstoryimg.classList.add('--color-blur');
-                    } else if (profile.user_ProfilePicture_Filter == 'invert') {
-                        useraddstoryimg.classList.add('--color-invert');
-                    } else if (profile.user_ProfilePicture_Filter == 'sepia') {
-                        useraddstoryimg.classList.add('--color-sepia');
-                    } else if (profile.user_ProfilePicture_Filter == 'hue-rotate') {
-                        useraddstoryimg.classList.add('--color-hue-rotate');
-                    } else if (profile.user_ProfilePicture_Filter == 'opacity') {
-                        useraddstoryimg.classList.add('--color-opacity');
-                    } else if (profile.user_ProfilePicture_Filter == 'satulate') {
-                        useraddstoryimg.classList.add('--color-satulate');
+    if (Array.isArray(ActiveUser_Account)) {
+        document.querySelector('html').classList.remove('clone');
+        document.querySelector('.addstory').classList.remove('clone');
+        document.querySelectorAll('.stories_clone').forEach(clone => {
+            clone.remove();
+        });
+        document.querySelectorAll('.clonedfeedcolumn').forEach(clone => {
+            clone.remove();
+        });
+    } else {
+        document.querySelector('html').classList.add('clone');
+        document.querySelector('.addstory').classList.add('clone');
+    }
+}
+removeclones();
+function create_StatusBar() {
+    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(user => {
+            LogInFormData.forEach(profile => {
+                const addstoryimagcontainer = document.querySelector('.addstoryimagcontainer');
+                if (user.user_Id === profile.user_Id) {
+                    const userstatusbar = document.querySelector('.statusbar');
+                    let useraddstoryimg = document.createElement('img');
+                    let storycount = document.createElement('span');
+                    let mystory = document.createElement('div');
+                    let beforeofmystory = document.createElement('div');
+                    addstoryimagcontainer.innerHTML = '';
+                    addstoryimagcontainer.appendChild(useraddstoryimg);
+                    useraddstoryimg.src = profile.user_ProfilePicture;
+                    userstatusbar.appendChild(mystory);
+                    mystory.appendChild(beforeofmystory);
+                    beforeofmystory.appendChild(storycount);
+                    beforeofmystory.classList.add('beforeofmystory');
+                    storycount.textContent = profile.user_Stories.length;
+                    mystory.classList.add('mystory');
+                    storycount.classList.add('storycount');
+                    mystory.id = profile.user_Id;
+                    storycount.id = profile.user_Id;
+                    useraddstoryimg.id = profile.user_Id;
+                    if (storycount.textContent == 0) {
+                        mystory.style.display = 'none';
+                    } else {
+                        mystory.style.display = 'flex';
                     }
-                }
-                filter_Image_Profile();
-                function create_Friends_Start() {
-                    let connections = profile.user_Connection;
-                    connections.forEach(connect => {
-                        let friendstatus = document.createElement('div');
-                        let friendstorycount = document.createElement('span');
-                        let beforeoffriendstatus = document.createElement('div');
-                        friendstatus.classList.add('mystory');
-                        friendstorycount.classList.add('storycount');
-                        beforeoffriendstatus.classList.add('beforeofmystory')
-                        friendstatus.appendChild(beforeoffriendstatus);
-                        beforeoffriendstatus.appendChild(friendstorycount);
-                        friendstatus.id = connect.connectionId;
-                        friendstorycount.id = connect.connectionId;
-                        userstatusbar.appendChild(friendstatus);
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === connect.connectionId) {
-                                friendstorycount.textContent = user.user_Stories.length;
+                    document.querySelector('.addstory').addEventListener('click', () => {
+                        document.querySelector('.actualstorypopup').style.display = 'flex';
+                    });
+                    function filter_Image_Profile() {
+                        if (profile.user_ProfilePicture_Filter == 'default') {
+                            useraddstoryimg.classList.add('--color-default');
+                        } else if (profile.user_ProfilePicture_Filter == 'gray') {
+                            useraddstoryimg.classList.add('--color-gray');
+                        } else if (profile.user_ProfilePicture_Filter == 'contrast') {
+                            useraddstoryimg.classList.add('--color-contrast');
+                        } else if (profile.user_ProfilePicture_Filter == 'bright') {
+                            useraddstoryimg.classList.add('--color-bright');
+                        } else if (profile.user_ProfilePicture_Filter == 'blur') {
+                            useraddstoryimg.classList.add('--color-blur');
+                        } else if (profile.user_ProfilePicture_Filter == 'invert') {
+                            useraddstoryimg.classList.add('--color-invert');
+                        } else if (profile.user_ProfilePicture_Filter == 'sepia') {
+                            useraddstoryimg.classList.add('--color-sepia');
+                        } else if (profile.user_ProfilePicture_Filter == 'hue-rotate') {
+                            useraddstoryimg.classList.add('--color-hue-rotate');
+                        } else if (profile.user_ProfilePicture_Filter == 'opacity') {
+                            useraddstoryimg.classList.add('--color-opacity');
+                        } else if (profile.user_ProfilePicture_Filter == 'satulate') {
+                            useraddstoryimg.classList.add('--color-satulate');
+                        }
+                    }
+                    filter_Image_Profile();
+                    function create_Friends_Start() {
+                        let connections = profile.user_Connection;
+                        connections.forEach(connect => {
+                            let friendstatus = document.createElement('div');
+                            let friendstorycount = document.createElement('span');
+                            let beforeoffriendstatus = document.createElement('div');
+                            friendstatus.classList.add('mystory');
+                            friendstorycount.classList.add('storycount');
+                            beforeoffriendstatus.classList.add('beforeofmystory')
+                            friendstatus.appendChild(beforeoffriendstatus);
+                            beforeoffriendstatus.appendChild(friendstorycount);
+                            friendstatus.id = connect.connectionId;
+                            friendstorycount.id = connect.connectionId;
+                            userstatusbar.appendChild(friendstatus);
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === connect.connectionId) {
+                                    friendstorycount.textContent = user.user_Stories.length;
+                                }
+                            });
+                            if (friendstorycount.textContent == 0) {
+                                friendstatus.style.display = 'none';
+                            } else {
+                                friendstatus.style.display = 'flex';
                             }
                         });
-                        if (friendstorycount.textContent == 0) {
-                            friendstatus.style.display = 'none';
-                        } else {
-                            friendstatus.style.display = 'flex';
-                        }
-                    });
+                    }
+                    create_Friends_Start();
                 }
-                create_Friends_Start();
-            }
-        });
-    });
+            });
+        });   
+    }
 }
 function get_Active_Chat_Page() {
     createUsersProfile(sessionStorage.getItem('activepage'));
@@ -544,6 +566,7 @@ function createRequest(locationId, column) {
                     }
                 }
                 startTime();
+                LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                 LogInFormData.forEach(user => {
                     if (user.user_Id === connect.connectionId) {
                         friendsrequestimg.src = user.user_ProfilePicture;

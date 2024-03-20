@@ -1289,7 +1289,7 @@ function setCookie(name, value, expire_date) {
 }
 function createAdvanceSwitchPage() {
     logoutpopupculomn.innerHTML = '';
-    if (myLogsArray) {
+    if (Array.isArray(JSON.parse(localStorage.getItem('myLogsArray')))) {
         myLogsArray = JSON.parse(localStorage.getItem('myLogsArray'));
         myLogsArray.forEach(account => {
             LogInFormData.forEach(user => {
@@ -1336,57 +1336,66 @@ function createAdvanceSwitchPage() {
                         }
                     }
                     filter_Image();
-                    ActiveUser_Account.forEach(data => {
-                        if (data.user_Id === account.accountId) {
-                            shortcutloginbutton.disabled = true;
-                            shortcutloginbutton.textContent = 'logged In';
-                            shortcutloginbutton.classList.add('logIn_Button_Active');
-                        }
-                    });
-                    function getActiveUser() {
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-
-                        ActiveUser_Account.forEach(data => {
-                            LogInFormData.forEach(activeuser => {
-                                if (data.user_Id === activeuser.user_Id) {
-                                    let connection = activeuser.user_Connection;
-                                    var state = document.visibilityState;
-                                    connection.forEach(connect => {
-                                        if (connect.connectionId === data.user_Id) {
-                                            if (state == 'hidden') {
-                                                connect.status = connect.status;
-                                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                            } else {
-                                                connect.status = new Date().getTime();
-                                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                            }
-                                        }
-                                    });
-                                    activeuser.user_Is_Online = false;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                    function detectAccount() {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(data => {
+                                if (data.user_Id === account.accountId) {
+                                    shortcutloginbutton.disabled = true;
+                                    shortcutloginbutton.textContent = 'logged In';
+                                    shortcutloginbutton.classList.add('logIn_Button_Active');
                                 }
                             });
-                        });
+                        }
+                    }
+                    detectAccount();
+                    function getActiveUser() {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+    
+                            ActiveUser_Account.forEach(data => {
+                                LogInFormData.forEach(activeuser => {
+                                    if (data.user_Id === activeuser.user_Id) {
+                                        let connection = activeuser.user_Connection;
+                                        var state = document.visibilityState;
+                                        connection.forEach(connect => {
+                                            if (connect.connectionId === data.user_Id) {
+                                                if (state == 'hidden') {
+                                                    connect.status = connect.status;
+                                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                                } else {
+                                                    connect.status = new Date().getTime();
+                                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                                }
+                                            }
+                                        });
+                                        activeuser.user_Is_Online = false;
+                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                    }
+                                });
+                            });
+                        }
                     }
                     getActiveUser();
                     function logoutUser() {
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        ActiveUser_Account.forEach(data => {
-                            LogInFormData.forEach(activeuser => {
-                                if (data.user_Id === activeuser.user_Id) {
-                                    let connection = activeuser.user_Connection;
-                                    connection.forEach(connect => {
-                                        if (connect.connectionId === data.user_Id) {
-                                            connect.status = new Date().getTime();
-                                            activeuser.user_Is_Online = false;
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                        }
-                                    });
-                                }
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                            ActiveUser_Account.forEach(data => {
+                                LogInFormData.forEach(activeuser => {
+                                    if (data.user_Id === activeuser.user_Id) {
+                                        let connection = activeuser.user_Connection;
+                                        connection.forEach(connect => {
+                                            if (connect.connectionId === data.user_Id) {
+                                                connect.status = new Date().getTime();
+                                                activeuser.user_Is_Online = false;
+                                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                            }
+                                        });
+                                    }
+                                });
                             });
-                        });
+                        }
                     }
                     if (navigator.onLine === false) {
                         logoutUser();
@@ -1429,7 +1438,6 @@ function createAdvanceSwitchPage() {
                                         let usersuniversalnotificationcenter = document.querySelectorAll('.usersuniversalnotificationcenter');
                                         let usersharepopup = document.querySelectorAll('.usersharepopup');
                                         let user_Profile_Settings_Container = document.querySelectorAll('.user_Profile_Settings_Container');
-                                        let userconnect_Container = document.querySelectorAll('.userconnect_Container');
                                         let usersreportpopup = document.querySelectorAll('.usersreportpopup');
 
                                         // function createFriendShareScript() {
@@ -1658,11 +1666,6 @@ function createAdvanceSwitchPage() {
                                                     settingsbutton.style.display = 'flex'
                                                 } else {
                                                     settingsbutton.remove();
-                                                }
-                                            });
-                                            userconnect_Container.forEach(connectbutton => {
-                                                if (connectbutton.id === user.user_Id) {
-                                                    connectbutton.remove();
                                                 }
                                             });
                                             userprofileminimizer.forEach(button => {

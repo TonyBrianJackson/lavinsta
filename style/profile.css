@@ -1335,7 +1335,6 @@
     box-shadow: none;
     border-radius: 0px;
 }
-
 .profile_Cliant {
     z-index: 304;
 }
@@ -2830,9 +2829,6 @@
     margin: 0px 5px;
 }
 
-
-.unsent_Request {}
-
 .sent_Request {
     background: var(--color-black);
 }
@@ -2841,8 +2837,8 @@
     background: var(--color-black);
 }
 
-.connected img,
-.sent_Request img {
+.connected > img,
+.sent_Request > img {
     filter: invert(330%);
 }
 
@@ -5061,7 +5057,8 @@
         min-height: 400px;
     }
 
-    .usersfeedcolumn {
+    .usersfeedcolumn,
+    .clonedfeedcolumn {
         display: grid;
         grid-template-columns: 1fr 1fr;
         place-items: center;

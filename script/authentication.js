@@ -595,10 +595,7 @@ function logIn() {
             loginbtn.id = data.user_Id;
             function pushLogsArray() {
                 myLogsArray.push({
-                    accountName: data.user_Firstname + ' ' + data.user_Surname,
-                    accountImg: data.user_ProfilePicture,
-                    accountId: data.user_Id,
-                    account_filter: data.user_ProfilePicture_Filter
+                    accountId: data.user_Id
                 });
                 localStorage.setItem('myLogsArray', JSON.stringify(myLogsArray));
             }
@@ -617,12 +614,13 @@ function logIn() {
                 ActiveUser_Account = [];
                 ActiveUser_Account.push({
                     user_Id: data.user_Id,
+                    user_Mode: data.user_Mode
                 });
                 localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account))
             }
             pushActiveAccount();
-            if (Array.isArray(mySavedLogs)) {
-                myLogsArray = mySavedLogs;
+            if (Array.isArray(JSON.parse(localStorage.getItem('myLogsArray')))) {
+                myLogsArray = JSON.parse(localStorage.getItem('myLogsArray'));
                 filterLogs();
             } else {
                 myLogsArray = [];

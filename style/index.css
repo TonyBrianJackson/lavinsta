@@ -518,7 +518,8 @@ main .header {
 
 .publicpostcontainer,
 .postcontainer,
-.usersfeedcolumn {
+.usersfeedcolumn,
+.clonedfeedcolumn {
     width: 100%;
     min-height: 50px;
     height: max-content;
@@ -881,7 +882,10 @@ main .header {
     background: var(--color-white);
     box-shadow: var(--block-box-shadow);
 }
-
+.clone,
+.mystory.stories_clone {
+    filter: blur(3px);
+}
 .newstoryuploadcontainer {
     width: 100%;
     min-height: 100%;
@@ -3542,7 +3546,8 @@ a {
     background: none;
     box-shadow: none;
     border-radius: 0px;
-    height: 30px;
+    min-height: 30px;
+    height: max-content;
     width: 100%;
     overflow: hidden;
 }

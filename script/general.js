@@ -515,8 +515,12 @@ backarrow.addEventListener('click', () => {
 const recyclebackarrow = document.querySelector('.recyclebackarrow');
 recyclebackarrow.addEventListener('click', () => {
     document.querySelector('.recycletabs').style.display = 'none';
-})
-
+});
+function removeActiveMesg(element) {
+    element.forEach(button => {
+        button.classList.remove('active');
+    });
+}
 document.querySelectorAll('.mesgBtn').forEach(item => {
     item.addEventListener('click', () => {
         removeActiveMesg(document.querySelectorAll('.mesgBtn'));
