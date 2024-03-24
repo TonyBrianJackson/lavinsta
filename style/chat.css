@@ -190,7 +190,7 @@
     height: 40px;
     background: var(--color-white);
     box-shadow: var(--block-box-shadow);
-    overflow: hidden;
+    overflow: visible;
     border-radius: 10px;
     border: none;
 }
@@ -201,8 +201,7 @@
     box-shadow: none;
 }
 
-.memberscontainer>header>h1,
-.memberscontainer>header>span {
+.memberscontainer>header>h1 {
     background: none;
     border: none;
     border-radius: 0px;
@@ -215,9 +214,6 @@
     box-shadow: none;
 }
 
-.memberscontainer>header>span {
-    margin: 5px;
-}
 
 .memberscontainer>header>h1 {
     width: 77%;
@@ -1302,10 +1298,9 @@
     .voicechat .headerbtns {
         width: 45px;
         height: 45px;
-        border: 1px solid var(--color-gray);
+        border: 2px solid var(--color-gray);
         color: var(--color-dark);
     }
-
     .options .headerbtns>img,
     .voicechat .headerbtns>img {
         width: 21px;
@@ -1324,7 +1319,7 @@
         height: 100%;
         font-size: 15px;
         box-shadow: none;
-        border: 1px solid var(--color-gray);
+        border: 2px solid var(--color-gray);
         background: var(--color-white);
     }
     .memberscontainer.community_profile .caption {

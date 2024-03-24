@@ -362,8 +362,8 @@ function createAccounts() {
                 localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account))
             }
             pushActiveAccount();
-            if (Array.isArray(mySavedLogs)) {
-                myLogsArray = mySavedLogs;
+            if (Array.isArray(JSON.parse(localStorage.getItem('myLogsArray')))) {
+                myLogsArray = JSON.parse(localStorage.getItem('myLogsArray'));
                 filterLogs();
             } else {
                 myLogsArray = [];

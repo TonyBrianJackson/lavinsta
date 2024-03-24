@@ -24,10 +24,6 @@ function Create_Short() {
                 let save = document.createElement('span');
                 let shorthorizontalfloat = document.createElement('div');
 
-                let likeimg = document.createElement('img');
-                let commentimg = document.createElement('img');
-                let saveimg = document.createElement('img');
-
                 let live_Like_Count_Container = document.createElement('div');
                 let live_Comment_Count_Container = document.createElement('div');
                 let livecommentcount = document.createElement('span');
@@ -35,7 +31,7 @@ function Create_Short() {
 
                 let shortcomment = document.createElement('div');
                 let shortcommentinput = document.createElement('input');
-                let reelcommentsend = document.createElement('img');
+                let reelcommentsend = document.createElement('div');
 
                 let timelinevideocover = document.createElement('div');
                 let reelbottomcontrols = document.createElement('div');
@@ -52,7 +48,6 @@ function Create_Short() {
                 let reelunmute = document.createElement('img');
 
                 let viewsgrid = document.createElement('div');
-                let videoviewtext = document.createElement('p');
                 let viewscount = document.createElement('p');
 
                 function Create_GridPost_Options(anything) {
@@ -100,7 +95,7 @@ function Create_Short() {
                         editingPostText(photo.id);
                     });
                     option_First_Child2.addEventListener('click', () => {
-                        delete_Timeline_Post(Feeds_Data_Base, photo.id);
+                        delete_Timeline_Post(photo.id);
                     });
                     option_First_Child3.addEventListener('click', () => {
                         Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
@@ -138,8 +133,8 @@ function Create_Short() {
                     option_First_Child6.addEventListener('click', () => {
                         create_reportScript(photo.id);
                     });
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             if (photo.posterId !== data.user_Id) {
                                 more.remove();
@@ -186,13 +181,14 @@ function Create_Short() {
                 live_Like_Count_Container.id = photo.id;
                 live_Comment_Count_Container.id = photo.id;
 
-                live_Comment_Count_Container.classList.add('live_Counts');
+                live_Comment_Count_Container.classList.add('counts');
 
-                live_Like_Count_Container.classList.remove('like_count');
+                live_Like_Count_Container.classList.add('like_count');
 
                 masters.appendChild(mastersmiddle);
                 shortcomment.appendChild(shortcommentinput);
                 shortcomment.appendChild(reelcommentsend);
+                reelcommentsend.innerHTML = send2svg;
 
                 head.appendChild(nameAndImg);
                 head.appendChild(reeltime);
@@ -203,9 +199,9 @@ function Create_Short() {
 
                 nameAndImg.appendChild(authorsImg);
                 nameAndImg.appendChild(name);
-                comment.appendChild(commentimg);
-                like.appendChild(likeimg);
-                save.appendChild(saveimg);
+                comment.innerHTML = commentsvg;
+                like.innerHTML = likesvg;
+                save.innerHTML = savedsvg;
                 reeltime.classList.add('reeltime');
 
                 const startTime = function () {
@@ -246,10 +242,6 @@ function Create_Short() {
                 startTime();
                 save.classList.add('save');
 
-                saveimg.src = 'newicons/bookmark-white.png';
-                likeimg.src = 'newicons/like.png';
-                commentimg.src = 'newicons/comment.png';
-                reelcommentsend.src = 'icons/send.png';
 
                 title.textContent = photo.title;
                 title.textContent.split(" ").forEach(texttitle => {
@@ -435,8 +427,8 @@ function Create_Short() {
                 function pushSavedphotos() {
                     if (save.classList.contains('gridpostsave')) {
                         const newId = '' + new Date().getTime();
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === data.user_Id) {
@@ -507,15 +499,14 @@ function Create_Short() {
                 livecommentcount.id = photo.id;
                 livelikecount.classList.add('livelikecount');
                 livelikecount.classList.add('live_Like_Counters');
-                livelikecount.classList.add('live_Comment_Counters');
+                livecommentcount.classList.add('live_Comment_Counters');
                 livecommentcount.classList.add('livecommentcount');
-
                 live_Like_Count_Container.addEventListener('click', () => {
                     LikePopupsAndMore(photo.id,'postlike');
                 });
 
-                if (Array.isArray(ActiveAccount)) {
-                    ActiveUser_Account = ActiveAccount;
+                if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(data => {
                         like.id = data.user_Id + photo.id;
                     });

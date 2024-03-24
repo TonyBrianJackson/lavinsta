@@ -5,7 +5,7 @@ function createUsersProfile(locationId) {
         LogInFormData.forEach(profile => {
             if (profile.user_Id === locationId) {
                 let userprofileheader = document.createElement('header');
-                let userprofileexit = document.createElement('span');
+                let exituserprofile = document.createElement('div');
                 let profile_Cliant = document.createElement('div');
                 let usersprofile = document.createElement('div');
                 let userprofilecolumn = document.createElement('div');
@@ -28,204 +28,58 @@ function createUsersProfile(locationId) {
                 let topactothers = document.createElement('img');
                 let userconnectgrid = document.createElement('nav');
                 let user_Connection_Grid_Inner = document.createElement('div');
-    
+
                 let user_More_Option_Views = document.createElement('span');
                 let userconnect_Container = document.createElement('span');
                 let user_Information_View_Container = document.createElement('span');
                 let user_Friends_View_Container = document.createElement('span');
-    
+
                 let userconnect = document.createElement('img');
                 let usersinformationview = document.createElement('img');
                 let usersfriendsview = document.createElement('img');
-    
+
                 userspreview.appendChild(user_More_Option_Views);
                 user_More_Option_Views.innerHTML = '&vellip;';
-    
+
                 userconnect.src = 'icons/add-user.png';
                 usersfriendsview.src = 'icons/tow-people_solid.png';
                 usersinformationview.src = 'icons/information.png';
                 userconnectgrid.id = profile.user_Id;
-                userprofileexit.id = profile.user_Id;
+                exituserprofile.id = profile.user_Id;
                 user_More_Option_Views.id = profile.user_Id;
                 userprofileheader.id = profile.user_Id;
                 userconnect_Container.id = profile.user_Id;
-    
-                userconnect_Container.appendChild(userconnect);
-                user_Friends_View_Container.appendChild(usersfriendsview);
-                user_Information_View_Container.appendChild(usersinformationview);
-    
+
+                userconnect_Container.innerHTML = moresvg;
+                user_Friends_View_Container.innerHTML = peoplesvg;
+                user_Information_View_Container.innerHTML = infosvg;
+
                 userconnectgrid.appendChild(user_Connection_Grid_Inner);
                 user_Connection_Grid_Inner.appendChild(userconnect_Container);
                 user_Connection_Grid_Inner.appendChild(user_Friends_View_Container);
                 user_Connection_Grid_Inner.appendChild(user_Information_View_Container);
-    
+
+                userconnect_Container.classList.add('headerbtns');
+                user_Friends_View_Container.classList.add('headerbtns');
+                user_Friends_View_Container.classList.add('headerbtns');
+                user_Information_View_Container.classList.add('headerbtns');
+                user_More_Option_Views.classList.add('headerbtns');
+
                 userconnect_Container.classList.add('unsent_Request');
                 user_Friends_View_Container.classList.add('user_Friends_View_Container');
                 user_Information_View_Container.classList.add('user_Information_View_Container');
                 user_More_Option_Views.classList.add('user_More_Option_Views');
-                function send_friend_request(user_Id) {
-                    userconnect_Container.addEventListener('click', () => {
-                        if (userconnect_Container.classList.contains('unsent_Request')) {
-                            userconnect_Container.classList.remove('unsent_Request');
-                            userconnect_Container.classList.add('sent_Request');
-                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            LogInFormData.forEach(data => {
-                                const id = '' + new Date().getTime();
-                                if (data.user_Id === profile.user_Id) {
-                                    let connections = data.user_ConnectRequest;
-                                    connections.push({
-                                        id: id,
-                                        connectionId: user_Id,
-                                        recieversId: profile.user_Id,
-                                        time: new Date().getTime(),
-                                        requestView: false,
-                                    });
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                } if (data.user_Id === user_Id) {
-                                    let connections = data.user_SentRequest;
-                                    connections.push({
-                                        id: id,
-                                        connectionId: user_Id,
-                                        recieversId: profile.user_Id,
-                                        time: new Date().getTime(),
-                                        requestView: false,
-                                    });
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            });
-                        } else if (userconnect_Container.classList.contains('sent_Request')) {
-                            userconnect_Container.classList.remove('sent_Request');
-                            userconnect_Container.classList.add('unsent_Request');
-                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            LogInFormData.forEach(data => {
-                                if (data.user_Id === profile.user_Id) {
-                                    let connections = data.user_ConnectRequest;
-                                    connections = connections.filter(connection => {
-                                        if (connection.connectionId === user_Id) {
-                                            return false;
-                                        } else {
-                                            return true;
-                                        }
-                                    });
-                                    data.user_ConnectRequest = connections;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            });
-                            LogInFormData.forEach(data => {
-                                if (data.user_Id === user_Id) {
-                                    let connections = data.user_SentRequest;
-                                    connections = connections.filter(connection => {
-                                        if (connection.recieversId === profile.user_Id) {
-                                            return false;
-                                        } else {
-                                            return true;
-                                        }
-                                    });
-                                    data.user_SentRequest = connections;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                }
-                            });
-                        }
-                    });
-                }
+
                 ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                 ActiveUser_Account.forEach(user => {
-                    send_friend_request(user.user_Id);
-                    checkRequest(user.user_Id);
-                    if (profile.user_Id ===  user.user_Id) {
+                    if (profile.user_Id === user.user_Id) {
                         userconnect_Container.remove();
                     }
-                });
-                function checkRequest(user_Id) {
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    LogInFormData.forEach(data => {
-                        if (data.user_Id === user_Id) {
-                            let connections = data.user_SentRequest;
-                            connections.forEach(connection => {
-                                if (connection.recieversId === profile.user_Id) {
-                                    userconnect_Container.classList.add('sent_Request');
-                                    userconnect_Container.classList.remove('unsent_Request');
-                                } else {
-                                    userconnect_Container.classList.remove('sent_Request');
-                                    userconnect_Container.classList.add('unsent_Request');
-                                }
-                            })
-                        }
-                    });
-                }
-                function Un_friend() {
                     userconnect_Container.addEventListener('click', () => {
-                        if (userconnect_Container.classList.contains('connected')) {
-                            userconnect_Container.classList.add('unsent_Request');
-                            userconnect_Container.classList.remove('connected');
-                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            LogInFormData.forEach(user => {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                                ActiveUser_Account.forEach(data => {
-                                    if (user.user_Id === profile.user_Id) {
-                                        let connections = user.user_Connection;
-                                        if (connections) {
-                                            connections = connections.filter(connect => {
-                                                if (connect.connectionId === data.user_Id) {
-                                                    return false;
-                                                } else {
-                                                    return true;
-                                                }
-                                            });
-                                            user.user_Connection = connections;
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                        }
-                                    } if (user.user_Id === data.user_Id) {
-                                        let connections = user.user_Connection;
-                                        if (connections) {
-                                            connections = connections.filter(connect => {
-                                                if (connect.connectionId === profile.user_Id) {
-                                                    return false;
-                                                } else {
-                                                    return true;
-                                                }
-                                            });
-                                            user.user_Connection = connections;
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                        }
-                                    }
-                                });
-                            });
-                        }
+                        createProfileOptions(locationId, user.user_Id);
                     });
-    
-                    function checkRequest() {
-                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        ActiveUser_Account.forEach(user => {
-                            LogInFormData.forEach(data => {
-                                if (data.user_Id === profile.user_Id) {
-                                    let connections = data.user_Connection;
-                                    connections.forEach(connect => {
-                                        if (connect.connectionId === user.user_Id) {
-                                            userconnect_Container.classList.add('connected');
-                                            userconnect_Container.classList.remove('unsent_Request');
-                                        }
-                                    });
-                                }
-                            });
-                            if (user.user_Id === profile.user_Id) {
-                                userconnect_Container.remove();
-                            }
-                        });
-                    }
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    ActiveUser_Account.forEach(user => {
-                        send_friend_request();
-                    });
-                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        checkRequest();
-                    } else {
-                        ActiveUser_Account = [];
-                    }
-                }
-                Un_friend();
-    
+                });
+
                 function createchatRoom_Button() {
                     ActiveUser_Account.forEach(user => {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -235,10 +89,8 @@ function createUsersProfile(locationId) {
                                 friends.forEach(friend => {
                                     if (friend.connectionId === profile.user_Id) {
                                         let user_Chat_Room = document.createElement('span');
-                                        let user_Chat_Room_Img = document.createElement('img');
                                         user_Connection_Grid_Inner.appendChild(user_Chat_Room);
-                                        user_Chat_Room.appendChild(user_Chat_Room_Img);
-                                        user_Chat_Room_Img.src = 'icons/more icons/chat.png';
+                                        user_Chat_Room.innerHTML = smartchatsvg;
                                         user_Chat_Room.classList.add('headerbtns');
                                         user_Chat_Room.id = friend.connectionId + data.user_Id;
                                         function decreasecount() {
@@ -262,7 +114,7 @@ function createUsersProfile(locationId) {
                                                     }
                                                 });
                                             }
-    
+
                                             if (LogInFormData) {
                                                 LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));;
                                                 LogInFormData.forEach(user => {
@@ -280,7 +132,7 @@ function createUsersProfile(locationId) {
                                         user_Chat_Room.addEventListener('click', () => {
                                             decreasecount();
                                         });
-    
+
                                     }
                                 })
                             }
@@ -298,20 +150,20 @@ function createUsersProfile(locationId) {
                     userconnectgrid.classList.toggle('userconnectgridactive');
                 });
                 userconnectgrid.classList.add('userconnectgrid');
-    
+
                 //users mini profile
                 let userstrash = document.createElement('nav');
-    
+
                 document.body.appendChild(userstrash);
                 userstrash.style.display = 'none';
-    
+
                 let userbioblock = document.createElement('div');
                 let userbioinfor = document.createElement('p');
-    
+
                 let userprofileminimizer = document.createElement('span');
                 let userpostgridcontainer = document.createElement('nav');
                 let userpostgrid = document.createElement('div');
-    
+
                 let userfriendlist = document.createElement('nav');
                 let userfriendListColumn = document.createElement('div');
                 let userfollowerlist = document.createElement('nav');
@@ -323,15 +175,15 @@ function createUsersProfile(locationId) {
                 usersfollowerslistheader.appendChild(userfollowersexit);
                 usersfriendlistheader.classList.add('XyFireRecTorFas');
                 usersfollowerslistheader.classList.add('XyFireRecTorFas');
-    
+
                 //profile picture and cover photo uploader.
                 document.body.appendChild(userfriendlist);
                 document.body.appendChild(userfollowerlist);
                 userpostgridcontainer.appendChild(userpostgrid);
-    
+
                 userbioblock.appendChild(userbioinfor);
                 userbioblock.classList.add('bioblock');
-    
+
                 if (profile.user_Bio === '') {
                     userbioblock.style.display = 'none';
                 } else {
@@ -351,7 +203,7 @@ function createUsersProfile(locationId) {
                         });
                     });
                 }
-    
+
                 //userscount
                 function usersCount() {
                     function HomePageCounts() {
@@ -360,55 +212,55 @@ function createUsersProfile(locationId) {
                         let userspeoplecount = document.createElement('span');
                         let usersfeedcount = document.createElement('span');
                         let usersvideocount = document.createElement('span');
-    
+
                         let feedcount = document.createElement('span');
                         let photocount = document.createElement('span');
                         let shortcount = document.createElement('span');
-    
+
                         usersnotificationcount.id = profile.user_Id;
                         userschatcount.id = profile.user_Id;
                         userspeoplecount.id = profile.user_Id;
                         usersfeedcount.id = profile.user_Id;
                         usersvideocount.id = profile.user_Id;
-    
+
                         feedcount.id = profile.user_Id;
                         photocount.id = profile.user_Id;
                         shortcount.id = profile.user_Id;
-    
+
                         userstrash.appendChild(usersnotificationcount);
                         userstrash.appendChild(userschatcount);
                         userstrash.appendChild(userspeoplecount);
                         userstrash.appendChild(usersfeedcount);
                         userstrash.appendChild(usersvideocount);
-    
+
                         userstrash.appendChild(feedcount);
                         userstrash.appendChild(photocount);
                         userstrash.appendChild(shortcount);
-    
+
                         feedcount.textContent = profile.my_FeedsCount;
                         photocount.textContent = profile.my_PhotoCount;
                         shortcount.textContent = profile.my_ShortCount;
-    
+
                         usersnotificationcount.textContent = '';
                         userschatcount.textContent = profile.my_ChatCount;
                         userspeoplecount.textContent = profile.my_PeopleCount;
                         usersfeedcount.textContent = profile.my_Home_FeedsCount;
                         usersvideocount.textContent = profile.my_VideosCount;
-    
+
                         usersnotificationcount.classList.add('userscount');
                         userschatcount.classList.add('userscount');
                         userspeoplecount.classList.add('userscount');
                         usersfeedcount.classList.add('userscount');
                         usersvideocount.classList.add('userscount');
-    
+
                         feedcount.classList.add('userscount');
                         photocount.classList.add('userscount');
                         shortcount.classList.add('userscount');
-    
+
                         feedcount.classList.add('feedcount');
                         photocount.classList.add('photocount');
                         shortcount.classList.add('shortcount');
-    
+
                         usersnotificationcount.classList.add('usersnotificationcount');
                         userschatcount.classList.add('userschatcount');
                         userspeoplecount.classList.add('userspeoplecount');
@@ -418,19 +270,19 @@ function createUsersProfile(locationId) {
                     HomePageCounts();
                 }
                 usersCount();
-    
-    
-    
+
+
+
                 let storycount = document.createElement('span');
                 userstrash.appendChild(storycount);
                 storycount.textContent = profile.my_StoryCount;
                 storycount.classList.add('storycount');
                 storycount.id = profile.user_Id;
-    
+
                 //people and friends
                 userfriendlist.id = profile.user_Id;
                 userfriendListColumn.id = profile.user_Id;
-    
+
                 userfriendlistexit.innerHTML = '&LeftArrow;';
                 userfollowersexit.innerHTML = '&LeftArrow;';
                 userfollowersexit.classList.add('userfollowersexit');
@@ -442,7 +294,7 @@ function createUsersProfile(locationId) {
                 userfriendlist.appendChild(usersfriendlistheader);
                 userfriendlist.appendChild(userfriendListColumn);
                 userfollowerlist.appendChild(usersfollowerslistheader);
-    
+
                 userfriendlistexit.addEventListener('click', () => {
                     userfriendlist.style.display = 'none';
                 });
@@ -453,7 +305,7 @@ function createUsersProfile(locationId) {
                 userfollowerlist.id = profile.user_Id;
                 user_Friends_View_Container.id = profile.user_Id;
                 user_Information_View_Container.id = profile.user_Id;
-    
+
                 userfriendlist.classList.add('Friendlisttabs');
                 userfollowerlist.classList.add('followerslisttabs');
                 user_Information_View_Container.addEventListener('click', () => {
@@ -462,28 +314,28 @@ function createUsersProfile(locationId) {
                 user_Friends_View_Container.addEventListener('click', (e) => {
                     createFriends(profile.user_Id);
                 });
-    
+
                 usertopactivity.appendChild(usertopactivitytimeline);
                 usertopactivity.appendChild(usertopactivitypublic);
                 usertopactivity.appendChild(usertopactivityothers);
-    
+
                 usertopactivitytimeline.appendChild(topacttimeline);
                 usertopactivitypublic.appendChild(topactpublic);
                 usertopactivityothers.appendChild(topactothers);
-    
+
                 usertopactivitytimeline.appendChild(usertimelinetext);
                 usertopactivitypublic.appendChild(userpublic);
                 usertopactivityothers.appendChild(userothers);
-    
+
                 topacttimeline.src = 'icons/history.png';
                 topactothers.src = 'icons/application.png';
                 topactpublic.src = 'icons/web-content.png';
                 usertimelinetext.textContent = 'timeline';
                 userpublic.textContent = 'public';
                 userothers.textContent = 'others';
-                userprofileexit.innerHTML = '&LeftArrow;';
+                exituserprofile.innerHTML = undo;
                 userprofileminimizer.innerHTML = '&square;';
-                userprofileheader.appendChild(userprofileexit);
+                userprofileheader.appendChild(exituserprofile);
                 userprofileheader.appendChild(userprofileminimizer);
                 userprofileheader.classList.add('userprofileheader');
                 document.body.appendChild(profile_Cliant);
@@ -501,7 +353,7 @@ function createUsersProfile(locationId) {
                 userspreview.appendChild(userspreviewflex);
                 userspreviewflex.appendChild(usersname);
                 userspreviewflex.appendChild(usertopactivity);
-    
+
                 usersname.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
                 if (profile.user_CoverPhoto) {
                     usercoverphoto.src = profile.user_CoverPhoto;
@@ -577,12 +429,12 @@ function createUsersProfile(locationId) {
                     userpostgridcontainer.classList.toggle('postgridcontainerlarge');
                     userpostgrid.classList.toggle('postgridlarge');
                     userprofileminimizer.classList.toggle('userprofileminimizerlarge');
-                    userprofileexit.classList.toggle('userprofileexitlarge');
+                    exituserprofile.classList.toggle('exituserprofilelarge');
                     userconnectgrid.classList.toggle('userconnectgridlarge');
                     userconnect.classList.toggle('userconnectgridlargebutton');
                     user_More_Option_Views.classList.toggle('user_More_Option_Views_Large');
                 }
-    
+
                 userprofileminimizer.id = profile.user_Id;
                 userprofileminimizer.addEventListener('click', (e) => {
                     let gridpost = document.querySelectorAll('.gridpost');
@@ -620,7 +472,8 @@ function createUsersProfile(locationId) {
                         createOtherGridPost(profile.user_Id, userpostgrid);
                     }, 2000);
                 });
-                userprofileexit.classList.add('userprofileexit');
+                exituserprofile.classList.add('exituserprofile');
+                exituserprofile.classList.add('headerbtns');
                 usertopactivity.classList.add('topactivities');
                 usertopactivitytimeline.classList.add('usertopactivitytimeline');
                 usertopactivitytimeline.classList.add('active');
@@ -635,17 +488,17 @@ function createUsersProfile(locationId) {
                 usersprofile.classList.add('usersprofile');
                 profile_Cliant.classList.add('profile_Cliant');
                 userprofilecolumn.classList.add('secondprofileculomn');
-                userprofileexit.addEventListener('click', () => {
+                exituserprofile.addEventListener('click', () => {
                     profile_Cliant.remove();
                     sessionStorage.setItem('activepage', 'home');
                     document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
                 });
-    
+
                 profile_Cliant.id = profile.user_Id;
                 userbioblock.id = profile.user_Id;
                 userpostgrid.id = profile.user_Id;
                 userprofilepicture.id = profile.user_Id;
-    
+
                 userbioinfor.id = profile.user_Id;
                 usercoverphoto.id = profile.user_Id;
                 loader(profile_Cliant);
@@ -654,7 +507,255 @@ function createUsersProfile(locationId) {
         });
     }
 }
+function createProfileOptions(locationId, user_Id) {
+    document.querySelectorAll('.profile_options_container').forEach(optioncontainer => {
+        optioncontainer.remove();
+    });
+    if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        LogInFormData.forEach(profile => {
+            if (profile.user_Id === locationId) {
+                let option_header = document.createElement('header');
+                let option_exit = document.createElement('div');
+                let option_tag = document.createElement('b');
+                let profile_options_container = document.createElement('div');
+                let option_inner_container = document.createElement('div');
+                let option_left = document.createElement('div');
+                let option_right = document.createElement('div');
+                let option_bottom = document.createElement('nav');
+                let option_connect = document.createElement('button');
+                let option_disconnect = document.createElement('button');
+                let option_profile_bio = document.createElement('p');
+                let option_profile_picture = document.createElement('div');
+                let option_profile_picture_img = document.createElement('img');
+                let option_profile_name = document.createElement('strong');
+                document.body.appendChild(profile_options_container);
+                option_header.appendChild(option_exit);
+                option_header.appendChild(option_tag);
+                profile_options_container.appendChild(option_header);
+                profile_options_container.appendChild(option_inner_container);
+                profile_options_container.appendChild(option_bottom);
+                option_inner_container.appendChild(option_left);
+                option_inner_container.appendChild(option_right);
+                option_bottom.appendChild(option_connect);
+                option_left.appendChild(option_profile_picture);
+                option_left.appendChild(option_profile_name);
+                option_right.appendChild(option_profile_bio);
+                option_profile_picture.appendChild(option_profile_picture_img);
+                option_exit.innerHTML = undo;
+                option_profile_picture_img.src = profile.user_ProfilePicture;
+                option_profile_name.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
+                option_profile_bio.textContent = profile.user_Bio.trim();
+                option_tag.innerHTML = 'User Profile Options &quest;';
+                option_exit.classList.add('headerbtns');
+                profile_options_container.classList.add('profile_options_container');
+                option_connect.textContent = 'Connect';
 
+                LogInFormData.forEach(user => {
+                    if (user.user_Id === user_Id) {
+                        let connections = user.user_Connection;
+                        connections.forEach(friend => {
+                            if (friend.connectionId === profile.user_Id) {
+                                option_connect.textContent = 'Connected';
+                            }
+                        });
+                        let sentconnections = user.user_SentRequest;
+                        sentconnections.forEach(friend => {
+                            if (friend.recieversId === profile.user_Id) {
+                                option_connect.textContent = 'Cancel';
+                            }
+                        });
+                        let connectionrequest = user.user_ConnectRequest;
+                        connectionrequest.forEach(friend => {
+                            if (friend.connectionId === profile.user_Id) {
+                                option_connect.textContent = 'Accept';
+                                option_disconnect.textContent = 'Decline';
+                                option_bottom.appendChild(option_disconnect);
+                            }
+                        });
+                    }
+                });
+                option_connect.addEventListener('click', () => {
+                    if (option_connect.textContent === 'Connect') {
+                        option_connect.textContent = 'Cancel';
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(user => {
+                            const id = '' + new Date().getTime();
+                            if (user.user_Id === profile.user_Id) {
+                                let connections = user.user_ConnectRequest;
+                                connections.push({
+                                    id: id,
+                                    connectionId: user_Id,
+                                    recieversId: profile.user_Id,
+                                    time: new Date().getTime(),
+                                    requestView: false,
+                                });
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            } if (user.user_Id === user_Id) {
+                                let connections = user.user_SentRequest;
+                                connections.push({
+                                    id: id,
+                                    connectionId: user_Id,
+                                    recieversId: profile.user_Id,
+                                    time: new Date().getTime(),
+                                    requestView: false,
+                                });
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            }
+                        });
+                    } else if (option_connect.textContent === 'Cancel') {
+                        option_connect.textContent = 'Connect';
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(user => {
+                            if (user.user_Id === profile.user_Id) {
+                                let connections = user.user_ConnectRequest;
+                                connections = connections.filter(connect => {
+                                    if (connect.connectionId === user_Id) {
+                                        return false;
+                                    } else {
+                                        return true;
+                                    }
+                                });
+                                user.user_ConnectRequest = connections;
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            } if (user.user_Id === user_Id) {
+                                let connections = user.user_SentRequest;
+                                connections = connections.filter(connect => {
+                                    if (connect.recieversId === profile.user_Id) {
+                                        return false;
+                                    } else {
+                                        return true;
+                                    }
+                                });
+                                user.user_SentRequest = connections;
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            }
+                        });
+                    } else if (option_connect.textContent === 'Accept') {
+                        option_connect.textContent = 'Accepted';
+                        option_connect.disabled = true;
+                        option_disconnect.remove();
+                        pushFriend();
+                        option_connect.disabled = true;
+                    }
+                });
+                option_disconnect.addEventListener('click', () => {
+                    option_disconnect.textContent = 'Declined';
+                    option_disconnect.disabled = true;
+                    option_connect.remove();
+                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === profile.user_Id) {
+                            let connectRequest = user.user_ConnectRequest;
+                            connectRequest = connectRequest.filter(connection => {
+                                if (connection.connectionId === user_Id) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                            user.user_ConnectRequest = connectRequest;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        }
+                    });
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === user_Id) {
+                            let sent_Request = user.user_SentRequest;
+                            sent_Request = sent_Request.filter(connection => {
+                                if (connection.recieversId === profile.user_Id) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                            user.user_SentRequest = sent_Request;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        }
+                    });
+                });
+                option_exit.addEventListener('click', () => {
+                    profile_options_container.remove();
+                });
+                function pushFriend() {
+                    const id = '' + new Date().getTime();
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === user_Id) {
+                            let connections = user.user_Connection;
+                            connections.push({
+                                connectionId: profile.user_Id,
+                                id: id,
+                                count: 0,
+                                onlinestatus: false,
+                                status: new Date().getTime(),
+                                NotificationView: false,
+                                connector_ChatView: false,
+                            });
+                            let connectRequest = user.user_ConnectRequest;
+                            connectRequest = connectRequest.filter(connection => {
+                                if (connection.connectionId === profile.user_Id) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                            user.user_ConnectRequest = connectRequest;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        } if (user.user_Id === profile.user_Id) {
+                            let connections = user.user_Connection;
+                            let sent_Request = user.user_SentRequest;
+                            connections.push({
+                                connectionId: profile.user_Id,
+                                id: id,
+                                count: 0,
+                                onlinestatus: false,
+                                status: new Date().getTime(),
+                                NotificationView: false,
+                                connector_ChatView: false,
+                            });
+                            sent_Request = sent_Request.filter(sentRequest => {
+                                if (sentRequest.recieversId === user_Id) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                            user.user_SentRequest = sent_Request;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        }
+                    });
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === user_Id) {
+                            let connectRequest = user.user_ConnectRequest;
+                            connectRequest = connectRequest.filter(connection => {
+                                if (connection.connectionId === profile.user_Id) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                            user.user_ConnectRequest = connectRequest;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        }
+                    });
+                    LogInFormData.forEach(user => {
+                        if (user.user_Id === profile.user_Id) {
+                            let sent_Request = user.user_SentRequest;
+                            sent_Request = sent_Request.filter(sentRequest => {
+                                if (sentRequest.recieversId === user_Id) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                            user.user_SentRequest = sent_Request;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        }
+                    });
+                }
+            }
+        });
+    }
+}
 function usersInformation(locationId) {
     if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
         removeInfopage();
@@ -696,8 +797,8 @@ function usersInformation(locationId) {
                     let Info = document.createElement('div');
                     let center = document.createElement('div');
                     let value = document.createElement('span');
-    
-    
+
+
                     session.appendChild(InforMationCenter);
                     InforMationCenter.appendChild(Info);
                     InforMationCenter.appendChild(center);
@@ -714,8 +815,8 @@ function usersInformation(locationId) {
                     let Info = document.createElement('div');
                     let center = document.createElement('div');
                     let value = document.createElement('span');
-    
-    
+
+
                     session.appendChild(InforMationCenter);
                     InforMationCenter.appendChild(Info);
                     InforMationCenter.appendChild(center);
@@ -732,8 +833,8 @@ function usersInformation(locationId) {
                     let Info = document.createElement('div');
                     let center = document.createElement('div');
                     let value = document.createElement('span');
-    
-    
+
+
                     session.appendChild(InforMationCenter);
                     InforMationCenter.appendChild(Info);
                     InforMationCenter.appendChild(center);
@@ -750,8 +851,8 @@ function usersInformation(locationId) {
                     let Info = document.createElement('div');
                     let center = document.createElement('div');
                     let value = document.createElement('span');
-    
-    
+
+
                     session.appendChild(InforMationCenter);
                     InforMationCenter.appendChild(Info);
                     InforMationCenter.appendChild(center);
@@ -768,8 +869,8 @@ function usersInformation(locationId) {
                     let Info = document.createElement('div');
                     let center = document.createElement('div');
                     let value = document.createElement('span');
-    
-    
+
+
                     session.appendChild(InforMationCenter);
                     InforMationCenter.appendChild(Info);
                     InforMationCenter.appendChild(center);
@@ -835,7 +936,7 @@ function createFriends(locationId) {
                         friendname.id = connect.connectionId;
                         frienddisconnect.id = connect.id;
                         friendProfilePicture.id = connect.connectionId;
-    
+
                         function getDetails() {
                             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                             LogInFormData.forEach(user => {
@@ -871,7 +972,7 @@ function createFriends(locationId) {
                             });
                         }
                         getDetails();
-    
+
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(user => {
@@ -882,7 +983,7 @@ function createFriends(locationId) {
                                 }
                             });
                         }
-    
+
                         frienddisconnect.addEventListener('click', () => {
                             createUsersProfile(connect.connectionId);
                         });

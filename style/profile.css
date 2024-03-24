@@ -243,7 +243,7 @@
     position: absolute;
 }
 
-.gridpostImgCover>div>img {
+.gridpostImgCover>div>svg {
     display: block;
     width: 25px;
     height: 25px;
@@ -251,9 +251,10 @@
     box-shadow: none;
     border: none;
     border-radius: 0px;
-    filter: invert(333%);
 }
-
+.gridpostImgCover>div>svg path {
+    fill: #ffffffff;
+}
 .gridpost:hover {
     transition: all ease-in-out 0.35s;
     transform: scale(1.02);
@@ -336,8 +337,8 @@
 }
 
 .advertactionbar>div {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -348,17 +349,22 @@
     border-radius: 50%;
 }
 
-.advertactionbar>div>img {
-    width: 20px;
-    height: 20px;
-    display: block;
+.advertactionbar>div>svg {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: none;
     overflow: visible;
     background: none;
     border-radius: 0px;
     box-shadow: none;
 }
-
+.advertactionbar>div>svg path {
+    fill: #ffffffff;
+}
 .advertactionbar .like_count_active,
 .advertactionbar .like_count,
 .advertactionbar .counts {
@@ -1589,24 +1595,6 @@
     transition: 2s all;
 }
 
-.userconnectgrid>div>span {
-    width: 35px;
-    height: 35px;
-    padding: 5px;
-    margin: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border-width: 2px;
-    background: var(--color-white);
-    box-shadow: var(--giant-box-shadow);
-    color: var(--color-dark);
-    overflow: hidden;
-    cursor: pointer;
-    transition: 2s all;
-}
 
 .userconnectgrid>div>span>img {
     width: 25px;
@@ -2631,7 +2619,7 @@
     height: 45px;
 }
 
-.gridpostlarge .gridpostImgCover>div>img {
+.gridpostlarge .gridpostImgCover>div>svg {
     width: 40px;
     height: 40px;
 }
@@ -2846,7 +2834,145 @@
 .uploadprofilepicturepopup .subactions .profilepictureuploadbtn {
     display: block;
 }
-
+.profile_options_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30vw;
+    min-height: 25vh;
+    height: max-content;
+    background: var(--color-white);
+    box-shadow: var(--block-box-shadow);
+    border: none;
+    border-radius: 25px;
+    position: fixed;
+    transform: translate(-50%);
+    left: 50%;
+    top: 40%;
+    padding: 20px;
+    overflow: hidden;
+    gap: 5px;
+}
+.profile_options_container > header {
+    width: 100%;
+    height: max-content;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+}
+.profile_options_container > header > b {
+    width: 80%;
+    border-radius: 0px;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    font-weight: 900;
+    border: none;
+    box-shadow: none;
+    background: none;
+    color: var(--color-dark);
+}
+.profile_options_container > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    overflow: hidden;
+}
+.profile_options_container > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    background: none;
+    border-radius: 0px;
+}
+.profile_options_container > nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    background: none;
+    border-radius: 0px;
+    width: 100%;
+    gap: 5px;
+}
+.profile_options_container > nav > button {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    background: var(--color-dark);
+    color: var(--color-white);
+    border-radius: 30px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+.profile_options_container > nav > button:hover {
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+.profile_options_container> div > div:nth-child(1) > div {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid var(--color-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.profile_options_container > div > div:nth-child(2)> p,
+.profile_options_container > div > div:nth-child(1)>strong {
+    border-radius: 0px;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    font-weight: 900;
+    border: none;
+    box-shadow: none;
+    background: none;
+    color: var(--color-dark);
+}
+.profile_options_container> div > div:nth-child(2)> p {
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    -webkit-padding-start: 5px;
+    -webkit-padding-end: 5px;
+    white-space: pre-wrap;
+}
+.profile_options_container > div > div:nth-child(1) > div > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    background: none;
+    object-fit: cover;
+}
 @media (min-width: 100px) and (max-width: 800px) {
 
     .post,
@@ -2884,6 +3010,17 @@
 
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .profile_options_container> div > div:nth-child(1) > div {
+        background: transparent;
+        padding: 10px;
+    }
+    .profile_options_container {
+        width: 98vw;
+        top: unset;
+        bottom: 0;
+        border-radius: 25px 25px 0px 0px;
+        z-index: 331;
+    }
     .header {
         flex-direction: column;
         justify-content: center;
@@ -3310,19 +3447,18 @@
         background: var(--color-light);
     }
 
-    .headerbtns.sharegridlike {
+    .options .headerbtns.sharegridlike {
         width: 45px;
         height: 45px;
         margin: 0;
-        border: 1px solid var(--color-gray);
+        border: 2px solid var(--color-gray);
     }
 
-    .headerbtns.sharegridliked {
+    .options .headerbtns.sharegridliked {
         width: 45px;
         height: 45px;
         margin: 0;
-        background: var(--color-bright-2);
-        border: 1px solid var(--color-gray);
+        border: 2px solid var(--color-bright);
     }
 
     .newcommentinput {
@@ -3647,7 +3783,7 @@
     .profilepicturefilterpopup,
     .coverpicturefilterpopup,
     .uploadprofilepicturepopup {
-        width: 90vw;
+        width: 98vw;
         height: max-content;
         max-height: 100%;
         box-shadow: var(--light-box-shadow);
@@ -3840,7 +3976,7 @@
         height: max-content;
     }
 
-    .userconnectgrid>div>span {
+    .userconnectgrid>div>.headerbtns {
         width: 40px;
         height: 40px;
         border: none;
@@ -3857,7 +3993,7 @@
         box-shadow: var(--block-box-shadow);
     }
 
-    .userconnectgrid>div>span {
+    .userconnectgrid>div>.headerbtns {
         width: 50px;
         height: 50px;
     }
@@ -4018,7 +4154,7 @@
         overflow: visible;
     }
 
-    .userconnectgrid>div>span {
+    .userconnectgrid>div>.headerbtns {
         width: 50px;
         height: 50px;
         margin: 0px 10px;
@@ -4324,7 +4460,7 @@
         height: 35px;
     }
 
-    .gridpostImgCover>div>img {
+    .gridpostImgCover>div>svg {
         width: 30px;
         height: 30px;
     }
@@ -4677,7 +4813,7 @@
         right: 20px;
     }
 
-    .gridpostlarge .gridpostImgCover>div>img {
+    .gridpostlarge .gridpostImgCover>div>svg {
         width: 25px;
         height: 25px;
     }

@@ -22,14 +22,12 @@ function CreationOfComments(section, locationId) {
                     let commentpost = document.createElement('div');
                     let reactsflex = document.createElement('div');
 
-                    let commentreact = document.createElement('img');
                     /*LIKE COUNTS*/
                     let likecounts = document.createElement('span');
                     let replycommentcount = document.createElement('span');
 
-
-                    let commentreply = document.createElement('img');
-
+                    let commentreact = document.createElement('div');
+                    let commentreply = document.createElement('div');
 
                     let expand = document.createElement('span');
 
@@ -226,13 +224,15 @@ function CreationOfComments(section, locationId) {
                     likecounts.id = comment.id;
                     likecounts.textContent = comment.likes.length;
                     replycommentcount.textContent = comment.comments.length;
+                    commentreact.innerHTML = likesvg;
+                    commentreply.innerHTML = commentsvg;
                     replycommentcount.classList.add('replycommentcount');
                     commentreact.addEventListener('click', () => {
                         likecomment();
                     });
                     likecounts.classList.add('likecounts');
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id,'commentlike');
+                        LikePopupsAndMore(comment.id, 'commentlike');
                     });
 
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -261,15 +261,11 @@ function CreationOfComments(section, locationId) {
                     likecounts.classList.add('comment_like_counters');
                     function addlikecomment() {
                         const id = '' + new Date().getTime();
-                        likecounts.classList.remove('likecounts');
-                        likecounts.classList.add('likecountsactive');
                         like_Comment(comment.id, comment.postId);
                         pushNotification(comment.Property_Src, id, comment.id, comment.postId, comment.posterId, 'comment_Like', 'comment_Like');
                         CreationOfCommentsLikeLicense();
                     }
                     function removelikecount() {
-                        likecounts.classList.add('likecounts');
-                        likecounts.classList.remove('likecountsactive');
                         Un_like_Comment(comment.id);
                         CreationOfCommentsLikeLicense();
                     }
@@ -290,19 +286,6 @@ function CreationOfComments(section, locationId) {
 
                     commentreact.classList.add('replylike');
                     commentreply.classList.add('replylike');
-
-                    function themeCommentMode() {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            ActiveUser_Account.forEach(data => {
-                                if (data.user_Mode !== 'defaultTheme') {
-                                    commentreact.classList.add('darkmodeicons');
-                                    commentreply.classList.add('darkmodeicons');
-                                }
-                            });
-                        }
-                    }
-                    themeCommentMode();
 
                     commentdelete.id = comment.posterId;
 
@@ -327,8 +310,6 @@ function CreationOfComments(section, locationId) {
                             }
                         });
                     });
-                    commentreact.src = 'icons/like(0).png';
-                    commentreply.src = 'icons/message.png';
                     /*LIKES&REACTS COUNTS*/
                     if (commentpost.textContent.length > 200) {
                         expand.style.display = 'flex';
@@ -415,8 +396,8 @@ function CreationOfComments(section, locationId) {
                     let commentimg = document.createElement('img');
                     let commentname = document.createElement('b');
                     let reactsflex = document.createElement('div');
-                    let commentreact = document.createElement('img');
-                    let commentreply = document.createElement('img');
+                    let commentreact = document.createElement('div');
+                    let commentreply = document.createElement('div');
                     let commentpostimgcontainer = document.createElement('div');
 
                     //COMMENT ROOM
@@ -603,6 +584,8 @@ function CreationOfComments(section, locationId) {
                     likecounts.id = comment.id;
                     likecounts.textContent = comment.likes.length;
                     replycommentcount.textContent = comment.comments.length;
+                    commentreact.innerHTML = likesvg;
+                    commentreply.innerHTML = commentsvg;
                     replycommentcount.classList.add('replycommentcount');
 
                     commentmesg.id = comment.inputId;
@@ -656,8 +639,6 @@ function CreationOfComments(section, locationId) {
                     commentdelete.classList.add('headerbtns');
                     expand.innerText = 'see more...';
                     commentdelete.innerHTML = '&vellip;';
-                    commentreact.src = 'icons/like(0).png';
-                    commentreply.src = 'icons/message.png';
 
                     reactsflex.classList.add('reactsflex');
                     expand.classList.add('expand');
@@ -728,7 +709,7 @@ function CreationOfComments(section, locationId) {
                     });
 
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id,'commentlike');
+                        LikePopupsAndMore(comment.id, 'commentlike');
                     });
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
@@ -837,8 +818,8 @@ function CreationOfComments(section, locationId) {
                     let commentimg = document.createElement('img');
                     let commentname = document.createElement('b');
                     let reactsflex = document.createElement('div');
-                    let commentreact = document.createElement('img');
-                    let commentreply = document.createElement('img');
+                    let commentreact = document.createElement('div');
+                    let commentreply = document.createElement('div');
 
 
                     let likecounts = document.createElement('span');
@@ -1077,8 +1058,8 @@ function CreationOfComments(section, locationId) {
                     likecounts.classList.add('likecounts');
                     replycommentcount.classList.add('replycommentcount');
                     expand.innerText = 'see more...';
-                    commentreact.src = 'icons/like(0).png';
-                    commentreply.src = 'icons/message.png';
+                    commentreact.innerHTML = likesvg;
+                    commentreply.innerHTML = commentsvg;
 
                     reactsflex.classList.add('reactsflex');
                     expand.classList.add('expand');
@@ -1147,7 +1128,7 @@ function CreationOfComments(section, locationId) {
                         likecomment();
                     });
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id,'commentlike');
+                        LikePopupsAndMore(comment.id, 'commentlike');
                     });
 
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -1261,14 +1242,9 @@ function create_Comment_Reply_room(locationId) {
                 let newcommentinputsend = document.createElement('div');
 
                 let commentattachmenticon = document.createElement('div');
-                let commentattachImg = document.createElement('img');
 
-                let sendimg = document.createElement('img');
-
-                newcommentinputsend.appendChild(sendimg);
-                sendimg.src = 'icons/send.png';
-                commentattachmenticon.appendChild(commentattachImg);
-                commentattachImg.src = 'icons/discover.png';
+                newcommentinputsend.innerHTML = sendsvg;
+                commentattachmenticon.innerHTML = moresvg;
                 newcommentinputsend.classList.add('headerbtns');
                 commentattachmenticon.classList.add('headerbtns');
 
@@ -1276,16 +1252,8 @@ function create_Comment_Reply_room(locationId) {
                 let actitionbtnscontainer = document.createElement('div');
                 let commentactiongrid = document.createElement('div');
                 let commentrefreshbtn = document.createElement('span');
-                let sharegridview = document.createElement('div');
-                let sharegridviewimg = document.createElement('img');
-                let exitimg = document.createElement('img');
-                let refreshimg = document.createElement('img');
-                commentmovebackward.appendChild(exitimg);
-                commentrefreshbtn.appendChild(refreshimg);
-                sharegridview.appendChild(sharegridviewimg);
-                exitimg.src = 'icons/undo_2.png';
-                refreshimg.src = 'icons/refresh.png';
-                sharegridviewimg.src = 'icons/focus.png';
+                commentmovebackward.innerHTML = undo2;
+                commentrefreshbtn.innerHTML = spinnersvg;
                 replyroom.appendChild(commentactiongrid);
                 commentactiongrid.appendChild(actitionbtnscontainer);
                 replyroom.appendChild(replyroomculomn)
@@ -1294,21 +1262,114 @@ function create_Comment_Reply_room(locationId) {
                 actitionbtnscontainer.classList.add('actitionbtnscontainer');
                 actitionbtnscontainer.appendChild(commentmovebackward);
                 actitionbtnscontainer.appendChild(commentrefreshbtn);
-                actitionbtnscontainer.appendChild(sharegridview);
 
                 commentmovebackward.classList.add('headerbtns');
                 commentrefreshbtn.classList.add('headerbtns');
-                sharegridview.classList.add('headerbtns');
                 commentmovebackward.classList.add('sharegridlike');
                 commentrefreshbtn.classList.add('sharegridlike');
-                sharegridview.classList.add('sharegridlike');
 
                 replyroomculomn.id = comment.id;
                 replyroom.id = comment.id;
-                sharegridview.addEventListener('click',()=> {
-                    replyroom.remove();
-                    create_Comment_room(comment.postId);
-                });
+                function create_Options_Script() {
+                    let options = document.createElement('div');
+                    let exit = document.createElement('span');
+    
+                    let sharegridview = document.createElement('div');
+                    let sharegridlike = document.createElement('div');
+                    let sharegridphotoo = document.createElement('div');
+    
+                    replyroomculomn.insertAdjacentElement("afterend", options);
+                    options.appendChild(exit);
+                    options.appendChild(sharegridview);
+                    options.appendChild(sharegridlike);
+                    options.appendChild(sharegridphotoo);
+    
+                    exit.innerHTML = undo2;
+                    sharegridlike.innerHTML = likesvg;
+                    sharegridphotoo.innerHTML = createsvg;
+                    sharegridview.innerHTML = focussvg;
+    
+                    sharegridview.classList.add('headerbtns');
+                    sharegridlike.classList.add('headerbtns');
+                    sharegridphotoo.classList.add('headerbtns');
+                    sharegridview.classList.add('sharegridlike');
+                    sharegridlike.classList.add('sharegridlike');
+                    sharegridphotoo.classList.add('sharegridlike');
+                    exit.classList.add('headerbtns');
+    
+                    options.classList.add('options');
+                    function checkIfPostIsLiked() {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                            ActiveUser_Account.forEach(data => {
+                                let likes = feed.likes;
+                                likes.forEach(like => {
+                                    if (like.id === data.user_Id + feed.id) {
+                                        sharegridlike.classList.add('sharegridliked');
+                                        sharegridlike.classList.remove('sharegridlike');
+                                    }
+                                });
+                            });
+                        }
+                    }
+                    checkIfPostIsLiked();
+                    sharegridlike.addEventListener('click', () => {
+                        makeLike();
+                    });
+                    sharegridview.addEventListener('click', () => {
+                        replyroom.remove();
+                        create_Comment_room(comment.postId);
+                    });
+                    sharegridphotoo.addEventListener('click', () => {
+                        if (comment.type == 'text') {
+                            Media_Comment_Reply_Popup(comment.id, comment.postId, comment.posterId, comment.Property_Src);
+                        } else {
+                            Media_Comment_Reply_Popup(comment.id, comment.postId, comment.posterId, comment.caption);
+                        }
+                    });
+                    function getCommentsLike() {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                            ActiveUser_Account.forEach(data => {
+                                comment.likes.forEach(like => {
+                                    if (like.postId === comment.id) {
+                                        if (like.id === data.user_Id + comment.id) {
+                                            sharegridlike.classList.remove('sharegridlike');
+                                            sharegridlike.classList.add('sharegridliked');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+
+                    getCommentsLike();
+                    function decideRight() {
+                        const id = '' + new Date().getTime();
+                        sharegridlike.classList.remove('sharegridlike');
+                        sharegridlike.classList.add('sharegridliked');
+                        like_Comment(comment.id, comment.postId);
+                        pushNotification(comment.Property_Src, id, comment.id, comment.postId, comment.posterId, 'comment_Like', 'comment_Like');
+                        CreationOfCommentsLikeLicense();
+                    }
+                    function decideLeft() {
+                        sharegridlike.classList.add('sharegridlike');
+                        sharegridlike.classList.remove('sharegridliked');
+                        Un_like_Comment(comment.id);
+                        CreationOfCommentsLikeLicense();
+                    }
+
+                    function makeLike() {
+                        if (sharegridlike.classList.contains('sharegridlike')) {
+                            decideRight();
+                        } else if (sharegridlike.classList.contains('sharegridliked')) {
+                            decideLeft();
+                        }
+                    }
+                    exit.addEventListener('click', () => {
+                        options.remove();
+                    });
+                }
                 commentrefreshbtn.addEventListener('click', () => {
                     replyroomculomn.innerHTML = '';
                     let commentroomsectionreloadloader = document.createElement('div');
@@ -1332,21 +1393,6 @@ function create_Comment_Reply_room(locationId) {
                 commentmovebackward.addEventListener('click', () => {
                     replyroom.classList.toggle('commentroomsectionactive');
                 });
-                function themeCommentMode() {
-                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        ActiveUser_Account.forEach(user => {
-                            if (user.user_Mode !== 'defaultTheme') {
-                                refreshimg.classList.add('darkmodeicons');
-                                exitimg.classList.add('darkmodeicons');
-                                commentattachImg.classList.add('darkmodeicons');
-                                sendimg.classList.add('darkmodeicons');
-                            }
-
-                        });
-                    }
-                }
-                themeCommentMode();
                 newcommentinputsend.addEventListener('click', () => {
                     if (newcommentinputinput.value) {
                         const id = '' + new Date().getTime();
@@ -1358,12 +1404,7 @@ function create_Comment_Reply_room(locationId) {
                     newcommentinputsend.classList.remove('commentreplysendreadystate');
                 });
                 commentattachmenticon.addEventListener('click', () => {
-                    if (comment.type == 'text') {
-                        Media_Comment_Reply_Popup(comment.id, comment.postId, comment.posterId, comment.Property_Src);
-                    } else {
-                        Media_Comment_Reply_Popup(comment.id, comment.postId, comment.posterId, comment.caption);
-                    }
-
+                    create_Options_Script();
                 });
                 createcommentreplys(replyroomculomn, locationId);
                 external_loader(replyroomculomn);
@@ -1398,13 +1439,10 @@ function Media_Comment_Reply_Popup(locationId, postId, posterId, caption) {
     let subactions = document.createElement('div');
 
     let clickAndUploadContainer = document.createElement('div');
-    let firstImg = document.createElement('img');
-    let secondImg = document.createElement('img');
+
     let firsttext = document.createElement('span');
     let secondtext = document.createElement('span');
-    let exitimg = document.createElement('img');
-    photoexit.appendChild(exitimg);
-    exitimg.src = 'icons/undo.png';
+    photoexit.innerHTML = undo;
     photoexit.classList.add('headerbtns');
     clickAndUploadContainer.classList.add('clickAndUploadContainer');
     popup_Names_Container.classList.add('popup_Names_Container');
@@ -1492,17 +1530,7 @@ function Media_Comment_Reply_Popup(locationId, postId, posterId, caption) {
             mediacommentspopup.remove();
         }
     });
-    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-    ActiveUser_Account.forEach(data => {
-        LogInFormData.forEach(user => {
-            if (data.user_Id === user.user_Id) {
-                if (user.user_Mode !== "defaultTheme") {
-                    exitimg.classList.add('darkmodeicons');
-                }
-            }
-        });
-    });
+
     document.body.appendChild(mediacommentspopup);
     mediacommentspopup.appendChild(header);
     mediacommentspopup.appendChild(uploadpreviewcontainer);
@@ -1531,13 +1559,10 @@ function Media_Comment_Reply_Popup(locationId, postId, posterId, caption) {
 
     Names_title.textContent = 'Media Comment';
 
-    newphotolabel.appendChild(firstImg);
-    newvideolabel.appendChild(secondImg);
+    newphotolabel.innerHTML = imagesvg;
+    newvideolabel.innerHTML = videosvg;
     newphotolabel.appendChild(firsttext);
     newvideolabel.appendChild(secondtext);
-
-    firstImg.src = 'icons/image(0).png';
-    secondImg.src = 'icons/youtube.png';
 
     firsttext.textContent = 'photo';
     secondtext.textContent = 'video';
@@ -1650,6 +1675,8 @@ function like_Comment(postId, relationId) {
                             document.querySelectorAll('.comment_like_counters').forEach(count => {
                                 if (count.id === postId) {
                                     count.textContent = likes.length;
+                                    count.classList.remove('likecounts');
+                                    count.classList.add('likecountsactive');
                                 }
                             });
                         }
@@ -1683,6 +1710,8 @@ function Un_like_Comment(postId) {
                             document.querySelectorAll('.comment_like_counters').forEach(count => {
                                 if (count.id === postId) {
                                     count.textContent = likes.length;
+                                    count.classList.add('likecounts');
+                                    count.classList.remove('likecountsactive');
                                 }
                             });
                         }

@@ -12,7 +12,7 @@ function createGridPost(locationId, gridsection) {
                     let gridpostimg = document.createElement('img');
                     gridpost.appendChild(gridpostimg);
                     gridpostimg.classList.add('gridpostimg');
-                    Img_Inidcator_Img.src = 'icons/image(0).png';
+                    gridpost_Type_Indicator.innerHTML = imagesvg;
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
@@ -50,12 +50,12 @@ function createGridPost(locationId, gridsection) {
                     gridpost.appendChild(gridpostimg);
                     gridpostimg.classList.add('gridpostimg');
                     gridpostimg.src = photo.Property_Src;
-                    Img_Inidcator_Img.src = 'icons/youtube.png';
+                    gridpost_Type_Indicator.innerHTML = videosvg;
                 } if (photo.isText) {
                     let gridposttext = document.createElement('p');
                     gridpost.appendChild(gridposttext);
                     gridposttext.textContent = photo.Property_Src;
-                    Img_Inidcator_Img.src = 'icons/text (1).png';
+                    gridpost_Type_Indicator.innerHTML = textsvg;
                     gridposttext.classList.add('gridposttext');
                     function textGridPostTextTheme() {
                         function textThemeBackGround() {
@@ -147,7 +147,6 @@ function createGridPost(locationId, gridsection) {
                 gridsection.appendChild(gridpost);
                 gridpost.appendChild(gridpostImgCover);
                 gridpostImgCover.appendChild(gridpost_Type_Indicator);
-                gridpost_Type_Indicator.appendChild(Img_Inidcator_Img);
                 gridpostImgCover.classList.add('gridpostImgCover');
                 gridpost.classList.add('gridpost');
                 gridpost.addEventListener('click', () => {

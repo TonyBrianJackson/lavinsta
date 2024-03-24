@@ -12,15 +12,11 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 let horizontalfloat = document.createElement('div');
                 let gridinput = document.createElement('div');
                 let gridinputinput = document.createElement('input');
-                let gridcomment = document.createElement('img');
+                let gridcomment = document.createElement('div');
                 let gridpostsave = document.createElement('div');
                 let gridpostshare = document.createElement('div');
                 let gridpostcomment = document.createElement('div');
                 let gridpostlike = document.createElement('div');
-                let gridpostsaveimg = document.createElement('img');
-                let gridpostshareimg = document.createElement('img');
-                let gridpostcommentimg = document.createElement('img');
-                let gridpostslikeimg = document.createElement('img');
                 let items_Float = document.createElement('span');
                 let items_Center = document.createElement('span');
 
@@ -389,7 +385,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                         editingPostText(photo.id);
                     });
                     option_First_Child2.addEventListener('click', () => {
-                        delete_Timeline_Post(Feeds_Data_Base, photo.id);
+                        delete_Timeline_Post(photo.id);
                     });
                     option_First_Child3.addEventListener('click', () => {
                         Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
@@ -568,7 +564,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 gridinput.appendChild(gridinputinput);
                 gridinput.appendChild(gridcomment);
                 gridcomment.classList.add('gridcomment');
-                gridcomment.src = 'icons/send.png';
+                gridcomment.innerHTML = send2svg;
                 gridinput.classList.add('gridinput');
                 horizontalfloat.classList.add('horizontalfloat');
                 gridinputinput.setAttribute(`placeholder`, 'Add Comment');
@@ -615,15 +611,10 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 live_Comment_Count_Container.id = photo.id;
                 live_Share_Count_Container.id = photo.id;
 
-                gridpostlike.appendChild(gridpostslikeimg);
-                gridpostcomment.appendChild(gridpostcommentimg);
-                gridpostsave.appendChild(gridpostsaveimg);
-                gridpostshare.appendChild(gridpostshareimg);
-
-                gridpostslikeimg.src = 'newicons/like.png';
-                gridpostcommentimg.src = 'newicons/comment.png';
-                gridpostsaveimg.src = 'newicons/bookmark-white.png';
-                gridpostshareimg.src = 'newicons/share.png';
+                gridpostlike.innerHTML = likesvg;
+                gridpostcomment.innerHTML = commentsvg;
+                gridpostsave.innerHTML = savedsvg;
+                gridpostshare.innerHTML = sharesvg;
 
                 verticalfloat.classList.add('verticalfloat');
                 gridpostimagecontainer.classList.add('gridpostimagecontainer');

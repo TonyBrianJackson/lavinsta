@@ -61,9 +61,9 @@ function fetchUrl() {
         }
     }
     function getData() {
-        fetch(newURL,param)
-        .then(res => res.json())
-        .then(data => console.log(data));
+        fetch(newURL, param)
+            .then(res => res.json())
+            .then(data => console.log(data));
     }
     getData();
 }
@@ -170,7 +170,7 @@ function create_Active_Account() {
                 }
                 Online_Status();
                 let userprofileheader = document.createElement('header');
-                let userprofileexit = document.createElement('span');
+                let exituserprofile = document.createElement('span');
                 let usersprofile = document.createElement('div');
                 let userprofilecolumn = document.createElement('div');
                 let userscoverphotocontainer = document.createElement('div');
@@ -212,15 +212,15 @@ function create_Active_Account() {
                 usersfriendsview.src = 'icons/tow-people_solid.png';
                 usersinformationview.src = 'icons/information.png';
                 userconnectgrid.id = profile.user_Id;
-                userprofileexit.id = profile.user_Id;
+                exituserprofile.id = profile.user_Id;
                 user_More_Option_Views.id = profile.user_Id;
                 userprofileheader.id = profile.user_Id;
                 user_Profile_Settings_Container.id = profile.user_Id;
 
-                user_Profile_Settings_Container.appendChild(usersprofilesetting);
-                user_Friends_View_Container.appendChild(usersfriendsview);
-                user_Information_View_Container.appendChild(usersinformationview);
-                user_Profile_Label.appendChild(usersprofilelabel);
+                user_Profile_Settings_Container.innerHTML = profilesetting;
+                user_Friends_View_Container.innerHTML = peoplesvg;
+                user_Information_View_Container.innerHTML = infosvg;
+                user_Profile_Label.innerHTML = camerasvg;
 
                 userconnectgrid.appendChild(user_Connection_Grid_Inner);
                 user_Connection_Grid_Inner.appendChild(user_Profile_Label);
@@ -372,6 +372,12 @@ function create_Active_Account() {
                     }
                     create_Admins_User_List();
                 }
+                user_Profile_Settings_Container.classList.add('headerbtns');
+                user_Friends_View_Container.classList.add('headerbtns');
+                user_Information_View_Container.classList.add('headerbtns');
+                user_Profile_Label.classList.add('headerbtns');
+                user_More_Option_Views.classList.add('headerbtns');
+
                 user_Profile_Settings_Container.classList.add('user_Profile_Settings_Container');
                 user_Friends_View_Container.classList.add('user_Friends_View_Container');
                 user_Information_View_Container.classList.add('user_Information_View_Container');
@@ -1056,9 +1062,9 @@ function create_Active_Account() {
                 usertimelinetext.textContent = 'timeline';
                 userpublic.textContent = 'public';
                 userothers.textContent = 'others';
-                userprofileexit.innerHTML = '&LeftArrow;';
+                exituserprofile.innerHTML = undo;
                 userprofileminimizer.innerHTML = '&square;';
-                userprofileheader.appendChild(userprofileexit);
+                userprofileheader.appendChild(exituserprofile);
                 userprofileheader.appendChild(userprofileminimizer);
                 userprofileheader.classList.add('userprofileheader');
                 profilecontainer.appendChild(usersprofile);
@@ -1163,7 +1169,7 @@ function create_Active_Account() {
                     userpostgridcontainer.classList.toggle('postgridcontainerlarge');
                     userpostgrid.classList.toggle('postgridlarge');
                     userprofileminimizer.classList.toggle('userprofileminimizerlarge');
-                    userprofileexit.classList.toggle('userprofileexitlarge');
+                    exituserprofile.classList.toggle('exituserprofilelarge');
                     userconnectgrid.classList.toggle('userconnectgridlarge');
                     user_More_Option_Views.classList.toggle('user_More_Option_Views_Large');
                 }
@@ -1206,7 +1212,8 @@ function create_Active_Account() {
                         createOtherGridPost(profile.user_Id, userpostgrid);
                     }, 2000);
                 });
-                userprofileexit.classList.add('userprofileexit');
+                exituserprofile.classList.add('exituserprofile');
+                exituserprofile.classList.add('headerbtns');
                 usertopactivity.classList.add('topactivities');
                 usertopactivitytimeline.classList.add('usertopactivitytimeline');
                 usertopactivitytimeline.classList.add('active');
@@ -1220,7 +1227,7 @@ function create_Active_Account() {
                 usercoverphoto.classList.add('coverphoto');
                 usersprofile.classList.add('usersprofile');
                 userprofilecolumn.classList.add('secondprofileculomn');
-                userprofileexit.addEventListener('click', () => {
+                exituserprofile.addEventListener('click', () => {
                     profilecontainer.style.display = 'none';
                     sessionStorage.setItem('activepage', 'home');
                     document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
@@ -1352,7 +1359,7 @@ function createAdvanceSwitchPage() {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-    
+
                             ActiveUser_Account.forEach(data => {
                                 LogInFormData.forEach(activeuser => {
                                     if (data.user_Id === activeuser.user_Id) {

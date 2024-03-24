@@ -1661,7 +1661,6 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     //userchat header
     let userchatheader = document.createElement('header');
     let userschatexit = document.createElement('span');
-    let exitimg = document.createElement('img');
     let userchatreciepientname = document.createElement('strong');
     let userchatprofilepicturecontainer = document.createElement('div');
     let userschatprofilepicture = document.createElement('img');
@@ -1671,17 +1670,12 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     let userchattextbox = document.createElement('input');
     let userchatsend = document.createElement('div');
     let attach = document.createElement('div');
-    let sendImg = document.createElement('img');
-    let chatattachmentimg = document.createElement('img');
 
     //chat float
     let chatfloat = document.createElement('nav');
     let chatuploadicon = document.createElement('div');
-    let chatuploadiconimg = document.createElement('img');
     let chatoptionicon = document.createElement('div');
-    let chatoptioniconimg = document.createElement('img');
     let chatcallicon = document.createElement('div');
-    let chatcalliconimg = document.createElement('img');
     let voicerecordicon = document.createElement('div');
     let voicerecordiconimg = document.createElement('img');
 
@@ -1753,20 +1747,14 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
 
 
     voicerecordicon.appendChild(voicerecordiconimg);
-    chatoptionicon.appendChild(chatoptioniconimg);
-    chatcallicon.appendChild(chatcalliconimg);
+
     voicerecordiconimg.src = 'icons/voice search.png';
-    chatuploadiconimg.src = 'icons/image(0).png';
-    chatattachmentimg.src = 'icons/image(0).png';
-    chatoptioniconimg.src = 'icons/discover.png';
-    chatcalliconimg.src = 'icons/video-camera.png';
-    chatuploadicon.appendChild(chatuploadiconimg);
     chatfloat.appendChild(voicerecordicon);
     chatfloat.appendChild(chatuploadicon);
     chatfloat.appendChild(chatoptionicon);
     chatfloat.appendChild(chatcallicon);
     chatcallicon.style.display = 'none';
-    chatattachmentimg.addEventListener('click', () => {
+    attach.addEventListener('click', () => {
         chatfloat.classList.toggle('chatfloatactive');
     });
     chatcallicon.id = trackingId;
@@ -1780,14 +1768,16 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
         })
     });
     chatfloat.classList.add('chatfloat');
-    chatattachmentimg.classList.add('chatattachmentimg');
-    chatuploadiconimg.classList.add('chatuploadiconimg');
 
     userschatbox.appendChild(userchattextbox);
     userschatbox.appendChild(attach);
     userschatbox.appendChild(userchatsend);
-    attach.appendChild(chatattachmentimg);
-    userchatsend.appendChild(sendImg);
+    attach.innerHTML = moresvg;
+    userchatsend.innerHTML = send2svg;
+    userschatexit.innerHTML = undo;
+    chatuploadicon.innerHTML = createsolidsvg;
+    chatoptionicon.innerHTML = moresvg;
+    chatcallicon.innerHTML = videocallsvg;
 
     attach.classList.add('headerbtns');
     userchatsend.classList.add('headerbtns');
@@ -1797,16 +1787,7 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     chatoptionicon.classList.add('headerbtns');
     chatcallicon.classList.add('headerbtns');
 
-    sendImg.src = 'icons/more icons/send.png';
-
     userchattextbox.type = 'text';
-    if (profile.user_Mode == 'defaultTheme') {
-        chatattachmentimg.classList.remove('darkmodeicons');
-        chatuploadiconimg.classList.remove('darkmodeicons');
-    } else {
-        chatattachmentimg.classList.add('darkmodeicons');
-        chatuploadiconimg.classList.add('darkmodeicons');
-    }
 
     userchattextbox.placeholder = 'send message...';
     userschatbox.classList.add('userschatbox');
@@ -1829,8 +1810,6 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     usersHeaderflex.appendChild(userchatreciepientname);
     usersHeaderflex.appendChild(friendactivestatus);
     userchatprofilepicturecontainer.appendChild(userschatprofilepicture);
-    userschatexit.appendChild(exitimg);
-    exitimg.src = 'icons/undo.png';
     userschatexit.classList.add('headerbtns');
     usersHeaderflex.classList.add('usersHeaderflex');
     userchatheader.classList.add('userchatheader');
@@ -2094,15 +2073,11 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
     let subactions = document.createElement('div');
 
     let clickAndUploadContainer = document.createElement('div');
-    let firstImg = document.createElement('img');
-    let secondImg = document.createElement('img');
     let thirdimg = document.createElement('img');
     let firsttext = document.createElement('span');
     let secondtext = document.createElement('span');
     let thirdtext = document.createElement('span');
-    let exitimg = document.createElement('img');
-    photoexit.appendChild(exitimg);
-    exitimg.src = 'icons/undo.png';
+    photoexit.innerHTML = undo;
     photoexit.classList.add('headerbtns');
     clickAndUploadContainer.classList.add('clickAndUploadContainer');
     popup_Names_Container.classList.add('popup_Names_Container');
@@ -2127,15 +2102,13 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
 
     Names_title.textContent = 'Media Message';
 
-    newphotolabel.appendChild(firstImg);
-    newvideolabel.appendChild(secondImg);
+    newphotolabel.innerHTML = imagesvg
+    newvideolabel.innerHTML = videosvg;
     newaudiolabel.appendChild(thirdimg);
     newphotolabel.appendChild(firsttext);
     newvideolabel.appendChild(secondtext);
     newaudiolabel.appendChild(thirdtext);
 
-    firstImg.src = 'icons/image(0).png';
-    secondImg.src = 'icons/youtube.png';
     thirdimg.src = 'icons/musical-note.png';
 
     firsttext.textContent = 'photo';

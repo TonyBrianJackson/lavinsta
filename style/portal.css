@@ -62,11 +62,6 @@
     padding: 0.99999999vw;
 }
 .loadingBlocksactive {
-    border-radius: 0px;
-    display: block;
-    border: none;
-    box-shadow: none;
-    padding: 0.99999999vw;
     background: var(--color-bright);
 }
 @media(min-width: 0px) and (max-width: 539px) {
@@ -76,6 +71,8 @@
     }
     
     .loadingBlocks {
+        border-radius: 50%;
         width: 1.777777vw;
+        padding: calc(0.469vw + 1.469vw);
     }
 }

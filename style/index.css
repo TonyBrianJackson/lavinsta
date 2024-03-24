@@ -167,6 +167,7 @@ body {
     stroke-width: 5px;
 }
 
+.headerbtns.user_Friends_View_Container svg,
 .items:nth-child(2) svg {
     width: 70px;
 }
@@ -176,6 +177,7 @@ body {
     margin-left: 3px;
 }
 
+.headerbtns.smartchatbutton svg path:nth-child(2),
 .items:nth-child(3) svg path:nth-child(2) {
     fill: var(--color-white);
 }
@@ -332,10 +334,7 @@ main .header {
     width: 35px;
     height: 35px;
     margin: 3px 0px;
-}
-
-.headerbtns.sharegridliked img {
-    filter: invert(330%);
+    border-color: var(--color-bright);
 }
 
 .middlesection {
@@ -618,6 +617,7 @@ main .header {
     border: none;
     overflow: visible;
 }
+
 .storycount {
     background: none;
     box-shadow: none;
@@ -882,10 +882,12 @@ main .header {
     background: var(--color-white);
     box-shadow: var(--block-box-shadow);
 }
+
 .clone,
 .mystory.stories_clone {
     filter: blur(3px);
 }
+
 .newstoryuploadcontainer {
     width: 100%;
     min-height: 100%;
@@ -2042,15 +2044,35 @@ main .header {
 }
 
 .reelcommentsend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    overflow: visible;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.reelcommentsend svg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: none;
     background: none;
     box-shadow: none;
     border-radius: 0px;
     overflow: visible;
     width: 25px;
-    cursor: pointer;
+    height: 25px;
 }
-
+.reelcommentsend svg path {
+    fill: #ffffffff;
+}
 .commentimgactive {
     width: 0px;
     height: 0px;
@@ -2069,7 +2091,7 @@ main .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     transition: all 0.5s;
 
 }
@@ -2121,16 +2143,23 @@ main .header {
     position: relative;
 }
 
-.shortverticalfloat>span img,
-.shorthorizontalfloat>span img {
+.shortverticalfloat>span svg,
+.shorthorizontalfloat>span svg {
     border-radius: 0px;
     background: none;
     box-shadow: none;
     border: none;
     width: 30px;
-    display: block;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.shortverticalfloat>span svg path,
+.shorthorizontalfloat>span svg path {
+    fill: #ffffffff;
+}
 .mainreel {
     width: 100%;
     height: max-content;
@@ -2190,11 +2219,13 @@ main .header {
     overflow: hidden;
     position: relative;
 }
-.posttitle > a {
+
+.posttitle>a {
     color: var(--color-primary);
     font-size: inherit;
     font-family: inherit;
 }
+
 .nameandimg {
     width: 100%;
     height: max-content;
@@ -2541,22 +2572,27 @@ main .header {
     justify-content: center;
     margin: 0px;
 }
+
 .imagecontainerLoading {
     background-size: cover;
     background-position: center;
     filter: blur(4px);
 }
-.imagecontainerLoading> .mainimg {
+
+.imagecontainerLoading>.mainimg {
     opacity: 0;
 }
-.imagecontainerLoading.loaded > .mainimg {
+
+.imagecontainerLoading.loaded>.mainimg {
     opacity: 1;
     transition: opacity 200ms ease-in-out;
 }
+
 .imagecontainerLoading.loaded {
     transition: opacity 200ms ease-in-out;
     filter: blur(0px);
 }
+
 .children_Tile_Box {
     position: absolute;
     right: 10px;
@@ -2618,11 +2654,13 @@ main .header {
     color: var(--color-dark);
     font-weight: 900;
 }
-.textPost > a {
+
+.textPost>a {
     color: var(--color-primary);
     font-size: inherit;
     font-weight: inherit;
 }
+
 .textPostmoreorless {
     height: max-content;
     font-size: 2rem;
@@ -2934,8 +2972,8 @@ main .header {
     box-shadow: none;
 }
 
-.commentinput>div>img,
-.shareandlikecommentflex>div>img {
+.commentinput>div>svg,
+.shareandlikecommentflex>div>svg {
     width: 25px;
     display: block;
     border: none;
@@ -3205,12 +3243,15 @@ a {
     border-radius: 0px;
     padding: 5px;
 }
+
 .navigationheader::-webkit-scrollbar {
     height: 5px;
 }
+
 .navigationheader::-webkit-scrollbar-thumb {
     background: var(--color-bright);
 }
+
 .navigationheader>span {
     font-size: 25px;
     font-weight: bolder;
@@ -4553,6 +4594,40 @@ a {
     margin: 2px 0px;
 }
 
+.replyflex>div,
+.reactsflex>div {
+    background: none;
+    border-radius: 0px;
+    box-shadow: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.replyflex > div > svg,
+.reactsflex > div > svg {
+    width: 20px;
+    height: 20px;
+    background: none;
+    border-radius: 0px;
+    box-shadow: none;
+    overflow: hidden;
+    display: block;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.replyflex > div > svg path,
+.reactsflex > div > svg path {
+    fill: var(--color-dark);
+}
+
 .commentreact {
     background: none;
     border-radius: 0px;
@@ -4565,19 +4640,6 @@ a {
     margin: 5px;
     color: #ff00ffea;
     font-size: 11px;
-    cursor: pointer;
-}
-
-.commentreactimg,
-.replylike {
-    width: 20px;
-    background: none;
-    border-radius: 0px;
-    box-shadow: none;
-    overflow: hidden;
-    display: block;
-    border: none;
-    margin: 5px;
     cursor: pointer;
 }
 
@@ -6507,12 +6569,8 @@ a {
 
 }
 
-.verticalfloat div:nth-child(2) img {
-    margin-top: 10px;
-    margin-left: 3px;
-}
 
-.verticalfloat div img {
+.verticalfloat div svg {
     width: 30px;
     height: 30px;
     border-radius: 0px;
@@ -6525,7 +6583,9 @@ a {
     background: none;
     border: none;
     box-shadow: none;
-
+}
+.verticalfloat div svg path {
+    fill: #ffffffff;
 }
 
 /*world wide horizontal-float*/
@@ -6772,26 +6832,33 @@ a {
     background: none;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     z-index: 35;
 
 }
-
-.advertfloatcommentbox img,
-.storyfloatinput img,
-.gridinput img {
+.gridinput> div {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px;
+}
+.gridinput > div> svg {
     border: none;
     background: none;
     border-radius: 0px;
-    width: 40px;
+    width: 30px;
+    height: 30px;
     overflow: visible;
     cursor: pointer;
 }
-
-.advertfloatcommentbox input,
-.storyfloatinput input,
+.gridinput > div > svg path {
+    fill: #ffffffff;
+}
 .gridinput input {
-    width: 100%;
+    width: 85%;
     height: 100%;
     border-radius: 30px;
     background: none;
@@ -7672,11 +7739,13 @@ a {
     white-space: pre-wrap;
     border-radius: 0px;
 }
-.gridpostcaption > a {
+
+.gridpostcaption>a {
     color: var(--color-primary);
     font-size: inherit;
     font-weight: inherit;
 }
+
 .gridpostcaptionactive {
     width: 100%;
     height: max-content;
@@ -8113,7 +8182,7 @@ a {
 }
 
 
-.likerecordpopup{
+.likerecordpopup {
     width: 25vw;
     height: 91vh;
     position: fixed;
@@ -8426,6 +8495,7 @@ a {
     .storyposterimg {
         border: 2px solid #ffffffff;
     }
+
     .horizontalfloatactive {
         left: 15px;
         width: 63%;
@@ -8450,7 +8520,7 @@ a {
         background: #00bfff42;
     }
 
-    .verticalfloat div img {
+    .verticalfloat div svg {
         width: 25px;
         height: 25px;
     }
@@ -8461,12 +8531,16 @@ a {
     .gridinput {
         height: 40px;
     }
-
-    .advertfloatcommentbox img,
-    .storyfloatinput img,
-    .gridinput img {
-        width: 25px;
-        height: 25px;
+    .gridinput input {
+        width: 80%;
+    }
+    .gridinput> div {
+        width: 35px;
+        height: 35px;
+    }
+    .gridinput svg {
+        width: 20px;
+        height: 20px;
     }
 
     /*recycle tabs*/
@@ -8517,6 +8591,19 @@ a {
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+
+    .replyflex > div,
+    .reactsflex > div {
+        width: 35px;
+        height: 35px;
+    }
+
+    .replyflex > div > svg,
+    .reactsflex > div > svg {
+        width: 30px;
+        height: 30px;
+    }
+
     .updatingmessage {
         max-width: 90vw;
     }
@@ -8557,8 +8644,8 @@ a {
         height: 40px;
     }
 
-    .commentinput>div>img,
-    .shareandlikecommentflex>div>img {
+    .commentinput>div>svg,
+    .shareandlikecommentflex>div>svg {
         width: 25px;
         height: 25px;
     }
@@ -9448,7 +9535,8 @@ a {
         width: 30px;
     }
 
-    .replylike {
+    .replyflex > div > svg,
+    .reactsflex > div > svg {
         width: 30px;
         height: 30px;
     }
@@ -9528,7 +9616,7 @@ a {
         height: 50px;
     }
 
-    .verticalfloat div img {
+    .verticalfloat div svg {
         width: 30px;
         height: 30px;
     }

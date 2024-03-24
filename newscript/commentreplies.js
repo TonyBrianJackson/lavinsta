@@ -20,7 +20,7 @@ function createcommentreplys(section, locationId) {
                         let commentimg = document.createElement('img');
                         let commentname = document.createElement('b');
                         let reactsflex = document.createElement('div');
-                        let commentreact = document.createElement('img');
+                        let commentreact = document.createElement('div');
                         let commenttime = document.createElement('span');
                         let commentdelete = document.createElement('span');
                         /*LIKE COUNTS*/
@@ -197,7 +197,7 @@ function createcommentreplys(section, locationId) {
                         likecounts.classList.add('likecounts');
 
                         likecounts.addEventListener('click', () => {
-                                LikePopupsAndMore(comment.id,'commentreplylike');
+                            LikePopupsAndMore(comment.id, 'commentreplylike');
                         });
 
                         if (Array.isArray(ActiveAccount)) {
@@ -244,18 +244,6 @@ function createcommentreplys(section, locationId) {
                         });
                         commentreact.classList.add('replylike');
 
-
-                        function themecommentMode() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
-                                ActiveUser_Account.forEach(data => {
-                                    if (data.user_Mode !== 'defaultTheme') {
-                                        commentreact.classList.add('darkmodeicons');
-                                    }
-                                });
-                            }
-                        }
-                        themecommentMode();
 
                         commentdelete.id = comment.posterId;
 
@@ -318,7 +306,7 @@ function createcommentreplys(section, locationId) {
                         commentpostimgcontainer.appendChild(commentimg);
                         reactsflex.appendChild(commentreact);
                         reactsflex.appendChild(likecounts);
-                        commentreact.src = 'icons/like(0).png';
+                        commentreact.innerHTML = likesvg;
                         commentdelete.innerHTML = '&vellip;';
 
                         commentmesg.classList.add('commentmesg');
@@ -416,7 +404,7 @@ function createcommentreplys(section, locationId) {
                         let commentimagecontainer = document.createElement('div');
                         let commentimg = document.createElement('img');
                         let reactsflex = document.createElement('div');
-                        let commentreact = document.createElement('img');
+                        let commentreact = document.createElement('div');
                         let likecounts = document.createElement('span');
                         let commentdelete = document.createElement('span');
                         //EXPAND TEXT
@@ -543,7 +531,7 @@ function createcommentreplys(section, locationId) {
                         }
 
                         likecounts.addEventListener('click', () => {
-                                LikePopupsAndMore(comment.id,'commentreplylike');
+                            LikePopupsAndMore(comment.id, 'commentreplylike');
                         });
 
                         reactsflex.appendChild(commentreact);
@@ -572,7 +560,7 @@ function createcommentreplys(section, locationId) {
                         }
                         themecommentMode();
 
-                        commentreact.src = 'icons/like(0).png';
+                        commentreact.innerHTML = likesvg;
                         commentnameandimg.appendChild(commentimagecontainer);
                         commentnameandimg.appendChild(commentname);
                         commentimagecontainer.appendChild(commentimg);
@@ -581,7 +569,7 @@ function createcommentreplys(section, locationId) {
                         commentname.classList.add('commentname');
 
                         commentpostimg.addEventListener('click', () => {
-                            create_Random_Items(comment.id,comment.posterId,comment.caption,comment.Property_Src,comment.type,'comment',commenttime.innerHTML);
+                            create_Random_Items(comment.id, comment.posterId, comment.caption, comment.Property_Src, comment.type, 'comment', commenttime.innerHTML);
                         });
 
                         expand.addEventListener('click', () => {
@@ -723,7 +711,7 @@ function createcommentreplys(section, locationId) {
                                 likecounts.classList.add('likecountsactive');
                                 likecounts.classList.remove('likecounts');
                                 like_Comment_Reply(comment.id, comment.postId, comment.relationId);
-                                pushNotification(comment.caption, id, comment.id,comment.postId, comment.posterId, 'comment_ReplyLike', 'comment_ReplyLike');
+                                pushNotification(comment.caption, id, comment.id, comment.postId, comment.posterId, 'comment_ReplyLike', 'comment_ReplyLike');
                             } else {
                                 likecounts.classList.add('likecounts');
                                 likecounts.classList.remove('likecountsactive');
@@ -794,7 +782,7 @@ function createcommentreplys(section, locationId) {
                         let commentimg = document.createElement('img');
                         let commentname = document.createElement('b');
                         let reactsflex = document.createElement('div');
-                        let commentreact = document.createElement('img');
+                        let commentreact = document.createElement('div');
 
                         let likecounts = document.createElement('span');
                         let commentdelete = document.createElement('span');
@@ -919,7 +907,7 @@ function createcommentreplys(section, locationId) {
                         }
 
                         likecounts.addEventListener('click', () => {
-                                LikePopupsAndMore(comment.id,'commentreplylike');
+                            LikePopupsAndMore(comment.id, 'commentreplylike');
                         });
 
                         commentreact.classList.add('replylike');
@@ -1015,7 +1003,7 @@ function createcommentreplys(section, locationId) {
                         commentplay.classList.add('commentplay');
                         likecounts.classList.add('likecounts');
                         expand.innerText = 'see more...';
-                        commentreact.src = 'icons/like(0).png';
+                        commentreact.innerHTML = likesvg;
 
                         reactsflex.classList.add('reactsflex');
                         expand.classList.add('expand');
@@ -1057,7 +1045,7 @@ function createcommentreplys(section, locationId) {
                             expand.style.display = 'none';
                         }
                         commentpostvdieocontainer.addEventListener('click', () => {
-                            create_Random_Items(comment.id,comment.posterId,comment.caption,comment.Property_Src,comment.type,'comment',commenttime.innerHTML);
+                            create_Random_Items(comment.id, comment.posterId, comment.caption, comment.Property_Src, comment.type, 'comment', commenttime.innerHTML);
                         });
 
                         expand.addEventListener('click', () => {
@@ -1112,12 +1100,12 @@ function createcommentreplys(section, locationId) {
                                     likecounts.classList.add('likecountsactive');
                                     likecounts.classList.remove('likecounts');
                                     like_Comment_Reply(comment.id, comment.postId, comment.relationId);
-                                    pushNotification(comment.caption, id, comment.id,comment.postId, comment.posterId, 'comment_ReplyLike', 'comment_ReplyLike');
-                                    } else {
+                                    pushNotification(comment.caption, id, comment.id, comment.postId, comment.posterId, 'comment_ReplyLike', 'comment_ReplyLike');
+                                } else {
                                     likecounts.classList.add('likecounts');
                                     likecounts.classList.remove('likecountsactive');
                                     Un_like_Comment_Reply(comment.id);
-                                    }
+                                }
                             }
 
 
@@ -1195,6 +1183,8 @@ function like_Comment_Reply(postId, relationId, longrelationId) {
                                 document.querySelectorAll('.comment_like_counters').forEach(count => {
                                     if (count.id === postId) {
                                         count.textContent = likes.length;
+                                        count.classList.remove('likecounts');
+                                        count.classList.add('likecountsactive');
                                     }
                                 });
                             }
@@ -1231,6 +1221,8 @@ function Un_like_Comment_Reply(postId) {
                                 document.querySelectorAll('.comment_like_counters').forEach(count => {
                                     if (count.id === postId) {
                                         count.textContent = likes.length;
+                                        count.classList.add('likecounts');
+                                        count.classList.remove('likecountsactive');
                                     }
                                 });
                             }
@@ -1293,7 +1285,7 @@ function delete_Comments_Replies(Feeds_Data_Base, relationId, postId, locationId
                                 confirmation_popup.remove();
                                 document.querySelectorAll('.replyroomculomn').forEach(section => {
                                     if (section.id === comment.id) {
-                                        createcommentreplys(section,postId);
+                                        createcommentreplys(section, postId);
                                     } else {
                                         createcommentreplys(postId);
                                     }

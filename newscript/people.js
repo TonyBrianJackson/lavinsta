@@ -406,10 +406,10 @@ function createSentRequest(locationId, column) {
                     });
                 }
                 personrequestname.addEventListener('click', () => {
-                    createUsersProfile(connect.connectionId);
+                    createUsersProfile(connect.recieversId);
                 });
                 friendrequesthead.addEventListener('click', () => {
-                    createUsersProfile(connect.connectionId);
+                    createUsersProfile(connect.recieversId);
                 });
             });
         }

@@ -58,7 +58,7 @@ function createOtherPost() {
                             postmenu.classList.toggle("postmenuactive");
                         });
                         option_First_Child2.addEventListener("click", () => {
-                            delete_Timeline_Post(Feeds_Data_Base, photo.id);
+                            delete_Timeline_Post(photo.id);
                             postmenu.classList.toggle("postmenuactive");
                         });
 
@@ -146,17 +146,15 @@ function createOtherPost() {
 
                     let advertactionbar = document.createElement("nav");
                     let advertlike = document.createElement("div");
-                    let advertlikeimg = document.createElement("img");
                     let livelikecount = document.createElement("span");
                     let advertcomment = document.createElement("div");
-                    let advertcommentimg = document.createElement("img");
                     let livecommentcount = document.createElement("span");
                     advertactionbar.appendChild(advertlike);
                     advertactionbar.appendChild(live_Like_Count_Container);
                     advertactionbar.appendChild(advertcomment);
                     advertactionbar.appendChild(live_Comment_Count_Container);
-                    advertlike.appendChild(advertlikeimg);
-                    advertcomment.appendChild(advertcommentimg);
+                    advertlike.innerHTML = likesvg;
+                    advertcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.appendChild(livelikecount);
                     live_Comment_Count_Container.appendChild(livecommentcount);
@@ -172,8 +170,6 @@ function createOtherPost() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    advertlikeimg.src = "newicons/like.png";
-                    advertcommentimg.src = "newicons/comment.png";
                     head.appendChild(nameandimg);
                     head.appendChild(postelapsedtime);
                     nameandimg.appendChild(authorsImg);
@@ -320,7 +316,7 @@ function createOtherPost() {
                     adgridimagecontainer.classList.add("adgridimagecontainer");
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);
@@ -469,11 +465,11 @@ function createOtherPost() {
                         });
 
                         document.querySelectorAll(".sharegridlike").forEach((likebutton) => {
-                                if (likebutton.id === column.id + photo.id) {
-                                    likebutton.classList.add("sharegridliked");
-                                    likebutton.classList.remove("sharegridlike");
-                                }
-                            });
+                            if (likebutton.id === column.id + photo.id) {
+                                likebutton.classList.add("sharegridliked");
+                                likebutton.classList.remove("sharegridlike");
+                            }
+                        });
                         localStorage.setItem(
                             "Feeds_Data_Base",
                             JSON.stringify(Feeds_Data_Base)
@@ -615,7 +611,7 @@ function createOtherPost() {
                             postmenu.classList.toggle("postmenuactive");
                         });
                         option_First_Child2.addEventListener("click", () => {
-                            delete_Timeline_Post(Feeds_Data_Base, photo.id);
+                            delete_Timeline_Post(photo.id);
                             postmenu.classList.toggle("postmenuactive");
                         });
 
@@ -703,17 +699,15 @@ function createOtherPost() {
 
                     let advertactionbar = document.createElement("nav");
                     let advertlike = document.createElement("div");
-                    let advertlikeimg = document.createElement("img");
                     let livelikecount = document.createElement("span");
                     let advertcomment = document.createElement("div");
-                    let advertcommentimg = document.createElement("img");
                     let livecommentcount = document.createElement("span");
                     advertactionbar.appendChild(advertlike);
                     advertactionbar.appendChild(live_Like_Count_Container);
                     advertactionbar.appendChild(advertcomment);
                     advertactionbar.appendChild(live_Comment_Count_Container);
-                    advertlike.appendChild(advertlikeimg);
-                    advertcomment.appendChild(advertcommentimg);
+                    advertlike.innerHTML = likesvg;
+                    advertcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.appendChild(livelikecount);
                     live_Comment_Count_Container.appendChild(livecommentcount);
@@ -729,8 +723,6 @@ function createOtherPost() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    advertlikeimg.src = "newicons/like.png";
-                    advertcommentimg.src = "newicons/comment.png";
                     head.appendChild(nameandimg);
                     head.appendChild(postelapsedtime);
                     nameandimg.appendChild(authorsImg);
@@ -883,7 +875,7 @@ function createOtherPost() {
                     adgridimagecontainer.classList.add("adgridimagecontainer");
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);
@@ -1181,7 +1173,7 @@ function createOtherPost() {
                             postmenu.classList.toggle("postmenuactive");
                         });
                         option_First_Child2.addEventListener("click", () => {
-                            delete_Timeline_Post(Feeds_Data_Base, photo.id);
+                            delete_Timeline_Post(photo.id);
                             postmenu.classList.toggle("postmenuactive");
                         });
 
@@ -1269,17 +1261,15 @@ function createOtherPost() {
 
                     let advertactionbar = document.createElement("nav");
                     let advertlike = document.createElement("div");
-                    let advertlikeimg = document.createElement("img");
                     let livelikecount = document.createElement("span");
                     let advertcomment = document.createElement("div");
-                    let advertcommentimg = document.createElement("img");
                     let livecommentcount = document.createElement("span");
                     advertactionbar.appendChild(advertlike);
                     advertactionbar.appendChild(live_Like_Count_Container);
                     advertactionbar.appendChild(advertcomment);
                     advertactionbar.appendChild(live_Comment_Count_Container);
-                    advertlike.appendChild(advertlikeimg);
-                    advertcomment.appendChild(advertcommentimg);
+                    advertlike.innerHTML = likesvg;
+                    advertcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.appendChild(livelikecount);
                     live_Comment_Count_Container.appendChild(livecommentcount);
@@ -1295,39 +1285,13 @@ function createOtherPost() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    advertlikeimg.src = "newicons/like.png";
-                    advertcommentimg.src = "newicons/comment.png";
                     head.appendChild(nameandimg);
                     head.appendChild(postelapsedtime);
                     nameandimg.appendChild(authorsImg);
                     nameandimg.appendChild(postername);
                     livelikecount.textContent = photo.likes.length;
                     livecommentcount.textContent = photo.comments.length;
-                    if (photo.title !== "") {
-                        let titlehead = document.createElement("header");
-                        let posttitle = document.createElement("p");
-                        adgrid.appendChild(titlehead);
-                        titlehead.appendChild(posttitle);
-                        posttitle.textContent = photo.title;
-                        posttitle.classList.add("posttitle");
-                        titlehead.classList.add("head");
-                        posttitle.addEventListener("click", () => {
-                            posttitle.classList.toggle("posttitlemoreorless");
-                        });
-                        posttitle.textContent.split(" ").forEach(texttitle => {
-                            prefix.forEach(unit => {
-                                if (texttitle.indexOf(unit.prefixName) != -1) {
-                                    if (unit.prefixName == 'https://') {
-                                        let newtitle = posttitle.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                        posttitle.innerHTML = newtitle;
-                                    } else {
-                                        let newtitle = posttitle.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                        posttitle.innerHTML = newtitle;
-                                    }
-                                }
-                            });
-                        });
-                    }
+
                     function Poster_Details() {
                         LogInFormData.forEach((user) => {
                             if (user.user_Id === photo.posterId) {
@@ -1395,7 +1359,31 @@ function createOtherPost() {
                     adgrid.appendChild(adgridimagecontainer);
                     adgridimagecontainer.appendChild(adImg);
                     adgridimagecontainer.appendChild(advertactionbar);
-
+                    if (photo.title !== "") {
+                        let titlehead = document.createElement("header");
+                        let posttitle = document.createElement("p");
+                        adgrid.appendChild(titlehead);
+                        titlehead.appendChild(posttitle);
+                        posttitle.textContent = photo.title;
+                        posttitle.classList.add("posttitle");
+                        titlehead.classList.add("head");
+                        posttitle.addEventListener("click", () => {
+                            posttitle.classList.toggle("posttitlemoreorless");
+                        });
+                        posttitle.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = posttitle.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        posttitle.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = posttitle.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        posttitle.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     function create_Multi_Tile() {
                         let children_Tile_Box = document.createElement("nav");
                         let children = photo.children;
@@ -1447,7 +1435,7 @@ function createOtherPost() {
 
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                        LikePopupsAndMore(photo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike');
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);

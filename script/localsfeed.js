@@ -483,15 +483,14 @@ function createPhotoPostOnTimeLine() {
                 let likes3 = document.createElement('img');
                 let likes4 = document.createElement('img');
 
-                first_Child_1.appendChild(likes1);
-                first_Child_2.appendChild(likes2);
-                first_Child_3.appendChild(likes3);
-                first_Child_4.appendChild(likes4);
+                first_Child_1.innerHTML = commentsvg;
+                first_Child_2.innerHTML = likesvg;
+                first_Child_3.innerHTML = sharesvg;
+                first_Child_4.innerHTML = sendsvg;
 
                 let shareandlikecommentflex = document.createElement('div');
                 let last_Child = document.createElement('div');
-                let opencommentboxactivate = document.createElement('img');
-                last_Child.appendChild(opencommentboxactivate);
+                last_Child.innerHTML = commentsendsvg;
 
                 //LIVE COUNTS
                 let livecountgrid = document.createElement('div');
@@ -524,7 +523,7 @@ function createPhotoPostOnTimeLine() {
                     postmenu.classList.toggle('postmenuactive');
                 });
                 pqr.addEventListener('click', () => {
-                    delete_Timeline_Post(Feeds_Data_Base, photo.id);
+                    delete_Timeline_Post(photo.id);
                     postmenu.classList.toggle('postmenuactive');
                 });
 
@@ -615,19 +614,15 @@ function createPhotoPostOnTimeLine() {
                 let sharevideophotocomment = document.createElement('div');
                 let sharephoto = document.createElement('div');
                 let sharevideo = document.createElement('div');
-                let sharephotoimg = document.createElement('img');
-                let sharevideoimg = document.createElement('img');
                 sharevideophotocomment.appendChild(sharephoto);
                 sharevideophotocomment.appendChild(sharevideo);
 
-                sharephoto.appendChild(sharephotoimg);
-                sharevideo.appendChild(sharevideoimg);
+                sharephoto.innerHTML = imagesvg;
+                sharevideo.innerHTML = videosvg;
 
                 sharephoto.classList.add('headerbtns');
                 sharevideo.classList.add('headerbtns');
 
-                sharephotoimg.src = 'icons/image(0).png';
-                sharevideoimg.src = 'icons/youtube.png';
 
                 sharevideophotocomment.classList.add('sharevideophotocomment');
                 sharevideo.addEventListener('click', () => {
@@ -768,8 +763,6 @@ function createPhotoPostOnTimeLine() {
 
 
                 sub.appendChild(shareandlikecommentflex);
-                opencommentboxactivate.src = 'icons/send (2).png';
-                opencommentboxactivate.classList.add('opencommentboxactivate');
                 shareandlikecommentflex.classList.add('shareandlikecommentflex');
                 last_Child.addEventListener('click', () => {
                     shareandlikecommentflex.classList.toggle('shareandlikecommentflexactive');
@@ -777,12 +770,12 @@ function createPhotoPostOnTimeLine() {
                     commentinputinput.focus();
                 });
 
-                opencommentboxactivate.addEventListener('mouseover', () => {
+                first_Child_4.addEventListener('mouseover', () => {
                     setTimeout(() => {
                         sharevideophotocomment.classList.add('sharevideophotocommentactive');
                     }, 1500);
                 });
-                opencommentboxactivate.addEventListener('mouseout', () => {
+                first_Child_4.addEventListener('mouseout', () => {
                     setTimeout(() => {
                         sharevideophotocomment.classList.remove('sharevideophotocommentactive');
                     }, 3000);
@@ -794,13 +787,6 @@ function createPhotoPostOnTimeLine() {
                 commentinput.appendChild(commentinputinput);
                 commentinput.appendChild(first_Child_4);
                 commentinputinput.placeholder = 'Add a comment';
-
-
-
-                likes1.src = 'icons/comment(0).png';
-                likes2.src = 'icons/like(0).png';
-                likes3.src = 'icons/share (1).png';
-                likes4.src = 'icons/send.png';
 
                 commentinput.classList.add('commentinput');
                 likes1.classList.add('likes111');
@@ -838,16 +824,6 @@ function createPhotoPostOnTimeLine() {
                                 pqrimg.classList.add('darkmodeicons');
                                 rstimg.classList.add('darkmodeicons');
                                 xyzimg.classList.add('darkmodeicons');
-
-                                likes1.classList.add('darkmodeicons');
-                                likes2.classList.add('darkmodeicons');
-                                likes3.classList.add('darkmodeicons');
-                                likes4.classList.add('darkmodeicons');
-
-                                sharephotoimg.classList.add('darkmodeicons');
-                                sharevideoimg.classList.add('darkmodeicons');
-
-                                opencommentboxactivate.classList.add('darkmodeicons');
                             }
                         });
                     }
@@ -1020,14 +996,14 @@ function createPhotoPostOnTimeLine() {
 
                 function showOnAndOffActivities() {
                     if (photo.shareactive === false) {
-                        likes3.remove();
+                        first_Child_3.remove();
                         shareshutdown.textContent = 'turn on shares';
                     } if (photo.commentactive === false) {
                         commentinput.remove();
-                        opencommentboxactivate.remove();
+                        last_Child.remove();
                         commentshutdown.textContent = 'turn on comments';
                     } if (photo.likeactive === false) {
-                        likes2.remove();
+                        first_Child_2.remove();
                         likeshutdown.textContent = 'turn on votes';
                     }
                 }

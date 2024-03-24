@@ -501,20 +501,14 @@ function createPublicFeed() {
                     let first_Child_3 = document.createElement('div');
                     let first_Child_4 = document.createElement('div');
 
-                    let likes1 = document.createElement('img');
-                    let likes2 = document.createElement('img');
-                    let likes3 = document.createElement('img');
-                    let likes4 = document.createElement('img');
-
-                    first_Child_1.appendChild(likes1);
-                    first_Child_2.appendChild(likes2);
-                    first_Child_3.appendChild(likes3);
-                    first_Child_4.appendChild(likes4);
+                    first_Child_1.innerHTML = commentsvg;
+                    first_Child_2.innerHTML = likesvg;
+                    first_Child_3.innerHTML = sharesvg;
+                    first_Child_4.innerHTML = sendsvg;
 
                     let shareandlikecommentflex = document.createElement('div');
                     let last_Child = document.createElement('div');
-                    let opencommentboxactivate = document.createElement('img');
-                    last_Child.appendChild(opencommentboxactivate);
+                    last_Child.innerHTML = commentsendsvg;
 
                     let commentinput = document.createElement('div');
                     let commentinputinput = document.createElement('input');
@@ -551,7 +545,7 @@ function createPublicFeed() {
                         postmenu.classList.toggle('postmenuactive');
                     });
                     pqr.addEventListener('click', () => {
-                        delete_Timeline_Post(Feeds_Data_Base, photo.id);
+                        delete_Timeline_Post(photo.id);
                         postmenu.classList.toggle('postmenuactive');
                     });
 
@@ -602,19 +596,14 @@ function createPublicFeed() {
                     let sharevideophotocomment = document.createElement('div');
                     let sharephoto = document.createElement('div');
                     let sharevideo = document.createElement('div');
-                    let sharephotoimg = document.createElement('img');
-                    let sharevideoimg = document.createElement('img');
                     sharevideophotocomment.appendChild(sharephoto);
                     sharevideophotocomment.appendChild(sharevideo);
 
                     sharephoto.classList.add('headerbtns');
                     sharevideo.classList.add('headerbtns');
 
-                    sharephoto.appendChild(sharephotoimg);
-                    sharevideo.appendChild(sharevideoimg);
-
-                    sharephotoimg.src = 'icons/image(0).png';
-                    sharevideoimg.src = 'icons/youtube.png';
+                    sharephoto.innerHTML = imagesvg;
+                    sharevideo.innerHTML = videosvg;
 
                     sharevideophotocomment.classList.add('sharevideophotocomment');
                     sharevideo.addEventListener('click', () => {
@@ -641,7 +630,7 @@ function createPublicFeed() {
                     }
                     checkIfPostIsLiked();
 
-                    likes2.id = feedcolumn.id + photo.id;
+                    first_Child_2.id = feedcolumn.id + photo.id;
 
                     feedcolumn.appendChild(post);
                     post.appendChild(head);
@@ -787,9 +776,6 @@ function createPublicFeed() {
                     main.setAttribute(`id`, 'main');
                     sub.classList.add('bottomsub');
                     sub.appendChild(commentinput);
-                    first_Child_1.appendChild(likes1);
-                    first_Child_2.appendChild(likes2);
-                    first_Child_3.appendChild(likes3);
 
                     sub.appendChild(commentinput);
                     commentinput.classList.add('commentinput');
@@ -803,8 +789,6 @@ function createPublicFeed() {
                     shareandlikecommentflex.appendChild(first_Child_3);
 
                     sub.appendChild(shareandlikecommentflex);
-                    opencommentboxactivate.src = 'icons/send (2).png';
-                    opencommentboxactivate.classList.add('opencommentboxactivate');
                     shareandlikecommentflex.classList.add('shareandlikecommentflex');
                     last_Child.addEventListener('click', () => {
                         shareandlikecommentflex.classList.toggle('shareandlikecommentflexactive');
@@ -812,26 +796,16 @@ function createPublicFeed() {
                         commentinputinput.focus();
                     });
 
-                    opencommentboxactivate.addEventListener('mouseover', () => {
+                    last_Child.addEventListener('mouseover', () => {
                         setTimeout(() => {
                             sharevideophotocomment.classList.add('sharevideophotocommentactive');
                         }, 1500);
                     });
-                    opencommentboxactivate.addEventListener('mouseout', () => {
+                    last_Child.addEventListener('mouseout', () => {
                         setTimeout(() => {
                             sharevideophotocomment.classList.remove('sharevideophotocommentactive');
                         }, 3000);
                     });
-
-                    likes1.classList.add('likes111');
-                    likes2.classList.add('likes111');
-                    likes3.classList.add('likes111');
-                    likes4.classList.add('likes111');
-
-                    likes1.src = 'icons/comment(0).png';
-                    likes2.src = 'icons/like(0).png';
-                    likes3.src = 'icons/share (1).png';
-                    likes4.src = 'icons/send.png';
 
                     function getIconsOnDarkMode() {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -844,16 +818,6 @@ function createPublicFeed() {
                                     pqrimg.classList.add('darkmodeicons');
                                     rstimg.classList.add('darkmodeicons');
                                     xyzimg.classList.add('darkmodeicons');
-    
-                                    likes1.classList.add('darkmodeicons');
-                                    likes2.classList.add('darkmodeicons');
-                                    likes3.classList.add('darkmodeicons');
-                                    likes4.classList.add('darkmodeicons');
-    
-                                    sharephotoimg.classList.add('darkmodeicons');
-                                    sharevideoimg.classList.add('darkmodeicons');
-    
-                                    opencommentboxactivate.classList.add('darkmodeicons');
                                 }
                             });
                         }
@@ -1022,14 +986,14 @@ function createPublicFeed() {
 
                     function showOnAndOffActivities() {
                         if (photo.shareactive === false) {
-                            likes3.remove();
+                            first_Child_3.remove();
                             shareshutdown.textContent = 'turn on shares';
                         } if (photo.commentactive === false) {
                             commentinput.remove();
-                            opencommentboxactivate.remove();
+                            last_Child.remove();
                             commentshutdown.textContent = 'turn on comments';
                         } if (photo.likeactive === false) {
-                            likes2.remove();
+                            first_Child_2.remove();
                             likeshutdown.textContent = 'turn on votes';
                         }
                     }

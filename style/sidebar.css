@@ -154,6 +154,7 @@
 .clickAndUploadContainer label svg,
 .clickAndUploadContainer label img {
     width: 30px;
+    height: 30px;
     border: none;
     border-radius: 0px;
     box-shadow: none;
@@ -784,7 +785,7 @@ button {
     }
 
     .post_making_upload_popup {
-        width: 90vw;
+        width: 98vw;
         height: max-content;
         max-height: 100%;
         box-shadow: var(--light-box-shadow);

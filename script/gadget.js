@@ -85,14 +85,6 @@ function create_share_Popup(locationId) {
                     let option_Name6_HeaderBtns = document.createElement('div');
                     let option_Name7_HeaderBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-                    let option_Name5_Img = document.createElement('img');
-                    let option_Name6_Img = document.createElement('img');
-                    let option_Name7_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -102,13 +94,13 @@ function create_share_Popup(locationId) {
                     postshare_Popup_Column.appendChild(option_First_Child6);
                     postshare_Popup_Column.appendChild(option_First_Child7);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
-                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
-                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
-                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
-                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
-                    option_Name6_HeaderBtns.appendChild(option_Name6_Img);
-                    option_Name7_HeaderBtns.appendChild(option_Name7_Img);
+                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name2_HeaderBtns.innerHTML = feedsvg;
+                    option_Name3_HeaderBtns.innerHTML = crimesvg;
+                    option_Name4_HeaderBtns.innerHTML = advertsvg;
+                    option_Name5_HeaderBtns.innerHTML = imagesvg;
+                    option_Name6_HeaderBtns.innerHTML = moresvg;
+                    option_Name7_HeaderBtns.innerHTML = medicalreportsvg;
 
                     option_First_Child1.appendChild(option_Name1_HeaderBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
@@ -144,14 +136,6 @@ function create_share_Popup(locationId) {
 
                     postshare_Pop_up_Close.classList.add('headerbtns');
 
-                    option_Name1_Img.src = 'icons/recreate.png';
-                    option_Name2_Img.src = 'icons/web-content.png';
-                    option_Name3_Img.src = 'newicons/handcuff.png';
-                    option_Name4_Img.src = 'newicons/promotion.png';
-                    option_Name5_Img.src = 'icons/image(0).png';
-                    option_Name6_Img.src = 'icons/discover.png';
-                    option_Name7_Img.src = 'newicons/medical-report.png';
-
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'add to crime';
@@ -159,24 +143,6 @@ function create_share_Popup(locationId) {
                     option_Name5.textContent = 'add to photo';
                     option_Name6.textContent = 'advance';
                     option_Name7.textContent = 'report post';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                    option_Name5_Img.classList.add('darkmodeicons');
-                                    option_Name6_Img.classList.add('darkmodeicons');
-                                    option_Name7_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -459,12 +425,6 @@ function create_share_Popup(locationId) {
                     let option_Name4_HeaderBtns = document.createElement('div');
                     let option_Name5_HeaderBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-                    let option_Name5_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -478,11 +438,11 @@ function create_share_Popup(locationId) {
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
                     option_First_Child5.appendChild(option_Name5_HeaderBtns);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
-                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
-                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
-                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
-                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
+                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name2_HeaderBtns.innerHTML = feedsvg;
+                    option_Name3_HeaderBtns.innerHTML = stopwatchsvg;
+                    option_Name4_HeaderBtns.innerHTML = moresvg;
+                    option_Name5_HeaderBtns.innerHTML = medicalreportsvg;
 
                     option_Name1_HeaderBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
@@ -510,28 +470,6 @@ function create_share_Popup(locationId) {
                     option_Name3.textContent = 'add to short';
                     option_Name4.textContent = 'advance';
                     option_Name5.textContent = 'report post';
-
-                    option_Name1_Img.src = 'icons/recreate.png';
-                    option_Name2_Img.src = 'icons/web-content.png';
-                    option_Name3_Img.src = 'icons/stopwatch.png';
-                    option_Name4_Img.src = 'icons/discover.png';
-                    option_Name5_Img.src = 'newicons/medical-report.png';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                    option_Name5_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -728,11 +666,6 @@ function create_share_Popup(locationId) {
                     let option_Name3_headerBtns = document.createElement('div');
                     let option_Name4_headerBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -744,10 +677,10 @@ function create_share_Popup(locationId) {
                     option_First_Child3.appendChild(option_Name3_headerBtns);
                     option_First_Child4.appendChild(option_Name4_headerBtns);
 
-                    option_Name1_headerBtns.appendChild(option_Name1_Img);
-                    option_Name2_headerBtns.appendChild(option_Name2_Img);
-                    option_Name3_headerBtns.appendChild(option_Name3_Img);
-                    option_Name4_headerBtns.appendChild(option_Name4_Img);
+                    option_Name1_headerBtns.innerHTML = recreatesvg;
+                    option_Name2_headerBtns.innerHTML = feedsvg;
+                    option_Name3_headerBtns.innerHTML = moresvg;
+                    option_Name4_headerBtns.innerHTML = medicalreportsvg;
 
                     option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_headerBtns.appendChild(option_Name2);
@@ -770,26 +703,6 @@ function create_share_Popup(locationId) {
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'advance';
                     option_Name4.textContent = 'report post';
-
-                    option_Name1_Img.src = 'icons/recreate.png';
-                    option_Name2_Img.src = 'icons/web-content.png';
-                    option_Name3_Img.src = 'icons/discover.png';
-                    option_Name4_Img.src = 'newicons/medical-report.png';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -955,14 +868,6 @@ function create_share_Popup(locationId) {
                     let option_Name6_HeaderBtns = document.createElement('div');
                     let option_Name7_HeaderBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-                    let option_Name5_Img = document.createElement('img');
-                    let option_Name6_Img = document.createElement('img');
-                    let option_Name7_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -980,13 +885,13 @@ function create_share_Popup(locationId) {
                     option_First_Child6.appendChild(option_Name6_HeaderBtns);
                     option_First_Child7.appendChild(option_Name7_HeaderBtns);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
-                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
-                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
-                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
-                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
-                    option_Name6_HeaderBtns.appendChild(option_Name6_Img);
-                    option_Name7_HeaderBtns.appendChild(option_Name7_Img);
+                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name2_HeaderBtns.innerHTML = homesvg;
+                    option_Name3_HeaderBtns.innerHTML = crimesvg;
+                    option_Name4_HeaderBtns.innerHTML = advertsvg;
+                    option_Name5_HeaderBtns.innerHTML = imagesvg;
+                    option_Name6_HeaderBtns.innerHTML = moresvg;
+                    option_Name7_HeaderBtns.innerHTML = medicalreportsvg;
 
                     option_Name1_HeaderBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
@@ -1003,32 +908,6 @@ function create_share_Popup(locationId) {
                     option_Name5.textContent = 'add to photo';
                     option_Name6.textContent = 'advance';
                     option_Name7.textContent = 'report post';
-
-                    option_Name1_Img.src = 'icons/recreate.png';
-                    option_Name2_Img.src = 'icons/home.png';
-                    option_Name3_Img.src = 'newicons/handcuff.png';
-                    option_Name4_Img.src = 'newicons/promotion.png';
-                    option_Name5_Img.src = 'icons/image(0).png';
-                    option_Name6_Img.src = 'icons/discover.png';
-                    option_Name7_Img.src = 'newicons/medical-report.png';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                    option_Name5_Img.classList.add('darkmodeicons');
-                                    option_Name6_Img.classList.add('darkmodeicons');
-                                    option_Name7_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     option_Name1_HeaderBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
@@ -1328,12 +1207,6 @@ function create_share_Popup(locationId) {
                     let option_Name4_HeaderBtns = document.createElement('div');
                     let option_Name5_HeaderBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-                    let option_Name5_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -1347,11 +1220,11 @@ function create_share_Popup(locationId) {
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
                     option_First_Child5.appendChild(option_Name5_HeaderBtns);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
-                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
-                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
-                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
-                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
+                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name2_HeaderBtns.innerHTML = homesvg;
+                    option_Name3_HeaderBtns.innerHTML = stopwatchsvg;
+                    option_Name4_HeaderBtns.innerHTML = moresvg;
+                    option_Name5_HeaderBtns.innerHTML = medicalreportsvg;
 
                     option_Name1_HeaderBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
@@ -1378,28 +1251,6 @@ function create_share_Popup(locationId) {
                     option_Name3.textContent = 'add to short';
                     option_Name4.textContent = 'advance';
                     option_Name5.textContent = 'report post';
-
-                    option_Name1_img.src = 'icons/recreate.png';
-                    option_Name2_img.src = 'icons/home.png';
-                    option_Name3_img.src = 'icons/stopwatch.png';
-                    option_Name4_img.src = 'icons/discover.png';
-                    option_Name5_img.src = 'newicons/mediacal-report.png';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                    option_Name5_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -1595,11 +1446,6 @@ function create_share_Popup(locationId) {
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -1611,10 +1457,10 @@ function create_share_Popup(locationId) {
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
-                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
-                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
-                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name2_HeaderBtns.innerHTML = feedsvg;
+                    option_Name3_HeaderBtns.innerHTML = moresvg;
+                    option_Name4_HeaderBtns.innerHTML = medicalreportsvg;
 
                     option_Name1_HeaderBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
@@ -1637,26 +1483,6 @@ function create_share_Popup(locationId) {
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'advance';
                     option_Name4.textContent = 'report post';
-
-                    option_Name1_Img.src = 'icons/recreate.png';
-                    option_Name2_Img.src = 'icons/web-content.png';
-                    option_Name3_Img.src = 'icons/discover.png';
-                    option_Name4_Img.src = 'newicons/medical-report.png';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -1809,11 +1635,6 @@ function create_share_Popup(locationId) {
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -1825,10 +1646,10 @@ function create_share_Popup(locationId) {
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
-                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
-                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
-                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
+                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name2_HeaderBtns.innerHTML = homesvg;
+                    option_Name3_HeaderBtns.innerHTML = moresvg;
+                    option_Name4_HeaderBtns.innerHTML = medicalreportsvg;
 
                     option_Name1_HeaderBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
@@ -1851,26 +1672,6 @@ function create_share_Popup(locationId) {
                     option_Name2.textContent = 'add to timeline';
                     option_Name3.textContent = 'advance';
                     option_Name4.textContent = 'report post';
-
-                    option_Name1_Img.src = 'icons/recreate.png';
-                    option_Name2_Img.src = 'icons/home.png';
-                    option_Name3_Img.src = 'icons/discover.png';
-                    option_Name4_Img.src = 'newicons/medical-report.png';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -2036,14 +1837,6 @@ function create_share_Popup(locationId) {
                     let option_Name6_HeaderBtns = document.createElement('div');
                     let option_Name7_HeaderBtns = document.createElement('div');
 
-                    let option_Name1_Img = document.createElement('img');
-                    let option_Name2_Img = document.createElement('img');
-                    let option_Name3_Img = document.createElement('img');
-                    let option_Name4_Img = document.createElement('img');
-                    let option_Name5_Img = document.createElement('img');
-                    let option_Name6_Img = document.createElement('img');
-                    let option_Name7_Img = document.createElement('img');
-
                     postshare_Pop_up.id = photo.id;
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
@@ -2061,13 +1854,13 @@ function create_share_Popup(locationId) {
                     option_First_Child6.appendChild(option_Name6_HeaderBtns);
                     option_First_Child7.appendChild(option_Name7_HeaderBtns);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1_Img);
-                    option_Name2_HeaderBtns.appendChild(option_Name2_Img);
-                    option_Name3_HeaderBtns.appendChild(option_Name3_Img);
-                    option_Name4_HeaderBtns.appendChild(option_Name4_Img);
-                    option_Name5_HeaderBtns.appendChild(option_Name5_Img);
-                    option_Name6_HeaderBtns.appendChild(option_Name6_Img);
-                    option_Name7_HeaderBtns.appendChild(option_Name7_Img);
+                    option_Name1_HeaderBtns.innerHTML = homesvg;
+                    option_Name2_HeaderBtns.innerHTML = feedsvg;
+                    option_Name3_HeaderBtns.innerHTML = crimesvg;
+                    option_Name4_HeaderBtns.innerHTML = advertsvg
+                    option_Name5_HeaderBtns.innerHTML = imagesvg;
+                    option_Name6_HeaderBtns.innerHTML = moresvg;
+                    option_Name7_HeaderBtns.innerHTML = medicalreportsvg;
 
                     option_Name1_HeaderBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
@@ -2102,32 +1895,6 @@ function create_share_Popup(locationId) {
                     option_Name5.textContent = 'add to photo';
                     option_Name6.textContent = 'advance';
                     option_Name7.textContent = 'report post';
-
-                    option_Name1_Img.src = 'icons/home.png';
-                    option_Name2_Img.src = 'icons/web-content.png';
-                    option_Name3_Img.src = 'newicons/handcuff.png';
-                    option_Name4_Img.src = 'newicons/promotion.png';
-                    option_Name5_Img.src = 'icons/image(0).png';
-                    option_Name6_Img.src = 'icons/discover.png';
-                    option_Name7_Img.src = 'newicons/medical-report.png';
-
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    ActiveUser_Account.forEach(data => {
-                        LogInFormData.forEach(user => {
-                            if (data.user_Id === user.user_Id) {
-                                if (user.user_Mode !== "defaultTheme") {
-                                    option_Name1_Img.classList.add('darkmodeicons');
-                                    option_Name2_Img.classList.add('darkmodeicons');
-                                    option_Name3_Img.classList.add('darkmodeicons');
-                                    option_Name4_Img.classList.add('darkmodeicons');
-                                    option_Name5_Img.classList.add('darkmodeicons');
-                                    option_Name6_Img.classList.add('darkmodeicons');
-                                    option_Name7_Img.classList.add('darkmodeicons');
-                                }
-                            }
-                        });
-                    });
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
@@ -2395,44 +2162,145 @@ function create_Comment_room(locationId) {
     Feeds_Data_Base.forEach(photo => {
         if (photo.id === locationId) {
             let sharegrid = document.createElement('div');
-            let sharegridviewimg = document.createElement('img');
-            let sharegridlikeimg = document.createElement('img');
-            let sharegridshareimg = document.createElement('img');
-            let sharegridphoto = document.createElement('img');
-
-            let sharegridview = document.createElement('div');
-            let sharegridlike = document.createElement('div');
-            let sharegridshare = document.createElement('div');
-            let sharegridphotoo = document.createElement('div');
-
 
             let commentsectioncontainer = document.createElement('nav');
             let commentmovebackward = document.createElement('span');
             let commentsection = document.createElement('div');
             let commentattachmenticon = document.createElement('div');
-            let commentattachImg = document.createElement('img');
 
             let newcommentinput = document.createElement('div');
             let newcommentinputinput = document.createElement('input');
             let newcommentinputinputsend = document.createElement('div');
-            let sendimg = document.createElement('img');
+            function create_Options_Script() {
+                let options = document.createElement('div');
+                let exit = document.createElement('span');
 
-            newcommentinputinputsend.appendChild(sendimg);
-            sendimg.src = 'icons/send.png';
-            commentattachmenticon.appendChild(commentattachImg);
-            commentattachImg.src = 'icons/discover.png';
+                let sharegridview = document.createElement('div');
+                let sharegridlike = document.createElement('div');
+                let sharegridshare = document.createElement('div');
+                let sharegridphotoo = document.createElement('div');
+
+                commentsection.insertAdjacentElement("afterend", options);
+                options.appendChild(exit);
+                options.appendChild(sharegridview);
+                options.appendChild(sharegridlike);
+                options.appendChild(sharegridshare);
+                options.appendChild(sharegridphotoo);
+
+                exit.innerHTML = undo2;
+                sharegridlike.innerHTML = likesvg;
+                sharegridshare.innerHTML = sharesvg;
+                sharegridphotoo.innerHTML = createsvg;
+                sharegridview.innerHTML = focussvg;
+
+                sharegridview.classList.add('headerbtns');
+                sharegridlike.classList.add('headerbtns');
+                sharegridshare.classList.add('headerbtns');
+                sharegridphotoo.classList.add('headerbtns');
+                sharegridview.classList.add('sharegridlike');
+                sharegridlike.classList.add('sharegridlike');
+                sharegridshare.classList.add('sharegridlike');
+                sharegridphotoo.classList.add('sharegridlike');
+                exit.classList.add('headerbtns');
+
+                options.classList.add('options');
+                function checkIfPostIsLiked() {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                        ActiveUser_Account.forEach(data => {
+                            let likes = photo.likes;
+                            likes.forEach(like => {
+                                if (like.id === data.user_Id + photo.id) {
+                                    sharegridlike.classList.add('sharegridliked');
+                                    sharegridlike.classList.remove('sharegridlike');
+                                }
+                            });
+                        });
+                    }
+                }
+                checkIfPostIsLiked();
+                sharegridlike.addEventListener('click', () => {
+                    makeLike();
+                });
+                sharegridview.addEventListener('click', () => {
+                    createMain_GridPost(photo.id, photo.Property_Src);
+                    commentsectioncontainer.classList.toggle('commentsectioncontaineractive');
+                });
+                sharegridphotoo.addEventListener('click', () => {
+                    Media_Comment_Popup(photo.id, photo.posterId);
+                });
+                sharegridshare.addEventListener('click', () => {
+                    create_share_Popup(photo.id);
+                });
+                function decideRight() {
+                    document.querySelectorAll('.live_Like_Count').forEach(count => {
+                        if (count.id === photo.id) {
+                            count.classList.add('live_Like_Count_active');
+                            count.classList.remove('live_Like_Count');
+                        }
+                    });
+                    document.querySelectorAll('.like_count').forEach(count => {
+                        if (count.id === photo.id) {
+                            count.classList.add('like_count_active');
+                            count.classList.remove('like_count');
+                        }
+                    });
+                    sharegridlike.classList.add('sharegridliked');
+                    sharegridlike.classList.remove('sharegridlike');
+                    if (photo.isText === true) {
+                        like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
+                    } else {
+                        like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
+                    }
+                }
+                function decideLeft() {
+                    document.querySelectorAll('.live_Like_Count_active').forEach(count => {
+                        if (count.id === photo.id) {
+                            count.classList.remove('live_Like_Count_active');
+                            count.classList.add('live_Like_Count');
+                        }
+                    });
+                    document.querySelectorAll('.like_count_active').forEach(count => {
+                        if (count.id === photo.id) {
+                            count.classList.remove('like_count_active');
+                            count.classList.add('like_count');
+                        }
+                    });
+                    sharegridlike.classList.remove('sharegridliked');
+                    sharegridlike.classList.add('sharegridlike');
+                    Unlike_Post(photo.id);
+                }
+                function makeLike() {
+                    if (sharegridlike.classList.contains('sharegridlike')) {
+                        decideRight();
+                    } else if (sharegridlike.classList.contains('sharegridliked')) {
+                        decideLeft();
+                    }
+                }
+                function showOnAndOffActivities() {
+                    if (photo.shareactive === false) {
+                        sharegridshare.remove();
+                    } if (photo.commentactive === false) {
+                        sharegridphotoo.remove();
+                    } if (photo.likeactive === false) {
+                        sharegridlike.remove();
+                    }
+                }
+                showOnAndOffActivities();
+                exit.addEventListener('click', () => {
+                    options.remove();
+                });
+            }
+            newcommentinputinputsend.innerHTML = sendsvg;
+            commentattachmenticon.innerHTML = moresvg;
             newcommentinputinputsend.classList.add('headerbtns');
             commentattachmenticon.classList.add('headerbtns');
 
             let actitionbtnscontainer = document.createElement('div');
             let commentactiongrid = document.createElement('div');
             let commentrefreshbtn = document.createElement('span');
-            let exitimg = document.createElement('img');
-            let refreshimg = document.createElement('img');
-            commentmovebackward.appendChild(exitimg);
-            commentrefreshbtn.appendChild(refreshimg);
-            exitimg.src = 'icons/undo_2.png';
-            refreshimg.src = 'icons/refresh.png';
+            commentmovebackward.innerHTML = undo2;
+            commentrefreshbtn.innerHTML = spinnersvg;
             commentrefreshbtn.addEventListener('click', () => {
                 reloadLocation();
             });
@@ -2449,12 +2317,6 @@ function create_Comment_room(locationId) {
             commentsection.id = photo.id;
             commentsectioncontainer.id = photo.id;
             newcommentinputinput.id = photo.id;
-            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                ActiveUser_Account.forEach(data => {
-                    sharegridlike.id = data.user_Id + photo.id;
-                });
-            }
 
             commentsection.classList.add('commentsection');
 
@@ -2466,43 +2328,19 @@ function create_Comment_room(locationId) {
             actitionbtnscontainer.appendChild(commentmovebackward);
             actitionbtnscontainer.appendChild(commentrefreshbtn);
             commentactiongrid.appendChild(actitionbtnscontainer);
-            commentactiongrid.appendChild(sharegrid);
             commentactiongrid.classList.add('commentactiongrid');
             document.body.appendChild(commentsectioncontainer);
             commentsectioncontainer.appendChild(commentactiongrid);
             commentsectioncontainer.appendChild(commentsection);
             commentsectioncontainer.appendChild(newcommentinput);
-            sharegrid.appendChild(sharegridview);
-            sharegrid.appendChild(sharegridlike);
-            sharegrid.appendChild(sharegridphotoo);
-            sharegrid.appendChild(sharegridshare)
 
-            sharegridlike.classList.add('headerbtns');
-            sharegridshare.classList.add('headerbtns');
-            sharegridphotoo.classList.add('headerbtns');
-            sharegridview.classList.add('headerbtns');
             commentmovebackward.classList.add('headerbtns');
             commentrefreshbtn.classList.add('headerbtns');
 
-            sharegridview.classList.add('sharegridlike');
-            sharegridlike.classList.add('sharegridlike');
-            sharegridshare.classList.add('sharegridlike');
-            sharegridphotoo.classList.add('sharegridlike');
             commentmovebackward.classList.add('sharegridlike');
             commentrefreshbtn.classList.add('sharegridlike');
 
-            sharegridlike.appendChild(sharegridlikeimg);
-            sharegridshare.appendChild(sharegridshareimg);
-            sharegridphotoo.appendChild(sharegridphoto);
-            sharegridview.appendChild(sharegridviewimg);
-
-            sharegridviewimg.src = 'icons/focus.png';
-            sharegridlikeimg.src = 'icons/like(0).png';
-            sharegridshareimg.src = 'icons/share (1).png';
-            sharegridphoto.src = 'icons/image(0).png';
-
             actitionbtnscontainer.classList.add('actitionbtnscontainer');
-            sharegrid.classList.add('sharegrid');
 
             newcommentinput.appendChild(newcommentinputinput);
             newcommentinput.appendChild(commentattachmenticon);
@@ -2511,71 +2349,14 @@ function create_Comment_room(locationId) {
 
             commentattachmenticon.addEventListener('click', () => {
                 sharegrid.classList.toggle('sharegridactive');
+                create_Options_Script();
             });
 
             commentmovebackward.addEventListener('click', () => {
                 sessionStorage.setItem('activepage', 'home');
                 commentsectioncontainer.classList.toggle('commentsectioncontaineractive');
             });
-            sharegridlike.addEventListener('click', () => {
-                makeLike();
-            });
-            sharegridview.addEventListener('click', () => {
-                createMain_GridPost(photo.id, photo.Property_Src);
-                commentsectioncontainer.classList.toggle('commentsectioncontaineractive');
-            });
-            sharegridphotoo.addEventListener('click', () => {
-                Media_Comment_Popup(photo.id, photo.posterId);
-            });
-            sharegridshare.addEventListener('click', () => {
-                create_share_Popup(photo.id);
-            });
 
-            function decideRight() {
-                document.querySelectorAll('.live_Like_Count').forEach(count => {
-                    if (count.id === photo.id) {
-                        count.classList.add('live_Like_Count_active');
-                        count.classList.remove('live_Like_Count');
-                    }
-                });
-                document.querySelectorAll('.like_count').forEach(count => {
-                    if (count.id === photo.id) {
-                        count.classList.add('like_count_active');
-                        count.classList.remove('like_count');
-                    }
-                });
-                sharegridlike.classList.add('sharegridliked');
-                sharegridlike.classList.remove('sharegridlike');
-                if (photo.isText === true) {
-                    like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
-                } else {
-                    like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
-                }
-            }
-            function decideLeft() {
-                document.querySelectorAll('.live_Like_Count_active').forEach(count => {
-                    if (count.id === photo.id) {
-                        count.classList.remove('live_Like_Count_active');
-                        count.classList.add('live_Like_Count');
-                    }
-                });
-                document.querySelectorAll('.like_count_active').forEach(count => {
-                    if (count.id === photo.id) {
-                        count.classList.remove('like_count_active');
-                        count.classList.add('like_count');
-                    }
-                });
-                sharegridlike.classList.remove('sharegridliked');
-                sharegridlike.classList.add('sharegridlike');
-                Unlike_Post(photo.id);
-            }
-            function makeLike() {
-                if (sharegridlike.classList.contains('sharegridlike')) {
-                    decideRight();
-                } else if (sharegridlike.classList.contains('sharegridliked')) {
-                    decideLeft();
-                }
-            }
             newcommentinputinputsend.addEventListener('click', () => {
                 if (newcommentinputinput.value) {
                     set_Comment_Data(photo.id, newcommentinputinput.value);
@@ -2583,51 +2364,13 @@ function create_Comment_room(locationId) {
                     newcommentinputinput.value = '';
                 }
             });
-            function getIconsOnDarkMode() {
-                if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    ActiveUser_Account.forEach(data => {
-                        if (data.user_Mode !== 'defaultTheme') {
-                            sharegridviewimg.classList.add('darkmodeicons');
-                            sharegridlikeimg.classList.add('darkmodeicons');
-                            sharegridshareimg.classList.add('darkmodeicons');
-                            sharegridphoto.classList.add('darkmodeicons');
-                            commentattachImg.classList.add('darkmodeicons');
-                            sendimg.classList.add('darkmodeicons');
-                            exitimg.classList.add('darkmodeicons');
-                            refreshimg.classList.add('darkmodeicons');
-                        }
-                    });
-                }
-            }
-            getIconsOnDarkMode();
 
             function showOnAndOffActivities() {
-                if (photo.shareactive === false) {
-                    sharegridshare.remove();
-                } if (photo.commentactive === false) {
+                if (photo.commentactive === false) {
                     newcommentinput.remove();
-                    sharegridphotoo.remove();
-                } if (photo.likeactive === false) {
-                    sharegridlike.remove();
                 }
             }
             showOnAndOffActivities();
-            function checkIfPostIsLiked() {
-                if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                    ActiveUser_Account.forEach(data => {
-                        let likes = photo.likes;
-                        likes.forEach(like => {
-                            if (like.id === data.user_Id + photo.id) {
-                                sharegridlike.classList.add('sharegridliked');
-                                sharegridlike.classList.remove('sharegridlike');
-                            }
-                        });
-                    });
-                }
-            }
-            checkIfPostIsLiked();
             CreationOfComments(commentsection, locationId);
             external_loader(commentsection);
         }
@@ -2681,11 +2424,8 @@ function Media_Comment_Popup(locationId, posterId) {
     let popup_Names_Container = document.createElement('div');
     let Names_title = document.createElement('strong');
     let subactions = document.createElement('div');
-    let exitimg = document.createElement('img');
 
     let clickAndUploadContainer = document.createElement('div');
-    let firstImg = document.createElement('img');
-    let secondImg = document.createElement('img');
     let firsttext = document.createElement('span');
     let secondtext = document.createElement('span');
     uploadpreviewcontainer.classList.add('uploadpreviewcontainer');
@@ -2706,29 +2446,17 @@ function Media_Comment_Popup(locationId, posterId) {
     subactions.appendChild(sharevideosend);
     header.appendChild(photoexit);
     header.appendChild(popup_Names_Container);
-    newphotolabel.appendChild(firstImg);
-    newvideolabel.appendChild(secondImg);
+    newphotolabel.innerHTML = imagesvg;
+    newvideolabel.innerHTML = videosvg;
     newphotolabel.appendChild(firsttext);
     newvideolabel.appendChild(secondtext);
 
-    photoexit.appendChild(exitimg);
+    photoexit.innerHTML = undo;
     photoexit.classList.add('headerbtns');
-    exitimg.src = 'icons/undo.png';
     firsttext.textContent = 'photo';
     secondtext.textContent = 'video';
-    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-    ActiveUser_Account.forEach(data => {
-        LogInFormData.forEach(user => {
-            if (data.user_Id === user.user_Id) {
-                if (user.user_Mode !== "defaultTheme") {
-                    exitimg.classList.add('darkmodeicons');
-                }
-            }
-        });
-    });
-    firstImg.src = 'icons/image(0).png';
-    secondImg.src = 'icons/youtube.png';
+
+
     popup_Names_Container.appendChild(Names_title);
     Names_title.textContent = 'Media Comment';
     caption.appendChild(captioninput);
@@ -3215,76 +2943,103 @@ function editingPostText(locationId) {
         }
     });
 }
-function delete_Timeline_Post(Feeds_Data_Base, locationId) {
-    Feeds_Data_Base.forEach(feed => {
-        if (feed.id === locationId) {
-            let confirmation_popup = document.createElement('div');
-            let confirmationflex = document.createElement('div');
-            let confirmationflex1 = document.createElement('div');
-            let confirmationtext = document.createElement('p');
-            let confirmationtrue = document.createElement('span');
-            let confirmationfalse = document.createElement('span');
-            confirmationtext.textContent = 'Are You Sure You Want To Deleted';
-            confirmationtrue.textContent = 'Yes';
-            confirmationfalse.textContent = 'No';
-            document.body.appendChild(confirmation_popup);
-            confirmation_popup.appendChild(confirmationflex);
-            confirmation_popup.appendChild(confirmationflex1);
-            confirmationflex.appendChild(confirmationtext);
-            confirmationflex1.appendChild(confirmationtrue);
-            confirmationflex1.appendChild(confirmationfalse);
-            confirmation_popup.classList.add('confirmation_popup');
-            confirmationflex.classList.add('confirmationflex');
-            confirmationflex1.classList.add('confirmationflex');
-            confirmationtrue.classList.add('confirmationtrue');
-            confirmationfalse.classList.add('confirmationfalse');
-            confirmationfalse.addEventListener('click', () => {
-                confirmation_popup.remove();
-            });
-            confirmation_popup.style.display = 'flex';
-
-            confirmation_popup.id = locationId;
-            confirmationtrue.id = locationId;
-            confirmationtrue.addEventListener('click', () => {
-                pushtrash();
-                Feeds_Data_Base = Feeds_Data_Base.filter(photo => {
-                    if (photo.id === confirmationtrue.id) {
-                        return false;
-                    } else {
-                        return true;
-                    }
+function delete_Timeline_Post(locationId) {
+    if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
+        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+        Feeds_Data_Base.forEach(feed => {
+            if (feed.id === locationId) {
+                let confirmation_popup = document.createElement('div');
+                let confirmationflex = document.createElement('div');
+                let confirmationflex1 = document.createElement('div');
+                let confirmationtext = document.createElement('p');
+                let confirmationtrue = document.createElement('span');
+                let confirmationfalse = document.createElement('span');
+                confirmationtext.textContent = 'Are You Sure You Want To Deleted';
+                confirmationtrue.textContent = 'Yes';
+                confirmationfalse.textContent = 'No';
+                document.body.appendChild(confirmation_popup);
+                confirmation_popup.appendChild(confirmationflex);
+                confirmation_popup.appendChild(confirmationflex1);
+                confirmationflex.appendChild(confirmationtext);
+                confirmationflex1.appendChild(confirmationtrue);
+                confirmationflex1.appendChild(confirmationfalse);
+                confirmation_popup.classList.add('confirmation_popup');
+                confirmationflex.classList.add('confirmationflex');
+                confirmationflex1.classList.add('confirmationflex');
+                confirmationtrue.classList.add('confirmationtrue');
+                confirmationfalse.classList.add('confirmationfalse');
+                confirmationfalse.addEventListener('click', () => {
+                    confirmation_popup.remove();
                 });
-                localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                confirmation_popup.remove();
-                createPhotoPostOnTimeLine();
-                create_TimeLine_G_Video();
-                createGridPost();
-                create_Message('operated successfully');
-            });
-            function pushtrash() {
-                Feeds_Data_Base.forEach(photo => {
-                    if (photo.id === locationId) {
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === photo.posterId) {
-                                let trash = user.user_Trash;
-                                const id = '' + new Date().getTime();
-                                if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
-                                    if (photo.children) {
+                confirmation_popup.style.display = 'flex';
+
+                confirmation_popup.id = locationId;
+                confirmationtrue.id = feed.id;
+                confirmationtrue.addEventListener('click', () => {
+                    pushtrash();
+                    Feeds_Data_Base = Feeds_Data_Base.filter(photo => {
+                        if (photo.id === confirmationtrue.id) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                    localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                    confirmation_popup.remove();
+                    createPhotoPostOnTimeLine();
+                    create_TimeLine_G_Video();
+                    createGridPost();
+                    create_Message('operated successfully');
+                });
+                function pushtrash() {
+                    Feeds_Data_Base.forEach(photo => {
+                        if (photo.id === locationId) {
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === photo.posterId) {
+                                    let trash = user.user_Trash;
+                                    const id = '' + new Date().getTime();
+                                    if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
+                                        if (photo.children) {
+                                            trash.push({
+                                                type: 'photo',
+                                                posterId: photo.posterId,
+                                                title: photo.title,
+                                                Property_Src: photo.Property_Src,
+                                                children: photo.children,
+                                                filter: photo.filter,
+                                                id: id,
+                                                date: trackingDate,
+                                                time: new Date().getTime()
+                                            });
+                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                        } else {
+                                            trash.push({
+                                                type: 'photo',
+                                                posterId: photo.posterId,
+                                                title: photo.title,
+                                                Property_Src: photo.Property_Src,
+                                                filter: photo.filter,
+                                                id: id,
+                                                date: trackingDate,
+                                                time: new Date().getTime()
+                                            });
+                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                        }
+                                    } else if (photo.isVideo || photo.isShort) {
                                         trash.push({
-                                            type: 'photo',
+                                            type: 'video',
                                             posterId: photo.posterId,
                                             title: photo.title,
                                             Property_Src: photo.Property_Src,
-                                            children: photo.children,
                                             filter: photo.filter,
                                             id: id,
                                             date: trackingDate,
                                             time: new Date().getTime()
                                         });
                                         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                    } else {
+                                    } else if (photo.isText) {
                                         trash.push({
-                                            type: 'photo',
+                                            type: 'text',
                                             posterId: photo.posterId,
                                             title: photo.title,
                                             Property_Src: photo.Property_Src,
@@ -3295,37 +3050,13 @@ function delete_Timeline_Post(Feeds_Data_Base, locationId) {
                                         });
                                         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                     }
-                                } else if (photo.isVideo || photo.isShort) {
-                                    trash.push({
-                                        type: 'video',
-                                        posterId: photo.posterId,
-                                        title: photo.title,
-                                        Property_Src: photo.Property_Src,
-                                        filter: photo.filter,
-                                        id: id,
-                                        date: trackingDate,
-                                        time: new Date().getTime()
-                                    });
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                } else if (photo.isText) {
-                                    trash.push({
-                                        type: 'text',
-                                        posterId: photo.posterId,
-                                        title: photo.title,
-                                        Property_Src: photo.Property_Src,
-                                        filter: photo.filter,
-                                        id: id,
-                                        date: trackingDate,
-                                        time: new Date().getTime()
-                                    });
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                    create_Trash_Items();
                                 }
-                                create_Trash_Items();
-                            }
-                        });
-                    }
-                });
+                            });
+                        }
+                    });
+                }
             }
-        }
-    });
+        });
+    }
 }

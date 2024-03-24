@@ -9,8 +9,6 @@ function createPhotosGadget() {
                     let worldwidegadgetcontainer = document.createElement('div');
                     let worldwidegadgetinnercontainer = document.createElement('div');
                     let worldwideImageGadget = document.createElement('img');
-                    let worldwidegadgetcaptioncover = document.createElement('div');
-                    let worldwidegadgetcaption = document.createElement('p');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
                     let worldwidegadgetauthorsimgcontainer = document.createElement('div');
@@ -20,8 +18,8 @@ function createPhotosGadget() {
                     let elapsedTime = document.createElement('span');
                     let attributation = document.createElement('span');
                     let gadgetsidepannel = document.createElement('nav');
-                    let gadgetlike = document.createElement('img');
-                    let gadgetcomment = document.createElement('img');
+                    let gadgetlike = document.createElement('div');
+                    let gadgetcomment = document.createElement('div');
                     let livelikecount = document.createElement('span');
                     let livecommentcount = document.createElement('span');
 
@@ -32,6 +30,7 @@ function createPhotosGadget() {
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
                     gadgetsidepannel.appendChild(gadgetcomment);
                     gadgetsidepannel.appendChild(live_Comment_Count_Container);
+
                     livecommentcount.textContent = photo.comments.length;
                     livelikecount.textContent = photo.likes.length;
 
@@ -55,8 +54,8 @@ function createPhotosGadget() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    gadgetlike.src = 'newicons/like.png';
-                    gadgetcomment.src = 'newicons/chat.png';
+                    gadgetlike.innerHTML = likesvg;
+                    gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
                         LikePopupsAndMore(photo.id, 'postlike');
@@ -158,26 +157,34 @@ function createPhotosGadget() {
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
                     worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
-                    worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
-                    worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
-                    worldwidegadgetcaption.textContent = photo.title;
-                    worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
-                        prefix.forEach(unit => {
-                            if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'https://') {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                } else {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                }
-                            }
+                    if (photo.title !== "") {
+                        let worldwidegadgetcaptioncover = document.createElement('div');
+                        let worldwidegadgetcaption = document.createElement("p");
+                        worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
+                        worldwidegadgetcaption.textContent = photo.title;
+                        worldwidegadgetcaption.classList.add("worldwidegadgetcaption");
+
+                        worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
+                        worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
+                        worldwidegadgetcaption.addEventListener("click", () => {
+                            worldwidegadgetcaption.classList.toggle("posttitlemoreorless");
                         });
-                    });
+                        worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     attributation.textContent = photo.attribute;
                     if (photo.children) {
                         let children = photo.children;
@@ -207,8 +214,6 @@ function createPhotosGadget() {
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
                     worldwidegadgetcontainer.classList.add('worldwidegadgetcontainer');
-                    worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
-                    worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
@@ -318,8 +323,6 @@ function createPhotosGadget() {
                     let worldwidegadgetcontainer = document.createElement('div');
                     let worldwidegadgetinnercontainer = document.createElement('div');
                     let worldwideImageGadget = document.createElement('img');
-                    let worldwidegadgetcaptioncover = document.createElement('div');
-                    let worldwidegadgetcaption = document.createElement('p');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
                     let worldwidegadgetauthorsimgcontainer = document.createElement('div');
@@ -328,8 +331,8 @@ function createPhotosGadget() {
                     let elapsedTime = document.createElement('span');
                     let attributation = document.createElement('span');
                     let gadgetsidepannel = document.createElement('nav');
-                    let gadgetlike = document.createElement('img');
-                    let gadgetcomment = document.createElement('img');
+                    let gadgetlike = document.createElement('div');
+                    let gadgetcomment = document.createElement('div');
                     let livelikecount = document.createElement('span');
                     let livecommentcount = document.createElement('span');
 
@@ -364,8 +367,8 @@ function createPhotosGadget() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    gadgetlike.src = 'newicons/like.png';
-                    gadgetcomment.src = 'newicons/chat.png';
+                    gadgetlike.innerHTML = likesvg;
+                    gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
                         LikePopupsAndMore(photo.id, 'postlike');
@@ -467,26 +470,9 @@ function createPhotosGadget() {
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
                     worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
-                    worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
-                    worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
-                    worldwidegadgetcaption.textContent = photo.title;
-                    worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
-                        prefix.forEach(unit => {
-                            if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'https://') {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                } else {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                }
-                            }
-                        });
-                    });
+
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -497,12 +483,36 @@ function createPhotosGadget() {
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
                     worldwidegadgetcontainer.classList.add('worldwidegadgetcontainer');
-                    worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
-                    worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
+                    if (photo.title !== "") {
+                        let worldwidegadgetcaptioncover = document.createElement('div');
+                        let worldwidegadgetcaption = document.createElement("p");
+                        worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
+                        worldwidegadgetcaption.textContent = photo.title;
+                        worldwidegadgetcaption.classList.add("worldwidegadgetcaption");
+
+                        worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
+                        worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
+                        worldwidegadgetcaption.addEventListener("click", () => {
+                            worldwidegadgetcaption.classList.toggle("posttitlemoreorless");
+                        });
+                        worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
@@ -636,8 +646,8 @@ function createPhotosGadget() {
                     let elapsedTime = document.createElement('span');
                     let attributation = document.createElement('span');
                     let gadgetsidepannel = document.createElement('nav');
-                    let gadgetlike = document.createElement('img');
-                    let gadgetcomment = document.createElement('img');
+                    let gadgetlike = document.createElement('div');
+                    let gadgetcomment = document.createElement('div');
                     let livelikecount = document.createElement('span');
                     let livecommentcount = document.createElement('span');
 
@@ -671,8 +681,8 @@ function createPhotosGadget() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    gadgetlike.src = 'newicons/like.png';
-                    gadgetcomment.src = 'newicons/chat.png';
+                    gadgetlike.innerHTML = likesvg;
+                    gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
                         LikePopupsAndMore(photo.id, 'postlike');
@@ -774,26 +784,9 @@ function createPhotosGadget() {
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
                     worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
-                    worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
-                    worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
-                    worldwidegadgetcaption.textContent = photo.title;
-                    worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
-                        prefix.forEach(unit => {
-                            if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'https://') {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                } else {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                }
-                            }
-                        });
-                    });
+
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -804,12 +797,36 @@ function createPhotosGadget() {
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
                     worldwidegadgetcontainer.classList.add('worldwidegadgetcontainer');
-                    worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
-                    worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
+                    if (photo.title !== "") {
+                        let worldwidegadgetcaptioncover = document.createElement('div');
+                        let worldwidegadgetcaption = document.createElement("p");
+                        worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
+                        worldwidegadgetcaption.textContent = photo.title;
+                        worldwidegadgetcaption.classList.add("worldwidegadgetcaption");
+
+                        worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
+                        worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
+                        worldwidegadgetcaption.addEventListener("click", () => {
+                            worldwidegadgetcaption.classList.toggle("posttitlemoreorless");
+                        });
+                        worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
@@ -944,8 +961,6 @@ function createAdsGadget() {
                     let worldwidegadgetcontaineronshortpage = document.createElement('div');
                     let worldwidegadgetinnercontainer = document.createElement('div');
                     let worldwideImageGadget = document.createElement('img');
-                    let worldwidegadgetcaptioncover = document.createElement('div');
-                    let worldwidegadgetcaption = document.createElement('p');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
                     let worldwidegadgetauthorsimgcontainer = document.createElement('div');
@@ -954,8 +969,8 @@ function createAdsGadget() {
                     let elapsedTime = document.createElement('span');
                     let attributation = document.createElement('span');
                     let gadgetsidepannel = document.createElement('nav');
-                    let gadgetlike = document.createElement('img');
-                    let gadgetcomment = document.createElement('img');
+                    let gadgetlike = document.createElement('div');
+                    let gadgetcomment = document.createElement('div');
                     let livelikecount = document.createElement('span');
                     let livecommentcount = document.createElement('span');
 
@@ -989,8 +1004,8 @@ function createAdsGadget() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    gadgetlike.src = 'newicons/like.png';
-                    gadgetcomment.src = 'newicons/chat.png';
+                    gadgetlike.innerHTML = likesvg;
+                    gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
                         LikePopupsAndMore(photo.id, 'postlike');
@@ -1092,27 +1107,9 @@ function createAdsGadget() {
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
                     worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
-                    worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
-                    worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
-                    worldwidegadgetcaption.textContent = photo.title;
-                    worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
-                        prefix.forEach(unit => {
-                            if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'https://') {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                } else {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                }
-                            }
-                        });
-                    });
-                    attributation.textContent = photo.attribute;
+
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
                     elapsedTime.classList.add('elapsedTime');
@@ -1122,13 +1119,37 @@ function createAdsGadget() {
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
                     worldwidegadgetcontaineronshortpage.classList.add('worldwidegadgetcontaineronshortpage');
-                    worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
-                    worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
-
+                    
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
+                    if (photo.title !== "") {
+                        let worldwidegadgetcaptioncover = document.createElement('div');
+                        let worldwidegadgetcaption = document.createElement("p");
+                        worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
+                        worldwidegadgetcaption.textContent = photo.title;
+                        worldwidegadgetcaption.classList.add("worldwidegadgetcaption");
+
+                        worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
+                        worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
+                        worldwidegadgetcaption.addEventListener("click", () => {
+                            worldwidegadgetcaption.classList.toggle("posttitlemoreorless");
+                        });
+                        worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
@@ -1252,8 +1273,6 @@ function createAdsGadget() {
                     let worldwidegadgetcontaineronshortpage = document.createElement('div');
                     let worldwidegadgetinnercontainer = document.createElement('div');
                     let worldwideImageGadget = document.createElement('img');
-                    let worldwidegadgetcaptioncover = document.createElement('div');
-                    let worldwidegadgetcaption = document.createElement('p');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
                     let worldwidegadgetauthorsimgcontainer = document.createElement('div');
@@ -1262,8 +1281,8 @@ function createAdsGadget() {
                     let elapsedTime = document.createElement('span');
                     let attributation = document.createElement('span');
                     let gadgetsidepannel = document.createElement('nav');
-                    let gadgetlike = document.createElement('img');
-                    let gadgetcomment = document.createElement('img');
+                    let gadgetlike = document.createElement('div');
+                    let gadgetcomment = document.createElement('div');
                     let livelikecount = document.createElement('span');
                     let livecommentcount = document.createElement('span');
 
@@ -1297,8 +1316,8 @@ function createAdsGadget() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    gadgetlike.src = 'newicons/like.png';
-                    gadgetcomment.src = 'newicons/chat.png';
+                    gadgetlike.innerHTML = likesvg;
+                    gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
                         LikePopupsAndMore(photo.id, 'postlike');
@@ -1400,26 +1419,9 @@ function createAdsGadget() {
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
                     worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
-                    worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
-                    worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
-                    worldwidegadgetcaption.textContent = photo.title;
-                    worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
-                        prefix.forEach(unit => {
-                            if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'https://') {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                } else {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                }
-                            }
-                        });
-                    });
+                   
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1430,13 +1432,37 @@ function createAdsGadget() {
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
                     worldwidegadgetcontaineronshortpage.classList.add('worldwidegadgetcontaineronshortpage');
-                    worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
-                    worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
 
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
+                    if (photo.title !== "") {
+                        let worldwidegadgetcaptioncover = document.createElement('div');
+                        let worldwidegadgetcaption = document.createElement("p");
+                        worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
+                        worldwidegadgetcaption.textContent = photo.title;
+                        worldwidegadgetcaption.classList.add("worldwidegadgetcaption");
+
+                        worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
+                        worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
+                        worldwidegadgetcaption.addEventListener("click", () => {
+                            worldwidegadgetcaption.classList.toggle("posttitlemoreorless");
+                        });
+                        worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
@@ -1560,8 +1586,6 @@ function createAdsGadget() {
                     let worldwidegadgetcontaineronshortpage = document.createElement('div');
                     let worldwidegadgetinnercontainer = document.createElement('div');
                     let worldwideImageGadget = document.createElement('img');
-                    let worldwidegadgetcaptioncover = document.createElement('div');
-                    let worldwidegadgetcaption = document.createElement('p');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
                     let worldwidegadgetauthorsimgcontainer = document.createElement('div');
@@ -1570,8 +1594,8 @@ function createAdsGadget() {
                     let elapsedTime = document.createElement('span');
                     let attributation = document.createElement('span');
                     let gadgetsidepannel = document.createElement('nav');
-                    let gadgetlike = document.createElement('img');
-                    let gadgetcomment = document.createElement('img');
+                    let gadgetlike = document.createElement('div');
+                    let gadgetcomment = document.createElement('div');
                     let livelikecount = document.createElement('span');
                     let livecommentcount = document.createElement('span');
 
@@ -1605,8 +1629,8 @@ function createAdsGadget() {
                     live_Like_Count_Container.id = photo.id;
                     live_Comment_Count_Container.id = photo.id;
 
-                    gadgetlike.src = 'newicons/like.png';
-                    gadgetcomment.src = 'newicons/chat.png';
+                    gadgetlike.innerHTML = likesvg;
+                    gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
                         LikePopupsAndMore(photo.id, 'postlike');
@@ -1708,26 +1732,9 @@ function createAdsGadget() {
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
                     worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
-                    worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
-                    worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
-                    worldwidegadgetcaption.textContent = photo.title;
-                    worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
-                        prefix.forEach(unit => {
-                            if (texttitle.indexOf(unit.prefixName) != -1) {
-                                if (unit.prefixName == 'https://') {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                } else {
-                                    let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    console.log(texttitle);
-                                    worldwidegadgetcaption.innerHTML = newtitle;
-                                }
-                            }
-                        });
-                    });
+                    
                     attributation.textContent = photo.attribute;
                     gadgetsidepannel.classList.add('gadgetsidepannel');
                     worldwidegadgetinnercontainer.classList.add('worldwidegadgetinnercontainer');
@@ -1738,14 +1745,37 @@ function createAdsGadget() {
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
                     worldwidegadgetcontaineronshortpage.classList.add('worldwidegadgetcontaineronshortpage');
-                    worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
-                    worldwidegadgetcaption.classList.add('worldwidegadgetcaption');
 
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
                         sessionStorage.setItem('activepage', photo.id);
                     });
+                    if (photo.title !== "") {
+                        let worldwidegadgetcaptioncover = document.createElement('div');
+                        let worldwidegadgetcaption = document.createElement("p");
+                        worldwidegadgetcaptioncover.appendChild(worldwidegadgetcaption);
+                        worldwidegadgetcaption.textContent = photo.title;
+                        worldwidegadgetcaption.classList.add("worldwidegadgetcaption");
 
+                        worldwidegadgetinnercontainer.appendChild(worldwidegadgetcaptioncover);
+                        worldwidegadgetcaptioncover.classList.add('worldwidegadgetcaptioncover');
+                        worldwidegadgetcaption.addEventListener("click", () => {
+                            worldwidegadgetcaption.classList.toggle("posttitlemoreorless");
+                        });
+                        worldwidegadgetcaption.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = worldwidegadgetcaption.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        worldwidegadgetcaption.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
+                    }
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {

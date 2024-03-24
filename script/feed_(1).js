@@ -207,7 +207,7 @@ function createPublicGridShortVideo() {
                     });
 
                     let view_Count_Extension = '';
-                    viewscount.textContent = `${photo.views.length}${view_Count_Extension} views`;
+                    viewscount.textContent = `${shortVideo.views.length}${view_Count_Extension} views`;
 
 
                     gridshortlikecount.id = shortVideo.id;
@@ -303,8 +303,8 @@ function createPublicGridShortVideo() {
                     gridvideomore.classList.add('gridvideomore');
                     gridmenu.classList.add('gridmenu');
     
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             if (shortVideo.posterId !== data.user_Id) {
                                 gridmenudelete.remove();
@@ -317,8 +317,8 @@ function createPublicGridShortVideo() {
                     });
 
                     function pushSavedphotos() {
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === data.user_Id) {
@@ -350,13 +350,7 @@ function createPublicGridShortVideo() {
                     });
                     
                     gridmenudelete.addEventListener('click', () => {
-                        document.querySelectorAll('.confirmation_popup').forEach(popup => {
-                            if (popup.id === shortVideo.id) {
-                                popup.style.display = 'flex';
-                            } else {
-                                popup.style.display = 'none';
-                            }
-                        })
+                        delete_Timeline_Post(shortVideo.id);
                         gridmenu.classList.toggle('gridmenuactive');
                     });
                 }
@@ -486,7 +480,7 @@ function creategridreel() {
                     });
 
                     let view_Count_Extension = '';
-                    viewscount.textContent = `${photo.views.length}${view_Count_Extension} views`;
+                    viewscount.textContent = `${shortVideo.views.length}${view_Count_Extension} views`;
 
                     gridshortlikecount.classList.add('gridvideolikecount');
                     gridshortcommentcount.classList.add('gridshortcommentcount');
@@ -582,8 +576,8 @@ function creategridreel() {
                     gridvideomore.classList.add('gridvideomore');
                     gridmenu.classList.add('gridmenu');
     
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             if (shortVideo.posterId !== data.user_Id) {
                                 gridmenudelete.remove();
@@ -597,8 +591,8 @@ function creategridreel() {
 
                     
                     function pushSavedphotos() {
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === data.user_Id) {
