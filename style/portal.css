@@ -73,6 +73,7 @@
     .loadingBlocks {
         border-radius: 50%;
         width: 1.777777vw;
-        padding: calc(0.469vw + 1.469vw);
+        padding: calc(0.249vw + 1.249vw);
+        margin: 0 3px;
     }
 }

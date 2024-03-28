@@ -3425,7 +3425,6 @@
     .commentsection,
     .replyroomculomn {
         display: grid;
-        place-items: initial;
         overflow-x: hidden;
         overflow-y: scroll;
         height: 85%;
@@ -4491,7 +4490,6 @@
     .commentsection,
     .replyroomculomn {
         display: grid;
-        place-items: flex-start;
         overflow-x: hidden;
         overflow-y: scroll;
         height: 75%;

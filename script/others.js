@@ -410,18 +410,16 @@ function LikePopupsAndMore(locationId,type) {
     let likerecordpopup = document.createElement('nav');
     let likerecordcolumn = document.createElement('div');
     let likerecorderexit = document.createElement('span');
-    let exitimg = document.createElement('img');
     document.body.appendChild(likerecordpopup);
     likerecordpopup.appendChild(likerecorderpopupheader);
     likerecordpopup.appendChild(likerecordcolumn);
     likerecorderpopupheader.appendChild(likerecorderexit);
-    likerecorderexit.appendChild(exitimg);
+    likerecorderexit.innerHTML = undo;
     likerecorderpopupheader.classList.add('likerecorderpopupheader');
     likerecorderexit.classList.add('headerbtns');
     likerecorderexit.classList.add('Exitpage_Arrow');
     likerecordpopup.classList.add('likerecordpopup');
     likerecordcolumn.classList.add('likerecordcolumn');
-    exitimg.src = 'icons/undo.png';
     likerecorderexit.addEventListener('click', () => {
         likerecordpopup.remove();
     });
@@ -435,17 +433,6 @@ function LikePopupsAndMore(locationId,type) {
     } if (type == 'commentreplylike') {
         CreationOfCommentsRepliesLikesLicense(likerecordcolumn, locationId);
     }
-    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-    ActiveUser_Account.forEach(data => {
-        LogInFormData.forEach(user => {
-            if (data.user_Id === user.user_Id) {
-                if (user.user_Mode !== "defaultTheme") {
-                    exitimg.classList.add('darkmodeicons');
-                }
-            }
-        });
-    });
 }
 function CreationOfCommentsRepliesLikesLicense(container,locationId) {
     Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));

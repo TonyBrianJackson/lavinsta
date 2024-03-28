@@ -125,33 +125,31 @@ reelspageclosebtn.addEventListener('click', () => {
 const sidebarItems = document.querySelectorAll('.sidebarlinks');
 sidebarItems.forEach(item => {
     item.addEventListener('click', () => {
+        homesidebar.classList.toggle('sidebaractive');
         if (item.id != 'newPost') {
             document.querySelector('.sidebarcontents').style.display = 'none';
         } else {
             document.querySelector('.sidebarcontents').style.display = 'flex';
-            homesidebar.classList.toggle('sidebaractive');
         } if (item.id != 'GoLive') {
             document.querySelector('.live_Page').style.display = 'none';
         } else {
             sessionStorage.setItem('activepage', 'live_Page');
             document.querySelector('.live_Page').style.display = 'flex';
-            homesidebar.classList.toggle('sidebaractive');
         } if (item.id != 'reels') {
             document.querySelector('.reelsmainpage').style.display = 'none';
         } else {
             document.querySelector('.reelsmainpage').style.display = 'grid';
             sessionStorage.setItem('activepage', 'reelsmainpage');
-            homesidebar.classList.toggle('sidebaractive');
         } if (item.id != 'videocalls') {
             document.querySelector('.callslist').style.display = 'none';
         } else {
             document.querySelector('.callslist').style.display = 'flex';
-            homesidebar.classList.toggle('sidebaractive');
         } if (item.id != 'accountswitch') {
             document.querySelector('.logoutpopup').style.display = 'none';
         } else {
             document.querySelector('.logoutpopup').style.display = 'flex';
-            homesidebar.classList.toggle('sidebaractive');
+        } if (item.id =='devmode') {
+            createDevTool();
         }
     })
 });

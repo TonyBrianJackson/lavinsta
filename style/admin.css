@@ -363,7 +363,99 @@
         width: 100%;
     }
 }
+.devtool {
+    width: 25vw;
+    height: 200px;
+    box-shadow: none;
+    background: rgb(16, 75, 75);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: fixed;
+    top: 60px;
+    left: 2px;
+    overflow: hidden;
+    border-radius: 0px;
+}
+.osTransformation{
+    transform-style: preserve-3d;
+    animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+    0% {
+        transform: rotateY(0);
+    } 100% {
+        transform: rotateY(360deg);
+    }
+}
+.devtool > div {
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    background: inherit;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: baseline;
+    align-items: baseline;
+    align-content: baseline;
+    padding: 10px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.devtool > div > strong {
+    overflow: hidden;
+    box-shadow: none;
+    background: inherit;
+    border: none;
+    padding: 10px;
+    position: relative;
+    border-radius: 0px;
+    font-size: 22px;
+    font-weight: 100;
+    display: block;
+    text-align: center;
+    font-family: monospace;
+    color: #ffffffff;
+}
+.devtool > div > p,
+.devtool > div > i,
+.devtool > div> input {
+    display: block;
+    text-align: left;
+    background: none;
+    border: none;
+    box-shadow: none;
+    resize: none;
+    width: 100%;
+    font-weight: 100;
+    font-family: monospace;
+    color: #ffffffff;
+    background: none;
+    border-radius: 0px;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.devtool > div > i {
+    color: var(--color-danger);
+}
+.devtool > div > p.active,
+.devtool > div> input.active {
+    background: var(--color-dark);
+    color: var(--color-white);
+}
 @media (min-width: 0px) and (max-width: 539px) {
+    .devtool {
+        width: 100vw;
+        top: unset;
+        left: 0;
+        bottom: 0;
+        border-radius: 0px;
+    }
     .users_Popup {
         width: 100vw;
         height: 100vh;

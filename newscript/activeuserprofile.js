@@ -49,7 +49,7 @@ function loadscreen() {
     loadingsection.appendChild(loading_progress)
     loadingsection.classList.add('loadingsection');
 }
-const newURL = 'https://github.com/TonyBrianJackson/lavinsta_databse/blob/main/users.json'
+const newURL = 'https://github.com/TonyBrianJackson/lavinsta/blob/main/database/users.json'
 const url = 'database/users.json';
 
 function fetchUrl() {
@@ -61,9 +61,7 @@ function fetchUrl() {
         }
     }
     function getData() {
-        fetch(newURL, param)
-            .then(res => res.json())
-            .then(data => console.log(data));
+        fetch(newURL, param).then(data => console.log(data));
     }
     getData();
 }
