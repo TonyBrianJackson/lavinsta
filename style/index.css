@@ -857,7 +857,7 @@ main .header {
 
 .statusbarcontainer::-webkit-scrollbar-thumb {
     border-radius: 30px;
-    background: var(--color-dark);
+    background: var(--color-bright);
     cursor: pointer;
     box-shadow: none;
     height: 3px;
@@ -2057,6 +2057,7 @@ main .header {
     height: 30px;
     cursor: pointer;
 }
+
 .reelcommentsend svg {
     display: flex;
     flex-direction: column;
@@ -2070,9 +2071,11 @@ main .header {
     width: 25px;
     height: 25px;
 }
+
 .reelcommentsend svg path {
     fill: #ffffffff;
 }
+
 .commentimgactive {
     width: 0px;
     height: 0px;
@@ -2160,6 +2163,7 @@ main .header {
 .shorthorizontalfloat>span svg path {
     fill: #ffffffff;
 }
+
 .mainreel {
     width: 100%;
     height: max-content;
@@ -3233,22 +3237,50 @@ a {
     height: max-content;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+    justify-content: center;
+    flex-direction: column;
     background: none;
     box-shadow: none;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow: hidden;
     border: none;
     border-radius: 0px;
     padding: 5px;
+    gap: 5px 0px;
 }
 
-.navigationheader::-webkit-scrollbar {
+.navigationheader .headerleft {
+    display: none;
+}
+
+.navigationheader .headerleft,
+.navigationheader .headermiddle,
+.navigationheader .headerright {
+    width: 100%;
+    padding: 5px;
+}
+
+.notificationtab .navigationheader {
+    overflow: visible;
+}
+
+.notificationtab .navigationheader .headermiddle {
+    gap: 0px 5px;
+    overflow: visible;
+}
+
+.notificationtab .navigationheader .notificationsearchbar {
+    width: 70%;
+}
+
+.notificationtab .navigationheader .headerbtns {
+    margin: 0;
+}
+
+.navigationheader .headerright::-webkit-scrollbar {
     height: 5px;
 }
 
-.navigationheader::-webkit-scrollbar-thumb {
+.navigationheader .headerright::-webkit-scrollbar-thumb {
     background: var(--color-bright);
 }
 
@@ -3266,6 +3298,10 @@ a {
     display: block;
     color: var(--color-dark);
     z-index: 1;
+}
+
+.navigationheader .headerleft {
+    display: none;
 }
 
 .taskbarSwitchCntainer {
@@ -4611,8 +4647,8 @@ a {
     height: 30px;
 }
 
-.replyflex > div > svg,
-.reactsflex > div > svg {
+.replyflex>div>svg,
+.reactsflex>div>svg {
     width: 20px;
     height: 20px;
     background: none;
@@ -4625,8 +4661,8 @@ a {
     cursor: pointer;
 }
 
-.replyflex > div > svg path,
-.reactsflex > div > svg path {
+.replyflex>div>svg path,
+.reactsflex>div>svg path {
     fill: var(--color-dark);
 }
 
@@ -6099,7 +6135,7 @@ a {
     border-radius: 10px;
     padding: 10px;
     display: none;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     background: var(--color-light);
     box-shadow: none;
@@ -6121,8 +6157,7 @@ a {
     border: none;
     padding: 10px;
     width: 100%;
-    height: 85%;
-    max-height: max-content;
+    height: 77%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -6236,7 +6271,7 @@ a {
 
 .mainsearchbar {
     width: 60%;
-    height: 100%;
+    height: 40px;
     border-width: 1px;
     border-color: rgb(191, 191, 207);
     border: none;
@@ -6286,43 +6321,47 @@ a {
     color: var(--color-dark);
 }
 
-.searchheadericons {
-    width: 60px;
-    height: 35px;
-    border-width: 2px;
-    border-color: var(--color-dark);
-    border-radius: 10px;
-    background: var(--color-white);
-    box-shadow: var(--block-box-shadow);
-    overflow: hidden;
-    cursor: pointer;
-    margin: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .searchheadericons.active {
-    border-color: var(--color-white);
-    background: var(--color-dark);
+    border-color: var(--color-bright);
 }
 
-.searchheadericons.active svg path {
-    fill: var(--color-white);
+.navigationheader .headerbtns {
+    margin: 0px;
 }
 
-.searchheadericons svg {
-    width: 23px;
-    height: 23px;
+.navigationheader {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.navigationheader .headerright {
+    overflow-x: scroll;
+    overflow-y: visible;
     border: none;
     border-radius: 0px;
-    background: none;
-    overflow: visible;
-    box-shadow: none;
+    padding: 5px;
+    float: right;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
 }
 
-.searchheadericons svg path {
-    fill: var(--color-dark);
+.navigationheader .headerright>div {
+    min-width: 100%;
+    max-width: max-content;
+    height: 100%;
+    border-style: none;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-self: flex-start;
+    align-items: center;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+    padding: 5px;
+    gap: 5px 10px;
 }
 
 /*UPLOADWORLDWIDEPHOTO*/
@@ -6586,6 +6625,7 @@ a {
     border: none;
     box-shadow: none;
 }
+
 .verticalfloat div svg path {
     fill: #ffffffff;
 }
@@ -6838,7 +6878,8 @@ a {
     z-index: 35;
 
 }
-.gridinput> div {
+
+.gridinput>div {
     width: 40px;
     height: 40px;
     display: flex;
@@ -6847,7 +6888,8 @@ a {
     justify-content: center;
     border-radius: 0px;
 }
-.gridinput > div> svg {
+
+.gridinput>div>svg {
     border: none;
     background: none;
     border-radius: 0px;
@@ -6856,9 +6898,11 @@ a {
     overflow: visible;
     cursor: pointer;
 }
-.gridinput > div > svg path {
+
+.gridinput>div>svg path {
     fill: #ffffffff;
 }
+
 .gridinput input {
     width: 85%;
     height: 100%;
@@ -8533,13 +8577,16 @@ a {
     .gridinput {
         height: 40px;
     }
+
     .gridinput input {
         width: 80%;
     }
-    .gridinput> div {
+
+    .gridinput>div {
         width: 35px;
         height: 35px;
     }
+
     .gridinput svg {
         width: 20px;
         height: 20px;
@@ -8593,15 +8640,28 @@ a {
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .navigationheader {
+        flex-direction: column;
+        background: var(--color-white);
+        height: max-content;
+    }
 
-    .replyflex > div,
-    .reactsflex > div {
+    .navigationheader .headerleft {
+        display: flex;
+    }
+
+    .navigationheader .headermiddle {
+        display: flex;
+    }
+
+    .replyflex>div,
+    .reactsflex>div {
         width: 35px;
         height: 35px;
     }
 
-    .replyflex > div > svg,
-    .reactsflex > div > svg {
+    .replyflex>div>svg,
+    .reactsflex>div>svg {
         width: 30px;
         height: 30px;
     }
@@ -8684,6 +8744,7 @@ a {
         top: 0;
         box-shadow: none;
         background: var(--color-light);
+        padding: 0px;
     }
 
     .video_Seach_Path {
@@ -9537,8 +9598,8 @@ a {
         width: 30px;
     }
 
-    .replyflex > div > svg,
-    .reactsflex > div > svg {
+    .replyflex>div>svg,
+    .reactsflex>div>svg {
         width: 30px;
         height: 30px;
     }

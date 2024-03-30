@@ -650,6 +650,25 @@ function createChatMessages(column, locationId, CreatorId) {
                     });
                 }
 
+                if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                    ActiveUser_Account.forEach(data => {
+                        if (data.user_Id !== CreatorId) {
+                            sessionStorage.setItem('activepage', CreatorId + data.user_Id);
+                        } if (data.user_Id !== locationId) {
+                            sessionStorage.setItem('activepage', locationId + data.user_Id);
+                        }
+                        if (Array.isArray(JSON.parse(localStorage.getItem('myChatMsg')))) {
+                            myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
+                            myChatMsg.forEach(chat => {
+                                if (chat.chat_receiver === data.user_Id && chat.posterId === textmesg.posterId && chat.posterId !== chat.chat_receiver) {
+                                    chat.chatvisibilty = 'seen';
+                                    localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
+                                }
+                            });
+                        }
+                    });
+                }
                 const startTime = function () {
                     let time;
                     let timeresult = new Date().getTime();
@@ -679,11 +698,10 @@ function createChatMessages(column, locationId, CreatorId) {
                     }
                 }
                 startTime();
-                let chatsample = document.querySelectorAll('.chatsample');
-                chatsample.forEach(sampletest => {
+                document.querySelectorAll('.chatsample').forEach(sampletest => {
                     if (sampletest.id === textmesg.chat_receiver + textmesg.posterId) {
                         sampletest.textContent = textmesg.Property_Src;
-                    } else if (sampletest.id === textmesg.posterId + textmesg.chat_receiver) {
+                    } if (sampletest.id === textmesg.posterId + textmesg.chat_receiver) {
                         sampletest.textContent = textmesg.Property_Src;
                     }
                 });
@@ -713,7 +731,6 @@ function createChatMessages(column, locationId, CreatorId) {
                         });
                     }
                 }
-
                 chattext.classList.add('chattext');
             } if (textmesg.isPhoto) {
                 let textchatcontainer = document.createElement('div');
@@ -1431,7 +1448,11 @@ function access_Chat_Count() {
     });
     let chatcount = document.createElement('span');
 }
-function createChatMenu(session, locationId) {
+function createChatMenu(locationId) {
+    removeAllchatcontainers();
+    let userschatcontainer = document.createElement('div');
+    userschatcontainer.classList.add('userschatcontainer');
+    document.querySelector('.msgculomn').appendChild(userschatcontainer);
     LogInFormData.forEach(data => {
         if (data.user_Id === locationId) {
             let connections = data.user_Connection;
@@ -1445,7 +1466,7 @@ function createChatMenu(session, locationId) {
                 let chatcount = document.createElement('span');
                 let chatstatus = document.createElement('b');
 
-                session.appendChild(chatblock);
+                userschatcontainer.appendChild(chatblock);
                 chatblock.appendChild(chatblockhead);
                 chatblock.appendChild(chatblocktail);
                 chatblockhead.appendChild(chatblockreciepientProfileImg);
@@ -1467,11 +1488,11 @@ function createChatMenu(session, locationId) {
                 chatsample.id = connect.connectionId + data.user_Id;
 
                 chatsample.textContent = 'start conversation';
-
+                
                 if (Array.isArray(JSON.parse(localStorage.getItem('myChatMsg')))) {
                     myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
                     myChatMsg.forEach(chat => {
-                        if (chat.chat_receiver === session.id && chat.posterId === connect.connectionId && chat.posterId !== chat.chat_receiver) {
+                        if (chat.chat_receiver === connect.connectionId || chat.posterId === connect.connectionId) {
                             if (chat.isText) {
                                 chatsample.textContent = chat.Property_Src;
                             } if (chat.isPhoto) {
@@ -1592,18 +1613,6 @@ function createChatMenu(session, locationId) {
 
                 function decreasecount() {
                     create_Chat_Rooms(connect.connectionId + data.user_Id, connect.connectionId, data.user_Id, connect.status);
-                    sessionStorage.setItem('activepage', connect.connectionId + data.user_Id);
-                    if (Array.isArray(JSON.parse(localStorage.getItem('myChatMsg')))) {
-                        myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
-                        myChatMsg.forEach(chat => {
-                            if (chat.chat_receiver === locationId && chat.posterId === connect.connectionId && chat.posterId !== chat.chat_receiver) {
-                                chat.chatvisibilty = 'seen';
-                                chatcount.style.display = 'none';
-                                localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
-                            }
-                        });
-                    }
-
                     if (LogInFormData) {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
@@ -1677,7 +1686,6 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     let chatoptionicon = document.createElement('div');
     let chatcallicon = document.createElement('div');
     let voicerecordicon = document.createElement('div');
-    let voicerecordiconimg = document.createElement('img');
 
     voicerecordicon.addEventListener('click', () => {
         chatfloat.classList.toggle('chatfloatactive');
@@ -1726,6 +1734,13 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
             increaseChatCount(locationId);
         }
     });
+    document.addEventListener('keypress',(e)=> {
+        if (userchattextbox.value) {
+            if (e.key === 'Enter') {
+                userchatsend.click();
+            }
+        }
+    });
     //chatoptions
     let chatoptionpopup = document.createElement('div');
     let optionviewprofile = document.createElement('span');
@@ -1746,9 +1761,8 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     });
 
 
-    voicerecordicon.appendChild(voicerecordiconimg);
+    voicerecordicon.innerHTML = microphone;
 
-    voicerecordiconimg.src = 'icons/voice search.png';
     chatfloat.appendChild(voicerecordicon);
     chatfloat.appendChild(chatuploadicon);
     chatfloat.appendChild(chatoptionicon);
@@ -1903,6 +1917,13 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     userchatreciepientname.classList.add('userchatreciepientname');
     document.querySelector('.navigatiofloatcontainer').style.display = 'none';
     userschatexit.addEventListener('click', () => {
+        createChatMenu(CreatorId);
+        document.querySelectorAll('#general_smart_Chat').forEach(button => {
+            button.classList.add('active');
+        });
+        document.querySelectorAll('#community_smart_Chat').forEach(button => {
+            button.classList.remove('active');
+        });
         userchatroom.remove();
         sessionStorage.setItem('activepage', 'general_smart_Chat');
         document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
@@ -2396,34 +2417,7 @@ function increaseChatCount(locationId) {
         });
     }
 }
-function get_Active_Page() {
-    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-        ActiveUser_Account.forEach(data => {
-            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-            LogInFormData.forEach(user => {
-                if (user.user_Id === data.user_Id) {
-                    let connections = user.user_Connection;
-                    connections.forEach(connection => {
-                        if (connection.connectionId + data.user_Id === sessionStorage.getItem('activepage')) {
-                            document.querySelector('.profile').style.display = 'none';
-                            document.querySelector('.chattab').style.display = 'flex';
-                            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
-                            create_Chat_Rooms(connection.connectionId + data.user_Id, connection.connectionId, data.user_Id, connection.status);
-                        }
-                    })
-                }
-                if (sessionStorage.getItem('activepage') == 'general_smart_Chat') {
-                    document.querySelector('.chattab').style.display = 'flex';
-                    document.querySelectorAll('#general_smart_Chat').forEach(button => {
-                        button.classList.add('active');
-                    });
-                    secondchatcontainers();
-                }
-            });
-        });
-    }
-}
+
 function create_Video_Chat() {
     let userschatcontainer = document.querySelectorAll('.userschatcontainer');
     userschatcontainer.forEach(session => {
@@ -2700,18 +2694,13 @@ function removeAllchatcontainers() {
 
 document.querySelectorAll('.chatbtn').forEach(button => {
     button.addEventListener('click', () => {
-        removeAllchatcontainers();
         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
         ActiveUser_Account.forEach(user => {
-            let userschatcontainer = document.createElement('div');
-            userschatcontainer.classList.add('userschatcontainer');
-            document.querySelector('.msgculomn').appendChild(userschatcontainer);
-            userschatcontainer.id = user.user_Id;
             if (button.id == 'general_smart_Chat') {
-                createChatMenu(userschatcontainer, user.user_Id);
+                createChatMenu(user.user_Id);
                 sessionStorage.setItem('activepage', 'general_smart_Chat');
             } else if (button.id == 'community_smart_Chat') {
-                create_Community_Chat_Menu(userschatcontainer, user.user_Id);
+                create_Community_Chat_Menu(user.user_Id);
                 sessionStorage.setItem('activepage', 'community_smart_Chat');
             }
         });
@@ -2721,10 +2710,36 @@ function secondchatcontainers() {
     removeAllchatcontainers();
     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
     ActiveUser_Account.forEach(user => {
-        let userschatcontainer = document.createElement('div');
-        userschatcontainer.classList.add('userschatcontainer');
-        document.querySelector('.msgculomn').appendChild(userschatcontainer);
-        userschatcontainer.id = user.user_Id;
-        createChatMenu(userschatcontainer, user.user_Id);
+        createChatMenu(user.user_Id);
     });
+}
+function get_Active_Page() {
+    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(data => {
+            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+            LogInFormData.forEach(user => {
+                if (user.user_Id === data.user_Id) {
+                    let connections = user.user_Connection;
+                    connections.forEach(connection => {
+                        if (connection.connectionId + data.user_Id === sessionStorage.getItem('activepage')) {
+                            document.querySelector('.profile').style.display = 'none';
+                            document.querySelector('.chattab').style.display = 'flex';
+                            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
+                            create_Chat_Rooms(connection.connectionId + data.user_Id, connection.connectionId, data.user_Id, connection.status);
+                        }
+                    })
+                }
+                if (sessionStorage.getItem('activepage') == 'general_smart_Chat') {
+                    document.querySelector('.chattab').style.display = 'flex';
+                    document.querySelectorAll('#general_smart_Chat').forEach(button => {
+                        button.classList.add('active');
+                    });
+                    setTimeout(() => {
+                        createChatMenu(data.user_Id);
+                    }, 1000*3);
+                }
+            });
+        });
+    }
 }

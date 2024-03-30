@@ -103,24 +103,6 @@
     fill: rgba(255, 255, 255, 0.829);
 }
 
-.headerbtns.b_Buttons,
-.headerbtns.peoplebtn {
-    flex: 1;
-    width: 33%;
-    border: 2px solid var(--color-dark);
-    border-radius: 15px;
-    background: var(--color-white);
-    box-shadow: var(--block-box-shadow);
-    hidden: visible;
-    cursor: pointer;
-    margin: 0px 3px;
-    display: block;
-    padding: 10px;
-    text-align: center;
-    position: relative;
-    color: var(--color-dark);
-}
-
 .msgbtn {
     width: 50%;
 }
@@ -129,8 +111,7 @@
 .msgbtn.active,
 .notibtn.active,
 .peoplebtn.active {
-    border: 2px solid var(--color-white);
-    background: var(--color-dark);
+    border-color: var(--color-bright);
     color: var(--color-white);
 }
 
@@ -157,25 +138,6 @@
     border-radius: 0px;
     box-shadow: none;
     border: none;
-}
-
-.b_Buttons.active svg path,
-.msgbtn.active svg path,
-.notibtn.active svg path,
-.peoplebtn.active svg path {
-    fill: var(--color-white);
-}
-
-.b_Buttons img,
-.msgbtn img,
-.notibtn img,
-.peoplebtn img {
-    width: 25px;
-    border: none;
-    border-radius: 0px;
-    background: none;
-    box-shadow: none;
-    overflow: visible;
 }
 
 .b_Buttons svg,
@@ -389,14 +351,19 @@
     border-color: rgba(0, 0, 255, 0.13);
     border: none;
     width: 100%;
-    height: 92%;
+    height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
     display: grid;
     grid-template-columns: 1fr;
+    justify-items: baseline;
+    align-items: baseline;
+    align-content: baseline;
     place-items: center;
     box-shadow: none;
     background: none;
+    gap: 10px 0px;
+    border-radius: 0px;
 }
 
 .photogalleryculomn,
@@ -953,6 +920,36 @@
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+
+    .userCommunityChatContainer,
+    .userschatcontainer {
+        gap: 1px 0px;
+    }
+
+    .navigationheader .headerleft,
+    .navigationheader .headermiddle,
+    .navigationheader .headerright {
+        height: max-content;
+        padding: 0px;
+    }
+
+    .navigationheader .headerright {
+        overflow: hidden;
+        flex-direction: column;
+    }
+
+    .navigationheader .headerright>div {
+        min-height: 40px;
+        height: max-content;
+        gap: 0px 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        align-self: center;
+    }
+
+    .navigationheader .headerright>div.headerbtns {}
+
     .headerbtns.peoplebtn,
     .headerbtns.b_Buttons {
         display: flex;
@@ -964,12 +961,19 @@
         border-radius: 10px;
         font-size: 22px;
         font-weight: 900;
+        border: none;
+        box-shadow: none;
     }
 
-    .headerbtns.peoplebtn> svg,
+    .headerbtns.peoplebtn>svg,
     .headerbtns.b_Buttons>svg {
         width: 30px;
         height: 30px;
+    }
+
+    .headerbtns.peoplebtn.active>svg path,
+    .headerbtns.b_Buttons.active>svg path {
+        fill: var(--color-white);
     }
 
     .peopleculomn,
@@ -980,7 +984,8 @@
     .msgculomn,
     .groupmsgculomn,
     .generalculomn3 {
-        height: 90%;
+        height: 80%;
+        padding: 0px;
     }
 
     .divider {
@@ -1133,6 +1138,7 @@
     .msgculomn,
     .generalnotificationculomn {
         padding: 0px;
+        border-radius: 0px;
     }
 }
 

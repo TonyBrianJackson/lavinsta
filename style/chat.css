@@ -133,7 +133,9 @@
     white-space: nowrap;
     font-weight: 400;
 }
-
+.community_chat_sample {
+    margin-left: 3px;
+}
 .unchecked_Chat {
     font-weight: 900;
     color: lightgreen;
@@ -1245,6 +1247,7 @@
     .userchatroomcolumn {
         padding: 10px;
         height: 89%;
+        border-radius: 0px;
     }
 
     .voicechat,
@@ -1362,8 +1365,9 @@
     }
 
     .chatblock {
+        width: 100%;
         box-shadow: none;
-        border-radius: 10px;
+        border-radius: 0px;
     }
     .chatblockhead {
         border: 1px solid var(--color-gray);

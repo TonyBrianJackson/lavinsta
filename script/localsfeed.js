@@ -12,6 +12,7 @@ if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
 function createPhotoPostOnTimeLine() {
     document.querySelectorAll('.usersfeedcolumn').forEach(feedcolumn => {
         feedcolumn.innerHTML = '';
+        let random = Math.floor(Math.random() * Feeds_Data_Base.length)
         Feeds_Data_Base.forEach(photo => {
             if (photo.type == 'timeline') {
                 let post = document.createElement('div');

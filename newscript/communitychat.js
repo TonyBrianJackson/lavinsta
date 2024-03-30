@@ -21,7 +21,7 @@ if (Array.isArray(JSON.parse(localStorage.getItem('myCommunities')))) {
             document.querySelector('.chattab').style.display = 'flex';
             document.querySelector('.chatsearchbar1').style.display = 'flex';
             document.querySelector('.chatsearchbar').style.display = 'none';
-            create_Community_Chat_Menu(userschatcontainer, data.user_Id);
+            create_Community_Chat_Menu(data.user_Id);
         }
     });
 } else {
@@ -35,7 +35,11 @@ function removeOptions() {
         option.remove();
     });
 }
-function create_Community_Chat_Menu(session, locationId) {
+function create_Community_Chat_Menu(locationId) {
+    removeAllchatcontainers();
+    let userschatcontainer = document.createElement('div');
+    userschatcontainer.classList.add('userschatcontainer');
+    document.querySelector('.msgculomn').appendChild(userschatcontainer);
     myCommunities.forEach(community => {
         let members = community.community_Members;
         members.forEach(member => {
@@ -51,7 +55,7 @@ function create_Community_Chat_Menu(session, locationId) {
                     let sampleblock = document.createElement('div');
                     let sampleimagecontainer = document.createElement('div');
                     let sampleimage = document.createElement('img');
-                    session.appendChild(chatblock);
+                    userschatcontainer.appendChild(chatblock);
                     chatblock.appendChild(chatblockhead);
                     chatblock.appendChild(chatblocktail);
                     chatblockhead.appendChild(chatblockreciepientProfileImg);
@@ -79,6 +83,22 @@ function create_Community_Chat_Menu(session, locationId) {
                     community_chat_sample.id = community.community_Id;
                     sampleimage.id = community.community_Id;
                     community_chat_sample.textContent = 'start conversation';
+                    if (Array.isArray(JSON.parse(localStorage.getItem('Community_myChat_Msg')))) {
+                        Community_myChat_Msg = JSON.parse(localStorage.getItem('Community_myChat_Msg'));
+                        Community_myChat_Msg.forEach(chat => {
+                            if (chat.chat_receiver === community_chat_sample.id) {
+                                if (chat.isText) {
+                                    community_chat_sample.textContent = chat.Property_Src;
+                                } if (chat.isPhoto) {
+                                     community_chat_sample.textContent = 'photo';
+                                } if (chat.isVideo) {
+                                     community_chat_sample.textContent = 'video';
+                                } if (chat.isAudio) {
+                                     community_chat_sample.textContent = 'audio';
+                                } 
+                            }
+                        })
+                    }
                     if (member.checked === false) {
                         community_chat_sample.classList.add('unchecked_Chat');
                     }
@@ -98,15 +118,6 @@ function create_Community_Chat_Menu(session, locationId) {
                             }
                         });
                         community_chat_sample.classList.remove('unchecked_Chat');
-                        if (Array.isArray(JSON.parse(localStorage.getItem('Community_myChat_Msg')))) {
-                            Community_myChat_Msg = JSON.parse(localStorage.getItem('Community_myChat_Msg'));
-                            Community_myChat_Msg.forEach(chat => {
-                                if (chat.chat_receiver === member.community_Id && chat.posterId !== member.members_Id) {
-                                    chat.chatvisibilty = 'seen';
-                                    localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
-                                }
-                            });
-                        }
                     });
                 }
             }
@@ -487,7 +498,6 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
     //userchat header
     let userchatheader = document.createElement('header');
     let userschatexit = document.createElement('span');
-    let exitimg = document.createElement('img');
     let userchatreciepientname = document.createElement('strong');
     let userchatprofilepicturecontainer = document.createElement('div');
     let memberimage = document.createElement('img');
@@ -497,15 +507,12 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
     let userchattextbox = document.createElement('input');
     let userchatsend = document.createElement('div');
     let attach = document.createElement('div');
-    let chatattachmentimg = document.createElement('img');
     //chat float
     let chatfloat = document.createElement('nav');
     let chatuploadicon = document.createElement('div');
-    let chatuploadiconimg = document.createElement('img');
     let chatoptionicon = document.createElement('div');
     let chatcallicon = document.createElement('div');
     let voicerecordicon = document.createElement('div');
-    let voicerecordiconimg = document.createElement('img');
 
     //chatoptions
     let chatoptionpopup = document.createElement('div');
@@ -622,7 +629,13 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
             increaseCommunityChatCount();
         }
     });
-
+    document.addEventListener('keypress',(e)=> {
+        if (userchattextbox.value) {
+            if (e.key === 'Enter') {
+                userchatsend.click();
+            }
+        }
+    });
     chatoptionpopup.appendChild(optionviewprofile);
     chatoptionpopup.appendChild(optionviewmembers);
     chatoptionpopup.appendChild(optionaddmembers);
@@ -636,11 +649,10 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
         chatoptionpopup.classList.toggle('chatoptionpopupactive');
     });
 
-    voicerecordicon.appendChild(voicerecordiconimg);
+    voicerecordicon.innerHTML = microphone;
     chatoptionicon.innerHTML = moresvg;
     chatcallicon.innerHTML = videocallsvg;
 
-    voicerecordiconimg.src = 'icons/voice search.png';
     chatuploadicon.innerHTML = createsolidsvg;
     chatfloat.appendChild(voicerecordicon);
     chatfloat.appendChild(chatuploadicon);
@@ -661,8 +673,6 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
         })
     });
     chatfloat.classList.add('chatfloat');
-    chatattachmentimg.classList.add('chatattachmentimg');
-    chatuploadiconimg.classList.add('chatuploadiconimg');
 
     userschatbox.appendChild(userchattextbox);
     userschatbox.appendChild(attach);
@@ -735,6 +745,13 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
     userchatreciepientname.classList.add('userchatreciepientname');
     document.querySelector('.navigatiofloatcontainer').style.display = 'none';
     userschatexit.addEventListener('click', () => {
+        create_Community_Chat_Menu(members_Id);
+        document.querySelectorAll('#general_smart_Chat').forEach(button => {
+            button.classList.remove('active');
+        });
+        document.querySelectorAll('#community_smart_Chat').forEach(button => {
+            button.classList.add('active');
+        });
         userchatroom.remove();
         sessionStorage.setItem('activepage', 'community_smart_Chat');
         document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
@@ -1573,11 +1590,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                     }
                 }
                 startTime();
-                let community_chat_sample = document.querySelectorAll('.community_chat_sample');
-                community_chat_sample.forEach(sampletext => {
+                document.querySelectorAll('.community_chat_sample').forEach(sampletext => {
                     if (sampletext.id === textmesg.chat_receiver) {
-                        sampletext.textContent = textmesg.Property_Src;
-                    } else if (sampletext.id === textmesg.chat_receiver) {
                         sampletext.textContent = textmesg.Property_Src;
                     }
                 });
@@ -1616,6 +1630,15 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     }
                                 }
                             });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('Community_myChat_Msg')))) {
+                                Community_myChat_Msg = JSON.parse(localStorage.getItem('Community_myChat_Msg'));
+                                Community_myChat_Msg.forEach(chat => {
+                                    if (chat.chat_receiver === locationId && chat.posterId !== data.user_Id) {
+                                        chat.chatvisibilty = 'seen';
+                                        localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
+                                    }
+                                });
+                            }
                         });
                     }
                 }
@@ -1682,11 +1705,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                     }
                 }
                 startTime();
-                let community_chat_sample = document.querySelectorAll('.community_chat_sample');
-                community_chat_sample.forEach(sampletext => {
+                document.querySelectorAll('.community_chat_sample').forEach(sampletext => {
                     if (sampletext.id === textmesg.chat_receiver) {
-                        sampletext.textContent = 'photo';
-                    } else if (sampletext.id === textmesg.chat_receiver) {
                         sampletext.textContent = 'photo';
                     }
                 });
@@ -1905,11 +1925,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                     }
                 }
                 startTime();
-                let community_chat_sample = document.querySelectorAll('.community_chat_sample');
-                community_chat_sample.forEach(sampletext => {
+                document.querySelectorAll('.community_chat_sample').forEach(sampletext => {
                     if (sampletext.id === textmesg.chat_receiver) {
-                        sampletext.textContent = 'video';
-                    } else if (sampletext.id === textmesg.chat_receiver) {
                         sampletext.textContent = 'video';
                     }
                 });
@@ -2137,11 +2154,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                     }
                 }
                 startTime();
-                let community_chat_sample = document.querySelectorAll('.community_chat_sample');
-                community_chat_sample.forEach(sampletext => {
+                document.querySelectorAll('.community_chat_sample').forEach(sampletext => {
                     if (sampletext.id === textmesg.chat_receiver) {
-                        sampletext.textContent = 'audio';
-                    } else if (sampletext.id === textmesg.chat_receiver) {
                         sampletext.textContent = 'audio';
                     }
                 });

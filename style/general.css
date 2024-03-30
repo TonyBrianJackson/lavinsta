@@ -791,7 +791,9 @@
         background: var(--color-dark);
         box-shadow: none;
     }
-
+    .searchheadericons.active svg path {
+        fill: var(--color-white);
+    }
     .searchlink {
         box-shadow: none;
     }

@@ -61,7 +61,7 @@ function fetchUrl() {
         }
     }
     function getData() {
-        fetch(newURL, param).then(data => console.log(data));
+        fetch(newURL, param).then(res => res.json()).then(data => console.log(data));
     }
     getData();
 }
@@ -106,20 +106,16 @@ function create_Active_Account() {
                     function getActiveUser() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(activeuser => {
-                            // let connection = activeuser.user_Connection;
+                            if (activeuser.user_Id === profile.user_Id) {
+                                if (activeuser.user_Is_Online === false) {
+                                    activeuser.user_Is_Online = true;
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));   
+                                }
+                            }
+                        });
+                        LogInFormData.forEach(activeuser => {
                             var state = document.visibilityState;
-                            // connection.forEach(connect => {
-                            //     if (connect.connectionId === user.user_Id) {
-                            //         if (state == 'hidden') {
-                            //             connect.status = connect.status;
-                            //             localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            //         } else {
-                            //             connect.status = new Date().getTime();
-                            //             localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            //         }
-                            //     }
-                            // });
-                            if (user.user_Id === profile.user_Id) {
+                            if (activeuser.user_Id === profile.user_Id) {
                                 if (state == 'hidden') {
                                     activeuser.user_Is_Online = false;
                                     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
@@ -139,22 +135,20 @@ function create_Active_Account() {
                     document.addEventListener('visibilitychange', () => {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(activeuser => {
-                            let connection = activeuser.user_Connection;
-                            var state = document.visibilityState;
-                            connection.forEach(connect => {
-                                if (connect.connectionId === user.user_Id) {
-                                    if (state == 'hidden') {
-                                        connect.status = connect.status;
-                                        console.log(connect.status);
-                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                    } else {
-                                        connect.status = new Date().getTime();
-                                        console.log(connect.status);
-                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            if (activeuser.user_Id === profile.user_Id) {
+                                let connection = activeuser.user_Connection;
+                                var state = document.visibilityState;
+                                connection.forEach(connect => {
+                                    if (connect.connectionId === user.user_Id) {
+                                        if (state == 'hidden') {
+                                            connect.status = connect.status;
+                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                        } else {
+                                            connect.status = new Date().getTime();
+                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                        }
                                     }
-                                }
-                            });
-                            if (user.user_Id === profile.user_Id) {
+                                });
                                 if (state == 'hidden') {
                                     activeuser.user_Is_Online = false;
                                     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
@@ -1382,30 +1376,35 @@ function createAdvanceSwitchPage() {
                         }
                     }
                     getActiveUser();
-                    function logoutUser() {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            ActiveUser_Account.forEach(data => {
-                                LogInFormData.forEach(activeuser => {
-                                    if (data.user_Id === activeuser.user_Id) {
-                                        let connection = activeuser.user_Connection;
-                                        connection.forEach(connect => {
-                                            if (connect.connectionId === data.user_Id) {
-                                                connect.status = new Date().getTime();
-                                                activeuser.user_Is_Online = false;
-                                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                            }
-                                        });
+                    function turnOffActiveStatus(user_Id) {
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(data => {
+                            if (data.user_Id === user_Id) {
+                                let connection = data.user_Connection;
+                                connection.forEach(connect => {
+                                    if (connect.connectionId === user_Id) {
+                                        connect.status = new Date().getTime();
                                     }
                                 });
+                            }
+                        });
+                        LogInFormData.forEach(data => {
+                            if (data.user_Id === user_Id) {
+                                data.user_Is_Online = false;
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            }
+                        });
+                    }
+                    if (navigator.onLine === false) {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                            ActiveUser_Account.forEach(activeuser => {
+                                turnOffActiveStatus(activeuser.user_Id);
                             });
                         }
                     }
-                    if (navigator.onLine === false) {
-                        logoutUser();
-                    }
-                    shortcutloginbutton.addEventListener('click', (e) => {
+                    shortcutloginbutton.addEventListener('click', () => {
+                        turnOffActiveStatus();
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
                             if (user.user_Id === account.accountId) {
@@ -1419,7 +1418,6 @@ function createAdvanceSwitchPage() {
                                     setCookie('External_Details', user.user_Id, 30);
                                 }
                                 pushActiveAccount();
-                                logoutUser();
                                 location.href = 'index.html';
                             }
                         });
@@ -1706,6 +1704,7 @@ function getActivePage() {
         } else if (activepage == 'chattab') {
             document.querySelector('.profile').style.display = 'none';
             document.querySelector('.chattab').style.display = 'flex';
+            secondchatcontainers();
         } else if (activepage == 'notificationtab') {
             document.querySelector('.profile').style.display = 'none';
             document.querySelector('.notificationtab').style.display = 'flex';
