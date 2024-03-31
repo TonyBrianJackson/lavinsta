@@ -698,6 +698,16 @@ function opene_Search_Popup() {
     randomvideosearch.addEventListener('click', () => {
         video_Seach_Path.style.display = 'flex';
     });
+    //chats and people search
+    document.querySelectorAll('.searchbtn_buttonsearch').forEach(button => {
+        button.addEventListener('click',()=> {
+            if (button.id == 'peoplesearchbutton') {
+                document.querySelector('.people .navigationheader .headermiddle').classList.toggle('headermiddleactive');
+            } else if (button.id == 'chatsearchbutton') {
+                document.querySelector('.chattab .navigationheader .headermiddle').classList.toggle('headermiddleactive');
+            }
+        })
+    })
 }
 opene_Search_Popup();
 

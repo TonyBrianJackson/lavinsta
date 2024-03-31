@@ -1010,10 +1010,20 @@ function createPhotoPostOnTimeLine() {
                 }
                 showOnAndOffActivities();
                 authorsImg.addEventListener('click', () => {
-                    createUsersProfile(photo.posterId);
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account.forEach(user => {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                            createProfileOptions(photo.posterId,user.user_Id);
+                        });
+                    }
                 });
                 name.addEventListener('click', () => {
-                    createUsersProfile(photo.posterId);
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account.forEach(user => {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                            createProfileOptions(photo.posterId,user.user_Id);
+                        });
+                    }
                 });
             }
             document.querySelector('.postcontainer').style.display = 'none';

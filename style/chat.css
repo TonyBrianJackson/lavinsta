@@ -1278,6 +1278,7 @@
         overflow: hidden;
         background: var(--color-light);
         display: flex;
+        gap: 0px 10px;
     }
 
     .chatfloatactive {
@@ -1303,6 +1304,7 @@
         height: 45px;
         border: 2px solid var(--color-gray);
         color: var(--color-dark);
+        margin: 0;
     }
     .options .headerbtns>img,
     .voicechat .headerbtns>img {
@@ -1379,9 +1381,9 @@
 
     .chatcount {
         font-size: 4.55vw;
-        left: -13px;
         top: -10px;
-        right: unset;
+        background: var(--color-dark);
+        border: none;
     }
 
     .chataudiptimegrid span,

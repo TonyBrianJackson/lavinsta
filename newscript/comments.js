@@ -380,10 +380,20 @@ function CreationOfComments(section, locationId) {
                     }
                     Poster_Details();
                     commentimg.addEventListener('click', () => {
-                        createUsersProfile(comment.posterId);
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(comment.posterId, user.user_Id);
+                            });
+                        }
                     });
                     commentname.addEventListener('click', () => {
-                        createUsersProfile(comment.posterId);
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(comment.posterId, user.user_Id);
+                            });
+                        }
                     });
                 } if (comment.type == 'photo') {
                     let commentmesg = document.createElement('div');
@@ -794,10 +804,20 @@ function CreationOfComments(section, locationId) {
                     }
                     Poster_Details()
                     commentimg.addEventListener('click', () => {
-                        createUsersProfile(comment.posterId);
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(comment.posterId, user.user_Id);
+                            });
+                        }
                     });
                     commentname.addEventListener('click', () => {
-                        createUsersProfile(comment.posterId);
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(comment.posterId, user.user_Id);
+                            });
+                        }
                     });
                 } if (comment.type == 'video') {
                     let commentmesg = document.createElement('div');
@@ -1214,10 +1234,20 @@ function CreationOfComments(section, locationId) {
                     }
                     Poster_Details()
                     commentimg.addEventListener('click', () => {
-                        createUsersProfile(comment.posterId);
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(comment.posterId, user.user_Id);
+                            });
+                        }
                     });
                     commentname.addEventListener('click', () => {
-                        createUsersProfile(comment.posterId);
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(comment.posterId, user.user_Id);
+                            });
+                        }
                     });
                 }
             }
@@ -1273,22 +1303,22 @@ function create_Comment_Reply_room(locationId) {
                 function create_Options_Script() {
                     let options = document.createElement('div');
                     let exit = document.createElement('span');
-    
+
                     let sharegridview = document.createElement('div');
                     let sharegridlike = document.createElement('div');
                     let sharegridphotoo = document.createElement('div');
-    
+
                     replyroomculomn.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(sharegridview);
                     options.appendChild(sharegridlike);
                     options.appendChild(sharegridphotoo);
-    
+
                     exit.innerHTML = undo2;
                     sharegridlike.innerHTML = likesvg;
                     sharegridphotoo.innerHTML = createsvg;
                     sharegridview.innerHTML = focussvg;
-    
+
                     sharegridview.classList.add('headerbtns');
                     sharegridlike.classList.add('headerbtns');
                     sharegridphotoo.classList.add('headerbtns');
@@ -1296,7 +1326,7 @@ function create_Comment_Reply_room(locationId) {
                     sharegridlike.classList.add('sharegridlike');
                     sharegridphotoo.classList.add('sharegridlike');
                     exit.classList.add('headerbtns');
-    
+
                     options.classList.add('options');
                     function checkIfPostIsLiked() {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {

@@ -919,11 +919,33 @@
     transform: rotate(45deg);
 }
 
-@media (min-width: 0px) and (max-width: 539px) {
+.searchbtn_buttonsearch {
+    display: none;
+}
 
+@media (min-width: 0px) and (max-width: 539px) {
+    .notificationblock {
+        box-shadow: none;
+        border-radius: 0px;
+        border: none;
+        margin: 0;
+    }
+    .notificationhead {
+        border: 1px solid var(--color-gray);
+    }
+    .navigationheader .headerright .headerbtns {
+        width: 100%;
+    }
+    .searchbtn_buttonsearch {
+        display: flex;
+    }
+
+    .usersnotificationcoulmn,
     .userCommunityChatContainer,
     .userschatcontainer {
+        padding: 1px 0px;
         gap: 1px 0px;
+        border-radius: 0px;
     }
 
     .navigationheader .headerleft,
@@ -932,7 +954,10 @@
         height: max-content;
         padding: 0px;
     }
-
+    .people .navigationheader .headermiddle,
+    .chattab .navigationheader .headermiddle {
+        display: none;
+    }
     .navigationheader .headerright {
         overflow: hidden;
         flex-direction: column;
@@ -947,8 +972,6 @@
         justify-content: space-evenly;
         align-self: center;
     }
-
-    .navigationheader .headerright>div.headerbtns {}
 
     .headerbtns.peoplebtn,
     .headerbtns.b_Buttons {
@@ -967,13 +990,15 @@
 
     .headerbtns.peoplebtn>svg,
     .headerbtns.b_Buttons>svg {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
 
     .headerbtns.peoplebtn.active>svg path,
-    .headerbtns.b_Buttons.active>svg path {
-        fill: var(--color-white);
+    .headerbtns.b_Buttons.active>svg path,
+    .headerbtns.peoplebtn.active>svg circle,
+    .headerbtns.b_Buttons.active>svg circle {
+        fill: var(--color-bright);
     }
 
     .peopleculomn,
@@ -984,7 +1009,7 @@
     .msgculomn,
     .groupmsgculomn,
     .generalculomn3 {
-        height: 80%;
+        height: 85%;
         padding: 0px;
     }
 
@@ -1228,16 +1253,6 @@
         border-width: 3px;
         border-color: var(--color-white);
         color: var(--color-white);
-    }
-
-    .notificationblock {
-        box-shadow: none;
-        border-radius: 15px;
-        border: none;
-    }
-
-    .notificationhead {
-        border: 1px solid var(--color-gray);
     }
 }
 

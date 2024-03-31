@@ -95,11 +95,13 @@
     font-weight: 900;
     letter-spacing: normal;
 }
-.gridposttextToview > a {
+
+.gridposttextToview>a {
     font-size: inherit;
     font-family: inherit;
     color: var(--color-primary);
 }
+
 .gridposttextToviewWhite {
     color: var(--color-white);
 }
@@ -252,9 +254,11 @@
     border: none;
     border-radius: 0px;
 }
+
 .gridpostImgCover>div>svg path {
     fill: #ffffffff;
 }
+
 .gridpost:hover {
     transition: all ease-in-out 0.35s;
     transform: scale(1.02);
@@ -295,16 +299,20 @@
     border-radius: 25px;
     position: relative;
 }
-.adgrid .head .nameandimg > img {
+
+.adgrid .head .nameandimg>img {
     border: 3px solid #ffffffff;
 }
-.adgrid .head> b,
-.adgrid .head .nameandimg > p {
+
+.adgrid .head>b,
+.adgrid .head .nameandimg>p {
     color: #ffffffff;
 }
+
 .adgrid .head:nth-child(1) {
     padding: 0;
 }
+
 .adgridimagecontainer {
     width: 100%;
     height: 60vh;
@@ -362,9 +370,11 @@
     border-radius: 0px;
     box-shadow: none;
 }
+
 .advertactionbar>div>svg path {
     fill: #ffffffff;
 }
+
 .advertactionbar .like_count_active,
 .advertactionbar .like_count,
 .advertactionbar .counts {
@@ -815,11 +825,11 @@
 
 .hamburgermenuheader {
     width: 100%;
-    height: 30px;
+    height: max-content;
     padding: 15px;
     display: none;
     background: none;
-    overflow: hidden;
+    overflow: visible;
     flex-direction: row;
     align-items: center;
     justify-content: left;
@@ -829,18 +839,7 @@
 }
 
 .hamburgermenuexit {
-    display: block;
-    color: var(--color-dark);
-    margin: 0;
-    padding: 0;
-    background: none;
-    overflow: visible;
-    border-radius: 0px;
-    border: none;
-    box-shadow: none;
-    font-size: 30px;
-    font-weight: 900;
-    cursor: pointer;
+
 }
 
 .photofilterpopupcolumn span p {
@@ -1341,6 +1340,7 @@
     box-shadow: none;
     border-radius: 0px;
 }
+
 .profile_Cliant {
     z-index: 304;
 }
@@ -2245,9 +2245,11 @@
     background-position: center;
     background-size: cover;
 }
+
 .infopro {
     display: flex;
 }
+
 .userinfocolumn,
 .userfriendListColumn {
     padding: 5px;
@@ -2825,8 +2827,8 @@
     background: var(--color-black);
 }
 
-.connected > img,
-.sent_Request > img {
+.connected>img,
+.sent_Request>img {
     filter: invert(330%);
 }
 
@@ -2834,6 +2836,7 @@
 .uploadprofilepicturepopup .subactions .profilepictureuploadbtn {
     display: block;
 }
+
 .profile_options_container {
     display: flex;
     flex-direction: column;
@@ -2854,7 +2857,8 @@
     overflow: hidden;
     gap: 5px;
 }
-.profile_options_container > header {
+
+.profile_options_container>header {
     width: 100%;
     height: max-content;
     overflow: visible;
@@ -2867,7 +2871,8 @@
     border: none;
     border-radius: 0px;
 }
-.profile_options_container > header > b {
+
+.profile_options_container>header>b {
     width: 80%;
     border-radius: 0px;
     display: block;
@@ -2879,7 +2884,8 @@
     background: none;
     color: var(--color-dark);
 }
-.profile_options_container > div {
+
+.profile_options_container>div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
@@ -2890,7 +2896,8 @@
     border-radius: 0px;
     overflow: hidden;
 }
-.profile_options_container > div > div {
+
+.profile_options_container>div>div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2901,7 +2908,8 @@
     background: none;
     border-radius: 0px;
 }
-.profile_options_container > nav {
+
+.profile_options_container>nav {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -2914,7 +2922,8 @@
     width: 100%;
     gap: 5px;
 }
-.profile_options_container > nav > button {
+
+.profile_options_container>nav>button {
     display: block;
     text-align: center;
     overflow: hidden;
@@ -2928,11 +2937,13 @@
     cursor: pointer;
     transition: 300ms ease-in-out;
 }
-.profile_options_container > nav > button:hover {
+
+.profile_options_container>nav>button:hover {
     background: var(--color-white);
     color: var(--color-dark);
 }
-.profile_options_container> div > div:nth-child(1) > div {
+
+.profile_options_container>div>div:nth-child(1)>div {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -2942,9 +2953,13 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.profile_options_container > div > div:nth-child(2)> p,
-.profile_options_container > div > div:nth-child(1)>strong {
+
+.profile_options_container>div>div:nth-child(2)>p,
+.profile_options_container>div>div:nth-child(1)>strong {
     border-radius: 0px;
     display: block;
     text-align: center;
@@ -2955,7 +2970,8 @@
     background: none;
     color: var(--color-dark);
 }
-.profile_options_container> div > div:nth-child(2)> p {
+
+.profile_options_container>div>div:nth-child(2)>p {
     font-weight: 400;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -2964,7 +2980,8 @@
     -webkit-padding-end: 5px;
     white-space: pre-wrap;
 }
-.profile_options_container > div > div:nth-child(1) > div > img {
+
+.profile_options_container>div>div:nth-child(1)>div>img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -2972,6 +2989,9 @@
     box-shadow: none;
     background: none;
     object-fit: cover;
+}
+.hamburgermenuheader .qualitymode {
+    display: none;
 }
 @media (min-width: 100px) and (max-width: 800px) {
 
@@ -3010,17 +3030,19 @@
 
 
 @media (min-width: 0px) and (max-width: 539px) {
-    .profile_options_container> div > div:nth-child(1) > div {
+    .profile_options_container>div>div:nth-child(1)>div {
         background: transparent;
         padding: 10px;
     }
+
     .profile_options_container {
         width: 98vw;
         top: unset;
         bottom: 0;
         border-radius: 25px 25px 0px 0px;
-        z-index: 331;
+        z-index: 754;
     }
+
     .header {
         flex-direction: column;
         justify-content: center;
@@ -3080,10 +3102,11 @@
     .pagename,
     .logoname,
     .lastlogo {
-        letter-spacing: 0.5vw;
+        letter-spacing: 0.2vw;
         font-size: 8.55555vw;
         font-style: normal;
-        font-family: poppins;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 800;
     }
 
     .post {
@@ -3159,7 +3182,10 @@
         height: 50px;
         margin: 0;
     }
-    
+    .headerbtns.postwriterfloatitems {
+        box-shadow: none;
+    }
+
     .headerbtns.toggleBtn,
     .headerbtns.items {
         width: 100%;
@@ -3259,7 +3285,7 @@
     }
 
     .postwritermaster {
-        box-shadow: var(--block-box-shadow);
+        box-shadow: none;
         border: none;
         width: 55px;
         height: 55px;
@@ -3298,9 +3324,11 @@
         z-index: 330;
         padding: 0px;
     }
+
     .profile_Cliant {
         display: flex;
     }
+
     .userprofileheader {
         height: max-content;
         background: none;
@@ -3333,21 +3361,23 @@
 
     .secondprofileculomn {
         border-radius: 0px;
-        padding: 5px;
+        padding: 0px;
     }
 
     .secondcoverphotocontainer {
         min-height: 400px;
         height: 50vh;
         width: 100%;
-        border-radius: 25px;
-        /* border-radius: 0px 0px 25px 25px; */
+        border-radius: 25px 25px 0px 0px;
+        /* border-radius: 0px; */
         padding: 20px;
         border: none;
+        box-shadow: none;
+        background: var(--color-white);
     }
 
     .secondcoverphotocontainer>img {
-        border-radius: 25px;
+        border-radius: 25px 25px 0px 0px;
     }
 
     .preview {
@@ -3357,9 +3387,18 @@
 
     .bioblock,
     .userbioblock {
-        box-shadow: var(--block-box-shadow);
+        box-shadow: none;
         width: 100%;
-        border-radius: 25px;
+        border-radius: 0px;
+        background: var(--color-white);
+    }
+
+    .userprofileheader {
+        background: none;
+    }
+
+    .userprofileheader .headerbtns {
+        background: none;
     }
 
     .bioinfomation,
@@ -3370,7 +3409,7 @@
 
     .postgridcontainer {
         min-height: 50vh;
-        background: none;
+        background: var(--color-light);
         padding: 0px;
         border-radius: 25px 25px 0px 0px;
     }
@@ -3445,7 +3484,6 @@
         z-index: 1;
         background: var(--color-light);
     }
-
     .options .headerbtns.sharegridlike {
         width: 45px;
         height: 45px;
@@ -3664,10 +3702,12 @@
     .statusbarcontainer {
         height: 200px;
     }
+
     .beforeofmystory {
         background: var(--color-primary);
         transform: rotate(-50deg);
     }
+
     .statusbarcontainer::-webkit-scrollbar {
         height: 0px;
     }
@@ -3714,16 +3754,20 @@
         padding: 10px 0px;
         background: var(--color-white);
     }
+
     .adgrid .head .posttitle {
         color: var(--color-dark);
     }
-    .adgrid .head .nameandimg > img {
+
+    .adgrid .head .nameandimg>img {
         border: 1px solid var(--color-dark);
     }
-    .adgrid .head> b,
-    .adgrid .head .nameandimg > p {
+
+    .adgrid .head>b,
+    .adgrid .head .nameandimg>p {
         color: var(--color-dark);
     }
+
     .adgridimagecontainer {
         border-radius: 0px;
         height: max-content;
@@ -3755,7 +3799,7 @@
         right: initial;
         gap: 5px;
     }
-    
+
     .adgridimagecontainer .children_Tile_Box>div {
         width: 50px;
         height: 50px;
@@ -3976,13 +4020,13 @@
     }
 
     .userconnectgrid>div>.headerbtns {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         border: none;
         border-width: 3px;
         border-color: var(--color-dark);
         background: var(--color-white);
-        box-shadow: var(--block-box-shadow);
+        box-shadow: none;
     }
 
     .user_More_Option_Views {
@@ -3992,22 +4036,21 @@
         box-shadow: var(--block-box-shadow);
     }
 
-    .userconnectgrid>div>.headerbtns {
-        width: 50px;
-        height: 50px;
-    }
 
     .userconnectgrid>div .sent_Request,
     .userconnectgrid>div .connected {
         background: var(--color-black);
     }
 }
+
 @media (min-width: 0px) and (max-width: 420px) {
     .middlesection {
         margin-top: 45px;
     }
 }
+
 @media (min-width: 0px) and (max-width: 300px) {
+
     .commentroomsection,
     .commentsection {
         height: 88%;
@@ -4088,7 +4131,8 @@
 
     .hamburgermenupopupactive {
         align-items: top;
-        justify-content: top;
+        justify-content: initial;
+        padding: 0px;
     }
 
     .smallminiprofile {
@@ -4105,14 +4149,17 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-row-gap: 20px;
-        place-content: baseline;
-        place-items: center;
+        align-items: center;
+        justify-item: baseline;
+        align-content: baseline;
         position: relative;
         height: max-content;
-        min-height: max-content;
+        min-height: 60%;
         max-height: max-content;
     }
-
+    .hamburgermenuheader {
+        background: var(--color-white);
+    }
     .settingspage {
         padding: 0px;
         background: none;
@@ -4126,6 +4173,10 @@
 /*MINI LAPTOPS AND TABLETS*/
 @media (min-width: 540px) and (max-width: 560px) {
 
+    .profile_options_container {
+        width: 70%;
+        z-index: 754;
+    }
     .master,
     .postwritermaster {
         width: 70px;
@@ -4290,9 +4341,11 @@
         margin: 0px;
         z-index: 350;
     }
+
     .profile_Cliant {
         display: flex;
     }
+
     .secondprofileculomn {
         width: 100%;
         margin: 0;
@@ -4613,9 +4666,11 @@
         background: linear-gradient(to right, var(--color-light), var(--color-gray));
         height: 95.5vh;
     }
+
     .profile_Cliant {
         display: flex;
     }
+
     .postgridcontainer {
         min-height: 60vh;
     }
@@ -4797,9 +4852,11 @@
         height: 650px;
         max-height: 95.5vh;
     }
+
     .profile_Cliant {
         display: flex;
     }
+
     .gridpostlarge {
         padding: 10px;
     }
@@ -4940,9 +4997,11 @@
         left: 0;
         border-radius: 0px;
     }
+
     .profile_Cliant {
         display: flex;
     }
+
     .usersprofile {
         display: none;
         height: 96%;

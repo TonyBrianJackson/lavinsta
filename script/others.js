@@ -258,8 +258,21 @@ function createpostLikeLicense(container, locationId) {
                     }
                 }
                 startTime();
+                personlikerecordimg.addEventListener('click', () => {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account.forEach(user => {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                            createProfileOptions(license.posterId,user.user_Id);
+                        });
+                    }
+                });
                 personlikerecordname.addEventListener('click', () => {
-                    createUsersProfile(license.posterId);
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account.forEach(user => {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                            createProfileOptions(license.posterId,user.user_Id);
+                        });
+                    }
                 });
                 personlikerecord.classList.add('personlikerecord');
 
@@ -355,9 +368,22 @@ function createcommentsLikeLicense(container, locationId) {
                         }
                     }
                     startTime();
+                    personlikerecordimg.addEventListener('click', () => {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(license.posterId,user.user_Id);
+                            });
+                        }
+                    });
                     personlikerecordname.addEventListener('click', () => {
-                        createUsersProfile(license.posterId);
-                    });;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(license.posterId,user.user_Id);
+                            });
+                        }
+                    });
                     personlikerecord.classList.add('personlikerecord');
 
                     function Poster_Details() {
@@ -494,7 +520,22 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                             createUsersProfile(license.posterId);
                         });;
                         personlikerecord.classList.add('personlikerecord');
-
+                        personlikerecordimg.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(license.posterId,user.user_Id);
+                                });
+                            }
+                        });
+                        personlikerecordname.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(license.posterId,user.user_Id);
+                                });
+                            }
+                        });
                         function Poster_Details() {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === license.posterId) {

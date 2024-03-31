@@ -550,7 +550,11 @@ function createProfileOptions(locationId, user_Id) {
                 option_exit.classList.add('headerbtns');
                 profile_options_container.classList.add('profile_options_container');
                 option_connect.textContent = 'Connect';
-
+                if (profile.user_CoverPhoto) {
+                    option_profile_picture.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
+                } else {
+                    option_profile_picture.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                }
                 LogInFormData.forEach(user => {
                     if (user.user_Id === user_Id) {
                         let connections = user.user_Connection;
@@ -574,6 +578,9 @@ function createProfileOptions(locationId, user_Id) {
                             }
                         });
                     }
+                });
+                option_profile_picture.addEventListener('click', () => {
+                    createUsersProfile(profile.user_Id);
                 });
                 option_connect.addEventListener('click', () => {
                     if (option_connect.textContent === 'Connect') {
@@ -676,6 +683,11 @@ function createProfileOptions(locationId, user_Id) {
                 option_exit.addEventListener('click', () => {
                     profile_options_container.remove();
                 });
+                if (profile.user_Id === user_Id) {
+                    option_connect.remove();
+                    option_disconnect.remove();
+                    option_profile_name.textContent += ` (You)`;
+                }
                 function pushFriend() {
                     const id = '' + new Date().getTime();
                     LogInFormData.forEach(user => {

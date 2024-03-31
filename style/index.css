@@ -819,9 +819,6 @@ main .header {
 }
 
 
-
-
-
 .statusbar {
     min-width: 90%;
     max-width: max-content;
@@ -6330,10 +6327,9 @@ a {
 }
 
 .navigationheader {
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-x: scroll;
+    overflow-y: visible;
 }
-
 .navigationheader .headerright {
     overflow-x: scroll;
     overflow-y: visible;
@@ -6349,6 +6345,7 @@ a {
 .navigationheader .headerright>div {
     min-width: 100%;
     max-width: max-content;
+    width: max-content;
     height: 100%;
     border-style: none;
     border: none;
@@ -8638,7 +8635,10 @@ a {
         pointer-events: none;
     }
 }
-
+.people .navigationheader .headermiddle.headermiddleactive,
+.chattab .navigationheader .headermiddle.headermiddleactive {
+    display: flex;
+}
 @media (min-width: 0px) and (max-width: 539px) {
     .navigationheader {
         flex-direction: column;
@@ -8870,17 +8870,25 @@ a {
 
     .personlikerecord {
         height: max-content;
+        width: 100%;
+        border-radius: 0px;
+        background: var(--color-white);
+        box-shadow: none;
     }
 
     .personlikerecord div img {
         width: 60px;
         height: 60px;
+        border: 1px solid var(--color-dark);
     }
 
     .personlikerecord div p {
         font-size: 17px;
+        color: var(--color-dark);
     }
-
+    .personlikerecord span {
+        color: var(--color-dark);
+    }
     .copyrightmesgandsmallprofilegrid {
         width: 100%;
         padding: 0px;
@@ -8927,7 +8935,8 @@ a {
         border-radius: 0px;
         top: 0;
         left: 0;
-        z-index: 602;
+        z-index: 753;
+        padding: 0px;
     }
 
     .titlearea {
