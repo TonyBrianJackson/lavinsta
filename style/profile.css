@@ -3372,7 +3372,7 @@
         /* border-radius: 0px; */
         padding: 20px;
         border: none;
-        box-shadow: none;
+        box-shadow: var(--block-box-shadow);
         background: var(--color-white);
     }
 
@@ -3387,7 +3387,7 @@
 
     .bioblock,
     .userbioblock {
-        box-shadow: none;
+        box-shadow: var(--block-box-shadow);
         width: 100%;
         border-radius: 0px;
         background: var(--color-white);
