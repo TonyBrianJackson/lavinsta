@@ -1323,26 +1323,6 @@ main .header {
     object-fit: cover;
 }
 
-.itemsviewclosebutton {
-    position: absolute;
-    right: 50px;
-    top: 50px;
-    font-size: 18px;
-    background: var(--color-dark);
-    color: var(--color-white);
-    box-shadow: none;
-    border: none;
-    font-family: 'Times New Roman', Times, serif;
-    border-radius: 0px;
-    padding: 2px 15px;
-    cursor: pointer;
-}
-
-.itemsviewclosebutton:hover {
-    background: tomato;
-    color: #ffffffff;
-
-}
 
 .thestorywideviewcontainer {
     position: relative;
@@ -1734,13 +1714,10 @@ main .header {
     color: var(--color-dark);
 }
 
-.deletedtime,
-.deletedstorytime,
+
 .savedtime {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    text-align: center;
+    width: 87%;
+    text-align: left;
     display: block;
     border: none;
     background: none;
@@ -2422,6 +2399,7 @@ main .header {
     font-weight: 700;
 }
 
+.itemsviewclosebutton,
 .more {
     width: 30px;
     height: 30px;
@@ -2449,8 +2427,7 @@ main .header {
     top: 2px;
 }
 
-.adgrid .head .more,
-.gridpostimagecontainer .more {
+.adgrid .head .more{
     top: 5px;
     right: 10px;
     width: 30px;
@@ -2460,11 +2437,20 @@ main .header {
     background: rgba(0, 0, 0, 0.059);
     z-index: 8;
 }
-
+.itemsviewclosebutton,
+.gridpostimagecontainer .more {
+    position: unset;
+    width: 30px;
+    height: 30px;
+    color: var(--color-white);
+    transition: 300ms;
+    background: rgba(0, 0, 0, 0.059);
+}
 .adgrid .head .more {
     color: var(--color-dark);
 }
 
+.itemsviewclosebutton:hover,
 .more:hover {
     background: var(--color-dark);
     color: var(--color-white);
@@ -9240,9 +9226,6 @@ a {
     .itemsviewclosebutton {
         background: none;
         color: #ffffffff;
-        right: 10px;
-        top: 11px;
-        z-index: 5;
         font-size: 25px;
         font-weight: 400;
     }
@@ -9254,7 +9237,7 @@ a {
         padding: 0px;
         margin: 0px;
         border-radius: 0px;
-        background: var(--second-color-black);
+        background: var(--color-black);
         z-index: 3;
     }
 
@@ -9538,9 +9521,6 @@ a {
     }
 
     .itemsviewclosebutton {
-        right: 10px;
-        top: 11px;
-        z-index: 5;
         font-size: 20px;
     }
 
@@ -9564,9 +9544,6 @@ a {
 
 @media (min-width: 561px) and (max-width: 800px) {
     .itemsviewclosebutton {
-        right: 10px;
-        top: 11px;
-        z-index: 5;
         font-size: 20px;
     }
 

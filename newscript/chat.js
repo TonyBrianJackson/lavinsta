@@ -2109,10 +2109,6 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
     clickAndUploadContainer.appendChild(newvideolabel);
     clickAndUploadContainer.appendChild(newaudiolabel);
 
-    newphotolabel.appendChild(chatphotoinput);
-    newvideolabel.appendChild(chatvideoinput);
-    newaudiolabel.appendChild(chataudioinput);
-
     subactions.appendChild(sharephotosend);
     subactions.appendChild(sharevideosend);
     subactions.appendChild(shareaudiosend);
@@ -2125,6 +2121,10 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
 
     newphotolabel.innerHTML = imagesvg
     newvideolabel.innerHTML = videosvg;
+    newphotolabel.appendChild(chatphotoinput);
+    newvideolabel.appendChild(chatvideoinput);
+    newaudiolabel.appendChild(chataudioinput);
+    
     newaudiolabel.appendChild(thirdimg);
     newphotolabel.appendChild(firsttext);
     newvideolabel.appendChild(secondtext);
@@ -2151,6 +2151,7 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
     newphotolabel.htmlFor = chatphotoinput.id;
     newvideolabel.htmlFor = chatvideoinput.id;
     newaudiolabel.htmlFor = chataudioinput.id;
+
     chatimagepreview.id = locationId;
     videoschat.id = locationId;
     audiochat.id = locationId;
@@ -2272,6 +2273,9 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
                 });
                 localStorage.setItem('myChatMsg', JSON.stringify(myChatMsg));
             }
+            hightlightchatblock();
+            increaseChatCount(locationId);
+            chatuploadpopup.remove();
         }
     }
     function pushvideoChat() {
@@ -2302,6 +2306,9 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
                 });
                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
             }
+            hightlightchatblock();
+            increaseChatCount(locationId);
+            chatuploadpopup.remove();
         }
     }
     function pushaudioChat() {
@@ -2332,6 +2339,9 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
                 });
                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
             }
+            hightlightchatblock();
+            increaseChatCount(locationId);
+            chatuploadpopup.remove();
         }
     }
     function hightlightchatblock() {
@@ -2366,44 +2376,28 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
         }
     }
     sharephotosend.addEventListener('click', () => {
-        if (chatimagepreview.src) {
-            pushphotoChat();
-            hightlightchatblock();
-            increaseChatCount(locationId);
-            chatuploadpopup.remove();
-            if (type == 'friends_chat') {
-                createChatMessages(chatroom, locationId, CreatorId);
-            } if (type == 'community_chat') {
-                create_Community_Chat_Messages(chatroom, locationId, CreatorId);
-            }
+        pushphotoChat();
+        if (type == 'friends_chat') {
+            createChatMessages(chatroom, locationId, CreatorId);
+        } if (type == 'community_chat') {
+            create_Community_Chat_Messages(chatroom, locationId, CreatorId);
         }
     });
     sharevideosend.addEventListener('click', () => {
-        if (videoschat.src) {
-            pushvideoChat();
-            hightlightchatblock();
-            increaseChatCount(locationId);
-            chatuploadpopup.remove();
-            if (type == 'friends_chat') {
-                createChatMessages(chatroom, locationId, CreatorId);
-            } if (type == 'community_chat') {
-                create_Community_Chat_Messages(chatroom, locationId, CreatorId);
-            }
+        pushvideoChat();
+        if (type == 'friends_chat') {
+            createChatMessages(chatroom, locationId, CreatorId);
+        } if (type == 'community_chat') {
+            create_Community_Chat_Messages(chatroom, locationId, CreatorId);
         }
     });
     shareaudiosend.addEventListener('click', () => {
-        if (audiochat.src) {
-            pushaudioChat();
-            hightlightchatblock();
-            increaseChatCount(locationId);
-            chatuploadpopup.remove();
-            if (type == 'friends_chat') {
-                createChatMessages(chatroom, locationId, CreatorId);
-            } if (type == 'community_chat') {
-                create_Community_Chat_Messages(chatroom, locationId, CreatorId);
-            }
+        pushaudioChat();
+        if (type == 'friends_chat') {
+            createChatMessages(chatroom, locationId, CreatorId);
+        } if (type == 'community_chat') {
+            create_Community_Chat_Messages(chatroom, locationId, CreatorId);
         }
-
     });
 }
 function increaseChatCount(locationId) {

@@ -124,8 +124,8 @@
 .profilepic,
 .userprofilepic {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 8vw;
+    height: calc(8vw);
     left: 25px;
     bottom: 80px;
     border-radius: 50%;
@@ -1321,7 +1321,7 @@
 
 .profile_Cliant,
 .profile {
-    width: 250px;
+    width: 25vw;
     height: 92vh;
     position: fixed;
     top: 60px;
@@ -3030,6 +3030,9 @@
 
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .gridpostimagecontainer {
+        height: 100%;
+    }
     .profile_options_container>div>div:nth-child(1)>div {
         background: transparent;
         padding: 10px;

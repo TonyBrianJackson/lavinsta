@@ -317,6 +317,10 @@
     display: grid;
     gap: 5px 0px;
     grid-template-columns: 1fr;
+    justify-items: baseline;
+    align-content: baseline;
+    align-items: baseline;
+    place-items: center;
     box-shadow: none;
     border: none;
     background: none;
@@ -924,40 +928,59 @@
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+    .person,
+    .friendconnectrequest,
+    .friendcontainer,
     .notificationblock {
         box-shadow: none;
         border-radius: 0px;
         border: none;
         margin: 0;
     }
+
     .notificationhead {
         border: 1px solid var(--color-gray);
     }
+
     .navigationheader .headerright .headerbtns {
         width: 100%;
     }
+
     .searchbtn_buttonsearch {
         display: flex;
     }
 
+    .userpeoplecolumn,
+    .usersfriendrequestcolumn,
+    .usersentrequestcolumn,
+    .usersfriendlistcolumn,
     .usersnotificationcoulmn,
     .userCommunityChatContainer,
     .userschatcontainer {
         padding: 1px 0px;
         gap: 1px 0px;
         border-radius: 0px;
+        height: 100%;
     }
-
+    .peopleculomn,
+    .peoplerequestculomn,
+    .sentrequestculomn,
+    .msgculomn,
+    .generalnotificationculomn {
+        border-radius: 0px;
+    }
     .navigationheader .headerleft,
     .navigationheader .headermiddle,
     .navigationheader .headerright {
         height: max-content;
         padding: 0px;
     }
+
     .people .navigationheader .headermiddle,
     .chattab .navigationheader .headermiddle {
         display: none;
     }
+
     .navigationheader .headerright {
         overflow: hidden;
         flex-direction: column;
@@ -993,7 +1016,12 @@
         width: 25px;
         height: 25px;
     }
-
+    .headerbtns.peoplebtn.active,
+    .headerbtns.b_Buttons.active,
+    .headerbtns.peoplebtn.active,
+    .headerbtns.b_Buttons.active {
+        background: none;
+    }
     .headerbtns.peoplebtn.active>svg path,
     .headerbtns.b_Buttons.active>svg path,
     .headerbtns.peoplebtn.active>svg circle,
@@ -1033,17 +1061,6 @@
     .notibtn svg,
     .peoplebtn svg {
         width: 30%;
-    }
-
-    .msgbtn.active,
-    .notibtn.active,
-    .peoplebtn.active {
-        box-shadow: none;
-        border-style: solid;
-        border-width: 3px;
-        background: var(--color-dark);
-        color: var(--color-white);
-        border-color: var(--color-white);
     }
 
     .msgbtn.active::before,
@@ -1093,26 +1110,20 @@
         fill: var(--color-white);
     }
 
-    .person,
-    .friendconnectrequest,
-    .friendcontainer {
-        box-shadow: none;
-    }
-
+    .frienddisconnect,
     .personAddandBlockFlex span,
     .personAddandBlockFlex button {
         padding: 8px 5px;
         display: block;
         text-align: center;
         border-radius: 30px;
-        border-style: solid;
+        border: none;
         box-shadow: none;
-        border-width: 3px;
-        border-color: var(--color-dark);
+        background: var(--color-dark);
         margin: 2px;
         cursor: pointer;
     }
-
+    .frienddisconnect,
     .personaddbutton,
     .personacceptbutton {
         background: var(--color-dark);

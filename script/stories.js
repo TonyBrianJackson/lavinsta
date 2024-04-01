@@ -1,7 +1,7 @@
 const deletedstoriessssculomn = document.querySelector('.deletedstoriessssculomn');
 
 function create_Grid_Story_Trash() {
-    clearItemsInTrash();
+    clearItemsInStoryTrash();
     function createArchieves() {
         let userstorytrashcolumn = document.createElement('div');
         document.querySelector('.deletedstoriessssculomn').appendChild(userstorytrashcolumn);
@@ -45,10 +45,8 @@ function create_Main_Story_Trash(locationId) {
         let Trash = user.user_Story_Trash;
         Trash.forEach(photo => {
             if (photo.id === locationId) {
-                let saveddelete = document.createElement('img');
                 let savedtilebox = document.createElement('nav');
                 let savedtime = document.createElement('span');
-                let saveddeletebtn = document.createElement('span');
 
                 let itemsviewclosebutton = document.createElement('span');
                 let itemsviewonlargescale = document.createElement('section');
@@ -58,6 +56,41 @@ function create_Main_Story_Trash(locationId) {
                 let gridpostimagecontainer = document.createElement('div');
                 let gridposttitlecover = document.createElement('span');
                 let gridposttime = document.createElement('b');
+                let gridView_Header = document.createElement('header');
+                let more = document.createElement('span');
+                gridpostimagecontainer.appendChild(gridView_Header);
+                gridView_Header.appendChild(savedtime);
+                gridView_Header.appendChild(more);
+                gridView_Header.appendChild(itemsviewclosebutton);
+                gridView_Header.classList.add('gridView_Header');
+                more.innerHTML = '&vellip;';
+                more.classList.add('more');
+                more.addEventListener('click', () => {
+                    create_Options_Script();
+                });
+                function create_Options_Script() {
+                    let options = document.createElement('div');
+                    let first_Option = document.createElement('span');
+                    let first_Optionimg = document.createElement('img');
+                    let exit = document.createElement('span');
+
+                    gridpostimagecontainer.insertAdjacentElement("afterend", options);
+                    options.appendChild(exit);
+                    options.appendChild(first_Option);
+                    first_Option.appendChild(first_Optionimg);
+                    options.classList.add('options');
+                    first_Option.classList.add('headerbtns');
+                    exit.classList.add('headerbtns');
+                    first_Option.classList.add('first_Option');
+                    exit.innerHTML = '&times;';
+                    first_Optionimg.src = 'newicons/trash-can.png';
+                    first_Option.addEventListener('click', () => {
+                        delete_DELETED_story();
+                    });
+                    exit.addEventListener('click', () => {
+                        options.remove();
+                    });
+                }
                 function delete_DELETED_story() {
                     let confirmation_popup = document.createElement('div');
                     let confirmationflex = document.createElement('div');
@@ -106,9 +139,6 @@ function create_Main_Story_Trash(locationId) {
                         confirmation_popup.remove();
                     });
                 }
-                saveddeletebtn.addEventListener('click', () => {
-                    delete_DELETED_story();
-                });
                 itemsviewonlargescale.style.display = 'flex';
 
                 loader(itemsviewonlargescale, photo.id);
@@ -313,11 +343,8 @@ function create_Main_Story_Trash(locationId) {
 
                 }
                 savedtime.textContent = photo.date;
-                saveddeletebtn.appendChild(saveddelete);
-                saveddelete.src = 'newicons/trash-can.png';
+                gridpostcaption.textContent = photo.title;
                 savedtime.classList.add('savedtime');
-                saveddeletebtn.classList.add('saveddeletebtn');
-                saveddeletebtn.classList.add('headerbtns');
                 savedtilebox.classList.add('savedtilebox');
                 savedtilebox.classList.add('Yyer_TrUXheDTYle_bX');
                 savedtilebox.id = photo.posterId + 'Yyer_TrUXheDTYle_bX';
@@ -325,12 +352,11 @@ function create_Main_Story_Trash(locationId) {
 
                 gridposttitlecover.appendChild(gridpostcaption);
                 gridposttitlecover.classList.add('gridposttitlecover');
+                gridpostcaption.classList.add('gridpostcaption')
                 gridpostimagecontainer.appendChild(gridposttitlecover);
-                gridpostimagecontainer.appendChild(saveddeletebtn);
                 gridpostimagecontainer.appendChild(savedtilebox);
 
                 itemsviewonlargescale.appendChild(largescalewideviewcontainer);
-                itemsviewonlargescale.appendChild(itemsviewclosebutton);
                 largescalewideviewcontainer.appendChild(gridpostimagecontainer);
                 gridpostimagecontainer.classList.add('gridpostimagecontainer');
                 largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
@@ -380,15 +406,15 @@ function creategridpostimagecontaineringTile(locationId) {
         });
     })
 }
-function clearItemsInTrash() {
+function clearItemsInStoryTrash() {
     document.querySelectorAll('.userstorytrashcolumn').forEach(column => {
         column.remove();
     });
 }
-document.querySelector('.Arrstories').addEventListener('click',()=> {
-    clearItemsInTrash();
+document.querySelector('.Arrstories').addEventListener('click', () => {
+    clearItemsInStoryTrash();
 });
-document.querySelector('#deletestoss').addEventListener('click',()=> {
+document.querySelector('#deletestoss').addEventListener('click', () => {
     create_Grid_Story_Trash();
 });
 
@@ -424,18 +450,18 @@ function createStoriesPhotos() {
                         newstoryuploadcontainer.id = storystatus.posterId;
                         mystory.appendChild(newstoryuploadcontainer);
                         newstoryuploadcontainer.appendChild(storynameandimg)
-    
+
                         storynameandimg.appendChild(storyposterimg);
                         storynameandimg.appendChild(storyname);
                         storynameandimg.appendChild(storytitle);
-    
+
                         newstoryuploadcontainer.classList.add('newstoryuploadcontainer');
                         storytitle.classList.add('storytitle');
                         storyname.classList.add('storyname1');
                         storynameandimg.classList.add('storynameandimg');
                         storyposterimg.classList.add('storyposterimg');
                         storytitle.textContent = storystatus.title;
-    
+
                         newstoryuploadcontainer.addEventListener('click', () => {
                             create_Main_Stories(storystatus.id, storystatus.Property_Src);
                         });
@@ -523,7 +549,7 @@ function story_Deleting(locationId) {
                     confirmation_popup.id = storystatus.id;
                     confirmationtrue.id = storystatus.id;
                     confirmation_popup.style.display = 'flex';
-                
+
                     function pushtrash() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
@@ -596,6 +622,7 @@ async function create_Main_Stories(locationId, Property_Src) {
                 let itemsviewonlargescale = document.createElement('section');
                 let largescalewideviewcontainer = document.createElement('div');
                 let nameandtimegrid = document.createElement('div');
+                let more = document.createElement('span');
 
                 let storytime = document.createElement('p');
                 let gridpostimagecontainer = document.createElement('div');
@@ -610,8 +637,6 @@ async function create_Main_Stories(locationId, Property_Src) {
                 let storyfloatinput = document.createElement('div');
                 let storyfloatinputinput = document.createElement('input');
                 let storysend = document.createElement('img');
-                let storydelete = document.createElement('span');
-                let storydeleteimg = document.createElement('img');
                 let tilebox_Stories = document.createElement('nav');
 
                 if (storystatus.type == 'photo') {
@@ -643,7 +668,6 @@ async function create_Main_Stories(locationId, Property_Src) {
                     gridposttimegrid.appendChild(gridpostcurrenttime);
                     gridposttimegrid.appendChild(gridposttotaltime);
                     gridpostcover.appendChild(gridpostbottomcontrols);
-                    gridpostcover.appendChild(storydelete);
                     gridpostcover.appendChild(gridpostplaybtn);
                     gridpostcover.appendChild(gridpostpausebtn);
                     gridpostcover.appendChild(storymute);
@@ -852,6 +876,8 @@ async function create_Main_Stories(locationId, Property_Src) {
                 largescalewideviewcontainer.appendChild(gridpostimagecontainer);
                 gridpostimagecontainer.style.display = 'flex';
                 itemsviewclosebutton.innerHTML = '&times;';
+                more.innerHTML = '&vellip;';
+                more.classList.add('more');
                 itemsviewclosebutton.classList.add('itemsviewclosebutton');
 
                 largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
@@ -859,9 +885,6 @@ async function create_Main_Stories(locationId, Property_Src) {
                 itemsviewonlargescale.style.display = 'flex';
                 storysend.src = 'icons/send.png';
                 items_Center.innerHTML = '&plus;';
-                storydeleteimg.src = 'newicons/trash-can.png';
-                storydelete.classList.add('storydelete');
-                storydelete.classList.add('headerbtns');
                 items_Float.classList.add('items_Float');
                 items_Center.classList.add('items_Center');
                 storysend.classList.add('storysend');
@@ -985,11 +1008,32 @@ async function create_Main_Stories(locationId, Property_Src) {
                 storyfloatinput.appendChild(storyfloatinputinput);
                 storyfloatinput.appendChild(storysend);
                 items_Float.appendChild(items_Center);
-
-                storydelete.addEventListener('click', () => {
-                    story_Deleting(locationId);
+                more.addEventListener('click', () => {
+                    create_Options_Script();
                 });
-                storydelete.appendChild(storydeleteimg);
+                function create_Options_Script() {
+                    let options = document.createElement('div');
+                    let first_Option = document.createElement('span');
+                    let first_Optionimg = document.createElement('img');
+                    let exit = document.createElement('span');
+
+                    gridpostimagecontainer.insertAdjacentElement("afterend", options);
+                    options.appendChild(exit);
+                    options.appendChild(first_Option);
+                    first_Option.appendChild(first_Optionimg);
+                    options.classList.add('options');
+                    first_Option.classList.add('headerbtns');
+                    exit.classList.add('headerbtns');
+                    first_Option.classList.add('first_Option');
+                    exit.innerHTML = '&times;';
+                    first_Optionimg.src = 'newicons/trash-can.png';
+                    first_Option.addEventListener('click', () => {
+                        story_Deleting(locationId);
+                    });
+                    exit.addEventListener('click', () => {
+                        options.remove();
+                    });
+                }
                 gridpostimagecontainer.appendChild(largenameandimg);
                 gridpostimagecontainer.appendChild(gridposttitlecover);
                 gridpostimagecontainer.appendChild(storyverticalfloat);
@@ -1001,9 +1045,10 @@ async function create_Main_Stories(locationId, Property_Src) {
                 horizontalfloat.appendChild(storyfloatinput);
                 largenameandimg.appendChild(storyviewsmallimg);
                 largenameandimg.appendChild(nameandtimegrid);
+                largenameandimg.appendChild(more);
+                largenameandimg.appendChild(itemsviewclosebutton);
                 nameandtimegrid.appendChild(largeusername);
                 nameandtimegrid.appendChild(storytime);
-                largenameandimg.appendChild(storydelete);
 
 
                 itemsviewclosebutton.addEventListener('click', () => {
@@ -1060,7 +1105,7 @@ async function create_Main_Stories(locationId, Property_Src) {
                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(data => {
                         if (storystatus.posterId !== data.user_Id) {
-                            storydelete.remove();
+                            more.remove();
                         } if (storystatus.posterId === data.user_Id) {
                             if (horizontalfloat) {
                                 horizontalfloat.remove();

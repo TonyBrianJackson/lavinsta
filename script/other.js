@@ -51,6 +51,11 @@ function clearItemsInSaved() {
         column.remove();
     });
 }
+function clearItemsInStoryTrash() {
+    document.querySelectorAll('.userstorytrashcolumn').forEach(column => {
+        column.remove();
+    });
+}
 document.querySelector('.savedbackarrow').addEventListener('click',()=> {
     clearItemsInSaved();
 });
@@ -60,6 +65,7 @@ document.querySelector('.Arrpost').addEventListener('click',()=> {
 document.querySelector('#deletepst').addEventListener('click',()=> {
     create_Trash_Items();
 });
+
 document.querySelector('#saved').addEventListener('click',()=> {
     newSaved_Script();
 })
@@ -70,10 +76,8 @@ async function create_Main_Trash_Items(locationId) {
         Trash.forEach(photo => {
             if (locationId === photo.id) {
                 if (photo.id === locationId) {
-                    let saveddelete = document.createElement('img');
                     let savedtilebox = document.createElement('nav');
                     let savedtime = document.createElement('span');
-                    let saveddeletebtn = document.createElement('span');
 
                     let itemsviewclosebutton = document.createElement('span');
                     let itemsviewonlargescale = document.createElement('section');
@@ -82,7 +86,15 @@ async function create_Main_Trash_Items(locationId) {
                     //viewing gridpost
                     let gridpostimagecontainer = document.createElement('div');
                     let gridposttitlecover = document.createElement('span');
-                    let gridposttime = document.createElement('b');
+                    let gridView_Header = document.createElement('header');
+                    let more = document.createElement('span');
+                    gridpostimagecontainer.appendChild(gridView_Header);
+                    gridView_Header.appendChild(savedtime);
+                    gridView_Header.appendChild(more);
+                    gridView_Header.appendChild(itemsviewclosebutton);
+                    gridView_Header.classList.add('gridView_Header');
+                    more.innerHTML = '&vellip;';
+                    more.classList.add('more');
                     function delete_DELETED_story() {
                         let confirmation_popup = document.createElement('div');
                         let confirmationflex = document.createElement('div');
@@ -105,10 +117,7 @@ async function create_Main_Trash_Items(locationId) {
                         confirmationtrue.classList.add('confirmationtrue');
                         confirmationfalse.classList.add('confirmationfalse');
                         confirmationfalse.addEventListener('click', () => {
-                            confirmation_popup.style.display = 'none';
-                        });
-                        saveddeletebtn.addEventListener('click', () => {
-                            confirmation_popup.style.display = 'flex';
+                            confirmation_popup.remove();
                         });
                         confirmationtrue.id = photo.id
                         confirmationtrue.addEventListener('click', () => {
@@ -125,16 +134,40 @@ async function create_Main_Trash_Items(locationId) {
                                 localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                             });
                             create_Trash_Items();
-                            confirmation_popup.style.display = 'none';
+                            confirmation_popup.remove();
                             createTilePost(photo.posterId);
                         });
                         itemsviewclosebutton.addEventListener('click', () => {
                             confirmation_popup.remove();
                         });
                     }
-                    delete_DELETED_story();
                     itemsviewonlargescale.style.display = 'flex';
-
+                    more.addEventListener('click', () => {
+                        create_Options_Script();
+                    });
+                    function create_Options_Script() {
+                        let options = document.createElement('div');
+                        let first_Option = document.createElement('span');
+                        let first_Optionimg = document.createElement('img');
+                        let exit = document.createElement('span');
+    
+                        gridpostimagecontainer.insertAdjacentElement("afterend", options);
+                        options.appendChild(exit);
+                        options.appendChild(first_Option);
+                        first_Option.appendChild(first_Optionimg);
+                        options.classList.add('options');
+                        first_Option.classList.add('headerbtns');
+                        exit.classList.add('headerbtns');
+                        first_Option.classList.add('first_Option');
+                        exit.innerHTML = '&times;';
+                        first_Optionimg.src = 'newicons/trash-can.png';
+                        first_Option.addEventListener('click', () => {
+                            delete_DELETED_story();
+                        });
+                        exit.addEventListener('click', () => {
+                            options.remove();
+                        });
+                    }
                     loader(itemsviewonlargescale, photo.id);
                     if (photo.type == 'photo') {
                         let gridpostimagetoview = document.createElement('img');
@@ -338,28 +371,19 @@ async function create_Main_Trash_Items(locationId) {
                     }
                     savedtime.textContent = photo.date;
                     gridpostcaption.textContent = photo.title;
-                    saveddeletebtn.appendChild(saveddelete);
-                    saveddelete.src = 'newicons/trash-can.png';
                     savedtime.classList.add('savedtime');
-                    saveddeletebtn.classList.add('saveddeletebtn');
-                    saveddeletebtn.classList.add('headerbtns');
 
                     savedtilebox.classList.add('savedtilebox');
                     savedtilebox.classList.add('UXer_TrUXheDTYle_bX');
                     savedtilebox.id = photo.posterId + 'UXer_TrUXheDTYle_bX';
 
-                    gridposttime.classList.add('gridposttime');
-
                     gridposttitlecover.appendChild(gridpostcaption);
                     gridposttitlecover.classList.add('gridposttitlecover');
                     gridpostcaption.classList.add('gridpostcaption');
                     gridpostimagecontainer.appendChild(gridposttitlecover);
-                    gridpostimagecontainer.appendChild(savedtime);
-                    gridpostimagecontainer.appendChild(saveddeletebtn);
                     gridpostimagecontainer.appendChild(savedtilebox);
 
                     itemsviewonlargescale.appendChild(largescalewideviewcontainer);
-                    itemsviewonlargescale.appendChild(itemsviewclosebutton);
                     largescalewideviewcontainer.appendChild(gridpostimagecontainer);
                     gridpostimagecontainer.classList.add('gridpostimagecontainer');
                     largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
@@ -627,7 +651,7 @@ function deleting_Saved_Post_Script(savedItems,LogInFormData,locationId,id) {
     confirmationtrue.classList.add('confirmationtrue');
     confirmationfalse.classList.add('confirmationfalse');
     confirmationfalse.addEventListener('click', () => {
-        confirmation_popup.style.display = 'none';
+        confirmation_popup.remove();
     });
     confirmation_popup.style.display = 'flex';
 

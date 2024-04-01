@@ -49,7 +49,7 @@ function loadscreen() {
     loadingsection.appendChild(loading_progress)
     loadingsection.classList.add('loadingsection');
 }
-const newURL = 'https://github.com/TonyBrianJackson/lavinsta/blob/main/database/users.json'
+const newURL = 'https://tonybrianjackson.github.io/lavinsta_database/users.json';
 const url = 'database/users.json';
 
 function fetchUrl() {
@@ -57,11 +57,19 @@ function fetchUrl() {
         method: 'GET',
         mode: 'no-cors',
         headers: {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true,
         }
     }
     function getData() {
-        fetch(newURL, param).then(res => res.json()).then(data => console.log(data));
+        fetch(newURL)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+            })
     }
     getData();
 }
@@ -75,14 +83,16 @@ function pushData() {
     fetch(newURL, {
         method: 'POST',
         mode: "no-cors",
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonArr)
-    });
+        body: JSON.stringify(jsonArr),
+        headers: new Headers({
+            "Access-Control-Allow-Origin" : "*", 
+            "Access-Control-Allow-Credentials" : true,
+            'Content-Type': 'application/json; charset=UTF-8'
+        }),
+    }).then(res => res.json()).then(data => console.log(data));
+
 }
-// document.body.addEventListener('click',pushData);
+// document.body.addEventListener('click', pushData);
 
 function stoploading() {
     document.querySelectorAll('.loadingsection').forEach(section => {
@@ -109,7 +119,7 @@ function create_Active_Account() {
                             if (activeuser.user_Id === profile.user_Id) {
                                 if (activeuser.user_Is_Online === false) {
                                     activeuser.user_Is_Online = true;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));   
+                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                 }
                             }
                         });

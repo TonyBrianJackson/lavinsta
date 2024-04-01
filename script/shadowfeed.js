@@ -315,6 +315,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                         gridpostimagecontainer.appendChild(gridView_Header);
                         gridView_Header.appendChild(gridpostNameAndImg);
                         gridView_Header.appendChild(more);
+                        gridView_Header.appendChild(itemsviewclosebutton);
                         gridpostNameAndImg.appendChild(nameAndImgWrapper);
                         nameAndImgWrapper.appendChild(posterImgCont);
                         nameAndImgWrapper.appendChild(nameAndCaptionWrapper);
@@ -639,7 +640,6 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 });
 
                 itemsviewonlargescale.appendChild(largescalewideviewcontainer);
-                itemsviewonlargescale.appendChild(itemsviewclosebutton);
                 largescalewideviewcontainer.appendChild(gridpostimagecontainer);
                 largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
                 itemsviewclosebutton.classList.add('itemsviewclosebutton');
@@ -810,10 +810,8 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
         }
     }
     displayelement('none');
-    let saveddelete = document.createElement('img');
     let savedtilebox = document.createElement('nav');
     let savedtime = document.createElement('span');
-    let saveddeletebtn = document.createElement('span');
 
     let itemsviewclosebutton = document.createElement('span');
     let itemsviewonlargescale = document.createElement('section');
@@ -822,7 +820,11 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
     //viewing gridpost
     let gridpostimagecontainer = document.createElement('div');
     let gridposttitlecover = document.createElement('span');
-    let gridposttime = document.createElement('b');
+    let gridView_Header = document.createElement('header');
+    gridpostimagecontainer.appendChild(gridView_Header);
+    gridView_Header.appendChild(savedtime);
+    gridView_Header.appendChild(itemsviewclosebutton);
+    gridView_Header.classList.add('gridView_Header');
     itemsviewonlargescale.style.display = 'flex';
 
     loader(itemsviewonlargescale, locationId);
@@ -936,27 +938,20 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
     }
     savedtime.textContent = elapsedtime;
     gridpostcaption.textContent = caption;
-    saveddeletebtn.appendChild(saveddelete);
-    saveddelete.src = 'newicons/trash-can.png';
     savedtime.classList.add('savedtime');
-    saveddeletebtn.classList.add('saveddeletebtn');
-    saveddeletebtn.classList.add('headerbtns');
 
     savedtilebox.classList.add('savedtilebox');
     savedtilebox.classList.add('UXer_TrUXheDTYle_bX');
     savedtilebox.id = posterId + 'UXer_TrUXheDTYle_bX';
 
-    gridposttime.classList.add('gridposttime');
 
     gridposttitlecover.appendChild(gridpostcaption);
     gridposttitlecover.classList.add('gridposttitlecover');
     gridpostcaption.classList.add('gridpostcaption');
     gridpostimagecontainer.appendChild(gridposttitlecover);
-    gridpostimagecontainer.appendChild(savedtime);
     gridpostimagecontainer.appendChild(savedtilebox);
 
     itemsviewonlargescale.appendChild(largescalewideviewcontainer);
-    itemsviewonlargescale.appendChild(itemsviewclosebutton);
     largescalewideviewcontainer.appendChild(gridpostimagecontainer);
     gridpostimagecontainer.classList.add('gridpostimagecontainer');
     largescalewideviewcontainer.classList.add('largescalewideviewcontainer');

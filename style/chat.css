@@ -362,12 +362,15 @@
     z-index: 3;
     position: absolute;
     box-shadow: none;
+    border: none;
     background: var(--color-very-light);
     bottom: 0;
     left: 50%;
     transform: translate(-50%);
 }
-
+.gridpostimagecontainer .options {
+    border-radius: 0px;
+}
 .options .headerbtns {
     color: var(--color-white);
 }
