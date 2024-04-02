@@ -100,8 +100,16 @@ const infosvg =
     `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M14,7.25A1.75,1.75,0,1,1,12.25,5.5,1.751,1.751,0,0,1,14,7.25ZM24,12A12,12,0,1,0,12,24H24Zm-3,0v9H12a9,9,0,1,1,9-9Zm-7,.5A2.5,2.5,0,0,0,11.5,10H9v3h2v5h3Z"/></svg>`;
 const microphone = 
 `<svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="512" height="512"><path d="M10,12a1,1,0,0,1-1,1H4.069a7.993,7.993,0,0,0,15.862,0H15a1,1,0,0,1,0-2h5V9H15a1,1,0,0,1,0-2h4.931A7.993,7.993,0,0,0,4.069,7H9A1,1,0,0,1,9,9H4v2H9A1,1,0,0,1,10,12Z"/><path d="M23,12a1,1,0,0,0-1,1,9.01,9.01,0,0,1-9,9H11a9.011,9.011,0,0,1-9-9,1,1,0,0,0-2,0A11.013,11.013,0,0,0,11,24h2A11.013,11.013,0,0,0,24,13,1,1,0,0,0,23,12Z"/></svg>`;
-
-
+const editsvg = 
+`<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M24,3.46c-.05-1.03-.54-1.99-1.34-2.64-1.43-1.17-3.61-1.01-4.98,.36l-1.67,1.67c-.81-.54-1.77-.84-2.77-.84-1.34,0-2.59,.52-3.54,1.46l-3.03,3.03c-.39,.39-.39,1.02,0,1.41s1.02,.39,1.41,0l3.03-3.03c.89-.89,2.3-1.08,3.42-.57L2.07,16.79c-.69,.69-1.07,1.6-1.07,2.57,0,.63,.16,1.23,.46,1.77l-1.16,1.16c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29l1.16-1.16c.53,.3,1.14,.46,1.77,.46,.97,0,1.89-.38,2.57-1.07L22.93,6.21c.73-.73,1.11-1.73,1.06-2.76ZM5.8,20.52c-.62,.62-1.7,.62-2.32,0-.31-.31-.48-.72-.48-1.16s.17-.85,.48-1.16L16.08,5.61l2.32,2.32L5.8,20.52ZM21.52,4.8l-1.71,1.71-2.32-2.32,1.6-1.6c.37-.37,.85-.56,1.32-.56,.36,0,.7,.11,.98,.34,.37,.3,.58,.72,.61,1.19,.02,.46-.15,.92-.48,1.24Z"/></svg>`;
+const deletesvg = 
+`<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+<path d="m11,15.242v3.758h-2v-5.758l2,2Zm6,6.758H7c-.551,0-1-.448-1-1v-10.758l-2-2v12.757c0,1.654,1.346,3,3,3h10c.765,0,1.457-.297,1.988-.77l-1.426-1.425c-.162.114-.349.196-.562.196Zm-4-3h1.758l-1.758-1.758v1.758ZM2.586,4L.043,1.457,1.457.043l3.957,3.957h1.586v-2c0-1.103.897-2,2-2h6c1.103,0,2,.897,2,2v2h5v2h-2v12.5h-.086l4.043,4.043-1.414,1.414L4.586,6l-2-2Zm6.414,0h6v-2h-6v2Zm9,2H7.414l5.586,5.586v-2.586h2v4.586l3,3V6Z"/>
+</svg>`;
+const downloadsvg = 
+`<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M24,24H0v-2H24v2Zm-9.86-4.89l9.82-10.11h-6.95V0H7V9H.07l9.8,10.11h0c.57,.58,1.32,.89,2.12,.89h0c.8,0,1.56-.31,2.13-.89ZM4.79,11h4.21V2h6V11h4.22l-6.51,6.71c-.19,.19-.44,.29-.71,.29h0c-.27,0-.52-.1-.7-.29l-6.5-6.71Z"/></svg>`;
+const copysvg = 
+`<svg id="Layer_1" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m20 20h-20v-17a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3zm-18-2h16v-15a1 1 0 0 0 -1-1h-14a1 1 0 0 0 -1 1zm20-13.816v17.816h-18v2h20v-17a3 3 0 0 0 -2-2.816z"/></svg>`;
 function createDevTool() {
     document.querySelectorAll('.devtool').forEach(tool => {
         tool.remove();
@@ -519,9 +527,12 @@ function ThemeSettings(user_Id, user_Mode) {
         ChangeBackGround();
         restoreTheme();
     } if (user_Mode == 'darkTheme') {
-        lightcolor = '30%';
-        whitecolor = '35%';
+        lightcolor = '15%';
+        whitecolor = '5%';
         darkcolor = '100%';
+        // lightcolor = '30%';
+        // whitecolor = '35%';
+        // darkcolor = '100%';
         document.querySelector('.themeactive-1').classList.remove('active');
         document.querySelector('.themeactive-2').classList.add('active');
         document.querySelector('.themeactive-3').classList.remove('active');

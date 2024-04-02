@@ -63,46 +63,234 @@ function createPublicFeed() {
                     let main = document.createElement('a');
                     let sub = document.createElement('div');
                     let more = document.createElement('span');
-                    let postmenu = document.createElement('div');
-
-                    let abc = document.createElement('span');
-                    let mno = document.createElement('span');
-                    let pqr = document.createElement('span');
-                    let rst = document.createElement('span');
-                    let uvw = document.createElement('span');
-                    let xyz = document.createElement('span');
-
-                    let abc1 = document.createElement('span');
-                    let mno5 = document.createElement('span');
-                    let pqr6 = document.createElement('span');
-                    let rst7 = document.createElement('span');
-                    let uvw8 = document.createElement('span');
-                    let xyz9 = document.createElement('span');
-
-                    let abcimg = document.createElement('img');
-                    let mnoimg = document.createElement('img');
-                    let pqrimg = document.createElement('img');
-                    let rstimg = document.createElement('img');
-                    let uvwimg = document.createElement('img');
-                    let xyzimg = document.createElement('img');
-
+                    function pushSavedphotos(option) {
+                        if (!option.classList.contains('active')) {
+                            const newId = '' + new Date().getTime();
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(data => {
+                                    LogInFormData.forEach(user => {
+                                        if (user.user_Id === data.user_Id) {
+                                            let saved = user.user_Saved;
+                                            saved.push({
+                                                savedId: user.user_Id,
+                                                postId: photo.id,
+                                                id: newId,
+                                            });
+                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                            option.classList.add('active');
+                                        }
+                                    });
+                                });
+                            }
+                            create_Message('saved successfully');
+                        } else {
+                            create_Message('already saved');
+                        }
+                    }
+    
+                    more.addEventListener('click', () => {
+                        create_Options_Script();
+                    });
+    
+                    function create_Options_Script() {
+                        removeOptions();
+                        let options = document.createElement('div');
+                        let first_Option = document.createElement('span');
+                        let second_Option = document.createElement('span');
+                        let third_Option = document.createElement('span');
+                        let fouth_Option = document.createElement('span');
+                        let fifth_Option = document.createElement('span');
+                        let sixth_Option = document.createElement('span');
+                        let seventh_Option = document.createElement('span');
+                        let eight_Option = document.createElement('span');
+                        let exit = document.createElement('span');
+    
+                        main.insertAdjacentElement("afterend", options);
+                        options.appendChild(exit);
+                        options.appendChild(first_Option);
+                        options.appendChild(second_Option);
+                        options.appendChild(third_Option);
+                        options.appendChild(eight_Option);
+                        options.appendChild(fouth_Option);
+                        options.appendChild(fifth_Option);
+                        options.appendChild(sixth_Option);
+                        options.appendChild(seventh_Option);
+                        first_Option.innerHTML = editsvg;
+                        second_Option.innerHTML = savedsvg;
+                        third_Option.innerHTML = deletesvg;
+                        fouth_Option.innerHTML = likesvg;
+                        fifth_Option.innerHTML = commentsvg;
+                        sixth_Option.innerHTML = sharesvg;
+                        seventh_Option.innerHTML = medicalreportsvg;
+                        eight_Option.innerHTML = downloadsvg;
+                        exit.innerHTML = undo2;
+    
+                        options.classList.add('options');
+                        first_Option.classList.add('headerbtns');
+                        second_Option.classList.add('headerbtns');
+                        third_Option.classList.add('headerbtns');
+                        fouth_Option.classList.add('headerbtns');
+                        fifth_Option.classList.add('headerbtns');
+                        sixth_Option.classList.add('headerbtns');
+                        seventh_Option.classList.add('headerbtns');
+                        eight_Option.classList.add('headerbtns');
+                        exit.classList.add('headerbtns');
+                        fouth_Option.classList.add('cancelled');
+                        fifth_Option.classList.add('cancelled');
+                        sixth_Option.classList.add('cancelled');
+                        function showcancelled() {
+                            if (photo.shareactive === false) {
+                                sixth_Option.classList.remove('cancelled');
+                                sixth_Option.classList.add('active');
+                            } if (photo.commentactive === false) {
+                                fifth_Option.classList.remove('cancelled');
+                                fifth_Option.classList.add('active');
+                            } if (photo.likeactive === false) {
+                                fouth_Option.classList.remove('cancelled');
+                                fouth_Option.classList.add('active');
+                            }
+                        }
+                        showcancelled();
+                        seventh_Option.addEventListener('click', () => {
+                            create_reportScript(photo.id);
+                            removeOptions();
+                        });
+                        first_Option.addEventListener('click', () => {
+                            editingPostText(photo.id);
+                            removeOptions();
+                        });
+                        third_Option.addEventListener('click', () => {
+                            delete_Timeline_Post(photo.id);
+                            removeOptions();
+                        });
+                        fouth_Option.addEventListener('click', () => {
+                            if (photo.likeactive === true) {
+                                photo.likeactive = false;
+                                fouth_Option.classList.remove('cancelled');
+                                fouth_Option.classList.add('active');
+                            } else {
+                                photo.likeactive = true;
+                                fouth_Option.classList.add('cancelled');
+                            }
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                        });
+                        fifth_Option.addEventListener('click', () => {
+                            if (photo.commentactive === true) {
+                                photo.commentactive = false;
+                                fifth_Option.classList.remove('cancelled');
+                                fifth_Option.classList.add('active');
+                            } else {
+                                photo.commentactive = true;
+                                fifth_Option.classList.add('cancelled');
+                            }
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                        });
+                        sixth_Option.addEventListener('click', () => {
+                            if (photo.shareactive === true) {
+                                photo.shareactive = false;
+                                sixth_Option.classList.remove('cancelled');
+                                sixth_Option.classList.add('active');
+                            } else {
+                                photo.shareactive = true;
+                                sixth_Option.classList.add('cancelled');
+                            }
+                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
+                        });
+                        exit.addEventListener('click', () => {
+                            options.remove();
+                        });
+                        function checkIfPostIsSaved() {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                                ActiveUser_Account.forEach(data => {
+                                    LogInFormData.forEach(user => {
+                                        if (user.user_Id === data.user_Id) {
+                                            let saved = user.user_Saved;
+                                            saved.forEach(item => {
+                                                if (item.postId === photo.id) {
+                                                    second_Option.classList.add('active');
+                                                }
+                                            })
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                        checkIfPostIsSaved();
+    
+        
+                        second_Option.addEventListener('click', () => {
+                            pushSavedphotos(second_Option);
+                            removeOptions();
+                            newSaved_Script();
+                        });
+                        if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
+                            function pushSavedData() {
+                                var new_Date = new Date().getTime();
+                                var download_Link = document.createElement('a');
+                                download_Link.href = mainimg.src;
+                                download_Link.download = "Lavinsta" + '_' + 'IMG' + '_' + new_Date + '.' + 'jpeg';
+                                download_Link.click();
+                            }
+                            eight_Option.addEventListener('click', () => {
+                                pushSavedData();
+                                removeOptions();
+                            });
+                        } if (photo.isVideo) {
+                            function pushSavedData() {
+                                var new_Date = new Date().getTime();
+                                var download_Link = document.createElement('a');
+                                download_Link.href = timelinevideo.src;
+                                download_Link.download = "Lavinsta" + '_' + 'VIDEO' + '_' + new_Date + '.' + 'mp4';
+                                download_Link.click();
+                            }
+                            eight_Option.addEventListener('click', () => {
+                                pushSavedData();
+                                removeOptions();
+                            });
+                        } if (photo.isText) {
+                            eight_Option.innerHTML = copysvg;
+                            function copyTextPost(text) {
+                                if (navigator.clipboard) {
+                                    try {
+                                        const toCopy = text;
+                                        navigator.clipboard.writeText(toCopy);
+                                        create_Message('text copied');
+                                    }
+                                    catch (err) {
+                                        console.error('Failed to copy: ', err);
+                                        create_Message('unable to copy');
+                                    }
+                                }
+                            }
+                            eight_Option.addEventListener('click', () => {
+                                copyTextPost(photo.Property_Src);
+                                removeOptions();
+                            });
+                        }
+                        if (JSON.parse(localStorage.getItem('ActiveUser_Account'))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                            ActiveUser_Account.forEach(user => {
+                                if (user.user_Id === photo.posterId) {
+                                    seventh_Option.remove();
+                                } else {
+                                    first_Option.remove();
+                                    third_Option.remove();
+                                    fouth_Option.remove();
+                                    fifth_Option.remove();
+                                    sixth_Option.remove();
+                                }
+                            })
+                        }
+                    }
                     if (photo.isPhoto) {
                         let mainimg = document.createElement('img');
                         main.appendChild(mainimg);
                         mainimg.classList.add('mainimg');
                         mainimg.addEventListener('click', () => {
                             createMain_GridPost(photo.id, mainimg.src);
-                        });
-                        function pushSavedData() {
-                            postmenu.classList.toggle('postmenuactive');
-                            var new_Date = new Date().getTime();
-                            var download_Link = document.createElement('a');
-                            download_Link.href = mainimg.src;
-                            download_Link.download = "Lavinsta" + '_' + 'IMG' + '_' + new_Date + '.' + 'jpeg';
-                            download_Link.click();
-                        }
-                        xyz.addEventListener('click', () => {
-                            pushSavedData();
                         });
                         function create_Multi_Tile() {
                             let children_Tile_Box = document.createElement('nav');
@@ -168,14 +356,6 @@ function createPublicFeed() {
                         filter_PostImage();
                     } if (photo.isText) {
                         let textPost = document.createElement('p');
-                        let copyText = document.createElement('span');
-                        let copy = document.createElement('span');
-                        let copyIcon = document.createElement('img');
-                        postmenu.appendChild(copyText);
-                        copyText.appendChild(copyIcon);
-                        copyText.appendChild(copy);
-                        copy.textContent = 'Copy Text';
-                        copyIcon.src = 'icons/copy.png';
                         main.appendChild(textPost);
                         textPost.textContent = photo.Property_Src;
                         textPost.textContent.split(" ").forEach(texttitle => {
@@ -192,27 +372,12 @@ function createPublicFeed() {
                             });
                         });
                         textPost.classList.add('textPost');
-                        copyText.addEventListener('click', () => {
-                            copyTextPost(textPost.textContent);
-                        });
+                        
                         textPost.addEventListener('click', () => {
                             if (textPost.textContent.length > 121) {
                                 textPost.classList.toggle('textPostmoreorless');
                             }
                         });
-                        function copyTextPost(text) {
-                            if (navigator.clipboard) {
-                                try {
-                                    const toCopy = text;
-                                    navigator.clipboard.writeText(toCopy);
-                                    create_Message('text copied');
-                                }
-                                catch (err) {
-                                    console.error('Failed to copy: ', err);
-                                    create_Message('unable to copy');
-                                }
-                            }
-                        }
                         function textTheme() {
                             function textThemeBackGround() {
                                 if (photo.themeMode == 'default') {
@@ -425,73 +590,8 @@ function createPublicFeed() {
                         timelinebottomprevious.addEventListener('click', () => {
                             timelinevideo.currentTime -= 10;
                         });
-                        function pushSavedData() {
-                            postmenu.classList.toggle('postmenuactive');
-                            var new_Date = new Date().getTime();
-                            var download_Link = document.createElement('a');
-                            download_Link.href = timelinevideo.src;
-                            download_Link.download = "Lavinsta" + '_' + 'VIDEO' + '_' + new_Date + '.' + 'mp4';
-                            download_Link.click();
-                        }
-                        xyz.addEventListener('click', () => {
-                            pushSavedData();
-                        });
                     }
-                    let activitydownheadear = document.createElement('header');
-                    let activitydownexit = document.createElement('div');
-                    let activitydowncontainer = document.createElement('div');
-                    let commentshutdown = document.createElement('span');
-                    let likeshutdown = document.createElement('span');
-                    let shareshutdown = document.createElement('span');
-                    post.appendChild(activitydowncontainer);
-                    activitydowncontainer.appendChild(activitydownheadear);
-                    activitydowncontainer.appendChild(commentshutdown);
-                    activitydowncontainer.appendChild(likeshutdown);
-                    activitydowncontainer.appendChild(shareshutdown);
-                    activitydownheadear.appendChild(activitydownexit);
-                    activitydownheadear.classList.add('activitydownheadear');
-                    activitydowncontainer.classList.add('activitydowncontainer');
-                    commentshutdown.textContent = 'turn off comments';
-                    likeshutdown.textContent = 'turn off votes';
-                    shareshutdown.textContent = 'turn off shares';
-                    activitydownexit.innerHTML = '&LeftArrow;';
-                    uvw.addEventListener('click', () => {
-                        postmenu.classList.toggle('postmenuactive');
-                        activitydowncontainer.classList.toggle('activitydowncontaineractive');
-                    });
-                    activitydownexit.addEventListener('click', () => {
-                        activitydowncontainer.classList.toggle('activitydowncontaineractive');
-                    });
-                    likeshutdown.addEventListener('click', () => {
-                        if (photo.likeactive === true) {
-                            photo.likeactive = false;
-                            likeshutdown.textContent = 'turn on votes';
-                        } else {
-                            photo.likeactive = true;
-                            likeshutdown.textContent = 'turn off votes';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-                    commentshutdown.addEventListener('click', () => {
-                        if (photo.commentactive === true) {
-                            photo.commentactive = false;
-                            commentshutdown.textContent = 'turn on comments';
-                        } else {
-                            photo.commentactive = true;
-                            commentshutdown.textContent = 'turn off comments';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-                    shareshutdown.addEventListener('click', () => {
-                        if (photo.shareactive === true) {
-                            photo.shareactive = false;
-                            shareshutdown.textContent = 'turn on shares';
-                        } else {
-                            photo.shareactive = true;
-                            shareshutdown.textContent = 'turn off shares';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
+
 
                     let postelapsedtime = document.createElement('span');
                     let postattributation = document.createElement('span');
@@ -534,20 +634,6 @@ function createPublicFeed() {
                     like_toolpit.classList.add('toolpit');
                     comment_toolpit.classList.add('toolpit');
                     share_toolpit.classList.add('toolpit');
-
-
-                    mno.addEventListener('click', () => {
-                        create_reportScript(photo.id);
-                        postmenu.classList.toggle('postmenuactive');
-                    });
-                    rst.addEventListener('click', () => {
-                        editingPostText(photo.id);
-                        postmenu.classList.toggle('postmenuactive');
-                    });
-                    pqr.addEventListener('click', () => {
-                        delete_Timeline_Post(photo.id);
-                        postmenu.classList.toggle('postmenuactive');
-                    });
 
 
                     first_Child_3.addEventListener('click', () => {
@@ -634,7 +720,6 @@ function createPublicFeed() {
 
                     feedcolumn.appendChild(post);
                     post.appendChild(head);
-                    post.appendChild(postmenu);
                     post.appendChild(main);
                     post.appendChild(sub);
                     post.appendChild(sharevideophotocomment);
@@ -649,50 +734,6 @@ function createPublicFeed() {
 
                     postattributation.textContent = photo.attribute;
                     postattributation.classList.add('postattributation');
-
-                    postmenu.classList.add('postmenu');
-                    postmenu.appendChild(rst);
-                    postmenu.appendChild(abc);
-                    postmenu.appendChild(mno);
-                    postmenu.appendChild(pqr);
-                    postmenu.appendChild(xyz);
-                    postmenu.appendChild(uvw);
-
-                    rst.appendChild(rstimg);
-                    abc.appendChild(abcimg);
-                    mno.appendChild(mnoimg);
-                    pqr.appendChild(pqrimg);
-                    uvw.appendChild(uvwimg);
-                    xyz.appendChild(xyzimg);
-
-                    abc.appendChild(abc1);
-                    mno.appendChild(mno5);
-                    pqr.appendChild(pqr6);
-                    rst.appendChild(rst7);
-                    uvw.appendChild(uvw8);
-                    xyz.appendChild(xyz9);
-
-                    abc1.textContent = 'Save';
-                    mno5.textContent = 'Report';
-                    pqr6.textContent = 'Delete';
-                    rst7.textContent = 'Edit';
-                    uvw8.textContent = 'More';
-                    xyz9.textContent = 'Download';
-
-                    uvwimg.src = 'icons/discover.png';
-                    abcimg.src = 'newicons/bookmark-white (1).png';
-                    mnoimg.src = 'newicons/medical-report.png';
-                    pqrimg.src = 'newicons/delete.png';
-                    rstimg.src = 'newicons/edit.png';
-                    xyzimg.src = 'icons/downloads.png';
-
-                    if (photo.posterId !== feedcolumn.id) {
-                        pqr.remove();
-                        rst.remove();
-                        uvw.remove();
-                    } else {
-                        mno.remove();
-                    }
 
                     const startTime = function () {
                         let time;
@@ -807,23 +848,6 @@ function createPublicFeed() {
                         }, 3000);
                     });
 
-                    function getIconsOnDarkMode() {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            ActiveUser_Account.forEach(data => {
-                                if (data.user_Mode !== 'defaultTheme') {
-                                    uvwimg.classList.add('darkmodeicons');
-                                    abcimg.classList.add('darkmodeicons');
-                                    mnoimg.classList.add('darkmodeicons');
-                                    pqrimg.classList.add('darkmodeicons');
-                                    rstimg.classList.add('darkmodeicons');
-                                    xyzimg.classList.add('darkmodeicons');
-                                }
-                            });
-                        }
-                    }
-                    getIconsOnDarkMode();
-
                     main.href = `#Post_Id=${photo.id}/postType=${photo.type}`;
                     function Poster_Details() {
                         LogInFormData.forEach(user => {
@@ -831,9 +855,7 @@ function createPublicFeed() {
                                 authorsImg.src = user.user_ProfilePicture;
                                 name.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
                                 name.href = `#/user_Id=${user.user_Id}/users_Name=${user.user_Firstname + '+' + user.user_Surname}`;
-                                if (photo.isText) {
-                                    xyz.remove();
-                                }
+                                
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -868,59 +890,6 @@ function createPublicFeed() {
                         if (title.textContent.length > 294) {
                             title.classList.toggle('posttitlemoreorless');
                         }
-                    });
-
-                    function checkIfPostIsSaved() {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            ActiveUser_Account.forEach(data => {
-                                LogInFormData.forEach(user => {
-                                    if (user.user_Id === data.user_Id) {
-                                        let saved = user.user_Saved;
-                                        saved.forEach(item => {
-                                            if (item.postId === photo.id) {
-                                                abc1.textContent = 'Saved';
-                                            }
-                                        })
-                                    }
-                                });
-                            });
-                        }
-                    }
-
-                    checkIfPostIsSaved();
-
-                    function pushSavedphotos() {
-                        if (abc1.innerText == 'Save') {
-                            const newId = '' + new Date().getTime();
-                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                                ActiveUser_Account.forEach(data => {
-                                    LogInFormData.forEach(user => {
-                                        if (user.user_Id === data.user_Id) {
-                                            let saved = user.user_Saved;
-                                            saved.push({
-                                                savedId: user.user_Id,
-                                                postId: photo.id,
-                                                id: newId,
-                                            });
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                            abc1.innerText = 'Saved';
-                                        }
-                                    });
-                                });
-                            }
-                            create_Message('saved successfully');
-                        } else {
-                            create_Message('already saved');
-                        }
-                    }
-
-                    abc.addEventListener('click', () => {
-                        postmenu.classList.toggle('postmenuactive');
-                        pushSavedphotos();
-                        newSaved_Script();
                     });
 
                     livelikecount.textContent = photo.likes.length;
@@ -987,20 +956,15 @@ function createPublicFeed() {
                     function showOnAndOffActivities() {
                         if (photo.shareactive === false) {
                             first_Child_3.remove();
-                            shareshutdown.textContent = 'turn on shares';
                         } if (photo.commentactive === false) {
                             commentinput.remove();
                             last_Child.remove();
-                            commentshutdown.textContent = 'turn on comments';
                         } if (photo.likeactive === false) {
                             first_Child_2.remove();
-                            likeshutdown.textContent = 'turn on votes';
                         }
                     }
                     showOnAndOffActivities();
-                    more.addEventListener('click', (event) => {
-                        postmenu.classList.toggle('postmenuactive');
-                    });
+
 
                     authorsImg.addEventListener('click', () => {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {

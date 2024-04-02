@@ -789,7 +789,7 @@ button {
         height: max-content;
         max-height: 100%;
         box-shadow: var(--light-box-shadow);
-        background: var(--color-light);
+        background: var(--color-white);
         z-index: 753;
         left: 50%;
         top: initial;

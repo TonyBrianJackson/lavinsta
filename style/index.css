@@ -2970,7 +2970,10 @@ main .header {
     cursor: pointer;
     z-index: 1;
 }
-
+.commentinput>div>svg path,
+.shareandlikecommentflex>div>svg path {
+    fill: var(--color-dark);
+}
 .shareandlikecommentflexactive {
     width: 0px;
     height: 100%;
@@ -8738,9 +8741,10 @@ a {
     }
 
     .mainsearchbar {
+        width: 75%;
         background: var(--color-white);
         box-shadow: none;
-        border: none;
+        border: 1px solid var(--color-light);
     }
 
     .headersearchflex,
@@ -8768,12 +8772,16 @@ a {
 
     .searchheadericons.active {
         box-shadow: none;
+        background: none;
+        border-radius: 0px;
         border: none;
     }
-
+    .searchheadericons.active svg path {
+        fill: var(--color-bright);
+    }
     .searchheadericons svg {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
 
     .searchlink {

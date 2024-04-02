@@ -78,7 +78,6 @@
 }
 
 .gridposttextToview {
-    height: 100%;
     font-size: 30px;
     width: 100%;
     display: block;
@@ -3453,9 +3452,14 @@
         left: 0;
         top: 0;
         border-radius: 0px;
-        background: var(--color-light);
+        padding: 10px;
+        background: var(--color-white);
     }
-
+    .commentsectioncontainer .options,
+    .commentroomsection .options {
+        padding: 10px;
+        gap: 0px 10px;
+    }
     .commentsectioncontaineractive {
         z-index: 751;
     }
@@ -3471,6 +3475,8 @@
         overflow-y: scroll;
         height: 85%;
         margin: 2px 0px;
+        border-radius: 25px;
+        background: var(--color-light);
     }
 
     .replyroomculomn {
@@ -3485,32 +3491,34 @@
         justify-content: left;
         align-items: center;
         z-index: 1;
-        background: var(--color-light);
+        background: none;
     }
     .options .headerbtns.sharegridlike {
         width: 45px;
         height: 45px;
         margin: 0;
-        border: 2px solid var(--color-gray);
+        border: 1px solid var(--color-light);
     }
 
     .options .headerbtns.sharegridliked {
         width: 45px;
         height: 45px;
         margin: 0;
-        border: 2px solid var(--color-bright);
+        border: 1px solid var(--color-bright);
     }
 
     .newcommentinput {
-        width: 90%;
+        width: 100%;
         height: max-content;
         box-shadow: none;
         gap: 0px 10px;
         min-height: 45px;
         border: none;
         overflow: hidden;
-        background: var(--color-light);
+        background: var(--color-white);
         display: flex;
+        border-radius: 0px;
+        padding: 5px;
     }
 
     .newcommentinput input {
@@ -3518,7 +3526,7 @@
         height: 100%;
         font-size: 15px;
         box-shadow: none;
-        border: 1px solid var(--color-gray);
+        border: 1px solid var(--color-light);
         background: var(--color-white);
     }
 
@@ -3527,7 +3535,7 @@
         height: 45px;
         color: var(--color-dark);
         margin: 0;
-        border: 1px solid var(--color-gray);
+        border: 1px solid var(--color-light);
     }
 
     .topactivities span {
@@ -3675,7 +3683,6 @@
     }
 
     .commentinput {
-        border-style: none;
         border: none;
     }
 
@@ -3833,7 +3840,7 @@
         height: max-content;
         max-height: 100%;
         box-shadow: var(--light-box-shadow);
-        background: var(--color-light);
+        background: var(--color-white);
         z-index: 540;
         left: 50%;
         top: initial;
