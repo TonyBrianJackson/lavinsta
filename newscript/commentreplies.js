@@ -98,9 +98,7 @@ function createcommentreplys(section, locationId) {
                         function view_Options() {
                             let options = document.createElement('div');
                             let first_Option = document.createElement('span');
-                            let first_Optionimg = document.createElement('img');
                             let third_Option = document.createElement('span');
-                            let third_Optionimg = document.createElement('img');
                             let exit = document.createElement('span');
 
                             first_Option.id = comment.id;
@@ -108,16 +106,14 @@ function createcommentreplys(section, locationId) {
                             options.appendChild(exit);
                             options.appendChild(first_Option);
                             options.appendChild(third_Option);
-                            first_Option.appendChild(first_Optionimg);
-                            third_Option.appendChild(third_Optionimg);
+                            first_Option.innerHTML = recreatesvg;
+                            third_Option.innerHTML = likesvg;
                             options.classList.add('options');
                             first_Option.classList.add('headerbtns');
                             third_Option.classList.add('headerbtns');
                             exit.classList.add('headerbtns');
                             first_Option.classList.add('first_Option');
-                            exit.innerHTML = '&times;';
-                            first_Optionimg.src = 'newicons/share.png';
-                            third_Optionimg.src = 'newicons/like.png';
+                            exit.innerHTML = undo;
 
                             third_Option.addEventListener('click', () => {
                                 likecomment();
@@ -128,14 +124,12 @@ function createcommentreplys(section, locationId) {
                                 let mesgBox = document.createElement('div');
                                 let mesgTextBox = document.createElement('input');
                                 let sendmesg = document.createElement('div');
-                                let sendmesgImg = document.createElement('img');
                                 options.appendChild(mesgBox);
                                 mesgBox.appendChild(mesgTextBox);
                                 options.appendChild(sendmesg);
-                                sendmesg.appendChild(sendmesgImg);
+                                sendmesg.innerHTML = sendsvg;
                                 sendmesg.classList.add('headerbtns');
                                 mesgBox.classList.add('mesgBox');
-                                sendmesgImg.src = 'newicons/send.png';
                                 mesgTextBox.type = 'text';
                                 mesgTextBox.placeholder = 'send reply...';
 
@@ -157,9 +151,7 @@ function createcommentreplys(section, locationId) {
                         function create_Options_Script() {
                             let options = document.createElement('div');
                             let first_Option = document.createElement('span');
-                            let first_Optionimg = document.createElement('img');
                             let second_Option = document.createElement('span');
-                            let second_Optionimg = document.createElement('img');
                             let exit = document.createElement('span');
 
                             first_Option.id = comment.id;
@@ -167,9 +159,9 @@ function createcommentreplys(section, locationId) {
                             options.appendChild(exit);
                             options.appendChild(first_Option);
                             options.appendChild(second_Option);
-                            first_Option.appendChild(first_Optionimg);
-                            second_Option.appendChild(second_Optionimg);
-
+                            first_Option.innerHTML = deletesvg;
+                            second_Option.innerHTML = likesvg;
+                            exit.innerHTML = undo2;
                             first_Option.classList.add('headerbtns');
                             exit.classList.add('headerbtns');
                             second_Option.classList.add('headerbtns');
@@ -177,9 +169,6 @@ function createcommentreplys(section, locationId) {
                             options.classList.add('options');
 
                             first_Option.classList.add('first_Option');
-                            exit.innerHTML = '&times;';
-                            first_Optionimg.src = 'newicons/trash-can.png';
-                            second_Optionimg.src = 'newicons/like.png';
 
                             first_Option.addEventListener('click', () => {
                                 delete_Comments_Replies(Feeds_Data_Base, comment.relationId, comment.postId, comment.id);
@@ -384,22 +373,22 @@ function createcommentreplys(section, locationId) {
                         }
                         Poster_Details();
 
-                    commentimg.addEventListener('click', () => {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account.forEach(user => {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                createProfileOptions(comment.posterId,user.user_Id);
-                            });
-                        }
-                    });
-                    commentname.addEventListener('click', () => {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account.forEach(user => {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                createProfileOptions(comment.posterId,user.user_Id);
-                            });
-                        }
-                    });
+                        commentimg.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(comment.posterId, user.user_Id);
+                                });
+                            }
+                        });
+                        commentname.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(comment.posterId, user.user_Id);
+                                });
+                            }
+                        });
                     } if (comment.type == 'photo') {
                         let commentmesg = document.createElement('div');
                         let commenttime = document.createElement('span');
@@ -440,12 +429,11 @@ function createcommentreplys(section, locationId) {
                                 commentdelete.style.display = 'none';
                             }, 3000);
                         })
+
                         function view_Options() {
                             let options = document.createElement('div');
                             let first_Option = document.createElement('span');
-                            let first_Optionimg = document.createElement('img');
                             let third_Option = document.createElement('span');
-                            let third_Optionimg = document.createElement('img');
                             let exit = document.createElement('span');
 
                             first_Option.id = comment.id;
@@ -453,16 +441,14 @@ function createcommentreplys(section, locationId) {
                             options.appendChild(exit);
                             options.appendChild(first_Option);
                             options.appendChild(third_Option);
-                            first_Option.appendChild(first_Optionimg);
-                            third_Option.appendChild(third_Optionimg);
+                            first_Option.innerHTML = recreatesvg;
+                            third_Option.innerHTML = likesvg;
                             options.classList.add('options');
                             first_Option.classList.add('headerbtns');
                             third_Option.classList.add('headerbtns');
                             exit.classList.add('headerbtns');
                             first_Option.classList.add('first_Option');
-                            exit.innerHTML = '&times;';
-                            first_Optionimg.src = 'newicons/share.png';
-                            third_Optionimg.src = 'newicons/like.png';
+                            exit.innerHTML = undo;
 
                             third_Option.addEventListener('click', () => {
                                 likecomment();
@@ -473,14 +459,12 @@ function createcommentreplys(section, locationId) {
                                 let mesgBox = document.createElement('div');
                                 let mesgTextBox = document.createElement('input');
                                 let sendmesg = document.createElement('div');
-                                let sendmesgImg = document.createElement('img');
                                 options.appendChild(mesgBox);
                                 mesgBox.appendChild(mesgTextBox);
                                 options.appendChild(sendmesg);
-                                sendmesg.appendChild(sendmesgImg);
+                                sendmesg.innerHTML = sendsvg;
                                 sendmesg.classList.add('headerbtns');
                                 mesgBox.classList.add('mesgBox');
-                                sendmesgImg.src = 'newicons/send.png';
                                 mesgTextBox.type = 'text';
                                 mesgTextBox.placeholder = 'send reply...';
 
@@ -502,9 +486,7 @@ function createcommentreplys(section, locationId) {
                         function create_Options_Script() {
                             let options = document.createElement('div');
                             let first_Option = document.createElement('span');
-                            let first_Optionimg = document.createElement('img');
                             let second_Option = document.createElement('span');
-                            let second_Optionimg = document.createElement('img');
                             let exit = document.createElement('span');
 
                             first_Option.id = comment.id;
@@ -512,9 +494,9 @@ function createcommentreplys(section, locationId) {
                             options.appendChild(exit);
                             options.appendChild(first_Option);
                             options.appendChild(second_Option);
-                            first_Option.appendChild(first_Optionimg);
-                            second_Option.appendChild(second_Optionimg);
-
+                            first_Option.innerHTML = deletesvg;
+                            second_Option.innerHTML = likesvg;
+                            exit.innerHTML = undo2;
                             first_Option.classList.add('headerbtns');
                             exit.classList.add('headerbtns');
                             second_Option.classList.add('headerbtns');
@@ -522,15 +504,11 @@ function createcommentreplys(section, locationId) {
                             options.classList.add('options');
 
                             first_Option.classList.add('first_Option');
-                            exit.innerHTML = '&times;';
-                            first_Optionimg.src = 'newicons/trash-can.png';
-                            second_Optionimg.src = 'newicons/like.png';
 
                             first_Option.addEventListener('click', () => {
                                 delete_Comments_Replies(Feeds_Data_Base, comment.relationId, comment.postId, comment.id);
                                 options.remove();
                             });
-
                             second_Option.addEventListener('click', () => {
                                 likecomment();
                             });
@@ -767,22 +745,22 @@ function createcommentreplys(section, locationId) {
                             });
                         }
                         Poster_Details();
-                    commentimg.addEventListener('click', () => {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account.forEach(user => {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                createProfileOptions(comment.posterId,user.user_Id);
-                            });
-                        }
-                    });
-                    commentname.addEventListener('click', () => {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account.forEach(user => {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                createProfileOptions(comment.posterId,user.user_Id);
-                            });
-                        }
-                    });
+                        commentimg.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(comment.posterId, user.user_Id);
+                                });
+                            }
+                        });
+                        commentname.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(comment.posterId, user.user_Id);
+                                });
+                            }
+                        });
                     } if (comment.type == 'video') {
                         let commentmesg = document.createElement('div');
                         let commentpostvdieocontainer = document.createElement('div');
@@ -826,12 +804,11 @@ function createcommentreplys(section, locationId) {
                                 commentdelete.style.display = 'none';
                             }, 3000);
                         })
+
                         function view_Options() {
                             let options = document.createElement('div');
                             let first_Option = document.createElement('span');
-                            let first_Optionimg = document.createElement('img');
                             let third_Option = document.createElement('span');
-                            let third_Optionimg = document.createElement('img');
                             let exit = document.createElement('span');
 
                             first_Option.id = comment.id;
@@ -839,16 +816,14 @@ function createcommentreplys(section, locationId) {
                             options.appendChild(exit);
                             options.appendChild(first_Option);
                             options.appendChild(third_Option);
-                            first_Option.appendChild(first_Optionimg);
-                            third_Option.appendChild(third_Optionimg);
+                            first_Option.innerHTML = recreatesvg;
+                            third_Option.innerHTML = likesvg;
                             options.classList.add('options');
                             first_Option.classList.add('headerbtns');
                             third_Option.classList.add('headerbtns');
                             exit.classList.add('headerbtns');
                             first_Option.classList.add('first_Option');
-                            exit.innerHTML = '&times;';
-                            first_Optionimg.src = 'newicons/share.png';
-                            third_Optionimg.src = 'newicons/like.png';
+                            exit.innerHTML = undo;
 
                             third_Option.addEventListener('click', () => {
                                 likecomment();
@@ -859,14 +834,12 @@ function createcommentreplys(section, locationId) {
                                 let mesgBox = document.createElement('div');
                                 let mesgTextBox = document.createElement('input');
                                 let sendmesg = document.createElement('div');
-                                let sendmesgImg = document.createElement('img');
                                 options.appendChild(mesgBox);
                                 mesgBox.appendChild(mesgTextBox);
                                 options.appendChild(sendmesg);
-                                sendmesg.appendChild(sendmesgImg);
+                                sendmesg.innerHTML = sendsvg;
                                 sendmesg.classList.add('headerbtns');
                                 mesgBox.classList.add('mesgBox');
-                                sendmesgImg.src = 'newicons/send.png';
                                 mesgTextBox.type = 'text';
                                 mesgTextBox.placeholder = 'send reply...';
 
@@ -888,9 +861,7 @@ function createcommentreplys(section, locationId) {
                         function create_Options_Script() {
                             let options = document.createElement('div');
                             let first_Option = document.createElement('span');
-                            let first_Optionimg = document.createElement('img');
                             let second_Option = document.createElement('span');
-                            let second_Optionimg = document.createElement('img');
                             let exit = document.createElement('span');
 
                             first_Option.id = comment.id;
@@ -898,9 +869,9 @@ function createcommentreplys(section, locationId) {
                             options.appendChild(exit);
                             options.appendChild(first_Option);
                             options.appendChild(second_Option);
-                            first_Option.appendChild(first_Optionimg);
-                            second_Option.appendChild(second_Optionimg);
-
+                            first_Option.innerHTML = deletesvg;
+                            second_Option.innerHTML = likesvg;
+                            exit.innerHTML = undo2;
                             first_Option.classList.add('headerbtns');
                             exit.classList.add('headerbtns');
                             second_Option.classList.add('headerbtns');
@@ -908,15 +879,11 @@ function createcommentreplys(section, locationId) {
                             options.classList.add('options');
 
                             first_Option.classList.add('first_Option');
-                            exit.innerHTML = '&times;';
-                            first_Optionimg.src = 'newicons/trash-can.png';
-                            second_Optionimg.src = 'newicons/like.png';
 
                             first_Option.addEventListener('click', () => {
                                 delete_Comments_Replies(Feeds_Data_Base, comment.relationId, comment.postId, comment.id);
                                 options.remove();
                             });
-
                             second_Option.addEventListener('click', () => {
                                 likecomment();
                             });
@@ -1167,7 +1134,7 @@ function createcommentreplys(section, locationId) {
                                 if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                     ActiveUser_Account.forEach(user => {
                                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                        createProfileOptions(comment.posterId,user.user_Id);
+                                        createProfileOptions(comment.posterId, user.user_Id);
                                     });
                                 }
                             });
@@ -1175,7 +1142,7 @@ function createcommentreplys(section, locationId) {
                                 if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                     ActiveUser_Account.forEach(user => {
                                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                        createProfileOptions(comment.posterId,user.user_Id);
+                                        createProfileOptions(comment.posterId, user.user_Id);
                                     });
                                 }
                             });

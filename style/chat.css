@@ -368,8 +368,9 @@
     left: 50%;
     transform: translate(-50%);
 }
-.gridpostimagecontainer .options {
-    border-radius: 0px;
+.adgrid .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .options .headerbtns {
     color: var(--color-white);
@@ -1293,13 +1294,42 @@
         display: flex;
         padding: 12px;
     }
+    .options  {
+        gap: 0px 5px;
+    }
+    .largescalewideviewcontainer .options,
+    .adgrid .options,
     .post .options {
         width: 100%;
         overflow-x: scroll;
         overflow-y: hidden;
-        border-radius: 0px;
-        padding: 10px 2px;
+        border-radius: 25px 25px 0px 0px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5px;
+        background: var(--color-light);
     }
+    .largescalewideviewcontainer .options .headerbtns,
+    .adgrid .options .headerbtns,
+    .post .options .headerbtns {
+        width: 100%;
+        background: var(--color-white);
+        box-shadow: var(--block-box-shadow);
+        border-radius: 10px;
+    }
+    .largescalewideviewcontainer .options .headerbtns:nth-child(1),
+    .adgrid .options .headerbtns:nth-child(1),
+    .post .options .headerbtns:nth-child(1) {
+        border-radius: 25px 10px 10px 10px;
+    }
+    
+    .largescalewideviewcontainer .options .headerbtns:nth-child(4),
+    .adgrid .options .headerbtns:nth-child(4),
+    .post .options .headerbtns:nth-child(4) {
+        border-radius: 10px 25px 10px 10px;
+    }
+
     .mesgBox,
     .userschatbox {
         width: 100%;
@@ -1366,7 +1396,12 @@
         border: 1px solid var(--color-gray);
     }
     .mesgBox {
-        border: 1px solid var(--color-gray);
+        padding: 0;
+        min-height: 45px;
+        width: 70%;
+        border-radius: 30px;
+        border: 1px solid var(--color-light);
+        gap: 0;
     }
     .mesgBox input {
         width: 100%;

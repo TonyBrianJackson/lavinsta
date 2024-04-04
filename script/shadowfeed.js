@@ -290,18 +290,6 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 function Create_GridPost_Options(anything) {
                     let gridView_Header = document.createElement('header');
                     let more = document.createElement('span');
-                    let postmenu = document.createElement('nav');
-                    let option_First_Child1 = document.createElement('span');
-                    let option_First_Child2 = document.createElement('span');
-                    let option_First_Child3 = document.createElement('span');
-                    let option_First_Child4 = document.createElement('span');
-                    let option_First_Child5 = document.createElement('span');
-
-                    let option_Name1 = document.createElement('span');
-                    let option_Name2 = document.createElement('span');
-                    let option_Name3 = document.createElement('span');
-                    let option_Name4 = document.createElement('span');
-                    let option_Name5 = document.createElement('span');
 
                     function create_Grid_PostHeader() {
                         let gridpostNameAndImg = document.createElement('div');
@@ -362,93 +350,12 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                         Poster_Details();
                     }
                     create_Grid_PostHeader();
-                    gridpostimagecontainer.appendChild(postmenu);
-
-                    postmenu.appendChild(option_First_Child1);
-                    postmenu.appendChild(option_First_Child2);
-                    postmenu.appendChild(option_First_Child3);
-                    postmenu.appendChild(option_First_Child4);
-                    postmenu.appendChild(option_First_Child5);
-
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
-                    option_First_Child5.appendChild(option_Name5);
-
-                    option_Name1.textContent = 'Edit';
-                    option_Name2.textContent = 'Delete';
-                    option_Name3.textContent = 'Turn Off Comments';
-                    option_Name4.textContent = 'Turn Off Votes';
-                    option_Name5.textContent = 'Turn Off Shares';
-
-                    option_First_Child1.addEventListener('click', () => {
-                        editingPostText(photo.id);
-                    });
-                    option_First_Child2.addEventListener('click', () => {
-                        delete_Timeline_Post(photo.id);
-                    });
-                    option_First_Child3.addEventListener('click', () => {
-                        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-                        if (photo.commentactive === true) {
-                            photo.commentactive = false;
-                            option_Name3.textContent = 'Turn On Comments';
-                        } else {
-                            photo.commentactive = true;
-                            option_Name3.textContent = 'Turn Off Comments';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-                    option_First_Child4.addEventListener('click', () => {
-                        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-                        if (photo.likeactive === true) {
-                            photo.likeactive = false;
-                            option_Name4.textContent = 'Turn On Votes';
-                        } else {
-                            photo.likeactive = true;
-                            option_Name4.textContent = 'Turn Off Votes';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-                    option_First_Child5.addEventListener('click', () => {
-                        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-                        if (photo.shareactive === true) {
-                            photo.shareactive = false;
-                            option_Name5.textContent = 'Turn On Shares';
-                        } else {
-                            photo.shareactive = true;
-                            option_Name5.textContent = 'Turn Off Shares';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
-                        ActiveUser_Account.forEach(data => {
-                            if (photo.posterId !== data.user_Id) {
-                                more.remove();
-                                postmenu.remove();
-                            }
-                        });
-                    }
-
-                    postmenu.classList.add('postmenu');
                     more.classList.add('more');
                     gridView_Header.classList.add('gridView_Header');
                     more.innerHTML = '&vellip;';
                     more.addEventListener('click', () => {
-                        postmenu.classList.toggle('postmenuactive');
+                        create_Post_Options_Script(gridpostimagecontainer,photo.id);
                     });
-                    function Activities_Option_TextContents() {
-                        if (photo.shareactive === false) {
-                            option_Name5.textContent = 'Turn On Shares';
-                        } if (photo.commentactive === false) {
-                            option_Name3.textContent = 'Turn On Comments';
-                        } if (photo.likeactive === false) {
-                            option_Name4.textContent = 'Turn On Votes';
-                        }
-                    }
-                    Activities_Option_TextContents();
                 }
                 Create_GridPost_Options();
 

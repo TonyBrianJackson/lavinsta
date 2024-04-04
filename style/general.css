@@ -714,45 +714,56 @@
         height: max-content;
         max-height: 100vh;
         border-radius: 25px;
-        box-shadow: var(--light-box-shadow);
-        background: var(--color-very-light);
+        box-shadow: none;
+        background: var(--color-light);
         z-index: 540;
         left: 50%;
         top: initial;
         bottom: 0;
         border-radius: 25px 25px 0px 0px;
         transform: translate(-50%);
-        padding: 20px;
+        padding: 0px;
         z-index: 752;
+        overflow: hidden;
     }
 
     .postshare_Pop_up>div {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+        height: max-content;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5px;
         place-items: center;
-        gap: 10px;
+        z-index: 1;
+        background: var(--color-light);
+        padding: 10px;
+        border-radius: 25px 25px 0px 0px;
     }
 
     .postshare_Pop_up>div>span {
-        width: max-content;
+        width: 100%;
+        height: 50px;
         padding: 10px;
         border: none;
-        background: none;
-        box-shadow: none;
+        background: var(--color-white);
+        box-shadow: var(--block-box-shadow);
         border-radius: 10px;
     }
 
     .postshare_Pop_up>div>span .headerbtns {
-        width: 60px;
-        height: 60px;
-        border-radius: 10px;
+        border: none;
+        padding: 5px;
+        width: 100%;
+        margin: 0;
+        border-radius: 25px 25px 0px 0px;
     }
 
-    .postshare_Pop_up>div>span .headerbtns img {
-        width: 30px;
-        height: 30px;
+    .postshare_Pop_up>div>span:nth-child(1) {
+        border-radius: 25px 10px 10px 10px;
     }
 
+    .postshare_Pop_up>div>span:nth-child(4) {
+        border-radius: 10px 25px 10px 10px;
+    }
     .postshare_Pop_up>div>span>span {
         display: none;
     }

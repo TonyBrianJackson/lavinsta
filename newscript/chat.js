@@ -552,36 +552,33 @@ function createChatMessages(column, locationId, CreatorId) {
                         }
                     });
                 });
+
                 function view_Options() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     first_Option.id = textmesg.id;
                     column.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = recreatesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/share.png';
+                    exit.innerHTML = undo;
                     function create_replyInputs() {
                         first_Option.remove();
                         let mesgBox = document.createElement('div');
                         let mesgTextBox = document.createElement('input');
                         let sendmesg = document.createElement('div');
-                        let sendmesgImg = document.createElement('img');
                         options.appendChild(mesgBox);
                         mesgBox.appendChild(mesgTextBox);
                         options.appendChild(sendmesg);
-                        sendmesg.appendChild(sendmesgImg);
+                        sendmesg.innerHTML = sendsvg;
                         sendmesg.classList.add('headerbtns');
                         mesgBox.classList.add('mesgBox');
-                        sendmesgImg.src = 'newicons/send.png';
                         mesgTextBox.placeholder = 'send reply...';
                         function pushChat(user_Id) {
                             const id = '' + new Date().getTime();
@@ -619,20 +616,18 @@ function createChatMessages(column, locationId, CreatorId) {
                 function create_Options_Script() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     first_Option.id = textmesg.id;
                     column.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = deletesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/trash-can.png';
+                    exit.innerHTML = undo2;
                     first_Option.addEventListener('click', () => {
                         myChatMsg = myChatMsg.filter(text => {
                             if (text.id === first_Option.id) {
@@ -760,36 +755,34 @@ function createChatMessages(column, locationId, CreatorId) {
                         }
                     });
                 });
+
+
                 function view_Options() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     first_Option.id = textmesg.id;
                     column.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = recreatesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/share.png';
+                    exit.innerHTML = undo;
                     function create_replyInputs() {
                         first_Option.remove();
                         let mesgBox = document.createElement('div');
                         let mesgTextBox = document.createElement('input');
                         let sendmesg = document.createElement('div');
-                        let sendmesgImg = document.createElement('img');
                         options.appendChild(mesgBox);
                         mesgBox.appendChild(mesgTextBox);
                         options.appendChild(sendmesg);
-                        sendmesg.appendChild(sendmesgImg);
+                        sendmesg.innerHTML = sendsvg;
                         sendmesg.classList.add('headerbtns');
                         mesgBox.classList.add('mesgBox');
-                        sendmesgImg.src = 'newicons/send.png';
                         mesgTextBox.placeholder = 'send reply...';
                         function pushChat(user_Id) {
                             const id = '' + new Date().getTime();
@@ -827,20 +820,18 @@ function createChatMessages(column, locationId, CreatorId) {
                 function create_Options_Script() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     first_Option.id = textmesg.id;
                     column.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = deletesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/trash-can.png';
+                    exit.innerHTML = undo2;
                     first_Option.addEventListener('click', () => {
                         myChatMsg = myChatMsg.filter(text => {
                             if (text.id === first_Option.id) {
@@ -965,36 +956,33 @@ function createChatMessages(column, locationId, CreatorId) {
                         }
                     });
                 });
+
                 function view_Options() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     first_Option.id = textmesg.id;
                     column.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = recreatesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/share.png';
+                    exit.innerHTML = undo;
                     function create_replyInputs() {
                         first_Option.remove();
                         let mesgBox = document.createElement('div');
                         let mesgTextBox = document.createElement('input');
                         let sendmesg = document.createElement('div');
-                        let sendmesgImg = document.createElement('img');
                         options.appendChild(mesgBox);
                         mesgBox.appendChild(mesgTextBox);
                         options.appendChild(sendmesg);
-                        sendmesg.appendChild(sendmesgImg);
+                        sendmesg.innerHTML = sendsvg;
                         sendmesg.classList.add('headerbtns');
                         mesgBox.classList.add('mesgBox');
-                        sendmesgImg.src = 'newicons/send.png';
                         mesgTextBox.placeholder = 'send reply...';
                         function pushChat(user_Id) {
                             const id = '' + new Date().getTime();
@@ -1032,20 +1020,18 @@ function createChatMessages(column, locationId, CreatorId) {
                 function create_Options_Script() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     first_Option.id = textmesg.id;
                     column.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = deletesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/trash-can.png';
+                    exit.innerHTML = undo2;
                     first_Option.addEventListener('click', () => {
                         myChatMsg = myChatMsg.filter(text => {
                             if (text.id === first_Option.id) {
@@ -1488,7 +1474,7 @@ function createChatMenu(locationId) {
                 chatsample.id = connect.connectionId + data.user_Id;
 
                 chatsample.textContent = 'start conversation';
-                
+
                 if (Array.isArray(JSON.parse(localStorage.getItem('myChatMsg')))) {
                     myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
                     myChatMsg.forEach(chat => {
@@ -1734,7 +1720,7 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
             increaseChatCount(locationId);
         }
     });
-    document.addEventListener('keypress',(e)=> {
+    document.addEventListener('keypress', (e) => {
         if (userchattextbox.value) {
             if (e.key === 'Enter') {
                 userchatsend.click();
@@ -2124,7 +2110,7 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
     newphotolabel.appendChild(chatphotoinput);
     newvideolabel.appendChild(chatvideoinput);
     newaudiolabel.appendChild(chataudioinput);
-    
+
     newaudiolabel.appendChild(thirdimg);
     newphotolabel.appendChild(firsttext);
     newvideolabel.appendChild(secondtext);
@@ -2731,7 +2717,7 @@ function get_Active_Page() {
                     });
                     setTimeout(() => {
                         createChatMenu(data.user_Id);
-                    }, 1000*3);
+                    }, 1000 * 3);
                 }
             });
         });

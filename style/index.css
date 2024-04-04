@@ -8320,9 +8320,8 @@ a {
     position: fixed;
     left: 5px;
     top: 60px;
-    padding: 20px;
+    padding: 10px;
     width: 240px;
-    min-height: 250px;
     height: max-content;
     z-index: 521;
     background: var(--color-light);
@@ -8341,11 +8340,12 @@ a {
     justify-content: center;
     flex-direction: center;
     width: 100%;
-    height: 75%;
+    height: 120px;
     padding: 10px;
     background: var(--color-white);
     box-shadow: var(--block-box-shadow);
     border: none;
+    border-radius: 25px;
 }
 
 .editinputbox textarea,
@@ -8359,6 +8359,8 @@ a {
     background: none;
     color: var(--color-dark);
     font-weight: 700;
+    border-radius: inherit;
+    padding: inherit;
 }
 
 .editpopup header,
@@ -8383,14 +8385,15 @@ a {
     padding: 10px;
     display: block;
     text-align: center;
-    background: var(--color-yellow);
+    background: var(--color-dark);
     border: none;
     box-shadow: var(--block-box-shadow);
-    color: var(--color-dark);
+    color: var(--color-white);
     font-weight: bolder;
     margin: 5px 0px;
     cursor: pointer;
     overflow: hidden;
+    border-radius: 30px;
 }
 
 /*REPORT RECIEVING CONTAINER*/
@@ -8828,22 +8831,30 @@ a {
         top: initial;
         left: 0;
         bottom: 0;
-        border-radius: 10px 10px 0px 0px;
+        border-radius: 25px 25px 0px 0px;
         overflow: hidden;
         z-index: 751;
     }
-
+    .editpopup .headerbtns,
+    .reportcontainer .headerbtns {
+        background: none;
+    }
+    .editpopup header,
+    .reportcontainer header {
+        background: var(--color-white);
+        border-radius: 25px 25px 0px 0px;
+        margin: 0;
+    }
     .editingisdone,
     .reportcontainer button {
-        border-radius: 30px;
         box-shadow: none;
-        border-style: solid;
+        border: none;
         background: var(--color-dark);
         border-width: 3px;
-        border-color: var(--color-dark);
         color: var(--color-white);
-
+        border-radius: 0px 0px 25px 25px;
         font-size: 4.8vw;
+        margin: 0;
     }
 
     .editinputbox,
@@ -8851,6 +8862,8 @@ a {
         box-shadow: none;
         background: var(--color-white);
         border: none;
+        border-radius: 0px;
+        margin: 5px 0px;
     }
 
     .updatingimg {

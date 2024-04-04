@@ -3237,11 +3237,11 @@
     }
 
     .headerbtns.items:nth-child(1) {
-        border-radius: 25px 0px 0px 0px;
+        border-radius: 25px 10px 10px 10px;
     }
 
     .headerbtns.items:nth-child(4) {
-        border-radius: 0px 25px 0px 0px;
+        border-radius: 10px 25px 10px 10px;
     }
 
     .float {
@@ -3662,7 +3662,7 @@
         padding: 0px 5px;
         width: 100%;
         height: max-content;
-        max-height: 85vh;
+        max-height: 77vh;
         border-radius: 0px;
     }
 
@@ -3671,6 +3671,9 @@
         height: max-content;
     }
 
+    .copyrightmessage {
+        border-radius: 10px;
+    }
     .menutabs,
     .accountdelettabs,
     .deletedtabs,

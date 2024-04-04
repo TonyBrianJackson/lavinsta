@@ -68,7 +68,7 @@ function reset() {
         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
     });
 }
-// reset();
+reset();
 //users friends List
 document.querySelector('#notification').addEventListener('click', () => {
     if (ActiveUser_Account) {

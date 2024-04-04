@@ -95,7 +95,7 @@ async function create_Main_Trash_Items(locationId) {
                     gridView_Header.classList.add('gridView_Header');
                     more.innerHTML = '&vellip;';
                     more.classList.add('more');
-                    function delete_DELETED_story() {
+                    function delete_trash() {
                         let confirmation_popup = document.createElement('div');
                         let confirmationflex = document.createElement('div');
                         let confirmationflex1 = document.createElement('div');
@@ -116,6 +116,7 @@ async function create_Main_Trash_Items(locationId) {
                         confirmationflex1.classList.add('confirmationflex');
                         confirmationtrue.classList.add('confirmationtrue');
                         confirmationfalse.classList.add('confirmationfalse');
+                        confirmation_popup.style.display = 'flex';
                         confirmationfalse.addEventListener('click', () => {
                             confirmation_popup.remove();
                         });
@@ -148,21 +149,19 @@ async function create_Main_Trash_Items(locationId) {
                     function create_Options_Script() {
                         let options = document.createElement('div');
                         let first_Option = document.createElement('span');
-                        let first_Optionimg = document.createElement('img');
                         let exit = document.createElement('span');
     
                         gridpostimagecontainer.insertAdjacentElement("afterend", options);
                         options.appendChild(exit);
                         options.appendChild(first_Option);
-                        first_Option.appendChild(first_Optionimg);
+                        first_Option.innerHTML = deletesvg;
                         options.classList.add('options');
                         first_Option.classList.add('headerbtns');
                         exit.classList.add('headerbtns');
                         first_Option.classList.add('first_Option');
-                        exit.innerHTML = '&times;';
-                        first_Optionimg.src = 'newicons/trash-can.png';
+                        exit.innerHTML = undo2;
                         first_Option.addEventListener('click', () => {
-                            delete_DELETED_story();
+                            delete_trash();
                         });
                         exit.addEventListener('click', () => {
                             options.remove();

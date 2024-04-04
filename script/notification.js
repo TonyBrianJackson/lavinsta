@@ -263,20 +263,18 @@ function createNotifications() {
                     function create_Options_Script() {
                         let options = document.createElement('div');
                         let first_Option = document.createElement('span');
-                        let first_Optionimg = document.createElement('img');
                         let exit = document.createElement('span');
     
                         first_Option.id = notification.id;
                         column.insertAdjacentElement("afterend", options);
                         options.appendChild(exit);
                         options.appendChild(first_Option);
-                        first_Option.appendChild(first_Optionimg);
+                        first_Option.innerHTML = deletesvg;
+                        exit.innerHTML = undo2;
                         options.classList.add('options');
                         first_Option.classList.add('headerbtns');
                         exit.classList.add('headerbtns');
                         first_Option.classList.add('first_Option');
-                        exit.innerHTML = '&times;';
-                        first_Optionimg.src = 'newicons/trash-can.png';
                         first_Option.id = notification.trackingId + notification.id;
                         first_Option.addEventListener('click', () => {
                             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));

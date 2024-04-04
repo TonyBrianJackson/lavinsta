@@ -57,7 +57,7 @@ function create_share_Popup(locationId) {
             if (photo.type == 'timeline') {
                 if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -69,6 +69,7 @@ function create_share_Popup(locationId) {
                     let option_First_Child6 = document.createElement('span');
                     let option_First_Child7 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
@@ -77,7 +78,8 @@ function create_share_Popup(locationId) {
                     let option_Name6 = document.createElement('span');
                     let option_Name7 = document.createElement('span');
 
-                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name_headerBtns = document.createElement('div');
+                    let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_HeaderBtns = document.createElement('div');
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
@@ -86,6 +88,8 @@ function create_share_Popup(locationId) {
                     let option_Name7_HeaderBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
@@ -94,7 +98,8 @@ function create_share_Popup(locationId) {
                     postshare_Popup_Column.appendChild(option_First_Child6);
                     postshare_Popup_Column.appendChild(option_First_Child7);
 
-                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name_headerBtns.innerHTML = undo;
+                    option_Name1_headerBtns.innerHTML = recreatesvg;
                     option_Name2_HeaderBtns.innerHTML = feedsvg;
                     option_Name3_HeaderBtns.innerHTML = crimesvg;
                     option_Name4_HeaderBtns.innerHTML = advertsvg;
@@ -102,7 +107,8 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.innerHTML = moresvg;
                     option_Name7_HeaderBtns.innerHTML = medicalreportsvg;
 
-                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child.appendChild(option_Name_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
@@ -110,7 +116,8 @@ function create_share_Popup(locationId) {
                     option_First_Child6.appendChild(option_Name6_HeaderBtns);
                     option_First_Child7.appendChild(option_Name7_HeaderBtns);
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name_headerBtns.appendChild(option_Name);
+                    option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
                     option_Name3_HeaderBtns.appendChild(option_Name3);
                     option_Name4_HeaderBtns.appendChild(option_Name4);
@@ -118,7 +125,8 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.appendChild(option_Name6);
                     option_Name7_HeaderBtns.appendChild(option_Name7);
 
-                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name_headerBtns.classList.add('headerbtns');
+                    option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
@@ -126,6 +134,7 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.classList.add('headerbtns');
                     option_Name7_HeaderBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
@@ -134,8 +143,7 @@ function create_share_Popup(locationId) {
                     option_Name6.classList.add('toolpit');
                     option_Name7.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
-
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'add to crime';
@@ -147,10 +155,8 @@ function create_share_Popup(locationId) {
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -403,7 +409,7 @@ function create_share_Popup(locationId) {
                     share_Activities();
                 } if (photo.isVideo) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -413,58 +419,65 @@ function create_share_Popup(locationId) {
                     let option_First_Child4 = document.createElement('span');
                     let option_First_Child5 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
                     let option_Name4 = document.createElement('span');
                     let option_Name5 = document.createElement('span');
 
-                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name_headerBtns = document.createElement('div');
+                    let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_HeaderBtns = document.createElement('div');
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
                     let option_Name5_HeaderBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
                     postshare_Popup_Column.appendChild(option_First_Child4);
                     postshare_Popup_Column.appendChild(option_First_Child5);
 
-                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child.appendChild(option_Name_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
                     option_First_Child5.appendChild(option_Name5_HeaderBtns);
 
-                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name_headerBtns.innerHTML = undo;
+                    option_Name1_headerBtns.innerHTML = recreatesvg;
                     option_Name2_HeaderBtns.innerHTML = feedsvg;
                     option_Name3_HeaderBtns.innerHTML = stopwatchsvg;
                     option_Name4_HeaderBtns.innerHTML = moresvg;
                     option_Name5_HeaderBtns.innerHTML = medicalreportsvg;
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name_headerBtns.appendChild(option_Name);
+                    option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
                     option_Name3_HeaderBtns.appendChild(option_Name3);
                     option_Name4_HeaderBtns.appendChild(option_Name4);
                     option_Name5_HeaderBtns.appendChild(option_Name5);
 
-                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name_headerBtns.classList.add('headerbtns');
+                    option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
                     option_Name5_HeaderBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
                     option_Name4.classList.add('toolpit');
                     option_Name5.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
 
-
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'add to short';
@@ -474,10 +487,8 @@ function create_share_Popup(locationId) {
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -647,7 +658,7 @@ function create_share_Popup(locationId) {
                     share_Activities();
                 } if (photo.isText) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -656,49 +667,56 @@ function create_share_Popup(locationId) {
                     let option_First_Child3 = document.createElement('span');
                     let option_First_Child4 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
                     let option_Name4 = document.createElement('span');
 
+                    let option_Name_headerBtns = document.createElement('div');
                     let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_headerBtns = document.createElement('div');
                     let option_Name3_headerBtns = document.createElement('div');
                     let option_Name4_headerBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
                     postshare_Popup_Column.appendChild(option_First_Child4);
 
+                    option_First_Child.appendChild(option_Name_headerBtns);
                     option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_headerBtns);
                     option_First_Child3.appendChild(option_Name3_headerBtns);
                     option_First_Child4.appendChild(option_Name4_headerBtns);
 
+                    option_Name_headerBtns.innerHTML = undo;
                     option_Name1_headerBtns.innerHTML = recreatesvg;
                     option_Name2_headerBtns.innerHTML = feedsvg;
                     option_Name3_headerBtns.innerHTML = moresvg;
                     option_Name4_headerBtns.innerHTML = medicalreportsvg;
 
+                    option_Name_headerBtns.appendChild(option_Name);
                     option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_headerBtns.appendChild(option_Name2);
                     option_Name3_headerBtns.appendChild(option_Name3);
                     option_Name4_headerBtns.appendChild(option_Name4);
 
+                    option_Name_headerBtns.classList.add('headerbtns');
                     option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_headerBtns.classList.add('headerbtns');
                     option_Name3_headerBtns.classList.add('headerbtns');
                     option_Name4_headerBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
                     option_Name4.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
-
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'advance';
@@ -707,10 +725,8 @@ function create_share_Popup(locationId) {
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -840,7 +856,7 @@ function create_share_Popup(locationId) {
             } if (photo.type == 'public') {
                 if (photo.isPhoto) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -852,6 +868,7 @@ function create_share_Popup(locationId) {
                     let option_First_Child6 = document.createElement('span');
                     let option_First_Child7 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
@@ -860,7 +877,8 @@ function create_share_Popup(locationId) {
                     let option_Name6 = document.createElement('span');
                     let option_Name7 = document.createElement('span');
 
-                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name_headerBtns = document.createElement('div');
+                    let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_HeaderBtns = document.createElement('div');
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
@@ -869,6 +887,7 @@ function create_share_Popup(locationId) {
                     let option_Name7_HeaderBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
@@ -877,7 +896,8 @@ function create_share_Popup(locationId) {
                     postshare_Popup_Column.appendChild(option_First_Child6);
                     postshare_Popup_Column.appendChild(option_First_Child7);
 
-                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child.appendChild(option_Name_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
@@ -885,7 +905,8 @@ function create_share_Popup(locationId) {
                     option_First_Child6.appendChild(option_Name6_HeaderBtns);
                     option_First_Child7.appendChild(option_Name7_HeaderBtns);
 
-                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name_headerBtns.innerHTML = undo;
+                    option_Name1_headerBtns.innerHTML = recreatesvg;
                     option_Name2_HeaderBtns.innerHTML = homesvg;
                     option_Name3_HeaderBtns.innerHTML = crimesvg;
                     option_Name4_HeaderBtns.innerHTML = advertsvg;
@@ -893,7 +914,8 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.innerHTML = moresvg;
                     option_Name7_HeaderBtns.innerHTML = medicalreportsvg;
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name_headerBtns.appendChild(option_Name);
+                    option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
                     option_Name3_HeaderBtns.appendChild(option_Name3);
                     option_Name4_HeaderBtns.appendChild(option_Name4);
@@ -901,6 +923,7 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.appendChild(option_Name6);
                     option_Name7_HeaderBtns.appendChild(option_Name7);
 
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to timeline';
                     option_Name3.textContent = 'add to crime';
@@ -909,7 +932,8 @@ function create_share_Popup(locationId) {
                     option_Name6.textContent = 'advance';
                     option_Name7.textContent = 'report post';
 
-                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name_headerBtns.classList.add('headerbtns');
+                    option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
@@ -917,6 +941,7 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.classList.add('headerbtns');
                     option_Name7_HeaderBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
@@ -925,15 +950,12 @@ function create_share_Popup(locationId) {
                     option_Name6.classList.add('toolpit');
                     option_Name7.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
 
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -1185,7 +1207,7 @@ function create_share_Popup(locationId) {
                     share_Activities();
                 } if (photo.isVideo) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -1195,57 +1217,64 @@ function create_share_Popup(locationId) {
                     let option_First_Child4 = document.createElement('span');
                     let option_First_Child5 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
                     let option_Name4 = document.createElement('span');
                     let option_Name5 = document.createElement('span');
 
-                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name_headerBtns = document.createElement('div');
+                    let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_HeaderBtns = document.createElement('div');
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
                     let option_Name5_HeaderBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
                     postshare_Popup_Column.appendChild(option_First_Child4);
                     postshare_Popup_Column.appendChild(option_First_Child5);
 
-                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child.appendChild(option_Name_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
                     option_First_Child5.appendChild(option_Name5_HeaderBtns);
 
-                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name_headerBtns.innerHTML = undo;
+                    option_Name1_headerBtns.innerHTML = recreatesvg;
                     option_Name2_HeaderBtns.innerHTML = homesvg;
                     option_Name3_HeaderBtns.innerHTML = stopwatchsvg;
                     option_Name4_HeaderBtns.innerHTML = moresvg;
                     option_Name5_HeaderBtns.innerHTML = medicalreportsvg;
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name_headerBtns.appendChild(option_Name);
+                    option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
                     option_Name3_HeaderBtns.appendChild(option_Name3);
                     option_Name4_HeaderBtns.appendChild(option_Name4);
                     option_Name5_HeaderBtns.appendChild(option_Name5);
 
-                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name_headerBtns.classList.add('headerbtns');
+                    option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
                     option_Name5_HeaderBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
                     option_Name4.classList.add('toolpit');
                     option_Name5.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
-
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to timeline';
                     option_Name3.textContent = 'add to short';
@@ -1255,10 +1284,8 @@ function create_share_Popup(locationId) {
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -1427,7 +1454,7 @@ function create_share_Popup(locationId) {
                     share_Activities();
                 } if (photo.isShort) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -1436,49 +1463,56 @@ function create_share_Popup(locationId) {
                     let option_First_Child3 = document.createElement('span');
                     let option_First_Child4 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
                     let option_Name4 = document.createElement('span');
 
-                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name_headerBtns = document.createElement('div');
+                    let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_HeaderBtns = document.createElement('div');
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
                     postshare_Popup_Column.appendChild(option_First_Child4);
 
-                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child.appendChild(option_Name_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
 
-                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name_headerBtns.innerHTML = undo;
+                    option_Name1_headerBtns.innerHTML = recreatesvg;
                     option_Name2_HeaderBtns.innerHTML = feedsvg;
                     option_Name3_HeaderBtns.innerHTML = moresvg;
                     option_Name4_HeaderBtns.innerHTML = medicalreportsvg;
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name_headerBtns.appendChild(option_Name);
+                    option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
                     option_Name3_HeaderBtns.appendChild(option_Name3);
                     option_Name4_HeaderBtns.appendChild(option_Name4);
 
-                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name_headerBtns.classList.add('headerbtns');
+                    option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
                     option_Name4.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
-
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'advance';
@@ -1487,10 +1521,8 @@ function create_share_Popup(locationId) {
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -1616,7 +1648,7 @@ function create_share_Popup(locationId) {
                     share_Activities();
                 } if (photo.isText) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -1625,49 +1657,56 @@ function create_share_Popup(locationId) {
                     let option_First_Child3 = document.createElement('span');
                     let option_First_Child4 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
                     let option_Name4 = document.createElement('span');
 
-                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name_headerBtns = document.createElement('div');
+                    let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_HeaderBtns = document.createElement('div');
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
                     postshare_Popup_Column.appendChild(option_First_Child4);
 
-                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child.appendChild(option_Name_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
 
-                    option_Name1_HeaderBtns.innerHTML = recreatesvg;
+                    option_Name_headerBtns.innerHTML = undo;
+                    option_Name1_headerBtns.innerHTML = recreatesvg;
                     option_Name2_HeaderBtns.innerHTML = homesvg;
                     option_Name3_HeaderBtns.innerHTML = moresvg;
                     option_Name4_HeaderBtns.innerHTML = medicalreportsvg;
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name_headerBtns.appendChild(option_Name);
+                    option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
                     option_Name3_HeaderBtns.appendChild(option_Name3);
                     option_Name4_HeaderBtns.appendChild(option_Name4);
 
-                    option_Name1_HeaderBtns.classList.add('headerbtns');
+                    option_Name_headerBtns.classList.add('headerbtns');
+                    option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
                     option_Name4.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
-
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'repost';
                     option_Name2.textContent = 'add to timeline';
                     option_Name3.textContent = 'advance';
@@ -1676,10 +1715,8 @@ function create_share_Popup(locationId) {
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -1809,7 +1846,7 @@ function create_share_Popup(locationId) {
             } if (photo.type == 'other') {
                 if (photo.isPhoto || photo.isAdvert || photo.isCrime) {
                     let postshare_Pop_up_header = document.createElement('header');
-                    let postshare_Pop_up_Close = document.createElement('span');
+                    let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
 
@@ -1821,6 +1858,7 @@ function create_share_Popup(locationId) {
                     let option_First_Child6 = document.createElement('span');
                     let option_First_Child7 = document.createElement('span');
 
+                    let option_Name = document.createElement('span');
                     let option_Name1 = document.createElement('span');
                     let option_Name2 = document.createElement('span');
                     let option_Name3 = document.createElement('span');
@@ -1829,7 +1867,8 @@ function create_share_Popup(locationId) {
                     let option_Name6 = document.createElement('span');
                     let option_Name7 = document.createElement('span');
 
-                    let option_Name1_HeaderBtns = document.createElement('div');
+                    let option_Name_headerBtns = document.createElement('div');
+                    let option_Name1_headerBtns = document.createElement('div');
                     let option_Name2_HeaderBtns = document.createElement('div');
                     let option_Name3_HeaderBtns = document.createElement('div');
                     let option_Name4_HeaderBtns = document.createElement('div');
@@ -1838,6 +1877,7 @@ function create_share_Popup(locationId) {
                     let option_Name7_HeaderBtns = document.createElement('div');
 
                     postshare_Pop_up.id = photo.id;
+                    postshare_Popup_Column.appendChild(option_First_Child);
                     postshare_Popup_Column.appendChild(option_First_Child1);
                     postshare_Popup_Column.appendChild(option_First_Child2);
                     postshare_Popup_Column.appendChild(option_First_Child3);
@@ -1846,7 +1886,8 @@ function create_share_Popup(locationId) {
                     postshare_Popup_Column.appendChild(option_First_Child6);
                     postshare_Popup_Column.appendChild(option_First_Child7);
 
-                    option_First_Child1.appendChild(option_Name1_HeaderBtns);
+                    option_First_Child.appendChild(option_Name_headerBtns);
+                    option_First_Child1.appendChild(option_Name1_headerBtns);
                     option_First_Child2.appendChild(option_Name2_HeaderBtns);
                     option_First_Child3.appendChild(option_Name3_HeaderBtns);
                     option_First_Child4.appendChild(option_Name4_HeaderBtns);
@@ -1854,7 +1895,8 @@ function create_share_Popup(locationId) {
                     option_First_Child6.appendChild(option_Name6_HeaderBtns);
                     option_First_Child7.appendChild(option_Name7_HeaderBtns);
 
-                    option_Name1_HeaderBtns.innerHTML = homesvg;
+                    option_Name_headerBtns.innerHTML = undo;
+                    option_Name1_headerBtns.innerHTML = homesvg;
                     option_Name2_HeaderBtns.innerHTML = feedsvg;
                     option_Name3_HeaderBtns.innerHTML = crimesvg;
                     option_Name4_HeaderBtns.innerHTML = advertsvg
@@ -1862,7 +1904,8 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.innerHTML = moresvg;
                     option_Name7_HeaderBtns.innerHTML = medicalreportsvg;
 
-                    option_Name1_HeaderBtns.appendChild(option_Name1);
+                    option_Name_headerBtns.appendChild(option_Name);
+                    option_Name1_headerBtns.appendChild(option_Name1);
                     option_Name2_HeaderBtns.appendChild(option_Name2);
                     option_Name3_HeaderBtns.appendChild(option_Name3);
                     option_Name4_HeaderBtns.appendChild(option_Name4);
@@ -1870,7 +1913,9 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.appendChild(option_Name6);
                     option_Name7_HeaderBtns.appendChild(option_Name7);
 
-                    option_Name1_HeaderBtns.classList.add('headerbtns');
+
+                    option_Name_headerBtns.classList.add('headerbtns');
+                    option_Name1_headerBtns.classList.add('headerbtns');
                     option_Name2_HeaderBtns.classList.add('headerbtns');
                     option_Name3_HeaderBtns.classList.add('headerbtns');
                     option_Name4_HeaderBtns.classList.add('headerbtns');
@@ -1878,6 +1923,7 @@ function create_share_Popup(locationId) {
                     option_Name6_HeaderBtns.classList.add('headerbtns');
                     option_Name7_HeaderBtns.classList.add('headerbtns');
 
+                    option_Name.classList.add('toolpit');
                     option_Name1.classList.add('toolpit');
                     option_Name2.classList.add('toolpit');
                     option_Name3.classList.add('toolpit');
@@ -1886,8 +1932,8 @@ function create_share_Popup(locationId) {
                     option_Name6.classList.add('toolpit');
                     option_Name7.classList.add('toolpit');
 
-                    postshare_Pop_up_Close.classList.add('headerbtns');
 
+                    option_Name.textContent = 'exit';
                     option_Name1.textContent = 'add to timeline';
                     option_Name2.textContent = 'add to feeds';
                     option_Name3.textContent = 'add to crime';
@@ -1899,10 +1945,8 @@ function create_share_Popup(locationId) {
                     document.body.appendChild(postshare_Pop_up);
                     postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
-                    postshare_Pop_up_header.appendChild(postshare_Pop_up_Close);
-                    postshare_Pop_up_Close.innerHTML = '&times;';
                     postshare_Pop_up.classList.add('postshare_Pop_up');
-                    postshare_Pop_up_Close.addEventListener('click', () => {
+                    option_First_Child.addEventListener('click', () => {
                         postshare_Pop_up.remove();
                     });
                     function share_Activities() {
@@ -2299,8 +2343,8 @@ function create_Comment_room(locationId) {
             let actitionbtnscontainer = document.createElement('div');
             let commentactiongrid = document.createElement('div');
             let commentrefreshbtn = document.createElement('span');
-            commentmovebackward.innerHTML = undo2;
-            commentrefreshbtn.innerHTML = spinnersvg;
+            commentmovebackward.innerHTML = undo;
+            commentrefreshbtn.innerHTML = recreatesvg;
             commentrefreshbtn.addEventListener('click', () => {
                 reloadLocation();
             });
