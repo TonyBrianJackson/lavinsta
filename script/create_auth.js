@@ -844,7 +844,9 @@ function active_user_render() {
                         });
                         publictextupload.addEventListener('click', () => {
                             pushTextFeed();
-                            Creation_Mark_Text(document.querySelector('.publictextpreview').value, 'creating post...');
+                            const themeMode =  document.querySelector('.public_Mode_Theme_Title').textContent;
+                            const fontMode =  document.querySelector('.public_Mode_Font_Title').textContent;
+                            Creation_Mark_Text(document.querySelector('.publictextpreview').value, 'creating post...',themeMode,fontMode);
                             document.querySelector('.publictitleinput').value = '';
                             document.querySelector('.publictextpreview').value = '';
                             document.querySelector('.createpublicpostpopup').style.display = 'none';
@@ -879,7 +881,7 @@ function active_user_render() {
                         profilepictureuploadbtn.addEventListener('click', () => {
                             push();
                             document.querySelector('.profilepicturecaption').value = '';
-                            Creation_Mark_Photo(document.getElementById('profilepictureuploading').src, 'updating profile photo...');
+                            Creation_Mark_Photo(document.getElementById('profilepictureuploading').src, 'updating profile photo...',document.querySelector('.profilefiltertitle').textContent);
                             let userprofilepicture = document.querySelectorAll('.userprofilepicture');
                             let usersmallimg = document.querySelectorAll('.usersmallimg');
                             usersmallimg.forEach(profilePicture => {
@@ -1095,7 +1097,9 @@ function active_user_render() {
     
                         function Addpost() {
                             pushTextPost();
-                            Creation_Mark_Text(document.getElementById('maintextPoster').value, 'creating post...');
+                            const thememide = document.querySelector('.sidebar_Mode_Theme_Title').textContent;
+                            const fontMode =  document.querySelector('.sidebar_Mode_Font_Title').textContent;
+                            Creation_Mark_Text(document.getElementById('maintextPoster').value, 'creating post...',thememide,fontMode);
                             document.getElementById('maintextPoster').value = '';
                             document.getElementById('title').value = '';
                             Sidebarcontent.style.display = 'none';
@@ -1107,7 +1111,7 @@ function active_user_render() {
                         });
                         //uploading short videos
     
-                        function pushShortArrayOnLargeScreen() {
+                        function pushshortFeeds() {
                             const id = '' + new Date().getTime();
                             if (document.getElementById('shortvideovideo').src) {
                                 Feeds_Data_Base.push({
@@ -1188,7 +1192,7 @@ function active_user_render() {
                             Increase_ShortCount();
                         }
                         function PostShort() {
-                            pushShortArrayOnLargeScreen();
+                            pushshortFeeds();
                             Creation_Mark_Video(document.querySelector('#shortvideovideo').src, 'creating post...');
                             document.getElementById('title').value = '';
                             Sidebarcontent.style.display = 'none';

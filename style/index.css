@@ -1,8 +1,5 @@
 /*fonts importing*/
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Asul:wght@400;700&family=Ballet:opsz@16..72&family=Great+Vibes&family=Metal+Mania&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&family=Srisakdi:wght@400;700&family=Tangerine:wght@400;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -8134,8 +8131,6 @@ a {
     border-radius: 0px;
     overflow: hidden;
     box-shadow: none;
-    background: none;
-    color: var(--color-dark);
     margin: 5px;
 }
 
@@ -8144,7 +8139,6 @@ a {
     height: 70px;
     border-width: 3px;
     box-shadow: none;
-    background: var(--color-white);
     color: var(--color-dark);
     border-color: var(--color-dark);
     margin: 5px;

@@ -271,52 +271,44 @@
 }
 
 .textFont nav div:nth-child(1) {
-    font-family: system-ui;
+    font-family: roboto;
 }
 
 .textFont nav div:nth-child(2) {
     font-family: Times;
-    font-style: italic;
 }
 
 .textFont nav div:nth-child(3) {
-    font-family: Arial;
-    font-style: italic;
+    font-family: Asul;
 }
 
 .textFont nav div:nth-child(4) {
-    font-family: cursive;
-    font-style: italic;
+    font-family: satisfy;
 }
 
 .textFont nav div:nth-child(5) {
-    font-family: great vibes;
-    font-style: italic;
+    font-family: great vibes,ballet;
 }
 
 /*font type*/
 .TextDefault {
-    font-family: system-ui;
+    font-family: roboto;
 }
 
 .TextTimes {
     font-family: Times;
-    font-style: italic;
 }
 
 .TextArial {
-    font-family: Arial;
-    font-style: italic;
+    font-family: Asul;
 }
 
 .TextCursive {
-    font-family: cursive;
-    font-style: italic;
+    font-family: satisfy;
 }
 
 .TextGreatVibes {
-    font-family: great vibes;
-    font-style: italic;
+    font-family: great vibes,ballet;
 }
 
 .textthemepopup nav {

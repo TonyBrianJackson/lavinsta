@@ -23,7 +23,7 @@ function shareMessage() {
         }, 2000);
     }, 3000);
 }
-function Creation_Mark_Photo(mark_Image, mark_Text) {
+function Creation_Mark_Photo(mark_Image, mark_Text,filter) {
     let updatingmessage = document.createElement('div');
     let innermessage = document.createElement('span');
     let updatingImg = document.createElement('img');
@@ -34,6 +34,30 @@ function Creation_Mark_Photo(mark_Image, mark_Text) {
     innermessage.textContent = mark_Text;
     updatingmessage.classList.add('updatingmessage');
     updatingImg.src = mark_Image;
+    function filter_PostImage() {
+        if (filter == 'default') {
+            updatingImg.classList.add('--color-default');
+        } else if (filter == 'gray') {
+            updatingImg.classList.add('--color-gray');
+        } else if (filter == 'contrast') {
+            updatingImg.classList.add('--color-contrast');
+        } else if (filter == 'bright') {
+            updatingImg.classList.add('--color-bright');
+        } else if (filter == 'blur') {
+            updatingImg.classList.add('--color-blur');
+        } else if (filter == 'invert') {
+            updatingImg.classList.add('--color-invert');
+        } else if (filter == 'sepia') {
+            updatingImg.classList.add('--color-sepia');
+        } else if (filter == 'hue-rotate') {
+            updatingImg.classList.add('--color-hue-rotate');
+        } else if (filter == 'opacity') {
+            updatingImg.classList.add('--color-opacity');
+        } else if (filter == 'satulate') {
+            updatingImg.classList.add('--color-satulate');
+        }
+    }
+    filter_PostImage();
     setTimeout(() => {
         updatingmessage.textContent = 'reflesh page to see all';
         setTimeout(() => {
@@ -76,7 +100,7 @@ function Creation_Mark_Video(mark_Image, mark_Text) {
         createReelPageVideo();
     }, 3000);
 }
-function Creation_Mark_Text(mark_Image, mark_Text) {
+function Creation_Mark_Text(mark_Image, mark_Text,themeMode,fontMode) {
     let updatingmessage = document.createElement('div');
     let innermessage = document.createElement('span');
     let updatingText = document.createElement('p');
@@ -87,6 +111,64 @@ function Creation_Mark_Text(mark_Image, mark_Text) {
     innermessage.textContent = mark_Text;
     updatingmessage.classList.add('updatingmessage');
     updatingText.textContent = mark_Image;
+    function textTheme() {
+        function textThemeBackGround() {
+            if (themeMode == 'default') {
+                updatingText.classList.add('themedefault');
+            } else if (themeMode == 'claimer') {
+                updatingText.classList.add('themeclaimer');
+            } else if (themeMode == 'wriser') {
+                updatingText.classList.add('themewriser');
+            } else if (themeMode == 'xriphor') {
+                updatingText.classList.add('themexriphor');
+            } else if (themeMode == 'nophia') {
+                updatingText.classList.add('themenophia');
+            } else if (themeMode == 'oracle') {
+                updatingText.classList.add('themeoracle');
+            } else if (themeMode == 'folah') {
+                updatingText.classList.add('themefolah');
+            } else if (themeMode == 'grino') {
+                updatingText.classList.add('themegrino');
+            } else if (themeMode == 'rhisxos') {
+                updatingText.classList.add('themerhisxos');
+            } else if (themeMode == 'nicklezol') {
+                updatingText.classList.add('themenicklezol');
+                updatingText.classList.add('themenicklezoltext');
+            } else if (themeMode == 'mirox') {
+                updatingText.classList.add('thememirox');
+            } else if (themeMode == 'xosiphor') {
+                updatingText.classList.add('themexosiphor');
+            } else if (themeMode == 'rhicode') {
+                updatingText.classList.add('themerhicode');
+                updatingText.classList.add('gridposttextToviewWhite');
+            } else if (themeMode == 'srccod') {
+                updatingText.classList.add('themesrccode');
+                updatingText.classList.add('text_Theme_Color_Is_White');
+            } else if (themeMode == 'xporiah') {
+                updatingText.classList.add('themexporiah');
+                updatingText.classList.add('text_Theme_Color_Is_White');
+            } else if (themeMode == 'niph') {
+                updatingText.classList.add('themeniph');
+                updatingText.classList.add('text_Theme_Color_Is_White');
+            }
+        }
+        textThemeBackGround();
+        function textThemeFont() {
+            if (fontMode == 'Default') {
+                updatingText.classList.add('TextDefault');
+            } else if (fontMode == 'Times') {
+                updatingText.classList.add('TextTimes');
+            } else if (fontMode == 'Arial') {
+                updatingText.classList.add('TextArial');
+            } else if (fontMode == 'Cursive') {
+                updatingText.classList.add('TextCursive');
+            } else if (fontMode == 'Great Vibes') {
+                updatingText.classList.add('TextGreatVibes');
+            }
+        }
+        textThemeFont();
+    }
+    textTheme();
     setTimeout(() => {
         updatingmessage.textContent = 'reflesh page to see all';
         setTimeout(() => {
@@ -694,25 +776,25 @@ function create_Main_Story_Archieve(locationId) {
                     gridpostimagetoview.id = photo.id;
                     gridpostimagetoview.classList.add('gridpostimagetoview');
                     function filter_PostImage() {
-                        if (photo.filter == 'default') {
+                        if (filter == 'default') {
                             gridpostimagetoview.classList.add('--color-default');
-                        } else if (photo.filter == 'gray') {
+                        } else if (filter == 'gray') {
                             gridpostimagetoview.classList.add('--color-gray');
-                        } else if (photo.filter == 'contrast') {
+                        } else if (filter == 'contrast') {
                             gridpostimagetoview.classList.add('--color-contrast');
-                        } else if (photo.filter == 'bright') {
+                        } else if (filter == 'bright') {
                             gridpostimagetoview.classList.add('--color-bright');
-                        } else if (photo.filter == 'blur') {
+                        } else if (filter == 'blur') {
                             gridpostimagetoview.classList.add('--color-blur');
-                        } else if (photo.filter == 'invert') {
+                        } else if (filter == 'invert') {
                             gridpostimagetoview.classList.add('--color-invert');
-                        } else if (photo.filter == 'sepia') {
+                        } else if (filter == 'sepia') {
                             gridpostimagetoview.classList.add('--color-sepia');
-                        } else if (photo.filter == 'hue-rotate') {
+                        } else if (filter == 'hue-rotate') {
                             gridpostimagetoview.classList.add('--color-hue-rotate');
-                        } else if (photo.filter == 'opacity') {
+                        } else if (filter == 'opacity') {
                             gridpostimagetoview.classList.add('--color-opacity');
-                        } else if (photo.filter == 'satulate') {
+                        } else if (filter == 'satulate') {
                             gridpostimagetoview.classList.add('--color-satulate');
                         }
                     }
@@ -726,57 +808,57 @@ function create_Main_Story_Archieve(locationId) {
                     gridposttextToview.style.display = 'block';
                     function textGridPostTextTheme() {
                         function textThemeBackGround() {
-                            if (photo.themeMode == 'default') {
+                            if (themeMode == 'default') {
                                 gridposttextToview.classList.add('themedefault');
-                            } else if (photo.themeMode == 'claimer') {
+                            } else if (themeMode == 'claimer') {
                                 gridposttextToview.classList.add('themeclaimer');
-                            } else if (photo.themeMode == 'wriser') {
+                            } else if (themeMode == 'wriser') {
                                 gridposttextToview.classList.add('themewriser');
-                            } else if (photo.themeMode == 'xriphor') {
+                            } else if (themeMode == 'xriphor') {
                                 gridposttextToview.classList.add('themexriphor');
-                            } else if (photo.themeMode == 'nophia') {
+                            } else if (themeMode == 'nophia') {
                                 gridposttextToview.classList.add('themenophia');
-                            } else if (photo.themeMode == 'oracle') {
+                            } else if (themeMode == 'oracle') {
                                 gridposttextToview.classList.add('themeoracle');
-                            } else if (photo.themeMode == 'folah') {
+                            } else if (themeMode == 'folah') {
                                 gridposttextToview.classList.add('themefolah');
-                            } else if (photo.themeMode == 'grino') {
+                            } else if (themeMode == 'grino') {
                                 gridposttextToview.classList.add('themegrino');
-                            } else if (photo.themeMode == 'rhisxos') {
+                            } else if (themeMode == 'rhisxos') {
                                 gridposttextToview.classList.add('themerhisxos');
-                            } else if (photo.themeMode == 'nicklezol') {
+                            } else if (themeMode == 'nicklezol') {
                                 gridposttextToview.classList.add('themenicklezol');
                                 gridposttextToview.classList.add('gridposttextToviewWhite');
                                 gridposttextToview.classList.add('themenicklezoltext');
-                            } else if (photo.themeMode == 'mirox') {
+                            } else if (themeMode == 'mirox') {
                                 gridposttextToview.classList.add('thememirox');
-                            } else if (photo.themeMode == 'xosiphor') {
+                            } else if (themeMode == 'xosiphor') {
                                 gridposttextToview.classList.add('themexosiphor');
-                            } else if (photo.themeMode == 'rhicode') {
+                            } else if (themeMode == 'rhicode') {
                                 gridposttextToview.classList.add('themerhicode');
                                 gridposttextToview.classList.add('gridposttextToviewWhite');
-                            } else if (photo.themeMode == 'srccod') {
+                            } else if (themeMode == 'srccod') {
                                 gridposttextToview.classList.add('themesrccode');
                                 gridposttextToview.classList.add('text_Theme_Color_Is_White');
-                            } else if (photo.themeMode == 'xporiah') {
+                            } else if (themeMode == 'xporiah') {
                                 gridposttextToview.classList.add('themexporiah');
                                 gridposttextToview.classList.add('text_Theme_Color_Is_White');
-                            } else if (photo.themeMode == 'niph') {
+                            } else if (themeMode == 'niph') {
                                 gridposttextToview.classList.add('themeniph');
                                 gridposttextToview.classList.add('text_Theme_Color_Is_White');
                             }
                         }
                         textThemeBackGround();
                         function textThemeFont() {
-                            if (photo.fontMode == 'Default') {
+                            if (fontMode.textContent == 'Default') {
                                 gridposttextToview.classList.add('TextDefault');
-                            } else if (photo.fontMode == 'Times') {
+                            } else if (fontMode.textContent == 'Times') {
                                 gridposttextToview.classList.add('TextTimes');
-                            } else if (photo.fontMode == 'Arial') {
+                            } else if (fontMode.textContent == 'Arial') {
                                 gridposttextToview.classList.add('TextArial');
-                            } else if (photo.fontMode == 'Cursive') {
+                            } else if (fontMode.textContent == 'Cursive') {
                                 gridposttextToview.classList.add('TextCursive');
-                            } else if (photo.fontMode == 'Great Vibes') {
+                            } else if (fontMode.textContent == 'Great Vibes') {
                                 gridposttextToview.classList.add('TextGreatVibes');
                             }
                         }

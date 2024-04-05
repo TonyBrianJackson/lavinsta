@@ -3107,7 +3107,7 @@
         letter-spacing: 0.2vw;
         font-size: 8.55555vw;
         font-style: normal;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: roboto;
         font-weight: 800;
     }
 
@@ -3205,9 +3205,9 @@
         width: 40px;
         height: 40px;
         padding: 10px;
-        box-shadow: var(--giant-box-shadow);
+        box-shadow: none;
         font-size: 20px;
-        border: 2px solid var(--color-white);
+        border: 1px solid var(--color-light);
     }
 
     .headerbtns.sidebarlinks>svg {
@@ -3215,8 +3215,10 @@
     }
 
     .headerbtns.toggleBtn:hover,
-    .headerbtns.items:hover {
+    .headerbtns.items:hover,
+    .headerbtns svg path {
         transform: scale(1);
+        fill: var(--color-dark);
     }
 
     .headerbtns.items .userscount {

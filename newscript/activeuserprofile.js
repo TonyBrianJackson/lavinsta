@@ -85,11 +85,13 @@ function pushData() {
         mode: "no-cors",
         body: JSON.stringify(jsonArr),
         headers: new Headers({
+            "Access-Control-Allow-Methods": "POST",
             "Access-Control-Allow-Origin" : "*", 
             "Access-Control-Allow-Credentials" : true,
             'Content-Type': 'application/json; charset=UTF-8'
         }),
-    }).then(res => res.json()).then(data => console.log(data));
+    });
+    // .then(res => res.json()).then(data => console.log(data));
 
 }
 // document.body.addEventListener('click', pushData);

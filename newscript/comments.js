@@ -266,7 +266,7 @@ function CreationOfComments(section, locationId) {
 
                     commentpostcontainer.appendChild(commentpost);
                     commentpostcontainer.classList.add('commentpostcontainer');
-                    commentdelete.innerHTML = '&vellip;';
+                    commentdelete.innerHTML = moresvg;
                     expand.classList.add('expand');
                     commentdelete.classList.add('commentdelete');
                     commentdelete.classList.add('headerbtns');
@@ -622,7 +622,7 @@ function CreationOfComments(section, locationId) {
                     commentdelete.classList.add('commentdelete');
                     commentdelete.classList.add('headerbtns');
                     expand.innerText = 'see more...';
-                    commentdelete.innerHTML = '&vellip;';
+                    commentdelete.innerHTML = moresvg;
 
                     reactsflex.classList.add('reactsflex');
                     expand.classList.add('expand');
@@ -1026,7 +1026,7 @@ function CreationOfComments(section, locationId) {
                     commentvideoplayer.appendChild(commentplay);
                     commentplay.appendChild(commentplayimg);
                     commentplayimg.src = 'icons/play.png';
-                    commentdelete.innerHTML = '&vellip;';
+                    commentdelete.innerHTML = moresvg;
                     commentdelete.classList.add('commentdelete');
                     commentdelete.classList.add('headerbtns');
 

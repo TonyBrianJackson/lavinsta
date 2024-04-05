@@ -296,7 +296,7 @@ function createcommentreplys(section, locationId) {
                         reactsflex.appendChild(commentreact);
                         reactsflex.appendChild(likecounts);
                         commentreact.innerHTML = likesvg;
-                        commentdelete.innerHTML = '&vellip;';
+                        commentdelete.innerHTML = moresvg;
 
                         commentmesg.classList.add('commentmesg');
                         commentdelete.classList.add('commentdelete');
@@ -661,7 +661,7 @@ function createcommentreplys(section, locationId) {
                         } else {
                             expand.style.display = 'none';
                         }
-                        commentdelete.innerHTML = '&vellip;';
+                        commentdelete.innerHTML = moresvg;
                         commentdelete.classList.add('commentdelete');
                         commentdelete.classList.add('headerbtns');
 
@@ -977,7 +977,7 @@ function createcommentreplys(section, locationId) {
                         commentvideoplayer.appendChild(commentplay);
                         commentplay.appendChild(commentplayimg);
                         commentplayimg.src = 'icons/play.png';
-                        commentdelete.innerHTML = '&vellip;';
+                        commentdelete.innerHTML = moresvg;
                         commentdelete.classList.add('commentdelete');
                         commentdelete.classList.add('headerbtns');
 
