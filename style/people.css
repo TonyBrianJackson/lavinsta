@@ -1119,7 +1119,6 @@
         border-radius: 30px;
         border: none;
         box-shadow: none;
-        background: var(--color-dark);
         margin: 2px;
         cursor: pointer;
     }
@@ -1130,7 +1129,10 @@
         color: var(--color-white);
     }
 
-    .personblockbutton,
+    .personblockbutton {
+        background: var(--color-white);
+        color: var(--color-dark);
+    }
     .persondeclinebutton {
         background: var(--color-white);
         color: var(--color-dark);

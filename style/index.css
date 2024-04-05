@@ -4260,13 +4260,15 @@ a {
     border-width: 2px;
     border-color: var(--color-white);
     overflow: hidden;
+    text-overflow: ellipsis;
     position: fixed;
-    display: flex;
+    display: block;
+    text-align: center;
     bottom: 5%;
     left: 50%;
     transform: translate(-50%);
     padding: 15px;
-    z-index: 521;
+    z-index: 1000;
 }
 
 
@@ -6063,15 +6065,6 @@ a {
 .postwriterfloatactive {
     width: 50%;
     height: 50px;
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    border: none;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    overflow: visible;
     margin-left: 30px;
     transition: all ease 300ms;
     visibility: visible;
@@ -8626,6 +8619,14 @@ a {
     display: flex;
 }
 @media (min-width: 0px) and (max-width: 539px) {
+    .savingmessage {
+        font-size: 12px;
+        padding: 10px;
+        border: none;
+        border-radius: 30px;
+        white-space: nowrap;
+        max-width: 90%;
+    }
     .navigationheader {
         flex-direction: column;
         background: var(--color-white);

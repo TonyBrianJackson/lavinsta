@@ -54,6 +54,7 @@ function CreationOfComments(section, locationId) {
                         let first_Option = document.createElement('span');
                         let second_Option = document.createElement('span');
                         let third_Option = document.createElement('span');
+                        let fouth_Option = document.createElement('span');
                         let exit = document.createElement('span');
 
                         first_Option.id = comment.id;
@@ -62,9 +63,11 @@ function CreationOfComments(section, locationId) {
                         options.appendChild(first_Option);
                         options.appendChild(second_Option);
                         options.appendChild(third_Option);
+                        options.appendChild(fouth_Option);
                         second_Option.innerHTML = commentsvg;
                         first_Option.innerHTML = recreatesvg;
                         third_Option.innerHTML = likesvg;
+                        fouth_Option.innerHTML = copysvg;
                         exit.innerHTML = undo;
 
                         options.classList.add('options');
@@ -72,12 +75,30 @@ function CreationOfComments(section, locationId) {
                         second_Option.classList.add('headerbtns');
                         third_Option.classList.add('headerbtns');
                         exit.classList.add('headerbtns');
+                        fouth_Option.classList.add('headerbtns');
                         first_Option.classList.add('first_Option');
                         second_Option.addEventListener('click', () => {
                             create_Comment_Reply_room(comment.id);
                         });
                         third_Option.addEventListener('click', () => {
                             likecomment();
+                        });
+                        function copyTextPost(text) {
+                            if (navigator.clipboard) {
+                                try {
+                                    const toCopy = text;
+                                    navigator.clipboard.writeText(toCopy);
+                                    create_Message('text copied');
+                                }
+                                catch (err) {
+                                    console.error('Failed to copy: ', err);
+                                    create_Message('unable to copy');
+                                }
+                            }
+                        }
+                        fouth_Option.addEventListener('click', () => {
+                            copyTextPost(comment.Property_Src);
+                            removeOptions();
                         });
                         function create_replyInputs() {
                             first_Option.remove();
@@ -113,6 +134,7 @@ function CreationOfComments(section, locationId) {
                         let first_Option = document.createElement('span');
                         let second_Option = document.createElement('span');
                         let third_Option = document.createElement('span');
+                        let fouth_Option = document.createElement('span');
                         let exit = document.createElement('span');
 
                         first_Option.id = comment.id;
@@ -121,16 +143,18 @@ function CreationOfComments(section, locationId) {
                         options.appendChild(first_Option);
                         options.appendChild(second_Option);
                         options.appendChild(third_Option);
+                        options.appendChild(fouth_Option);
                         first_Option.innerHTML = deletesvg;
                         second_Option.innerHTML = commentsvg;
                         third_Option.innerHTML = likesvg;
                         exit.innerHTML = undo2;
+                        fouth_Option.innerHTML = copysvg;
 
                         first_Option.classList.add('headerbtns');
                         exit.classList.add('headerbtns');
                         second_Option.classList.add('headerbtns');
                         third_Option.classList.add('headerbtns');
-
+                        fouth_Option.classList.add('headerbtns');
                         options.classList.add('options');
 
                         first_Option.classList.add('first_Option');
@@ -144,6 +168,23 @@ function CreationOfComments(section, locationId) {
                         });
                         third_Option.addEventListener('click', () => {
                             likecomment();
+                        });
+                        function copyTextPost(text) {
+                            if (navigator.clipboard) {
+                                try {
+                                    const toCopy = text;
+                                    navigator.clipboard.writeText(toCopy);
+                                    create_Message('text copied');
+                                }
+                                catch (err) {
+                                    console.error('Failed to copy: ', err);
+                                    create_Message('unable to copy');
+                                }
+                            }
+                        }
+                        fouth_Option.addEventListener('click', () => {
+                            copyTextPost(comment.Property_Src);
+                            removeOptions();
                         });
                         exit.addEventListener('click', () => {
                             options.remove();

@@ -308,9 +308,7 @@ function createOtherPost() {
                                 let likes = photo.likes;
                                 likes.forEach((like) => {
                                     if (like.id === data.user_Id + photo.id) {
-                                        live_Like_Count_Container.classList.add(
-                                            "like_count_active"
-                                        );
+                                        live_Like_Count_Container.classList.add("like_count_active");
                                         live_Like_Count_Container.classList.remove("like_count");
                                     }
                                 });

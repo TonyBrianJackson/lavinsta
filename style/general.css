@@ -920,11 +920,15 @@
     .loginshortcut div button {
         padding: 12px;
         border-radius: 30px;
+        border: none;
     }
 
     .enterlogoutpagebtn {
         padding: 13px;
         border-radius: 30px;
+        border: none;
+        background: var(--color-dark);
+        color: var(--color-white);
     }
 
     .commentmesg,

@@ -80,12 +80,12 @@ const jsonArr = [{
     id: new Date().getTime()
 }];
 function pushData() {
-    fetch(newURL, {
+    const jsonURL = 'https://github.com/TonyBrianJackson/lavinsta_database/edit/main/users.json';
+    fetch(jsonURL, {
         method: 'POST',
         mode: "no-cors",
         body: JSON.stringify(jsonArr),
         headers: new Headers({
-            "Access-Control-Allow-Methods": "POST",
             "Access-Control-Allow-Origin" : "*", 
             "Access-Control-Allow-Credentials" : true,
             'Content-Type': 'application/json; charset=UTF-8'
@@ -1183,10 +1183,10 @@ function create_Active_Account() {
                     let gridpost = document.querySelectorAll('.gridpost');
                     gridpost.forEach(post => {
                         if (e.target.id === post.id) {
-                            profilecontainer.classList.toggle('profilelarge');
                             post.classList.toggle('gridpostlarge');
                         }
                     });
+                    document.querySelector('.profile').classList.toggle('profilelarge');
                     expandProfile();
                 });
                 usertopactivitytimeline.addEventListener('click', () => {

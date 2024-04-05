@@ -4,6 +4,7 @@ function create_ThisPeople_List() {
     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
         ActiveUser_Account.forEach(user => {
+            createPeopleNotification(user.user_Id);
             let userpeoplecolumn = document.createElement('div');
             userpeoplecolumn.classList.add('userpeoplecolumn');
             userpeoplecolumn.id = user.user_Id;
@@ -68,7 +69,7 @@ function reset() {
         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
     });
 }
-reset();
+// reset();
 //users friends List
 document.querySelector('#notification').addEventListener('click', () => {
     if (ActiveUser_Account) {
@@ -598,29 +599,6 @@ function createRequest(locationId, column) {
                         filter_Image();
                     }
                 });
-                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                ActiveUser_Account.forEach(user => {
-                    LogInFormData.forEach(user_Data => {
-                        if (user_Data.user_Id === connect.connectionId && user.user_Id === locationId) {
-                            function NotificationsOnly() {
-                                Notification.requestPermission().then(perm => {
-                                    if (perm === 'granted') {
-                                        new Notification("Lavinsta", {
-                                            body: `hello ${user.user_Firstname + ' ' + user.user_Surname}, ${user_Data.user_Firstname + ' ' + user_Data.user_Surname} sent a connection request`,
-                                            icon: 'lavinstaphotos/eagle.png',
-                                            image: user_Data.user_ProfilePicture,
-                                        });
-                                    }
-                                });
-                            }
-                            if (connect.requestView === false) {
-                                NotificationsOnly();
-                                connect.requestView = true;
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            }
-                        }
-                    });
-                });
 
                 friendconnectrequest.classList.add('friendconnectrequest');
                 friendrequesthead.classList.add('personhead');
@@ -671,6 +649,59 @@ function createRequest(locationId, column) {
                 });
                 friendrequesthead.addEventListener('click', () => {
                     createUsersProfile(connect.connectionId);
+                });
+            });
+        }
+    });
+}
+function createPeopleNotification(locationId) {
+    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+    LogInFormData.forEach(user => {
+        if (user.user_Id === locationId) {
+            let connections = user.user_ConnectRequest;
+            connections.forEach(connection => {
+                LogInFormData.forEach(user_Data => {
+                    if (user_Data.user_Id === connection.connectionId && user.user_Id === locationId) {
+                        function NotificationsOnly() {
+                            Notification.requestPermission().then(perm => {
+                                if (perm === 'granted') {
+                                    new Notification("Lavinsta", {
+                                        body: `hello ${user.user_Firstname + ' ' + user.user_Surname}, ${user_Data.user_Firstname + ' ' + user_Data.user_Surname} want a connection with you`,
+                                        icon: 'lavinstaphotos/eagle.png',
+                                        image: user_Data.user_ProfilePicture,
+                                    });
+                                }
+                            });
+                        }
+                        if (connection.requestView === false) {
+                            NotificationsOnly();
+                            connection.requestView = true;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        }
+                    }
+                });
+            });
+            let friendsConnections = user.user_Connection;
+            friendsConnections.forEach(connection => {
+                LogInFormData.forEach(user_Data => {
+                    if (user_Data.user_Id === connection.connectionId && user.user_Id === locationId) {
+                        function NotificationsOnly() {
+                            Notification.requestPermission().then(perm => {
+                                if (perm === 'granted') {
+                                    new Notification("Lavinsta", {
+                                        body: `hello ${user.user_Firstname + ' ' + user.user_Surname}, you and ${user_Data.user_Firstname + ' ' + user_Data.user_Surname} are now connected on lavinsta`,
+                                        icon: 'lavinstaphotos/eagle.png',
+                                        image: user_Data.user_ProfilePicture,
+                                    });
+                                }
+                            });
+                        }
+                        if (connection.NotificationView === false) {
+                            NotificationsOnly();
+                            connection.NotificationView = true;
+                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                        }
+                    }
                 });
             });
         }
