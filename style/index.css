@@ -1,5 +1,6 @@
 /*fonts importing*/
 @import url('https://fonts.googleapis.com/css2?family=Asul:wght@400;700&family=Ballet:opsz@16..72&family=Great+Vibes&family=Metal+Mania&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&family=Srisakdi:wght@400;700&family=Tangerine:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -2410,21 +2411,31 @@ main .header {
     cursor: pointer;
     z-index: 1;
     font-weight: 900;
-    color: var(--color-dark);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 19px;
     overflow: hidden;
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
+.itemsviewclosebutton svg,
+.more svg {
+    width: 15px;
+    height: 15px;
+    border: none;
+    box-shadow: none;
+    background: none;
+    border-radius: 0px;
+} 
+.more svg circle {
+    fill: var(--color-dark);
+}
 .gridpostimagecontainer .headerbtns {
     position: absolute;
     right: 25px;
     top: 2px;
 }
 
-.adgrid .head .more{
+.adgrid .head .more {
     top: 5px;
     right: 10px;
     width: 30px;
@@ -2434,14 +2445,18 @@ main .header {
     background: rgba(0, 0, 0, 0.059);
     z-index: 8;
 }
+
 .itemsviewclosebutton,
 .gridpostimagecontainer .more {
     position: unset;
     width: 30px;
     height: 30px;
-    color: var(--color-white);
     transition: 300ms;
     background: rgba(0, 0, 0, 0.059);
+}
+.itemsviewclosebutton svg polygon,
+.gridpostimagecontainer .more svg circle {
+    fill: #ffffffff;
 }
 .adgrid .head .more {
     color: var(--color-dark);
@@ -2450,11 +2465,13 @@ main .header {
 .itemsviewclosebutton:hover,
 .more:hover {
     background: var(--color-dark);
-    color: var(--color-white);
     transition: 300ms;
     border-radius: 50%;
 }
-
+.itemsviewclosebutton:hover svg polygon,
+.gridpostimagecontainer .more:hover svg circle {
+    fill: var(--color-white);
+}
 .reel .postmenu,
 .reel .postmenuactive,
 .adgrid .postmenu,
@@ -2967,10 +2984,12 @@ main .header {
     cursor: pointer;
     z-index: 1;
 }
+
 .commentinput>div>svg path,
 .shareandlikecommentflex>div>svg path {
     fill: var(--color-dark);
 }
+
 .shareandlikecommentflexactive {
     width: 0px;
     height: 100%;
@@ -6309,6 +6328,7 @@ a {
     overflow-x: scroll;
     overflow-y: visible;
 }
+
 .navigationheader .headerright {
     overflow-x: scroll;
     overflow-y: visible;
@@ -6723,6 +6743,7 @@ a {
     width: 200px;
     height: 0px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: none;
@@ -6740,13 +6761,11 @@ a {
 }
 
 .storyviewspopupactive {
-    width: 200px;
     height: 250px;
     visibility: visible;
     opacity: 1;
     pointer-events: all;
     transition: all 600ms ease 30ms;
-    z-index: 4;
 }
 
 .storyviewscolumn {
@@ -6758,7 +6777,7 @@ a {
     box-shadow: none;
     border-radius: 0px;
     width: 100%;
-    height: 100%;
+    height: 80%;
     padding: 5px;
     max-height: max-content;
     overflow-x: hidden;
@@ -6777,22 +6796,34 @@ a {
     box-shadow: var(--block-box-shadow);
 }
 
-.viewblock span {
+.storyviewspopup header {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: max-content;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+.viewblock>span {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 35px;
     height: 35px;
-    border: 2px solid var(--color-white);
+    border: 2px solid var(--color-dark);
     border-radius: 50%;
     box-shadow: none;
-    border: none;
     background: none;
     margin-right: 3px;
 }
 
-.viewblock span img {
+.viewblock>span img {
     width: 100%;
     height: 100%;
     display: block;
@@ -6824,7 +6855,7 @@ a {
     display: block;
     text-align: left;
     width: 100%;
-    color: #000000;
+    color: var(--color-dark);
     font-weight: 700;
 }
 
@@ -6836,11 +6867,10 @@ a {
     display: block;
     text-align: left;
     width: 100%;
-    color: #000000;
+    color: var(--color-dark);
     font-weight: 500;
 }
 
-.advertfloatcommentbox,
 .storyfloatinput,
 .gridinput {
     width: 100%;
@@ -8548,7 +8578,6 @@ a {
     }
 
     .worldwideinput,
-    .advertfloatcommentbox,
     .storyfloatinput,
     .gridinput {
         height: 40px;
@@ -8614,11 +8643,40 @@ a {
         pointer-events: none;
     }
 }
+
 .people .navigationheader .headermiddle.headermiddleactive,
 .chattab .navigationheader .headermiddle.headermiddleactive {
     display: flex;
 }
+
 @media (min-width: 0px) and (max-width: 539px) {
+    .largeusername {
+        color: #ffffffff;
+    }
+
+    .storyviewspopup header {
+        display: flex;
+    }
+
+    .viewblock {
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    .viewblock>span {
+        width: 50px;
+        height: 50px;
+    }
+
+    .storyviewspopup {
+        width: 100%;
+        bottom: 0;
+        top: unset;
+        position: fixed;
+        border-radius: 25px 25px 0px 0px;
+        z-index: 36;
+    }
+
     .savingmessage {
         font-size: 12px;
         padding: 10px;
@@ -8627,6 +8685,7 @@ a {
         white-space: nowrap;
         max-width: 90%;
     }
+
     .navigationheader {
         flex-direction: column;
         background: var(--color-white);
@@ -8774,9 +8833,11 @@ a {
         border-radius: 0px;
         border: none;
     }
+
     .searchheadericons.active svg path {
         fill: var(--color-bright);
     }
+
     .searchheadericons svg {
         width: 25px;
         height: 25px;
@@ -8830,16 +8891,19 @@ a {
         overflow: hidden;
         z-index: 751;
     }
+
     .editpopup .headerbtns,
     .reportcontainer .headerbtns {
         background: none;
     }
+
     .editpopup header,
     .reportcontainer header {
         background: var(--color-white);
         border-radius: 25px 25px 0px 0px;
         margin: 0;
     }
+
     .editingisdone,
     .reportcontainer button {
         box-shadow: none;
@@ -8888,9 +8952,11 @@ a {
         font-size: 17px;
         color: var(--color-dark);
     }
+
     .personlikerecord span {
         color: var(--color-dark);
     }
+
     .copyrightmesgandsmallprofilegrid {
         width: 100%;
         padding: 0px;
@@ -9239,13 +9305,14 @@ a {
         overflow: hidden;
     }
 
-    .itemsviewclosebutton {
+    .itemsviewclosebutton,
+    .gridpostimagecontainer .more {
         background: none;
-        color: #ffffffff;
-        font-size: 25px;
-        font-weight: 400;
     }
-
+    .itemsviewclosebutton svg path,
+    .gridpostimagecontainer .more svg path {
+        fill:#ffffffff;
+    }
     .gridpostimgwideview,
     .largescalewideviewcontainer {
         width: 100%;
@@ -9536,10 +9603,11 @@ a {
         background: var(--color-light);
     }
 
-    .itemsviewclosebutton {
-        font-size: 20px;
+    .itemsviewclosebutton svg,
+    .gridpostimagecontainer .more svg {
+        width: 22px;
+        height: 22px;
     }
-
     .largescalewideviewcontainer {
         width: 100%;
         height: 100%;
@@ -9559,10 +9627,11 @@ a {
 }
 
 @media (min-width: 561px) and (max-width: 800px) {
-    .itemsviewclosebutton {
-        font-size: 20px;
+    .itemsviewclosebutton svg path,
+    .gridpostimagecontainer .more svg path {
+        width: 25px;
+        height: 25px;
     }
-
     .largescalewideviewcontainer {
         width: 100%;
         height: 100%;
@@ -9665,7 +9734,6 @@ a {
         left: 20%;
     }
 
-    .advertfloatcommentbox,
     .storyfloatinput,
     .gridinput {
         height: 60px;

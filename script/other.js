@@ -93,7 +93,7 @@ async function create_Main_Trash_Items(locationId) {
                     gridView_Header.appendChild(more);
                     gridView_Header.appendChild(itemsviewclosebutton);
                     gridView_Header.classList.add('gridView_Header');
-                    more.innerHTML = '&vellip;';
+                    more.innerHTML = vellip;
                     more.classList.add('more');
                     function delete_trash() {
                         let confirmation_popup = document.createElement('div');
@@ -389,7 +389,8 @@ async function create_Main_Trash_Items(locationId) {
                     itemsviewclosebutton.classList.add('itemsviewclosebutton');
                     itemsviewonlargescale.classList.add('itemsviewonlargescale');
                     gridpostimagecontainer.style.display = 'flex';
-                    itemsviewclosebutton.innerHTML = '&times;';
+                    itemsviewclosebutton.innerHTML = closesvg;
+
                     document.body.appendChild(itemsviewonlargescale);
                     largescalewideviewcontainer.id = photo.id;
                     itemsviewonlargescale.id = photo.id;

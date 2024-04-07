@@ -245,7 +245,9 @@
     color: var(--color-bright);
     border-color: var(--color-bright);
 }
-.headerbtns:hover svg path {
+.headerbtns:hover svg path,
+.headerbtns:hover svg polygon,
+.headerbtns:hover svg circle {
     fill: var(--color-bright);
 }
 .headerbtns:hover .toolpit {
@@ -267,7 +269,9 @@
     height: 15px;
 }
 .headerbtns.create_plus svg path,
-.headerbtns svg path {
+.headerbtns svg path,
+.headerbtns svg polygon,
+.headerbtns svg circle {
     fill: var(--color-dark);
 }
 

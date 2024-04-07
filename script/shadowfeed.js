@@ -352,7 +352,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                     create_Grid_PostHeader();
                     more.classList.add('more');
                     gridView_Header.classList.add('gridView_Header');
-                    more.innerHTML = '&vellip;';
+                    more.innerHTML = vellip;
                     more.addEventListener('click', () => {
                         create_Post_Options_Script(gridpostimagecontainer,photo.id);
                     });
@@ -552,7 +552,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 itemsviewclosebutton.classList.add('itemsviewclosebutton');
                 itemsviewonlargescale.classList.add('itemsviewonlargescale');
                 gridpostimagecontainer.style.display = 'flex';
-                itemsviewclosebutton.innerHTML = '&times;';
+                itemsviewclosebutton.innerHTML = closesvg;
                 document.body.appendChild(itemsviewonlargescale);
                 largescalewideviewcontainer.id = photo.id;
                 itemsviewonlargescale.id = photo.id;
@@ -865,7 +865,7 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
     itemsviewclosebutton.classList.add('itemsviewclosebutton');
     itemsviewonlargescale.classList.add('itemsviewonlargescale');
     gridpostimagecontainer.style.display = 'flex';
-    itemsviewclosebutton.innerHTML = '&times;';
+    itemsviewclosebutton.innerHTML = closesvg;
     document.body.appendChild(itemsviewonlargescale);
 
     itemsviewclosebutton.addEventListener('click', () => {

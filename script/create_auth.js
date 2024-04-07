@@ -396,7 +396,7 @@ function active_user_render() {
                         });
                         taskbar_Switch.addEventListener('click', () => {
                             if (user.user_TaskBar_Mode === true) {
-                                taskbar_Switch.innerHTML = '&times;';
+                                taskbar_Switch.innerHTML = closesvg;
                                 document.querySelector('.footer_task_bar').style.display = 'none';
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === data.user_Id) {
@@ -405,7 +405,7 @@ function active_user_render() {
                                     }
                                 });
                             } else {
-                                taskbar_Switch.innerHTML = '&check;';
+                                taskbar_Switch.innerHTML = checkedsvg;
                                 document.querySelector('.footer_task_bar').style.display = 'flex';
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === data.user_Id) {
@@ -436,10 +436,10 @@ function active_user_render() {
     
                     function CheckOnAllOtherThings() {
                         if (user.user_TaskBar_Mode === true) {
-                            taskbar_Switch.innerHTML = '&check;';
+                            taskbar_Switch.innerHTML = checkedsvg;
                             document.querySelector('.footer_task_bar').style.display = 'flex';
                         } else {
-                            taskbar_Switch.innerHTML = '&times;';
+                            taskbar_Switch.innerHTML = closesvg;
                             document.querySelector('.footer_task_bar').style.display = 'none';
                         }
                         if (user.user_Play == 'autoplay') {

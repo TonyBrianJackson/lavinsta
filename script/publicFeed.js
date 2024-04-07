@@ -597,7 +597,7 @@ function createPublicFeed() {
                     });
 
                     more.classList.add('more');
-                    more.innerHTML = '&vellip;';
+                    more.innerHTML = vellip;
                     nameAndImg.appendChild(authorsImg);
                     nameAndImg.appendChild(name);
                     nameAndImg.classList.add('nameandimg');

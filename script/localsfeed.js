@@ -801,7 +801,7 @@ function createPhotoPostOnTimeLine() {
                 post.id = photo.id;
 
                 more.classList.add('more');
-                more.innerHTML = '&vellip;';
+                more.innerHTML = vellip;
                 nameAndImg.appendChild(authorsImg);
                 nameAndImg.appendChild(name);
                 head.appendChild(title);

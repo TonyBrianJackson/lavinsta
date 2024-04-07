@@ -144,7 +144,8 @@ function Create_Short() {
                     }
                     postmenu.classList.add('postmenu');
                     more.classList.add('more');
-                    more.innerHTML = '&vellip;';
+                    more.innerHTML = vellip;
+
                     more.addEventListener('click', () => {
                         postmenu.classList.toggle('postmenuactive');
                     });

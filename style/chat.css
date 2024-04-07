@@ -1309,6 +1309,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 5px;
         background: var(--color-light);
+        z-index: 36;
     }
     .largescalewideviewcontainer .options .headerbtns,
     .adgrid .options .headerbtns,

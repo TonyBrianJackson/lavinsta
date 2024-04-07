@@ -994,7 +994,7 @@ function create_Main_Story_Archieve(locationId) {
                 itemsviewclosebutton.classList.add('itemsviewclosebutton');
                 itemsviewonlargescale.classList.add('itemsviewonlargescale');
                 gridpostimagecontainer.style.display = 'flex';
-                itemsviewclosebutton.innerHTML = '&times;';
+                itemsviewclosebutton.innerHTML = closesvg;
                 document.body.appendChild(itemsviewonlargescale);
                 largescalewideviewcontainer.id = photo.id;
                 itemsviewonlargescale.id = photo.id;

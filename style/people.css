@@ -918,16 +918,12 @@
     color: var(--color-dark);
     cursor: pointer;
 }
-
-.taskbar_Switch svg {
-    transform: rotate(45deg);
-}
-
 .searchbtn_buttonsearch {
     display: none;
 }
 
 @media (min-width: 0px) and (max-width: 539px) {
+
     .person,
     .friendconnectrequest,
     .friendcontainer,
@@ -962,6 +958,7 @@
         border-radius: 0px;
         height: 100%;
     }
+
     .peopleculomn,
     .peoplerequestculomn,
     .sentrequestculomn,
@@ -969,6 +966,7 @@
     .generalnotificationculomn {
         border-radius: 0px;
     }
+
     .navigationheader .headerleft,
     .navigationheader .headermiddle,
     .navigationheader .headerright {
@@ -1016,16 +1014,19 @@
         width: 25px;
         height: 25px;
     }
+
     .headerbtns.peoplebtn.active,
     .headerbtns.b_Buttons.active,
     .headerbtns.peoplebtn.active,
     .headerbtns.b_Buttons.active {
         background: none;
     }
+
     .headerbtns.peoplebtn.active>svg path,
     .headerbtns.b_Buttons.active>svg path,
     .headerbtns.peoplebtn.active>svg circle,
-    .headerbtns.b_Buttons.active>svg circle {
+    .headerbtns.b_Buttons.active>svg circle,
+    .headerbtns.b_Buttons.active>svg polygon {
         fill: var(--color-bright);
     }
 
@@ -1122,6 +1123,7 @@
         margin: 2px;
         cursor: pointer;
     }
+
     .frienddisconnect,
     .personaddbutton,
     .personacceptbutton {
@@ -1133,6 +1135,7 @@
         background: var(--color-white);
         color: var(--color-dark);
     }
+
     .persondeclinebutton {
         background: var(--color-white);
         color: var(--color-dark);

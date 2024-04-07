@@ -63,7 +63,7 @@ function create_Main_Story_Trash(locationId) {
                 gridView_Header.appendChild(more);
                 gridView_Header.appendChild(itemsviewclosebutton);
                 gridView_Header.classList.add('gridView_Header');
-                more.innerHTML = '&vellip;';
+                more.innerHTML = vellip;
                 more.classList.add('more');
                 more.addEventListener('click', () => {
                     create_Options_Script();
@@ -71,19 +71,17 @@ function create_Main_Story_Trash(locationId) {
                 function create_Options_Script() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     gridpostimagecontainer.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = deletesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/trash-can.png';
+                    exit.innerHTML = undo2;
                     first_Option.addEventListener('click', () => {
                         delete_DELETED_story();
                     });
@@ -363,7 +361,7 @@ function create_Main_Story_Trash(locationId) {
                 itemsviewclosebutton.classList.add('itemsviewclosebutton');
                 itemsviewonlargescale.classList.add('itemsviewonlargescale');
                 gridpostimagecontainer.style.display = 'flex';
-                itemsviewclosebutton.innerHTML = '&times;';
+                itemsviewclosebutton.innerHTML = closesvg;
                 document.body.appendChild(itemsviewonlargescale);
                 largescalewideviewcontainer.id = photo.id;
                 itemsviewonlargescale.id = photo.id;
@@ -621,22 +619,17 @@ async function create_Main_Stories(locationId, Property_Src) {
                 let itemsviewclosebutton = document.createElement('span');
                 let itemsviewonlargescale = document.createElement('section');
                 let largescalewideviewcontainer = document.createElement('div');
-                let nameandtimegrid = document.createElement('div');
-                let more = document.createElement('span');
 
-                let storytime = document.createElement('p');
+                let gridposttime = document.createElement('b');
                 let gridpostimagecontainer = document.createElement('div');
-                let largenameandimg = document.createElement('div');
-                let storyviewsmallimg = document.createElement('img');
-                let largeusername = document.createElement('b');
                 let gridpostcaption = document.createElement('p');
                 //floats
                 let items_Float = document.createElement('span');
                 let items_Center = document.createElement('span');
                 let horizontalfloat = document.createElement('div');
-                let storyfloatinput = document.createElement('div');
-                let storyfloatinputinput = document.createElement('input');
-                let storysend = document.createElement('img');
+                let gridinput = document.createElement('div');
+                let gridinputinput = document.createElement('input');
+                let gridcomment = document.createElement('div');
                 let tilebox_Stories = document.createElement('nav');
 
                 if (storystatus.type == 'photo') {
@@ -778,13 +771,19 @@ async function create_Main_Stories(locationId, Property_Src) {
                     });
                 }
                 let storyviewspopup = document.createElement('div');
+                let statusviewsheader = document.createElement('header');
+                let exit = document.createElement('span');
+
                 let storyviewscolumn = document.createElement('div');
                 storyviewspopup.id = storystatus.id;
                 storyviewscolumn.id = storystatus.id;
+                statusviewsheader.appendChild(exit);
+                storyviewspopup.appendChild(statusviewsheader);
                 storyviewspopup.appendChild(storyviewscolumn);
                 storyviewscolumn.classList.add('storyviewscolumn');
                 storyviewspopup.classList.add('storyviewspopup');
-
+                exit.classList.add('headerbtns');
+                exit.innerHTML = undo2;
 
 
                 let gridposttitlecover = document.createElement('span');
@@ -814,6 +813,95 @@ async function create_Main_Stories(locationId, Property_Src) {
                     });
                 });
                 viewcount.textContent = storystatus.views.length;
+
+                function Create_GridPost_Options(anything) {
+                    let gridView_Header = document.createElement('header');
+                    let more = document.createElement('span');
+
+                    function create_Grid_PostHeader() {
+                        let gridpostNameAndImg = document.createElement('div');
+                        let nameAndImgWrapper = document.createElement('div');
+                        let posterImgCont = document.createElement('span');
+                        let nameAndCaptionWrapper = document.createElement('div');
+                        let posterImg = document.createElement('img');
+                        let posterName = document.createElement('p');
+                        let postCaption = document.createElement('b');
+
+                        gridpostimagecontainer.appendChild(gridView_Header);
+                        gridView_Header.appendChild(gridpostNameAndImg);
+                        gridView_Header.appendChild(more);
+                        gridView_Header.appendChild(itemsviewclosebutton);
+                        gridpostNameAndImg.appendChild(nameAndImgWrapper);
+                        nameAndImgWrapper.appendChild(posterImgCont);
+                        nameAndImgWrapper.appendChild(nameAndCaptionWrapper);
+                        nameAndCaptionWrapper.appendChild(posterName);
+                        nameAndCaptionWrapper.appendChild(postCaption);
+                        nameAndCaptionWrapper.appendChild(gridposttime);
+                        posterImgCont.appendChild(posterImg);
+                        postCaption.textContent = storystatus.attribute;
+                        nameAndImgWrapper.classList.add('nameAndImgWrapper');
+                        gridpostNameAndImg.classList.add('gridpostNameAndImg');
+                        posterName.classList.add('largeusername');
+                        posterImgCont.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(storystatus.posterId, user.user_Id);
+                                });
+                            }
+                        });
+                        function Poster_Details() {
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === storystatus.posterId) {
+                                    posterImg.src = user.user_ProfilePicture;
+                                    posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    function filter_Image() {
+                                        //profile_filter 
+                                        if (user.user_ProfilePicture_Filter == 'default') {
+                                            posterImg.classList.add('--color-default');
+                                        } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                            posterImg.classList.add('--color-gray');
+                                        } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                            posterImg.classList.add('--color-contrast');
+                                        } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                            posterImg.classList.add('--color-bright');
+                                        } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                            posterImg.classList.add('--color-blur');
+                                        } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                            posterImg.classList.add('--color-invert');
+                                        } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                            posterImg.classList.add('--color-sepia');
+                                        } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                            posterImg.classList.add('--color-hue-rotate');
+                                        } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                            posterImg.classList.add('--color-opacity');
+                                        } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                            posterImg.classList.add('--color-satulate');
+                                        }
+                                    }
+                                    filter_Image();
+                                }
+                            });
+                        }
+                        Poster_Details();
+                    }
+                    create_Grid_PostHeader();
+                    more.classList.add('more');
+                    gridView_Header.classList.add('gridView_Header');
+                    more.innerHTML = vellip;
+                    more.addEventListener('click', () => {
+                        create_Options_Script();
+                    });
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                        ActiveUser_Account.forEach(user => {
+                            if (user.user_Id !== storystatus.posterId) {
+                                more.remove();
+                            }
+                        });
+                    }
+                }
+                Create_GridPost_Options();
 
                 function checkIfStatusIsViewed() {
                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
@@ -871,27 +959,24 @@ async function create_Main_Stories(locationId, Property_Src) {
                 loader(itemsviewonlargescale, storystatus.id);
                 document.body.appendChild(itemsviewonlargescale);
                 itemsviewonlargescale.id = storystatus.id;
-                itemsviewonlargescale.appendChild(itemsviewclosebutton);
                 itemsviewonlargescale.appendChild(largescalewideviewcontainer);
                 largescalewideviewcontainer.appendChild(gridpostimagecontainer);
                 gridpostimagecontainer.style.display = 'flex';
-                itemsviewclosebutton.innerHTML = '&times;';
-                more.innerHTML = '&vellip;';
-                more.classList.add('more');
+                itemsviewclosebutton.innerHTML = closesvg;
+                gridcomment.innerHTML = send2svg;
                 itemsviewclosebutton.classList.add('itemsviewclosebutton');
 
                 largescalewideviewcontainer.classList.add('largescalewideviewcontainer');
                 itemsviewonlargescale.classList.add('itemsviewonlargescale');
                 itemsviewonlargescale.style.display = 'flex';
-                storysend.src = 'icons/send.png';
                 items_Center.innerHTML = '&plus;';
                 items_Float.classList.add('items_Float');
                 items_Center.classList.add('items_Center');
-                storysend.classList.add('storysend');
-                storyfloatinputinput.setAttribute(`placeholder`, 'whats on your mind');
-                storyfloatinput.classList.add('storyfloatinput');
+                gridcomment.classList.add('gridcomment');
+                gridinputinput.setAttribute(`placeholder`, 'whats on your mind');
+                gridinput.classList.add('gridinput');
                 horizontalfloat.classList.add('horizontalfloat');
-                storyfloatinputinput.classList.add('storyfloatinputinput');
+                gridinputinput.classList.add('gridinputinput');
 
                 const startTime = function () {
                     let time;
@@ -905,43 +990,37 @@ async function create_Main_Stories(locationId, Property_Src) {
                     if (time >= 60 * 60 * 24) {
                         token = 'day';
                         maintime = time / 86400;
-                        storytime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } else if (time <= 60 * 60 * 24) {
                         token = 'hr';
                         maintime = time / 3600;
-                        storytime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } if (time == 60 * 2) {
                         token = 'min';
                         maintime = time / time;
-                        storytime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } else if (time == 60 * 60 || time <= 60 * 60 * 2) {
                         token = 'min';
                         maintime = time / 60;
-                        storytime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } if (time == 0) {
                         token = 'just now';
                         maintime = time;
-                        storytime.innerHTML = token + ' ' + moment;
+                        gridposttime.innerHTML = token + ' ' + moment;
                     } else if (time == 1) {
                         token = 'just now';
                         maintime = time / time;
-                        storytime.innerHTML = token + ' ' + moment;
+                        gridposttime.innerHTML = token + ' ' + moment;
                     } else if (time == 1 || time <= 60) {
                         token = 'sec';
                         maintime = 'just now';
-                        storytime.innerHTML = maintime;
+                        gridposttime.innerHTML = maintime;
                     }
                 }
                 startTime();
 
-
-                storytime.classList.add('storytime');
-                nameandtimegrid.classList.add('nameandtimegrid');
                 tilebox_Stories.classList.add('tilebox_Stories');
                 gridpostimagecontainer.classList.add('gridpostimagecontainer');
-                largenameandimg.classList.add('largenameandimg');
-                largeusername.classList.add('largeusername');
-                storyviewsmallimg.classList.add('storyviewsmallimg');
                 gridpostcaption.classList.add('gridpostcaption');
 
                 gridpostcaption.textContent = storystatus.title;
@@ -958,75 +1037,31 @@ async function create_Main_Stories(locationId, Property_Src) {
                         }
                     });
                 });
-                function Poster_Details() {
-                    LogInFormData.forEach(user => {
-                        if (user.user_Id === storystatus.posterId) {
-                            storyviewsmallimg.src = user.user_ProfilePicture;
-                            largeusername.textContent = user.user_Firstname + ' ' + user.user_Surname;
-                            function filter_Image() {
-                                //profile_filter 
-                                if (user.user_ProfilePicture_Filter == 'default') {
-                                    storyviewsmallimg.classList.add('--color-default');
-                                } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                    storyviewsmallimg.classList.add('--color-gray');
-                                } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                    storyviewsmallimg.classList.add('--color-contrast');
-                                } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                    storyviewsmallimg.classList.add('--color-bright');
-                                } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                    storyviewsmallimg.classList.add('--color-blur');
-                                } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                    storyviewsmallimg.classList.add('--color-invert');
-                                } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                    storyviewsmallimg.classList.add('--color-sepia');
-                                } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                    storyviewsmallimg.classList.add('--color-hue-rotate');
-                                } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                    storyviewsmallimg.classList.add('--color-opacity');
-                                } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                    storyviewsmallimg.classList.add('--color-satulate');
-                                }
-                            }
-                            filter_Image();
-                        }
-                    });
-                }
-
-                if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    Poster_Details();
-                } else {
-                    LogInFormData = [];
-                }
                 if (gridpostcaption.textContent.length > 200) {
                     gridpostcaption.addEventListener('click', () => {
                         gridpostcaption.classList.toggle('gridpostcaptionmoreorless');
                     });
                 }
 
-                horizontalfloat.appendChild(storyfloatinput);
-                storyfloatinput.appendChild(storyfloatinputinput);
-                storyfloatinput.appendChild(storysend);
+                horizontalfloat.appendChild(gridinput);
+                gridinput.appendChild(gridinputinput);
+                gridinput.appendChild(gridcomment);
                 items_Float.appendChild(items_Center);
-                more.addEventListener('click', () => {
-                    create_Options_Script();
-                });
+
                 function create_Options_Script() {
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
-                    let first_Optionimg = document.createElement('img');
                     let exit = document.createElement('span');
 
                     gridpostimagecontainer.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
-                    first_Option.appendChild(first_Optionimg);
+                    first_Option.innerHTML = deletesvg;
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
                     first_Option.classList.add('first_Option');
-                    exit.innerHTML = '&times;';
-                    first_Optionimg.src = 'newicons/trash-can.png';
+                    exit.innerHTML = undo2;
                     first_Option.addEventListener('click', () => {
                         story_Deleting(locationId);
                     });
@@ -1034,7 +1069,6 @@ async function create_Main_Stories(locationId, Property_Src) {
                         options.remove();
                     });
                 }
-                gridpostimagecontainer.appendChild(largenameandimg);
                 gridpostimagecontainer.appendChild(gridposttitlecover);
                 gridpostimagecontainer.appendChild(storyverticalfloat);
                 gridpostimagecontainer.appendChild(horizontalfloat);
@@ -1042,14 +1076,7 @@ async function create_Main_Stories(locationId, Property_Src) {
                 gridpostimagecontainer.appendChild(storyviewspopup);
                 gridpostimagecontainer.appendChild(tilebox_Stories);
 
-                horizontalfloat.appendChild(storyfloatinput);
-                largenameandimg.appendChild(storyviewsmallimg);
-                largenameandimg.appendChild(nameandtimegrid);
-                largenameandimg.appendChild(more);
-                largenameandimg.appendChild(itemsviewclosebutton);
-                nameandtimegrid.appendChild(largeusername);
-                nameandtimegrid.appendChild(storytime);
-
+                horizontalfloat.appendChild(gridinput);
 
                 itemsviewclosebutton.addEventListener('click', () => {
                     document.querySelectorAll('.confirmation_popup').forEach(popup => {
@@ -1071,11 +1098,11 @@ async function create_Main_Stories(locationId, Property_Src) {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === data.user_Id) {
                                     const id = '' + new Date().getTime();
-                                    if (storyfloatinputinput.value) {
+                                    if (gridinputinput.value) {
                                         myChatMsg.push({
                                             isStory_Reply: true,
                                             isStoryPhoto: true,
-                                            story_reply: storyfloatinputinput.value,
+                                            story_reply: gridinputinput.value,
                                             Property_Src: storystatus.Property_Src,
                                             story_title_reply: storystatus.title,
                                             id: id,
@@ -1094,19 +1121,17 @@ async function create_Main_Stories(locationId, Property_Src) {
                         });
                     }
                 }
-                storysend.addEventListener('click', () => {
-                    if (storyfloatinputinput.value) {
+                gridcomment.addEventListener('click', () => {
+                    if (gridinputinput.value) {
                         push_reply_To_Story();
                         createChatMessages();
-                        storyfloatinputinput.value = '';
+                        gridinputinput.value = '';
                     }
                 });
                 if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(data => {
-                        if (storystatus.posterId !== data.user_Id) {
-                            more.remove();
-                        } if (storystatus.posterId === data.user_Id) {
+                        if (storystatus.posterId === data.user_Id) {
                             if (horizontalfloat) {
                                 horizontalfloat.remove();
                             }
@@ -1173,6 +1198,14 @@ function CreateStatusViews() {
                         viewblocktail.appendChild(viewname);
                         viewblocktail.appendChild(viewtime);
                         viewblockhead.appendChild(viewprofilepicture);
+                        viewblockhead.addEventListener('click', () => {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(view.posterId, user.user_Id);
+                                });
+                            }
+                        });
                         const startTime = function () {
                             let time;
                             let timeresult = new Date().getTime();
