@@ -8657,7 +8657,9 @@ a {
     .storyviewspopup header {
         display: flex;
     }
-
+    .storyviewspopup header .headerbtns {
+        background: none;
+    }
     .viewblock {
         padding: 10px;
         box-shadow: none;

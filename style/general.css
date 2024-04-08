@@ -854,11 +854,14 @@
     }
 
     .confirmationflex span {
-        border-radius: 10px;
+        border-radius: 30px;
         box-shadow: none;
-        border: 2px solid var(--color-dark);
+        border: none;
     }
-
+    .confirmationflex span:nth-child(1) {
+        color: var(--color-white);
+    }
+    .confirmationflex p,
     .confirmationflex span:nth-child(2) {
         color: var(--color-dark);
     }
@@ -869,7 +872,6 @@
 
     .confirmationfalse {
         background: var(--color-white);
-        color: var(--color-dark);
     }
 }
 

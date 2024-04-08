@@ -703,10 +703,7 @@ function create_Main_Story_Archieve(locationId) {
         let Trash = user.user_Archieve;
         Trash.forEach(photo => {
             if (photo.id === locationId) {
-                let saveddelete = document.createElement('img');
                 let savedtilebox = document.createElement('nav');
-                let savedtime = document.createElement('span');
-                let saveddeletebtn = document.createElement('span');
 
                 let itemsviewclosebutton = document.createElement('span');
                 let itemsviewonlargescale = document.createElement('section');
@@ -716,7 +713,154 @@ function create_Main_Story_Archieve(locationId) {
                 let gridpostimagecontainer = document.createElement('div');
                 let gridposttitlecover = document.createElement('span');
                 let gridposttime = document.createElement('b');
-                function delete_DELETED_story() {
+                function Create_GridPost_Options(anything) {
+                    let gridView_Header = document.createElement('header');
+                    let more = document.createElement('span');
+
+                    function create_Grid_PostHeader() {
+                        let gridpostNameAndImg = document.createElement('div');
+                        let nameAndImgWrapper = document.createElement('div');
+                        let posterImgCont = document.createElement('span');
+                        let nameAndCaptionWrapper = document.createElement('div');
+                        let posterImg = document.createElement('img');
+                        let posterName = document.createElement('p');
+                        let postCaption = document.createElement('b');
+
+                        gridpostimagecontainer.appendChild(gridView_Header);
+                        gridView_Header.appendChild(gridpostNameAndImg);
+                        gridView_Header.appendChild(more);
+                        gridView_Header.appendChild(itemsviewclosebutton);
+                        gridpostNameAndImg.appendChild(nameAndImgWrapper);
+                        nameAndImgWrapper.appendChild(posterImgCont);
+                        nameAndImgWrapper.appendChild(nameAndCaptionWrapper);
+                        nameAndCaptionWrapper.appendChild(posterName);
+                        nameAndCaptionWrapper.appendChild(postCaption);
+                        nameAndCaptionWrapper.appendChild(gridposttime);
+                        posterImgCont.appendChild(posterImg);
+                        nameAndImgWrapper.classList.add('nameAndImgWrapper');
+                        gridpostNameAndImg.classList.add('gridpostNameAndImg');
+                        posterName.classList.add('largeusername');
+                        postCaption.textContent = 'story archieve';
+                        function Poster_Details() {
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === photo.posterId) {
+                                    posterImg.src = user.user_ProfilePicture;
+                                    posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    function filter_Image() {
+                                        //profile_filter 
+                                        if (user.user_ProfilePicture_Filter == 'default') {
+                                            posterImg.classList.add('--color-default');
+                                        } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                            posterImg.classList.add('--color-gray');
+                                        } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                            posterImg.classList.add('--color-contrast');
+                                        } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                            posterImg.classList.add('--color-bright');
+                                        } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                            posterImg.classList.add('--color-blur');
+                                        } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                            posterImg.classList.add('--color-invert');
+                                        } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                            posterImg.classList.add('--color-sepia');
+                                        } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                            posterImg.classList.add('--color-hue-rotate');
+                                        } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                            posterImg.classList.add('--color-opacity');
+                                        } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                            posterImg.classList.add('--color-satulate');
+                                        }
+                                    }
+                                    filter_Image();
+                                }
+                            });
+                        }
+                        Poster_Details();
+                    }
+                    create_Grid_PostHeader();
+                    more.classList.add('more');
+                    gridView_Header.classList.add('gridView_Header');
+                    more.innerHTML = vellip;
+                    more.addEventListener('click', () => {
+                        create_Options_Script();
+                    });
+                }
+                Create_GridPost_Options();
+                function create_Options_Script() {
+                    removeOptions();
+                    let options = document.createElement('div');
+                    let first_Option = document.createElement('span');
+                    let second_Option = document.createElement('span');
+                    let exit = document.createElement('span');
+    
+                    gridpostimagecontainer.insertAdjacentElement("afterend", options);
+                    options.appendChild(exit);
+                    options.appendChild(first_Option);
+                    options.appendChild(second_Option);
+                    first_Option.innerHTML = deletesvg;
+                    second_Option.innerHTML = downloadsvg;
+                    exit.innerHTML = undo2;
+    
+                    options.classList.add('options');
+                    first_Option.classList.add('headerbtns');
+                    second_Option.classList.add('headerbtns');
+                    exit.classList.add('headerbtns');
+                    first_Option.addEventListener('click', () => {
+                        Remove_From_Archieve();
+                        removeOptions();
+                    });
+                    exit.addEventListener('click', () => {
+                        options.remove();
+                    });
+                    if (photo.type == 'photo') {
+                        function pushSavedData() {
+                            var new_Date = new Date().getTime();
+                            var download_Link = document.createElement('a');
+                            var mainimg = document.createElement('img');
+                            mainimg.src = photo.Property_Src;
+                            download_Link.href = mainimg.src;
+                            download_Link.download = "Lavinsta" + '_' + 'IMG' + '_' + new_Date + '.' + 'jpeg';
+                            download_Link.click();
+                        }
+                        second_Option.addEventListener('click', () => {
+                            pushSavedData();
+                            removeOptions();
+                        });
+                    } if (photo.type == 'video') {
+                        function pushSavedData() {
+                            var new_Date = new Date().getTime();
+                            var download_Link = document.createElement('a');
+                            var mainimg = document.createElement('video');
+                            mainimg.src = photo.Property_Src;
+                            download_Link.href = mainimg.src;
+                            download_Link.download = "Lavinsta" + '_' + 'VIDEO' + '_' + new_Date + '.' + 'mp4';
+                            download_Link.click();
+                        }
+                        second_Option.addEventListener('click', () => {
+                            pushSavedData();
+                            removeOptions();
+                        });
+                    } if (photo.type == 'text') {
+                        second_Option.innerHTML = copysvg;
+                        function copyTextPost(text) {
+                            if (navigator.clipboard) {
+                                try {
+                                    const toCopy = text;
+                                    navigator.clipboard.writeText(toCopy);
+                                    create_Message('text copied');
+                                }
+                                catch (err) {
+                                    console.error('Failed to copy: ', err);
+                                    create_Message('unable to copy');
+                                }
+                            }
+                        }
+                        second_Option.addEventListener('click', () => {
+                            copyTextPost(photo.Property_Src);
+                            removeOptions();
+                        });
+                    }
+                }
+                function Remove_From_Archieve() {
                     let confirmation_popup = document.createElement('div');
                     let confirmationflex = document.createElement('div');
                     let confirmationflex1 = document.createElement('div');
@@ -763,9 +907,6 @@ function create_Main_Story_Archieve(locationId) {
                         confirmation_popup.remove();
                     });
                 }
-                saveddeletebtn.addEventListener('click', () => {
-                    delete_DELETED_story();
-                });
                 itemsviewonlargescale.style.display = 'flex';
 
                 loader(itemsviewonlargescale, photo.id);
@@ -775,30 +916,6 @@ function create_Main_Story_Archieve(locationId) {
                     gridpostimagetoview.src = photo.Property_Src;
                     gridpostimagetoview.id = photo.id;
                     gridpostimagetoview.classList.add('gridpostimagetoview');
-                    function filter_PostImage() {
-                        if (filter == 'default') {
-                            gridpostimagetoview.classList.add('--color-default');
-                        } else if (filter == 'gray') {
-                            gridpostimagetoview.classList.add('--color-gray');
-                        } else if (filter == 'contrast') {
-                            gridpostimagetoview.classList.add('--color-contrast');
-                        } else if (filter == 'bright') {
-                            gridpostimagetoview.classList.add('--color-bright');
-                        } else if (filter == 'blur') {
-                            gridpostimagetoview.classList.add('--color-blur');
-                        } else if (filter == 'invert') {
-                            gridpostimagetoview.classList.add('--color-invert');
-                        } else if (filter == 'sepia') {
-                            gridpostimagetoview.classList.add('--color-sepia');
-                        } else if (filter == 'hue-rotate') {
-                            gridpostimagetoview.classList.add('--color-hue-rotate');
-                        } else if (filter == 'opacity') {
-                            gridpostimagetoview.classList.add('--color-opacity');
-                        } else if (filter == 'satulate') {
-                            gridpostimagetoview.classList.add('--color-satulate');
-                        }
-                    }
-                    filter_PostImage();
                 } if (photo.type == 'text') {
                     let gridposttextToview = document.createElement('p');
                     gridpostimagecontainer.appendChild(gridposttextToview);
@@ -969,12 +1086,6 @@ function create_Main_Story_Archieve(locationId) {
                     });
 
                 }
-                savedtime.textContent = photo.date;
-                saveddeletebtn.appendChild(saveddelete);
-                saveddelete.src = 'newicons/trash-can.png';
-                savedtime.classList.add('savedtime');
-                saveddeletebtn.classList.add('saveddeletebtn');
-                saveddeletebtn.classList.add('headerbtns');
                 savedtilebox.classList.add('savedtilebox');
                 savedtilebox.classList.add('AaChIevE_TrUXheDTYle_bX');
                 savedtilebox.id = photo.posterId + 'AaChIevE_TrUXheDTYle_bX';
@@ -983,11 +1094,9 @@ function create_Main_Story_Archieve(locationId) {
                 gridposttitlecover.appendChild(gridpostcaption);
                 gridposttitlecover.classList.add('gridposttitlecover');
                 gridpostimagecontainer.appendChild(gridposttitlecover);
-                gridpostimagecontainer.appendChild(saveddeletebtn);
                 gridpostimagecontainer.appendChild(savedtilebox);
 
                 itemsviewonlargescale.appendChild(largescalewideviewcontainer);
-                itemsviewonlargescale.appendChild(itemsviewclosebutton);
                 largescalewideviewcontainer.appendChild(gridpostimagecontainer);
                 gridpostimagecontainer.classList.add('gridpostimagecontainer');
                 largescalewideviewcontainer.classList.add('largescalewideviewcontainer');

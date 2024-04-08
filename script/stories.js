@@ -46,7 +46,6 @@ function create_Main_Story_Trash(locationId) {
         Trash.forEach(photo => {
             if (photo.id === locationId) {
                 let savedtilebox = document.createElement('nav');
-                let savedtime = document.createElement('span');
 
                 let itemsviewclosebutton = document.createElement('span');
                 let itemsviewonlargescale = document.createElement('section');
@@ -55,41 +54,158 @@ function create_Main_Story_Trash(locationId) {
                 //viewing gridpost
                 let gridpostimagecontainer = document.createElement('div');
                 let gridposttitlecover = document.createElement('span');
-                let gridposttime = document.createElement('b');
-                let gridView_Header = document.createElement('header');
-                let more = document.createElement('span');
-                gridpostimagecontainer.appendChild(gridView_Header);
-                gridView_Header.appendChild(savedtime);
-                gridView_Header.appendChild(more);
-                gridView_Header.appendChild(itemsviewclosebutton);
-                gridView_Header.classList.add('gridView_Header');
-                more.innerHTML = vellip;
-                more.classList.add('more');
-                more.addEventListener('click', () => {
-                    create_Options_Script();
-                });
+
+                function Create_GridPost_Options(anything) {
+                    let gridView_Header = document.createElement('header');
+                    let more = document.createElement('span');
+
+                    function create_Grid_PostHeader() {
+                        let gridpostNameAndImg = document.createElement('div');
+                        let nameAndImgWrapper = document.createElement('div');
+                        let posterImgCont = document.createElement('span');
+                        let nameAndCaptionWrapper = document.createElement('div');
+                        let posterImg = document.createElement('img');
+                        let posterName = document.createElement('p');
+                        let postCaption = document.createElement('b');
+                        let gridposttime = document.createElement('b');
+
+                        gridpostimagecontainer.appendChild(gridView_Header);
+                        gridView_Header.appendChild(gridpostNameAndImg);
+                        gridView_Header.appendChild(more);
+                        gridView_Header.appendChild(itemsviewclosebutton);
+                        gridpostNameAndImg.appendChild(nameAndImgWrapper);
+                        nameAndImgWrapper.appendChild(posterImgCont);
+                        nameAndImgWrapper.appendChild(nameAndCaptionWrapper);
+                        nameAndCaptionWrapper.appendChild(posterName);
+                        nameAndCaptionWrapper.appendChild(postCaption);
+                        nameAndCaptionWrapper.appendChild(gridposttime);
+                        posterImgCont.appendChild(posterImg);
+                        nameAndImgWrapper.classList.add('nameAndImgWrapper');
+                        gridpostNameAndImg.classList.add('gridpostNameAndImg');
+                        posterName.classList.add('largeusername');
+                        postCaption.textContent = 'Trash';
+                        gridposttime.textContent = photo.date;
+                        function Poster_Details() {
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === photo.posterId) {
+                                    posterImg.src = user.user_ProfilePicture;
+                                    posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    function filter_Image() {
+                                        //profile_filter 
+                                        if (user.user_ProfilePicture_Filter == 'default') {
+                                            posterImg.classList.add('--color-default');
+                                        } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                            posterImg.classList.add('--color-gray');
+                                        } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                            posterImg.classList.add('--color-contrast');
+                                        } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                            posterImg.classList.add('--color-bright');
+                                        } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                            posterImg.classList.add('--color-blur');
+                                        } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                            posterImg.classList.add('--color-invert');
+                                        } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                            posterImg.classList.add('--color-sepia');
+                                        } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                            posterImg.classList.add('--color-hue-rotate');
+                                        } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                            posterImg.classList.add('--color-opacity');
+                                        } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                            posterImg.classList.add('--color-satulate');
+                                        }
+                                    }
+                                    filter_Image();
+                                }
+                            });
+                        }
+                        Poster_Details();
+                    }
+                    create_Grid_PostHeader();
+                    more.classList.add('more');
+                    gridView_Header.classList.add('gridView_Header');
+                    more.innerHTML = vellip;
+                    more.addEventListener('click', () => {
+                        create_Options_Script();
+                    });
+                }
+                Create_GridPost_Options();
                 function create_Options_Script() {
+                    removeOptions();
                     let options = document.createElement('div');
                     let first_Option = document.createElement('span');
+                    let second_Option = document.createElement('span');
                     let exit = document.createElement('span');
-
+    
                     gridpostimagecontainer.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
+                    options.appendChild(second_Option);
                     first_Option.innerHTML = deletesvg;
+                    second_Option.innerHTML = downloadsvg;
+                    exit.innerHTML = undo2;
+    
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
+                    second_Option.classList.add('headerbtns');
                     exit.classList.add('headerbtns');
-                    first_Option.classList.add('first_Option');
-                    exit.innerHTML = undo2;
                     first_Option.addEventListener('click', () => {
-                        delete_DELETED_story();
+                        Remove_From_Trash();
+                        removeOptions();
                     });
                     exit.addEventListener('click', () => {
                         options.remove();
                     });
+                    if (photo.type == 'photo') {
+                        function pushSavedData() {
+                            var new_Date = new Date().getTime();
+                            var download_Link = document.createElement('a');
+                            var mainimg = document.createElement('img');
+                            mainimg.src = photo.Property_Src;
+                            download_Link.href = mainimg.src;
+                            download_Link.download = "Lavinsta" + '_' + 'IMG' + '_' + new_Date + '.' + 'jpeg';
+                            download_Link.click();
+                        }
+                        second_Option.addEventListener('click', () => {
+                            pushSavedData();
+                            removeOptions();
+                        });
+                    } if (photo.type == 'video') {
+                        function pushSavedData() {
+                            var new_Date = new Date().getTime();
+                            var download_Link = document.createElement('a');
+                            var mainimg = document.createElement('video');
+                            mainimg.src = photo.Property_Src;
+                            download_Link.href = mainimg.src;
+                            download_Link.download = "Lavinsta" + '_' + 'VIDEO' + '_' + new_Date + '.' + 'mp4';
+                            download_Link.click();
+                        }
+                        second_Option.addEventListener('click', () => {
+                            pushSavedData();
+                            removeOptions();
+                        });
+                    } if (photo.type == 'text') {
+                        second_Option.innerHTML = copysvg;
+                        function copyTextPost(text) {
+                            if (navigator.clipboard) {
+                                try {
+                                    const toCopy = text;
+                                    navigator.clipboard.writeText(toCopy);
+                                    create_Message('text copied');
+                                }
+                                catch (err) {
+                                    console.error('Failed to copy: ', err);
+                                    create_Message('unable to copy');
+                                }
+                            }
+                        }
+                        second_Option.addEventListener('click', () => {
+                            copyTextPost(photo.Property_Src);
+                            removeOptions();
+                        });
+                    }
                 }
-                function delete_DELETED_story() {
+ 
+                function Remove_From_Trash() {
                     let confirmation_popup = document.createElement('div');
                     let confirmationflex = document.createElement('div');
                     let confirmationflex1 = document.createElement('div');
@@ -340,13 +456,10 @@ function create_Main_Story_Trash(locationId) {
                     });
 
                 }
-                savedtime.textContent = photo.date;
                 gridpostcaption.textContent = photo.title;
-                savedtime.classList.add('savedtime');
                 savedtilebox.classList.add('savedtilebox');
                 savedtilebox.classList.add('Yyer_TrUXheDTYle_bX');
                 savedtilebox.id = photo.posterId + 'Yyer_TrUXheDTYle_bX';
-                gridposttime.classList.add('gridposttime');
 
                 gridposttitlecover.appendChild(gridpostcaption);
                 gridposttitlecover.classList.add('gridposttitlecover');
@@ -785,7 +898,10 @@ async function create_Main_Stories(locationId, Property_Src) {
                 exit.classList.add('headerbtns');
                 exit.innerHTML = undo2;
 
-
+                exit.addEventListener('click',()=> {
+                    popup.classList.add('storyviewspopup');
+                    popup.classList.remove('storyviewspopupactive');
+                });
                 let gridposttitlecover = document.createElement('span');
                 gridposttitlecover.appendChild(gridpostcaption);
                 gridposttitlecover.classList.add('gridposttitlecover');

@@ -3172,8 +3172,11 @@
     .autoplaymode,
     .qualitymode {
         font-size: 5.89vw;
+        text-align: left;
     }
-
+    .hamburgermenuheader .qualitymode {
+        display: block;
+    }
     .headerbtns.sidebarlinks,
     .headerbtns.livecapture,
     .headerbtns.postwriterfloatitems,
