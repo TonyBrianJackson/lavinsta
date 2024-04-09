@@ -885,22 +885,25 @@ async function create_Main_Stories(locationId, Property_Src) {
                 }
                 let storyviewspopup = document.createElement('div');
                 let statusviewsheader = document.createElement('header');
+                let popupname = document.createElement('p');
                 let exit = document.createElement('span');
 
                 let storyviewscolumn = document.createElement('div');
                 storyviewspopup.id = storystatus.id;
                 storyviewscolumn.id = storystatus.id;
                 statusviewsheader.appendChild(exit);
+                statusviewsheader.appendChild(popupname);
                 storyviewspopup.appendChild(statusviewsheader);
                 storyviewspopup.appendChild(storyviewscolumn);
                 storyviewscolumn.classList.add('storyviewscolumn');
                 storyviewspopup.classList.add('storyviewspopup');
                 exit.classList.add('headerbtns');
                 exit.innerHTML = undo2;
+                popupname.innerHTML = `${storystatus.views.length} view(s) &quest; on this story`;
 
                 exit.addEventListener('click',()=> {
-                    popup.classList.add('storyviewspopup');
-                    popup.classList.remove('storyviewspopupactive');
+                    storyviewspopup.classList.add('storyviewspopup');
+                    storyviewspopup.classList.remove('storyviewspopupactive');
                 });
                 let gridposttitlecover = document.createElement('span');
                 gridposttitlecover.appendChild(gridpostcaption);
@@ -1103,38 +1106,21 @@ async function create_Main_Stories(locationId, Property_Src) {
                     let maintime;
 
                     time = miliseconds / 1000;
-                    if (time >= 60 * 60 * 24) {
-                        token = 'day';
-                        maintime = time / 86400;
-                        gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                    } else if (time <= 60 * 60 * 24) {
+                    if (time <= 60 * 60 * 24) {
                         token = 'hr';
                         maintime = time / 3600;
                         gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                    } if (time == 60 * 2) {
-                        token = 'min';
-                        maintime = time / time;
-                        gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                    } else if (time == 60 * 60 || time <= 60 * 60 * 2) {
+                    } if (time <= 60 * 60) {
                         token = 'min';
                         maintime = time / 60;
                         gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
-                    } if (time == 0) {
-                        token = 'just now';
-                        maintime = time;
-                        gridposttime.innerHTML = token + ' ' + moment;
-                    } else if (time == 1) {
-                        token = 'just now';
-                        maintime = time / time;
-                        gridposttime.innerHTML = token + ' ' + moment;
-                    } else if (time == 1 || time <= 60) {
+                    } if (time <= 60) {
                         token = 'sec';
-                        maintime = 'just now';
-                        gridposttime.innerHTML = maintime;
+                        maintime = time;
+                        gridposttime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     }
                 }
                 startTime();
-
                 tilebox_Stories.classList.add('tilebox_Stories');
                 gridpostimagecontainer.classList.add('gridpostimagecontainer');
                 gridpostcaption.classList.add('gridpostcaption');

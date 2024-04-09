@@ -202,7 +202,7 @@ function createOtherPost() {
                     adgridimagecontainer.classList.add("adgridimagecontainer");
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);
@@ -645,7 +645,7 @@ function createOtherPost() {
                     adgridimagecontainer.classList.add("adgridimagecontainer");
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);
@@ -1091,7 +1091,7 @@ function createOtherPost() {
 
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);

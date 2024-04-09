@@ -2857,6 +2857,7 @@
     padding: 20px;
     overflow: hidden;
     gap: 5px;
+    z-index: 37;
 }
 
 .profile_options_container>header {
@@ -3039,14 +3040,18 @@
         padding: 10px;
     }
 
+    .license_Popup,
     .profile_options_container {
-        width: 98vw;
+        width: 95vw;
+        bottom: 10px;
         top: unset;
-        bottom: 0;
-        border-radius: 25px 25px 0px 0px;
+        border-radius: 25px;
         z-index: 754;
+        box-shadow: var(--simple-box-shadow);
     }
-
+    .license_Popup {
+        z-index: 753;
+    }
     .header {
         flex-direction: column;
         justify-content: center;
@@ -4077,10 +4082,9 @@
 
     .newcommentinput {
         width: 100%;
-        height: max-content;
         box-shadow: none;
         gap: 0px 5px;
-        min-height: 30px;
+        min-height: 45px;
         border: none;
         overflow: hidden;
         background: var(--color-light);
@@ -4180,6 +4184,7 @@
 /*MINI LAPTOPS AND TABLETS*/
 @media (min-width: 540px) and (max-width: 560px) {
 
+    .license_Popup,
     .profile_options_container {
         width: 70%;
         z-index: 754;
@@ -4523,21 +4528,32 @@
         width: 30px;
         height: 30px;
     }
-
-    .reportpostcontainer,
-    .commentsectioncontaineractive,
-    .commentroomsectionactive {
-        width: 50vw;
-        height: 574px;
-        left: 0;
+    .commentsectioncontainer,
+    .commentroomsection {
+        width: 70vw;
+        height: 80%;
         top: initial;
-        bottom: 0;
-        border-radius: 0px;
+        bottom: 10%;
+        left: 50%;
+        gap: 10px;
+        transform: translate(-50%);
+        border-radius: 25px;
         padding: 15px;
-        background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
+        background: var(--color-white);
         z-index: 650;
+        box-shadow: var(--simple-box-shadow);
     }
-
+    .commentsection,
+    .replyroomculomn {
+        display: grid;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 85%;
+        width: 100%;
+        margin: 2px 0px;
+        border-radius: inherit;
+        background: var(--color-light);
+    }
     .editpopup,
     .reportcontainer {
         z-index: 650;
@@ -4545,14 +4561,6 @@
 
     .userpostgridcontainer {
         overflow: hidden;
-    }
-
-    .commentsection,
-    .replyroomculomn {
-        display: grid;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        height: 75%;
     }
 
     .newcommentinput {

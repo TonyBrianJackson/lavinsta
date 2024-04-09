@@ -503,7 +503,7 @@ function Create_Short() {
                 livecommentcount.classList.add('live_Comment_Counters');
                 livecommentcount.classList.add('livecommentcount');
                 live_Like_Count_Container.addEventListener('click', () => {
-                    LikePopupsAndMore(photo.id,'postlike');
+                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                 });
 
                 if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {

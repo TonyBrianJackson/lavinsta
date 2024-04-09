@@ -598,7 +598,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 checkIfPostIsLiked();
 
                 live_Like_Count_Container.addEventListener('click', () => {
-                    LikePopupsAndMore(photo.id,'postlike');
+                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                 });
 
                 function decideRight() {

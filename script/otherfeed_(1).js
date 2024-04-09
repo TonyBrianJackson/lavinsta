@@ -58,7 +58,7 @@ function createPhotosGadget() {
                     gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
                     livelikecount.classList.add('livelikecount');
                     livecommentcount.classList.add('livecommentcount');
@@ -371,7 +371,7 @@ function createPhotosGadget() {
                     gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -685,7 +685,7 @@ function createPhotosGadget() {
                     gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1008,7 +1008,7 @@ function createAdsGadget() {
                     gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1320,7 +1320,7 @@ function createAdsGadget() {
                     gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
 
                     gadgetlike.addEventListener('click', () => {
@@ -1633,7 +1633,7 @@ function createAdsGadget() {
                     gadgetcomment.innerHTML = commentsvg;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
 
                     gadgetlike.addEventListener('click', () => {

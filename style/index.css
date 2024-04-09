@@ -3333,7 +3333,7 @@ a {
     flex-direction: row;
     background: none;
     box-shadow: none;
-    overflow: hidden;
+    overflow: visible;
     border: none;
     border-radius: 0px;
 }
@@ -4403,7 +4403,7 @@ a {
     height: 91vh;
     position: fixed;
     top: 60px;
-    left: -250px;
+    left: 0px;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -4424,7 +4424,6 @@ a {
 
 .commentroomsectionactive,
 .commentsectioncontaineractive {
-    left: 2px;
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -5347,7 +5346,7 @@ a {
     border: none;
     overflow: hidden;
     background: linear-gradient(to bottom, var(--second-color-white), var(--color-gray), var(--second-color-dark));
-    box-shadow: var(--second-color-dark) 0px 2px 4px 0px, var(--second-color-dark) 0px 2px 16px 0px;
+    box-shadow: var(--simple-box-shadow);
 }
 
 .videoplayernavigationflex1,
@@ -6738,28 +6737,71 @@ a {
     text-align: center;
     width: 100%;
 }
-
+.license_Popup header,
+.storyviewspopup header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: max-content;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    overflow: visible;
+}
+.license_Popup header p,
+.storyviewspopup header p {
+    display: block;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+}
 .storyviewspopup {
-    width: 200px;
-    height: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 30vw;
+    height: 0;
+    background: var(--color-white);
+    box-shadow: var(--simple-box-shadow);
     border: none;
-    background: linear-gradient(to bottom, var(--color-dark), var(--color-gray), var(--color-light));
-    box-shadow: var(--light-box-shadow);
-    position: absolute;
-    left: 50%;
-    top: 5%;
+    border-radius: 25px;
+    position: fixed;
     transform: translate(-50%);
+    left: 50%;
+    top: 40%;
+    padding: 20px;
+    overflow: hidden;
+    gap: 5px;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
     transition: all 600ms ease 30ms;
-    z-index: 4;
+    z-index: 36;
 }
-
+.license_Popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30vw;
+    height: 250px;
+    background: var(--color-white);
+    box-shadow: var(--simple-box-shadow);
+    border: none;
+    border-radius: 25px;
+    position: fixed;
+    transform: translate(-50%);
+    left: 50%;
+    top: 40%;
+    padding: 20px;
+    overflow: hidden;
+    gap: 5px;
+}
 .storyviewspopupactive {
     height: 250px;
     visibility: visible;
@@ -6767,15 +6809,16 @@ a {
     pointer-events: all;
     transition: all 600ms ease 30ms;
 }
-
+.likerecordcolumn,
 .storyviewscolumn {
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
-    background: none;
+    justify-items: baseline;
+    align-content: baseline;
+    background: var(--color-light);
     border: none;
     box-shadow: none;
-    border-radius: 0px;
     width: 100%;
     height: 80%;
     padding: 5px;
@@ -6793,29 +6836,17 @@ a {
     height: max-content;
     padding: 5px;
     background: var(--color-white);
-    box-shadow: var(--block-box-shadow);
+    box-shadow: none;
 }
 
-.storyviewspopup header {
-    display: none;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    width: 100%;
-    height: max-content;
-    background: none;
-    border: none;
-    box-shadow: none;
-    border-radius: 0px;
-}
 
 .viewblock>span {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     border: 2px solid var(--color-dark);
     border-radius: 50%;
     box-shadow: none;
@@ -8231,38 +8262,6 @@ a {
 }
 
 
-.likerecordpopup {
-    width: 25vw;
-    height: 91vh;
-    position: fixed;
-    top: 60px;
-    left: 2px;
-    border-radius: 10px;
-    padding: 10px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: var(--color-light);
-    box-shadow: none;
-    z-index: 588;
-}
-
-
-.likerecordcolumn {
-    background: none;
-    box-shadow: none;
-    border: none;
-    width: 100%;
-    height: 95%;
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
 .personlikerecord {
     width: 100%;
     height: 90px;
@@ -8653,10 +8652,6 @@ a {
     .largeusername {
         color: #ffffffff;
     }
-
-    .storyviewspopup header {
-        display: flex;
-    }
     .storyviewspopup header .headerbtns {
         background: none;
     }
@@ -8671,14 +8666,18 @@ a {
     }
 
     .storyviewspopup {
-        width: 100%;
-        bottom: 0;
+        width: 95%;
+        bottom: 10px;
         top: unset;
-        position: fixed;
-        border-radius: 25px 25px 0px 0px;
+        border-radius: 25px;
         z-index: 36;
+        background: var(--color-white);
+        box-shadow: var(--simple-box-shadow);
     }
 
+    .storyviewscolumn {
+        background: none
+    }
     .savingmessage {
         font-size: 12px;
         padding: 10px;
@@ -8850,13 +8849,17 @@ a {
         border-radius: 0px;
     }
 
+    .securitytab,
+    .accountinfopage {
+        background: var(--color-white);
+    }
     .inputregular {
         width: 100%;
         height: max-content;
         box-shadow: none;
         min-height: 45px;
         height: 45px;
-        border: 1px solid var(--color-gray);
+        border: 1px solid var(--color-light);
         background: var(--color-white);
     }
 
@@ -8996,17 +8999,6 @@ a {
         pointer-events: none;
         visibility: hidden;
         opacity: 0;
-    }
-
-
-    .likerecordpopup {
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0px;
-        top: 0;
-        left: 0;
-        z-index: 753;
-        padding: 0px;
     }
 
     .titlearea {
@@ -9495,20 +9487,9 @@ a {
         gap: 0px 5px;
     }
 
-    .sharegridlike {
-        width: 35px;
-        height: 35px;
-    }
-
-
-    .likerecordpopup {
-        width: 50vw;
-        left: 0;
-        border-radius: 0px;
-        top: 145px;
-        height: 80vh;
-        background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
-        box-shadow: var(--color-dark) 0px 2px 4px 0px, var(--color-dark) 0px 2px 16px 0px;
+    .headerbtns.sharegridlike {
+        width: 50px;
+        height: 50px;
     }
 
     .reelsmainpage {

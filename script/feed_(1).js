@@ -203,7 +203,7 @@ function createPublicGridShortVideo() {
                     viewscount.classList.add('viewscount');
 
                     gridshortlikecount.addEventListener('click',() => {
-                        LikePopupsAndMore(shortVideo.id,'postlike');
+                        LikePopupsAndMore(shortVideo.id, 'postlike',shortVideo.likes.length);
                     });
 
                     let view_Count_Extension = '';
@@ -476,7 +476,7 @@ function creategridreel() {
                     gridshortcommentcount.textContent = shortVideo.comments.length + 'comments';
 
                     gridshortlikecount.addEventListener('click',() => {
-                        LikePopupsAndMore(shortVideo.id,'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
 
                     let view_Count_Extension = '';

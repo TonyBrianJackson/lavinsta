@@ -260,7 +260,7 @@ function CreationOfComments(section, locationId) {
                     });
                     likecounts.classList.add('likecounts');
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id, 'commentlike');
+                        LikePopupsAndMore(comment.id, 'commentlike',comment.likes.length);
                     });
 
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -734,7 +734,7 @@ function CreationOfComments(section, locationId) {
                     });
 
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id, 'commentlike');
+                        LikePopupsAndMore(comment.id, 'commentlike',comment.likes.length);
                     });
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
@@ -1151,7 +1151,7 @@ function CreationOfComments(section, locationId) {
                         likecomment();
                     });
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id, 'commentlike');
+                        LikePopupsAndMore(comment.id, 'commentlike',comment.likes.length);
                     });
 
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {

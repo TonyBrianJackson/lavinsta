@@ -28,6 +28,7 @@
     --color-pink: hsl(295, 100%, 50%);
     --giant-box-shadow: rgba(250, 247, 247, 0.17) 9px -76px 5px 0px inset, rgba(94, 92, 92, 0.555) 0px -12px 10px 0px inset, rgba(247, 241, 241, 0.1) 0px 0px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 98px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     --giant-box-shadow-2: rgba(250, 247, 247, 0.17) 9px -76px 5px 0px inset, rgba(94, 92, 92, 0.555) 0px 12px 10px 0px inset, rgba(247, 241, 241, 0.1) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 0px 0px, rgba(0, 0, 0, 0.09) 0px 0px 0px;
+    --simple-box-shadow: var(--second-color-dark) 0px 2px 4px 0px, var(--second-color-dark) 0px 2px 16px 0px;
     --block-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     --dark-block-box-shadow: var(--color-dark) 0px 1px 2px 0px, var(--color-dark) 0px 1px 3px 1px;
     --light-box-shadow: 6px 12px 24px rgba(0, 0, 255, 0.116),

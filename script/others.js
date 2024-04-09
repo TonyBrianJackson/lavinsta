@@ -294,16 +294,19 @@ function createpostLikeLicense(container, locationId) {
         if (feed.id === locationId) {
             let likes = feed.likes;
             likes.forEach(license => {
-                let personlikerecord = document.createElement('div');
-                let personitemsflex = document.createElement('div');
-                let personlikerecordimg = document.createElement('img');
-                let persontimeanddate = document.createElement('span');
-                let personlikerecordname = document.createElement('p');
-                container.appendChild(personlikerecord);
-                personlikerecord.appendChild(personitemsflex);
-                personlikerecord.appendChild(persontimeanddate);
-                personitemsflex.appendChild(personlikerecordimg);
-                personitemsflex.appendChild(personlikerecordname);
+                let viewblock = document.createElement('div');
+                let viewblockhead = document.createElement('span');
+                let viewblocktail = document.createElement('div');
+                let viewblockimg = document.createElement('img');
+                let viewtime = document.createElement('p');
+                let viewname = document.createElement('p');
+                container.appendChild(viewblock);
+                viewblock.appendChild(viewblockhead);
+                viewblock.appendChild(viewblocktail);
+                viewblockhead.appendChild(viewblockimg);
+                viewblocktail.appendChild(viewname);
+                viewblocktail.appendChild(viewtime);
+
                 const startTime = function () {
                     let time;
                     let timeresult = new Date().getTime();
@@ -316,31 +319,31 @@ function createpostLikeLicense(container, locationId) {
                     if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
                         token = 'month';
                         maintime = time / 2419200;
-                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } if (time <= 60 * 60 * 24 * 7 * 4) {
                         token = 'week';
                         maintime = time / 604800;
-                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } if (time <= 60 * 60 * 24 * 7) {
                         token = 'day';
                         maintime = time / 86400;
-                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } if (time <= 60 * 60 * 24) {
                         token = 'hr';
                         maintime = time / 3600;
-                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } if (time <= 60 * 60) {
                         token = 'min';
                         maintime = time / 60;
-                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     } if (time <= 60) {
                         token = 'sec';
                         maintime = time;
-                        persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                        viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                     }
                 }
                 startTime();
-                personlikerecordimg.addEventListener('click', () => {
+                viewblockhead.addEventListener('click', () => {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account.forEach(user => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -348,7 +351,7 @@ function createpostLikeLicense(container, locationId) {
                         });
                     }
                 });
-                personlikerecordname.addEventListener('click', () => {
+                viewname.addEventListener('click', () => {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account.forEach(user => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -356,35 +359,35 @@ function createpostLikeLicense(container, locationId) {
                         });
                     }
                 });
-                personlikerecord.classList.add('personlikerecord');
-
+                viewblock.classList.add('viewblock');
+                viewblocktail.classList.add('viewblocktail');
                 function Poster_Details() {
                     LogInFormData.forEach(user => {
                         if (user.user_Id === license.posterId) {
-                            personlikerecordimg.src = user.user_ProfilePicture;
-                            personlikerecordname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                            viewblockimg.src = user.user_ProfilePicture;
+                            viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
                             function filter_Image() {
                                 //profile_filter 
                                 if (user.user_ProfilePicture_Filter == 'default') {
-                                    personlikerecordimg.classList.add('--color-default');
+                                    viewblockimg.classList.add('--color-default');
                                 } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                    personlikerecordimg.classList.add('--color-gray');
+                                    viewblockimg.classList.add('--color-gray');
                                 } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                    personlikerecordimg.classList.add('--color-contrast');
+                                    viewblockimg.classList.add('--color-contrast');
                                 } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                    personlikerecordimg.classList.add('--color-bright');
+                                    viewblockimg.classList.add('--color-bright');
                                 } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                    personlikerecordimg.classList.add('--color-blur');
+                                    viewblockimg.classList.add('--color-blur');
                                 } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                    personlikerecordimg.classList.add('--color-invert');
+                                    viewblockimg.classList.add('--color-invert');
                                 } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                    personlikerecordimg.classList.add('--color-sepia');
+                                    viewblockimg.classList.add('--color-sepia');
                                 } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                    personlikerecordimg.classList.add('--color-hue-rotate');
+                                    viewblockimg.classList.add('--color-hue-rotate');
                                 } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                    personlikerecordimg.classList.add('--color-opacity');
+                                    viewblockimg.classList.add('--color-opacity');
                                 } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                    personlikerecordimg.classList.add('--color-satulate');
+                                    viewblockimg.classList.add('--color-satulate');
                                 }
                             }
                             filter_Image();
@@ -404,16 +407,19 @@ function createcommentsLikeLicense(container, locationId) {
             if (comment.id === locationId) {
                 let likes = comment.likes;
                 likes.forEach(license => {
-                    let personlikerecord = document.createElement('div');
-                    let personitemsflex = document.createElement('div');
-                    let personlikerecordimg = document.createElement('img');
-                    let persontimeanddate = document.createElement('span');
-                    let personlikerecordname = document.createElement('p');
-                    container.appendChild(personlikerecord);
-                    personlikerecord.appendChild(personitemsflex);
-                    personlikerecord.appendChild(persontimeanddate);
-                    personitemsflex.appendChild(personlikerecordimg);
-                    personitemsflex.appendChild(personlikerecordname);
+                    let viewblock = document.createElement('div');
+                    let viewblockhead = document.createElement('span');
+                    let viewblocktail = document.createElement('div');
+                    let viewblockimg = document.createElement('img');
+                    let viewtime = document.createElement('p');
+                    let viewname = document.createElement('p');
+                    container.appendChild(viewblock);
+                    viewblock.appendChild(viewblockhead);
+                    viewblock.appendChild(viewblocktail);
+                    viewblockhead.appendChild(viewblockimg);
+                    viewblocktail.appendChild(viewname);
+                    viewblocktail.appendChild(viewtime);
+    
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -421,36 +427,36 @@ function createcommentsLikeLicense(container, locationId) {
                         var token;
                         var moment = 'ago';
                         let maintime;
-
+    
                         time = miliseconds / 1000;
                         if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
                             token = 'month';
                             maintime = time / 2419200;
-                            persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                         } if (time <= 60 * 60 * 24 * 7 * 4) {
                             token = 'week';
                             maintime = time / 604800;
-                            persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                         } if (time <= 60 * 60 * 24 * 7) {
                             token = 'day';
                             maintime = time / 86400;
-                            persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                         } if (time <= 60 * 60 * 24) {
                             token = 'hr';
                             maintime = time / 3600;
-                            persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                         } if (time <= 60 * 60) {
                             token = 'min';
                             maintime = time / 60;
-                            persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                         } if (time <= 60) {
                             token = 'sec';
                             maintime = time;
-                            persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                         }
                     }
                     startTime();
-                    personlikerecordimg.addEventListener('click', () => {
+                    viewblockhead.addEventListener('click', () => {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             ActiveUser_Account.forEach(user => {
                                 ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -458,7 +464,7 @@ function createcommentsLikeLicense(container, locationId) {
                             });
                         }
                     });
-                    personlikerecordname.addEventListener('click', () => {
+                    viewname.addEventListener('click', () => {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             ActiveUser_Account.forEach(user => {
                                 ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -466,35 +472,35 @@ function createcommentsLikeLicense(container, locationId) {
                             });
                         }
                     });
-                    personlikerecord.classList.add('personlikerecord');
-
+                    viewblock.classList.add('viewblock');
+                    viewblocktail.classList.add('viewblocktail');
                     function Poster_Details() {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === license.posterId) {
-                                personlikerecordimg.src = user.user_ProfilePicture;
-                                personlikerecordname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                viewblockimg.src = user.user_ProfilePicture;
+                                viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
-                                        personlikerecordimg.classList.add('--color-default');
+                                        viewblockimg.classList.add('--color-default');
                                     } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                        personlikerecordimg.classList.add('--color-gray');
+                                        viewblockimg.classList.add('--color-gray');
                                     } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                        personlikerecordimg.classList.add('--color-contrast');
+                                        viewblockimg.classList.add('--color-contrast');
                                     } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                        personlikerecordimg.classList.add('--color-bright');
+                                        viewblockimg.classList.add('--color-bright');
                                     } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                        personlikerecordimg.classList.add('--color-blur');
+                                        viewblockimg.classList.add('--color-blur');
                                     } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                        personlikerecordimg.classList.add('--color-invert');
+                                        viewblockimg.classList.add('--color-invert');
                                     } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                        personlikerecordimg.classList.add('--color-sepia');
+                                        viewblockimg.classList.add('--color-sepia');
                                     } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                        personlikerecordimg.classList.add('--color-hue-rotate');
+                                        viewblockimg.classList.add('--color-hue-rotate');
                                     } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                        personlikerecordimg.classList.add('--color-opacity');
+                                        viewblockimg.classList.add('--color-opacity');
                                     } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                        personlikerecordimg.classList.add('--color-satulate');
+                                        viewblockimg.classList.add('--color-satulate');
                                     }
                                 }
                                 filter_Image();
@@ -508,38 +514,41 @@ function createcommentsLikeLicense(container, locationId) {
     });
 }
 function removePopup() {
-    document.querySelectorAll('.likerecordpopup').forEach(popup => {
+    document.querySelectorAll('.license_Popup').forEach(popup => {
         popup.remove();
     });
 }
-function LikePopupsAndMore(locationId,type) {
+function LikePopupsAndMore(locationId,type,value) {
     removePopup();
-    let likerecorderpopupheader = document.createElement('header');
-    let likerecordpopup = document.createElement('nav');
+    let statusviewsheader = document.createElement('header');
+    let license_Popup = document.createElement('nav');
+    let popupname = document.createElement('p');
     let likerecordcolumn = document.createElement('div');
-    let likerecorderexit = document.createElement('span');
-    document.body.appendChild(likerecordpopup);
-    likerecordpopup.appendChild(likerecorderpopupheader);
-    likerecordpopup.appendChild(likerecordcolumn);
-    likerecorderpopupheader.appendChild(likerecorderexit);
-    likerecorderexit.innerHTML = undo;
-    likerecorderpopupheader.classList.add('likerecorderpopupheader');
-    likerecorderexit.classList.add('headerbtns');
-    likerecorderexit.classList.add('Exitpage_Arrow');
-    likerecordpopup.classList.add('likerecordpopup');
+    let exit = document.createElement('span');
+    document.body.appendChild(license_Popup);
+    license_Popup.appendChild(statusviewsheader);
+    license_Popup.appendChild(likerecordcolumn);
+    statusviewsheader.appendChild(exit);
+    statusviewsheader.appendChild(popupname);
+    exit.innerHTML = undo;
+    exit.classList.add('headerbtns');
+    license_Popup.classList.add('license_Popup');
     likerecordcolumn.classList.add('likerecordcolumn');
-    likerecorderexit.addEventListener('click', () => {
-        likerecordpopup.remove();
+    exit.addEventListener('click', () => {
+        license_Popup.remove();
     });
-    likerecordpopup.style.display = 'flex';
-    likerecordpopup.id = locationId;
+    license_Popup.style.display = 'flex';
+    license_Popup.id = locationId;
     likerecordcolumn.id = locationId;
     if (type == 'postlike') {
         createpostLikeLicense(likerecordcolumn, locationId);
+        popupname.innerHTML = `${value} like(s) on this post &quest;`;
     } if (type == 'commentlike') {
         createcommentsLikeLicense(likerecordcolumn, locationId);
+        popupname.innerHTML = `${value} like(s) on this comment &quest;`;
     } if (type == 'commentreplylike') {
         CreationOfCommentsRepliesLikesLicense(likerecordcolumn, locationId);
+        popupname.innerHTML = `${value} like(s) on this comment reply &quest;`;
     }
 }
 function CreationOfCommentsRepliesLikesLicense(container,locationId) {
@@ -552,16 +561,19 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                 let likes = reply.likes;
                 likes.forEach(license => {
                     if (license.postId === locationId) {
-                        let personlikerecord = document.createElement('div');
-                        let personitemsflex = document.createElement('div');
-                        let personlikerecordimg = document.createElement('img');
-                        let persontimeanddate = document.createElement('span');
-                        let personlikerecordname = document.createElement('p');
-                        container.appendChild(personlikerecord);
-                        personlikerecord.appendChild(personitemsflex);
-                        personlikerecord.appendChild(persontimeanddate);
-                        personitemsflex.appendChild(personlikerecordimg);
-                        personitemsflex.appendChild(personlikerecordname);
+                        let viewblock = document.createElement('div');
+                        let viewblockhead = document.createElement('span');
+                        let viewblocktail = document.createElement('div');
+                        let viewblockimg = document.createElement('img');
+                        let viewtime = document.createElement('p');
+                        let viewname = document.createElement('p');
+                        container.appendChild(viewblock);
+                        viewblock.appendChild(viewblockhead);
+                        viewblock.appendChild(viewblocktail);
+                        viewblockhead.appendChild(viewblockimg);
+                        viewblocktail.appendChild(viewname);
+                        viewblocktail.appendChild(viewtime);
+        
                         const startTime = function () {
                             let time;
                             let timeresult = new Date().getTime();
@@ -569,40 +581,36 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                             var token;
                             var moment = 'ago';
                             let maintime;
-
+        
                             time = miliseconds / 1000;
                             if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
                                 token = 'month';
                                 maintime = time / 2419200;
-                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                                viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                             } if (time <= 60 * 60 * 24 * 7 * 4) {
                                 token = 'week';
                                 maintime = time / 604800;
-                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                                viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                             } if (time <= 60 * 60 * 24 * 7) {
                                 token = 'day';
                                 maintime = time / 86400;
-                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                                viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                             } if (time <= 60 * 60 * 24) {
                                 token = 'hr';
                                 maintime = time / 3600;
-                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                                viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                             } if (time <= 60 * 60) {
                                 token = 'min';
                                 maintime = time / 60;
-                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                                viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                             } if (time <= 60) {
                                 token = 'sec';
                                 maintime = time;
-                                persontimeanddate.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                                viewtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
                             }
                         }
                         startTime();
-                        personlikerecordname.addEventListener('click', () => {
-                            createUsersProfile(license.posterId);
-                        });;
-                        personlikerecord.classList.add('personlikerecord');
-                        personlikerecordimg.addEventListener('click', () => {
+                        viewblockhead.addEventListener('click', () => {
                             if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                 ActiveUser_Account.forEach(user => {
                                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -610,7 +618,7 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                                 });
                             }
                         });
-                        personlikerecordname.addEventListener('click', () => {
+                        viewname.addEventListener('click', () => {
                             if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                 ActiveUser_Account.forEach(user => {
                                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -618,33 +626,35 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                                 });
                             }
                         });
+                        viewblock.classList.add('viewblock');
+                        viewblocktail.classList.add('viewblocktail');
                         function Poster_Details() {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === license.posterId) {
-                                    personlikerecordimg.src = user.user_ProfilePicture;
-                                    personlikerecordname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    viewblockimg.src = user.user_ProfilePicture;
+                                    viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
                                     function filter_Image() {
                                         //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {
-                                            personlikerecordimg.classList.add('--color-default');
+                                            viewblockimg.classList.add('--color-default');
                                         } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                            personlikerecordimg.classList.add('--color-gray');
+                                            viewblockimg.classList.add('--color-gray');
                                         } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                            personlikerecordimg.classList.add('--color-contrast');
+                                            viewblockimg.classList.add('--color-contrast');
                                         } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                            personlikerecordimg.classList.add('--color-bright');
+                                            viewblockimg.classList.add('--color-bright');
                                         } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                            personlikerecordimg.classList.add('--color-blur');
+                                            viewblockimg.classList.add('--color-blur');
                                         } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                            personlikerecordimg.classList.add('--color-invert');
+                                            viewblockimg.classList.add('--color-invert');
                                         } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                            personlikerecordimg.classList.add('--color-sepia');
+                                            viewblockimg.classList.add('--color-sepia');
                                         } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                            personlikerecordimg.classList.add('--color-hue-rotate');
+                                            viewblockimg.classList.add('--color-hue-rotate');
                                         } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                            personlikerecordimg.classList.add('--color-opacity');
+                                            viewblockimg.classList.add('--color-opacity');
                                         } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                            personlikerecordimg.classList.add('--color-satulate');
+                                            viewblockimg.classList.add('--color-satulate');
                                         }
                                     }
                                     filter_Image();

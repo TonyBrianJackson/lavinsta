@@ -484,7 +484,7 @@ function createPublicFeed() {
                     livesharecount.id = photo.id;
 
                     live_Like_Count_Container.addEventListener('click', () => {
-                        LikePopupsAndMore(photo.id, 'postlike');
+                        LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                     });
 
                     livelikecount.classList.add('livelikecount');

@@ -133,7 +133,7 @@ function creategridvideo() {
                     let view_Count_Extension = '';
                     viewscount.textContent = `${gridvideo.views.length}${view_Count_Extension} views`;
                     gridshortlikecount.addEventListener('click',() => {
-                        LikePopupsAndMore(gridvideo.id,'postlike');
+                        LikePopupsAndMore(gridvideo.id, 'postlike',gridvideo.likes.length);
                     });
                     gridshortlikecount.classList.add('gridvideolikecount');
                     gridshortcommentcount.classList.add('gridshortcommentcount');
@@ -420,7 +420,7 @@ function create_TimeLine_G_Video() {
                     gridshortcommentcount.textContent = gridvideo.comments.length + 'comments';
 
                     gridshortlikecount.addEventListener('click',() => {
-                        LikePopupsAndMore(gridvideo.id,'postlike');
+                        LikePopupsAndMore(gridvideo.id, 'postlike',gridvideo.likes.length);
                     });
 
                     let view_Count_Extension = '';

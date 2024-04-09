@@ -186,7 +186,7 @@ function createcommentreplys(section, locationId) {
                         likecounts.classList.add('likecounts');
 
                         likecounts.addEventListener('click', () => {
-                            LikePopupsAndMore(comment.id, 'commentreplylike');
+                            LikePopupsAndMore(comment.id, 'commentlike', comment.likes.length);
                         });
 
                         if (Array.isArray(ActiveAccount)) {
@@ -519,7 +519,7 @@ function createcommentreplys(section, locationId) {
                         }
 
                         likecounts.addEventListener('click', () => {
-                            LikePopupsAndMore(comment.id, 'commentreplylike');
+                            LikePopupsAndMore(comment.id, 'commentlike', comment.likes.length);
                         });
 
                         reactsflex.appendChild(commentreact);
@@ -894,7 +894,7 @@ function createcommentreplys(section, locationId) {
                         }
 
                         likecounts.addEventListener('click', () => {
-                            LikePopupsAndMore(comment.id, 'commentreplylike');
+                            LikePopupsAndMore(comment.id, 'commentlike', comment.likes.length);
                         });
 
                         commentreact.classList.add('replylike');

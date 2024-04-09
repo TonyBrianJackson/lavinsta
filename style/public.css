@@ -462,7 +462,7 @@
     width: 23vw;
     left: 5px;
     top: 130px;
-    box-shadow: var(--second-color-dark) 0px 2px 4px 0px, var(--second-color-dark) 0px 2px 16px 0px;
+    box-shadow: var(--simple-box-shadow);
     z-index: 5;
 }
 
@@ -473,7 +473,7 @@
     overflow: hidden;
     z-index: 4;
     background: linear-gradient(to bottom, var(--second-color-white), var(--color-gray), var(--second-color-dark));
-    box-shadow: var(--second-color-dark) 0px 2px 4px 0px, var(--second-color-dark) 0px 2px 16px 0px;
+    box-shadow: var(--simple-box-shadow);
 }
 
 .Public_video_Reel_Column {
@@ -1025,7 +1025,7 @@
         left: -400px;
         transition: 800ms left;
         background: linear-gradient(to bottom, var(--second-color-white), var(--color-gray), var(--second-color-dark));
-        box-shadow: var(--second-color-dark) 0px 2px 4px 0px, var(--second-color-dark) 0px 2px 16px 0px;
+        box-shadow: var(--simple-box-shadow);
         z-index: 6;
     }
 
@@ -1092,7 +1092,7 @@
         left: -400px;
         transition: 800ms left;
         background: linear-gradient(to bottom, var(--second-color-white), var(--color-gray), var(--second-color-dark));
-        box-shadow: var(--second-color-dark) 0px 2px 4px 0px, var(--second-color-dark) 0px 2px 16px 0px;
+        box-shadow: var(--simple-box-shadow);
         z-index: 6;
     }
 
@@ -1131,7 +1131,7 @@
         left: -400px;
         transition: 800ms left;
         background: linear-gradient(to bottom, var(--second-color-white), var(--color-gray), var(--second-color-dark));
-        box-shadow: var(--second-color-dark) 0px 2px 4px 0px, var(--second-color-dark) 0px 2px 16px 0px;
+        box-shadow: var(--simple-box-shadow);
         z-index: 6;
     }
 
