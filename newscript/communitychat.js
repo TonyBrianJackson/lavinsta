@@ -230,7 +230,12 @@ function create_Community_Chat_Members(locationId, room) {
                     memberviewbutton.classList.add('memberaddbutton');
                     memberaddbutton.id = member.id;
                     memberviewbutton.addEventListener('click', () => {
-                        createUsersProfile(member.members_Id);
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account.forEach(user => {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                createProfileOptions(member.members_Id, user.user_Id);
+                            });
+                        }
                     });
                     memberaddbutton.addEventListener('click', () => {
                         memberaddbutton.textContent = 'Removed';

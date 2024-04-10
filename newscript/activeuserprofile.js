@@ -546,21 +546,6 @@ function create_Active_Account() {
                 let userpostgridcontainer = document.createElement('nav');
                 let userpostgrid = document.createElement('div');
 
-                let userfriendlist = document.createElement('nav');
-                let userfriendListColumn = document.createElement('div');
-                let userfollowerlist = document.createElement('nav');
-                let usersfriendlistheader = document.createElement('header');
-                let usersfollowerslistheader = document.createElement('header');
-                let userfriendlistexit = document.createElement('span');
-                let userfollowersexit = document.createElement('span');
-                usersfriendlistheader.appendChild(userfriendlistexit);
-                usersfollowerslistheader.appendChild(userfollowersexit);
-                usersfriendlistheader.classList.add('XyFireRecTorFas');
-                usersfollowerslistheader.classList.add('XyFireRecTorFas');
-
-                //profile picture and cover photo uploader.
-                document.body.appendChild(userfriendlist);
-                document.body.appendChild(userfollowerlist);
                 userpostgridcontainer.appendChild(userpostgrid);
 
                 userbioblock.appendChild(userbioinfor);
@@ -1010,36 +995,9 @@ function create_Active_Account() {
                 }
                 usersCount();
 
-                //people and friends
-                userfriendlist.id = profile.user_Id;
-                userfriendListColumn.id = profile.user_Id;
-                //users statusbar
 
-                userfriendlistexit.innerHTML = '&LeftArrow;';
-                userfollowersexit.innerHTML = '&LeftArrow;';
-                userfollowersexit.classList.add('userfollowersexit');
-                userfriendlistexit.classList.add('userfollowersexit');
-                userfriendlist.classList.add('Friendlisttabs');
-                userfollowerlist.classList.add('followerslisttabs');
-                userfriendListColumn.classList.add('userfriendListColumn');
-                userfollowerlist.innerHTML = 'followers';
-                userfriendlist.appendChild(usersfriendlistheader);
-                userfriendlist.appendChild(userfriendListColumn);
-                userfollowerlist.appendChild(usersfollowerslistheader);
-
-                userfriendlistexit.addEventListener('click', () => {
-                    userfriendlist.style.display = 'none';
-                });
-                userfollowersexit.addEventListener('click', () => {
-                    userfollowerlist.style.display = 'none';
-                });
-                userfriendlist.id = profile.user_Id;
-                userfollowerlist.id = profile.user_Id;
                 user_Friends_View_Container.id = profile.user_Id;
                 user_Information_View_Container.id = profile.user_Id;
-
-                userfriendlist.classList.add('Friendlisttabs');
-                userfollowerlist.classList.add('followerslisttabs');
 
                 user_Friends_View_Container.addEventListener('click', (e) => {
                     createFriends(profile.user_Id);

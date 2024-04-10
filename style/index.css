@@ -3384,38 +3384,6 @@ a {
     color: #FF1493;
 }
 
-.userfollowersexit {
-    font-size: 29px;
-    font-weight: 900;
-    border: none;
-    background: none;
-    box-shadow: none;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    text-align: center;
-    display: block;
-    color: var(--color-dark);
-    z-index: 1;
-}
-
-.userprofileexit {
-    font-size: 25px;
-    font-weight: bolder;
-    border: none;
-    background: none;
-    box-shadow: none;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    text-align: center;
-    display: block;
-    color: var(--color-dark);
-    z-index: 1;
-}
-
 .usersharepopup {
     display: none;
     flex-direction: column;
@@ -3622,7 +3590,7 @@ a {
     align-items: center;
     justify-content: space-between;
     border: none;
-    background: none;
+    background: var(--color-white);
     box-shadow: none;
     border-radius: 0px;
     min-height: 30px;
@@ -6120,19 +6088,7 @@ a {
 
 /*SEARCH PATH*/
 .searchpath {
-    position: fixed;
-    top: 60px;
-    left: 4px;
-    border: none;
-    width: 240px;
-    height: 71vh;
-    border-radius: 10px;
-    padding: 10px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    background: var(--color-light);
-    box-shadow: none;
+    display: flex;
     z-index: 330;
 }
 
@@ -6148,36 +6104,11 @@ a {
 }
 
 .topkeepsuggession {
-    border: none;
-    padding: 10px;
-    width: 100%;
     height: 77%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: none;
-    background: none;
 }
 
 .video_Seach_Path .topkeepsuggession {
     height: 90%;
-}
-
-.both_Search_Popup {
-    border: none;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    max-height: max-content;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: grid;
-    gap: 5px;
-    grid-template-columns: 1fr;
-    box-shadow: none;
-    background: none;
 }
 
 .searchlink {
@@ -6263,24 +6194,6 @@ a {
     display: none;
 }
 
-.mainsearchbar {
-    width: 60%;
-    height: 40px;
-    border-width: 1px;
-    border-color: rgb(191, 191, 207);
-    border: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-    border-radius: 50px;
-    background: var(--color-white);
-    cursor: pointer;
-    box-shadow: var(--block-box-shadow);
-}
-
-.mainsearchbar img,
 .mainsearchbar svg {
     width: 20px;
     border: none;
@@ -6298,21 +6211,6 @@ a {
 
 .mainsearchbar input::placeholder {
     color: rgb(169, 169, 184);
-}
-
-.mainsearchbar input {
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    overflow: hidden;
-    margin-right: 10px;
-    padding: 5px 10px;
-    display: flex;
-    color: var(--color-dark);
 }
 
 .searchheadericons.active {
@@ -6737,6 +6635,7 @@ a {
     text-align: center;
     width: 100%;
 }
+.infopro header,
 .license_Popup header,
 .storyviewspopup header {
     display: flex;
@@ -6751,6 +6650,7 @@ a {
     border-radius: 0px;
     overflow: visible;
 }
+.infopro header p,
 .license_Popup header p,
 .storyviewspopup header p {
     display: block;
@@ -6783,6 +6683,7 @@ a {
     transition: all 600ms ease 30ms;
     z-index: 36;
 }
+.infopro,
 .license_Popup {
     display: flex;
     flex-direction: column;
@@ -6801,6 +6702,7 @@ a {
     padding: 20px;
     overflow: hidden;
     gap: 5px;
+    z-index: 521;
 }
 .storyviewspopupactive {
     height: 250px;
@@ -6809,6 +6711,7 @@ a {
     pointer-events: all;
     transition: all 600ms ease 30ms;
 }
+.userinfocolumn,
 .likerecordcolumn,
 .storyviewscolumn {
     display: grid;
@@ -6826,7 +6729,11 @@ a {
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
+.userinfocolumn .person,
+.userinfocolumn .friendcontainer {
+    margin: 2.5px 0px;
+    box-shadow: none;
+}
 .viewblock {
     display: flex;
     flex-direction: row;
@@ -6839,7 +6746,23 @@ a {
     box-shadow: none;
 }
 
-
+.userinfocolumn .viewblock {
+    flex-direction: column;
+    margin: 2.5px 0px;
+}
+.viewblock > section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: max-content;
+    padding: 5px;
+    background: var(--color-white);
+    box-shadow: none;
+    border: none;
+}
+.viewblock > section > span,
 .viewblock>span {
     display: flex;
     flex-direction: column;
@@ -6853,7 +6776,23 @@ a {
     background: none;
     margin-right: 3px;
 }
-
+.viewblock > section > span > svg {
+    width: 75%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+}
+.viewblock > section > span > svg path,
+.viewblock > section > span > svg circle,
+.viewblock > section > span > svg polygon {
+    fill: var(--color-dark);
+}
 .viewblock>span img {
     width: 100%;
     height: 100%;
@@ -6877,7 +6816,7 @@ a {
     box-shadow: none;
     border-radius: 0px;
 }
-
+.viewblock > section > p,
 .viewblocktail p:nth-child(1) {
     border: none;
     border-radius: 0px;
@@ -6889,7 +6828,9 @@ a {
     color: var(--color-dark);
     font-weight: 700;
 }
-
+.viewblock > section > p {
+    width: 77%;
+}
 .viewblocktail p:nth-child(2) {
     border: none;
     border-radius: 0px;
@@ -8262,74 +8203,6 @@ a {
 }
 
 
-.personlikerecord {
-    width: 100%;
-    height: 90px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #000000;
-    border: none;
-    box-shadow: none;
-    overflow: hidden;
-    margin: 3px 0px;
-}
-
-.personlikerecord span {
-    display: block;
-    text-align: left;
-    background: none;
-    overflow: hidden;
-    border: none;
-    box-shadow: none;
-    overflow: hidden;
-    width: 100%;
-    border-radius: 0px;
-    color: #ffffffff;
-    font-size: 12px;
-    font-weight: 400;
-}
-
-.personlikerecord div {
-    width: 100%;
-    height: 60%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    overflow: hidden;
-}
-
-.personlikerecord div img {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border-width: 4px;
-    border-color: #ffffffff;
-    box-shadow: none;
-    overflow: hidden;
-    margin: 3px;
-    cursor: pointer;
-}
-
-.personlikerecord div p {
-    border: none;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    overflow: hidden;
-    width: 70%;
-    color: #ffffffff;
-    white-space: pre-wrap;
-}
-
 /*REPORT POST STYLES*/
 .editpopup,
 .reportcontainer {
@@ -8937,29 +8810,6 @@ a {
 
     .updatingmessage span {
         font-size: 16px;
-    }
-
-    .personlikerecord {
-        height: max-content;
-        width: 100%;
-        border-radius: 0px;
-        background: var(--color-white);
-        box-shadow: none;
-    }
-
-    .personlikerecord div img {
-        width: 60px;
-        height: 60px;
-        border: 1px solid var(--color-dark);
-    }
-
-    .personlikerecord div p {
-        font-size: 17px;
-        color: var(--color-dark);
-    }
-
-    .personlikerecord span {
-        color: var(--color-dark);
     }
 
     .copyrightmesgandsmallprofilegrid {

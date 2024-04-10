@@ -1737,7 +1737,12 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     optionviewprofile.id = locationId;
 
     optionviewprofile.addEventListener('click', () => {
-        createUsersProfile(locationId);
+        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+            ActiveUser_Account.forEach(user => {
+                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                createProfileOptions(locationId, user.user_Id);
+            });
+        }
     });
     chatoptionmute.textContent = 'mute';
     chatoptionmute.style.display = 'none';

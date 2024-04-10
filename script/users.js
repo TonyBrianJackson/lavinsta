@@ -164,21 +164,6 @@ function createUsersProfile(locationId) {
                 let userpostgridcontainer = document.createElement('nav');
                 let userpostgrid = document.createElement('div');
 
-                let userfriendlist = document.createElement('nav');
-                let userfriendListColumn = document.createElement('div');
-                let userfollowerlist = document.createElement('nav');
-                let usersfriendlistheader = document.createElement('header');
-                let usersfollowerslistheader = document.createElement('header');
-                let userfriendlistexit = document.createElement('span');
-                let userfollowersexit = document.createElement('span');
-                usersfriendlistheader.appendChild(userfriendlistexit);
-                usersfollowerslistheader.appendChild(userfollowersexit);
-                usersfriendlistheader.classList.add('XyFireRecTorFas');
-                usersfollowerslistheader.classList.add('XyFireRecTorFas');
-
-                //profile picture and cover photo uploader.
-                document.body.appendChild(userfriendlist);
-                document.body.appendChild(userfollowerlist);
                 userpostgridcontainer.appendChild(userpostgrid);
 
                 userbioblock.appendChild(userbioinfor);
@@ -271,43 +256,9 @@ function createUsersProfile(locationId) {
                 }
                 usersCount();
 
-
-
-                let storycount = document.createElement('span');
-                userstrash.appendChild(storycount);
-                storycount.textContent = profile.my_StoryCount;
-                storycount.classList.add('storycount');
-                storycount.id = profile.user_Id;
-
-                //people and friends
-                userfriendlist.id = profile.user_Id;
-                userfriendListColumn.id = profile.user_Id;
-
-                userfriendlistexit.innerHTML = '&LeftArrow;';
-                userfollowersexit.innerHTML = '&LeftArrow;';
-                userfollowersexit.classList.add('userfollowersexit');
-                userfriendlistexit.classList.add('userfollowersexit');
-                userfriendlist.classList.add('Friendlisttabs');
-                userfollowerlist.classList.add('followerslisttabs');
-                userfriendListColumn.classList.add('userfriendListColumn');
-                userfollowerlist.innerHTML = 'followers';
-                userfriendlist.appendChild(usersfriendlistheader);
-                userfriendlist.appendChild(userfriendListColumn);
-                userfollowerlist.appendChild(usersfollowerslistheader);
-
-                userfriendlistexit.addEventListener('click', () => {
-                    userfriendlist.style.display = 'none';
-                });
-                userfollowersexit.addEventListener('click', () => {
-                    userfollowerlist.style.display = 'none';
-                });
-                userfriendlist.id = profile.user_Id;
-                userfollowerlist.id = profile.user_Id;
                 user_Friends_View_Container.id = profile.user_Id;
                 user_Information_View_Container.id = profile.user_Id;
 
-                userfriendlist.classList.add('Friendlisttabs');
-                userfollowerlist.classList.add('followerslisttabs');
                 user_Information_View_Container.addEventListener('click', () => {
                     usersInformation(profile.user_Id);
                 });
@@ -779,15 +730,19 @@ function usersInformation(locationId) {
                     let userinfocolumn = document.createElement('div');
                     let userinfoexit = document.createElement('span');
                     let usersinfoheader = document.createElement('header');
+                    let popupname = document.createElement('p');
                     document.body.appendChild(usersinfopro);
                     usersinfopro.appendChild(usersinfoheader);
                     usersinfopro.appendChild(userinfocolumn);
                     usersinfoheader.appendChild(userinfoexit);
+                    usersinfoheader.appendChild(popupname);
                     usersinfopro.classList.add('infopro');
                     userinfocolumn.classList.add('userinfocolumn');
                     usersinfoheader.classList.add('XyFireRecTorFas');
                     userinfoexit.classList.add('userfollowersexit');
-                    userinfoexit.innerHTML = '&LeftArrow;';
+                    userinfoexit.innerHTML = undo;
+                    popupname.innerHTML = 'User Profile Info &quest;';
+                    userinfoexit.classList.add('headerbtns');
                     usersinfopro.id = locationId;
                     userinfoexit.addEventListener('click', () => {
                         usersinfopro.remove();
@@ -797,101 +752,111 @@ function usersInformation(locationId) {
                     DateOFBirthInfo(userinfocolumn);
                     BioInfo(userinfocolumn);
                     DateCreated(userinfocolumn);
-                    if (profile.user_CoverPhoto) {
-                        usersinfopro.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
-                    } else {
-                        usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
-                    }
                 }
                 createOtherInformation();
                 function CityInfo(session) {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
+                    let viewblock = document.createElement('div');
+                    let viewhead = document.createElement('span');
+                    let viewname = document.createElement('p');
+                    let viewblocktail = document.createElement('div');
+                    let value = document.createElement('p');
 
+                    let newblock = document.createElement('section');
 
-                    session.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'City';
+                    session.appendChild(viewblock);
+                    viewblock.appendChild(newblock);
+                    viewblock.appendChild(viewblocktail);
+                    newblock.appendChild(viewhead);
+                    newblock.appendChild(viewname);
+                    viewblocktail.appendChild(value);
+                    viewblock.classList.add('viewblock');
+                    viewblocktail.classList.add('viewblocktail');
+                    viewname.textContent = 'City';
+                    viewhead.innerHTML = citysvg;
                     value.textContent = profile.user_Location;
                 }
                 function GenderInfo(session) {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
+                    let viewblock = document.createElement('div');
+                    let viewhead = document.createElement('span');
+                    let viewname = document.createElement('p');
+                    let viewblocktail = document.createElement('div');
+                    let value = document.createElement('p');
 
+                    let newblock = document.createElement('section');
 
-                    session.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Gender';
+                    session.appendChild(viewblock);
+                    viewblock.appendChild(newblock);
+                    viewblock.appendChild(viewblocktail);
+                    newblock.appendChild(viewhead);
+                    newblock.appendChild(viewname);
+                    viewblocktail.appendChild(value);
+                    viewblock.classList.add('viewblock');
+                    viewblocktail.classList.add('viewblocktail');
+                    viewname.textContent = 'Gender';
+                    viewhead.innerHTML = gendersvg;
                     value.textContent = profile.user_Gender;
                 }
                 function DateOFBirthInfo(session) {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
+                    let viewblock = document.createElement('div');
+                    let viewhead = document.createElement('span');
+                    let viewname = document.createElement('p');
+                    let viewblocktail = document.createElement('div');
+                    let value = document.createElement('p');
 
+                    let newblock = document.createElement('section');
 
-                    session.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Date Of Birth';
+                    session.appendChild(viewblock);
+                    viewblock.appendChild(newblock);
+                    viewblock.appendChild(viewblocktail);
+                    newblock.appendChild(viewhead);
+                    newblock.appendChild(viewname);
+                    viewblocktail.appendChild(value);
+                    viewblock.classList.add('viewblock');
+                    viewblocktail.classList.add('viewblocktail');
+                    viewname.textContent = 'Date Of Birth';
+                    viewhead.innerHTML = infosvg;
                     value.textContent = profile.user_Dateofbirth;
                 }
                 function BioInfo(session) {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
+                    let viewblock = document.createElement('div');
+                    let viewhead = document.createElement('span');
+                    let viewname = document.createElement('p');
+                    let viewblocktail = document.createElement('div');
+                    let value = document.createElement('p');
 
+                    let newblock = document.createElement('section');
 
-                    session.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Bio';
+                    session.appendChild(viewblock);
+                    viewblock.appendChild(newblock);
+                    viewblock.appendChild(viewblocktail);
+                    newblock.appendChild(viewhead);
+                    newblock.appendChild(viewname);
+                    viewblocktail.appendChild(value);
+                    viewblock.classList.add('viewblock');
+                    viewblocktail.classList.add('viewblocktail');
+                    viewname.textContent = 'Bio';
+                    viewhead.innerHTML = infosvg;
                     value.textContent = profile.user_Bio;
                 }
                 function DateCreated(session) {
-                    let InforMationCenter = document.createElement('div');
-                    let Info = document.createElement('div');
-                    let center = document.createElement('div');
-                    let value = document.createElement('span');
+                    let viewblock = document.createElement('div');
+                    let viewhead = document.createElement('span');
+                    let viewname = document.createElement('p');
+                    let viewblocktail = document.createElement('div');
+                    let value = document.createElement('p');
 
+                    let newblock = document.createElement('section');
 
-                    session.appendChild(InforMationCenter);
-                    InforMationCenter.appendChild(Info);
-                    InforMationCenter.appendChild(center);
-                    center.appendChild(value);
-                    InforMationCenter.classList.add('chosedplace');
-                    Info.classList.add('subject');
-                    center.classList.add('alwaysflex');
-                    value.classList.add('cityset');
-                    Info.textContent = 'Date Created';
+                    session.appendChild(viewblock);
+                    viewblock.appendChild(newblock);
+                    viewblock.appendChild(viewblocktail);
+                    newblock.appendChild(viewhead);
+                    newblock.appendChild(viewname);
+                    viewblocktail.appendChild(value);
+                    viewblock.classList.add('viewblock');
+                    viewblocktail.classList.add('viewblocktail');
+                    viewname.textContent = 'Date Created';
+                    viewhead.innerHTML = infosvg;
                     value.textContent = profile.date_Created;
                 }
             }
@@ -909,24 +874,23 @@ function createFriends(locationId) {
                     let userinfocolumn = document.createElement('div');
                     let userinfoexit = document.createElement('span');
                     let usersinfoheader = document.createElement('header');
+                    let popupname = document.createElement('p');
                     document.body.appendChild(usersinfopro);
                     usersinfopro.appendChild(usersinfoheader);
                     usersinfopro.appendChild(userinfocolumn);
                     usersinfoheader.appendChild(userinfoexit);
+                    usersinfoheader.appendChild(popupname);
                     usersinfopro.classList.add('infopro');
                     userinfocolumn.classList.add('userinfocolumn');
                     usersinfoheader.classList.add('XyFireRecTorFas');
                     userinfoexit.classList.add('userfollowersexit');
-                    userinfoexit.innerHTML = '&LeftArrow;';
+                    userinfoexit.innerHTML = undo;
+                    popupname.innerHTML = 'User Profile Info &quest;';
+                    userinfoexit.classList.add('headerbtns');
                     usersinfopro.id = locationId;
                     userinfoexit.addEventListener('click', () => {
                         usersinfopro.remove();
                     });
-                    if (data.user_CoverPhoto) {
-                        usersinfopro.style.backgroundImage = "url(" + data.user_CoverPhoto + ")";
-                    } else {
-                        usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
-                    }
                     friends(userinfocolumn);
                 }
                 createOtherInformation();

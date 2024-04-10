@@ -470,7 +470,7 @@
     width: 100%;
     height: max-content;
     background: var(--color-white);
-    box-shadow: var(--block-box-shadow);
+    box-shadow: none;
     border: none;
     display: flex;
     flex-direction: column;
