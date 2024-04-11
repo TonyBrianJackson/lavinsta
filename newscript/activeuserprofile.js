@@ -108,8 +108,10 @@ function savedData() {
 function create_Active_Account() {
     const smallminiprofile = document.querySelector('.smallminiprofile');
     const profilecontainer = document.querySelector('.profile');
-    profilecontainer.innerHTML = '';
-    smallminiprofile.innerHTML = '';
+    if (ActiveAccount.length !== 0) {
+        profilecontainer.innerHTML = '';
+        smallminiprofile.innerHTML = '';
+    }
     ActiveUser_Account.forEach(user => {
         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
         LogInFormData.forEach(profile => {
@@ -428,76 +430,91 @@ function create_Active_Account() {
                 });
                 //users account deleting
                 function user_Deleting() {
-                    let userssecuritypopup = document.createElement('div');
-                    let userssecuritytextboxcontainer = document.createElement('div');
+                    let license_Popup = document.createElement('div');
+                    let popupheader = document.createElement('header');
+                    let exit = document.createElement('span');
+                    let popupname = document.createElement('p');
+                    let license_Column = document.createElement('div');
                     let userssecuritytextbox = document.createElement('textarea');
-                    let proceeddeleteprocessbutton = document.createElement('button');
-                    userstrash.appendChild(userssecuritypopup);
-                    userssecuritytextbox.placeholder = 'decribe problem...';
-                    userssecuritypopup.appendChild(userssecuritytextboxcontainer);
-                    userssecuritypopup.appendChild(proceeddeleteprocessbutton);
-                    userssecuritytextboxcontainer.appendChild(userssecuritytextbox);
-                    proceeddeleteprocessbutton.textContent = 'proceed action';
-                    userssecuritypopup.id = profile.user_Id;
-                    proceeddeleteprocessbutton.id = profile.user_Id;
-                    userssecuritypopup.classList.add('userssecuritypopup');
-                    userssecuritytextboxcontainer.classList.add('userssecuritytextboxcontainer');
-                    proceeddeleteprocessbutton.classList.add('proceedbutton');
-                    proceeddeleteprocessbutton.addEventListener('click', () => {
+                    let proceedbutton = document.createElement('button');
+                    document.body.appendChild(license_Popup);
+                    userssecuritytextbox.placeholder = `decribe problem...`;
+                    license_Popup.appendChild(popupheader);
+                    license_Popup.appendChild(license_Column);
+                    license_Popup.appendChild(proceedbutton);
+                    license_Column.appendChild(userssecuritytextbox);
+                    popupheader.appendChild(exit);
+                    popupheader.appendChild(popupname);
+                    exit.innerHTML = undo;
+                    popupname.innerHTML = `permanently delete &quest;`;
+                    exit.classList.add('headerbtns');
+                    proceedbutton.textContent = 'proceed';
+                    license_Popup.id = profile.user_Id;
+                    proceedbutton.id = profile.user_Id;
+                    license_Popup.classList.add('license_Popup');
+                    license_Column.classList.add('license_Column');
+                    proceedbutton.classList.add('proceedbutton');
+                    proceedbutton.addEventListener('click', () => {
                         LogInFormData = LogInFormData.filter(user => {
-                            if (proceeddeleteprocessbutton.id === user.user_Id) {
+                            if (proceedbutton.id === user.user_Id) {
                                 return false;
                             } else {
                                 return true;
                             }
                         });
                         myLogsArray = myLogsArray.filter(log => {
-                            if (proceeddeleteprocessbutton.id === log.accountId) {
-                                return false;
-                            } else {
-                                return true;
-                            }
-                        });
-                        storiesphotosArray = storiesphotosArray.filter(story => {
-                            if (proceeddeleteprocessbutton.id === story.posterId) {
+                            if (proceedbutton.id === log.accountId) {
                                 return false;
                             } else {
                                 return true;
                             }
                         });
                         Feeds_Data_Base = Feeds_Data_Base.filter(advert => {
-                            if (proceeddeleteprocessbutton.id === advert.posterId) {
+                            if (proceedbutton.id === advert.posterId) {
                                 return false;
                             } else {
                                 return true;
                             }
                         });
-                        localStorage.setItem('storiesphotosArray', JSON.stringify(storiesphotosArray));
+                        ActiveUser_Account = [];
                         localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                         localStorage.setItem('myLogsArray', JSON.stringify(myLogsArray));
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                        ActiveUser_Account = [];
+                        localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));
                         location.reload();
                     });
+                    exit.addEventListener('click',() => {
+                        license_Popup.remove();
+                    });
                 }
-                user_Deleting();
+                document.querySelector('#privacy').addEventListener('click',()=> {
+                    user_Deleting();
+                });
                 function user_Reporting() {
-                    let usersreportpopup = document.createElement('div');
-                    let userssecuritytextboxcontainer = document.createElement('div');
+                    let license_Popup = document.createElement('div');
+                    let popupheader = document.createElement('header');
+                    let exit = document.createElement('span');
+                    let popupname = document.createElement('p');
+                    let license_Column = document.createElement('div');
                     let userssecuritytextbox = document.createElement('textarea');
-                    let proceedreporting = document.createElement('button');
-                    userstrash.appendChild(usersreportpopup);
-                    userssecuritytextbox.placeholder = 'decribe problem...';
-                    usersreportpopup.appendChild(userssecuritytextboxcontainer);
-                    usersreportpopup.appendChild(proceedreporting);
-                    userssecuritytextboxcontainer.appendChild(userssecuritytextbox);
-                    proceedreporting.textContent = 'proceed action';
-                    usersreportpopup.id = profile.user_Id;
-                    proceedreporting.id = profile.user_Id;
-                    usersreportpopup.classList.add('usersreportpopup');
-                    userssecuritytextboxcontainer.classList.add('userssecuritytextboxcontainer');
-                    proceedreporting.classList.add('proceedreporting');
+                    let proceedbutton = document.createElement('button');
+                    document.body.appendChild(license_Popup);
+                    userssecuritytextbox.placeholder = `decribe problem...`;
+                    license_Popup.appendChild(popupheader);
+                    license_Popup.appendChild(license_Column);
+                    license_Popup.appendChild(proceedbutton);
+                    license_Column.appendChild(userssecuritytextbox);
+                    popupheader.appendChild(exit);
+                    popupheader.appendChild(popupname);
+                    exit.innerHTML = undo;
+                    popupname.innerHTML = `report this account &quest;`;
+                    exit.classList.add('headerbtns');
+                    proceedbutton.textContent = 'proceed';
+                    license_Popup.id = profile.user_Id;
+                    proceedbutton.id = profile.user_Id;
+                    license_Popup.classList.add('license_Popup');
+                    license_Column.classList.add('license_Column');
+                    proceedbutton.classList.add('proceedbutton');
                     function report_To_Admin() {
                         if (userssecuritytextbox.value) {
                             const id = '' + new Date().getTime();
@@ -512,14 +529,23 @@ function create_Active_Account() {
                             localStorage.setItem('Admins_Notification', JSON.stringify(Admins_Notification));
                         }
                     }
-                    proceedreporting.addEventListener('click', () => {
+                    proceedbutton.addEventListener('click', () => {
                         report_To_Admin();
                         userssecuritytextbox.value = '';
+                        setTimeout(() => {
+                            license_Popup.remove();
+                        }, 2000);
+                    });
+                    
+                    exit.addEventListener('click',() => {
+                        license_Popup.remove();
                     });
                 }
-                if (profile.user_Is_CEO !== true && profile.user_Is_Admin !== true) {
-                    user_Reporting();
-                }
+                document.querySelector('#report').addEventListener('click',()=> {
+                    if (profile.user_Is_CEO !== true && profile.user_Is_Admin !== true) {
+                        user_Reporting();
+                    }
+                });
 
 
                 smallminiprofile.appendChild(userminiprofile);
@@ -1404,14 +1430,11 @@ function createAdvanceSwitchPage() {
                                     if (user.user_Id === account.accountId && user.user_ProfilePicture === account.accountImg && user.user_Firstname + ' ' + user.user_Surname === account.accountName) {
                                         posterImgSrc.src = user.user_ProfilePicture;
                                         VideoPosterName.textContent = user.user_Firstname + ' ' + user.user_Surname;
-                                        let userssecuritypopup = document.querySelectorAll('.userssecuritypopup');
                                         let usersprofile = document.querySelectorAll('.usersprofile');
-                                        let person = document.querySelectorAll('.person');
                                         let userprofileminimizer = document.querySelectorAll('.userprofileminimizer');
                                         let usersuniversalnotificationcenter = document.querySelectorAll('.usersuniversalnotificationcenter');
                                         let usersharepopup = document.querySelectorAll('.usersharepopup');
                                         let user_Profile_Settings_Container = document.querySelectorAll('.user_Profile_Settings_Container');
-                                        let usersreportpopup = document.querySelectorAll('.usersreportpopup');
 
                                         // function createFriendShareScript() {
                                         //     usersharepopupexit.forEach(exitbutton => {
@@ -1616,16 +1639,6 @@ function createAdvanceSwitchPage() {
                                             usersharepopup.forEach(popup => {
                                                 if (popup.id === user.user_Id) {
                                                     document.body.appendChild(popup);
-                                                }
-                                            });
-                                            userssecuritypopup.forEach(popup => {
-                                                if (popup.id === user.user_Id) {
-                                                    document.querySelector('.reciever_Column').appendChild(popup);
-                                                }
-                                            });
-                                            usersreportpopup.forEach(popup => {
-                                                if (popup.id === user.user_Id) {
-                                                    document.querySelector('.report_reciever_Column').appendChild(popup);
                                                 }
                                             });
                                             usersuniversalnotificationcenter.forEach(center => {

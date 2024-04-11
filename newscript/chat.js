@@ -2248,7 +2248,8 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
                     chat_receiver: locationId,
                     time: new Date().getTime(),
                     date: trackingDate,
-                    chatvisibilty: 'sent'
+                    chatvisibilty: 'sent',
+                    views: []
                 });
                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
             } if (type == 'friends_chat') {
@@ -2293,7 +2294,8 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
                     chat_receiver: locationId,
                     time: new Date().getTime(),
                     date: trackingDate,
-                    chatvisibilty: 'sent'
+                    chatvisibilty: 'sent',
+                    views: []
                 });
                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
             }
@@ -2326,7 +2328,8 @@ function createUploader(locationId, CreatorId, chatroom, type, community_Id) {
                     chat_receiver: locationId,
                     time: new Date().getTime(),
                     date: trackingDate,
-                    chatvisibilty: 'sent'
+                    chatvisibilty: 'sent',
+                    views: []
                 });
                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
             }

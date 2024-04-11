@@ -1533,90 +1533,149 @@ function active_user_render() {
                             const peoplepagesearchpeople = document.querySelector('#peoplepagesearchpeople');
                             let people = document.querySelectorAll('.person');
                             people.forEach(person => {
-                                let personsname = person.querySelector('.personsname').textContent.toLowerCase();
-                                if (personsname.indexOf(peoplepagesearchpeople.value.toLowerCase()) != -1) {
-                                    if (person.id === user.user_Id) {
-                                        person.style.display = 'none';
+                                let personsname = person.querySelector('.personsname').textContent.toLowerCase().trim().split(" ");
+                                let splitedValue = peoplepagesearchpeople.value.toLowerCase().trim().split(" ");
+                                personsname.find(pName => {
+                                    splitedValue.find(sValue => {
+                                        if (pName.indexOf(sValue) != -1) {
+                                            person.style.display = 'flex';
+                                        } else {
+                                            person.style.display = 'none';
+                                        }
+                                    });
+                                });
+                            })
+                        }
+                        function localFeedSearch() {
+                            if (document.querySelector('.public_Search_Bar').value) {
+                                const Textvalue = document.querySelector('.public_Search_Bar');
+                                document.querySelectorAll('.publicpostcontainer .post').forEach(photo => {
+                                    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+                                    Feeds_Data_Base.find(post => {
+                                        if (post.type == 'public') {
+                                            if (post.isPhoto || post.isVideo) {
+                                                let splitedTitle = post.title.split(" , ");
+                                                let splitedText = Textvalue.value.split(" , ");
+                                                splitedTitle.forEach(dataTitle => {
+                                                    splitedText.forEach(TextTitle => {
+                                                        let titleType = dataTitle.toLowerCase();
+                                                        let textType = TextTitle.toLowerCase();
+                                                        if (titleType.indexOf(textType) != -1) {
+                                                            if (photo.id === post.id) {
+                                                                photo.style.display = 'flex';
+                                                            } else {
+                                                                photo.style.display = 'none';
+                                                            }
+                                                        }
+                                                    })
+                                                })
+                                            } else if (post.isText) {
+                                                let splitedTitle = post.Property_Src.split(" , ");
+                                                let splitedText = Textvalue.value.split(" , ");
+                                                splitedTitle.forEach(dataTitle => {
+                                                    splitedText.forEach(TextTitle => {
+                                                        let titleType = dataTitle.toLowerCase();
+                                                        let textType = TextTitle.toLowerCase();
+                                                        if (titleType.indexOf(textType) != -1) {
+                                                            if (photo.id === post.id) {
+                                                                photo.style.display = 'flex';
+                                                            } else {
+                                                                photo.style.display = 'none';
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            }
+                                        }
+                                    });
+                                });
+                                document.querySelectorAll('.advertStatusbar .worldwidegadgetcontainer').forEach(gadget => {
+                                    let title = gadget.querySelector('.worldwidegadgetcaption').textContent.toLowerCase();
+                                    if (title.indexOf(Textvalue.value.toLowerCase()) != -1) {
+                                        gadget.style.display = 'flex';
                                     } else {
-                                        person.style.display = 'flex';
+                                        gadget.style.display = 'none';
                                     }
-                                } else {
-                                    person.style.display = 'none';
-                                }
-                            })
-                        }
-                        function searchpeoplerequest() {
-                            const peoplerequestsearchbar = document.querySelector('#peoplerequestsearchbar');
-                            let people = document.querySelectorAll('.friendconnectrequest');
-                            people.forEach(person => {
-                                let personsname = person.querySelector('.personsname').textContent.toLowerCase();
-                                if (personsname.indexOf(peoplerequestsearchbar.value.toLowerCase()) != -1) {
-                                    person.style.display = 'flex';
-                                } else {
-                                    person.style.display = 'none';
-                                }
-                            })
-                        }
-                        function searchmyfriendlist() {
-                            const friendlistsearch = document.querySelector('#friendlistsearch');
-                            let friendcontainer = document.querySelectorAll('.friendcontainer');
-                            friendcontainer.forEach(friend => {
-                                let friendname = friend.querySelector('.friendname').textContent.toLowerCase();
-                                if (friendname.indexOf(friendlistsearch.value.toLowerCase()) != -1) {
-                                    friend.style.display = 'flex';
-                                } else {
-                                    friend.style.display = 'none';
-                                }
-                            })
-                        }
-                        function search_Feeds() {
-                            const public_Search_Bar = document.querySelector('.public_Search_Bar');
-                            let post = document.querySelectorAll('.publicpostcontainer .post');
-                            let worldwidegadgetcontainer = document.querySelectorAll('.advertStatusbar .worldwidegadgetcontainer');
-                            worldwidegadgetcontainer.forEach(gadget => {
-                                let title = gadget.querySelector('.worldwidegadgetcaption').textContent.toLowerCase();
-                                if (title.indexOf(public_Search_Bar.value.toLowerCase()) != -1) {
-                                    gadget.style.display = 'flex';
-                                } else {
-                                    gadget.style.display = 'none';
-                                }
-                            });
-                            post.forEach(feed => {
-                                let posttitle = feed.querySelector('.posttitle').textContent.toLowerCase();
-                                if (posttitle.indexOf(public_Search_Bar.value.toLowerCase()) != -1) {
-                                    feed.style.display = 'flex';
-                                } else {
-                                    feed.style.display = 'none';
-                                }
-                            })
+                                });
+                            }
                         }
                         function seach_Reels_Feeds() {
-                            const ReelPage_Search_Bar = document.querySelector('.ReelPage_Search_Bar');
-                            let gadget = document.querySelectorAll('.rightsidefeedsothersection .worldwidegadgetcontaineronshortpage');
-                            let reel = document.querySelectorAll('.reelscontainer .reel');
-                            gadget.forEach(section => {
-                                let title = section.querySelector('.worldwidegadgetcaption').textContent.toLowerCase();
-                                if (title.indexOf(ReelPage_Search_Bar.value.toLowerCase()) != -1) {
-                                    section.style.display = 'flex';
-                                } else {
-                                    section.style.display = 'none';
-                                }
-                            });
-                            reel.forEach(post => {
-                                let title = post.querySelector('.posttitle').textContent.toLowerCase();
-                                if (title.indexOf(ReelPage_Search_Bar.value.toLowerCase()) != -1) {
-                                    post.style.display = 'flex';
-                                } else {
-                                    post.style.display = 'none';
-                                }
+                            if (document.querySelector('.ReelPage_Search_Bar').value) {
+                                const Textvalue = document.querySelector('.ReelPage_Search_Bar');
+                                document.querySelectorAll('.reelscontainer .reel').forEach(photo => {
+                                    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+                                    Feeds_Data_Base.find(post => {
+                                        if (post.type == 'public') {
+                                            if (post.isShort) {
+                                                let splitedTitle = post.title.split(" , ");
+                                                let splitedText = Textvalue.value.split(" , ");
+                                                splitedTitle.forEach(dataTitle => {
+                                                    splitedText.forEach(TextTitle => {
+                                                        let titleType = dataTitle.toLowerCase();
+                                                        let textType = TextTitle.toLowerCase();
+                                                        if (titleType.indexOf(textType) != -1) {
+                                                            if (photo.id === post.id) {
+                                                                photo.style.display = 'flex';
+                                                            } else {
+                                                                photo.style.display = 'none';
+                                                            }
+                                                        }
+                                                    })
+                                                })
+                                            }
+                                        }
+                                    });
+                                });
+                                document.querySelectorAll('.rightsidefeedsothersection .worldwidegadgetcontaineronshortpage').forEach(gadget => {
+                                    let title = gadget.querySelector('.worldwidegadgetcaption').textContent.toLowerCase();
+                                    if (title.indexOf(Textvalue.value.toLowerCase()) != -1) {
+                                        gadget.style.display = 'flex';
+                                    } else {
+                                        gadget.style.display = 'none';
+                                    }
+                                });
+                            }
+                        }
+                        function searchchatmessage() {
+                            const chatsearchbar = document.querySelector('#chatsearchbar');
+                            let chatblock = document.querySelectorAll('.chatblock');
+                            chatblock.forEach(person => {
+                                let personsname = person.querySelector('.chatreciepientname').textContent.toLowerCase().trim().split(" ");
+                                let splitedValue = chatsearchbar.value.toLowerCase().trim().split("");
+                                personsname.find(pName => {
+                                    splitedValue.find(sValue => {
+                                        if (pName.indexOf(sValue) != -1) {
+                                            person.style.display = 'flex';
+                                        } else {
+                                            person.style.display = 'none';
+                                        }
+                                    });
+                                });
                             });
                         }
-    
+                        function searchnotification() {
+                            const notificationsearchbar = document.querySelector('#notificationsearchbar');
+                            let notificationblock = document.querySelectorAll('.notificationblock');
+                            notificationblock.forEach(person => {
+                                let personsname = person.querySelector('.notificationcaption').textContent.toLowerCase().trim().split(" ");
+                                let splitedValue = notificationsearchbar.value.toLowerCase().trim().split(" ");
+                                console.log(personsname);
+                                personsname.find(pName => {
+                                    splitedValue.find(sValue => {
+                                        if (pName.indexOf(sValue) != -1) {
+                                            person.style.display = 'flex';
+                                        } else {
+                                            person.style.display = 'none';
+                                        }
+                                    });
+                                });
+                            });
+                        }
+                        document.querySelector('#notificationsearchbar').addEventListener('keyup',searchnotification);
+                        document.querySelector('#chatsearchbar').addEventListener('keyup',searchchatmessage);
                         document.querySelector('.gallery_Search_Bar').addEventListener('keyup', searchOtherPost);
                         document.querySelector('.ReelPage_Search_Bar').addEventListener('keyup', seach_Reels_Feeds);
-                        document.querySelector('.public_Search_Bar').addEventListener('keyup', search_Feeds)
-                        document.querySelector('#friendlistsearch').addEventListener('keyup', searchmyfriendlist);
-                        document.querySelector('#peoplerequestsearchbar').addEventListener('keyup', searchpeoplerequest);
+                        document.querySelector('.public_Search_Bar').addEventListener('keyup', localFeedSearch);
                         document.querySelector('#peoplepagesearchpeople').addEventListener('keyup', searchpeople);
                     }
                     searchFunctions()

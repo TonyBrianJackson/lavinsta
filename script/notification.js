@@ -11,20 +11,31 @@ function createNotifications() {
                 let Notifications = data.user_Notifications;
                 Notifications.forEach(notification => {
                     let notificationblock = document.createElement('div');
+                    let innerblock = document.createElement('div');
                     let notificationhead = document.createElement('div');
                     let notificationtail = document.createElement('div');
                     let notificationImg = document.createElement('img');
                     let notificationcaption = document.createElement('p');
-                    let notificationmore = document.createElement('span');
+                    let more = document.createElement('span');
                     let notificationtime = document.createElement('span');
-    
+                    let NotificationNameAndImg = document.createElement('div');
+                    let notictionName = document.createElement('b');
+                    let nameandtime = document.createElement('div');
                     column.appendChild(notificationblock);
-                    notificationblock.appendChild(notificationhead);
-                    notificationblock.appendChild(notificationtail);
-                    notificationblock.appendChild(notificationmore);
+                    notificationblock.appendChild(innerblock);
+                    innerblock.appendChild(NotificationNameAndImg);
+                    innerblock.appendChild(notificationtail);
+                    notificationblock.appendChild(more);
                     notificationhead.appendChild(notificationImg);
                     notificationtail.appendChild(notificationcaption);
-                    notificationtail.appendChild(notificationtime);
+                    NotificationNameAndImg.appendChild(notificationhead);
+                    NotificationNameAndImg.appendChild(nameandtime);
+                    nameandtime.appendChild(notictionName);
+                    nameandtime.appendChild(notificationtime);
+                    notictionName.classList.add('notictionName');
+                    nameandtime.classList.add('nameandtime');
+                    innerblock.classList.add('innerblock');
+                    NotificationNameAndImg.classList.add('NotificationNameAndImg');
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -61,13 +72,48 @@ function createNotifications() {
                         }
                     }
                     startTime();
+                    function GetInfo() {
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(user => {
+                            if (user.user_Id === notification.posterId) {
+                                notificationImg.src = user.user_ProfilePicture;
+                                notictionName.textContent = user.user_Firstname + ' ' + user.user_Surname
+                                function filter_Image() {
+                                    //profile_filter 
+                                    if (user.user_ProfilePicture_Filter == 'default') {
+                                        notificationImg.classList.add('--color-default');
+                                    } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                        notificationImg.classList.add('--color-gray');
+                                    } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                        notificationImg.classList.add('--color-contrast');
+                                    } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                        notificationImg.classList.add('--color-bright');
+                                    } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                        notificationImg.classList.add('--color-blur');
+                                    } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                        notificationImg.classList.add('--color-invert');
+                                    } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                        notificationImg.classList.add('--color-sepia');
+                                    } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                        notificationImg.classList.add('--color-hue-rotate');
+                                    } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                        notificationImg.classList.add('--color-opacity');
+                                    } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                        notificationImg.classList.add('--color-satulate');
+                                    }
+                                }
+                                filter_Image();
+                            }
+                        });
+                    }
+                    GetInfo();
                     function GetPosterInfo() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
                             if (user.user_Id === notification.posterId) {
                                 notificationImg.src = user.user_ProfilePicture;
                                 if (notification.type == 'comment') {
-                                    notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>added a comment to your post "${notification.caption}"`;
+                                    notificationcaption.innerHTML = `added a comment to your post"${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
                                         create_Comment_room(notification.postId);
                                         sessionStorage.setItem('activepage', notification.postId);
@@ -92,7 +138,7 @@ function createNotifications() {
                                     });
                                     localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                 } if (notification.type == 'post_Like') {
-                                    notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>liked your post "${notification.caption}"`;
+                                    notificationcaption.innerHTML = `liked your post"${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
                                         createMain_GridPost(notification.postId);
                                     });
@@ -104,7 +150,7 @@ function createNotifications() {
                                         }
                                     });
                                 } if (notification.type == 'comment_Like') {
-                                    notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>liked your comment "${notification.caption}"`;
+                                    notificationcaption.innerHTML = `liked your comment"${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
                                         create_Comment_room(notification.postId);
                                         sessionStorage.setItem('activepage', notification.postId);
@@ -118,9 +164,9 @@ function createNotifications() {
                                     });
                                 } if (notification.type == 'comment_Reply') {
                                     if (notification.target == 'mention') {
-                                        notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>mentioned you in a comment`;
+                                        notificationcaption.innerHTML = `mentioned you in a comment`;
                                     } else {
-                                        notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>replied to your comment "${notification.caption}"`;
+                                        notificationcaption.innerHTML = `replied to your comment"${notification.caption}"`;
                                     }
                                     notificationcaption.addEventListener('click', () => {
                                         create_Comment_Reply_room(notification.postId);
@@ -133,7 +179,7 @@ function createNotifications() {
                                         }
                                     });
                                 } if (notification.type == 'postNotification') {
-                                    notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>${notification.caption}`;
+                                    notificationcaption.innerHTML = `${notification.caption}`;
                                     notificationcaption.addEventListener('click', () => {
                                         if (notification.liveNotification) {
                                             document.querySelector('.videopagebackground').style.display = 'flex';
@@ -155,7 +201,7 @@ function createNotifications() {
                                         }
                                     });
                                 } if (notification.type == 'comment_ReplyLike') {
-                                    notificationcaption.innerHTML = `<b class="notictionName">${user.user_Firstname + ' ' + user.user_Surname}</b>liked your comment reply "${notification.caption}"`;
+                                    notificationcaption.innerHTML = `liked your comment reply"${notification.caption}"`;
                                     notificationcaption.addEventListener('click', () => {
                                         create_Comment_Reply_room(notification.relationId);
                                     });
@@ -243,21 +289,21 @@ function createNotifications() {
                         });
                     }
                     GetPosterInfo();
-                    notificationmore.innerHTML = '&vellip;';
+                    more.innerHTML = vellip;
                     notificationcaption.classList.add('notificationcaption');
                     notificationhead.classList.add('notificationhead');
                     notificationtail.classList.add('notificationtail');
                     notificationblock.classList.add('notificationblock');
-                    notificationmore.classList.add('notificationmore');
+                    more.classList.add('more');
                     notificationtime.classList.add('notificationtime');
-                    notificationmore.id = notification.trackingId + notification.id;
+                    more.id = notification.trackingId + notification.id;
     
                     if (notification.notification_isChecked === false) {
                         notificationtime.classList.add('new_No_Ti_Fi_Ca_Ti_On');
                         notificationcaption.classList.add('new_No_Ti_Fi_Ca_Ti_On_caption');
                     }
     
-                    notificationmore.addEventListener('click', () => {
+                    more.addEventListener('click', () => {
                         create_Options_Script();
                     });
                     function create_Options_Script() {

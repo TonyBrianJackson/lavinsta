@@ -17,34 +17,29 @@ function create_ThisPeople_List() {
                     document.querySelectorAll('#lavinstapeople').forEach(item => {
                         item.classList.remove('active');
                     });
-                    document.querySelector('.peoplesearchbar').style.display = 'none';
                 }
                 if (sessionStorage.getItem('activepage') == 'lavinstapeople') {
                     document.querySelectorAll('#lavinstapeople').forEach(item => {
                         item.classList.add('active');
                     });
                     Create_People(user.user_Id, userpeoplecolumn);
-                    document.querySelector('.peoplesearchbar').style.display = 'flex';
                 } else if (sessionStorage.getItem('activepage') == 'peoplerequest') {
                     removeActive();
                     document.querySelectorAll('#peoplerequest').forEach(item => {
                         item.classList.add('active');
                     });
-                    document.querySelector('.peoplesearchbar1').style.display = 'flex';
                     createRequest(user.user_Id, userpeoplecolumn);
                 } else if (sessionStorage.getItem('activepage') == 'sent_requests') {
                     removeActive();
                     document.querySelectorAll('#sent_requests').forEach(item => {
                         item.classList.add('active');
                     });
-                    document.querySelector('.peoplesearchbar3').style.display = 'flex';
                     createSentRequest(user.user_Id, userpeoplecolumn);
                 } else if (sessionStorage.getItem('activepage') == 'peoplelist') {
                     removeActive();
                     document.querySelectorAll('#peoplelist').forEach(item => {
                         item.classList.add('active');
                     });
-                    document.querySelector('.peoplesearchbar2').style.display = 'flex';
                     createFriendList(user.user_Id, userpeoplecolumn);
                 }
             } else {
@@ -88,7 +83,7 @@ document.querySelector('#notification').addEventListener('click', () => {
 
 function removeclones() {
     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-    if (Array.isArray(ActiveUser_Account)) {
+    if (JSON.parse(localStorage.getItem('ActiveUser_Account')).length !== 0) {
         document.querySelector('html').classList.remove('clone');
         document.querySelector('.addstory').classList.remove('clone');
         document.querySelectorAll('.stories_clone').forEach(clone => {
@@ -203,49 +198,51 @@ function createFriendList(locationId, column) {
         if (data.user_Id === locationId) {
             let connections = data.user_Connection;
             connections.forEach(connect => {
-                let friendcontainer = document.createElement('div');
-                let friendsLeft = document.createElement('span');
-                let friendsRight = document.createElement('div');
-                let friendProfilePicture = document.createElement('img');
-                let friendname = document.createElement('p');
-                let frienddisconnect = document.createElement('span');
-                friendsLeft.appendChild(friendProfilePicture);
-                column.appendChild(friendcontainer);
-                friendcontainer.appendChild(friendsLeft);
-                friendcontainer.appendChild(friendsRight);
-                friendsRight.appendChild(friendname);
-                friendsRight.appendChild(frienddisconnect);
-                friendname.id = connect.connectionId;
-                frienddisconnect.id = connect.id;
-                friendProfilePicture.id = connect.connectionId;
+                let person = document.createElement('div');
+                let personhead = document.createElement('span');
+                let persontail = document.createElement('div');
+                let personprofileimage = document.createElement('img');
+                let personsname = document.createElement('p');
+                let personAddandBlockFlex = document.createElement('div');
+                let personaddbutton = document.createElement('span');
+                personhead.appendChild(personprofileimage);
+                column.appendChild(person);
+                person.appendChild(personhead);
+                person.appendChild(persontail);
+                persontail.appendChild(personsname);
+                persontail.appendChild(personAddandBlockFlex);
+                personAddandBlockFlex.appendChild(personaddbutton);
+                personsname.id = connect.connectionId;
+                personaddbutton.id = connect.id;
+                personprofileimage.id = connect.connectionId;
                 function getDetails() {
                     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                     LogInFormData.forEach(user => {
                         if (user.user_Id === connect.connectionId) {
-                            friendProfilePicture.src = user.user_ProfilePicture;
-                            friendname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                            personprofileimage.src = user.user_ProfilePicture;
+                            personsname.textContent = user.user_Firstname + ' ' + user.user_Surname;
                             function filter_Image() {
                                 //profile_filter 
                                 if (user.user_ProfilePicture_Filter == 'default') {
-                                    friendProfilePicture.classList.add('--color-default');
+                                    personprofileimage.classList.add('--color-default');
                                 } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                    friendProfilePicture.classList.add('--color-gray');
+                                    personprofileimage.classList.add('--color-gray');
                                 } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                    friendProfilePicture.classList.add('--color-contrast');
+                                    personprofileimage.classList.add('--color-contrast');
                                 } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                    friendProfilePicture.classList.add('--color-bright');
+                                    personprofileimage.classList.add('--color-bright');
                                 } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                    friendProfilePicture.classList.add('--color-blur');
+                                    personprofileimage.classList.add('--color-blur');
                                 } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                    friendProfilePicture.classList.add('--color-invert');
+                                    personprofileimage.classList.add('--color-invert');
                                 } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                    friendProfilePicture.classList.add('--color-sepia');
+                                    personprofileimage.classList.add('--color-sepia');
                                 } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                    friendProfilePicture.classList.add('--color-hue-rotate');
+                                    personprofileimage.classList.add('--color-hue-rotate');
                                 } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                    friendProfilePicture.classList.add('--color-opacity');
+                                    personprofileimage.classList.add('--color-opacity');
                                 } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                    friendProfilePicture.classList.add('--color-satulate');
+                                    personprofileimage.classList.add('--color-satulate');
                                 }
                             }
                             filter_Image();
@@ -253,17 +250,18 @@ function createFriendList(locationId, column) {
                     });
                 }
                 getDetails();
-                frienddisconnect.textContent = 'view profile';
+                personAddandBlockFlex.classList.add('personAddandBlockFlex')
+                personaddbutton.textContent = 'view profile';
 
-                frienddisconnect.addEventListener('click', () => {
+                personaddbutton.addEventListener('click', () => {
                     createUsersProfile(connect.connectionId);
                 });
-                frienddisconnect.classList.add('frienddisconnect');
-                friendsRight.classList.add('friendsRight');
-                friendname.classList.add('friendname');
-                friendsLeft.classList.add('friendsLeft');
-                friendcontainer.classList.add('friendcontainer');
-                friendProfilePicture.classList.add('friendProfilePicture');
+                personaddbutton.classList.add('personaddbutton');
+                persontail.classList.add('persontail');
+                personsname.classList.add('personsname');
+                personhead.classList.add('personhead');
+                person.classList.add('person');
+                personprofileimage.classList.add('personprofileimage');
             });
         }
     });
@@ -274,28 +272,28 @@ function createSentRequest(locationId, column) {
         if (user.user_Id === locationId) {
             let connections = user.user_SentRequest;
             connections.forEach(connect => {
-                let friendconnectrequest = document.createElement('div');
-                let friendconnecttail = document.createElement('div');
-                let friendrequesthead = document.createElement('div');
-                let friendsrequestimg = document.createElement('img');
-                let personrequestname = document.createElement('p');
-                let personrequestandacceptgrid = document.createElement('div');
+                let person = document.createElement('div');
+                let persontail = document.createElement('div');
+                let personhead = document.createElement('div');
+                let personprofileimage = document.createElement('img');
+                let personsname = document.createElement('p');
+                let personAddandBlockFlex = document.createElement('div');
                 let personacceptbutton = document.createElement('button');
                 let personrequesttime = document.createElement('button');
-                personrequestandacceptgrid.appendChild(personacceptbutton);
+                personAddandBlockFlex.appendChild(personacceptbutton);
                 personacceptbutton.textContent = 'cancel';
                 personrequesttime.classList.add('personrequesttime');
                 personacceptbutton.classList.add('personacceptbutton');
-                personrequestandacceptgrid.classList.add('personAddandBlockFlex')
-                column.appendChild(friendconnectrequest);
-                friendconnectrequest.appendChild(friendrequesthead);
-                friendconnectrequest.appendChild(friendconnecttail);
-                friendconnecttail.appendChild(personrequestname);
-                friendconnecttail.appendChild(personrequestandacceptgrid);
-                friendrequesthead.appendChild(friendsrequestimg);
-                friendrequesthead.appendChild(personrequesttime);
+                personAddandBlockFlex.classList.add('personAddandBlockFlex')
+                column.appendChild(person);
+                person.appendChild(personhead);
+                person.appendChild(persontail);
+                persontail.appendChild(personsname);
+                persontail.appendChild(personAddandBlockFlex);
+                personhead.appendChild(personprofileimage);
+                personhead.appendChild(personrequesttime);
                 personacceptbutton.id = connect.id;
-                friendconnectrequest.id = connect.id;
+                person.id = connect.id;
 
                 const startTime = function () {
                     let time;
@@ -334,41 +332,41 @@ function createSentRequest(locationId, column) {
                 startTime();
                 LogInFormData.forEach(user => {
                     if (user.user_Id === connect.recieversId) {
-                        friendsrequestimg.src = user.user_ProfilePicture;
-                        personrequestname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                        personprofileimage.src = user.user_ProfilePicture;
+                        personsname.textContent = user.user_Firstname + ' ' + user.user_Surname;
                         function filter_Image() {
                             //profile_filter 
                             if (user.user_ProfilePicture_Filter == 'default') {
-                                friendsrequestimg.classList.add('--color-default');
+                                personprofileimage.classList.add('--color-default');
                             } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                friendsrequestimg.classList.add('--color-gray');
+                                personprofileimage.classList.add('--color-gray');
                             } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                friendsrequestimg.classList.add('--color-contrast');
+                                personprofileimage.classList.add('--color-contrast');
                             } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                friendsrequestimg.classList.add('--color-bright');
+                                personprofileimage.classList.add('--color-bright');
                             } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                friendsrequestimg.classList.add('--color-blur');
+                                personprofileimage.classList.add('--color-blur');
                             } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                friendsrequestimg.classList.add('--color-invert');
+                                personprofileimage.classList.add('--color-invert');
                             } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                friendsrequestimg.classList.add('--color-sepia');
+                                personprofileimage.classList.add('--color-sepia');
                             } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                friendsrequestimg.classList.add('--color-hue-rotate');
+                                personprofileimage.classList.add('--color-hue-rotate');
                             } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                friendsrequestimg.classList.add('--color-opacity');
+                                personprofileimage.classList.add('--color-opacity');
                             } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                friendsrequestimg.classList.add('--color-satulate');
+                                personprofileimage.classList.add('--color-satulate');
                             }
                         }
                         filter_Image();
                     }
                 });
-                friendconnectrequest.classList.add('friendconnectrequest');
-                friendrequesthead.classList.add('personhead');
-                friendconnecttail.classList.add('persontail');
-                personrequestname.classList.add('personsname');
-                personrequestname.id = locationId;
-                friendrequesthead.id = locationId;
+                person.classList.add('person');
+                personhead.classList.add('personhead');
+                persontail.classList.add('persontail');
+                personsname.classList.add('personsname');
+                personsname.id = locationId;
+                personhead.id = locationId;
 
                 personacceptbutton.addEventListener('click', () => {
                     cancelrequest();
@@ -406,10 +404,10 @@ function createSentRequest(locationId, column) {
                         }
                     });
                 }
-                personrequestname.addEventListener('click', () => {
+                personsname.addEventListener('click', () => {
                     createUsersProfile(connect.recieversId);
                 });
-                friendrequesthead.addEventListener('click', () => {
+                personhead.addEventListener('click', () => {
                     createUsersProfile(connect.recieversId);
                 });
             });
@@ -422,33 +420,33 @@ function createRequest(locationId, column) {
         if (user.user_Id === locationId) {
             let connections = user.user_ConnectRequest;
             connections.forEach(connect => {
-                let friendconnectrequest = document.createElement('div');
-                let friendconnecttail = document.createElement('div');
-                let friendrequesthead = document.createElement('div');
-                let friendsrequestimg = document.createElement('img');
-                let personrequestname = document.createElement('p');
-                let personrequestandacceptgrid = document.createElement('div');
+                let person = document.createElement('div');
+                let persontail = document.createElement('div');
+                let personhead = document.createElement('div');
+                let personprofileimage = document.createElement('img');
+                let personsname = document.createElement('p');
+                let personAddandBlockFlex = document.createElement('div');
                 let personacceptbutton = document.createElement('button');
                 let persondeclinebutton = document.createElement('button');
                 let personrequesttime = document.createElement('span');
-                personrequestandacceptgrid.appendChild(personacceptbutton);
-                personrequestandacceptgrid.appendChild(persondeclinebutton);
+                personAddandBlockFlex.appendChild(personacceptbutton);
+                personAddandBlockFlex.appendChild(persondeclinebutton);
                 personacceptbutton.textContent = 'accept';
                 persondeclinebutton.textContent = 'decline';
                 personrequesttime.classList.add('personrequesttime');
                 personacceptbutton.classList.add('personacceptbutton');
                 persondeclinebutton.classList.add('persondeclinebutton');
-                personrequestandacceptgrid.classList.add('personAddandBlockFlex')
-                column.appendChild(friendconnectrequest);
-                friendconnectrequest.appendChild(friendrequesthead);
-                friendconnectrequest.appendChild(friendconnecttail);
-                friendconnecttail.appendChild(personrequestname);
-                friendconnecttail.appendChild(personrequestandacceptgrid);
-                friendrequesthead.appendChild(friendsrequestimg);
-                friendrequesthead.appendChild(personrequesttime);
+                personAddandBlockFlex.classList.add('personAddandBlockFlex')
+                column.appendChild(person);
+                person.appendChild(personhead);
+                person.appendChild(persontail);
+                persontail.appendChild(personsname);
+                persontail.appendChild(personAddandBlockFlex);
+                personhead.appendChild(personprofileimage);
+                personhead.appendChild(personrequesttime);
                 personacceptbutton.id = connect.id;
                 persondeclinebutton.id = connect.id;
-                friendconnectrequest.id = connect.id;
+                person.id = connect.id;
                 function pushFriend() {
                     const id = '' + new Date().getTime();
                     LogInFormData.forEach(user => {
@@ -570,42 +568,42 @@ function createRequest(locationId, column) {
                 LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                 LogInFormData.forEach(user => {
                     if (user.user_Id === connect.connectionId) {
-                        friendsrequestimg.src = user.user_ProfilePicture;
-                        personrequestname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                        personprofileimage.src = user.user_ProfilePicture;
+                        personsname.textContent = user.user_Firstname + ' ' + user.user_Surname;
                         function filter_Image() {
                             //profile_filter 
                             if (user.user_ProfilePicture_Filter == 'default') {
-                                friendsrequestimg.classList.add('--color-default');
+                                personprofileimage.classList.add('--color-default');
                             } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                friendsrequestimg.classList.add('--color-gray');
+                                personprofileimage.classList.add('--color-gray');
                             } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                friendsrequestimg.classList.add('--color-contrast');
+                                personprofileimage.classList.add('--color-contrast');
                             } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                friendsrequestimg.classList.add('--color-bright');
+                                personprofileimage.classList.add('--color-bright');
                             } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                friendsrequestimg.classList.add('--color-blur');
+                                personprofileimage.classList.add('--color-blur');
                             } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                friendsrequestimg.classList.add('--color-invert');
+                                personprofileimage.classList.add('--color-invert');
                             } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                friendsrequestimg.classList.add('--color-sepia');
+                                personprofileimage.classList.add('--color-sepia');
                             } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                friendsrequestimg.classList.add('--color-hue-rotate');
+                                personprofileimage.classList.add('--color-hue-rotate');
                             } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                friendsrequestimg.classList.add('--color-opacity');
+                                personprofileimage.classList.add('--color-opacity');
                             } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                friendsrequestimg.classList.add('--color-satulate');
+                                personprofileimage.classList.add('--color-satulate');
                             }
                         }
                         filter_Image();
                     }
                 });
 
-                friendconnectrequest.classList.add('friendconnectrequest');
-                friendrequesthead.classList.add('personhead');
-                friendconnecttail.classList.add('persontail');
-                personrequestname.classList.add('personsname');
-                personrequestname.id = locationId;
-                friendrequesthead.id = locationId;
+                person.classList.add('person');
+                personhead.classList.add('personhead');
+                persontail.classList.add('persontail');
+                personsname.classList.add('personsname');
+                personsname.id = locationId;
+                personhead.id = locationId;
 
                 persondeclinebutton.addEventListener('click', () => {
                     declineRequest();
@@ -644,10 +642,10 @@ function createRequest(locationId, column) {
                         }
                     });
                 }
-                personrequestname.addEventListener('click', () => {
+                personsname.addEventListener('click', () => {
                     createUsersProfile(connect.connectionId);
                 });
-                friendrequesthead.addEventListener('click', () => {
+                personhead.addEventListener('click', () => {
                     createUsersProfile(connect.connectionId);
                 });
             });

@@ -19,8 +19,6 @@ if (Array.isArray(JSON.parse(localStorage.getItem('myCommunities')))) {
                 button.classList.add('active');
             });
             document.querySelector('.chattab').style.display = 'flex';
-            document.querySelector('.chatsearchbar1').style.display = 'flex';
-            document.querySelector('.chatsearchbar').style.display = 'none';
             create_Community_Chat_Menu(data.user_Id);
         }
     });
@@ -603,7 +601,8 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
                 chat_receiver: locationId,
                 time: new Date().getTime(),
                 date: trackingDate,
-                chatvisibilty: 'sent'
+                chatvisibilty: 'sent',
+                views: []
             });
             localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
         }
@@ -906,7 +905,8 @@ function create_Voice_Recording_Script(locationId, CreatorId, chatroom) {
                                 chat_receiver: locationId,
                                 time: new Date().getTime(),
                                 date: trackingDate,
-                                chatvisibilty: 'sent'
+                                chatvisibilty: 'sent',
+                                views: []
                             });
                             localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                         }
@@ -917,6 +917,41 @@ function create_Voice_Recording_Script(locationId, CreatorId, chatroom) {
     }
 }
 function create_Community_Chat_Messages(column, locationId, members_Id) {
+    function pushViewers(user_Id) {
+        Community_myChat_Msg.forEach(textmesg => {
+            if (textmesg.chat_receiver === locationId) {
+                let views = textmesg.views;
+                function filterviews() {
+                    views = views.filter(view => {
+                        if (user_Id === view.posterId) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                    textmesg.views = views;
+                    localStorage.setItem('Community_myChat_Msg',JSON.stringify(Community_myChat_Msg));
+                    pushdata();
+                }
+                function pushdata() {
+                    views.push({
+                        posterId: user_Id,
+                        id: '' + new Date().getTime()
+                    });
+                    localStorage.setItem('Community_myChat_Msg',JSON.stringify(Community_myChat_Msg));
+                }
+                if (user_Id !== textmesg.posterId) {
+                    filterviews();
+                }
+            }
+        });
+    }
+    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(user => {
+            pushViewers(user.user_Id);
+        });
+    }
     Community_myChat_Msg.forEach(textmesg => {
         if (textmesg.chat_receiver === locationId) {
             if (textmesg.isText) {
@@ -926,12 +961,12 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                 let chatstime = document.createElement('span');
 
                 let chattimeandstatus = document.createElement('div');
-                let chatsvisiblestatus = document.createElement('span');
-
+                let chatviews = document.createElement('nav');
                 let reciepientblock = document.createElement('div');
                 let reciepientimgCont = document.createElement('div');
                 let reciepientimage = document.createElement('img');
                 let reciepientname = document.createElement('strong');
+
                 function create_Reply() {
                     Community_myChat_Msg.forEach(mesg => {
                         if (mesg.id === textmesg.replyId) {
@@ -1485,7 +1520,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     chat_receiver: textmesg.chat_receiver,
                                     time: new Date().getTime(),
                                     date: trackingDate,
-                                    chatvisibilty: 'sent'
+                                    chatvisibilty: 'sent',
+                                    views: []
                                 });
                                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                             }
@@ -1536,15 +1572,13 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         options.remove();
                     });
                 }
-                chatsvisiblestatus.id = textmesg.posterId;
-                chatsvisiblestatus.textContent = textmesg.chatvisibilty;
 
                 textchatcontainer.id = textmesg.chat_receiver;
                 column.appendChild(textchatcontainer);
                 textchatcontainer.appendChild(chatmesgaitself);
+                textchatcontainer.appendChild(chatviews);
                 textchatcontainer.appendChild(chattimeandstatus);
                 chattimeandstatus.appendChild(chatstime);
-                chattimeandstatus.appendChild(chatsvisiblestatus);
                 chatmesgaitself.appendChild(chattext);
                 chattext.textContent = textmesg.Property_Src;
                 chattext.textContent.split(" ").forEach(texttitle => {
@@ -1616,32 +1650,184 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                         textchatcontainer.classList.add('mychatcontainer');
                                         chatmesgaitself.classList.add('mychat');
                                         chatstime.classList.add('mychatstime');
-                                        chatsvisiblestatus.classList.add('friendschatstime');
                                         chattimeandstatus.classList.add('mychattimeandstatus');
+                                        chatviews.classList.add('mychatviews');
                                         reciepientblock.style.display = 'none';
                                     } else {
                                         textchatcontainer.classList.add('friendchatcontainer');
                                         chatmesgaitself.classList.add('friendschat');
                                         chatstime.classList.add('friendschatstime');
-                                        chatsvisiblestatus.classList.add('friendschatstime');
                                         chattimeandstatus.classList.add('friendschattimeandstatus');
-                                        chatsvisiblestatus.style.display = 'none';
+                                        chatviews.classList.add('friendschatviews');
+                                        chatviews.style.display = 'none';
                                     }
                                 }
                             });
-                            if (Array.isArray(JSON.parse(localStorage.getItem('Community_myChat_Msg')))) {
-                                Community_myChat_Msg = JSON.parse(localStorage.getItem('Community_myChat_Msg'));
-                                Community_myChat_Msg.forEach(chat => {
-                                    if (chat.chat_receiver === locationId && chat.posterId !== data.user_Id) {
-                                        chat.chatvisibilty = 'seen';
-                                        localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
-                                    }
-                                });
-                            }
                         });
                     }
                 }
-
+                function createViews() {
+                    let views = textmesg.views;
+                    views.slice(0,6).forEach(view => {
+                        let imgcontainer = document.createElement('div');
+                        let profilepicture = document.createElement('img');
+                        imgcontainer.appendChild(profilepicture);
+                        chatviews.appendChild(imgcontainer);
+                        function getDetails() {
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            LogInFormData.forEach(user => {
+                                if (user.user_Id === view.posterId) {
+                                    profilepicture.src = user.user_ProfilePicture;
+                                    function filter_Image() {
+                                        //profile_filter 
+                                        if (user.user_ProfilePicture_Filter == 'default') {
+                                            profilepicture.classList.add('--color-default');
+                                        } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                            profilepicture.classList.add('--color-gray');
+                                        } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                            profilepicture.classList.add('--color-contrast');
+                                        } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                            profilepicture.classList.add('--color-bright');
+                                        } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                            profilepicture.classList.add('--color-blur');
+                                        } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                            profilepicture.classList.add('--color-invert');
+                                        } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                            profilepicture.classList.add('--color-sepia');
+                                        } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                            profilepicture.classList.add('--color-hue-rotate');
+                                        } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                            profilepicture.classList.add('--color-opacity');
+                                        } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                            profilepicture.classList.add('--color-satulate');
+                                        }
+                                    }
+                                    filter_Image();
+                                }
+                            });
+                        }
+                        getDetails();
+                        imgcontainer.addEventListener('click',()=> {
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account.forEach(user => {
+                                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                    createProfileOptions(view.posterId, user.user_Id);
+                                });
+                            }
+                        });
+                    });
+                    if (views.length > 6) {
+                        let count = document.createElement('p');
+                        chatviews.appendChild(count);
+                        var num = views.length;
+                        count.textContent = `+${views.slice(6,num).length}`;
+                        console.log(views.length);
+                        count.addEventListener('click',()=> {
+                            createViewers();
+                        });
+                    }
+                    function createViewers() {
+                        if (Array.isArray(textmesg.views)) {
+                            removeInfopage();
+                            function createOtherInformation() {
+                                let license_Popup = document.createElement('session');
+                                let license_Column = document.createElement('div');
+                                let userinfoexit = document.createElement('span');
+                                let usersinfoheader = document.createElement('header');
+                                let popupname = document.createElement('p');
+                                document.body.appendChild(license_Popup);
+                                license_Popup.appendChild(usersinfoheader);
+                                license_Popup.appendChild(license_Column);
+                                usersinfoheader.appendChild(userinfoexit);
+                                usersinfoheader.appendChild(popupname);
+                                license_Popup.classList.add('license_Popup');
+                                license_Column.classList.add('license_Column');
+                                usersinfoheader.classList.add('XyFireRecTorFas');
+                                userinfoexit.classList.add('userfollowersexit');
+                                userinfoexit.innerHTML = undo;
+                                popupname.innerHTML = `Chat Viewers Info &quest;`;
+                                userinfoexit.classList.add('headerbtns');
+                                userinfoexit.addEventListener('click', () => {
+                                    license_Popup.remove();
+                                });
+                                friends(license_Column);
+                            }
+                            createOtherInformation();
+                            function friends(column) {
+                                let views = textmesg.views;
+                                views.forEach(connect => {
+                                    let friendcontainer = document.createElement('div');
+                                    let friendsLeft = document.createElement('span');
+                                    let friendsRight = document.createElement('div');
+                                    let friendProfilePicture = document.createElement('img');
+                                    let friendname = document.createElement('p');
+                                    let frienddisconnect = document.createElement('span');
+                                    friendsLeft.appendChild(friendProfilePicture);
+                                    column.appendChild(friendcontainer);
+                                    friendcontainer.appendChild(friendsLeft);
+                                    friendcontainer.appendChild(friendsRight);
+                                    friendsRight.appendChild(friendname);
+                                    friendsRight.appendChild(frienddisconnect);
+            
+                                    function getDetails() {
+                                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                                        LogInFormData.forEach(user => {
+                                            if (user.user_Id === connect.posterId) {
+                                                friendProfilePicture.src = user.user_ProfilePicture;
+                                                friendname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                                                function filter_Image() {
+                                                    //profile_filter 
+                                                    if (user.user_ProfilePicture_Filter == 'default') {
+                                                        friendProfilePicture.classList.add('--color-default');
+                                                    } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                                        friendProfilePicture.classList.add('--color-gray');
+                                                    } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                                        friendProfilePicture.classList.add('--color-contrast');
+                                                    } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                                        friendProfilePicture.classList.add('--color-bright');
+                                                    } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                                        friendProfilePicture.classList.add('--color-blur');
+                                                    } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                                        friendProfilePicture.classList.add('--color-invert');
+                                                    } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                                        friendProfilePicture.classList.add('--color-sepia');
+                                                    } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                                        friendProfilePicture.classList.add('--color-hue-rotate');
+                                                    } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                                        friendProfilePicture.classList.add('--color-opacity');
+                                                    } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                                        friendProfilePicture.classList.add('--color-satulate');
+                                                    }
+                                                }
+                                                filter_Image();
+                                            }
+                                        });
+                                    }
+                                    getDetails();
+            
+                                    frienddisconnect.textContent = 'view profile';
+            
+                                    frienddisconnect.addEventListener('click', () => {
+                                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                            ActiveUser_Account.forEach(user => {
+                                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                                                createProfileOptions(connect.posterId, user.user_Id);
+                                            });
+                                        }
+                                    });
+                                    frienddisconnect.classList.add('frienddisconnect');
+                                    friendsRight.classList.add('friendsRight');
+                                    friendname.classList.add('friendname');
+                                    friendsLeft.classList.add('friendsLeft');
+                                    friendcontainer.classList.add('friendcontainer');
+                                    friendProfilePicture.classList.add('friendProfilePicture');
+                                });
+                            }
+                        }
+                    }
+                }
+                createViews();
+                chatviews.classList.add('chatviews');
                 chattext.classList.add('chattext');
             } if (textmesg.isPhoto) {
                 let textchatcontainer = document.createElement('div');
@@ -1769,7 +1955,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     chat_receiver: textmesg.chat_receiver,
                                     time: new Date().getTime(),
                                     date: trackingDate,
-                                    chatvisibilty: 'sent'
+                                    chatvisibilty: 'sent',
+                                    views: []
                                 });
                                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                             }
@@ -1984,7 +2171,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     chat_receiver: textmesg.chat_receiver,
                                     time: new Date().getTime(),
                                     date: trackingDate,
-                                    chatvisibilty: 'sent'
+                                    chatvisibilty: 'sent',
+                                    views: []
                                 });
                                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                             }
@@ -2258,7 +2446,8 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     chat_receiver: textmesg.chat_receiver,
                                     time: new Date().getTime(),
                                     date: trackingDate,
-                                    chatvisibilty: 'sent'
+                                    chatvisibilty: 'sent',
+                                    views: []
                                 });
                                 localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                             }

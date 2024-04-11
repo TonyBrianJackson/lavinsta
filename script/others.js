@@ -23,7 +23,7 @@ function shareMessage() {
         }, 2000);
     }, 3000);
 }
-function Creation_Mark_Photo(mark_Image, mark_Text,filter) {
+function Creation_Mark_Photo(mark_Image, mark_Text, filter) {
     let updatingmessage = document.createElement('div');
     let innermessage = document.createElement('span');
     let updatingImg = document.createElement('img');
@@ -100,7 +100,7 @@ function Creation_Mark_Video(mark_Image, mark_Text) {
         createReelPageVideo();
     }, 3000);
 }
-function Creation_Mark_Text(mark_Image, mark_Text,themeMode,fontMode) {
+function Creation_Mark_Text(mark_Image, mark_Text, themeMode, fontMode) {
     let updatingmessage = document.createElement('div');
     let innermessage = document.createElement('span');
     let updatingText = document.createElement('p');
@@ -347,7 +347,7 @@ function createpostLikeLicense(container, locationId) {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account.forEach(user => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                            createProfileOptions(license.posterId,user.user_Id);
+                            createProfileOptions(license.posterId, user.user_Id);
                         });
                     }
                 });
@@ -355,7 +355,7 @@ function createpostLikeLicense(container, locationId) {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account.forEach(user => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                            createProfileOptions(license.posterId,user.user_Id);
+                            createProfileOptions(license.posterId, user.user_Id);
                         });
                     }
                 });
@@ -419,7 +419,7 @@ function createcommentsLikeLicense(container, locationId) {
                     viewblockhead.appendChild(viewblockimg);
                     viewblocktail.appendChild(viewname);
                     viewblocktail.appendChild(viewtime);
-    
+
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -427,7 +427,7 @@ function createcommentsLikeLicense(container, locationId) {
                         var token;
                         var moment = 'ago';
                         let maintime;
-    
+
                         time = miliseconds / 1000;
                         if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
                             token = 'month';
@@ -460,7 +460,7 @@ function createcommentsLikeLicense(container, locationId) {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             ActiveUser_Account.forEach(user => {
                                 ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                createProfileOptions(license.posterId,user.user_Id);
+                                createProfileOptions(license.posterId, user.user_Id);
                             });
                         }
                     });
@@ -468,7 +468,7 @@ function createcommentsLikeLicense(container, locationId) {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             ActiveUser_Account.forEach(user => {
                                 ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                createProfileOptions(license.posterId,user.user_Id);
+                                createProfileOptions(license.posterId, user.user_Id);
                             });
                         }
                     });
@@ -518,40 +518,40 @@ function removePopup() {
         popup.remove();
     });
 }
-function LikePopupsAndMore(locationId,type,value) {
+function LikePopupsAndMore(locationId, type, value) {
     removePopup();
     let statusviewsheader = document.createElement('header');
     let license_Popup = document.createElement('nav');
     let popupname = document.createElement('p');
-    let likerecordcolumn = document.createElement('div');
+    let license_Column = document.createElement('div');
     let exit = document.createElement('span');
     document.body.appendChild(license_Popup);
     license_Popup.appendChild(statusviewsheader);
-    license_Popup.appendChild(likerecordcolumn);
+    license_Popup.appendChild(license_Column);
     statusviewsheader.appendChild(exit);
     statusviewsheader.appendChild(popupname);
     exit.innerHTML = undo;
     exit.classList.add('headerbtns');
     license_Popup.classList.add('license_Popup');
-    likerecordcolumn.classList.add('likerecordcolumn');
+    license_Column.classList.add('license_Column');
     exit.addEventListener('click', () => {
         license_Popup.remove();
     });
     license_Popup.style.display = 'flex';
     license_Popup.id = locationId;
-    likerecordcolumn.id = locationId;
+    license_Column.id = locationId;
     if (type == 'postlike') {
-        createpostLikeLicense(likerecordcolumn, locationId);
+        createpostLikeLicense(license_Column, locationId);
         popupname.innerHTML = `${value} like(s) on this post &quest;`;
     } if (type == 'commentlike') {
-        createcommentsLikeLicense(likerecordcolumn, locationId);
+        createcommentsLikeLicense(license_Column, locationId);
         popupname.innerHTML = `${value} like(s) on this comment &quest;`;
     } if (type == 'commentreplylike') {
-        CreationOfCommentsRepliesLikesLicense(likerecordcolumn, locationId);
+        CreationOfCommentsRepliesLikesLicense(license_Column, locationId);
         popupname.innerHTML = `${value} like(s) on this comment reply &quest;`;
     }
 }
-function CreationOfCommentsRepliesLikesLicense(container,locationId) {
+function CreationOfCommentsRepliesLikesLicense(container, locationId) {
     Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
     Feeds_Data_Base.forEach(feed => {
         let comments = feed.comments;
@@ -573,7 +573,7 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                         viewblockhead.appendChild(viewblockimg);
                         viewblocktail.appendChild(viewname);
                         viewblocktail.appendChild(viewtime);
-        
+
                         const startTime = function () {
                             let time;
                             let timeresult = new Date().getTime();
@@ -581,7 +581,7 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                             var token;
                             var moment = 'ago';
                             let maintime;
-        
+
                             time = miliseconds / 1000;
                             if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
                                 token = 'month';
@@ -614,7 +614,7 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                             if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                 ActiveUser_Account.forEach(user => {
                                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                    createProfileOptions(license.posterId,user.user_Id);
+                                    createProfileOptions(license.posterId, user.user_Id);
                                 });
                             }
                         });
@@ -622,7 +622,7 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                             if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                 ActiveUser_Account.forEach(user => {
                                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                                    createProfileOptions(license.posterId,user.user_Id);
+                                    createProfileOptions(license.posterId, user.user_Id);
                                 });
                             }
                         });
@@ -634,7 +634,6 @@ function CreationOfCommentsRepliesLikesLicense(container,locationId) {
                                     viewblockimg.src = user.user_ProfilePicture;
                                     viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
                                     function filter_Image() {
-                                        //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {
                                             viewblockimg.classList.add('--color-default');
                                         } else if (user.user_ProfilePicture_Filter == 'gray') {
@@ -801,7 +800,7 @@ function create_Main_Story_Archieve(locationId) {
                     let first_Option = document.createElement('span');
                     let second_Option = document.createElement('span');
                     let exit = document.createElement('span');
-    
+
                     gridpostimagecontainer.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
@@ -809,7 +808,7 @@ function create_Main_Story_Archieve(locationId) {
                     first_Option.innerHTML = deletesvg;
                     second_Option.innerHTML = downloadsvg;
                     exit.innerHTML = undo2;
-    
+
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     second_Option.classList.add('headerbtns');
@@ -1161,10 +1160,10 @@ function clearItemsInArchieve() {
         column.remove();
     });
 }
-document.querySelector('.storiesarchivebackarrow').addEventListener('click',()=> {
+document.querySelector('.storiesarchivebackarrow').addEventListener('click', () => {
     clearItemsInArchieve();
 });
-document.querySelector('#memoriespages').addEventListener('click',()=> {
+document.querySelector('#memoriespages').addEventListener('click', () => {
     create_Grid_Story_Archieve();
 });
 function createTheItemsHere() {

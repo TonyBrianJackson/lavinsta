@@ -19,7 +19,7 @@ function fetch_Active_Users_Data() {
     }, 3000);
     setTimeout(() => {
         fifthChild.classList.add('loadingBlocksactive');
-        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+        if (JSON.parse(localStorage.getItem('ActiveUser_Account')).length !== 0) {
             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
             // redirect_User();
             location.href = 'lavinsta.html';

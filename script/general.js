@@ -231,20 +231,7 @@ wsidebarlink.forEach(item => {
         }
     })
 });
-const accountdelettabs = document.querySelectorAll('.accountdelettabs');
-accountdelettabs.forEach(item => {
-    item.addEventListener('click', () => {
-        if (item.id != 'deleteaccount') {
-            document.querySelector('.deleteaccountpopup').style.display = 'none';
-        } else {
-            document.querySelector('.deleteaccountpopup').style.display = 'flex';
-        }
-    })
-})
-const exitaccountdelete = document.querySelector('.exitaccountdelete');
-exitaccountdelete.addEventListener('click', () => {
-    document.querySelector('.deleteaccountpopup').style.display = 'none';
-});
+
 const gallerybtns = document.querySelectorAll('.gallerybtns');
 gallerybtns.forEach(item => {
     item.addEventListener('click', () => {
@@ -306,13 +293,7 @@ document.querySelector('.headerbtns.toggleBtn.advance').addEventListener('click'
     main_Master_Center.classList.toggle('main_Master_Centeractive');
 });
 const nextbtn = document.querySelector('#nextbtn');
-const accountdelete = document.querySelector('.accountdelete');
-accountdelete.addEventListener('click', () => {
-    document.querySelector('.accountdeletingpage').style.display = 'none';
-});
-document.querySelector('.accountreport').addEventListener('click', () => {
-    document.querySelector('.account_report_Page').style.display = 'none';
-});
+
 const hamburgermenuitem = document.querySelectorAll('.menutabs');
 hamburgermenuitem.forEach(item => {
     item.addEventListener('click', () => {
@@ -321,11 +302,6 @@ hamburgermenuitem.forEach(item => {
         } else {
             document.querySelector('.accountinfopage').style.display = 'flex';
             document.title = 'personal information';
-        } if (item.id != 'privacy') {
-            document.querySelector('.accountdeletingpage').style.display = 'none';
-        } else {
-            document.querySelector('.accountdeletingpage').style.display = 'flex';
-            document.title = 'privacy';
         } if (item.id != 'saved') {
             document.querySelector('.savedpage').style.display = 'none';
         } else {
@@ -336,10 +312,6 @@ hamburgermenuitem.forEach(item => {
         } else {
             document.querySelector('.storiesarchivetabs').style.display = 'flex';
             document.title = 'stories archieve';
-        } if (item.id != 'report') {
-            document.querySelector('.account_report_Page').style.display = 'none';
-        } else {
-            document.querySelector('.account_report_Page').style.display = 'flex';
         } if (item.id != 'openlogoutpage') {
             document.querySelector('.confirmation_popup').style.display = 'none';
         } else {
@@ -523,16 +495,8 @@ document.querySelectorAll('.mesgBtn').forEach(item => {
     item.addEventListener('click', () => {
         removeActiveMesg(document.querySelectorAll('.mesgBtn'));
         item.classList.add('active');
-        if (item.id != 'general_smart_Chat') {
-            document.querySelector('.chatsearchbar').style.display = 'none';
-        } else {
+        if (item.id == 'general_smart_Chat') {
             sessionStorage.setItem('activepage', 'general_smart_Chat');
-            document.querySelector('.chatsearchbar').style.display = 'flex';
-        } if (item.id != 'community_smart_Chat') {
-            document.querySelector('.chatsearchbar1').style.display = 'none';
-        } else {
-            sessionStorage.setItem('activepage', 'community_smart_Chat');
-            document.querySelector('.chatsearchbar1').style.display = 'flex';
         }
     });
 });
@@ -540,30 +504,13 @@ const people_C_button = document.querySelectorAll('.people_C_button');
 function removeClassActive() {
     people_C_button.forEach(btn => {
         btn.classList.remove('active');
-    })
+    });
 }
 people_C_button.forEach(item => {
     item.addEventListener('click', () => {
         removeClassActive();
         item.classList.add('active');
-        if (item.id != 'lavinstapeople') {
-            document.querySelector('.peoplesearchbar').style.display = 'none';
-        } else {
-            document.querySelector('.peoplesearchbar').style.display = 'flex';
-        } if (item.id != 'peoplerequest') {
-            document.querySelector('.peoplesearchbar1').style.display = 'none';
-        } else {
-            document.querySelector('.peoplesearchbar1').style.display = 'flex';
-        } if (item.id != 'sent_requests') {
-            document.querySelector('.peoplesearchbar3').style.display = 'none';
-        } else {
-            document.querySelector('.peoplesearchbar3').style.display = 'flex';
-        } if (item.id != 'peoplelist') {
-            document.querySelector('.peoplesearchbar2').style.display = 'none';
-        } else {
-            document.querySelector('.peoplesearchbar2').style.display = 'flex';
-        }
-    })
+    });
 });
 const postwritermaster = document.querySelector('.postwritermaster');
 postwritermaster.addEventListener('click', () => {

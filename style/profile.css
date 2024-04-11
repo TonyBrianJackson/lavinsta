@@ -1107,29 +1107,6 @@
     overflow: hidden;
 }
 
-.closefriendstabs,
-.closefollowerstabs,
-.closeinfoprotabs {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    font-size: 18px;
-    background: none;
-    box-shadow: none;
-    border: none;
-    font-family: 'Times New Roman', Times, serif;
-    border-radius: 0px;
-    padding: 0px 5px;
-    cursor: pointer;
-}
-
-.closefriendstabs:hover,
-.closefollowerstabs:hover,
-.closeinfoprotabs:hover {
-    background: tomato;
-    color: #ffffffff;
-}
-
 /* Gridpost videoplayer*/
 .gridpostcover {
     position: absolute;
@@ -3001,7 +2978,6 @@
         padding: 10px;
     }
 
-    .infopro,
     .license_Popup,
     .profile_options_container {
         width: 95vw;
@@ -4138,7 +4114,6 @@
 /*MINI LAPTOPS AND TABLETS*/
 @media (min-width: 540px) and (max-width: 560px) {
 
-    .infopro,
     .license_Popup,
     .profile_options_container {
         width: 70%;
@@ -4606,7 +4581,6 @@
 }
 
 @media (min-width: 801px) and (max-width: 902px) {
-    .infopro,
     .license_Popup,
     .profile_options_container {
         width: 50vw;
@@ -4769,7 +4743,7 @@
     .hamburgermenupopup,
     .profile_Cliant,
     .profile {
-        height: 700px;
+        height: 600px;
     }
 
     .humburgermenu {
@@ -4792,7 +4766,6 @@
 /*large tablets and laptops*/
 @media (min-width: 561px) and (max-width: 820px) {
 
-    .infopro,
     .license_Popup,
     .profile_options_container {
         width: 50vw;
@@ -4884,7 +4857,6 @@
     }
 }
 @media (min-width: 561px) and (max-width: 700px) {
-    .infopro,
     .license_Popup,
     .profile_options_container {
         width: 50vw;

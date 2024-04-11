@@ -726,32 +726,32 @@ function usersInformation(locationId) {
         LogInFormData.forEach(profile => {
             if (profile.user_Id === locationId) {
                 function createOtherInformation(locationId) {
-                    let usersinfopro = document.createElement('session');
-                    let userinfocolumn = document.createElement('div');
+                    let license_Popup = document.createElement('session');
+                    let license_Column = document.createElement('div');
                     let userinfoexit = document.createElement('span');
                     let usersinfoheader = document.createElement('header');
                     let popupname = document.createElement('p');
-                    document.body.appendChild(usersinfopro);
-                    usersinfopro.appendChild(usersinfoheader);
-                    usersinfopro.appendChild(userinfocolumn);
+                    document.body.appendChild(license_Popup);
+                    license_Popup.appendChild(usersinfoheader);
+                    license_Popup.appendChild(license_Column);
                     usersinfoheader.appendChild(userinfoexit);
                     usersinfoheader.appendChild(popupname);
-                    usersinfopro.classList.add('infopro');
-                    userinfocolumn.classList.add('userinfocolumn');
+                    license_Popup.classList.add('license_Popup');
+                    license_Column.classList.add('license_Column');
                     usersinfoheader.classList.add('XyFireRecTorFas');
                     userinfoexit.classList.add('userfollowersexit');
                     userinfoexit.innerHTML = undo;
                     popupname.innerHTML = 'User Profile Info &quest;';
                     userinfoexit.classList.add('headerbtns');
-                    usersinfopro.id = locationId;
+                    license_Popup.id = locationId;
                     userinfoexit.addEventListener('click', () => {
-                        usersinfopro.remove();
+                        license_Popup.remove();
                     });
-                    CityInfo(userinfocolumn);
-                    GenderInfo(userinfocolumn);
-                    DateOFBirthInfo(userinfocolumn);
-                    BioInfo(userinfocolumn);
-                    DateCreated(userinfocolumn);
+                    CityInfo(license_Column);
+                    GenderInfo(license_Column);
+                    DateOFBirthInfo(license_Column);
+                    BioInfo(license_Column);
+                    DateCreated(license_Column);
                 }
                 createOtherInformation();
                 function CityInfo(session) {
@@ -770,6 +770,7 @@ function usersInformation(locationId) {
                     newblock.appendChild(viewname);
                     viewblocktail.appendChild(value);
                     viewblock.classList.add('viewblock');
+                    viewblock.classList.add('info');
                     viewblocktail.classList.add('viewblocktail');
                     viewname.textContent = 'City';
                     viewhead.innerHTML = citysvg;
@@ -791,6 +792,7 @@ function usersInformation(locationId) {
                     newblock.appendChild(viewname);
                     viewblocktail.appendChild(value);
                     viewblock.classList.add('viewblock');
+                    viewblock.classList.add('info');
                     viewblocktail.classList.add('viewblocktail');
                     viewname.textContent = 'Gender';
                     viewhead.innerHTML = gendersvg;
@@ -812,6 +814,7 @@ function usersInformation(locationId) {
                     newblock.appendChild(viewname);
                     viewblocktail.appendChild(value);
                     viewblock.classList.add('viewblock');
+                    viewblock.classList.add('info');
                     viewblocktail.classList.add('viewblocktail');
                     viewname.textContent = 'Date Of Birth';
                     viewhead.innerHTML = infosvg;
@@ -833,6 +836,7 @@ function usersInformation(locationId) {
                     newblock.appendChild(viewname);
                     viewblocktail.appendChild(value);
                     viewblock.classList.add('viewblock');
+                    viewblock.classList.add('info');
                     viewblocktail.classList.add('viewblocktail');
                     viewname.textContent = 'Bio';
                     viewhead.innerHTML = infosvg;
@@ -854,6 +858,7 @@ function usersInformation(locationId) {
                     newblock.appendChild(viewname);
                     viewblocktail.appendChild(value);
                     viewblock.classList.add('viewblock');
+                    viewblock.classList.add('info');
                     viewblocktail.classList.add('viewblocktail');
                     viewname.textContent = 'Date Created';
                     viewhead.innerHTML = infosvg;
@@ -870,28 +875,28 @@ function createFriends(locationId) {
         LogInFormData.forEach(data => {
             if (data.user_Id === locationId) {
                 function createOtherInformation(locationId) {
-                    let usersinfopro = document.createElement('session');
-                    let userinfocolumn = document.createElement('div');
+                    let license_Popup = document.createElement('session');
+                    let license_Column = document.createElement('div');
                     let userinfoexit = document.createElement('span');
                     let usersinfoheader = document.createElement('header');
                     let popupname = document.createElement('p');
-                    document.body.appendChild(usersinfopro);
-                    usersinfopro.appendChild(usersinfoheader);
-                    usersinfopro.appendChild(userinfocolumn);
+                    document.body.appendChild(license_Popup);
+                    license_Popup.appendChild(usersinfoheader);
+                    license_Popup.appendChild(license_Column);
                     usersinfoheader.appendChild(userinfoexit);
                     usersinfoheader.appendChild(popupname);
-                    usersinfopro.classList.add('infopro');
-                    userinfocolumn.classList.add('userinfocolumn');
+                    license_Popup.classList.add('license_Popup');
+                    license_Column.classList.add('license_Column');
                     usersinfoheader.classList.add('XyFireRecTorFas');
                     userinfoexit.classList.add('userfollowersexit');
                     userinfoexit.innerHTML = undo;
-                    popupname.innerHTML = 'User Profile Info &quest;';
+                    popupname.innerHTML = `User Profile Info &quest; ${data.user_Connection.length} connections`;
                     userinfoexit.classList.add('headerbtns');
-                    usersinfopro.id = locationId;
+                    license_Popup.id = locationId;
                     userinfoexit.addEventListener('click', () => {
-                        usersinfopro.remove();
+                        license_Popup.remove();
                     });
-                    friends(userinfocolumn);
+                    friends(license_Column);
                 }
                 createOtherInformation();
                 function friends(column) {
@@ -976,7 +981,7 @@ function createFriends(locationId) {
     }
 }
 function removeInfopage() {
-    document.querySelectorAll('.infopro').forEach(page => {
+    document.querySelectorAll('.license_Popup').forEach(page => {
         page.remove();
     });
 }
