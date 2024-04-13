@@ -28,8 +28,6 @@ const msgculomn = document.querySelector('.msgculomn');
 
 const reels = document.querySelector('#reels');
 
-const logoutpopupculomn = document.querySelector('.logoutpopupculomn');
-
 const posterImgSrc = document.getElementById('posterImgSrc');
 const VideoPosterName = document.querySelector('.VideoPosterName');
 
@@ -81,17 +79,18 @@ const jsonArr = [{
 }];
 function pushData() {
     const jsonURL = 'https://github.com/TonyBrianJackson/lavinsta_database/edit/main/users.json';
-    fetch(jsonURL, {
+    fetch(newURL, {
         method: 'POST',
         mode: "no-cors",
         body: JSON.stringify(jsonArr),
         headers: new Headers({
-            "Access-Control-Allow-Origin" : "*", 
-            "Access-Control-Allow-Credentials" : true,
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true,
             'Content-Type': 'application/json; charset=UTF-8'
         }),
     });
-    // .then(res => res.json()).then(data => console.log(data));
+    // .then(res => res.json())
+    // .then(data => console.log(data));
 
 }
 // document.body.addEventListener('click', pushData);
@@ -142,34 +141,29 @@ function create_Active_Account() {
                     }
                     getActiveUser();
 
-                    document.addEventListener('click', () => {
-                        getActiveUser();
-                    });
                     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                     document.addEventListener('visibilitychange', () => {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(activeuser => {
-                            if (activeuser.user_Id === profile.user_Id) {
-                                let connection = activeuser.user_Connection;
-                                var state = document.visibilityState;
-                                connection.forEach(connect => {
-                                    if (connect.connectionId === user.user_Id) {
-                                        if (state == 'hidden') {
-                                            connect.status = connect.status;
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                        } else {
-                                            connect.status = new Date().getTime();
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                        }
+                            let connection = activeuser.user_Connection;
+                            var state = document.visibilityState;
+                            connection.forEach(connect => {
+                                if (connect.connectionId === user.user_Id) {
+                                    if (state == 'hidden') {
+                                        connect.status = connect.status;
+                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                    } else {
+                                        connect.status = new Date().getTime();
+                                        localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                     }
-                                });
-                                if (state == 'hidden') {
-                                    activeuser.user_Is_Online = false;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                } else {
-                                    activeuser.user_Is_Online = true;
-                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                 }
+                            });
+                            if (state == 'hidden') {
+                                activeuser.user_Is_Online = false;
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                            } else {
+                                activeuser.user_Is_Online = true;
+                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                             }
                         });
                     });
@@ -483,11 +477,11 @@ function create_Active_Account() {
                         localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));
                         location.reload();
                     });
-                    exit.addEventListener('click',() => {
+                    exit.addEventListener('click', () => {
                         license_Popup.remove();
                     });
                 }
-                document.querySelector('#privacy').addEventListener('click',()=> {
+                document.querySelector('#privacy').addEventListener('click', () => {
                     user_Deleting();
                 });
                 function user_Reporting() {
@@ -536,12 +530,12 @@ function create_Active_Account() {
                             license_Popup.remove();
                         }, 2000);
                     });
-                    
-                    exit.addEventListener('click',() => {
+
+                    exit.addEventListener('click', () => {
                         license_Popup.remove();
                     });
                 }
-                document.querySelector('#report').addEventListener('click',()=> {
+                document.querySelector('#report').addEventListener('click', () => {
                     if (profile.user_Is_CEO !== true && profile.user_Is_Admin !== true) {
                         user_Reporting();
                     }
@@ -1283,66 +1277,172 @@ function setCookie(name, value, expire_date) {
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 function createAdvanceSwitchPage() {
-    logoutpopupculomn.innerHTML = '';
     if (Array.isArray(JSON.parse(localStorage.getItem('myLogsArray')))) {
         myLogsArray = JSON.parse(localStorage.getItem('myLogsArray'));
         myLogsArray.forEach(account => {
             LogInFormData.forEach(user => {
                 if (user.user_Id === account.accountId) {
-                    let loginshortcut = document.createElement('div');
-                    let logshorthead = document.createElement('span');
-                    let logstail = document.createElement('div');
-                    let logsProfilePicture = document.createElement('img');
-                    let logsName = document.createElement('p');
-                    let shortcutloginbutton = document.createElement('button');
-                    logoutpopupculomn.appendChild(loginshortcut);
-                    loginshortcut.appendChild(logshorthead);
-                    loginshortcut.appendChild(logstail);
-                    logshorthead.appendChild(logsProfilePicture);
-                    logstail.appendChild(logsName);
-                    logstail.appendChild(shortcutloginbutton);
-                    logsProfilePicture.src = user.user_ProfilePicture;
-                    logsName.textContent = user.user_Firstname + ' ' + user.user_Surname;
-                    shortcutloginbutton.textContent = 'login';
-                    shortcutloginbutton.id = account.accountId;
-                    shortcutloginbutton.classList.add('shortcutloginbutton');
-                    loginshortcut.classList.add('loginshortcut');
-                    function filter_Image() {
-                        if (user.user_ProfilePicture_Filter == 'default') {
-                            logsProfilePicture.classList.add('--color-default');
-                        } else if (user.user_ProfilePicture_Filter == 'gray') {
-                            logsProfilePicture.classList.add('--color-gray');
-                        } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                            logsProfilePicture.classList.add('--color-contrast');
-                        } else if (user.user_ProfilePicture_Filter == 'bright') {
-                            logsProfilePicture.classList.add('--color-bright');
-                        } else if (user.user_ProfilePicture_Filter == 'blur') {
-                            logsProfilePicture.classList.add('--color-blur');
-                        } else if (user.user_ProfilePicture_Filter == 'invert') {
-                            logsProfilePicture.classList.add('--color-invert');
-                        } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                            logsProfilePicture.classList.add('--color-sepia');
-                        } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                            logsProfilePicture.classList.add('--color-hue-rotate');
-                        } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                            logsProfilePicture.classList.add('--color-opacity');
-                        } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                            logsProfilePicture.classList.add('--color-satulate');
-                        }
-                    }
-                    filter_Image();
-                    function detectAccount() {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account.forEach(data => {
-                                if (data.user_Id === account.accountId) {
-                                    shortcutloginbutton.disabled = true;
-                                    shortcutloginbutton.textContent = 'logged In';
-                                    shortcutloginbutton.classList.add('logIn_Button_Active');
-                                }
+                    document.querySelector('#accountswitch').addEventListener('click',()=> {
+                        create_Switch_Acc_Popup();
+                    });
+                    function create_Switch_Acc_Popup() {
+                        removePopup();
+                        let statusviewsheader = document.createElement('header');
+                        let license_Popup = document.createElement('nav');
+                        let popupname = document.createElement('p');
+                        let license_Column = document.createElement('div');
+                        let exit = document.createElement('span');
+                        let logoutbutton = document.createElement('button');
+                        document.body.appendChild(license_Popup);
+                        license_Popup.appendChild(statusviewsheader);
+                        license_Popup.appendChild(license_Column);
+                        license_Popup.appendChild(logoutbutton);
+                        statusviewsheader.appendChild(exit);
+                        statusviewsheader.appendChild(popupname);
+                        exit.innerHTML = undo;
+                        logoutbutton.textContent = 'Logout';
+                        popupname.innerHTML = `Log In To Another Account &quest;`;
+                        exit.classList.add('headerbtns');
+                        license_Popup.classList.add('logoutpopup');
+                        license_Popup.classList.add('license_Popup');
+                        license_Column.classList.add('license_Column');
+                        logoutbutton.classList.add('logoutbutton');
+                        logoutbutton.addEventListener('click',()=> {
+                            document.querySelector('.confirmation_popup').style.display = 'flex';
+                        });
+                        exit.addEventListener('click', () => {
+                            license_Popup.remove();
+                        });
+                        license_Popup.style.display = 'flex';
+                        function Accounts() {
+                            myLogsArray.forEach(data => {
+                                LogInFormData.forEach(user => {
+                                    if (user.user_Id === data.accountId) {
+                                        let person = document.createElement('div');
+                                        let personhead = document.createElement('span');
+                                        let persontail = document.createElement('div');
+                                        let personAddandBlockFlex = document.createElement('div');
+                                        let personprofileimage = document.createElement('img');
+                                        let personsname = document.createElement('p');
+                                        let personaddbutton = document.createElement('button');
+                                        let persondeclinebutton = document.createElement('button');
+                                        license_Column.appendChild(person);
+                                        person.appendChild(personhead);
+                                        person.appendChild(persontail);
+                                        personhead.appendChild(personprofileimage);
+                                        persontail.appendChild(personsname);
+                                        persontail.appendChild(personAddandBlockFlex);
+                                        personAddandBlockFlex.appendChild(personaddbutton);
+                                        personAddandBlockFlex.appendChild(persondeclinebutton);
+                                        personprofileimage.src = user.user_ProfilePicture;
+                                        personsname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                                        persondeclinebutton.textContent = 'remove';
+                                        personaddbutton.textContent = 'login';
+                                        personaddbutton.id = account.accountId;
+                                        persondeclinebutton.id = account.accountId;
+                                        personhead.classList.add('personhead');
+                                        personsname.classList.add('personsname');
+                                        persontail.classList.add('persontail');
+                                        personAddandBlockFlex.classList.add('personAddandBlockFlex');
+                                        personaddbutton.classList.add('personaddbutton');
+                                        persondeclinebutton.classList.add('persondeclinebutton');
+                                        person.classList.add('person');
+                                        function filter_Image() {
+                                            if (user.user_ProfilePicture_Filter == 'default') {
+                                                personprofileimage.classList.add('--color-default');
+                                            } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                                personprofileimage.classList.add('--color-gray');
+                                            } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                                personprofileimage.classList.add('--color-contrast');
+                                            } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                                personprofileimage.classList.add('--color-bright');
+                                            } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                                personprofileimage.classList.add('--color-blur');
+                                            } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                                personprofileimage.classList.add('--color-invert');
+                                            } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                                personprofileimage.classList.add('--color-sepia');
+                                            } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                                personprofileimage.classList.add('--color-hue-rotate');
+                                            } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                                personprofileimage.classList.add('--color-opacity');
+                                            } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                                personprofileimage.classList.add('--color-satulate');
+                                            }
+                                        }
+                                        filter_Image();
+                                        function detectAccount() {
+                                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                                ActiveUser_Account.forEach(accdata => {
+                                                    if (data.accountId === accdata.user_Id) {
+                                                        personaddbutton.disabled = true;
+                                                        personaddbutton.textContent = 'Online';
+                                                        personaddbutton.classList.add('logIn_Button_Active');
+                                                    }
+                                                });
+                                            }
+                                        }
+                                        detectAccount();
+                                        // if (navigator.onLine === false) {
+                                        //     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                        //         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                        //         ActiveUser_Account.forEach(data => {
+                                        //             turnOffActiveStatus(data.user_Id);
+                                        //         });
+                                        //     }
+                                        // }
+                                        // document.body.addEventListener('click', () => {
+                                        //     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                        //         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                        //         ActiveUser_Account.forEach(data => {
+                                        //             turnOffActiveStatus(data.user_Id);
+                                        //         });
+                                        //     }
+                                        // });
+                                        persondeclinebutton.addEventListener('click',()=> {
+                                            myLogsArray = myLogsArray.filter(user => {
+                                                if (user.accountId === persondeclinebutton.id) {
+                                                    return false;
+                                                } else {
+                                                    return true;
+                                                }
+                                            });
+                                            localStorage.setItem('myLogsArray',JSON.stringify(myLogsArray));
+                                            persondeclinebutton.disabled = true;
+                                            persondeclinebutton.textContent = 'removed';
+                                        });
+                                        personaddbutton.addEventListener('click', () => {
+                                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                                ActiveUser_Account.forEach(data => {
+                                                    turnOffActiveStatus(data.user_Id);
+                                                });
+                                            }
+                                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                                            LogInFormData.forEach(user => {
+                                                if (user.user_Id === account.accountId) {
+                                                    function pushActiveAccount() {
+                                                        ActiveUser_Account = [];
+                                                        ActiveUser_Account.push({
+                                                            user_Id: user.user_Id,
+                                                            user_Mode: user.user_Mode
+                                                        });
+                                                        localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));
+                                                        setCookie('External_Details', user.user_Id, 30);
+                                                    }
+                                                    pushActiveAccount();
+                                                    user.user_Is_Online = true;
+                                                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
+                                                    location.href = 'index.html';
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
                             });
                         }
+                        Accounts();
                     }
-                    detectAccount();
                     function getActiveUser() {
                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -1375,14 +1475,12 @@ function createAdvanceSwitchPage() {
                     function turnOffActiveStatus(user_Id) {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(data => {
-                            if (data.user_Id === user_Id) {
-                                let connection = data.user_Connection;
-                                connection.forEach(connect => {
-                                    if (connect.connectionId === user_Id) {
-                                        connect.status = new Date().getTime();
-                                    }
-                                });
-                            }
+                            let connection = data.user_Connection;
+                            connection.forEach(connect => {
+                                if (connect.connectionId === user_Id) {
+                                    connect.status = new Date().getTime();
+                                }
+                            });
                         });
                         LogInFormData.forEach(data => {
                             if (data.user_Id === user_Id) {
@@ -1391,33 +1489,6 @@ function createAdvanceSwitchPage() {
                             }
                         });
                     }
-                    if (navigator.onLine === false) {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            ActiveUser_Account.forEach(activeuser => {
-                                turnOffActiveStatus(activeuser.user_Id);
-                            });
-                        }
-                    }
-                    shortcutloginbutton.addEventListener('click', () => {
-                        turnOffActiveStatus();
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === account.accountId) {
-                                function pushActiveAccount() {
-                                    ActiveUser_Account = [];
-                                    ActiveUser_Account.push({
-                                        user_Id: user.user_Id,
-                                        user_Mode: user.user_Mode
-                                    });
-                                    localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));
-                                    setCookie('External_Details', user.user_Id, 30);
-                                }
-                                pushActiveAccount();
-                                location.href = 'index.html';
-                            }
-                        });
-                    });
                 }
             });
             if (ActiveUser_Account) {

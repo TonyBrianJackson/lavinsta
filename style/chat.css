@@ -484,6 +484,9 @@
     background: none;
     box-shadow: none;
     border-radius: 0px;
+    max-width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .userchatroom {
@@ -503,8 +506,7 @@
     position: fixed;
     top: 10%;
     z-index: 512;
-    overflow-x: visible;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .Community_chatroomcolumn,
@@ -652,6 +654,8 @@
     border: none;
     box-shadow: none;
     color: var(--color-dark);
+    white-space: nowrap;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 

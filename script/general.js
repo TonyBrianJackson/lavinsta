@@ -108,10 +108,7 @@ sidebarcontentclosebtn.addEventListener('click', () => {
     let sidebarcontents = document.querySelector('.sidebarcontents');
     sidebarcontents.style.display = 'none';
 });
-const logoutpopupclose = document.querySelector('.logoutpopupclose');
-logoutpopupclose.addEventListener('click', () => {
-    document.querySelector('.logoutpopup').style.display = 'none';
-});
+
 const uploadprofilepicturebackward = document.querySelector('.uploadprofilepicturebackward');
 uploadprofilepicturebackward.addEventListener('click', () => {
     let uploadprofilepicturepopup = document.querySelector('.uploadprofilepicturepopup');
@@ -144,10 +141,6 @@ sidebarItems.forEach(item => {
             document.querySelector('.callslist').style.display = 'none';
         } else {
             document.querySelector('.callslist').style.display = 'flex';
-        } if (item.id != 'accountswitch') {
-            document.querySelector('.logoutpopup').style.display = 'none';
-        } else {
-            document.querySelector('.logoutpopup').style.display = 'flex';
         } if (item.id =='devmode') {
             createDevTool();
         }

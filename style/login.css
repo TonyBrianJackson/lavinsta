@@ -14,29 +14,7 @@
     background-size: cover;
     border: none;
 }
-.entiresignupandloginpage::before {
-    content: '';
-    width: 2000px;
-    height: 2000px;
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(to right,#1059d8,#04befe);
-    top: -10%;
-    right: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-}
-.entiresignupandloginpage::after {
-    content: '';
-    width: 2000px;
-    height: 2000px;
-    position: absolute;
-    border-radius: 120%;
-    background: linear-gradient(-45deg,#2f6fdd,#04befe);
-    top: -40%;
-    right: 10%;
-    transform: translateY(-50%);
-}
+
 .unique_background {
     position: absolute;
     left: 50%;
@@ -275,8 +253,8 @@
     justify-content: center;
     padding: 30px;
     margin: 0px 50px;
-    border-radius: 10px;
-    box-shadow: var(--light-box-shadow);
+    border-radius: 25px 0px 25px 0px;
+    box-shadow: none;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -813,7 +791,7 @@
     .pages {
         width: 100vw;
         min-height: 100vh;
-        background: var(--color-very-light);
+        background: none;
         margin: 0;
         padding: 15px;
         border-radius: 0px;

@@ -1,7 +1,10 @@
+body {
+    overflow: hidden;
+}
 .portalpage {
     width: max-content;
     height: max-content;
-    background: var(--color-white);
+    background: none;
     position: absolute;
     transform: translate(-50%);
     left: 50%;
@@ -13,6 +16,7 @@
     border: none;
     box-shadow: none;
     border-radius: 0px;
+    z-index: 2;
 }
 .logoNameLoading {
     display: flex;
@@ -64,10 +68,31 @@
 .loadingBlocksactive {
     background: var(--color-bright);
 }
+.bodyIndex::after,
+.bodyIndex::before {
+    content: '';
+    width: 130vw;
+    height: 150vh;
+    background: var(--color-bright);
+    box-shadow: var(--simple-box-shadow);
+    position: absolute;
+    right: 0;
+    bottom: 3%;
+    transform: translate(1%);
+    border-radius: 50%;
+    border: none;
+    display: inline-block;
+}
+
+.bodyIndex::after {
+    background: var(--color-bright-2);
+    transform: translate(-25%);
+}
 @media(min-width: 0px) and (max-width: 539px) {
     .portalpage {
         width: 250px;
         max-width: 90%;
+        z-index: 2;
     }
     .loaderload {
         gap: 0.5vw;
@@ -77,5 +102,14 @@
         width: 1.777777vw;
         padding: calc(0.219vw + 1.219vw);
         margin: 0 2px;
+    }
+    .bodyIndex::before {
+        transform: translate(1%);
+        rotate: 5deg;
+    }
+    .bodyIndex::after {
+        transform: translate(-40%);
+        rotate: -25deg;
+        bottom: -5%;
     }
 }

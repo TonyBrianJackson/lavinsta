@@ -990,21 +990,17 @@ function postwordwide() {
 };
 
 //LOGOUT SCRIPT
-const enterlogoutpagebtn = document.querySelector('.enterlogoutpagebtn');
 const confirmation_popup = document.querySelector('.confirmation_popup');
 const logoutconfirmationtrue = document.querySelector('.logoutconfirmationtrue');
 const logoutconfirmationfalse = document.querySelector('.logoutconfirmationfalse');
 logoutconfirmationfalse.addEventListener('click', () => {
     confirmation_popup.style.display = 'none';
-    document.querySelector('.logoutpopup').style.display = 'none';
-})
+    removePopup();
+});
 logoutconfirmationtrue.addEventListener('click', () => {
     confirmation_popup.style.display = 'none';
     location.href = 'login.html';
     localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account));
-})
-enterlogoutpagebtn.addEventListener('click', () => {
-    confirmation_popup.style.display = 'flex';
 });
 const Edit_DateOfBirtConsole_Day = document.querySelector('.Edit_DateOfBirtConsole_Day');
 const Edit_DateOfBirtConsole_Month = document.querySelector('.Edit_DateOfBirtConsole_Month');

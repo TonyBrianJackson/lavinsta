@@ -495,16 +495,6 @@
     position: relative;
 }
 
-.themerhicode::before,
-.themerhicode::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.75;
-    background: repeating-conic-gradient(#0002 0.00005%, #fff0 .0005% #fff0 .005%, #fff0 .0005%),
-        repeating-conic-gradient(#0002 0.00001%, #fff0 .00009% #fff0 .00075%, #fff0 .000025%);
-}
 
 .themesrccode {
     background: linear-gradient(to bottom, var(--color-sky-blue), var(--color-purple));
@@ -517,7 +507,69 @@
 .themeniph {
     background: var(--color-sky-blue);
 }
-
+.postmain.themeniph::before,
+.postmain.themeniph::after,
+.postmain.themexporiah::before,
+.postmain.themexporiah::after,
+.postmain.themesrccode::before,
+.postmain.themesrccode::after,
+.postmain.themerhicode::before,
+.postmain.themerhicode::after,
+.postmain.themexosiphor::before,
+.postmain.themexosiphor::after,
+.postmain.thememirox::before,
+.postmain.thememirox::after,
+.postmain.themenicklezol::before,
+.postmain.themenicklezol::after,
+.postmain.themerhisxos::before,
+.postmain.themerhisxos::after,
+.postmain.themegrino::before,
+.postmain.themegrino::after,
+.postmain.themefolah::before,
+.postmain.themefolah::after,
+.postmain.themeoracle::before,
+.postmain.themeoracle::after,
+.postmain.themenophia::before,
+.postmain.themenophia::after,
+.postmain.themewriser::before,
+.postmain.themewriser::after,
+.postmain.themeclaimer::before,
+.postmain.themeclaimer::after,
+.postmain.themexriphor::before,
+.postmain.themexriphor::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--color-bright);
+    box-shadow: var(--simple-box-shadow);
+    position: absolute;
+    right: 0;
+    bottom: 3%;
+    transform: translate(1%);
+    border-radius: 10%;
+    border: none;
+    display: inline-block;
+    rotate: 25deg;
+    z-index: 1;
+}
+.postmain.themeniph::after,
+.postmain.themexporiah::after,
+.postmain.themesrccode::after,
+.postmain.themerhicode::after,
+.postmain.themexosiphor::after,
+.postmain.thememirox::after,
+.postmain.themenicklezol::after,
+.postmain.themerhisxos::after,
+.postmain.themegrino::after,
+.postmain.themefolah::after,
+.postmain.themeoracle::after,
+.postmain.themenophia::after,
+.postmain.themewriser::after,
+.postmain.themeclaimer::after,
+.postmain.themexriphor::after {
+    background: var(--color-bright-2);
+    rotate: -25deg;
+}
 .coverlabel {
     width: 20px;
     height: 20px;
@@ -1334,7 +1386,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     border: none;
-    background: linear-gradient(to bottom, var(--color-white),var(--color-light),var(--color-light),var(--color-light));
+    background: linear-gradient(to bottom, var(--color-white),var(--color-white),var(--color-light),var(--color-light),var(--color-light));
     box-shadow: none;
     border-radius: inherit;
 }
@@ -1490,6 +1542,8 @@
     overflow-y: scroll;
     align-content: baseline;
     justify-items: baseline;
+    align-items: center;
+    place-items: center;
     border-radius: inherit;
 }
 
@@ -2887,6 +2941,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    padding: 10px;
     border: 5px solid var(--color-dark);
     display: flex;
     flex-direction: column;
@@ -3278,6 +3333,8 @@
         background: var(--color-light);
         z-index: 330;
         padding: 0px;
+        border-radius: 0px;
+        box-shadow: none;
     }
 
     .profile_Cliant {
@@ -4019,6 +4076,7 @@
         overflow: hidden;
         background: var(--color-light);
         display: flex;
+        border-radius: 30px;
     }
 
     .newcommentinput input {
@@ -4549,6 +4607,7 @@
     .smallminiprofile {
         width: 100%;
         background: var(--color-white);
+        border-radius: 25px;
     }
 
     .hamburgermenuheader {
@@ -4559,24 +4618,24 @@
         visibility: visible;
         pointer-events: all;
         opacity: 1;
-        min-height: 574px;
-        max-height: 574px;
+        min-height: 530px;
+        max-height: 500px;
         right: -700px;
         width: 50vw;
         height: 574px;
         top: initial;
-        bottom: 0;
-        border-radius: 0px;
-        padding: 15px;
-        background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
+        bottom: 10px;
+        border-radius: 25px;
+        padding: 10px;
+        box-shadow: var(--simple-box-shadow);
+        background: var(--color-light);
         z-index: 400;
         transition: 500ms right;
     }
 
     .hamburgermenupopupactive {
-        right: 0;
+        right: 10px;
         transition: 500ms right;
-        background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
     }
 }
 

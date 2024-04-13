@@ -954,6 +954,8 @@
         font-size: 28px;
         letter-spacing: 0.99999999vw;
         text-decoration-skip:initial;
+        font-style: unset;
+        font-family: roboto;
     }
     .headermiddle {
         display: none;

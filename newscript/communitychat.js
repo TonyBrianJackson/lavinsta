@@ -1468,7 +1468,22 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                 reciepientimgCont.appendChild(reciepientimage);
                 textchatcontainer.appendChild(reciepientblock);
                 reciepientblock.classList.add('reciepientblock');
-
+                reciepientimgCont.addEventListener('click',()=> {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account.forEach(user => {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                            createProfileOptions(textmesg.posterId, user.user_Id);
+                        });
+                    }
+                });
+                reciepientname.addEventListener('click',()=> {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account.forEach(user => {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                            createProfileOptions(textmesg.posterId, user.user_Id);
+                        });
+                    }
+                });
                 chatmesgaitself.addEventListener('click', () => {
                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(data => {
