@@ -39,7 +39,7 @@ function createUsersProfile(locationId) {
                 let usersfriendsview = document.createElement('img');
 
                 userspreview.appendChild(user_More_Option_Views);
-                user_More_Option_Views.innerHTML = '&vellip;';
+                user_More_Option_Views.innerHTML = vellip;
 
                 userconnect.src = 'icons/add-user.png';
                 usersfriendsview.src = 'icons/tow-people_solid.png';

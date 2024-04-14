@@ -205,7 +205,7 @@ function create_Active_Account() {
                 let usersprofilelabel = document.createElement('img');
 
                 userspreview.appendChild(user_More_Option_Views);
-                user_More_Option_Views.innerHTML = '&vellip;';
+                user_More_Option_Views.innerHTML = vellip;
 
                 usersprofilelabel.src = 'icons/camera.png';
                 usersprofilesetting.src = 'icons/setting.png';
@@ -1420,7 +1420,7 @@ function createAdvanceSwitchPage() {
                                             }
                                             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                                             LogInFormData.forEach(user => {
-                                                if (user.user_Id === account.accountId) {
+                                                if (user.user_Id === data.accountId) {
                                                     function pushActiveAccount() {
                                                         ActiveUser_Account = [];
                                                         ActiveUser_Account.push({

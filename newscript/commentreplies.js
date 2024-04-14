@@ -77,6 +77,8 @@ function createcommentreplys(section, locationId) {
                                 });
                             });
                         }
+                        commentpost.appendChild(expand);
+
                         commentdelete.addEventListener('click', () => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
@@ -245,7 +247,6 @@ function createcommentreplys(section, locationId) {
                         commentmesg.appendChild(commenttime);
                         commentmesg.appendChild(commentpostcontainer);
                         commentmesg.appendChild(reactsflex);
-                        commentmesg.appendChild(expand);
 
                         commentpostcontainer.appendChild(commentpost);
                         commenttime.classList.add('commenttime');
@@ -320,12 +321,12 @@ function createcommentreplys(section, locationId) {
 
                         expand.addEventListener('click', () => {
                             commentpost.classList.toggle('commentpostmoreorless');
-                            if (expand.textContent === 'see more...') {
-                                expand.textContent = 'see less';
-                            } else if (expand.textContent === 'see less') {
-                                expand.textContent = 'see more...';
+                            if (expand.innerText == 'see more...') {
+                                expand.innerText = 'see less';
+                            } else if (expand.innerText == 'see less') {
+                                expand.innerText = 'see more...';
                             } else {
-                                expand.textContent = 'see more...'
+                                expand.innerText = 'see more...'
                             }
                         });
                         commentpost.addEventListener('click', () => {
@@ -561,15 +562,15 @@ function createcommentreplys(section, locationId) {
                         });
 
                         expand.addEventListener('click', () => {
-                            if (expand.textContent == 'see more...') {
-                                expand.textContent = 'see less.'
-                                commentpost.classList.toggle('commentpostactive');
-                            } else if (expand.textContent == 'see less.') {
-                                expand.textContent = 'see more...';
-                                commentpost.classList.toggle('commentpostactive');
+                            commentpost.classList.toggle('commentpostmoreorless');
+                            if (expand.innerText == 'see more...') {
+                                expand.innerText = 'see less';
+                            } else if (expand.innerText == 'see less') {
+                                expand.innerText = 'see more...';
+                            } else {
+                                expand.innerText = 'see more...'
                             }
                         });
-
                         commentpost.addEventListener('click', () => {
                             if (expand.textContent == 'see more...') {
                                 expand.textContent = 'see less.'
@@ -587,7 +588,6 @@ function createcommentreplys(section, locationId) {
                         commentmesg.appendChild(commenttime);
                         commentmesg.appendChild(commentpostcontainer);
                         commentmesg.appendChild(reactsflex);
-                        commentmesg.appendChild(expand);
                         commentpostimgcontainer.appendChild(commentpostimg);
                         commentpostcontainer.appendChild(nextcommentcontainer);
                         nextcommentcontainer.appendChild(commentpostimgcontainer);
@@ -602,6 +602,7 @@ function createcommentreplys(section, locationId) {
                         likecounts.classList.add('likecounts');
                         commentpostimg.src = comment.Property_Src;
                         commentpost.textContent = comment.caption;
+                        commentpost.appendChild(expand);
                         commentpost.textContent.split(" ").forEach(texttitle => {
                             prefix.forEach(unit => {
                                 if (texttitle.indexOf(unit.prefixName) != -1) {
@@ -968,7 +969,6 @@ function createcommentreplys(section, locationId) {
                         commentmesg.appendChild(commenttime);
                         commentmesg.appendChild(commentpostcontainer);
                         commentmesg.appendChild(reactsflex);
-                        commentmesg.appendChild(expand);
 
                         commentnameandimg.appendChild(commentimagecontainer);
                         commentnameandimg.appendChild(commentname);
@@ -1003,6 +1003,7 @@ function createcommentreplys(section, locationId) {
                         commentpostvideo.classList.add('commentpostimg');
                         commentpostvideo.src = comment.Property_Src;
                         commentpost.textContent = comment.caption;
+                        commentpost.appendChild(expand);
                         commentpost.textContent.split(" ").forEach(texttitle => {
                             prefix.forEach(unit => {
                                 if (texttitle.indexOf(unit.prefixName) != -1) {
@@ -1037,12 +1038,21 @@ function createcommentreplys(section, locationId) {
 
                         expand.addEventListener('click', () => {
                             commentpost.classList.toggle('commentpostmoreorless');
-                            if (expand.innerText === 'see more...') {
+                            if (expand.innerText == 'see more...') {
                                 expand.innerText = 'see less';
-                            } else if (expand.innerText === 'see less') {
+                            } else if (expand.innerText == 'see less') {
                                 expand.innerText = 'see more...';
                             } else {
                                 expand.innerText = 'see more...'
+                            }
+                        });
+                        commentpost.addEventListener('click', () => {
+                            if (expand.textContent == 'see more...') {
+                                expand.textContent = 'see less.'
+                                commentpost.classList.toggle('commentpostactive');
+                            } else if (expand.textContent == 'see less.') {
+                                expand.textContent = 'see more...';
+                                commentpost.classList.toggle('commentpostactive');
                             }
                         });
 

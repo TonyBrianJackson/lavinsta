@@ -246,18 +246,7 @@
 
 .commentpostmoreorless,
 .replypostactive {
-    background: none;
-    box-shadow: none;
-    overflow: hidden;
-    border: none;
-    width: 100%;
-    height: max-content;
-    max-height: max-content;
-    display: block;
-    text-align: left;
-    overflow: hidden;
-    color: var(--color-dark);
-    white-space: pre-wrap;
+    -webkit-line-clamp: 70000;
 }
 
 .likecounts,

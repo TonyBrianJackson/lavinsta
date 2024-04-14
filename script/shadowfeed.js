@@ -73,83 +73,82 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                     }
                     filter_PostImage();
                 } if (photo.isText) {
-                    let gridposttextToview = document.createElement('p');
-                    gridpostimagecontainer.appendChild(gridposttextToview);
-                    gridposttextToview.classList.add('gridposttextToview');
-                    gridposttextToview.textContent = photo.Property_Src;
-                    gridposttextToview.textContent.split(" ").forEach(texttitle => {
+                    let postmain = document.createElement('div');
+                    let textPost = document.createElement('p');
+                    gridpostimagecontainer.appendChild(postmain);
+                    postmain.appendChild(textPost);
+                    textPost.classList.add('textPost');
+                    postmain.classList.add('postmain')
+                    textPost.textContent = photo.Property_Src;
+                    textPost.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
                                 if (unit.prefixName == 'https://') {
-                                    let newtitle = gridposttextToview.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    gridposttextToview.innerHTML = newtitle;
+                                    let newtitle = textPost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    textPost.innerHTML = newtitle;
                                 } else {
-                                    let newtitle = gridposttextToview.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
-                                    gridposttextToview.innerHTML = newtitle;
+                                    let newtitle = textPost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                    textPost.innerHTML = newtitle;
                                 }
                             }
                         });
                     });
-                    gridposttextToview.style.display = 'block';
                     function textGridPostTextTheme() {
                         function textThemeBackGround() {
                             if (photo.themeMode == 'default') {
-                                gridposttextToview.classList.add('themedefault');
+                                postmain.classList.add('themedefault');
                             } else if (photo.themeMode == 'claimer') {
-                                gridposttextToview.classList.add('themeclaimer');
+                                postmain.classList.add('themeclaimer');
                             } else if (photo.themeMode == 'wriser') {
-                                gridposttextToview.classList.add('themewriser');
+                                postmain.classList.add('themewriser');
                             } else if (photo.themeMode == 'xriphor') {
-                                gridposttextToview.classList.add('themexriphor');
+                                postmain.classList.add('themexriphor');
                             } else if (photo.themeMode == 'nophia') {
-                                gridposttextToview.classList.add('themenophia');
+                                postmain.classList.add('themenophia');
                             } else if (photo.themeMode == 'oracle') {
-                                gridposttextToview.classList.add('themeoracle');
+                                postmain.classList.add('themeoracle');
                             } else if (photo.themeMode == 'folah') {
-                                gridposttextToview.classList.add('themefolah');
+                                postmain.classList.add('themefolah');
                             } else if (photo.themeMode == 'grino') {
-                                gridposttextToview.classList.add('themegrino');
+                                postmain.classList.add('themegrino');
                             } else if (photo.themeMode == 'rhisxos') {
-                                gridposttextToview.classList.add('themerhisxos');
+                                postmain.classList.add('themerhisxos');
                             } else if (photo.themeMode == 'nicklezol') {
-                                gridposttextToview.classList.add('themenicklezol');
-                                gridposttextToview.classList.add('gridposttextToviewWhite');
-                                gridposttextToview.classList.add('themenicklezoltext');
+                                postmain.classList.add('themenicklezol');
                             } else if (photo.themeMode == 'mirox') {
-                                gridposttextToview.classList.add('thememirox');
+                                postmain.classList.add('thememirox');
                             } else if (photo.themeMode == 'xosiphor') {
-                                gridposttextToview.classList.add('themexosiphor');
+                                postmain.classList.add('themexosiphor');
                             } else if (photo.themeMode == 'rhicode') {
-                                gridposttextToview.classList.add('themerhicode');
-                                gridposttextToview.classList.add('gridposttextToviewWhite');
+                                postmain.classList.add('themerhicode');
                             } else if (photo.themeMode == 'srccod') {
-                                gridposttextToview.classList.add('themesrccode');
-                                gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                postmain.classList.add('themesrccode');
                             } else if (photo.themeMode == 'xporiah') {
-                                gridposttextToview.classList.add('themexporiah');
-                                gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                postmain.classList.add('themexporiah');
                             } else if (photo.themeMode == 'niph') {
-                                gridposttextToview.classList.add('themeniph');
-                                gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                postmain.classList.add('themeniph');
                             }
                         }
                         textThemeBackGround();
                         function textThemeFont() {
                             if (photo.fontMode == 'Default') {
-                                gridposttextToview.classList.add('TextDefault');
+                                textPost.classList.add('TextDefault');
                             } else if (photo.fontMode == 'Times') {
-                                gridposttextToview.classList.add('TextTimes');
+                                textPost.classList.add('TextTimes');
                             } else if (photo.fontMode == 'Arial') {
-                                gridposttextToview.classList.add('TextArial');
+                                textPost.classList.add('TextArial');
                             } else if (photo.fontMode == 'Cursive') {
-                                gridposttextToview.classList.add('TextCursive');
+                                textPost.classList.add('TextCursive');
                             } else if (photo.fontMode == 'Great Vibes') {
-                                gridposttextToview.classList.add('TextGreatVibes');
+                                textPost.classList.add('TextGreatVibes');
                             }
                         }
                         textThemeFont();
                     }
                     textGridPostTextTheme();
+                    textPost.addEventListener('click', () => {
+                        textPost.classList.toggle('textPostmoreorless');
+                    });
 
                 } if (photo.isVideo || photo.isShort) {
                     let gridpostimagetoview = document.createElement('video');

@@ -242,7 +242,6 @@ function CreationOfComments(section, locationId) {
                     commentmesg.appendChild(commenttime);
                     commentmesg.appendChild(commentpostcontainer);
                     commentmesg.appendChild(reactsflex);
-                    commentmesg.appendChild(expand);
                     reactsflex.appendChild(commentreact);
                     reactsflex.appendChild(likecounts);
                     reactsflex.appendChild(commentreply);
@@ -325,6 +324,7 @@ function CreationOfComments(section, locationId) {
                     commentimg.classList.add('commentposterimg');
                     commentpost.classList.add('commentpost');
                     commentpost.textContent = comment.Property_Src;
+                    commentpost.appendChild(expand);
                     commentpost.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
@@ -357,15 +357,13 @@ function CreationOfComments(section, locationId) {
                         }
                     });
                     commentpost.addEventListener('click', () => {
-                        if (commentpost.textContent.length > 200) {
-                            commentpost.classList.toggle('commentpostmoreorless');
-                            if (expand.innerText == 'see more...') {
-                                expand.innerText = 'see less';
-                            } else if (expand.innerText == 'see less') {
-                                expand.innerText = 'see more...';
-                            } else {
-                                expand.innerText = 'see more...'
-                            }
+                        commentpost.classList.toggle('commentpostmoreorless');
+                        if (expand.innerText == 'see more...') {
+                            expand.innerText = 'see less';
+                        } else if (expand.innerText == 'see less') {
+                            expand.innerText = 'see more...';
+                        } else {
+                            expand.innerText = 'see more...'
                         }
                     });
 
@@ -620,7 +618,6 @@ function CreationOfComments(section, locationId) {
                     commentmesg.appendChild(commenttime);
                     commentmesg.appendChild(commentpostcontainer);
                     commentmesg.appendChild(reactsflex);
-                    commentmesg.appendChild(expand);
                     commentpostcontainer.appendChild(nextcommentcontainer);
 
                     commentnameandimg.appendChild(commentimagecontainer);
@@ -675,6 +672,7 @@ function CreationOfComments(section, locationId) {
                     commentpostimg.classList.add('commentpostimg');
                     commentpostimg.src = comment.Property_Src;
                     commentpost.textContent = comment.caption;
+                    commentpost.appendChild(expand);
                     commentpost.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
@@ -709,15 +707,6 @@ function CreationOfComments(section, locationId) {
 
                     expand.addEventListener('click', () => {
                         commentpost.classList.toggle('commentpostmoreorless');
-                        if (expand.innerText === 'see more...') {
-                            expand.innerText = 'see less';
-                        } else if (expand.innerText === 'see less') {
-                            expand.innerText = 'see more...';
-                        } else {
-                            expand.innerText = 'see more...'
-                        }
-                    });
-                    commentpost.addEventListener('click', () => {
                         if (expand.innerText == 'see more...') {
                             expand.innerText = 'see less';
                         } else if (expand.innerText == 'see less') {
@@ -725,7 +714,15 @@ function CreationOfComments(section, locationId) {
                         } else {
                             expand.innerText = 'see more...'
                         }
-                        commentpost.classList.toggle('commentpostmoreorless');
+                    });
+                    commentpost.addEventListener('click', () => {
+                        if (expand.textContent == 'see more...') {
+                            expand.textContent = 'see less.'
+                            commentpost.classList.toggle('commentpostactive');
+                        } else if (expand.textContent == 'see less.') {
+                            expand.textContent = 'see more...';
+                            commentpost.classList.toggle('commentpostactive');
+                        }
                     });
 
 
@@ -1058,7 +1055,6 @@ function CreationOfComments(section, locationId) {
                     commentmesg.appendChild(commenttime);
                     commentmesg.appendChild(commentpostcontainer);
                     commentmesg.appendChild(reactsflex);
-                    commentmesg.appendChild(expand);
 
                     commentnameandimg.appendChild(commentimagecontainer);
                     commentnameandimg.appendChild(commentname);
@@ -1095,6 +1091,7 @@ function CreationOfComments(section, locationId) {
                     commentpostvideo.classList.add('commentpostimg');
                     commentpostvideo.src = comment.Property_Src;
                     commentpost.textContent = comment.caption;
+                    commentpost.appendChild(expand);
                     commentpost.textContent.split(" ").forEach(texttitle => {
                         prefix.forEach(unit => {
                             if (texttitle.indexOf(unit.prefixName) != -1) {
@@ -1132,12 +1129,21 @@ function CreationOfComments(section, locationId) {
 
                     expand.addEventListener('click', () => {
                         commentpost.classList.toggle('commentpostmoreorless');
-                        if (expand.innerText === 'see more...') {
+                        if (expand.innerText == 'see more...') {
                             expand.innerText = 'see less';
-                        } else if (expand.innerText === 'see less') {
+                        } else if (expand.innerText == 'see less') {
                             expand.innerText = 'see more...';
                         } else {
                             expand.innerText = 'see more...'
+                        }
+                    });
+                    commentpost.addEventListener('click', () => {
+                        if (expand.textContent == 'see more...') {
+                            expand.textContent = 'see less.'
+                            commentpost.classList.toggle('commentpostactive');
+                        } else if (expand.textContent == 'see less.') {
+                            expand.textContent = 'see more...';
+                            commentpost.classList.toggle('commentpostactive');
                         }
                     });
 

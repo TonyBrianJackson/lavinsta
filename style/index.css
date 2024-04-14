@@ -2655,7 +2655,7 @@ main .header {
     position: relative;
     text-overflow: ellipsis;
     text-align: center;
-    color: var(--color-dark);
+    color: #ffffffff;
     font-weight: 900;
     z-index: 2;
 }
@@ -2667,19 +2667,7 @@ main .header {
 }
 
 .textPostmoreorless {
-    height: max-content;
-    font-size: 2rem;
-    width: 100%;
-    display: block;
-    text-align: left;
-    border: none;
-    box-shadow: none;
-    background: none;
-    border-radius: 0px;
-    overflow: hidden;
-    position: relative;
-    text-overflow: ellipsis;
-    padding: 10px 0px;
+    -webkit-line-clamp: 70000;
 }
 
 .timelinevideocover {
@@ -6339,20 +6327,6 @@ a {
     padding: 15px 0px;
 }
 
-.worldwideviewclose {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: max-content;
-    border: none;
-    box-shadow: none;
-    overflow: hidden;
-    font-size: 18px;
-    cursor: pointer;
-    background: none;
-    z-index: 1;
-    color: #ffffffff;
-}
 
 .verticalfloat {
     height: 0px;
@@ -6373,6 +6347,7 @@ a {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    z-index: 3;
 }
 
 .verticalfloatactive {
@@ -6513,6 +6488,7 @@ a {
     transform: ease-in;
     opacity: 0;
     visibility: hidden;
+    z-index: 3;
 }
 
 .horizontalfloatactive {
@@ -6870,7 +6846,9 @@ a {
     box-shadow: none;
     color: #ffffffff;
 }
-
+.gridinput input::placeholder {
+    color: #aaaaaa;
+}
 .wwcmsg {
     width: 90%;
     height: max-content;
@@ -7990,7 +7968,7 @@ a {
     left: 10px;
     bottom: 20px;
     border-radius: 0px;
-    z-index: 1;
+    z-index: 3;
 }
 
 .counts,

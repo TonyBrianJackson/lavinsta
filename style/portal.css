@@ -66,7 +66,7 @@ body {
     padding: 0.99999999vw;
 }
 .loadingBlocksactive {
-    background: var(--color-bright);
+    background: var(--color-white);
 }
 .bodyIndex::after,
 .bodyIndex::before {

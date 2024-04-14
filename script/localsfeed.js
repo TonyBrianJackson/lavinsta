@@ -367,9 +367,7 @@ function createPhotoPostOnTimeLine() {
                     });
                     textPost.classList.add('textPost');
                     textPost.addEventListener('click', () => {
-                        if (textPost.textContent.length > 121) {
-                            textPost.classList.toggle('textPostmoreorless');
-                        }
+                        textPost.classList.toggle('textPostmoreorless');
                     });
                     function textTheme() {
                         function textThemeBackGround() {
@@ -393,23 +391,18 @@ function createPhotoPostOnTimeLine() {
                                 main.classList.add('themerhisxos');
                             } else if (photo.themeMode == 'nicklezol') {
                                 main.classList.add('themenicklezol');
-                                textPost.classList.add('themenicklezoltext');
                             } else if (photo.themeMode == 'mirox') {
                                 main.classList.add('thememirox');
                             } else if (photo.themeMode == 'xosiphor') {
                                 main.classList.add('themexosiphor');
                             } else if (photo.themeMode == 'rhicode') {
                                 main.classList.add('themerhicode');
-                                textPost.classList.add('gridposttextToviewWhite');
                             } else if (photo.themeMode == 'srccod') {
                                 main.classList.add('themesrccode');
-                                textPost.classList.add('text_Theme_Color_Is_White');
                             } else if (photo.themeMode == 'xporiah') {
                                 main.classList.add('themexporiah');
-                                textPost.classList.add('text_Theme_Color_Is_White');
                             } else if (photo.themeMode == 'niph') {
                                 main.classList.add('themeniph');
-                                textPost.classList.add('text_Theme_Color_Is_White');
                             }
                         }
                         textThemeBackGround();

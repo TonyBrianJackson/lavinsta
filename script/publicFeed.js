@@ -63,32 +63,7 @@ function createPublicFeed() {
                     let main = document.createElement('a');
                     let sub = document.createElement('div');
                     let more = document.createElement('span');
-                    function pushSavedphotos(option) {
-                        if (!option.classList.contains('active')) {
-                            const newId = '' + new Date().getTime();
-                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                                ActiveUser_Account.forEach(data => {
-                                    LogInFormData.forEach(user => {
-                                        if (user.user_Id === data.user_Id) {
-                                            let saved = user.user_Saved;
-                                            saved.push({
-                                                savedId: user.user_Id,
-                                                postId: photo.id,
-                                                id: newId,
-                                            });
-                                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                            option.classList.add('active');
-                                        }
-                                    });
-                                });
-                            }
-                            create_Message('saved successfully');
-                        } else {
-                            create_Message('already saved');
-                        }
-                    }
-    
+
                     more.addEventListener('click', () => {
                         more.addEventListener('click', () => {
                             create_Post_Options_Script(main,photo.id);
@@ -246,6 +221,9 @@ function createPublicFeed() {
                             textThemeFont();
                         }
                         textTheme();
+                        textPost.addEventListener('click', () => {
+                            textPost.classList.toggle('textPostmoreorless');
+                        });
                     } if (photo.isVideo) {
                         let timelinevideo = document.createElement('video');
                         let timelinevideocover = document.createElement('div');
