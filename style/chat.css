@@ -1414,16 +1414,18 @@
     .largescalewideviewcontainer .options,
     .adgrid .options,
     .post .options {
-        width: 100%;
+        width: 95%;
         overflow-x: scroll;
         overflow-y: hidden;
-        border-radius: 25px 25px 0px 0px;
+        border-radius: 25px;
         padding: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 5px;
-        background: var(--color-light);
+        background: var(--color-white);
+        box-shadow: var(--simple-box-shadow);
         z-index: 36;
+        bottom: 10px;
     }
 
     .largescalewideviewcontainer .options .headerbtns,
@@ -1431,7 +1433,7 @@
     .post .options .headerbtns {
         width: 100%;
         background: var(--color-white);
-        box-shadow: var(--block-box-shadow);
+        box-shadow: none;
         border-radius: 10px;
     }
 
@@ -1440,13 +1442,21 @@
     .post .options .headerbtns:nth-child(1) {
         border-radius: 25px 10px 10px 10px;
     }
-
     .largescalewideviewcontainer .options .headerbtns:nth-child(4),
     .adgrid .options .headerbtns:nth-child(4),
     .post .options .headerbtns:nth-child(4) {
         border-radius: 10px 25px 10px 10px;
     }
-
+    .largescalewideviewcontainer .options .headerbtns:nth-child(5),
+    .adgrid .options .headerbtns:nth-child(5),
+    .post .options .headerbtns:nth-child(5) {
+        border-radius: 10px 10px 10px 25px;
+    }
+    .largescalewideviewcontainer .options .headerbtns:nth-child(8),
+    .adgrid .options .headerbtns:nth-child(8),
+    .post .options .headerbtns:nth-child(8) {
+        border-radius: 10px 10px 25px 10px;
+    }
     .mesgBox,
     .userschatbox {
         width: 100%;

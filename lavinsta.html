@@ -2228,7 +2228,7 @@
                 </svg>
             </a>
             <a id="exit" class="headerbtns toggleBtn advance">
-                &times;
+                <svg xmlns="http://www.w3.org/2000/svg" id="Isolation_Mode" data-name="Isolation Mode" viewBox="0 0 24 24" width="512" height="512"><path d="M14.5,6H11.169V.211L1.1,8.953l-.078.072a3.507,3.507,0,0,0,0,4.95l10.147,8.814V17H14.5A6.507,6.507,0,0,1,21,23.476h0V24h3V15.5A9.511,9.511,0,0,0,14.5,6Zm0,8H8.169v2.211L3.12,11.828a.5.5,0,0,1,0-.656L8.169,6.789V9H14.5A6.508,6.508,0,0,1,21,15.5v1.078A9.466,9.466,0,0,0,14.5,14Z"/></svg>
             </a>
         </div>
         <div class="master">
@@ -2384,7 +2384,13 @@
 
     <!-- upload profile picture -->
 
-    <div class="uploadprofilepicturepopup"><span class="popupclose uploadprofilepicturebackward">&LeftArrow;</span>
+    <div class="post_making_upload_popup uploadprofilepicturepopup">
+        <header>
+            <span class="headerbtns uploadprofilepicturebackward">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Isolation_Mode" data-name="Isolation Mode" viewBox="0 0 24 24" width="512" height="512"><path d="M14.5,6H11.169V.211L1.1,8.953l-.078.072a3.507,3.507,0,0,0,0,4.95l10.147,8.814V17H14.5A6.507,6.507,0,0,1,21,23.476h0V24h3V15.5A9.511,9.511,0,0,0,14.5,6Zm0,8H8.169v2.211L3.12,11.828a.5.5,0,0,1,0-.656L8.169,6.789V9H14.5A6.508,6.508,0,0,1,21,15.5v1.078A9.466,9.466,0,0,0,14.5,14Z"/></svg>
+            </span>
+            <div class="popup_Names_Container"><strong>Update Your Profile</strong></div>
+        </header>
         <div class="profilelargercontainer">
             <div class="newtobeuploadprofilepicture"><img src="icons/male-user.png" id="profilepictureuploading"></div>
             <label class="newprofilepicturelabel" for="profileuploader">
@@ -3593,115 +3599,125 @@
 
     <!-- profile settings -->
 
-    <div class="profilebtnsettings">
-        <header class="popupheader">
-            <span class="popupclose profilesettingsclose">&LeftArrow;</span>
+    <div class="post_making_upload_popup profilebtnsettings">
+        <header>
+            <span class="headerbtns profilesettingsclose">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Isolation_Mode" data-name="Isolation Mode" viewBox="0 0 24 24" width="512" height="512"><path d="M14.5,6H11.169V.211L1.1,8.953l-.078.072a3.507,3.507,0,0,0,0,4.95l10.147,8.814V17H14.5A6.507,6.507,0,0,1,21,23.476h0V24h3V15.5A9.511,9.511,0,0,0,14.5,6Zm0,8H8.169v2.211L3.12,11.828a.5.5,0,0,1,0-.656L8.169,6.789V9H14.5A6.508,6.508,0,0,1,21,15.5v1.078A9.466,9.466,0,0,0,14.5,14Z"/></svg>
+            </span>
+            <div class="popup_Names_Container"><strong>Update Your Info</strong></div>
         </header>
-        <div class="profilesettingculomn">
-            <div class="editfield">
-                <div class="addeditbio"><textarea id="biotextarea" maxlength="150" placeholder="Bio"></textarea>
-                </div>
-                <div class="addeditnationality"><textarea id="placetextarea" placeholder="Nationality"></textarea>
-                </div>
-                <div class="setgender">
-                    <div class="gendername">Gender</div>
-                    <span class="setgenderflex"><span id="malegendertype" class="gendertype">male</span><span id="male"
-                            class="Activate active"></span></span>
-                    <span class="setgenderflex"><span id="femalegendertype" class="gendertype">female</span><span
-                            id="female" class="Activate"></span></span>
-                </div>
-                <div class="setdateofbirth">
-                    <div class="Edit_Date_OfBirth_Values">
-                        <p class="Edit_DateOfBirtConsole_Day">Day</p>
-                        <p class="Edit_DateOfBirtConsole_Month">Month</p>
-                        <p class="Edit_DateOfBirtConsole_Year">Year</p>
-                    </div>
-                    <div class="edit_selectoption">
-                        <div class="edit_date_picker_container">
-                            <header>
-                                <span class="edit_Date_PickerCloseButton">&times;</span>
-                            </header>
-                            <div class="edit_day_picker">
-                                <div class="edit_day_Option active">1</div>
-                                <div class="edit_day_Option">2</div>
-                                <div class="edit_day_Option">3</div>
-                                <div class="edit_day_Option">4</div>
-                                <div class="edit_day_Option">5</div>
-                                <div class="edit_day_Option">6</div>
-                                <div class="edit_day_Option">7</div>
-                                <div class="edit_day_Option">8</div>
-                                <div class="edit_day_Option">9</div>
-                                <div class="edit_day_Option">10</div>
-                                <div class="edit_day_Option">11</div>
-                                <div class="edit_day_Option">12</div>
-                                <div class="edit_day_Option">13</div>
-                                <div class="edit_day_Option">14</div>
-                                <div class="edit_day_Option">15</div>
-                                <div class="edit_day_Option">16</div>
-                                <div class="edit_day_Option">17</div>
-                                <div class="edit_day_Option">18</div>
-                                <div class="edit_day_Option">19</div>
-                                <div class="edit_day_Option">20</div>
-                                <div class="edit_day_Option">21</div>
-                                <div class="edit_day_Option">22</div>
-                                <div class="edit_day_Option">23</div>
-                                <div class="edit_day_Option">24</div>
-                                <div class="edit_day_Option">25</div>
-                                <div class="edit_day_Option">26</div>
-                                <div class="edit_day_Option">27</div>
-                                <div class="edit_day_Option">28</div>
-                                <div class="edit_day_Option">29</div>
-                                <div class="edit_day_Option">30</div>
-                                <div class="edit_day_Option">31</div>
-                                <span class="edit_done_with_Date_Picker">Done</span>
-                            </div>
-                        </div>
-                        <div class="edit_date_picker_container_month">
-                            <header>
-                                <span class="edit_Month_PickerCloseButton">&times;</span>
-                            </header>
-                            <div class="edit_month_picker">
-                                <div class="edit_month_picker_Option active">January</div>
-                                <div class="edit_month_picker_Option">February</div>
-                                <div class="edit_month_picker_Option">March</div>
-                                <div class="edit_month_picker_Option">April</div>
-                                <div class="edit_month_picker_Option">May</div>
-                                <div class="edit_month_picker_Option">June</div>
-                                <div class="edit_month_picker_Option">July</div>
-                                <div class="edit_month_picker_Option">August</div>
-                                <div class="edit_month_picker_Option">September</div>
-                                <div class="edit_month_picker_Option">October</div>
-                                <div class="edit_month_picker_Option">November</div>
-                                <div class="edit_month_picker_Option">December</div>
-                            </div>
-                            <span class="edit_done_with_Month_Picker">Done</span>
-                        </div>
-                        <input id="Edit_DateOfBirt_Year" type="tel" placeholder="0000" maxlength="4">
-                    </div>
-                </div>
+        <div class="uploadpreviewcontainer">
+            <div class="addeditbio"><textarea id="biotextarea" maxlength="150" placeholder="Bio"></textarea>
             </div>
-            <div class="hold_Options">
-                <div id="bio" class="editactivatenationality">
-                    <a href="#">Bio</a>
-                </div>
-                <div id="location" class="editactivatenationality">
-                    <a href="#">Place</a>
-                </div>
-                <div id="setgender" class="editactivatenationality">
-                    <a href="#">Gender</a>
-                </div>
-                <div id="setdateofboth" class="editactivatenationality">
-                    <a href="#">DOB</a>
-                </div>
+            <div class="addeditnationality"><textarea id="placetextarea" placeholder="Nationality"></textarea>
             </div>
+            <div class="setgender">
+                <div class="gendername">Gender</div>
+                <span class="setgenderflex"><span id="malegendertype" class="gendertype">male</span><span id="male"
+                        class="Activate active"></span></span>
+                <span class="setgenderflex"><span id="femalegendertype" class="gendertype">female</span><span
+                        id="female" class="Activate"></span></span>
+            </div>
+            <div class="setdateofbirth">
+                <div class="Edit_Date_OfBirth_Values">
+                    <p class="Edit_DateOfBirtConsole_Day">Day</p>
+                    <p class="Edit_DateOfBirtConsole_Month">Month</p>
+                    <p class="Edit_DateOfBirtConsole_Year">Year</p>
+                </div>
+                <input id="Edit_DateOfBirt_Year" type="tel" placeholder="0000" maxlength="4">
+            </div>
+        </div>
+        <div class="clickAndUploadContainer">
+            <div id="bio" class="editactivatenationality">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M14,7.25A1.75,1.75,0,1,1,12.25,5.5,1.751,1.751,0,0,1,14,7.25ZM24,12A12,12,0,1,0,12,24H24Zm-3,0v9H12a9,9,0,1,1,9-9Zm-7,.5A2.5,2.5,0,0,0,11.5,10H9v3h2v5h3Z"/></svg>
+                <span>Bio</span>
+            </div>
+            <div id="location" class="editactivatenationality">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M22,5.644V2.5c0-.829-.672-1.5-1.5-1.5s-1.5,.671-1.5,1.5v1.089L15.076,.941c-1.869-1.262-4.283-1.262-6.152,0L2.424,5.327C.906,6.351,0,8.055,0,9.886v8.614c0,3.033,2.468,5.5,5.5,5.5h3c.828,0,1.5-.671,1.5-1.5V14.5c0-.276,.225-.5,.5-.5h3c.275,0,.5,.224,.5,.5v8c0,.829,.672,1.5,1.5,1.5h3c3.032,0,5.5-2.467,5.5-5.5V9.886c0-1.654-.739-3.204-2-4.242Zm-1,12.856c0,1.378-1.121,2.5-2.5,2.5h-1.5v-6.5c0-1.93-1.57-3.5-3.5-3.5h-3c-1.93,0-3.5,1.57-3.5,3.5v6.5h-1.5c-1.379,0-2.5-1.122-2.5-2.5V9.886c0-.833,.412-1.607,1.102-2.073L10.602,3.427c.85-.573,1.947-.573,2.797,0l6.5,4.387c.689,.465,1.102,1.24,1.102,2.072v8.614Z"/></svg>
+                <span>Place</span>
+            </div>
+            <div id="setgender" class="editactivatenationality">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+                    <path d="m7.858,12c.742,0,1.463-.004,2.663-.703-.65-.733-1.165-1.583-1.513-2.518-.387.144-.801.221-1.15.221-1.654,0-3-1.346-3-3,1.145,0,3.621-1.282,4.849-2.418.382.254.707.591.975.975-.115.463-.183.944-.183,1.443,0,3.309,2.691,6,6,6s6-2.691,6-6S19.809,0,16.5,0C14.839,0,13.333.68,12.246,1.774c-1.174-1.101-2.719-1.774-4.388-1.774C4.654,0,1.879,2.46,1.382,5.732L.011,13.303c-.007.026-.005.052-.011.078.978-.72,2.128-1.2,3.358-1.381h4.5ZM16.5,3c1.654,0,3,1.346,3,3s-1.346,3-3,3-3-1.346-3-3,1.346-3,3-3Zm7.5,16v5h-3v-5c0-.887-.584-1.632-1.385-1.893l-3.115,3.893-3.115-3.893c-.801.261-1.385,1.006-1.385,1.893v5h-3v-5c0-2.757,2.243-5,5-5h5c2.757,0,5,2.243,5,5Zm-14.89-5c-.455.445-.843.946-1.163,1.5-.599,1.031-.947,2.224-.947,3.5v2l-2.984-3.73c-.604.345-1.016.987-1.016,1.73v5H0v-5c0-2.757,2.243-5,5-5h4.11Z"/>
+                </svg>
+                <span>Gender</span>
+            </div>
+            <div id="setdateofboth" class="editactivatenationality">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M14,7.25A1.75,1.75,0,1,1,12.25,5.5,1.751,1.751,0,0,1,14,7.25ZM24,12A12,12,0,1,0,12,24H24Zm-3,0v9H12a9,9,0,1,1,9-9Zm-7,.5A2.5,2.5,0,0,0,11.5,10H9v3h2v5h3Z"/></svg>
+                <span>DOB</span>
+            </div>
+        </div>
 
-            <span class="edit_Tab_ProfileSettings_Edit submitbio">upload bio</span>
-            <span class="edit_Tab_ProfileSettings_Edit submitnationality">upload nationality</span>
-            <span class="edit_Tab_ProfileSettings_Edit submitgender">save changes</span>
-            <span class="edit_Tab_ProfileSettings_Edit submitdateofbirth">save</span>
+        <div class="subactions">
+            <button class="--create-1 edit_Tab_ProfileSettings_Edit submitbio">upload bio</button>
+            <button class="--create-2 edit_Tab_ProfileSettings_Edit submitnationality">upload nationality</button>
+            <button class="--create-3 edit_Tab_ProfileSettings_Edit submitgender">save changes</button>
+            <button class="--create-4 edit_Tab_ProfileSettings_Edit submitdateofbirth">save</spbutton>
         </div>
     </div>
 
+    <!--selectorpopup-->
+    <div class="edit_selectoption">
+        <header>
+            <span class="headerbtns edit_selectoption_exit">
+                <svg xmlns="http://www.w3.org/2000/svg" id="Isolation_Mode" data-name="Isolation Mode" viewBox="0 0 24 24" width="512" height="512"><path d="M14.5,6H11.169V.211L1.1,8.953l-.078.072a3.507,3.507,0,0,0,0,4.95l10.147,8.814V17H14.5A6.507,6.507,0,0,1,21,23.476h0V24h3V15.5A9.511,9.511,0,0,0,14.5,6Zm0,8H8.169v2.211L3.12,11.828a.5.5,0,0,1,0-.656L8.169,6.789V9H14.5A6.508,6.508,0,0,1,21,15.5v1.078A9.466,9.466,0,0,0,14.5,14Z"/></svg>
+            </span>
+            <p class="popupname">Date Picker &quest;</p>
+        </header>
+        <div class="edit_date_picker_container">
+            <div class="edit_day_picker">
+                <div class="edit_day_Option active">1</div>
+                <div class="edit_day_Option">2</div>
+                <div class="edit_day_Option">3</div>
+                <div class="edit_day_Option">4</div>
+                <div class="edit_day_Option">5</div>
+                <div class="edit_day_Option">6</div>
+                <div class="edit_day_Option">7</div>
+                <div class="edit_day_Option">8</div>
+                <div class="edit_day_Option">9</div>
+                <div class="edit_day_Option">10</div>
+                <div class="edit_day_Option">11</div>
+                <div class="edit_day_Option">12</div>
+                <div class="edit_day_Option">13</div>
+                <div class="edit_day_Option">14</div>
+                <div class="edit_day_Option">15</div>
+                <div class="edit_day_Option">16</div>
+                <div class="edit_day_Option">17</div>
+                <div class="edit_day_Option">18</div>
+                <div class="edit_day_Option">19</div>
+                <div class="edit_day_Option">20</div>
+                <div class="edit_day_Option">21</div>
+                <div class="edit_day_Option">22</div>
+                <div class="edit_day_Option">23</div>
+                <div class="edit_day_Option">24</div>
+                <div class="edit_day_Option">25</div>
+                <div class="edit_day_Option">26</div>
+                <div class="edit_day_Option">27</div>
+                <div class="edit_day_Option">28</div>
+                <div class="edit_day_Option">29</div>
+                <div class="edit_day_Option">30</div>
+                <div class="edit_day_Option">31</div>
+                <div class="edit_done_with_Date_Picker">Done</div>
+            </div>
+        </div>
+        <div class="edit_date_picker_container_month">
+            <div class="edit_month_picker">
+                <div class="edit_month_picker_Option active">January</div>
+                <div class="edit_month_picker_Option">February</div>
+                <div class="edit_month_picker_Option">March</div>
+                <div class="edit_month_picker_Option">April</div>
+                <div class="edit_month_picker_Option">May</div>
+                <div class="edit_month_picker_Option">June</div>
+                <div class="edit_month_picker_Option">July</div>
+                <div class="edit_month_picker_Option">August</div>
+                <div class="edit_month_picker_Option">September</div>
+                <div class="edit_month_picker_Option">October</div>
+                <div class="edit_month_picker_Option">November</div>
+                <div class="edit_month_picker_Option">December</div>
+            </div>
+            <div class="edit_done_with_Month_Picker">Done</div>
+        </div>
+    </div>
     <!-- search -->
 
     <div class="searchpath main_Seach_Path" id="searchpath">

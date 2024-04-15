@@ -368,10 +368,10 @@ async function create_Main_Trash_Items(locationId) {
                                     gridposttextToview.classList.add('TextDefault');
                                 } else if (photo.fontMode == 'Times') {
                                     gridposttextToview.classList.add('TextTimes');
-                                } else if (photo.fontMode == 'Arial') {
-                                    gridposttextToview.classList.add('TextArial');
-                                } else if (photo.fontMode == 'Cursive') {
-                                    gridposttextToview.classList.add('TextCursive');
+                                } else if (photo.fontMode == 'Asul') {
+                                    gridposttextToview.classList.add('TextAsul');
+                                } else if (photo.fontMode == 'Satisfy') {
+                                    gridposttextToview.classList.add('TextSatisfy');
                                 } else if (photo.fontMode == 'Great Vibes') {
                                     gridposttextToview.classList.add('TextGreatVibes');
                                 }
@@ -630,14 +630,16 @@ function newSaved_Script() {
                                     });
                                 } if (feed.isText) {
                                     let griditems = document.createElement('div');
+                                    let gridpostmain = document.createElement('div');
                                     let gridimg = document.createElement('p');
                                     let deletebutton = document.createElement('div');
-                                    let deleteimg = document.createElement('img');
-                                    deletebutton.appendChild(deleteimg);
-                                    deleteimg.src = 'newicons/trash-can.png';
+                                    deletebutton.innerHTML = deletesvg;
                                     savedculomn.appendChild(griditems);
-                                    griditems.appendChild(gridimg);
+                                    griditems.appendChild(gridpostmain);
+                                    gridpostmain.appendChild(gridimg);
                                     griditems.appendChild(deletebutton);
+                                    gridpostmain.classList.add('gridpostmain');
+                                    gridimg.classList.add('gridposttext');
                                     griditems.classList.add('griditems');
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.textContent = feed.Property_Src;
@@ -650,69 +652,37 @@ function newSaved_Script() {
                                     function textGridPostTextTheme() {
                                         function textThemeBackGround() {
                                             if (feed.themeMode == 'default') {
-                                                griditems.classList.add('themedefault');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themedefault');
                                             } else if (feed.themeMode == 'claimer') {
-                                                griditems.classList.add('themeclaimer');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themeclaimer');
                                             } else if (feed.themeMode == 'wriser') {
-                                                griditems.classList.add('themewriser');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themewriser');
                                             } else if (feed.themeMode == 'xriphor') {
-                                                griditems.classList.add('themexriphor');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themexriphor');
                                             } else if (feed.themeMode == 'nophia') {
-                                                griditems.classList.add('themenophia');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themenophia');
                                             } else if (feed.themeMode == 'oracle') {
-                                                griditems.classList.add('themeoracle');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themeoracle');
                                             } else if (feed.themeMode == 'folah') {
-                                                griditems.classList.add('themefolah');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themefolah');
                                             } else if (feed.themeMode == 'grino') {
-                                                griditems.classList.add('themegrino');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themegrino');
                                             } else if (feed.themeMode == 'rhisxos') {
-                                                griditems.classList.add('themerhisxos');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themerhisxos');
                                             } else if (feed.themeMode == 'nicklezol') {
-                                                griditems.classList.add('themenicklezol');
-                                                griditems.classList.add('gridpost_Radius');
-                                                gridimg.classList.add('themenicklezolgridposttext');
+                                                gridpostmain.classList.add('themenicklezol');
                                             } else if (feed.themeMode == 'mirox') {
-                                                griditems.classList.add('gridpost_Radius');
-                                                griditems.classList.add('thememirox');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('thememirox');
                                             } else if (feed.themeMode == 'xosiphor') {
-                                                griditems.classList.add('gridpost_Radius');
-                                                griditems.classList.add('themexosiphor');
-                                                gridimg.classList.add('gridposttextdark');
+                                                gridpostmain.classList.add('themexosiphor');
                                             } else if (feed.themeMode == 'rhicode') {
-                                                griditems.classList.add('gridpost_Radius');
-                                                griditems.classList.add('themerhicode');
-                                                gridimg.classList.add('gridposttextToviewWhite');
+                                                gridpostmain.classList.add('themerhicode');
                                             } else if (feed.themeMode == 'srccod') {
-                                                griditems.classList.add('gridpost_Radius');
-                                                griditems.classList.add('themesrccode');
-                                                gridimg.classList.add('text_Theme_Color_Is_White');
+                                                gridpostmain.classList.add('themesrccode');
                                             } else if (feed.themeMode == 'xporiah') {
-                                                griditems.classList.add('gridpost_Radius');
-                                                griditems.classList.add('themexporiah');
-                                                gridimg.classList.add('text_Theme_Color_Is_White');
+                                                gridpostmain.classList.add('themexporiah');
                                             } else if (feed.themeMode == 'niph') {
-                                                griditems.classList.add('gridpost_Radius');
-                                                griditems.classList.add('themeniph');
-                                                gridimg.classList.add('text_Theme_Color_Is_White');
+                                                gridpostmain.classList.add('themeniph');
                                             }
                                         }
                                         textThemeBackGround();
@@ -721,10 +691,10 @@ function newSaved_Script() {
                                                 gridimg.classList.add('TextDefault');
                                             } else if (feed.fontMode == 'Times') {
                                                 gridimg.classList.add('TextTimes');
-                                            } else if (feed.fontMode == 'Arial') {
-                                                gridimg.classList.add('TextArial');
-                                            } else if (feed.fontMode == 'Cursive') {
-                                                gridimg.classList.add('TextCursive');
+                                            } else if (feed.fontMode == 'Asul') {
+                                                gridimg.classList.add('TextAsul');
+                                            } else if (feed.fontMode == 'Satisfy') {
+                                                gridimg.classList.add('TextSatisfy');
                                             } else if (feed.fontMode == 'Great Vibes') {
                                                 gridimg.classList.add('TextGreatVibes');
                                             }

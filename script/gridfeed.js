@@ -52,11 +52,14 @@ function createGridPost(locationId, gridsection) {
                     gridpostimg.src = photo.Property_Src;
                     gridpost_Type_Indicator.innerHTML = videosvg;
                 } if (photo.isText) {
+                    let gridpostmain = document.createElement('div');
                     let gridposttext = document.createElement('p');
-                    gridpost.appendChild(gridposttext);
+                    gridpost.appendChild(gridpostmain);
+                    gridpostmain.appendChild(gridposttext);
                     gridposttext.textContent = photo.Property_Src;
                     gridpost_Type_Indicator.innerHTML = textsvg;
                     gridposttext.classList.add('gridposttext');
+                    gridpostmain.classList.add('gridpostmain');
                     function textGridPostTextTheme() {
                         function textThemeBackGround() {
                             if (photo.themeMode == 'default') {
@@ -64,65 +67,35 @@ function createGridPost(locationId, gridsection) {
                                 gridpost.classList.add('gridpost_Radius');
                                 gridposttext.classList.add('gridposttextdark');
                             } else if (photo.themeMode == 'claimer') {
-                                gridpost.classList.add('themeclaimer');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themeclaimer');
                             } else if (photo.themeMode == 'wriser') {
-                                gridpost.classList.add('themewriser');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themewriser');
                             } else if (photo.themeMode == 'xriphor') {
-                                gridpost.classList.add('themexriphor');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themexriphor');
                             } else if (photo.themeMode == 'nophia') {
-                                gridpost.classList.add('themenophia');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themenophia');
                             } else if (photo.themeMode == 'oracle') {
-                                gridpost.classList.add('themeoracle');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themeoracle');
                             } else if (photo.themeMode == 'folah') {
-                                gridpost.classList.add('themefolah');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themefolah');
                             } else if (photo.themeMode == 'grino') {
-                                gridpost.classList.add('themegrino');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themegrino');
                             } else if (photo.themeMode == 'rhisxos') {
-                                gridpost.classList.add('themerhisxos');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themerhisxos');
                             } else if (photo.themeMode == 'nicklezol') {
-                                gridpost.classList.add('themenicklezol');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('themenicklezolgridposttext');
+                                gridpostmain.classList.add('themenicklezol');
                             } else if (photo.themeMode == 'mirox') {
-                                gridpost.classList.add('gridpost_Radius');
                                 gridpost.classList.add('thememirox');
-                                gridposttext.classList.add('gridposttextdark');
                             } else if (photo.themeMode == 'xosiphor') {
-                                gridpost.classList.add('gridpost_Radius');
                                 gridpost.classList.add('themexosiphor');
-                                gridposttext.classList.add('gridposttextdark');
                             } else if (photo.themeMode == 'rhicode') {
-                                gridpost.classList.add('gridpost_Radius');
                                 gridpost.classList.add('themerhicode');
-                                gridposttext.classList.add('gridposttextToviewWhite');
                             } else if (photo.themeMode == 'srccod') {
-                                gridpost.classList.add('gridpost_Radius');
                                 gridpost.classList.add('themesrccode');
-                                gridposttext.classList.add('text_Theme_Color_Is_White');
                             } else if (photo.themeMode == 'xporiah') {
-                                gridpost.classList.add('gridpost_Radius');
                                 gridpost.classList.add('themexporiah');
-                                gridposttext.classList.add('text_Theme_Color_Is_White');
                             } else if (photo.themeMode == 'niph') {
-                                gridpost.classList.add('gridpost_Radius');
                                 gridpost.classList.add('themeniph');
-                                gridposttext.classList.add('text_Theme_Color_Is_White');
                             }
                         }
                         textThemeBackGround();
@@ -131,10 +104,10 @@ function createGridPost(locationId, gridsection) {
                                 gridposttext.classList.add('TextDefault');
                             } else if (photo.fontMode == 'Times') {
                                 gridposttext.classList.add('TextTimes');
-                            } else if (photo.fontMode == 'Arial') {
-                                gridposttext.classList.add('TextArial');
-                            } else if (photo.fontMode == 'Cursive') {
-                                gridposttext.classList.add('TextCursive');
+                            } else if (photo.fontMode == 'Asul') {
+                                gridposttext.classList.add('TextAsul');
+                            } else if (photo.fontMode == 'Satisfy') {
+                                gridposttext.classList.add('TextSatisfy');
                             } else if (photo.fontMode == 'Great Vibes') {
                                 gridposttext.classList.add('TextGreatVibes');
                             }
@@ -291,10 +264,10 @@ function createPublicGridPost(locationId, gridsection) {
                                 gridposttext.classList.add('TextDefault');
                             } else if (photo.fontMode == 'Times') {
                                 gridposttext.classList.add('TextTimes');
-                            } else if (photo.fontMode == 'Arial') {
-                                gridposttext.classList.add('TextArial');
-                            } else if (photo.fontMode == 'Cursive') {
-                                gridposttext.classList.add('TextCursive');
+                            } else if (photo.fontMode == 'Asul') {
+                                gridposttext.classList.add('TextAsul');
+                            } else if (photo.fontMode == 'Satisfy') {
+                                gridposttext.classList.add('TextSatisfy');
                             } else if (photo.fontMode == 'Great Vibes') {
                                 gridposttext.classList.add('TextGreatVibes');
                             }

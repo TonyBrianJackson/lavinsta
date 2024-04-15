@@ -341,10 +341,10 @@ function create_Main_Story_Trash(locationId) {
                                 gridposttextToview.classList.add('TextDefault');
                             } else if (photo.fontMode == 'Times') {
                                 gridposttextToview.classList.add('TextTimes');
-                            } else if (photo.fontMode == 'Arial') {
-                                gridposttextToview.classList.add('TextArial');
-                            } else if (photo.fontMode == 'Cursive') {
-                                gridposttextToview.classList.add('TextCursive');
+                            } else if (photo.fontMode == 'Asul') {
+                                gridposttextToview.classList.add('TextAsul');
+                            } else if (photo.fontMode == 'Satisfy') {
+                                gridposttextToview.classList.add('TextSatisfy');
                             } else if (photo.fontMode == 'Great Vibes') {
                                 gridposttextToview.classList.add('TextGreatVibes');
                             }

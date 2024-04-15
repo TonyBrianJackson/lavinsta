@@ -56,7 +56,6 @@ function create_share_Popup(locationId) {
             }
             if (photo.type == 'timeline') {
                 if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -153,7 +152,6 @@ function create_share_Popup(locationId) {
                     option_Name7.textContent = 'report post';
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {
@@ -408,7 +406,6 @@ function create_share_Popup(locationId) {
                     }
                     share_Activities();
                 } if (photo.isVideo) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -485,7 +482,6 @@ function create_share_Popup(locationId) {
                     option_Name5.textContent = 'report post';
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {
@@ -657,7 +653,6 @@ function create_share_Popup(locationId) {
                     }
                     share_Activities();
                 } if (photo.isText) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -723,7 +718,6 @@ function create_share_Popup(locationId) {
                     option_Name4.textContent = 'report post';
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {
@@ -855,7 +849,6 @@ function create_share_Popup(locationId) {
                 }
             } if (photo.type == 'public') {
                 if (photo.isPhoto) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -952,7 +945,6 @@ function create_share_Popup(locationId) {
 
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {
@@ -1206,7 +1198,6 @@ function create_share_Popup(locationId) {
                     }
                     share_Activities();
                 } if (photo.isVideo) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -1282,7 +1273,6 @@ function create_share_Popup(locationId) {
                     option_Name5.textContent = 'report post';
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {
@@ -1453,7 +1443,6 @@ function create_share_Popup(locationId) {
                     }
                     share_Activities();
                 } if (photo.isShort) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -1519,7 +1508,6 @@ function create_share_Popup(locationId) {
                     option_Name4.textContent = 'report post';
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {
@@ -1647,7 +1635,6 @@ function create_share_Popup(locationId) {
                     }
                     share_Activities();
                 } if (photo.isText) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -1713,7 +1700,6 @@ function create_share_Popup(locationId) {
                     option_Name4.textContent = 'report post';
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {
@@ -1845,7 +1831,6 @@ function create_share_Popup(locationId) {
                 }
             } if (photo.type == 'other') {
                 if (photo.isPhoto || photo.isAdvert || photo.isCrime) {
-                    let postshare_Pop_up_header = document.createElement('header');
                     let option_First_Child = document.createElement('span');
                     let postshare_Pop_up = document.createElement('div');
                     let postshare_Popup_Column = document.createElement('div');
@@ -1943,7 +1928,6 @@ function create_share_Popup(locationId) {
                     option_Name7.textContent = 'report post';
 
                     document.body.appendChild(postshare_Pop_up);
-                    postshare_Pop_up.appendChild(postshare_Pop_up_header);
                     postshare_Pop_up.appendChild(postshare_Popup_Column);
                     postshare_Pop_up.classList.add('postshare_Pop_up');
                     option_First_Child.addEventListener('click', () => {

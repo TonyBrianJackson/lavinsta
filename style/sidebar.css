@@ -37,8 +37,9 @@
     width: 240px;
     height: max-content;
     position: fixed;
-    top: 55px;
-    left: 255px;
+    top: 65px;
+    left: 50%;
+    transform: translate(-50%);
     display: none;
     flex-direction: column;
     align-items: center;
@@ -131,7 +132,7 @@
 .clickAndUploadContainer>div,
 .clickAndUploadContainer label {
     width: 100%;
-    height: 35px;
+    height: 40px;
     padding: 5px;
     cursor: pointer;
     display: flex;
@@ -299,11 +300,11 @@
     font-family: Times;
 }
 
-.TextArial {
+.TextAsul {
     font-family: Asul;
 }
 
-.TextCursive {
+.TextSatisfy {
     font-family: satisfy;
 }
 
@@ -419,28 +420,6 @@
     background: var(--color-white);
 }
 
-.themeniph,
-.themexporiah,
-.themesrccode,
-.themerhicode,
-.themexosiphor,
-.thememirox,
-.themenicklezol,
-.themerhisxos,
-.themegrino,
-.themefolah,
-.themeoracle,
-.themenophia,
-.themewriser,
-.themeclaimer,
-.themexriphor {
-    border-radius: 0px;
-}
-
-.gridpost_Radius {
-    border-radius: 25px;
-}
-
 .fontnametitle,
 .themetitle {
     display: block;
@@ -460,7 +439,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     border: none;
     box-shadow: none;
     width: 100%;
@@ -468,7 +447,7 @@
     min-height: 30px;
     background: none;
     border-radius: 0px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .popup_Names_Container {
@@ -493,7 +472,7 @@
     border: none;
     color: var(--color-dark);
     display: block;
-    text-align: center;
+    text-align: left;
 }
 
 .subactions>button,
@@ -780,16 +759,16 @@ button {
         box-shadow: var(--block-box-shadow);
     }
     .post_making_upload_popup {
-        width: 98vw;
+        width: 95vw;
         height: max-content;
         max-height: 100%;
-        box-shadow: var(--light-box-shadow);
+        box-shadow: var(--simple-box-shadow);
         background: var(--color-white);
         z-index: 753;
         left: 50%;
         top: initial;
-        bottom: 0;
-        border-radius: 25px 25px 0px 0px;
+        bottom: 10px;
+        border-radius: 25px;
         transform: translate(-50%);
         overflow-y: scroll;
         overflow-x: hidden;
@@ -867,8 +846,12 @@ button {
         box-shadow: none;
         border: 3px solid var(--color-dark);
         background: var(--color-white);
+        border-radius: 25px;
     }
-
+    .uploadpreviewcontainer>div>img,
+    .uploadpreviewcontainer>div>video{
+        border-radius: inherit;
+    }
     .Text_PostTextArea.PublicText,
     .Text_PostTextArea.textarea {
         border: 3px solid var(--color-dark);

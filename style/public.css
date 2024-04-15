@@ -947,10 +947,7 @@
     .lavinstalogo {
         width: 100%;
     }
-    .lastlogo,
-    .logoright,
-    .logoname,
-    .pagename {
+    .lavinstalogo > span {
         font-size: 28px;
         letter-spacing: 0.99999999vw;
         text-decoration-skip:initial;
@@ -1049,10 +1046,7 @@
         width: max-content;
     }
 
-    .lastlogo,
-    .logoright,
-    .logoname,
-    .pagename {
+    .lavinstalogo > span {
         font-size: 25px;
     }
 

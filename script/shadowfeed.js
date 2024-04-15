@@ -135,10 +135,10 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                                 textPost.classList.add('TextDefault');
                             } else if (photo.fontMode == 'Times') {
                                 textPost.classList.add('TextTimes');
-                            } else if (photo.fontMode == 'Arial') {
-                                textPost.classList.add('TextArial');
-                            } else if (photo.fontMode == 'Cursive') {
-                                textPost.classList.add('TextCursive');
+                            } else if (photo.fontMode == 'Asul') {
+                                textPost.classList.add('TextAsul');
+                            } else if (photo.fontMode == 'Satisfy') {
+                                textPost.classList.add('TextSatisfy');
                             } else if (photo.fontMode == 'Great Vibes') {
                                 textPost.classList.add('TextGreatVibes');
                             }
@@ -937,9 +937,13 @@ function createGridPostTile(locationId,generictype) {
                             });
                         } if (gridphoto.isText) {
                             let tile = document.createElement('a');
+                            let gridpostmain = document.createElement('div');
                             let tileText = document.createElement('p');
                             tilecontainer.appendChild(tile);
-                            tile.appendChild(tileText);
+                            tile.appendChild(gridpostmain);
+                            gridpostmain.appendChild(tileText);
+                            tile.classList.add('radialtext');
+                            gridpostmain.classList.add('gridpostmain');
                             tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
                             tileText.classList.add('tileText');
                             tile.classList.add('tile');
@@ -947,53 +951,37 @@ function createGridPostTile(locationId,generictype) {
                             function textGridPostTileTextTheme() {
                                 function textThemeBackGround() {
                                     if (gridphoto.themeMode == 'default') {
-                                        tile.classList.add('themedefault');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themedefault');
                                     } else if (gridphoto.themeMode == 'claimer') {
-                                        tile.classList.add('themeclaimer');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themeclaimer');
                                     } else if (gridphoto.themeMode == 'wriser') {
-                                        tile.classList.add('themewriser');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themewriser');
                                     } else if (gridphoto.themeMode == 'xriphor') {
-                                        tile.classList.add('themexriphor');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themexriphor');
                                     } else if (gridphoto.themeMode == 'nophia') {
-                                        tile.classList.add('themenophia');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themenophia');
                                     } else if (gridphoto.themeMode == 'oracle') {
-                                        tile.classList.add('themeoracle');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themeoracle');
                                     } else if (gridphoto.themeMode == 'folah') {
-                                        tile.classList.add('themefolah');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themefolah');
                                     } else if (gridphoto.themeMode == 'grino') {
-                                        tile.classList.add('themegrino');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themegrino');
                                     } else if (gridphoto.themeMode == 'rhisxos') {
-                                        tile.classList.add('themerhisxos');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themerhisxos');
                                     } else if (gridphoto.themeMode == 'nicklezol') {
-                                        tile.classList.add('themenicklezol');
-                                        tileText.classList.add('themenicklezolgridposttext');
+                                        gridpostmain.classList.add('themenicklezol');
                                     } else if (gridphoto.themeMode == 'mirox') {
-                                        tile.classList.add('thememirox');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('thememirox');
                                     } else if (gridphoto.themeMode == 'xosiphor') {
-                                        tile.classList.add('themexosiphor');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themexosiphor');
                                     } else if (gridphoto.themeMode == 'rhicode') {
-                                        tile.classList.add('themerhicode');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themerhicode');
                                     } else if (gridphoto.themeMode == 'srccod') {
-                                        tile.classList.add('themesrccode');
-                                        tileText.classList.add('text_Theme_Color_Is_White');
+                                        gridpostmain.classList.add('themesrccode');
                                     } else if (gridphoto.themeMode == 'xporiah') {
-                                        tile.classList.add('themexporiah');
-                                        tileText.classList.add('text_Theme_Color_Is_White');
+                                        gridpostmain.classList.add('themexporiah');
                                     } else if (gridphoto.themeMode == 'niph') {
-                                        tile.classList.add('themeniph');
-                                        tileText.classList.add('text_Theme_Color_Is_White');
+                                        gridpostmain.classList.add('themeniph');
                                     }
                                 }
                                 textThemeBackGround();
@@ -1002,10 +990,10 @@ function createGridPostTile(locationId,generictype) {
                                         tileText.classList.add('TextDefault');
                                     } else if (gridphoto.fontMode == 'Times') {
                                         tileText.classList.add('TextTimes');
-                                    } else if (gridphoto.fontMode == 'Arial') {
-                                        tileText.classList.add('TextArial');
-                                    } else if (gridphoto.fontMode == 'Cursive') {
-                                        tileText.classList.add('TextCursive');
+                                    } else if (gridphoto.fontMode == 'Asul') {
+                                        tileText.classList.add('TextAsul');
+                                    } else if (gridphoto.fontMode == 'Satisfy') {
+                                        tileText.classList.add('TextSatisfy');
                                     } else if (gridphoto.fontMode == 'Great Vibes') {
                                         tileText.classList.add('TextGreatVibes');
                                     }
@@ -1107,9 +1095,13 @@ function createGridPostTile(locationId,generictype) {
                             });
                         } if (gridphoto.isText) {
                             let tile = document.createElement('a');
+                            let gridpostmain = document.createElement('div');
                             let tileText = document.createElement('p');
                             tilecontainer.appendChild(tile);
-                            tile.appendChild(tileText);
+                            tile.appendChild(gridpostmain);
+                            gridpostmain.appendChild(tileText);
+                            tile.classList.add('radialtext');
+                            gridpostmain.classList.add('gridpostmain');
                             tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
                             tileText.classList.add('tileText');
                             tile.classList.add('tile');
@@ -1117,53 +1109,37 @@ function createGridPostTile(locationId,generictype) {
                             function textGridPostTileTextTheme() {
                                 function textThemeBackGround() {
                                     if (gridphoto.themeMode == 'default') {
-                                        tile.classList.add('themedefault');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themedefault');
                                     } else if (gridphoto.themeMode == 'claimer') {
-                                        tile.classList.add('themeclaimer');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themeclaimer');
                                     } else if (gridphoto.themeMode == 'wriser') {
-                                        tile.classList.add('themewriser');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themewriser');
                                     } else if (gridphoto.themeMode == 'xriphor') {
-                                        tile.classList.add('themexriphor');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themexriphor');
                                     } else if (gridphoto.themeMode == 'nophia') {
-                                        tile.classList.add('themenophia');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themenophia');
                                     } else if (gridphoto.themeMode == 'oracle') {
-                                        tile.classList.add('themeoracle');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themeoracle');
                                     } else if (gridphoto.themeMode == 'folah') {
-                                        tile.classList.add('themefolah');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themefolah');
                                     } else if (gridphoto.themeMode == 'grino') {
-                                        tile.classList.add('themegrino');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themegrino');
                                     } else if (gridphoto.themeMode == 'rhisxos') {
-                                        tile.classList.add('themerhisxos');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themerhisxos');
                                     } else if (gridphoto.themeMode == 'nicklezol') {
-                                        tile.classList.add('themenicklezol');
-                                        tileText.classList.add('themenicklezolgridposttext');
+                                        gridpostmain.classList.add('themenicklezol');
                                     } else if (gridphoto.themeMode == 'mirox') {
-                                        tile.classList.add('thememirox');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('thememirox');
                                     } else if (gridphoto.themeMode == 'xosiphor') {
-                                        tile.classList.add('themexosiphor');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themexosiphor');
                                     } else if (gridphoto.themeMode == 'rhicode') {
-                                        tile.classList.add('themerhicode');
-                                        tileText.classList.add('gridposttextdark');
+                                        gridpostmain.classList.add('themerhicode');
                                     } else if (gridphoto.themeMode == 'srccod') {
-                                        tile.classList.add('themesrccode');
-                                        tileText.classList.add('text_Theme_Color_Is_White');
+                                        gridpostmain.classList.add('themesrccode');
                                     } else if (gridphoto.themeMode == 'xporiah') {
-                                        tile.classList.add('themexporiah');
-                                        tileText.classList.add('text_Theme_Color_Is_White');
+                                        gridpostmain.classList.add('themexporiah');
                                     } else if (gridphoto.themeMode == 'niph') {
-                                        tile.classList.add('themeniph');
-                                        tileText.classList.add('text_Theme_Color_Is_White');
+                                        gridpostmain.classList.add('themeniph');
                                     }
                                 }
                                 textThemeBackGround();
@@ -1172,10 +1148,10 @@ function createGridPostTile(locationId,generictype) {
                                         tileText.classList.add('TextDefault');
                                     } else if (gridphoto.fontMode == 'Times') {
                                         tileText.classList.add('TextTimes');
-                                    } else if (gridphoto.fontMode == 'Arial') {
-                                        tileText.classList.add('TextArial');
-                                    } else if (gridphoto.fontMode == 'Cursive') {
-                                        tileText.classList.add('TextCursive');
+                                    } else if (gridphoto.fontMode == 'Asul') {
+                                        tileText.classList.add('TextAsul');
+                                    } else if (gridphoto.fontMode == 'Satisfy') {
+                                        tileText.classList.add('TextSatisfy');
                                     } else if (gridphoto.fontMode == 'Great Vibes') {
                                         tileText.classList.add('TextGreatVibes');
                                     }

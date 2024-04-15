@@ -527,29 +527,29 @@ const editactivatenationality = document.querySelectorAll('.editactivatenational
 editactivatenationality.forEach(edititem => {
     edititem.addEventListener('click', () => {
         if (edititem.id != 'bio') {
-            document.querySelector('.submitbio').classList.remove('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitbio').style.display = 'none';
             document.querySelector('.addeditbio').style.display = 'none';
         } else {
-            document.querySelector('.submitbio').classList.toggle('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitbio').style.display = 'block'
             document.querySelector('.addeditbio').style.display = 'flex';
 
         } if (edititem.id != 'location') {
-            document.querySelector('.submitnationality').classList.remove('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitnationality').style.display = 'none'
             document.querySelector('.addeditnationality').style.display = 'none';
         } else {
-            document.querySelector('.submitnationality').classList.toggle('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitnationality').style.display = 'block';
             document.querySelector('.addeditnationality').style.display = 'flex';
         } if (edititem.id != 'setgender') {
-            document.querySelector('.submitgender').classList.remove('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitgender').style.display = 'none';
             document.querySelector('.setgender').style.display = 'none';
         } else {
-            document.querySelector('.submitgender').classList.toggle('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitgender').style.display = 'block';
             document.querySelector('.setgender').style.display = 'flex';
         } if (edititem.id != 'setdateofboth') {
-            document.querySelector('.submitdateofbirth').classList.remove('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitdateofbirth').style.display = 'none'
             document.querySelector('.setdateofbirth').style.display = 'none';
         } else {
-            document.querySelector('.submitdateofbirth').classList.toggle('edit_Tab_ProfileSettings_Edit_Active');
+            document.querySelector('.submitdateofbirth').style.display = 'block';
             document.querySelector('.setdateofbirth').style.display = 'flex';
         }
     })

@@ -2559,6 +2559,7 @@ main .header {
     color: var(--color-dark);
 }
 
+.gridpostmain,
 .postmain {
     min-height: 200px;
     height: max-content;
@@ -2575,6 +2576,12 @@ main .header {
     align-items: center;
     justify-content: center;
     margin: 0px;
+}
+.gridpostmain {
+    min-height: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: inherit;
 }
 
 .imagecontainerLoading {
@@ -6584,6 +6591,7 @@ a {
     text-align: center;
     width: 100%;
 }
+.edit_selectoption header,
 .license_Popup header,
 .storyviewspopup header {
     display: flex;
@@ -6598,6 +6606,7 @@ a {
     border-radius: 0px;
     overflow: visible;
 }
+.edit_selectoption header p,
 .license_Popup header p,
 .storyviewspopup header p {
     display: block;
@@ -6631,6 +6640,7 @@ a {
     transition: all 600ms ease 30ms;
     z-index: 36;
 }
+.edit_selectoption,
 .usersreportpopup,
 .userssecuritypopup,
 .license_Popup {
@@ -6647,16 +6657,20 @@ a {
     position: fixed;
     transform: translate(-50%);
     left: 50%;
-    top: 40%;
+    bottom: 10%;
     padding: 20px;
     overflow: hidden;
     gap: 5px;
     z-index: 521;
 }
+.edit_selectoption,
 .license_Popup {
     min-height: 250px;
     height: max-content;
     max-height: 73vh;
+}
+.edit_selectoption {
+    display: none;
 }
 .storyviewspopupactive {
     height: 250px;
@@ -6700,6 +6714,14 @@ a {
     padding: 5px;
     background: var(--color-white);
     box-shadow: none;
+}
+
+.viewblock:last-child {
+    border-radius: 10px 10px 25px 25px;
+}
+
+.viewblock:first-child {
+    border-radius: 25px 25px 10px 10px;
 }
 
 .viewblock.info {
@@ -7424,7 +7446,8 @@ a {
 .tilebox_Other,
 .tilebox_Public,
 .tilebox_Timeline {
-    width: 60px;
+    min-width: 60px;
+    width: max-content;
     height: 70%;
     border: none;
     display: grid;
@@ -7471,7 +7494,10 @@ a {
     transition: 300ms all ease;
     z-index: 1;
 }
-
+.tile.radialtext {
+    border-radius: 0px;
+    border: none;
+}
 .tile::before {
     content: '';
     width: 100%;
@@ -7479,7 +7505,7 @@ a {
     border: none;
     box-shadow: none;
     background: rgba(0, 0, 0, 0.247);
-    z-index: 1;
+    z-index: 4;
 }
 
 .tile:hover {
@@ -7508,7 +7534,8 @@ a {
     width: 100%;
     height: 100%;
     border-radius: 0px;
-    color: #000000;
+    color: #ffffffff;
+    z-index: 3;
 }
 
 /*MULTI VIEWING BACKGROUND*/
@@ -7675,7 +7702,7 @@ a {
     transition: all 300ms;
 }
 
-.deletebutton img {
+.deletebutton svg {
     width: 20px;
     height: 20px;
     margin-left: 2px;
@@ -7686,7 +7713,9 @@ a {
     border-radius: 0px;
     overflow: none;
 }
-
+.deletebutton svg path {
+    fill: #ffffffff;
+}
 
 .gridposttitlecover {
     width: 100%;
@@ -7730,10 +7759,8 @@ a {
 
 .gridpostcaptionactive {
     width: 100%;
-    height: max-content;
-    display: block;
-    text-align: center;
     white-space: pre-wrap;
+    -webkit-line-clamp: 70000;
 }
 
 .savedtilebox {
@@ -8092,7 +8119,7 @@ a {
     height: 70px;
     border-width: 3px;
     box-shadow: none;
-    color: var(--color-dark);
+    color: #ffffffff;
     border-color: var(--color-dark);
     margin: 5px;
     overflow: hidden;
@@ -8102,8 +8129,19 @@ a {
     -webkit-padding-start: 5px;
     -webkit-padding-end: 5px;
     white-space: pre-wrap;
+    z-index: 3;
 }
-
+.updatingmessage .gridpostmain {
+    width: 80px;
+    height: 70px;
+    border: 3px solid var(--color-dark);
+    border-radius: 10px;
+}
+.updatingmessage .gridpostmain p {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
 .videosavingmessage {
     display: flex;
     flex-direction: row;

@@ -411,10 +411,10 @@ function createPhotoPostOnTimeLine() {
                                 textPost.classList.add('TextDefault');
                             } else if (photo.fontMode == 'Times') {
                                 textPost.classList.add('TextTimes');
-                            } else if (photo.fontMode == 'Arial') {
-                                textPost.classList.add('TextArial');
-                            } else if (photo.fontMode == 'Cursive') {
-                                textPost.classList.add('TextCursive');
+                            } else if (photo.fontMode == 'Asul') {
+                                textPost.classList.add('TextAsul');
+                            } else if (photo.fontMode == 'Satisfy') {
+                                textPost.classList.add('TextSatisfy');
                             } else if (photo.fontMode == 'Great Vibes') {
                                 textPost.classList.add('TextGreatVibes');
                             }

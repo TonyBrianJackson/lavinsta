@@ -102,54 +102,52 @@ function Creation_Mark_Video(mark_Image, mark_Text) {
 }
 function Creation_Mark_Text(mark_Image, mark_Text, themeMode, fontMode) {
     let updatingmessage = document.createElement('div');
+    let gridpostmain = document.createElement('div');
     let innermessage = document.createElement('span');
     let updatingText = document.createElement('p');
     document.body.appendChild(updatingmessage);
-    updatingmessage.appendChild(updatingText);
+    updatingmessage.appendChild(gridpostmain);
     updatingmessage.appendChild(innermessage);
+    gridpostmain.appendChild(updatingText);
     document.body.appendChild(updatingmessage);
     innermessage.textContent = mark_Text;
+    gridpostmain.classList.add('gridpostmain');
     updatingmessage.classList.add('updatingmessage');
     updatingText.textContent = mark_Image;
     function textTheme() {
         function textThemeBackGround() {
             if (themeMode == 'default') {
-                updatingText.classList.add('themedefault');
+                gridpostmain.classList.add('themedefault');
             } else if (themeMode == 'claimer') {
-                updatingText.classList.add('themeclaimer');
+                gridpostmain.classList.add('themeclaimer');
             } else if (themeMode == 'wriser') {
-                updatingText.classList.add('themewriser');
+                gridpostmain.classList.add('themewriser');
             } else if (themeMode == 'xriphor') {
-                updatingText.classList.add('themexriphor');
+                gridpostmain.classList.add('themexriphor');
             } else if (themeMode == 'nophia') {
-                updatingText.classList.add('themenophia');
+                gridpostmain.classList.add('themenophia');
             } else if (themeMode == 'oracle') {
-                updatingText.classList.add('themeoracle');
+                gridpostmain.classList.add('themeoracle');
             } else if (themeMode == 'folah') {
-                updatingText.classList.add('themefolah');
+                gridpostmain.classList.add('themefolah');
             } else if (themeMode == 'grino') {
-                updatingText.classList.add('themegrino');
+                gridpostmain.classList.add('themegrino');
             } else if (themeMode == 'rhisxos') {
-                updatingText.classList.add('themerhisxos');
+                gridpostmain.classList.add('themerhisxos');
             } else if (themeMode == 'nicklezol') {
-                updatingText.classList.add('themenicklezol');
-                updatingText.classList.add('themenicklezoltext');
+                gridpostmain.classList.add('themenicklezol');
             } else if (themeMode == 'mirox') {
-                updatingText.classList.add('thememirox');
+                gridpostmain.classList.add('thememirox');
             } else if (themeMode == 'xosiphor') {
-                updatingText.classList.add('themexosiphor');
+                gridpostmain.classList.add('themexosiphor');
             } else if (themeMode == 'rhicode') {
-                updatingText.classList.add('themerhicode');
-                updatingText.classList.add('gridposttextToviewWhite');
+                gridpostmain.classList.add('themerhicode');
             } else if (themeMode == 'srccod') {
-                updatingText.classList.add('themesrccode');
-                updatingText.classList.add('text_Theme_Color_Is_White');
+                gridpostmain.classList.add('themesrccode');
             } else if (themeMode == 'xporiah') {
-                updatingText.classList.add('themexporiah');
-                updatingText.classList.add('text_Theme_Color_Is_White');
+                gridpostmain.classList.add('themexporiah');
             } else if (themeMode == 'niph') {
-                updatingText.classList.add('themeniph');
-                updatingText.classList.add('text_Theme_Color_Is_White');
+                gridpostmain.classList.add('themeniph');
             }
         }
         textThemeBackGround();
@@ -158,10 +156,10 @@ function Creation_Mark_Text(mark_Image, mark_Text, themeMode, fontMode) {
                 updatingText.classList.add('TextDefault');
             } else if (fontMode == 'Times') {
                 updatingText.classList.add('TextTimes');
-            } else if (fontMode == 'Arial') {
-                updatingText.classList.add('TextArial');
-            } else if (fontMode == 'Cursive') {
-                updatingText.classList.add('TextCursive');
+            } else if (fontMode == 'Asul') {
+                updatingText.classList.add('TextAsul');
+            } else if (fontMode == 'Satisfy') {
+                updatingText.classList.add('TextSatisfy');
             } else if (fontMode == 'Great Vibes') {
                 updatingText.classList.add('TextGreatVibes');
             }
@@ -980,10 +978,10 @@ function create_Main_Story_Archieve(locationId) {
                                 gridposttextToview.classList.add('TextDefault');
                             } else if (fontMode.textContent == 'Times') {
                                 gridposttextToview.classList.add('TextTimes');
-                            } else if (fontMode.textContent == 'Arial') {
-                                gridposttextToview.classList.add('TextArial');
-                            } else if (fontMode.textContent == 'Cursive') {
-                                gridposttextToview.classList.add('TextCursive');
+                            } else if (fontMode.textContent == 'Asul') {
+                                gridposttextToview.classList.add('TextAsul');
+                            } else if (fontMode.textContent == 'Satisfy') {
+                                gridposttextToview.classList.add('TextSatisfy');
                             } else if (fontMode.textContent == 'Great Vibes') {
                                 gridposttextToview.classList.add('TextGreatVibes');
                             }

@@ -1187,7 +1187,9 @@
         margin: 2px;
         cursor: pointer;
     }
-
+    .license_Popup > button {
+        padding: 9px;
+    }
     .license_Popup > button,
     .frienddisconnect,
     .personaddbutton,
@@ -1197,7 +1199,7 @@
     }
 
     .logIn_Button_Active {
-        background: white;
+        background: var(--color-white);
         border: none;
         color: var(--color-dark);
     }
