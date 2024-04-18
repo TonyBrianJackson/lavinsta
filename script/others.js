@@ -363,7 +363,11 @@ function createpostLikeLicense(container, locationId) {
                     LogInFormData.forEach(user => {
                         if (user.user_Id === license.posterId) {
                             viewblockimg.src = user.user_ProfilePicture;
-                            viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                            let username;
+                            user.user_Mid_Name ? username =
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname;
+                            viewname.innerHTML = username;
                             function filter_Image() {
                                 //profile_filter 
                                 if (user.user_ProfilePicture_Filter == 'default') {
@@ -476,7 +480,12 @@ function createcommentsLikeLicense(container, locationId) {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === license.posterId) {
                                 viewblockimg.src = user.user_ProfilePicture;
-                                viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+
+                                let username;
+                                user.user_Mid_Name ? username =
+                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                viewname.innerHTML = username;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -630,7 +639,12 @@ function CreationOfCommentsRepliesLikesLicense(container, locationId) {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === license.posterId) {
                                     viewblockimg.src = user.user_ProfilePicture;
-                                    viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+
+                                    let username;
+                                    user.user_Mid_Name ? username =
+                                        user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                        username = user.user_Firstname + ' ' + user.user_Surname;
+                                    viewname.innerHTML = username;
                                     function filter_Image() {
                                         if (user.user_ProfilePicture_Filter == 'default') {
                                             viewblockimg.classList.add('--color-default');
@@ -752,7 +766,12 @@ function create_Main_Story_Archieve(locationId) {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === photo.posterId) {
                                     posterImg.src = user.user_ProfilePicture;
-                                    posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+
+                                    let username;
+                                    user.user_Mid_Name ? username =
+                                        user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                        username = user.user_Firstname + ' ' + user.user_Surname;
+                                    posterName.innerHTML = username;
                                     function filter_Image() {
                                         //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {

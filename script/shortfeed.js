@@ -380,7 +380,11 @@ function Create_Short() {
                     LogInFormData.forEach(user => {
                         if (user.user_Id === photo.posterId) {
                             authorsImg.src = user.user_ProfilePicture;
-                            name.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                            let username;
+                            user.user_Mid_Name ? username =
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname;
+                            name.innerHTML = username;
                             function filter_Image() {
                                 //profile_filter 
                                 if (user.user_ProfilePicture_Filter == 'default') {

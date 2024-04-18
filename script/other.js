@@ -25,10 +25,71 @@ function create_Trash_Items() {
                             gridimg.src = photo.Property_Src;
                             gridimg.classList.add('gridimg');
                         } if (photo.type == 'video') {
-                            let gridimg = document.createElement('img');
+                            let gridimg = document.createElement('video');
                             griditems.appendChild(gridimg);
                             gridimg.src = photo.Property_Src;
                             gridimg.classList.add('gridimg');
+                        } if (photo.type == 'text') {
+                            let gridpostmain = document.createElement('div');
+                            let gridimg = document.createElement('p');
+                            griditems.appendChild(gridpostmain);
+                            gridpostmain.appendChild(gridimg);
+                            gridimg.textContent = photo.Property_Src;
+                            gridpostmain.classList.add('gridpostmain');
+                            gridimg.classList.add('gridposttext');
+                            function textGridPostTextTheme() {
+                                function textThemeBackGround() {
+                                    if (photo.themeMode == 'default') {
+                                        gridpostmain.classList.add('themedefault');
+                                    } else if (photo.themeMode == 'claimer') {
+                                        gridpostmain.classList.add('themeclaimer');
+                                    } else if (photo.themeMode == 'wriser') {
+                                        gridpostmain.classList.add('themewriser');
+                                    } else if (photo.themeMode == 'xriphor') {
+                                        gridpostmain.classList.add('themexriphor');
+                                    } else if (photo.themeMode == 'nophia') {
+                                        gridpostmain.classList.add('themenophia');
+                                    } else if (photo.themeMode == 'oracle') {
+                                        gridpostmain.classList.add('themeoracle');
+                                    } else if (photo.themeMode == 'folah') {
+                                        gridpostmain.classList.add('themefolah');
+                                    } else if (photo.themeMode == 'grino') {
+                                        gridpostmain.classList.add('themegrino');
+                                    } else if (photo.themeMode == 'rhisxos') {
+                                        gridpostmain.classList.add('themerhisxos');
+                                    } else if (photo.themeMode == 'nicklezol') {
+                                        gridpostmain.classList.add('themenicklezol');
+                                    } else if (photo.themeMode == 'mirox') {
+                                        gridpostmain.classList.add('thememirox');
+                                    } else if (photo.themeMode == 'xosiphor') {
+                                        gridpostmain.classList.add('themexosiphor');
+                                    } else if (photo.themeMode == 'rhicode') {
+                                        gridpostmain.classList.add('themerhicode');
+                                    } else if (photo.themeMode == 'srccod') {
+                                        gridpostmain.classList.add('themesrccode');
+                                    } else if (photo.themeMode == 'xporiah') {
+                                        gridpostmain.classList.add('themexporiah');
+                                    } else if (photo.themeMode == 'niph') {
+                                        gridpostmain.classList.add('themeniph');
+                                    }
+                                }
+                                textThemeBackGround();
+                                function textThemeFont() {
+                                    if (photo.fontMode == 'Default') {
+                                        gridimg.classList.add('TextDefault');
+                                    } else if (photo.fontMode == 'Times') {
+                                        gridimg.classList.add('TextTimes');
+                                    } else if (photo.fontMode == 'Asul') {
+                                        gridimg.classList.add('TextAsul');
+                                    } else if (photo.fontMode == 'Satisfy') {
+                                        gridimg.classList.add('TextSatisfy');
+                                    } else if (photo.fontMode == 'Great Vibes') {
+                                        gridimg.classList.add('TextGreatVibes');
+                                    }
+                                }
+                                textThemeFont();
+                            }
+                            textGridPostTextTheme();
                         }
                         griditems.addEventListener('click', () => {
                             create_Main_Trash_Items(photo.id);
@@ -56,17 +117,17 @@ function clearItemsInStoryTrash() {
         column.remove();
     });
 }
-document.querySelector('.savedbackarrow').addEventListener('click',()=> {
+document.querySelector('.savedbackarrow').addEventListener('click', () => {
     clearItemsInSaved();
 });
-document.querySelector('.Arrpost').addEventListener('click',()=> {
+document.querySelector('.Arrpost').addEventListener('click', () => {
     clearItemsInTrash();
 });
-document.querySelector('#deletepst').addEventListener('click',()=> {
+document.querySelector('#deletepst').addEventListener('click', () => {
     create_Trash_Items();
 });
 
-document.querySelector('#saved').addEventListener('click',()=> {
+document.querySelector('#saved').addEventListener('click', () => {
     newSaved_Script();
 })
 async function create_Main_Trash_Items(locationId) {
@@ -77,7 +138,6 @@ async function create_Main_Trash_Items(locationId) {
             if (locationId === photo.id) {
                 if (photo.id === locationId) {
                     let savedtilebox = document.createElement('nav');
-
                     let itemsviewclosebutton = document.createElement('span');
                     let itemsviewonlargescale = document.createElement('section');
                     let largescalewideviewcontainer = document.createElement('div');
@@ -136,7 +196,7 @@ async function create_Main_Trash_Items(locationId) {
                     function Create_GridPost_Options(anything) {
                         let gridView_Header = document.createElement('header');
                         let more = document.createElement('span');
-    
+
                         function create_Grid_PostHeader() {
                             let gridpostNameAndImg = document.createElement('div');
                             let nameAndImgWrapper = document.createElement('div');
@@ -167,7 +227,11 @@ async function create_Main_Trash_Items(locationId) {
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === photo.posterId) {
                                         posterImg.src = user.user_ProfilePicture;
-                                        posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                        let username;
+                                        user.user_Mid_Name ? username =
+                                            user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                            username = user.user_Firstname + ' ' + user.user_Surname;
+                                        posterName.innerHTML = username;
                                         function filter_Image() {
                                             //profile_filter 
                                             if (user.user_ProfilePicture_Filter == 'default') {
@@ -213,7 +277,7 @@ async function create_Main_Trash_Items(locationId) {
                         let first_Option = document.createElement('span');
                         let second_Option = document.createElement('span');
                         let exit = document.createElement('span');
-        
+
                         gridpostimagecontainer.insertAdjacentElement("afterend", options);
                         options.appendChild(exit);
                         options.appendChild(first_Option);
@@ -221,7 +285,7 @@ async function create_Main_Trash_Items(locationId) {
                         first_Option.innerHTML = deletesvg;
                         second_Option.innerHTML = downloadsvg;
                         exit.innerHTML = undo2;
-        
+
                         options.classList.add('options');
                         first_Option.classList.add('headerbtns');
                         second_Option.classList.add('headerbtns');
@@ -314,72 +378,82 @@ async function create_Main_Trash_Items(locationId) {
                         }
                         filter_PostImage();
                     } if (photo.type == 'text') {
-                        let gridposttextToview = document.createElement('p');
-                        gridpostimagecontainer.appendChild(gridposttextToview);
-                        gridposttextToview.classList.add('gridposttextToview');
-                        gridposttextToview.textContent = photo.Property_Src;
-
-                        gridposttextToview.style.display = 'block';
+                        let postmain = document.createElement('div');
+                        let textPost = document.createElement('p');
+                        gridpostimagecontainer.appendChild(postmain);
+                        postmain.appendChild(textPost);
+                        textPost.classList.add('textPost');
+                        postmain.classList.add('postmain')
+                        textPost.textContent = photo.Property_Src;
+                        textPost.textContent.split(" ").forEach(texttitle => {
+                            prefix.forEach(unit => {
+                                if (texttitle.indexOf(unit.prefixName) != -1) {
+                                    if (unit.prefixName == 'https://') {
+                                        let newtitle = textPost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        textPost.innerHTML = newtitle;
+                                    } else {
+                                        let newtitle = textPost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                                        textPost.innerHTML = newtitle;
+                                    }
+                                }
+                            });
+                        });
                         function textGridPostTextTheme() {
                             function textThemeBackGround() {
                                 if (photo.themeMode == 'default') {
-                                    gridposttextToview.classList.add('themedefault');
+                                    postmain.classList.add('themedefault');
                                 } else if (photo.themeMode == 'claimer') {
-                                    gridposttextToview.classList.add('themeclaimer');
+                                    postmain.classList.add('themeclaimer');
                                 } else if (photo.themeMode == 'wriser') {
-                                    gridposttextToview.classList.add('themewriser');
+                                    postmain.classList.add('themewriser');
                                 } else if (photo.themeMode == 'xriphor') {
-                                    gridposttextToview.classList.add('themexriphor');
+                                    postmain.classList.add('themexriphor');
                                 } else if (photo.themeMode == 'nophia') {
-                                    gridposttextToview.classList.add('themenophia');
+                                    postmain.classList.add('themenophia');
                                 } else if (photo.themeMode == 'oracle') {
-                                    gridposttextToview.classList.add('themeoracle');
+                                    postmain.classList.add('themeoracle');
                                 } else if (photo.themeMode == 'folah') {
-                                    gridposttextToview.classList.add('themefolah');
+                                    postmain.classList.add('themefolah');
                                 } else if (photo.themeMode == 'grino') {
-                                    gridposttextToview.classList.add('themegrino');
+                                    postmain.classList.add('themegrino');
                                 } else if (photo.themeMode == 'rhisxos') {
-                                    gridposttextToview.classList.add('themerhisxos');
+                                    postmain.classList.add('themerhisxos');
                                 } else if (photo.themeMode == 'nicklezol') {
-                                    gridposttextToview.classList.add('themenicklezol');
-                                    gridposttextToview.classList.add('gridposttextToviewWhite');
-                                    gridposttextToview.classList.add('themenicklezoltext');
+                                    postmain.classList.add('themenicklezol');
                                 } else if (photo.themeMode == 'mirox') {
-                                    gridposttextToview.classList.add('thememirox');
+                                    postmain.classList.add('thememirox');
                                 } else if (photo.themeMode == 'xosiphor') {
-                                    gridposttextToview.classList.add('themexosiphor');
+                                    postmain.classList.add('themexosiphor');
                                 } else if (photo.themeMode == 'rhicode') {
-                                    gridposttextToview.classList.add('themerhicode');
-                                    gridposttextToview.classList.add('gridposttextToviewWhite');
+                                    postmain.classList.add('themerhicode');
                                 } else if (photo.themeMode == 'srccod') {
-                                    gridposttextToview.classList.add('themesrccode');
-                                    gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                    postmain.classList.add('themesrccode');
                                 } else if (photo.themeMode == 'xporiah') {
-                                    gridposttextToview.classList.add('themexporiah');
-                                    gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                    postmain.classList.add('themexporiah');
                                 } else if (photo.themeMode == 'niph') {
-                                    gridposttextToview.classList.add('themeniph');
-                                    gridposttextToview.classList.add('text_Theme_Color_Is_White');
+                                    postmain.classList.add('themeniph');
                                 }
                             }
                             textThemeBackGround();
                             function textThemeFont() {
                                 if (photo.fontMode == 'Default') {
-                                    gridposttextToview.classList.add('TextDefault');
+                                    textPost.classList.add('TextDefault');
                                 } else if (photo.fontMode == 'Times') {
-                                    gridposttextToview.classList.add('TextTimes');
+                                    textPost.classList.add('TextTimes');
                                 } else if (photo.fontMode == 'Asul') {
-                                    gridposttextToview.classList.add('TextAsul');
+                                    textPost.classList.add('TextAsul');
                                 } else if (photo.fontMode == 'Satisfy') {
-                                    gridposttextToview.classList.add('TextSatisfy');
+                                    textPost.classList.add('TextSatisfy');
                                 } else if (photo.fontMode == 'Great Vibes') {
-                                    gridposttextToview.classList.add('TextGreatVibes');
+                                    textPost.classList.add('TextGreatVibes');
                                 }
                             }
                             textThemeFont();
                         }
                         textGridPostTextTheme();
-
+                        textPost.addEventListener('click', () => {
+                            textPost.classList.toggle('textPostmoreorless');
+                        });
                     } if (photo.type == 'video') {
                         let gridpostimagetoview = document.createElement('video');
                         let gridpostcover = document.createElement('div');
@@ -526,21 +600,125 @@ function createTilePost(locationId) {
             Trash.forEach(photo => {
                 if (tilebox.id === photo.posterId + 'UXer_TrUXheDTYle_bX') {
                     if (photo.posterId === locationId) {
-                        let savedtile = document.createElement('div');
                         if (photo.type == 'photo') {
-                            let savedtileImg = document.createElement('img');
-                            savedtile.appendChild(savedtileImg);
-                            savedtileImg.src = photo.Property_Src;
+                            let tile = document.createElement('a');
+                            let tileImg = document.createElement('img');
+                            tilecontainer.appendChild(tile);
+                            tile.appendChild(tileImg);
+                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tileImg.classList.add('tileimg');
+                            tile.classList.add('tile');
+                            if (gridphoto.children) {
+                                let children = gridphoto.children;
+                                for (let i = 0; i < children.length; i++) {
+                                    tileImg.src = children[0].Property_Src;
+                                }
+                            } else {
+                                tileImg.src = gridphoto.Property_Src;
+                            }
+                            function filter_Image() {
+                                if (gridphoto.filter == 'default') {
+                                    tileImg.classList.add('--color-default');
+                                } else if (gridphoto.filter == 'gray') {
+                                    tileImg.classList.add('--color-gray');
+                                } else if (gridphoto.filter == 'contrast') {
+                                    tileImg.classList.add('--color-contrast');
+                                } else if (gridphoto.filter == 'bright') {
+                                    tileImg.classList.add('--color-bright');
+                                } else if (gridphoto.filter == 'blur') {
+                                    tileImg.classList.add('--color-blur');
+                                } else if (gridphoto.filter == 'invert') {
+                                    tileImg.classList.add('--color-invert');
+                                } else if (gridphoto.filter == 'sepia') {
+                                    tileImg.classList.add('--color-sepia');
+                                } else if (gridphoto.filter == 'hue-rotate') {
+                                    tileImg.classList.add('--color-hue-rotate');
+                                } else if (gridphoto.filter == 'opacity') {
+                                    tileImg.classList.add('--color-opacity');
+                                } else if (gridphoto.filter == 'satulate') {
+                                    tileImg.classList.add('--color-satulate');
+                                }
+                            }
+                            filter_Image();
+                            tile.addEventListener('click', () => {
+                                create_Main_Trash_Items(photo.id);
+                            });
                         } if (photo.type == 'video') {
                             let savedtileImg = document.createElement('video');
                             savedtile.appendChild(savedtileImg);
                             savedtileImg.src = photo.Property_Src;
+                            tile.addEventListener('click', () => {
+                                create_Main_Trash_Items(photo.id);
+                            });
+                        } if (photo.type == 'text') {
+                            let tile = document.createElement('a');
+                            let gridpostmain = document.createElement('div');
+                            let tileText = document.createElement('p');
+                            tilebox.appendChild(tile);
+                            tile.appendChild(gridpostmain);
+                            gridpostmain.appendChild(tileText);
+                            tile.classList.add('radialtext');
+                            gridpostmain.classList.add('gridpostmain');
+                            tileText.classList.add('tileText');
+                            tile.classList.add('tile');
+                            tileText.textContent = photo.Property_Src;
+                            function textGridPostTileTextTheme() {
+                                function textThemeBackGround() {
+                                    if (photo.themeMode == 'default') {
+                                        gridpostmain.classList.add('themedefault');
+                                    } else if (photo.themeMode == 'claimer') {
+                                        gridpostmain.classList.add('themeclaimer');
+                                    } else if (photo.themeMode == 'wriser') {
+                                        gridpostmain.classList.add('themewriser');
+                                    } else if (photo.themeMode == 'xriphor') {
+                                        gridpostmain.classList.add('themexriphor');
+                                    } else if (photo.themeMode == 'nophia') {
+                                        gridpostmain.classList.add('themenophia');
+                                    } else if (photo.themeMode == 'oracle') {
+                                        gridpostmain.classList.add('themeoracle');
+                                    } else if (photo.themeMode == 'folah') {
+                                        gridpostmain.classList.add('themefolah');
+                                    } else if (photo.themeMode == 'grino') {
+                                        gridpostmain.classList.add('themegrino');
+                                    } else if (photo.themeMode == 'rhisxos') {
+                                        gridpostmain.classList.add('themerhisxos');
+                                    } else if (photo.themeMode == 'nicklezol') {
+                                        gridpostmain.classList.add('themenicklezol');
+                                    } else if (photo.themeMode == 'mirox') {
+                                        gridpostmain.classList.add('thememirox');
+                                    } else if (photo.themeMode == 'xosiphor') {
+                                        gridpostmain.classList.add('themexosiphor');
+                                    } else if (photo.themeMode == 'rhicode') {
+                                        gridpostmain.classList.add('themerhicode');
+                                    } else if (photo.themeMode == 'srccod') {
+                                        gridpostmain.classList.add('themesrccode');
+                                    } else if (photo.themeMode == 'xporiah') {
+                                        gridpostmain.classList.add('themexporiah');
+                                    } else if (photo.themeMode == 'niph') {
+                                        gridpostmain.classList.add('themeniph');
+                                    }
+                                }
+                                textThemeBackGround();
+                                function textThemeFont() {
+                                    if (photo.fontMode == 'Default') {
+                                        tileText.classList.add('TextDefault');
+                                    } else if (photo.fontMode == 'Times') {
+                                        tileText.classList.add('TextTimes');
+                                    } else if (photo.fontMode == 'Asul') {
+                                        tileText.classList.add('TextAsul');
+                                    } else if (photo.fontMode == 'Satisfy') {
+                                        tileText.classList.add('TextSatisfy');
+                                    } else if (photo.fontMode == 'Great Vibes') {
+                                        tileText.classList.add('TextGreatVibes');
+                                    }
+                                }
+                                textThemeFont();
+                            }
+                            textGridPostTileTextTheme();
+                            tile.addEventListener('click', () => {
+                                create_Main_Trash_Items(photo.id);
+                            });
                         }
-                        tilebox.appendChild(savedtile);
-                        savedtile.classList.add('savedtile');
-                        savedtile.addEventListener('click', () => {
-                            create_Main_Trash_Items(photo.id);
-                        });
                     }
                 }
             });
@@ -580,7 +758,7 @@ function newSaved_Script() {
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.src = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
-                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
                                     });
                                     griditems.addEventListener('click', event => {
                                         createMain_GridPost(feed.id, feed.Property_Src);
@@ -623,7 +801,7 @@ function newSaved_Script() {
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.src = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
-                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
                                     });
                                     griditems.addEventListener('click', event => {
                                         createMain_GridPost(feed.id, feed.Property_Src);
@@ -644,7 +822,7 @@ function newSaved_Script() {
                                     deletebutton.classList.add('deletebutton');
                                     gridimg.textContent = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
-                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
                                     });
                                     griditems.addEventListener('click', event => {
                                         createMain_GridPost(feed.id, feed.Property_Src);
@@ -712,7 +890,7 @@ function newSaved_Script() {
     }
     create_Saved();
 }
-function deleting_Saved_Post_Script(savedItems,LogInFormData,locationId,id) {
+function deleting_Saved_Post_Script(savedItems, LogInFormData, locationId, id) {
     let confirmation_popup = document.createElement('div');
     let confirmationflex = document.createElement('div');
     let confirmationflex1 = document.createElement('div');
@@ -793,7 +971,7 @@ function createSavedVideos() {
                                     reelgridusersphoto.classList.add('reelgridusersphoto');
 
                                     gridvideoremove.addEventListener('click', () => {
-                                        deleting_Saved_Post_Script(savedItems,LogInFormData,photo.savedId,photo.id);
+                                        deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
                                         gridvideomenu.classList.toggle('gridmenuactive');
                                     });
                                     gridvideoremove.appendChild(gridmenudeleteimg);
@@ -829,7 +1007,11 @@ function createSavedVideos() {
                                         LogInFormData.forEach(user => {
                                             if (user.user_Id === feed.posterId) {
                                                 reelgridposterimg.src = user.user_ProfilePicture;
-                                                savedvideogridname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                                let username;
+                                                user.user_Mid_Name ? username =
+                                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                                savedvideogridname.innerHTML = username;
                                                 function filter_Image() {
                                                     //profile_filter 
                                                     if (user.user_ProfilePicture_Filter == 'default') {

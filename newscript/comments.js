@@ -1,4 +1,9 @@
 //comments
+function removemesgBox() {
+    document.querySelectorAll('.mesgBox').forEach(box => {
+        box.remove();
+    });
+};
 function CreationOfComments(section, locationId) {
     Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
     document.querySelectorAll('.commentsection').forEach(session => {
@@ -16,7 +21,7 @@ function CreationOfComments(section, locationId) {
                     let commentimg = document.createElement('img');
                     let commentname = document.createElement('b');
                     let commentmesg = document.createElement('div');
-                    let commentdelete = document.createElement('span');
+                    let commentdelete = document.createElement('div');
                     let commenttime = document.createElement('span');
                     let commentpostcontainer = document.createElement('div');
                     let commentpost = document.createElement('div');
@@ -43,12 +48,6 @@ function CreationOfComments(section, locationId) {
                         });
                     });
 
-                    commentmesg.addEventListener('click', () => {
-                        commentdelete.style.display = 'flex';
-                        setTimeout(() => {
-                            commentdelete.style.display = 'none';
-                        }, 3000);
-                    })
                     function view_Options() {
                         let options = document.createElement('div');
                         let first_Option = document.createElement('span');
@@ -104,11 +103,13 @@ function CreationOfComments(section, locationId) {
                             first_Option.remove();
                             second_Option.remove();
                             third_Option.remove();
+                            fouth_Option.remove();
                             let mesgBox = document.createElement('div');
                             let mesgTextBox = document.createElement('input');
                             let sendmesg = document.createElement('div');
                             options.appendChild(mesgBox);
                             mesgBox.appendChild(mesgTextBox);
+                            mesgTextBox.focus();
                             options.appendChild(sendmesg);
                             sendmesg.innerHTML = sendsvg
                             sendmesg.classList.add('headerbtns');
@@ -237,7 +238,6 @@ function CreationOfComments(section, locationId) {
                     commentnameandimg.appendChild(commentname);
                     commentimagecontainer.appendChild(commentimg);
 
-                    commentmesg.appendChild(commentdelete);
                     commentmesg.appendChild(commentnameandimg);
                     commentmesg.appendChild(commenttime);
                     commentmesg.appendChild(commentpostcontainer);
@@ -246,6 +246,7 @@ function CreationOfComments(section, locationId) {
                     reactsflex.appendChild(likecounts);
                     reactsflex.appendChild(commentreply);
                     reactsflex.appendChild(replycommentcount);
+                    reactsflex.appendChild(commentdelete);
                     //COMMENTS LIKE COUNT
                     replycommentcount.id = comment.id;
                     likecounts.id = comment.id;
@@ -259,7 +260,7 @@ function CreationOfComments(section, locationId) {
                     });
                     likecounts.classList.add('likecounts');
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id, 'commentlike',comment.likes.length);
+                        LikePopupsAndMore(comment.id, 'commentlike', comment.likes.length);
                     });
 
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -306,7 +307,7 @@ function CreationOfComments(section, locationId) {
 
                     commentpostcontainer.appendChild(commentpost);
                     commentpostcontainer.classList.add('commentpostcontainer');
-                    commentdelete.innerHTML = moresvg;
+                    commentdelete.innerHTML = settingssvg;
                     expand.classList.add('expand');
                     commentdelete.classList.add('commentdelete');
                     commentdelete.classList.add('headerbtns');
@@ -375,7 +376,10 @@ function CreationOfComments(section, locationId) {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === comment.posterId) {
                                 commentimg.src = user.user_ProfilePicture;
-                                commentname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username = user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                commentname.innerHTML = username;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -440,7 +444,7 @@ function CreationOfComments(section, locationId) {
 
                     let likecounts = document.createElement('span');
                     let replycommentcount = document.createElement('span')
-                    let commentdelete = document.createElement('span');
+                    let commentdelete = document.createElement('div');
                     let expand = document.createElement('span');
                     let commenttime = document.createElement('span');
 
@@ -457,12 +461,6 @@ function CreationOfComments(section, locationId) {
                         });
                     });
 
-                    commentmesg.addEventListener('click', () => {
-                        commentdelete.style.display = 'flex';
-                        setTimeout(() => {
-                            commentdelete.style.display = 'none';
-                        }, 3000);
-                    })
 
                     function view_Options() {
                         let options = document.createElement('div');
@@ -470,15 +468,14 @@ function CreationOfComments(section, locationId) {
                         let second_Option = document.createElement('span');
                         let third_Option = document.createElement('span');
                         let exit = document.createElement('span');
-
                         first_Option.id = comment.id;
                         section.insertAdjacentElement("afterend", options);
                         options.appendChild(exit);
                         options.appendChild(first_Option);
                         options.appendChild(second_Option);
                         options.appendChild(third_Option);
-                        second_Option.innerHTML = commentsvg;
                         first_Option.innerHTML = recreatesvg;
+                        second_Option.innerHTML = commentsvg;
                         third_Option.innerHTML = likesvg;
                         exit.innerHTML = undo;
 
@@ -494,6 +491,32 @@ function CreationOfComments(section, locationId) {
                         third_Option.addEventListener('click', () => {
                             likecomment();
                         });
+                        if (comment.caption) {
+                            let fouth_Option = document.createElement('span');
+                            options.appendChild(fouth_Option);
+                            fouth_Option.innerHTML = copysvg;
+                            fouth_Option.classList.add('headerbtns');
+
+                            function copyTextPost(text) {
+                                if (navigator.clipboard) {
+                                    try {
+                                        const toCopy = text;
+                                        navigator.clipboard.writeText(toCopy);
+                                        create_Message('text copied');
+                                    } catch (err) {
+                                        console.error('Failed to copy: ', err);
+                                        create_Message('unable to copy');
+                                    }
+                                }
+                            }
+                            fouth_Option.addEventListener('click', () => {
+                                copyTextPost(comment.caption);
+                                removeOptions();
+                            });
+                            first_Option.addEventListener('click', () => {
+                                fouth_Option.remove();
+                            });
+                        }
                         function create_replyInputs() {
                             first_Option.remove();
                             second_Option.remove();
@@ -503,6 +526,7 @@ function CreationOfComments(section, locationId) {
                             let sendmesg = document.createElement('div');
                             options.appendChild(mesgBox);
                             mesgBox.appendChild(mesgTextBox);
+                            mesgTextBox.focus();
                             options.appendChild(sendmesg);
                             sendmesg.innerHTML = sendsvg
                             sendmesg.classList.add('headerbtns');
@@ -560,6 +584,32 @@ function CreationOfComments(section, locationId) {
                         third_Option.addEventListener('click', () => {
                             likecomment();
                         });
+                        if (comment.caption) {
+                            let fouth_Option = document.createElement('span');
+                            options.appendChild(fouth_Option);
+                            fouth_Option.innerHTML = copysvg;
+                            fouth_Option.classList.add('headerbtns');
+
+                            function copyTextPost(text) {
+                                if (navigator.clipboard) {
+                                    try {
+                                        const toCopy = text;
+                                        navigator.clipboard.writeText(toCopy);
+                                        create_Message('text copied');
+                                    } catch (err) {
+                                        console.error('Failed to copy: ', err);
+                                        create_Message('unable to copy');
+                                    }
+                                }
+                            }
+                            fouth_Option.addEventListener('click', () => {
+                                copyTextPost(comment.caption);
+                                removeOptions();
+                            });
+                            first_Option.addEventListener('click', () => {
+                                fouth_Option.remove();
+                            });
+                        }
                         exit.addEventListener('click', () => {
                             options.remove();
                         });
@@ -613,7 +663,6 @@ function CreationOfComments(section, locationId) {
 
                     commentmesg.id = comment.inputId;
                     section.appendChild(commentmesg);
-                    commentmesg.appendChild(commentdelete);
                     commentmesg.appendChild(commentnameandimg);
                     commentmesg.appendChild(commenttime);
                     commentmesg.appendChild(commentpostcontainer);
@@ -628,6 +677,7 @@ function CreationOfComments(section, locationId) {
                     reactsflex.appendChild(likecounts);
                     reactsflex.appendChild(commentreply);
                     reactsflex.appendChild(replycommentcount);
+                    reactsflex.appendChild(commentdelete);
                     commentreact.classList.add('replylike');
                     commentreply.classList.add('replylike');
                     function themeCommentMode() {
@@ -660,7 +710,7 @@ function CreationOfComments(section, locationId) {
                     commentdelete.classList.add('commentdelete');
                     commentdelete.classList.add('headerbtns');
                     expand.innerText = 'see more...';
-                    commentdelete.innerHTML = moresvg;
+                    commentdelete.innerHTML = settingssvg;
 
                     reactsflex.classList.add('reactsflex');
                     expand.classList.add('expand');
@@ -731,7 +781,7 @@ function CreationOfComments(section, locationId) {
                     });
 
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id, 'commentlike',comment.likes.length);
+                        LikePopupsAndMore(comment.id, 'commentlike', comment.likes.length);
                     });
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
@@ -785,7 +835,11 @@ function CreationOfComments(section, locationId) {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === comment.posterId) {
                                 commentimg.src = user.user_ProfilePicture;
-                                commentname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username = 
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                commentname.innerHTML = username;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -856,7 +910,7 @@ function CreationOfComments(section, locationId) {
 
                     let likecounts = document.createElement('span');
                     let replycommentcount = document.createElement('span');
-                    let commentdelete = document.createElement('span');
+                    let commentdelete = document.createElement('div');
                     let expand = document.createElement('span');
 
 
@@ -872,12 +926,6 @@ function CreationOfComments(section, locationId) {
                         });
                     });
 
-                    commentmesg.addEventListener('click', () => {
-                        commentdelete.style.display = 'flex';
-                        setTimeout(() => {
-                            commentdelete.style.display = 'none';
-                        }, 3000);
-                    })
 
                     function view_Options() {
                         let options = document.createElement('div');
@@ -902,22 +950,49 @@ function CreationOfComments(section, locationId) {
                         second_Option.classList.add('headerbtns');
                         third_Option.classList.add('headerbtns');
                         exit.classList.add('headerbtns');
-                        first_Option.classList.add('first_Option');
                         second_Option.addEventListener('click', () => {
                             create_Comment_Reply_room(comment.id);
                         });
                         third_Option.addEventListener('click', () => {
                             likecomment();
                         });
+                        if (comment.caption) {
+                            let fouth_Option = document.createElement('span');
+                            options.appendChild(fouth_Option);
+                            fouth_Option.innerHTML = copysvg;
+                            fouth_Option.classList.add('headerbtns');
+
+                            function copyTextPost(text) {
+                                if (navigator.clipboard) {
+                                    try {
+                                        const toCopy = text;
+                                        navigator.clipboard.writeText(toCopy);
+                                        create_Message('text copied');
+                                    } catch (err) {
+                                        console.error('Failed to copy: ', err);
+                                        create_Message('unable to copy');
+                                    }
+                                }
+                            }
+                            fouth_Option.addEventListener('click', () => {
+                                copyTextPost(comment.caption);
+                                removeOptions();
+                            });
+                            first_Option.addEventListener('click', () => {
+                                fouth_Option.remove();
+                            });
+                        }
                         function create_replyInputs() {
                             first_Option.remove();
                             second_Option.remove();
                             third_Option.remove();
+                            removemesgBox();
                             let mesgBox = document.createElement('div');
                             let mesgTextBox = document.createElement('input');
                             let sendmesg = document.createElement('div');
                             options.appendChild(mesgBox);
                             mesgBox.appendChild(mesgTextBox);
+                            mesgTextBox.focus();
                             options.appendChild(sendmesg);
                             sendmesg.innerHTML = sendsvg
                             sendmesg.classList.add('headerbtns');
@@ -975,6 +1050,32 @@ function CreationOfComments(section, locationId) {
                         third_Option.addEventListener('click', () => {
                             likecomment();
                         });
+                        if (comment.caption) {
+                            let fouth_Option = document.createElement('span');
+                            options.appendChild(fouth_Option);
+                            fouth_Option.innerHTML = copysvg;
+                            fouth_Option.classList.add('headerbtns');
+
+                            function copyTextPost(text) {
+                                if (navigator.clipboard) {
+                                    try {
+                                        const toCopy = text;
+                                        navigator.clipboard.writeText(toCopy);
+                                        create_Message('text copied');
+                                    } catch (err) {
+                                        console.error('Failed to copy: ', err);
+                                        create_Message('unable to copy');
+                                    }
+                                }
+                            }
+                            fouth_Option.addEventListener('click', () => {
+                                copyTextPost(comment.caption);
+                                removeOptions();
+                            });
+                            first_Option.addEventListener('click', () => {
+                                fouth_Option.remove();
+                            });
+                        }
                         exit.addEventListener('click', () => {
                             options.remove();
                         });
@@ -1050,7 +1151,6 @@ function CreationOfComments(section, locationId) {
                     section.appendChild(commentmesg);
 
                     commenttime.classList.add('commenttime');
-                    commentmesg.appendChild(commentdelete);
                     commentmesg.appendChild(commentnameandimg);
                     commentmesg.appendChild(commenttime);
                     commentmesg.appendChild(commentpostcontainer);
@@ -1063,7 +1163,7 @@ function CreationOfComments(section, locationId) {
                     commentvideoplayer.appendChild(commentplay);
                     commentplay.appendChild(commentplayimg);
                     commentplayimg.src = 'icons/play.png';
-                    commentdelete.innerHTML = moresvg;
+                    commentdelete.innerHTML = settingssvg;
                     commentdelete.classList.add('commentdelete');
                     commentdelete.classList.add('headerbtns');
 
@@ -1072,6 +1172,7 @@ function CreationOfComments(section, locationId) {
                     reactsflex.appendChild(likecounts);
                     reactsflex.appendChild(commentreply);
                     reactsflex.appendChild(replycommentcount);
+                    reactsflex.appendChild(commentdelete);
                     commentvideoplayer.classList.add('commentvideoplayer');
                     commentplay.classList.add('commentplay');
                     likecounts.classList.add('likecounts');
@@ -1157,7 +1258,7 @@ function CreationOfComments(section, locationId) {
                         likecomment();
                     });
                     likecounts.addEventListener('click', () => {
-                        LikePopupsAndMore(comment.id, 'commentlike',comment.likes.length);
+                        LikePopupsAndMore(comment.id, 'commentlike', comment.likes.length);
                     });
 
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -1212,7 +1313,10 @@ function CreationOfComments(section, locationId) {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === comment.posterId) {
                                 commentimg.src = user.user_ProfilePicture;
-                                commentname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username = user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                commentname.innerHTML = username;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {

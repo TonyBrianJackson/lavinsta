@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="import" href="index.html">
     <link rel="import" href="lavinsta.html">
-    <link rel="shortcut icon" href="icons/playstore.png" type="image/x-icon">
+    <link rel="shortcut icon" href="lavinstaphotos/eagle.png" type="image/x-icon">
     <!------script tags------>
     <!-----type="module"----->
     <script defer src="script/authentication.js"></script>
@@ -63,9 +63,7 @@
             </div>
             <div class="style_Bottom_Popup">
                 <div class="loginspace">
-                    <input class="login_email" type="email" id="usersemail" placeholder="Enter Email">
-                    <input class="login_phone" type="tel" id="login_upphone" placeholder="Enter Phone">
-                    <span class="use_user_Phone"><small>Or</small></span>
+                    <input class="login_email" type="email" id="usersemail" placeholder="Enter Lavinsta Email">
                 </div>
                 <div class="loginspace">
                     <input type="password" id="userspassword" placeholder="Enter Password">
@@ -101,17 +99,15 @@
                 <div class="signuplogo"><img class="users_Id_And_Logo" src="lavinstaphotos/eagle.png" alt=""></div>
                 <h1 class="logintitle" id="users_Name_And_Page_Title">Reset</h1>
                 <p class="reset_Console"></p>
-                <div class="loginspace">
-                    <input class="user_Email_Reset" type="email" id="usersemail_Reset" placeholder="Enter Email">
-                    <input class="user_Phone_Reset" type="tel" id="usersphone_Reset" placeholder="Enter Phone">
-                    <span class="use_Phone_Reset"><small>Or</small></span>
-                </div>
             </div>
             <div class="style_Bottom_Popup">
                 <div class="loginspace">
-                    <input maxlength="5" type="tel" id="Users_verification_Input" placeholder="Enter code">
+                    <input class="user_Email_Reset" type="email" id="usersemail_Reset" placeholder="Enter Email">
                 </div>
-                <button class="classBtn_Button signupbtn" id="get_Verification_Code_Button">Get Code</button>
+                <div class="loginspace">
+                    <input type="text" id="user_New_E_Mail" placeholder="Enter code">
+                </div>
+                <button class="classBtn_Button signupbtn" id="get_Verification_Code_Button">Get New Lavinsta Mail</button>
                 <button class="classBtn_Button verify_Acc_Button" type="submit">verify</button>
                 <button id="Open_LoggIn_Page" class="classBtn_Button loginbtn" type="submit">Login</button>
                 <p class="loginconsole"></p>
@@ -145,13 +141,9 @@
                 <h1 class="logintitle">Sign Up To Lavinsta</h1>
             </div>
             <div class="style_Bottom_Popup">
-                <div class="loginspace"><input type="text" name="" id="first-name" placeholder="First Name"></div>
-                <div class="loginspace"><input type="text" name="" id="sur-name" placeholder="Surname"></div>
-                <div class="loginspace">
-                    <input class="email_textBox" type="email" name="" id="sign-upemail" placeholder="Email">
-                    <input class="Phone_textBox" type="tel" name="" id="sign-upphone" placeholder="Phone">
-                    <span class="use_Phone_Number"><small>Or</small></span>
-                </div>
+                <div class="loginspace"><input type="text" name="" id="first-name" placeholder="First Name (Required)"></div>
+                <div class="loginspace"><input type="text" name="" id="mid-name" placeholder="Mid Name (Optional)"></div>
+                <div class="loginspace"><input type="text" name="" id="sur-name" placeholder="Surname (Required)"></div>
                 <button id="toopendateofbirth" class="classBtn_Button nextbtn1">Next</button>
                 <button id="login" class="classBtn_Button signupbtn" type="submit">Log In</button>
             </div>
@@ -275,16 +267,16 @@
             <div class="style_Top_Popup">
                 <div class="signuplogo"><img src="lavinstaphotos/eagle.png" class="create_Account_Logo"></div>
                 <h1 class="logintitle new_user_Id_maile">Verify Password</h1>
+                <p class="notemessage"></p>
+                <p class="newnotemessage"></p>
             </div>
             <div class="style_Bottom_Popup">
-                <div class="verify_Box loginspace">
-                    <input id="verify" type="tel" maxlength="5" placeholder="Enter Code">
-                </div>
                 <div class="inputbox" style="display: none;">
                     <p class="verification_console"></p>
                 </div>
-                <button id="deliver_Code" class="classBtn_Button forgotpasswordbtn" type="submit">Get Code</button>
-                <button id="welcomepage" class="classBtn_Button nextbtn1">Create My Account</button>
+                <button id="deliver_Code" class="classBtn_Button forgotpasswordbtn" type="submit">Get Email</button>
+                <button id="copylavinstamail" class="classBtn_Button nextbtn1">Copy My Email</button>
+                <button disabled="true" id="welcomepage" class="classBtn_Button nextbtn1">Create My Account</button>
             </div>
         </div>
         <div class="pages holdallpage">

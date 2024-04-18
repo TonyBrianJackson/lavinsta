@@ -315,11 +315,11 @@
     text-align: center;
     border-radius: 0px;
     background: var(--color-dark);
+    box-shadow: none;
     color: var(--color-white);
     font-size: 17px;
     border: none;
 }
-
 .selectoption input::placeholder {
     color: var(--color-white);
 }
@@ -364,7 +364,7 @@
     overflow: hidden;
     width: 100%;
 }
-
+.style_Top_Popup > p,
 .logintitle {
     width: 100%;
     background: none;
@@ -376,7 +376,9 @@
     text-align: center;
     color: var(--color-dark);
 }
-
+.style_Top_Popup > p {
+    font-size: 11px;
+}
 .login_title_LogIn.logintitle {
     width: 70%;
     background: none;
@@ -425,12 +427,6 @@
 
 .verify_Box.loginspace input::placeholder {
     letter-spacing: 0.5rem;
-}
-
-.forgot_Password_Page .loginspace:nth-child(1),
-.loginpage .loginspace input,
-.signuppage .loginspace:nth-child(3) input {
-    width: 90%;
 }
 
 .user_Phone_Reset,
@@ -571,9 +567,8 @@
     position: relative;
 }
 
-.reset_Console,
 .verification_console {
-    display: none;
+    display: block;
     pointer-events: none;
     opacity: hidden;
     visibility: hidden;

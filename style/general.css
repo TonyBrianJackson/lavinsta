@@ -796,7 +796,7 @@
         border-radius: 10px;
         z-index: 754;
         background: var(--color-white);
-        box-shadow: none;
+        box-shadow: var(--simple-box-shadow);
     }
 
     .confirmationflex span {

@@ -22,7 +22,7 @@ function createOtherPost() {
                         more.innerHTML = vellip;
                         more.classList.add('more')
                         more.addEventListener('click', () => {
-                            create_Post_Options_Script(adgridimagecontainer,photo.id);
+                            create_Post_Options_Script(adgridimagecontainer, photo.id);
                         });
                     }
                     Create_GridPost_Options();
@@ -96,8 +96,11 @@ function createOtherPost() {
                         LogInFormData.forEach((user) => {
                             if (user.user_Id === photo.posterId) {
                                 authorsImg.src = user.user_ProfilePicture;
-                                postername.innerHTML =
-                                    user.user_Firstname + " " + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username =
+                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                postername.innerHTML = username
                                 function filter_Image() {
                                     //profile_filter
                                     if (user.user_ProfilePicture_Filter == "default") {
@@ -202,7 +205,7 @@ function createOtherPost() {
                     adgridimagecontainer.classList.add("adgridimagecontainer");
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
+                        LikePopupsAndMore(photo.id, 'postlike', photo.likes.length);
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);
@@ -459,7 +462,7 @@ function createOtherPost() {
                         more.innerHTML = vellip;
                         more.classList.add('more')
                         more.addEventListener('click', () => {
-                            create_Post_Options_Script(adgridimagecontainer,photo.id);
+                            create_Post_Options_Script(adgridimagecontainer, photo.id);
                         });
                     }
                     Create_GridPost_Options();
@@ -526,8 +529,11 @@ function createOtherPost() {
                         LogInFormData.forEach((user) => {
                             if (user.user_Id === photo.posterId) {
                                 authorsImg.src = user.user_ProfilePicture;
-                                postername.innerHTML =
-                                    user.user_Firstname + " " + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username =
+                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                postername.innerHTML = username
                                 function filter_Image() {
                                     //profile_filter
                                     if (user.user_ProfilePicture_Filter == "default") {
@@ -645,7 +651,7 @@ function createOtherPost() {
                     adgridimagecontainer.classList.add("adgridimagecontainer");
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
+                        LikePopupsAndMore(photo.id, 'postlike', photo.likes.length);
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);
@@ -907,7 +913,7 @@ function createOtherPost() {
                         more.innerHTML = vellip;
                         more.classList.add('more')
                         more.addEventListener('click', () => {
-                            create_Post_Options_Script(adgridimagecontainer,photo.id);
+                            create_Post_Options_Script(adgridimagecontainer, photo.id);
                         });
                     }
                     Create_GridPost_Options();
@@ -952,8 +958,11 @@ function createOtherPost() {
                         LogInFormData.forEach((user) => {
                             if (user.user_Id === photo.posterId) {
                                 authorsImg.src = user.user_ProfilePicture;
-                                postername.innerHTML =
-                                    user.user_Firstname + " " + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username =
+                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                postername.innerHTML = username
                                 function filter_Image() {
                                     //profile_filter
                                     if (user.user_ProfilePicture_Filter == "default") {
@@ -1091,7 +1100,7 @@ function createOtherPost() {
 
 
                     live_Like_Count_Container.addEventListener("click", () => {
-                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
+                        LikePopupsAndMore(photo.id, 'postlike', photo.likes.length);
                     });
                     advertcomment.addEventListener("click", () => {
                         create_Comment_room(photo.id);

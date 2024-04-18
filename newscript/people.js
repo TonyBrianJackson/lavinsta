@@ -185,7 +185,7 @@ function create_StatusBar() {
                     create_Friends_Start();
                 }
             });
-        });   
+        });
     }
 }
 function get_Active_Chat_Page() {
@@ -220,7 +220,11 @@ function createFriendList(locationId, column) {
                     LogInFormData.forEach(user => {
                         if (user.user_Id === connect.connectionId) {
                             personprofileimage.src = user.user_ProfilePicture;
-                            personsname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                            let username;
+                            user.user_Mid_Name ? username =
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname; f
+                            personsname.textContent = username;
                             function filter_Image() {
                                 //profile_filter 
                                 if (user.user_ProfilePicture_Filter == 'default') {
@@ -333,7 +337,11 @@ function createSentRequest(locationId, column) {
                 LogInFormData.forEach(user => {
                     if (user.user_Id === connect.recieversId) {
                         personprofileimage.src = user.user_ProfilePicture;
-                        personsname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                        let username;
+                        user.user_Mid_Name ? username =
+                            user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                            username = user.user_Firstname + ' ' + user.user_Surname; f
+                        personsname.textContent = username;
                         function filter_Image() {
                             //profile_filter 
                             if (user.user_ProfilePicture_Filter == 'default') {
@@ -569,7 +577,11 @@ function createRequest(locationId, column) {
                 LogInFormData.forEach(user => {
                     if (user.user_Id === connect.connectionId) {
                         personprofileimage.src = user.user_ProfilePicture;
-                        personsname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                        let username;
+                        user.user_Mid_Name ? username =
+                            user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                            username = user.user_Firstname + ' ' + user.user_Surname; f
+                        personsname.textContent = username;
                         function filter_Image() {
                             //profile_filter 
                             if (user.user_ProfilePicture_Filter == 'default') {
@@ -715,6 +727,10 @@ function Create_People(locationId, column) {
         let personAddandBlockFlex = document.createElement('div');
         let personaddbutton = document.createElement('span');
         let personblockbutton = document.createElement('span');
+        let username;
+        profile.user_Mid_Name ? username =
+            profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname :
+            username = profile.user_Firstname + ' ' + profile.user_Surname;
         column.appendChild(person);
         person.appendChild(personhead);
         person.appendChild(persontail);
@@ -724,7 +740,7 @@ function Create_People(locationId, column) {
         persontail.appendChild(personAddandBlockFlex);
 
         personprofileimage.src = profile.user_ProfilePicture;
-        personsname.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
+        personsname.textContent = username;
         personAddandBlockFlex.appendChild(personaddbutton);
         personAddandBlockFlex.appendChild(personblockbutton);
 
@@ -883,24 +899,24 @@ document.querySelectorAll('.people_C_button').forEach(button => {
             document.querySelector('.peopleculomn').appendChild(userpeoplecolumn);
             if (button.id == 'lavinstapeople') {
                 Create_People(user.user_Id, userpeoplecolumn);
-                sessionStorage.setItem('activepage','lavinstapeople');
+                sessionStorage.setItem('activepage', 'lavinstapeople');
             } else if (button.id == 'peoplerequest') {
                 createRequest(user.user_Id, userpeoplecolumn);
-                sessionStorage.setItem('activepage','peoplerequest');
+                sessionStorage.setItem('activepage', 'peoplerequest');
             } else if (button.id == 'sent_requests') {
                 createSentRequest(user.user_Id, userpeoplecolumn);
-                sessionStorage.setItem('activepage','sent_requests');
+                sessionStorage.setItem('activepage', 'sent_requests');
             } else if (button.id == 'peoplelist') {
                 createFriendList(user.user_Id, userpeoplecolumn);
-                sessionStorage.setItem('activepage','peoplelist');
+                sessionStorage.setItem('activepage', 'peoplelist');
             }
         });
         stoploading();
     });
 });
-document.querySelector('#peopleclosebtn').addEventListener('click',()=> {
+document.querySelector('#peopleclosebtn').addEventListener('click', () => {
     document.querySelector('.people').style.display = 'none';
-    sessionStorage.setItem('activepage','home');
+    sessionStorage.setItem('activepage', 'home');
 });
 function secondcreatePeople() {
     removepeoplecolumn();

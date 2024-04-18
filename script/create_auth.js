@@ -214,8 +214,8 @@ function active_user_render() {
                 if (user.user_Id === data.user_Id) {
                     document.getElementById('firtnamechanged').value = user.user_Firstname;
                     document.getElementById('surnamechanges').value = user.user_Surname;
-                    document.getElementById('accountemail').value = user.user_Email;
-                    document.getElementById('accountphonenumber').value = user.user_Phone;
+                    document.getElementById('midnamechanges').value = user.user_Mid_Name;
+                    document.getElementById('lavinstamail').value = user.lavinsta_Email;
     
                     function Create_Additional_HtmlTags() {
                         document.querySelector('.secondreelcontainer').innerHTML = `<div class="reelscontainer" id="${user.user_Id}"></div>`;
@@ -280,8 +280,7 @@ function active_user_render() {
                                     if (user.user_Id === data.user_Id) {
                                         user.user_Firstname = document.getElementById('firtnamechanged').value;
                                         user.user_Surname = document.getElementById('surnamechanges').value;
-                                        user.user_Email = document.getElementById('accountemail').value;
-                                        user.user_Phone = document.getElementById('accountphonenumber').value;
+                                        user.user_Mid_Name = document.getElementById('midnamechanges').value;
                                         ResavedData();
                                     }
                                 });

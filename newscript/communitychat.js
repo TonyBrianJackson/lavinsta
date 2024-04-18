@@ -88,12 +88,12 @@ function create_Community_Chat_Menu(locationId) {
                                 if (chat.isText) {
                                     community_chat_sample.textContent = chat.Property_Src;
                                 } if (chat.isPhoto) {
-                                     community_chat_sample.textContent = 'photo';
+                                    community_chat_sample.textContent = 'photo';
                                 } if (chat.isVideo) {
-                                     community_chat_sample.textContent = 'video';
+                                    community_chat_sample.textContent = 'video';
                                 } if (chat.isAudio) {
-                                     community_chat_sample.textContent = 'audio';
-                                } 
+                                    community_chat_sample.textContent = 'audio';
+                                }
                             }
                         })
                     }
@@ -195,7 +195,12 @@ function create_Community_Chat_Members(locationId, room) {
                     LogInFormData.forEach(user => {
                         if (user.user_Id === member.members_Id) {
                             memberimage.src = user.user_ProfilePicture;
-                            membername.textContent = user.user_Firstname + ' ' + user.user_Surname;
+
+                            let username;
+                            user.user_Mid_Name ? username =
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname;
+                            membername.textContent = username;
 
                             function filter_Image() {
                                 //profile_filter 
@@ -297,9 +302,6 @@ function create_Community_Profile(locationId, room) {
                 let editprofile = document.createElement('div');
                 let addmembers = document.createElement('div');
                 let viewmembers = document.createElement('div');
-                let editimg = document.createElement('img');
-                let addimg = document.createElement('img');
-                let viewimg = document.createElement('img');
                 session.appendChild(container_profile_commu);
                 commprofileimage.src = community.community_Image;
                 commname.textContent = community.community_Name;
@@ -311,15 +313,12 @@ function create_Community_Profile(locationId, room) {
                 activities.appendChild(editprofile);
                 activities.appendChild(addmembers);
                 activities.appendChild(viewmembers);
-                editprofile.appendChild(editimg);
-                addmembers.appendChild(addimg);
-                viewmembers.appendChild(viewimg);
+                editprofile.innerHTML = sendsvg;
+                addmembers.innerHTML = addpeoplesvg;
+                viewmembers.innerHTML = gendersvg;
                 captionholder.appendChild(new_Name);
                 com_container.appendChild(commprofileimage);
 
-                editimg.src = 'icons/send.png';
-                addimg.src = 'icons/add-user.png';
-                viewimg.src = 'icons/tow-people_solid.png';
                 uploader.id = community.community_Id + 'Com_PrO_file';
                 uploader.type = 'file';
                 new_Name.type = 'text';
@@ -431,7 +430,12 @@ function create_Community_Chat_Add_Members(locationId, room) {
                                         LogInFormData.forEach(user => {
                                             if (user.user_Id === connection.connectionId) {
                                                 memberimage.src = user.user_ProfilePicture;
-                                                membername.textContent = user.user_Firstname + ' ' + user.user_Surname;
+
+                                                let username;
+                                                user.user_Mid_Name ? username =
+                                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                                membername.textContent = username;
 
                                                 function filter_Image() {
                                                     //profile_filter 
@@ -472,6 +476,13 @@ function create_Community_Chat_Add_Members(locationId, room) {
                                             });
                                             localStorage.setItem('myCommunities', JSON.stringify(myCommunities));
                                         }
+                                        members.forEach(member => {
+                                            if (member.members_Id === connection.connectionId) {
+                                                memberaddbutton.disabled = true;
+                                                memberaddbutton.textContent = 'Already A Member';
+                                                memberblock.remove();
+                                            }
+                                        });
                                         memberaddbutton.classList.add('memberaddbutton');
                                         memberaddbutton.classList.add('invitation');
                                         memberaddbutton.addEventListener('click', () => {
@@ -518,74 +529,99 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
     let voicerecordicon = document.createElement('div');
 
     //chatoptions
-    let chatoptionpopup = document.createElement('div');
-    let optionviewprofile = document.createElement('span');
-    let optionviewmembers = document.createElement('span');
-    let optionaddmembers = document.createElement('span');
-    if (members_Id === creator_Id) {
-        let optionaddmembers = document.createElement('span');
-        chatoptionpopup.appendChild(optionaddmembers);
-        optionaddmembers.textContent = 'delete';
-        function Delete_Community() {
-            let confirmation_popup = document.createElement('div');
-            let confirmationflex = document.createElement('div');
-            let confirmationflex1 = document.createElement('div');
-            let confirmationtext = document.createElement('p');
-            let confirmationtrue = document.createElement('span');
-            let confirmationfalse = document.createElement('span');
-            confirmationtext.textContent = 'Are You Sure You Want To Delete This Comment?';
-            confirmationtrue.textContent = 'Yes';
-            confirmationfalse.textContent = 'No';
-            document.body.appendChild(confirmation_popup);
-            confirmation_popup.appendChild(confirmationflex);
-            confirmation_popup.appendChild(confirmationflex1);
-            confirmationflex.appendChild(confirmationtext);
-            confirmationflex1.appendChild(confirmationtrue);
-            confirmationflex1.appendChild(confirmationfalse);
-            confirmation_popup.classList.add('confirmation_popup');
-            confirmationflex.classList.add('confirmationflex');
-            confirmationflex1.classList.add('confirmationflex');
-            confirmationtrue.classList.add('confirmationtrue');
-            confirmationfalse.classList.add('confirmationfalse');
-            confirmationfalse.addEventListener('click', () => {
-                confirmation_popup.style.display = 'none';
-            });
-            confirmation_popup.id = locationId;
-            confirmationtrue.id = locationId;
-            confirmationtrue.addEventListener('click', () => {
-                myCommunities = myCommunities.filter((commu_nity) => {
-                    if (commu_nity.community_Id === confirmationtrue.id) {
-                        return false;
-                    } else {
-                        return true;
-                    }
+
+    function create_Post_Options_Script() {
+        let options = document.createElement('div');
+        let exit = document.createElement('span');
+        let first_Option = document.createElement('span');
+        let second_Option = document.createElement('span');
+        let third_Option = document.createElement('span');
+        Community_chatroomcolumn.insertAdjacentElement("afterend", options);
+        options.appendChild(exit);
+        options.appendChild(first_Option);
+        options.appendChild(second_Option);
+        options.appendChild(third_Option);
+        first_Option.innerHTML = profilesetting;
+        second_Option.innerHTML = gendersvg;
+        third_Option.innerHTML = addpeoplesvg;
+        second_Option.id = locationId;
+        exit.innerHTML = undo;
+        options.classList.add('options');
+        exit.classList.add('headerbtns');
+        first_Option.classList.add('headerbtns');
+        second_Option.classList.add('headerbtns');
+        third_Option.classList.add('headerbtns');
+
+        first_Option.addEventListener('click', () => {
+            create_Community_Profile(locationId, userchatroom);
+        });
+        third_Option.addEventListener('click', () => {
+            create_Community_Chat_Add_Members(locationId, userchatroom);
+        });
+        second_Option.addEventListener('click', () => {
+            create_Community_Chat_Members(locationId, userchatroom);
+        });
+        exit.addEventListener('click', () => {
+            options.remove();
+        });
+        if (members_Id === creator_Id) {
+            let fouth_Option = document.createElement('span');
+            options.appendChild(fouth_Option);
+            fouth_Option.innerHTML = deletesvg;
+            fouth_Option.classList.add('headerbtns');
+            function Delete_Community() {
+                let confirmation_popup = document.createElement('div');
+                let confirmationflex = document.createElement('div');
+                let confirmationflex1 = document.createElement('div');
+                let confirmationtext = document.createElement('p');
+                let confirmationtrue = document.createElement('span');
+                let confirmationfalse = document.createElement('span');
+                confirmationtext.textContent = 'Are You Sure You Want To Delete This Comment?';
+                confirmationtrue.textContent = 'Yes';
+                confirmationfalse.textContent = 'No';
+                document.body.appendChild(confirmation_popup);
+                confirmation_popup.appendChild(confirmationflex);
+                confirmation_popup.appendChild(confirmationflex1);
+                confirmationflex.appendChild(confirmationtext);
+                confirmationflex1.appendChild(confirmationtrue);
+                confirmationflex1.appendChild(confirmationfalse);
+                confirmation_popup.classList.add('confirmation_popup');
+                confirmationflex.classList.add('confirmationflex');
+                confirmationflex1.classList.add('confirmationflex');
+                confirmationtrue.classList.add('confirmationtrue');
+                confirmationfalse.classList.add('confirmationfalse');
+                confirmationfalse.addEventListener('click', () => {
+                    confirmation_popup.style.display = 'none';
                 });
-                localStorage.setItem('myCommunities', JSON.stringify(myCommunities));
-                confirmation_popup.style.display = 'none';
-                create_Message('operated successfully');
-            });
-            optionaddmembers.addEventListener('click', () => {
-                confirmation_popup.style.display = 'flex';
-            });
+                confirmation_popup.id = locationId;
+                confirmationtrue.id = locationId;
+                confirmationtrue.addEventListener('click', () => {
+                    myCommunities = myCommunities.filter((commu_nity) => {
+                        if (commu_nity.community_Id === confirmationtrue.id) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                    localStorage.setItem('myCommunities', JSON.stringify(myCommunities));
+                    confirmation_popup.style.display = 'none';
+                    create_Message('operated successfully');
+                });
+                fouth_Option.addEventListener('click', () => {
+                    confirmation_popup.style.display = 'flex';
+                });
+            }
+            Delete_Community();
         }
-        Delete_Community();
     }
+    chatoptionicon.addEventListener('click', () => {
+        create_Post_Options_Script();
+    });
     voicerecordicon.addEventListener('click', () => {
         chatfloat.classList.toggle('chatfloatactive');
         create_Voice_Recording_Script(locationId, creator_Id, userchatroom);
     });
-    optionviewprofile.addEventListener('click', () => {
-        create_Community_Profile(locationId, userchatroom);
-        chatoptionpopup.classList.toggle('chatoptionpopupactive');
-    });
-    optionaddmembers.addEventListener('click', () => {
-        create_Community_Chat_Add_Members(locationId, userchatroom);
-        chatoptionpopup.classList.toggle('chatoptionpopupactive');
-    });
-    optionviewmembers.addEventListener('click', () => {
-        create_Community_Chat_Members(locationId, userchatroom);
-        chatoptionpopup.classList.toggle('chatoptionpopupactive');
-    });
+
     chatuploadicon.addEventListener('click', () => {
         createUploader(locationId, members_Id, userchatroom, Community_chatroomcolumn, voicerecordicon, 'community_chat', locationId);
     });
@@ -633,25 +669,14 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
             increaseCommunityChatCount();
         }
     });
-    document.addEventListener('keypress',(e)=> {
+    document.addEventListener('keypress', (e) => {
         if (userchattextbox.value) {
             if (e.key === 'Enter') {
                 userchatsend.click();
             }
         }
     });
-    chatoptionpopup.appendChild(optionviewprofile);
-    chatoptionpopup.appendChild(optionviewmembers);
-    chatoptionpopup.appendChild(optionaddmembers);
-    optionviewprofile.textContent = 'profile';
-    optionviewmembers.textContent = 'members';
-    optionaddmembers.textContent = 'add members';
-    optionviewmembers.id = locationId;
 
-    chatoptionpopup.classList.add('chatoptionpopup');
-    chatoptionicon.addEventListener('click', () => {
-        chatoptionpopup.classList.toggle('chatoptionpopupactive');
-    });
 
     voicerecordicon.innerHTML = microphone;
     chatoptionicon.innerHTML = moresvg;
@@ -700,7 +725,6 @@ function create_Community_Chat_Rooms(trackingId, locationId, members_Id, creator
     userchatroom.appendChild(Community_chatroomcolumn);
     userchatroom.appendChild(userschatbox);
     userchatroom.appendChild(chatfloat);
-    userchatroom.appendChild(chatoptionpopup);
     userchatroom.classList.add('userchatroom');
     Community_chatroomcolumn.classList.add('Community_chatroomcolumn');
     Community_chatroomcolumn.id = locationId;
@@ -917,6 +941,9 @@ function create_Voice_Recording_Script(locationId, CreatorId, chatroom) {
     }
 }
 function create_Community_Chat_Messages(column, locationId, members_Id) {
+    document.querySelectorAll('.Community_chatroomcolumn').forEach(container => {
+        container.innerHTML = '';
+    });
     function pushViewers(user_Id) {
         Community_myChat_Msg.forEach(textmesg => {
             if (textmesg.chat_receiver === locationId) {
@@ -930,7 +957,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         }
                     });
                     textmesg.views = views;
-                    localStorage.setItem('Community_myChat_Msg',JSON.stringify(Community_myChat_Msg));
+                    localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                     pushdata();
                 }
                 function pushdata() {
@@ -938,7 +965,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         posterId: user_Id,
                         id: '' + new Date().getTime()
                     });
-                    localStorage.setItem('Community_myChat_Msg',JSON.stringify(Community_myChat_Msg));
+                    localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                 }
                 if (user_Id !== textmesg.posterId) {
                     filterviews();
@@ -1044,7 +1071,12 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === mesg.posterId) {
                                             reciepientimage.src = user.user_ProfilePicture;
-                                            reciepientname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+
+                                            let username;
+                                            user.user_Mid_Name ? username =
+                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                            reciepientname.textContent = username;
                                         } if (user.user_Id === textmesg.posterId) {
                                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                             ActiveUser_Account.forEach(data => {
@@ -1052,12 +1084,30 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                 LogInFormData.forEach(userdata => {
                                                     if (userdata.user_Id === mesg.posterId) {
                                                         if (data.user_Id === textmesg.posterId) {
-                                                            purposemesg.textContent = `you replied to ${userdata.user_Firstname + ' ' + userdata.user_Surname}`;
+                                                            let username;
+                                                            userdata.user_Mid_Name ? username =
+                                                                userdata.user_Firstname + ' ' + userdata.user_Mid_Name + ' ' + userdata.user_Surname :
+                                                                username = userdata.user_Firstname + ' ' + userdata.user_Surname;
+                                                            purposemesg.textContent = `you replied to ${username}`;
                                                             reciepientblock.style.display = 'none';
                                                         } else {
-                                                            purposemesg.textContent = `${user.user_Firstname + ' ' + user.user_Surname} replied to ${userdata.user_Firstname + ' ' + userdata.user_Surname}`;
+
+                                                            let username;
+                                                            user.user_Mid_Name ? username =
+                                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                                            let newusername;
+                                                            userdata.user_Mid_Name ? newusername =
+                                                                userdata.user_Firstname + ' ' + userdata.user_Mid_Name + ' ' + userdata.user_Surname :
+                                                                newusername = userdata.user_Firstname + ' ' + userdata.user_Surname;
+                                                            purposemesg.textContent = `${username} replied to ${newusername}`;
                                                         } if (data.user_Id === mesg.posterId) {
-                                                            purposemesg.textContent = `${user.user_Firstname + ' ' + user.user_Surname} replied to you`;
+
+                                                            let username;
+                                                            user.user_Mid_Name ? username =
+                                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                                            purposemesg.textContent = `${username} replied to you`;
                                                         }
                                                     }
                                                 });
@@ -1067,7 +1117,6 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                     replychatcontainer.classList.add('mychatcontainer');
                                                     chatmesgaitself.classList.add('mychat');
                                                     chatstime.classList.add('mychatstime');
-                                                    chatsvisiblestatus.classList.add('friendschatstime');
                                                     chattimeandstatus.classList.add('mychattimeandstatus');
                                                     reciepientblock.style.display = 'none';
                                                 } else {
@@ -1130,7 +1179,12 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === mesg.posterId) {
                                             reciepientimage.src = user.user_ProfilePicture;
-                                            reciepientname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+
+                                            let username;
+                                            user.user_Mid_Name ? username =
+                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                            reciepientname.textContent = username;
                                         } if (user.user_Id === textmesg.posterId) {
                                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                             ActiveUser_Account.forEach(data => {
@@ -1138,12 +1192,30 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                 LogInFormData.forEach(userdata => {
                                                     if (userdata.user_Id === mesg.posterId) {
                                                         if (data.user_Id === textmesg.posterId) {
-                                                            purposemesg.textContent = `you replied to ${userdata.user_Firstname + ' ' + userdata.user_Surname}`;
+                                                            let username;
+                                                            userdata.user_Mid_Name ? username =
+                                                                userdata.user_Firstname + ' ' + userdata.user_Mid_Name + ' ' + userdata.user_Surname :
+                                                                username = userdata.user_Firstname + ' ' + userdata.user_Surname;
+                                                            purposemesg.textContent = `you replied to ${username}`;
                                                             reciepientblock.style.display = 'none';
                                                         } else {
-                                                            purposemesg.textContent = `${user.user_Firstname + ' ' + user.user_Surname} replied to ${userdata.user_Firstname + ' ' + userdata.user_Surname}`;
+
+                                                            let username;
+                                                            user.user_Mid_Name ? username =
+                                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                                            let newusername;
+                                                            userdata.user_Mid_Name ? newusername =
+                                                                userdata.user_Firstname + ' ' + userdata.user_Mid_Name + ' ' + userdata.user_Surname :
+                                                                newusername = userdata.user_Firstname + ' ' + userdata.user_Surname;
+                                                            purposemesg.textContent = `${username} replied to ${newusername}`;
                                                         } if (data.user_Id === mesg.posterId) {
-                                                            purposemesg.textContent = `${user.user_Firstname + ' ' + user.user_Surname} replied to you`;
+
+                                                            let username;
+                                                            user.user_Mid_Name ? username =
+                                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                                            purposemesg.textContent = `${username} replied to you`;
                                                         }
                                                     }
                                                 });
@@ -1152,7 +1224,6 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                     replychatcontainer.classList.add('mychatcontainer');
                                                     chatphotocontainer.classList.add('mychatphoto');
                                                     chatstime.classList.add('mychatstime');
-                                                    chatsvisiblestatus.classList.add('friendschatstime');
                                                     chattimeandstatus.classList.add('mychattimeandstatus');
                                                     reciepientblock.style.display = 'none';
                                                 } else {
@@ -1160,7 +1231,6 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                     replychatcontainer.classList.add('friendchatcontainer');
                                                     chatphotocontainer.classList.add('friendschatphoto');
                                                     chatstime.classList.add('friendschatstime');
-                                                    chatsvisiblestatus.classList.add('friendschatstime');
                                                     chattimeandstatus.classList.add('friendschattimeandstatus');
                                                     chatsvisiblestatus.style.display = 'none';
                                                 }
@@ -1252,7 +1322,12 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === mesg.posterId) {
                                             reciepientimage.src = user.user_ProfilePicture;
-                                            reciepientname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+
+                                            let username;
+                                            user.user_Mid_Name ? username =
+                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                            reciepientname.textContent = username;
                                         } if (user.user_Id === textmesg.posterId) {
                                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                             ActiveUser_Account.forEach(data => {
@@ -1260,12 +1335,27 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                 LogInFormData.forEach(userdata => {
                                                     if (userdata.user_Id === mesg.posterId) {
                                                         if (data.user_Id === textmesg.posterId) {
-                                                            purposemesg.textContent = `you replied to ${userdata.user_Firstname + ' ' + userdata.user_Surname}`;
+                                                            let username;
+                                                            userdata.user_Mid_Name ? username =
+                                                                userdata.user_Firstname + ' ' + userdata.user_Mid_Name + ' ' + userdata.user_Surname :
+                                                                username = userdata.user_Firstname + ' ' + userdata.user_Surname;
+                                                            purposemesg.textContent = `you replied to ${username}`;
                                                             reciepientblock.style.display = 'none';
                                                         } else {
-                                                            purposemesg.textContent = `${user.user_Firstname + ' ' + user.user_Surname} replied to ${userdata.user_Firstname + ' ' + userdata.user_Surname}`;
+
+                                                            let username;
+                                                            user.user_Mid_Name ? username =
+                                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                                            const newusername = userdata.user_Firstname + ' ' + userdata.user_Mid_Name + ' ' + userdata.user_Surname;
+                                                            purposemesg.textContent = `${username} replied to ${newusername}`;
                                                         } if (data.user_Id === mesg.posterId) {
-                                                            purposemesg.textContent = `${user.user_Firstname + ' ' + user.user_Surname} replied to you`;
+
+                                                            let username;
+                                                            user.user_Mid_Name ? username =
+                                                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                                            purposemesg.textContent = `${username} replied to you`;
                                                         }
                                                     }
                                                 });
@@ -1274,7 +1364,6 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                     replychatcontainer.classList.add('mychatcontainer');
                                                     chatphotocontainer.classList.add('mychatphoto');
                                                     chatstime.classList.add('mychatstime');
-                                                    chatsvisiblestatus.classList.add('friendschatstime');
                                                     chattimeandstatus.classList.add('mychattimeandstatus');
                                                     reciepientblock.style.display = 'none';
                                                 } else {
@@ -1282,7 +1371,6 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                     replychatcontainer.classList.add('friendchatcontainer');
                                                     chatphotocontainer.classList.add('friendschatphoto');
                                                     chatstime.classList.add('friendschatstime');
-                                                    chatsvisiblestatus.classList.add('friendschatstime');
                                                     chattimeandstatus.classList.add('friendschattimeandstatus');
                                                     chatsvisiblestatus.style.display = 'none';
                                                 }
@@ -1439,7 +1527,6 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                     replychatcontainer.classList.add('mychatcontainer');
                                                     chataudiocontainer.classList.add('mychataudio');
                                                     chatstime.classList.add('mychatstime');
-                                                    chatsvisiblestatus.classList.add('friendschatstime');
                                                     chattimeandstatus.classList.add('mychattimeandstatus');
                                                     reciepientblock.style.display = 'none';
                                                 } else {
@@ -1447,7 +1534,6 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                                     replychatcontainer.classList.add('friendchatcontainer');
                                                     chataudiocontainer.classList.add('friendschataudio');
                                                     chatstime.classList.add('friendschatstime');
-                                                    chatsvisiblestatus.classList.add('friendschatstime');
                                                     chattimeandstatus.classList.add('friendschattimeandstatus');
                                                     chatsvisiblestatus.style.display = 'none';
                                                 }
@@ -1468,7 +1554,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                 reciepientimgCont.appendChild(reciepientimage);
                 textchatcontainer.appendChild(reciepientblock);
                 reciepientblock.classList.add('reciepientblock');
-                reciepientimgCont.addEventListener('click',()=> {
+                reciepientimgCont.addEventListener('click', () => {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account.forEach(user => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -1476,7 +1562,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         });
                     }
                 });
-                reciepientname.addEventListener('click',()=> {
+                reciepientname.addEventListener('click', () => {
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                         ActiveUser_Account.forEach(user => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -1545,7 +1631,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                             ActiveUser_Account.forEach(user => {
                                 pushChat(user.user_Id);
                                 options.remove();
-                                create_Community_Chat_Messages();
+                                create_Community_Chat_Messages(column, locationId, members_Id);
                             });
                         });
                     }
@@ -1581,7 +1667,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         });
                         localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                         options.remove();
-                        create_Community_Chat_Messages();
+                        create_Community_Chat_Messages(column, locationId, members_Id);
                     });
                     exit.addEventListener('click', () => {
                         options.remove();
@@ -1653,7 +1739,12 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                 }
                             });
                             reciepientimage.src = user.user_ProfilePicture;
-                            reciepientname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+
+                            let username;
+                            user.user_Mid_Name ? username =
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname;
+                            reciepientname.textContent = username;
                         }
                     });
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -1683,7 +1774,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                 }
                 function createViews() {
                     let views = textmesg.views;
-                    views.slice(0,6).forEach(view => {
+                    views.slice(0, 6).forEach(view => {
                         let imgcontainer = document.createElement('div');
                         let profilepicture = document.createElement('img');
                         imgcontainer.appendChild(profilepicture);
@@ -1722,7 +1813,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                             });
                         }
                         getDetails();
-                        imgcontainer.addEventListener('click',()=> {
+                        imgcontainer.addEventListener('click', () => {
                             if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                 ActiveUser_Account.forEach(user => {
                                     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
@@ -1735,9 +1826,9 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         let count = document.createElement('p');
                         chatviews.appendChild(count);
                         var num = views.length;
-                        count.textContent = `+${views.slice(6,num).length}`;
+                        count.textContent = `+${views.slice(6, num).length}`;
                         console.log(views.length);
-                        count.addEventListener('click',()=> {
+                        count.addEventListener('click', () => {
                             createViewers();
                         });
                     }
@@ -1783,13 +1874,18 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                     friendcontainer.appendChild(friendsRight);
                                     friendsRight.appendChild(friendname);
                                     friendsRight.appendChild(frienddisconnect);
-            
+
                                     function getDetails() {
                                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                                         LogInFormData.forEach(user => {
                                             if (user.user_Id === connect.posterId) {
                                                 friendProfilePicture.src = user.user_ProfilePicture;
-                                                friendname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+
+                                                let username;
+                                                user.user_Mid_Name ? username =
+                                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                                friendname.textContent = username;
                                                 function filter_Image() {
                                                     //profile_filter 
                                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -1819,9 +1915,9 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                                         });
                                     }
                                     getDetails();
-            
+
                                     frienddisconnect.textContent = 'view profile';
-            
+
                                     frienddisconnect.addEventListener('click', () => {
                                         if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
                                             ActiveUser_Account.forEach(user => {
@@ -1980,7 +2076,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                             ActiveUser_Account.forEach(user => {
                                 pushChat(user.user_Id);
                                 options.remove();
-                                create_Community_Chat_Messages();
+                                create_Community_Chat_Messages(column, locationId, members_Id);
                             });
                         });
                     }
@@ -2016,7 +2112,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         });
                         localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                         options.remove();
-                        create_Community_Chat_Messages();
+                        create_Community_Chat_Messages(column, locationId, members_Id);
                     });
                     exit.addEventListener('click', () => {
                         options.remove();
@@ -2196,7 +2292,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                             ActiveUser_Account.forEach(user => {
                                 pushChat(user.user_Id);
                                 options.remove();
-                                create_Community_Chat_Messages();
+                                create_Community_Chat_Messages(column, locationId, members_Id);
                             });
                         });
                     }
@@ -2232,7 +2328,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         });
                         localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                         options.remove();
-                        create_Community_Chat_Messages();
+                        create_Community_Chat_Messages(column, locationId, members_Id);
                     });
                     exit.addEventListener('click', () => {
                         options.remove();
@@ -2471,7 +2567,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                             ActiveUser_Account.forEach(user => {
                                 pushChat(user.user_Id);
                                 options.remove();
-                                create_Community_Chat_Messages();
+                                create_Community_Chat_Messages(column, locationId, members_Id);
                             });
                         });
                     }
@@ -2509,7 +2605,7 @@ function create_Community_Chat_Messages(column, locationId, members_Id) {
                         });
                         localStorage.setItem('Community_myChat_Msg', JSON.stringify(Community_myChat_Msg));
                         options.remove();
-                        create_Community_Chat_Messages();
+                        create_Community_Chat_Messages(column, locationId, members_Id);
                     });
                     exit.addEventListener('click', () => {
                         options.remove();

@@ -641,7 +641,11 @@ function createPublicFeed() {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === photo.posterId) {
                                 authorsImg.src = user.user_ProfilePicture;
-                                name.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username = 
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname;
+                                name.innerHTML = username;
                                 name.href = `#/user_Id=${user.user_Id}/users_Name=${user.user_Firstname + '+' + user.user_Surname}`;
                                 
                                 function filter_Image() {

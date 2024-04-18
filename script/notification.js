@@ -12,6 +12,7 @@ function createNotifications() {
                 Notifications.forEach(notification => {
                     let notificationblock = document.createElement('div');
                     let innerblock = document.createElement('div');
+                    let headwrapper = document.createElement('div');
                     let notificationhead = document.createElement('div');
                     let notificationtail = document.createElement('div');
                     let notificationImg = document.createElement('img');
@@ -26,12 +27,13 @@ function createNotifications() {
                     innerblock.appendChild(NotificationNameAndImg);
                     innerblock.appendChild(notificationtail);
                     notificationblock.appendChild(more);
+                    headwrapper.appendChild(notificationhead);
+                    headwrapper.appendChild(notificationtime);
                     notificationhead.appendChild(notificationImg);
-                    notificationtail.appendChild(notificationcaption);
-                    NotificationNameAndImg.appendChild(notificationhead);
+                    NotificationNameAndImg.appendChild(headwrapper);
                     NotificationNameAndImg.appendChild(nameandtime);
                     nameandtime.appendChild(notictionName);
-                    nameandtime.appendChild(notificationtime);
+                    nameandtime.appendChild(notificationcaption);
                     notictionName.classList.add('notictionName');
                     nameandtime.classList.add('nameandtime');
                     innerblock.classList.add('innerblock');
@@ -41,7 +43,6 @@ function createNotifications() {
                         let timeresult = new Date().getTime();
                         let miliseconds = timeresult - notification.time;
                         var token;
-                        var moment = 'ago';
                         let maintime;
     
                         time = miliseconds / 1000;
@@ -52,23 +53,23 @@ function createNotifications() {
                         } if (time <= 60 * 60 * 24 * 7 * 4) {
                             token = 'week';
                             maintime = time / 604800;
-                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token;
                         } if (time <= 60 * 60 * 24 * 7) {
                             token = 'day';
                             maintime = time / 86400;
-                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token;
                         } if (time <= 60 * 60 * 24) {
                             token = 'hr';
                             maintime = time / 3600;
-                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token;
                         } if (time <= 60 * 60) {
                             token = 'min';
                             maintime = time / 60;
-                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token;
                         } if (time <= 60) {
                             token = 'sec';
                             maintime = time;
-                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token + ' ' + moment;
+                            notificationtime.innerHTML = Math.trunc(maintime) + ' ' + token;
                         }
                     }
                     startTime();
@@ -76,8 +77,12 @@ function createNotifications() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
                             if (user.user_Id === notification.posterId) {
+                                let username;
+                                user.user_Mid_Name ? username = 
+                                user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                username = user.user_Firstname + ' ' + user.user_Surname;
                                 notificationImg.src = user.user_ProfilePicture;
-                                notictionName.textContent = user.user_Firstname + ' ' + user.user_Surname
+                                notictionName.textContent = username;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -291,6 +296,7 @@ function createNotifications() {
                     GetPosterInfo();
                     more.innerHTML = vellip;
                     notificationcaption.classList.add('notificationcaption');
+                    headwrapper.classList.add('headwrapper');
                     notificationhead.classList.add('notificationhead');
                     notificationtail.classList.add('notificationtail');
                     notificationblock.classList.add('notificationblock');

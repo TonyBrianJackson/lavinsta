@@ -8,12 +8,12 @@ if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
 } else {
     Feeds_Data_Base = [];
 }
-function create_Post_Options_Script(container,locationId) {
+function create_Post_Options_Script(container, locationId) {
     if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
         Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
         Feeds_Data_Base.forEach(photo => {
             if (photo.id === locationId) {
-                
+
                 function pushSavedphotos(option) {
                     if (!option.classList.contains('active')) {
                         const newId = '' + new Date().getTime();
@@ -275,7 +275,7 @@ function createPhotoPostOnTimeLine() {
                 let more = document.createElement('span');
 
                 more.addEventListener('click', () => {
-                    create_Post_Options_Script(main,photo.id);
+                    create_Post_Options_Script(main, photo.id);
                 });
 
                 if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
@@ -670,7 +670,7 @@ function createPhotoPostOnTimeLine() {
                 livesharecount.id = photo.id;
 
                 live_Like_Count_Container.addEventListener('click', () => {
-                    LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
+                    LikePopupsAndMore(photo.id, 'postlike', photo.likes.length);
                 });
 
                 function checkIfPostIsLiked() {
@@ -876,17 +876,21 @@ function createPhotoPostOnTimeLine() {
                     LogInFormData.forEach(user => {
                         if (user.user_Id === photo.posterId) {
                             authorsImg.src = user.user_ProfilePicture;
+                            let username;
+                            user.user_Mid_Name ? username = 
+                            user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                            username = user.user_Firstname + ' ' + user.user_Surname;
                             name.href = `#/user_Id=${user.user_Id}/users_Name=${user.user_Firstname + '+' + user.user_Surname}`;
                             if (photo.isProfile_Photo) {
-                                name.innerHTML = user.user_Firstname + ' ' + user.user_Surname + '<span class="updatingprofilepicturetext">Uploaded a new Profile Picture</span>';
+                                name.innerHTML = username + '<span class="updatingprofilepicturetext">Uploaded a new Profile Picture</span>';
                             } if (photo.isCover_Photo) {
-                                name.innerHTML = user.user_Firstname + ' ' + user.user_Surname + '<span class="updatingprofilepicturetext">Uploaded a new Cover Photo</span> ';
+                                name.innerHTML = username + '<span class="updatingprofilepicturetext">Uploaded a new Cover Photo</span> ';
                             } if (photo.isPhoto) {
-                                name.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                name.innerHTML = username;
                             } if (photo.isText) {
-                                name.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                name.innerHTML = username;
                             } if (photo.isVideo) {
-                                name.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                name.innerHTML = username;
                             }
                             function filter_Image() {
                                 //profile_filter 

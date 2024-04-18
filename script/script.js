@@ -1029,7 +1029,6 @@ document.querySelector('#Edit_DateOfBirt_Year').addEventListener('keyup', findIn
 edit_day_Option.forEach(option => {
     option.addEventListener('click', () => {
         Edit_DateOfBirtConsole_Day.textContent = option.textContent;
-        document.querySelector('.edit_date_picker_container').style.display = 'none';
         removeEditDayOptionActiveClasses();
         option.classList.add('active');
     });
@@ -1039,7 +1038,6 @@ edit_month_picker_Option.forEach(option => {
     option.addEventListener('click', () => {
         removeEditMonthOptionActiveClasses();
         Edit_DateOfBirtConsole_Month.textContent = option.textContent;
-        document.querySelector('.edit_date_picker_container_month').style.display = 'none';
         option.classList.add('active');
     });
 })

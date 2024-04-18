@@ -822,11 +822,6 @@
     box-shadow: none;
     border-radius: 0px;
 }
-
-.hamburgermenuexit {
-
-}
-
 .photofilterpopupcolumn span p {
     position: absolute;
     bottom: 2px;
@@ -3033,6 +3028,15 @@
     .hamburgermenuheader .qualitymode {
         display: block;
     }
+    .menupage {
+        padding: 17px 10px;
+    }
+    .settingsheader,
+    .hamburgermenuheader {
+        width: 97%;
+        border-radius: 10px;
+        background: var(--color-white);
+    }
     .headerbtns.sidebarlinks,
     .headerbtns.livecapture,
     .headerbtns.postwriterfloatitems,
@@ -3058,15 +3062,6 @@
     .header.headerbtns>svg {
         width: 40px;
         height: 40px;
-    }
-
-    .commentdelete.headerbtns {
-        width: 40px;
-        height: 40px;
-        padding: 10px;
-        box-shadow: none;
-        font-size: 20px;
-        border: 1px solid var(--color-light);
     }
 
     .headerbtns.sidebarlinks>svg {
@@ -3467,6 +3462,7 @@
         width: 80%;
     }
 
+    .griditems,
     .gridpost {
         width: 100%;
         min-height: 150px;
@@ -3476,8 +3472,10 @@
         box-shadow: var(--block-box-shadow);
     }
 
+    .griditems img,
+    .griditems video,
     .gridpostimg {
-        border-radius: 25px;
+        border-radius: inherit;
     }
 
     .gridpostImgCover>div {
@@ -3529,12 +3527,12 @@
         opacity: 1;
         pointer-events: all;
         transition: 800ms opacity, 800ms visibility, 250ms height;
-        padding: 5px;
+        padding: 17px 10px;
         z-index: 750;
     }
 
     .humburgermenu {
-        padding: 0px 5px;
+        padding: 5px;
         width: 100%;
         height: max-content;
         max-height: 77vh;
@@ -3542,7 +3540,7 @@
     }
 
     .copyrightmesgandsmallprofilegrid {
-        padding: 5px;
+        padding: 0px 5px;
         height: max-content;
     }
 
@@ -3628,12 +3626,6 @@
     .person,
     .friendconnectrequest {
         box-shadow: none;
-    }
-
-    .confirmationpopup {
-        left: 13%;
-        top: 40%;
-        z-index: 585;
     }
 
     .adgrid {
@@ -3943,14 +3935,15 @@
     .hamburgermenupopupactive {
         align-items: top;
         justify-content: initial;
-        padding: 0px;
     }
 
     .smallminiprofile {
         display: flex;
         border-radius: 20px 20px 0px 0px;
     }
-
+    .copyrightmessage {
+        border-radius: 0px;
+    }
     .hamburgermenupopup {
         align-items: center;
         justify-content: space-between;
@@ -3967,10 +3960,9 @@
         height: max-content;
         min-height: 60%;
         max-height: max-content;
+        padding: 0;
     }
-    .hamburgermenuheader {
-        background: var(--color-white);
-    }
+
     .settingspage {
         padding: 0px;
         background: none;

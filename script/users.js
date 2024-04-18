@@ -37,7 +37,10 @@ function createUsersProfile(locationId) {
                 let userconnect = document.createElement('img');
                 let usersinformationview = document.createElement('img');
                 let usersfriendsview = document.createElement('img');
-
+                let username;
+                profile.user_Mid_Name ? username = 
+                profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname : 
+                username = profile.user_Firstname + ' ' + profile.user_Surname;
                 userspreview.appendChild(user_More_Option_Views);
                 user_More_Option_Views.innerHTML = vellip;
 
@@ -305,7 +308,7 @@ function createUsersProfile(locationId) {
                 userspreviewflex.appendChild(usersname);
                 userspreviewflex.appendChild(usertopactivity);
 
-                usersname.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
+                usersname.textContent = username;
                 if (profile.user_CoverPhoto) {
                     usercoverphoto.src = profile.user_CoverPhoto;
                 } else {
@@ -495,7 +498,11 @@ function createProfileOptions(locationId, user_Id) {
                 option_profile_picture.appendChild(option_profile_picture_img);
                 option_exit.innerHTML = undo;
                 option_profile_picture_img.src = profile.user_ProfilePicture;
-                option_profile_name.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
+                let username;
+                profile.user_Mid_Name ? username = 
+                profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname : 
+                username = profile.user_Firstname + ' ' + profile.user_Surname;
+                option_profile_name.textContent = username;
                 option_profile_bio.textContent = profile.user_Bio.trim();
                 option_tag.innerHTML = 'User Profile Options &quest;';
                 option_exit.classList.add('headerbtns');
@@ -817,7 +824,7 @@ function usersInformation(locationId) {
                     viewblock.classList.add('info');
                     viewblocktail.classList.add('viewblocktail');
                     viewname.textContent = 'Date Of Birth';
-                    viewhead.innerHTML = infosvg;
+                    viewhead.innerHTML = babysvg;
                     value.textContent = profile.user_Dateofbirth;
                 }
                 function BioInfo(session) {
@@ -839,7 +846,7 @@ function usersInformation(locationId) {
                     viewblock.classList.add('info');
                     viewblocktail.classList.add('viewblocktail');
                     viewname.textContent = 'Bio';
-                    viewhead.innerHTML = infosvg;
+                    viewhead.innerHTML = biosvg;
                     value.textContent = profile.user_Bio;
                 }
                 function DateCreated(session) {
@@ -923,7 +930,9 @@ function createFriends(locationId) {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === connect.connectionId) {
                                     friendProfilePicture.src = user.user_ProfilePicture;
-                                    friendname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+                                    let username;
+                                    user.user_Mid_Name ? username = user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname : username = user.user_Firstname + ' ' + user.user_Surname;
+                                    friendname.textContent = username;
                                     function filter_Image() {
                                         //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {

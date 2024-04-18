@@ -216,7 +216,7 @@
     border: none;
     border-radius: 0px;
     display: block;
-    text-align: center;
+    text-align: left;
     color: var(--color-dark);
     font-size: 23px;
     font-weight: 900;
@@ -525,6 +525,7 @@
     overflow-y: scroll;
     position: relative;
     border-radius: inherit;
+    padding: 5px;
 }
 
 .container_profile_commu {

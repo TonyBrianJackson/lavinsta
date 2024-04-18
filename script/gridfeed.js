@@ -63,9 +63,7 @@ function createGridPost(locationId, gridsection) {
                     function textGridPostTextTheme() {
                         function textThemeBackGround() {
                             if (photo.themeMode == 'default') {
-                                gridpost.classList.add('themedefault');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themedefault');
                             } else if (photo.themeMode == 'claimer') {
                                 gridpostmain.classList.add('themeclaimer');
                             } else if (photo.themeMode == 'wriser') {
@@ -85,17 +83,17 @@ function createGridPost(locationId, gridsection) {
                             } else if (photo.themeMode == 'nicklezol') {
                                 gridpostmain.classList.add('themenicklezol');
                             } else if (photo.themeMode == 'mirox') {
-                                gridpost.classList.add('thememirox');
+                                gridpostmain.classList.add('thememirox');
                             } else if (photo.themeMode == 'xosiphor') {
-                                gridpost.classList.add('themexosiphor');
+                                gridpostmain.classList.add('themexosiphor');
                             } else if (photo.themeMode == 'rhicode') {
-                                gridpost.classList.add('themerhicode');
+                                gridpostmain.classList.add('themerhicode');
                             } else if (photo.themeMode == 'srccod') {
-                                gridpost.classList.add('themesrccode');
+                                gridpostmain.classList.add('themesrccode');
                             } else if (photo.themeMode == 'xporiah') {
-                                gridpost.classList.add('themexporiah');
+                                gridpostmain.classList.add('themexporiah');
                             } else if (photo.themeMode == 'niph') {
-                                gridpost.classList.add('themeniph');
+                                gridpostmain.classList.add('themeniph');
                             }
                         }
                         textThemeBackGround();
@@ -185,77 +183,48 @@ function createPublicGridPost(locationId, gridsection) {
                     if (photo.isVideo) Img_Inidcator_Img.src = 'icons/youtube.png';
                     if (photo.isShort) Img_Inidcator_Img.src = 'icons/stopwatch.png';
                 } if (photo.isText) {
+                    let gridpostmain = document.createElement('div');
                     let gridposttext = document.createElement('p');
-                    gridpost.appendChild(gridposttext);
+                    gridpost.appendChild(gridpostmain);
+                    gridpostmain.appendChild(gridposttext);
                     gridposttext.textContent = photo.Property_Src;
-                    Img_Inidcator_Img.src = 'icons/text (1).png';
+                    gridpost_Type_Indicator.innerHTML = textsvg;
                     gridposttext.classList.add('gridposttext');
+                    gridpostmain.classList.add('gridpostmain');
                     function textGridPostTextTheme() {
                         function textThemeBackGround() {
                             if (photo.themeMode == 'default') {
-                                gridpost.classList.add('themedefault');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themedefault');
                             } else if (photo.themeMode == 'claimer') {
-                                gridpost.classList.add('themeclaimer');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themeclaimer');
                             } else if (photo.themeMode == 'wriser') {
-                                gridpost.classList.add('themewriser');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themewriser');
                             } else if (photo.themeMode == 'xriphor') {
-                                gridpost.classList.add('themexriphor');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themexriphor');
                             } else if (photo.themeMode == 'nophia') {
-                                gridpost.classList.add('themenophia');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themenophia');
                             } else if (photo.themeMode == 'oracle') {
-                                gridpost.classList.add('themeoracle');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themeoracle');
                             } else if (photo.themeMode == 'folah') {
-                                gridpost.classList.add('themefolah');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themefolah');
                             } else if (photo.themeMode == 'grino') {
-                                gridpost.classList.add('themegrino');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themegrino');
                             } else if (photo.themeMode == 'rhisxos') {
-                                gridpost.classList.add('themerhisxos');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themerhisxos');
                             } else if (photo.themeMode == 'nicklezol') {
-                                gridpost.classList.add('themenicklezol');
-                                gridpost.classList.add('gridpost_Radius');
-                                gridposttext.classList.add('themenicklezolgridposttext');
+                                gridpostmain.classList.add('themenicklezol');
                             } else if (photo.themeMode == 'mirox') {
-                                gridpost.classList.add('gridpost_Radius');
-                                gridpost.classList.add('thememirox');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('thememirox');
                             } else if (photo.themeMode == 'xosiphor') {
-                                gridpost.classList.add('gridpost_Radius');
-                                gridpost.classList.add('themexosiphor');
-                                gridposttext.classList.add('gridposttextdark');
+                                gridpostmain.classList.add('themexosiphor');
                             } else if (photo.themeMode == 'rhicode') {
-                                gridpost.classList.add('gridpost_Radius');
-                                gridpost.classList.add('themerhicode');
-                                gridposttext.classList.add('gridposttextToviewWhite');
+                                gridpostmain.classList.add('themerhicode');
                             } else if (photo.themeMode == 'srccod') {
-                                gridpost.classList.add('gridpost_Radius');
-                                gridpost.classList.add('themesrccode');
-                                gridposttext.classList.add('text_Theme_Color_Is_White');
+                                gridpostmain.classList.add('themesrccode');
                             } else if (photo.themeMode == 'xporiah') {
-                                gridpost.classList.add('gridpost_Radius');
-                                gridpost.classList.add('themexporiah');
-                                gridposttext.classList.add('text_Theme_Color_Is_White');
+                                gridpostmain.classList.add('themexporiah');
                             } else if (photo.themeMode == 'niph') {
-                                gridpost.classList.add('gridpost_Radius');
-                                gridpost.classList.add('themeniph');
-                                gridposttext.classList.add('text_Theme_Color_Is_White');
+                                gridpostmain.classList.add('themeniph');
                             }
                         }
                         textThemeBackGround();

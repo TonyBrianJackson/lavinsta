@@ -317,7 +317,11 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === photo.posterId) {
                                     posterImg.src = user.user_ProfilePicture;
-                                    posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    let username;
+                                    user.user_Mid_Name ? username =
+                                        user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                        username = user.user_Firstname + ' ' + user.user_Surname;
+                                    posterName.innerHTML = username;
                                     function filter_Image() {
                                         //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {
@@ -717,7 +721,6 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
     }
     displayelement('none');
     let savedtilebox = document.createElement('nav');
-    let savedtime = document.createElement('span');
 
     let itemsviewclosebutton = document.createElement('span');
     let itemsviewonlargescale = document.createElement('section');
@@ -726,14 +729,157 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
     //viewing gridpost
     let gridpostimagecontainer = document.createElement('div');
     let gridposttitlecover = document.createElement('span');
-    let gridView_Header = document.createElement('header');
-    gridpostimagecontainer.appendChild(gridView_Header);
-    gridView_Header.appendChild(savedtime);
-    gridView_Header.appendChild(itemsviewclosebutton);
-    gridView_Header.classList.add('gridView_Header');
+
     itemsviewonlargescale.style.display = 'flex';
 
     loader(itemsviewonlargescale, locationId);
+    function Create_GridPost_Options(anything) {
+        let gridView_Header = document.createElement('header');
+        let more = document.createElement('span');
+
+        function create_Grid_PostHeader() {
+            let gridpostNameAndImg = document.createElement('div');
+            let nameAndImgWrapper = document.createElement('div');
+            let posterImgCont = document.createElement('span');
+            let nameAndCaptionWrapper = document.createElement('div');
+            let posterImg = document.createElement('img');
+            let posterName = document.createElement('p');
+            let postCaption = document.createElement('b');
+            let gridposttime = document.createElement('b');
+
+            gridpostimagecontainer.appendChild(gridView_Header);
+            gridView_Header.appendChild(gridpostNameAndImg);
+            gridView_Header.appendChild(more);
+            gridView_Header.appendChild(itemsviewclosebutton);
+            gridpostNameAndImg.appendChild(nameAndImgWrapper);
+            nameAndImgWrapper.appendChild(posterImgCont);
+            nameAndImgWrapper.appendChild(nameAndCaptionWrapper);
+            nameAndCaptionWrapper.appendChild(posterName);
+            nameAndCaptionWrapper.appendChild(postCaption);
+            nameAndCaptionWrapper.appendChild(gridposttime);
+            posterImgCont.appendChild(posterImg);
+            postCaption.textContent = type;
+            nameAndImgWrapper.classList.add('nameAndImgWrapper');
+            gridpostNameAndImg.classList.add('gridpostNameAndImg');
+            gridposttime.textContent = elapsedtime;
+            gridposttime.classList.add('gridposttime');
+            function Poster_Details() {
+                LogInFormData.forEach(user => {
+                    if (user.user_Id === posterId) {
+                        posterImg.src = user.user_ProfilePicture;
+                        let username;
+                        user.user_Mid_Name ? username =
+                            user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                            username = user.user_Firstname + ' ' + user.user_Surname;
+                        posterName.innerHTML = username;
+                        function filter_Image() {
+                            //profile_filter 
+                            if (user.user_ProfilePicture_Filter == 'default') {
+                                posterImg.classList.add('--color-default');
+                            } else if (user.user_ProfilePicture_Filter == 'gray') {
+                                posterImg.classList.add('--color-gray');
+                            } else if (user.user_ProfilePicture_Filter == 'contrast') {
+                                posterImg.classList.add('--color-contrast');
+                            } else if (user.user_ProfilePicture_Filter == 'bright') {
+                                posterImg.classList.add('--color-bright');
+                            } else if (user.user_ProfilePicture_Filter == 'blur') {
+                                posterImg.classList.add('--color-blur');
+                            } else if (user.user_ProfilePicture_Filter == 'invert') {
+                                posterImg.classList.add('--color-invert');
+                            } else if (user.user_ProfilePicture_Filter == 'sepia') {
+                                posterImg.classList.add('--color-sepia');
+                            } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
+                                posterImg.classList.add('--color-hue-rotate');
+                            } else if (user.user_ProfilePicture_Filter == 'opacity') {
+                                posterImg.classList.add('--color-opacity');
+                            } else if (user.user_ProfilePicture_Filter == 'satulate') {
+                                posterImg.classList.add('--color-satulate');
+                            }
+                        }
+                        filter_Image();
+                    }
+                });
+            }
+            Poster_Details();
+        }
+        create_Grid_PostHeader();
+        more.classList.add('more');
+        gridView_Header.classList.add('gridView_Header');
+        more.innerHTML = vellip;
+        more.addEventListener('click', () => {
+            create_Post_Options_Script(gridpostimagecontainer,locationId);
+        });
+    }
+    Create_GridPost_Options();
+    function create_Post_Options_Script(container, idLocation) {
+        if (locationId === idLocation) {
+            let options = document.createElement('div');
+            let eight_Option = document.createElement('span');
+            let exit = document.createElement('span');
+
+            container.insertAdjacentElement("afterend", options);
+            options.appendChild(exit);
+            options.appendChild(eight_Option);
+            eight_Option.innerHTML = downloadsvg;
+            exit.innerHTML = undo2;
+
+            options.classList.add('options');
+            eight_Option.classList.add('headerbtns');
+            exit.classList.add('headerbtns');
+
+            exit.addEventListener('click', () => {
+                options.remove();
+            });
+            if (type == 'photo') {
+                function pushSavedData() {
+                    var new_Date = new Date().getTime();
+                    var download_Link = document.createElement('a');
+                    var mainimg = document.createElement('img');
+                    mainimg.src = Property_Src;
+                    download_Link.href = mainimg.src;
+                    download_Link.download = "Lavinsta" + '_' + 'IMG' + '_' + new_Date + '.' + 'jpeg';
+                    download_Link.click();
+                }
+                eight_Option.addEventListener('click', () => {
+                    pushSavedData();
+                    removeOptions();
+                });
+            } if (type == 'video') {
+                function pushSavedData() {
+                    var new_Date = new Date().getTime();
+                    var download_Link = document.createElement('a');
+                    var mainimg = document.createElement('video');
+                    mainimg.src = Property_Src;
+                    download_Link.href = mainimg.src;
+                    download_Link.download = "Lavinsta" + '_' + 'VIDEO' + '_' + new_Date + '.' + 'mp4';
+                    download_Link.click();
+                }
+                eight_Option.addEventListener('click', () => {
+                    pushSavedData();
+                    removeOptions();
+                });
+            } if (type == 'text') {
+                eight_Option.innerHTML = copysvg;
+                function copyTextPost(text) {
+                    if (navigator.clipboard) {
+                        try {
+                            const toCopy = text;
+                            navigator.clipboard.writeText(toCopy);
+                            create_Message('text copied');
+                        }
+                        catch (err) {
+                            console.error('Failed to copy: ', err);
+                            create_Message('unable to copy');
+                        }
+                    }
+                }
+                eight_Option.addEventListener('click', () => {
+                    copyTextPost(Property_Src);
+                    removeOptions();
+                });
+            }
+        }
+    }
     if (type == 'photo') {
         let gridpostimagetoview = document.createElement('img');
         gridpostimagecontainer.appendChild(gridpostimagetoview);
@@ -841,10 +987,87 @@ async function create_Random_Items(locationId, posterId, caption, Property_Src, 
             gridpostimagetoview.currentTime = (clickOffSetx / progressbarwidthvalue) * videoDuration;
         });
 
+    } if (type == 'text') {
+        let postmain = document.createElement('div');
+        let textPost = document.createElement('p');
+        gridpostimagecontainer.appendChild(postmain);
+        postmain.appendChild(textPost);
+        textPost.classList.add('textPost');
+        postmain.classList.add('postmain')
+        textPost.textContent = photo.Property_Src;
+        textPost.textContent.split(" ").forEach(texttitle => {
+            prefix.forEach(unit => {
+                if (texttitle.indexOf(unit.prefixName) != -1) {
+                    if (unit.prefixName == 'https://') {
+                        let newtitle = textPost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                        textPost.innerHTML = newtitle;
+                    } else {
+                        let newtitle = textPost.textContent.replace(texttitle, `<a href="${'https://' + texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
+                        textPost.innerHTML = newtitle;
+                    }
+                }
+            });
+        });
+        function textGridPostTextTheme() {
+            function textThemeBackGround() {
+                if (photo.themeMode == 'default') {
+                    postmain.classList.add('themedefault');
+                } else if (photo.themeMode == 'claimer') {
+                    postmain.classList.add('themeclaimer');
+                } else if (photo.themeMode == 'wriser') {
+                    postmain.classList.add('themewriser');
+                } else if (photo.themeMode == 'xriphor') {
+                    postmain.classList.add('themexriphor');
+                } else if (photo.themeMode == 'nophia') {
+                    postmain.classList.add('themenophia');
+                } else if (photo.themeMode == 'oracle') {
+                    postmain.classList.add('themeoracle');
+                } else if (photo.themeMode == 'folah') {
+                    postmain.classList.add('themefolah');
+                } else if (photo.themeMode == 'grino') {
+                    postmain.classList.add('themegrino');
+                } else if (photo.themeMode == 'rhisxos') {
+                    postmain.classList.add('themerhisxos');
+                } else if (photo.themeMode == 'nicklezol') {
+                    postmain.classList.add('themenicklezol');
+                } else if (photo.themeMode == 'mirox') {
+                    postmain.classList.add('thememirox');
+                } else if (photo.themeMode == 'xosiphor') {
+                    postmain.classList.add('themexosiphor');
+                } else if (photo.themeMode == 'rhicode') {
+                    postmain.classList.add('themerhicode');
+                } else if (photo.themeMode == 'srccod') {
+                    postmain.classList.add('themesrccode');
+                } else if (photo.themeMode == 'xporiah') {
+                    postmain.classList.add('themexporiah');
+                } else if (photo.themeMode == 'niph') {
+                    postmain.classList.add('themeniph');
+                }
+            }
+            textThemeBackGround();
+            function textThemeFont() {
+                if (photo.fontMode == 'Default') {
+                    textPost.classList.add('TextDefault');
+                } else if (photo.fontMode == 'Times') {
+                    textPost.classList.add('TextTimes');
+                } else if (photo.fontMode == 'Asul') {
+                    textPost.classList.add('TextAsul');
+                } else if (photo.fontMode == 'Satisfy') {
+                    textPost.classList.add('TextSatisfy');
+                } else if (photo.fontMode == 'Great Vibes') {
+                    textPost.classList.add('TextGreatVibes');
+                }
+            }
+            textThemeFont();
+        }
+        textGridPostTextTheme();
+        textPost.addEventListener('click', () => {
+            textPost.classList.toggle('textPostmoreorless');
+        });
     }
-    savedtime.textContent = elapsedtime;
+
+
     gridpostcaption.textContent = caption;
-    savedtime.classList.add('savedtime');
 
     savedtilebox.classList.add('savedtilebox');
     savedtilebox.classList.add('UXer_TrUXheDTYle_bX');

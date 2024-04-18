@@ -204,6 +204,11 @@ function create_Active_Account() {
                 let usersfriendsview = document.createElement('img');
                 let usersprofilelabel = document.createElement('img');
 
+                let username;
+                profile.user_Mid_Name ? username = 
+                profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname : 
+                username = profile.user_Firstname + ' ' + profile.user_Surname;
+
                 userspreview.appendChild(user_More_Option_Views);
                 user_More_Option_Views.innerHTML = vellip;
 
@@ -547,7 +552,7 @@ function create_Active_Account() {
                 userminiprofile.appendChild(usersmallprofilea);
                 usersmallprofileimagecontainer.appendChild(usersmallimg);
                 usersmallprofileid.textContent = profile.lavinsta_Email;
-                usersmallprofilename.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
+                usersmallprofilename.textContent = username;
                 usersmallprofilea.href = '#';
                 usersmallprofilea.appendChild(usersmallprofilename);
                 usersmallprofilea.appendChild(usersmallprofileid);
@@ -1063,8 +1068,8 @@ function create_Active_Account() {
                 userspreview.appendChild(userspreviewflex);
                 userspreviewflex.appendChild(usersname);
                 userspreviewflex.appendChild(usertopactivity);
-                document.title = profile.user_Firstname + ' ' + profile.user_Surname;
-                usersname.textContent = profile.user_Firstname + ' ' + profile.user_Surname;
+                document.title = username;
+                usersname.textContent = username;
                 if (profile.user_CoverPhoto) {
                     usercoverphoto.src = profile.user_CoverPhoto;
                 } else {

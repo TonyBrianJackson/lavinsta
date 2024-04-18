@@ -3071,7 +3071,8 @@ function delete_Timeline_Post(locationId) {
                                             posterId: photo.posterId,
                                             title: photo.title,
                                             Property_Src: photo.Property_Src,
-                                            filter: photo.filter,
+                                            themeMode: photo.themeMode,
+                                            fontMode: photo.fontMode,
                                             id: id,
                                             date: trackingDate,
                                             time: new Date().getTime()

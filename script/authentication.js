@@ -1,7 +1,6 @@
 const firstName = document.getElementById('first-name');
 const surName = document.getElementById('sur-name');
-const email = document.getElementById('sign-upemail');
-const sign_upphone = document.getElementById('sign-upphone');
+const mid_name = document.getElementById('mid-name');
 const createpassword = document.getElementById('makepassword');
 const confirmpassword = document.getElementById('confirmpassword');
 const verify = document.querySelector('#verify');
@@ -37,19 +36,7 @@ function AllOtherThingsAboutPassword() {
         document.querySelector('.signupasanadmin').style.display = 'none';
         document.querySelector('.signuppage').style.display = 'flex';
     });
-    document.querySelector('.use_Phone_Number').addEventListener('click', () => {
-        document.querySelector('.email_textBox').classList.toggle('email_textBoxactive');
-        document.querySelector('.Phone_textBox').classList.toggle('Phone_textBoxactive');
-    });
 
-    document.querySelector('.use_user_Phone').addEventListener('click', () => {
-        document.querySelector('.login_email').classList.toggle('email_textBoxactive');
-        document.querySelector('.login_phone').classList.toggle('Phone_textBoxactive');
-    });
-    document.querySelector('.use_Phone_Reset').addEventListener('click', () => {
-        document.querySelector('.user_Email_Reset').classList.toggle('email_textBoxactive');
-        document.querySelector('.user_Phone_Reset').classList.toggle('Phone_textBoxactive');
-    });
     document.querySelector('.recent_Logs_call').addEventListener('click', () => {
         document.querySelectorAll('.pages').forEach(page => {
             if (page.classList.contains('holdallpage')) {
@@ -208,8 +195,8 @@ function pushformdata() {
     LogInFormData.push({
         //general data
         user_Firstname: firstName.value,
+        user_Mid_Name: mid_name.value,
         user_Surname: surName.value,
-        user_Email: email.value,
         user_Createpaswword: createpassword.value,
         user_Confirmpassword: confirmpassword.value,
         user_Dateofbirth: DateOfBirtConsole_Day.textContent + ' ' + DateOfBirtConsole_Month.textContent + ' ' + DateOfBirtConsole_Year.textContent,
@@ -220,6 +207,7 @@ function pushformdata() {
         user_Id: UserId,
         lavinsta_Id: lavinstaId,
         lavinsta_Email: lavinsta_Email,
+        user_Email: '',
         user_Phone: '',
         user_Bio: '',
         user_Location: '',
@@ -233,7 +221,6 @@ function pushformdata() {
         user_Is_Professional: false,
         user_TaskBar_Mode: false,
         user_Gender: genderSex.textContent,
-        user_verificationKey: verify.value,
         date_Created: newtrackingDate,
         time_Created: new Date().getTime(),
         user_NotificationView: true,
@@ -453,7 +440,7 @@ signupbtn.forEach(item => {
 });
 const toopendateofbirth = document.querySelector('#toopendateofbirth');
 toopendateofbirth.addEventListener('click', () => {
-    if (firstName.value && surName.value && email.value || firstName.value && surName.value && sign_upphone.value) {
+    if (firstName.value && surName.value) {
         document.querySelector('.signuppage').style.display = 'none';
         document.querySelector('.signuppage1').style.display = 'flex';
         let URL = 'https://www.cybernet.com/lavinsta.auth';
@@ -489,13 +476,29 @@ function getRandomCode() {
     var maxNumber = 99999;
     let randomcode = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
     let new_user_Id_maile = document.querySelector('.new_user_Id_maile');
-    let username = firstName.value.toLowerCase().trim().replace(' ','.') + surName.value.toLowerCase().trim().replace(' ','');
+    let username = firstName.value.toLowerCase().trim().replace(' ','.') + mid_name.value.toLowerCase().trim().replace(' ','.') + surName.value.toLowerCase().trim().replace(' ','');
     
-    lavinsta_Email = `${username}${randomcode}@lavinsta`;
+    lavinsta_Email = `${username}${randomcode}@lavinsta.com`;
 
     verification_console.textContent = randomcode;
     new_user_Id_maile.textContent = lavinsta_Email;
-    alert(randomcode);
+    document.querySelector('.notemessage').textContent = `Don't Forget This Email Above You Gonna Use It To Log In`;
+    document.querySelector('.newnotemessage').textContent = `Click On Copy My Email Before Create My Account`;
+    function copyTextPost(text) {
+        if (navigator.clipboard) {
+            try {
+                navigator.clipboard.writeText(text);
+                create_Detail_Message('text copied');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                create_Detail_Message('unable to copy');
+            }
+        }
+    }
+    document.querySelector('#copylavinstamail').addEventListener('click',()=> {
+        copyTextPost(lavinsta_Email);
+        document.querySelector('#welcomepage').disabled = false;
+    });
     function NotificationsOnly() {
         Notification.requestPermission().then(perm => {
             if (perm === 'granted') {
@@ -549,7 +552,7 @@ verificationpage.addEventListener('click', () => {
     if (createpassword.value === confirmpassword.value && createpassword.value.length > 8) {
         function accountValidation() {
             LogInFormData.forEach(data => {
-                if (data.user_Firstname === firstName.value && data.user_Surname === surName.value && data.user_Email === email.value && data.user_Createpaswword === createpassword.value) {
+                if (data.lavinsta_Email === document.querySelector('.new_user_Id_maile').textContent) {
                     let loginconsole_Validiation = document.querySelector('.loginconsole_Validiation');
                     loginconsole_Validiation.textContent = data.user_Firstname + ' ' + data.user_Surname;
                     loginconsole_Validiation.style.color = 'red';
@@ -570,13 +573,9 @@ verificationpage.addEventListener('click', () => {
 });
 const welcomepage = document.querySelector('#welcomepage');
 welcomepage.addEventListener('click', () => {
-    if (verify.value) {
-        if (verify.value === verification_console.textContent) {
-            pushformdata();
-            location.reload();
-        }
-    }
-})
+    pushformdata();
+    location.reload();
+});
 const nextbtn1 = document.querySelectorAll('.nextbtn1');
 const loginbtn = document.querySelector('.loginbtn');
 function logIn() {
@@ -585,11 +584,11 @@ function logIn() {
     const loginconsole = document.querySelector('.loginconsole');
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     LogInFormData.forEach(data => {
-        // data.user_Email === usersemail.value && data.user_Confirmpassword === userspassword.value && data.user_Phone === login_upphone.value
-        if (data.user_Email !== usersemail.value && data.user_Confirmpassword !== userspassword.value && data.user_Phone !== login_upphone.value) {
+        // data.lavinsta_Email === usersemail.value && data.user_Confirmpassword === userspassword.value && data.user_Phone === login_upphone.value
+        if (data.lavinsta_Email !== usersemail.value && data.user_Confirmpassword !== userspassword.value) {
             loginconsole.textContent = 'wrong details provide';
             loginconsole.style.color = 'red';
-        } if (data.user_Email === usersemail.value && data.user_Confirmpassword === userspassword.value && data.user_Phone === login_upphone.value) {
+        } if (data.lavinsta_Email === usersemail.value && data.user_Confirmpassword === userspassword.value) {
             loginconsole.textContent = data.user_Firstname + ' ' + data.user_Surname;
             loginconsole.style.color = 'lightgreen';
             loginbtn.id = data.user_Id;
@@ -667,15 +666,31 @@ const get_Verification_Code_Button = document.querySelector('#get_Verification_C
 const verify_Acc_Button = document.querySelector('.verify_Acc_Button');
 const Verify_Password_Button = document.querySelector('.Verify_Password_Button');
 let reset_Console = document.querySelector('.reset_Console');
-function getResetCode() {
+function create_Detail_Message(messages) {
+    let savingmessage = document.createElement('span');
+    document.body.appendChild(savingmessage);
+    savingmessage.innerText = messages;
+    savingmessage.classList.add('savingmessage');
+    setTimeout(() => {
+        savingmessage.remove();
+    }, 3500);
+}
+function getResetCode(firstname,midname,surname) {
     var minNumber = 10000;
     var maxNumber = 99999;
-    reset_Console.textContent = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
-    alert(reset_Console.textContent);
+    let randomcode = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
+    let new_user_Id_maile = document.querySelector('#user_New_E_Mail');
+    let username = firstname.toLowerCase().trim().replace(' ','.') + midname.toLowerCase().trim().replace(' ','.') + surname.toLowerCase().trim().replace(' ','');
+    let newOne = username.split("").slice(0,username.length);
+    console.log(newOne);
+    lavinsta_Email = `${username}${randomcode}@lavinsta.com`;
+
+    new_user_Id_maile.value = lavinsta_Email;
+    document.querySelector('.reset_Console').textContent = `Don't Forget This Email Above You Gonna Use It To Log In`;
 }
 function find_Acc_UId() {
     LogInFormData.forEach(user => {
-        if (user.user_Email === usersemail_Reset.value || user.user_Phone === usersphone_Reset.value) {
+        if (user.lavinsta_Email === usersemail_Reset.value) {
             const users_Id_And_Logo = document.querySelectorAll('.users_Id_And_Logo');
             const users_Name_And_Page_Title = document.querySelectorAll('#users_Name_And_Page_Title');
             users_Id_And_Logo.forEach(logo => {
@@ -689,21 +704,15 @@ function find_Acc_UId() {
 }
 function Verify_Account() {
     LogInFormData.forEach(user => {
-        if (user.user_Email === usersemail_Reset.value || user.user_Phone === usersphone_Reset.value) {
-            if (Users_verification_Input.value) {
-                if (Users_verification_Input.value === reset_Console.textContent) {
-                    user.user_verificationKey = Users_verification_Input.value;
-                    document.querySelector('.forgot_Password_Page').style.display = 'none';
-                    document.querySelector('.Verify_Password_Page').style.display = 'flex';
-                    localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                }
-            }
+        if (user.lavinsta_Email === usersemail_Reset.value) {
+            document.querySelector('.forgot_Password_Page').style.display = 'none';
+            document.querySelector('.Verify_Password_Page').style.display = 'flex';
         }
     });
 }
 function Reset_Password() {
     LogInFormData.forEach(user => {
-        if (user.user_Email === usersemail_Reset.value || user.user_Phone === usersphone_Reset.value) {
+        if (user.lavinsta_Email === usersemail_Reset.value) {
             if (users_Reset_Password_Reset.value && Users_Confirm_Password_Reset.value) {
                 if (users_Reset_Password_Reset.value.length > 8 && Users_Confirm_Password_Reset.value.length > 8) {
                     if (users_Reset_Password_Reset.value === Users_Confirm_Password_Reset.value) {
@@ -768,7 +777,11 @@ function Reset_Password() {
 get_Verification_Code_Button.addEventListener('click', () => {
     if (usersemail_Reset.value || usersphone_Reset.value) {
         find_Acc_UId();
-        getResetCode();
+        LogInFormData.forEach(user => {
+            if (user.lavinsta_Email === usersemail_Reset.value) {
+                getResetCode(user.user_Firstname,user.user_Mid_Name,user.user_Surname);
+            }
+        });
     }
 });
 verify_Acc_Button.addEventListener('click', () => {

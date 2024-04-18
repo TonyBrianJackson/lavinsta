@@ -11,7 +11,7 @@ function creategridvideo() {
                     let gridmenusave = document.createElement('span');
                     let gridmenudelete = document.createElement('span');
                     let gridmenu = document.createElement('div');
-    
+
                     let reeltitleeee = document.createElement('span');
                     let gridshort = document.createElement('div');
                     let reelgrid1 = document.createElement('div');
@@ -25,7 +25,7 @@ function creategridvideo() {
                     let gridvideotime = document.createElement('span');
                     let gridvideomore = document.createElement('span');
                     let gridmenugrid = document.createElement('div');
-    
+
                     let gridmenusend = document.createElement('span');
                     let gridmenusendimg = document.createElement('img');
                     let gridmenudeleteimg = document.createElement('img');
@@ -33,7 +33,7 @@ function creategridvideo() {
                     let gridvideodate = document.createElement('span');
                     let commentandlikesharelivelikesflex = document.createElement('div');
                     let reelvideocover = document.createElement('span');
-    
+
                     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                     LogInFormData.forEach(user => {
                         if (user.user_Id === gridvideo.posterId) {
@@ -67,16 +67,20 @@ function creategridvideo() {
                     reelinfo.appendChild(gridvideodate);
                     reelgridusersphoto.appendChild(reelgridposterimg);
                     reelgridusersphoto.classList.add('reelgridusersphoto');
-    
+
                     reeltitleeee.textContent = gridvideo.title;
                     reelvidvideo.src = gridvideo.Property_Src;
-    
+
                     function Poster_Details() {
                         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                         LogInFormData.forEach(user => {
                             if (user.user_Id === gridvideo.posterId) {
                                 reelgridposterimg.src = user.user_ProfilePicture;
-                                reelgridpostername.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username =
+                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                reelgridpostername.innerHTML = username;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -106,7 +110,7 @@ function creategridvideo() {
                         });
                     }
                     Poster_Details();
-    
+
                     reeltitleeee.classList.add('reeltitleeee');
                     reeltitleeee.addEventListener('click', () => {
                         if (reeltitleeee.textContent.length > 80) {
@@ -123,7 +127,7 @@ function creategridvideo() {
                         currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
                         gridvideotime.innerHTML = `${currentMin} : ${currentSec}`;
                     });
-    
+
                     commentandlikesharelivelikesflex.appendChild(gridshortlikecount);
                     commentandlikesharelivelikesflex.appendChild(gridshortcommentcount);
                     commentandlikesharelivelikesflex.appendChild(viewscount);
@@ -132,8 +136,8 @@ function creategridvideo() {
                     gridshortcommentcount.textContent = gridvideo.comments.length + 'comments';
                     let view_Count_Extension = '';
                     viewscount.textContent = `${gridvideo.views.length}${view_Count_Extension} views`;
-                    gridshortlikecount.addEventListener('click',() => {
-                        LikePopupsAndMore(gridvideo.id, 'postlike',gridvideo.likes.length);
+                    gridshortlikecount.addEventListener('click', () => {
+                        LikePopupsAndMore(gridvideo.id, 'postlike', gridvideo.likes.length);
                     });
                     gridshortlikecount.classList.add('gridvideolikecount');
                     gridshortcommentcount.classList.add('gridshortcommentcount');
@@ -147,7 +151,7 @@ function creategridvideo() {
                         var token;
                         var moment = 'ago';
                         let maintime;
-    
+
                         time = miliseconds / 1000;
                         if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
                             token = 'month';
@@ -202,8 +206,8 @@ function creategridvideo() {
                     gridmenudelete.classList.add('gridmenulike');
                     gridmenusave.classList.add('gridmenulike');
                     gridmenusend.classList.add('gridmenulike');
-    
-    
+
+
                     gridmenusend.addEventListener('click', () => {
                         document.querySelectorAll('.commentsectioncontainer').forEach(container => {
                             if (container.id === gridvideo.id) {
@@ -215,20 +219,20 @@ function creategridvideo() {
                         });
                         gridmenu.classList.toggle('gridmenuactive');
                     });
-    
+
                     gridmenusend.appendChild(gridmenusendimg);
-    
+
                     gridmenusendimg.src = 'newicons/send.png';
-    
+
                     gridmenusave.appendChild(gridmenusaveimg);
                     gridmenudelete.appendChild(gridmenudeleteimg);
                     gridmenusaveimg.src = 'newicons/bookmark-white.png';
                     gridmenudeleteimg.src = 'newicons/trash-can.png';
                     gridvideomore.innerHTML = '&vellip;';
-    
+
                     gridvideomore.classList.add('gridvideomore');
                     gridmenu.classList.add('gridmenu');
-    
+
                     if (Array.isArray(ActiveAccount)) {
                         ActiveUser_Account = ActiveAccount;
                         ActiveUser_Account.forEach(data => {
@@ -237,11 +241,11 @@ function creategridvideo() {
                             }
                         });
                     }
-    
+
                     gridvideomore.addEventListener('click', () => {
                         gridmenu.classList.toggle('gridmenuactive');
                     });
-    
+
                     function pushSavedphotos() {
                         if (Array.isArray(ActiveAccount)) {
                             ActiveUser_Account = ActiveAccount;
@@ -268,7 +272,7 @@ function creategridvideo() {
                             });
                         }
                     }
-        
+
                     gridmenusave.addEventListener('click', () => {
                         gridmenu.classList.toggle('gridmenuactive');
                         pushSavedphotos();
@@ -302,7 +306,7 @@ function create_TimeLine_G_Video() {
                     let gridmenusave = document.createElement('span');
                     let gridmenudelete = document.createElement('span');
                     let gridmenu = document.createElement('div');
-    
+
                     let reeltitleeee = document.createElement('span');
                     let gridshort = document.createElement('div');
                     let reelgrid1 = document.createElement('div');
@@ -316,7 +320,7 @@ function create_TimeLine_G_Video() {
                     let gridvideotime = document.createElement('span');
                     let gridvideomore = document.createElement('span');
                     let gridmenugrid = document.createElement('div');
-    
+
                     let gridmenusend = document.createElement('span');
                     let gridmenusendimg = document.createElement('img');
                     let gridmenudeleteimg = document.createElement('img');
@@ -324,7 +328,7 @@ function create_TimeLine_G_Video() {
                     let gridvideodate = document.createElement('span');
                     let commentandlikesharelivelikesflex = document.createElement('div');
                     let reelvideocover = document.createElement('span');
-    
+
                     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                     LogInFormData.forEach(user => {
                         if (user.user_Id === gridvideo.posterId) {
@@ -357,7 +361,7 @@ function create_TimeLine_G_Video() {
                     reelinfo.appendChild(gridvideodate);
                     reelgridusersphoto.appendChild(reelgridposterimg);
                     reelgridusersphoto.classList.add('reelgridusersphoto');
-    
+
                     reeltitleeee.textContent = gridvideo.title;
                     reelvidvideo.src = gridvideo.Property_Src;
                     function Poster_Details() {
@@ -365,7 +369,11 @@ function create_TimeLine_G_Video() {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === gridvideo.posterId) {
                                 reelgridposterimg.src = user.user_ProfilePicture;
-                                reelgridpostername.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                let username;
+                                user.user_Mid_Name ? username =
+                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                    username = user.user_Firstname + ' ' + user.user_Surname;
+                                reelgridpostername.innerHTML = username;
                                 function filter_Image() {
                                     //profile_filter 
                                     if (user.user_ProfilePicture_Filter == 'default') {
@@ -411,7 +419,7 @@ function create_TimeLine_G_Video() {
                         currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
                         gridvideotime.innerHTML = `${currentMin} : ${currentSec}`;
                     });
-    
+
                     commentandlikesharelivelikesflex.appendChild(gridshortlikecount);
                     commentandlikesharelivelikesflex.appendChild(gridshortcommentcount);
                     commentandlikesharelivelikesflex.appendChild(viewscount);
@@ -419,8 +427,8 @@ function create_TimeLine_G_Video() {
                     gridshortlikecount.textContent = gridvideo.likes.length + 'likes';
                     gridshortcommentcount.textContent = gridvideo.comments.length + 'comments';
 
-                    gridshortlikecount.addEventListener('click',() => {
-                        LikePopupsAndMore(gridvideo.id, 'postlike',gridvideo.likes.length);
+                    gridshortlikecount.addEventListener('click', () => {
+                        LikePopupsAndMore(gridvideo.id, 'postlike', gridvideo.likes.length);
                     });
 
                     let view_Count_Extension = '';
@@ -431,7 +439,7 @@ function create_TimeLine_G_Video() {
                     viewscount.classList.add('viewscount');
                     gridshortlikecount.id = gridvideo.id;
                     gridshortcommentcount.id = gridvideo.id;
-    
+
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -439,7 +447,7 @@ function create_TimeLine_G_Video() {
                         var token;
                         var moment = 'ago';
                         let maintime;
-    
+
                         time = miliseconds / 1000;
                         if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
                             token = 'month';
@@ -494,8 +502,8 @@ function create_TimeLine_G_Video() {
                     gridmenudelete.classList.add('gridmenulike');
                     gridmenusave.classList.add('gridmenulike');
                     gridmenusend.classList.add('gridmenulike');
-    
-    
+
+
                     gridmenusend.addEventListener('click', () => {
                         document.querySelectorAll('.commentsectioncontainer').forEach(container => {
                             if (container.id === gridvideo.id) {
@@ -507,20 +515,20 @@ function create_TimeLine_G_Video() {
                         });
                         gridmenu.classList.toggle('gridmenuactive');
                     });
-    
+
                     gridmenusend.appendChild(gridmenusendimg);
-    
+
                     gridmenusendimg.src = 'newicons/send.png';
-    
+
                     gridmenusave.appendChild(gridmenusaveimg);
                     gridmenudelete.appendChild(gridmenudeleteimg);
                     gridmenusaveimg.src = 'newicons/bookmark-white.png';
                     gridmenudeleteimg.src = 'newicons/trash-can.png';
                     gridvideomore.innerHTML = '&vellip;';
-    
+
                     gridvideomore.classList.add('gridvideomore');
                     gridmenu.classList.add('gridmenu');
-    
+
                     if (Array.isArray(ActiveAccount)) {
                         ActiveUser_Account = ActiveAccount;
                         ActiveUser_Account.forEach(data => {
@@ -529,7 +537,7 @@ function create_TimeLine_G_Video() {
                             }
                         });
                     }
-    
+
                     gridvideomore.addEventListener('click', () => {
                         gridmenu.classList.toggle('gridmenuactive');
                     });
@@ -560,13 +568,13 @@ function create_TimeLine_G_Video() {
                             });
                         }
                     }
-        
+
                     gridmenusave.addEventListener('click', () => {
                         gridmenu.classList.toggle('gridmenuactive');
                         pushSavedphotos();
                         newSaved_Script();
                     });
-                    
+
                     gridmenudelete.addEventListener('click', () => {
                         document.querySelectorAll('.confirmation_popup').forEach(popup => {
                             if (popup.id === gridvideo.id + gridvideo.posterId) {

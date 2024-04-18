@@ -89,7 +89,11 @@ function create_Main_Story_Trash(locationId) {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === photo.posterId) {
                                     posterImg.src = user.user_ProfilePicture;
-                                    posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    let username;
+                                    user.user_Mid_Name ? username =
+                                        user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                        username = user.user_Firstname + ' ' + user.user_Surname;
+                                    posterName.innerHTML = username;
                                     function filter_Image() {
                                         //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {
@@ -135,7 +139,7 @@ function create_Main_Story_Trash(locationId) {
                     let first_Option = document.createElement('span');
                     let second_Option = document.createElement('span');
                     let exit = document.createElement('span');
-    
+
                     gridpostimagecontainer.insertAdjacentElement("afterend", options);
                     options.appendChild(exit);
                     options.appendChild(first_Option);
@@ -143,7 +147,7 @@ function create_Main_Story_Trash(locationId) {
                     first_Option.innerHTML = deletesvg;
                     second_Option.innerHTML = downloadsvg;
                     exit.innerHTML = undo2;
-    
+
                     options.classList.add('options');
                     first_Option.classList.add('headerbtns');
                     second_Option.classList.add('headerbtns');
@@ -204,7 +208,7 @@ function create_Main_Story_Trash(locationId) {
                         });
                     }
                 }
- 
+
                 function Remove_From_Trash() {
                     let confirmation_popup = document.createElement('div');
                     let confirmationflex = document.createElement('div');
@@ -901,7 +905,7 @@ async function create_Main_Stories(locationId, Property_Src) {
                 exit.innerHTML = undo2;
                 popupname.innerHTML = `${storystatus.views.length} view(s) &quest; on this story`;
 
-                exit.addEventListener('click',()=> {
+                exit.addEventListener('click', () => {
                     storyviewspopup.classList.add('storyviewspopup');
                     storyviewspopup.classList.remove('storyviewspopupactive');
                 });
@@ -973,7 +977,11 @@ async function create_Main_Stories(locationId, Property_Src) {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === storystatus.posterId) {
                                     posterImg.src = user.user_ProfilePicture;
-                                    posterName.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    let username;
+                                    user.user_Mid_Name ? username =
+                                        user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                        username = user.user_Firstname + ' ' + user.user_Surname;
+                                    posterName.innerHTML = username;
                                     function filter_Image() {
                                         //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {
@@ -1352,7 +1360,11 @@ function CreateStatusViews() {
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === view.posterId) {
                                     viewprofilepicture.src = user.user_ProfilePicture;
-                                    viewname.innerHTML = user.user_Firstname + ' ' + user.user_Surname;
+                                    let username;
+                                    user.user_Mid_Name ? username =
+                                        user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+                                        username = user.user_Firstname + ' ' + user.user_Surname;
+                                    viewname.innerHTML = username;
                                     function filter_Image() {
                                         //profile_filter 
                                         if (user.user_ProfilePicture_Filter == 'default') {

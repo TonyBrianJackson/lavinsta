@@ -102,10 +102,10 @@ function createAdminsUsers_List() {
                             location_Input.value = data.user_Location;
                         } else {
                             location_Input.placeholder = 'Location';
-                        } if (data.user_Email) {
-                            email_Input.value = data.user_Email;
+                        } if (data.lavinsta_Email) {
+                            email_Input.value = data.lavinsta_Email;
                         } else {
-                            email_Input.placeholder = 'User_Email';
+                            email_Input.placeholder = 'lavinsta_Email';
                         } if (data.date_Created) {
                             dateOfIssue_Input.value = `DOI ${data.date_Created}`;
                         } else {
@@ -339,10 +339,10 @@ function createAdminsUsers_List() {
                             location_Input.value = data.user_Location;
                         } else {
                             location_Input.placeholder = 'Location';
-                        } if (data.user_Email) {
-                            email_Input.value = data.user_Email;
+                        } if (data.lavinsta_Email) {
+                            email_Input.value = data.lavinsta_Email;
                         } else {
-                            email_Input.placeholder = 'User_Email';
+                            email_Input.placeholder = 'lavinsta_Email';
                         } if (data.date_Created) {
                             dateOfIssue_Input.value = `DOI ${data.date_Created}`;
                         } else {
@@ -555,10 +555,10 @@ function createAdminsUsers_List() {
                             location_Input.value = data.user_Location;
                         } else {
                             location_Input.placeholder = 'Location';
-                        } if (data.user_Email) {
-                            email_Input.value = data.user_Email;
+                        } if (data.lavinsta_Email) {
+                            email_Input.value = data.lavinsta_Email;
                         } else {
-                            email_Input.placeholder = 'User_Email';
+                            email_Input.placeholder = 'lavinsta_Email';
                         } if (data.date_Created) {
                             dateOfIssue_Input.value = `DOI ${data.date_Created}`;
                         } else {

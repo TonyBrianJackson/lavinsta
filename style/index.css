@@ -3117,27 +3117,7 @@ a {
     border: none;
 }
 
-.videoqualitytab,
-.themecustomizationpopup,
-.datasavingtab,
-.postarchivetabs,
-.storiesarchivetabs,
-.accountinfopage,
-.memoriestab,
-.settingspage,
-.savedpage,
-.themecustomizationpopup,
-.securitytab,
-.videoqualitytab,
-.datasavingtab,
-.recycletabs,
-.recyclebin,
-.deletedcomment,
-.deletedpostsss,
-.deletedstoriessss,
-.account_report_Page,
-.accountdeletingpage,
-.deleteaccountpopup {
+.menupage {
     width: 100%;
     padding: 20px;
     min-height: 100%;
@@ -3295,14 +3275,15 @@ a {
 .settingsheader {
     width: 100%;
     height: max-content;
+    padding: 15px;
     display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: row;
     background: none;
-    box-shadow: none;
     overflow: visible;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
     border: none;
+    box-shadow: none;
     border-radius: 0px;
 }
 
@@ -3322,14 +3303,14 @@ a {
 .datasavingtab,
 .recycletabs,
 .recyclebin {
-    z-index: 455;
+    z-index: 451;
     min-height: 100%;
     justify-content: initial;
 }
 
 .deletedpostsss,
 .deletedstoriessss {
-    z-index: 460;
+    z-index: 452;
     min-height: 100%;
 }
 
@@ -4522,13 +4503,6 @@ a {
     position: absolute;
     bottom: 0;
     z-index: 19;
-}
-
-.commentdelete.headerbtns {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    display: none;
 }
 
 .expand {
@@ -8709,8 +8683,8 @@ a {
     }
 
     .searchheadericons svg {
-        width: 25px;
-        height: 25px;
+        width: 21px;
+        height: 21px;
     }
 
     .searchlink {
@@ -9279,30 +9253,6 @@ a {
     .copyrightmessage span {
         font-size: 14px;
         color: var(--color-dark);
-    }
-
-    .videoqualitytab,
-    .themecustomizationpopup,
-    .datasavingtab,
-    .postarchivetabs,
-    .storiesarchivetabs,
-    .accountinfopage,
-    .memoriestab,
-    .settingspage,
-    .savedpage,
-    .themecustomizationpopup,
-    .securitytab,
-    .videoqualitytab,
-    .datasavingtab,
-    .recycletabs,
-    .recyclebin,
-    .deletedcomment,
-    .deletedpostsss,
-    .deletedstoriessss,
-    .account_report_Page,
-    .accountdeletingpage,
-    .deleteaccountpopup {
-        background: linear-gradient(to bottom, var(--color-white), var(--color-gray), var(--color-dark));
     }
 
     .videoplayermiddleplaypauseactive {

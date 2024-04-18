@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
 }
+
 .portalpage {
     width: max-content;
     height: max-content;
@@ -18,6 +19,7 @@ body {
     border-radius: 0px;
     z-index: 2;
 }
+
 .logoNameLoading {
     display: flex;
     flex-direction: row;
@@ -28,22 +30,26 @@ body {
     box-shadow: none;
     border-radius: 0px;
 }
+
 .logoNameLoading p {
-    font-size:10.99999999vw;
-    border:none;
+    font-size: 10.99999999vw;
+    border: none;
     box-shadow: none;
-    overflow:hidden;
-    background:none;
+    overflow: hidden;
+    background: none;
     border-radius: 0px;
-    font-weight:900;
+    font-weight: 900;
     font-style: italic;
 }
+
 .logoNameLoading p:nth-child(1) {
     color: var(--color-dark);
 }
+
 .logoNameLoading p:nth-child(2) {
-    color:#FFCC99;
+    color: #FFCC99;
 }
+
 .loaderload {
     width: max-content;
     border-radius: 0px;
@@ -57,6 +63,7 @@ body {
     overflow: hidden;
     padding: 3px;
 }
+
 .loadingBlocks {
     border-radius: 0px;
     display: block;
@@ -65,48 +72,66 @@ body {
     background: var(--color-dark);
     padding: 0.99999999vw;
 }
+
 .loadingBlocksactive {
     background: var(--color-white);
 }
+
 .bodyIndex::after,
 .bodyIndex::before {
     content: '';
-    width: 130vw;
-    height: 150vh;
+    width: 100%;
+    height: 100%;
     background: var(--color-bright);
     box-shadow: var(--simple-box-shadow);
     position: absolute;
     right: 0;
     bottom: 3%;
     transform: translate(1%);
-    border-radius: 50%;
+    border-radius: 10%;
     border: none;
     display: inline-block;
+    rotate: 25deg;
 }
 
 .bodyIndex::after {
     background: var(--color-bright-2);
-    transform: translate(-25%);
+    rotate: -25deg;
 }
+
 @media(min-width: 0px) and (max-width: 539px) {
     .portalpage {
         width: 250px;
         max-width: 90%;
         z-index: 2;
     }
+
     .loaderload {
         gap: 0.5vw;
     }
+
     .loadingBlocks {
         border-radius: 50%;
         width: 1.777777vw;
         padding: calc(0.219vw + 1.219vw);
         margin: 0 2px;
     }
+
+    .bodyIndex::after,
+    .bodyIndex::before {
+        width: 130vw;
+        height: 150vh;
+        right: 0;
+        bottom: 3%;
+        transform: translate(1%);
+        border-radius: 50%;
+    }
+
     .bodyIndex::before {
         transform: translate(1%);
         rotate: 5deg;
     }
+
     .bodyIndex::after {
         transform: translate(-40%);
         rotate: -25deg;

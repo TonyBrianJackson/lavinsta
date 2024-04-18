@@ -1517,8 +1517,9 @@ function createChatMenu(locationId) {
                 LogInFormData.forEach(user => {
                     if (user.user_Id === connect.connectionId) {
                         chatblockreciepientProfileImg.src = user.user_ProfilePicture;
-                        chatreciepientname.textContent = user.user_Firstname + ' ' + user.user_Surname;
-
+                        let username;
+                        user.user_Mid_Name ? username = user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname : username = user.user_Firstname + ' ' + user.user_Surname;
+                        chatreciepientname.textContent = username;
                         function filter_Image() {
                             //profile_filter 
                             if (user.user_ProfilePicture_Filter == 'default') {
@@ -1728,29 +1729,35 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
         }
     });
     //chatoptions
-    let chatoptionpopup = document.createElement('div');
-    let optionviewprofile = document.createElement('span');
-    let chatoptionmute = document.createElement('span');
-    chatoptionpopup.appendChild(optionviewprofile);
-    chatoptionpopup.appendChild(chatoptionmute);
-    optionviewprofile.textContent = 'profile';
-    optionviewprofile.id = locationId;
+    
+    function create_Post_Options_Script() {
+        let options = document.createElement('div');
+        let exit = document.createElement('span');
+        let first_Option = document.createElement('span');
+        userchatroomcolumn.insertAdjacentElement("afterend", options);
+        options.appendChild(exit);
+        options.appendChild(first_Option);
+        first_Option.innerHTML = profilesetting;
+        exit.innerHTML = undo;
+        options.classList.add('options');
+        exit.classList.add('headerbtns');
+        first_Option.classList.add('headerbtns');
 
-    optionviewprofile.addEventListener('click', () => {
-        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-            ActiveUser_Account.forEach(user => {
-                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
-                createProfileOptions(locationId, user.user_Id);
-            });
-        }
-    });
-    chatoptionmute.textContent = 'mute';
-    chatoptionmute.style.display = 'none';
-    chatoptionpopup.classList.add('chatoptionpopup');
+        first_Option.addEventListener('click', () => {
+            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                ActiveUser_Account.forEach(user => {
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'))
+                    createProfileOptions(locationId, user.user_Id);
+                });
+            }
+        });
+        exit.addEventListener('click', () => {
+            options.remove();
+        });
+    }
     chatoptionicon.addEventListener('click', () => {
-        chatoptionpopup.classList.toggle('chatoptionpopupactive');
+        create_Post_Options_Script();
     });
-
 
     voicerecordicon.innerHTML = microphone;
 
@@ -1801,7 +1808,6 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     userchatroom.appendChild(userchatroomcolumn);
     userchatroom.appendChild(userschatbox);
     userchatroom.appendChild(chatfloat);
-    userchatroom.appendChild(chatoptionpopup);
     userchatroom.classList.add('userchatroom');
     userchatroom.classList.add('userchatroomfriends');
     userchatroomcolumn.classList.add('userchatroomcolumn');
@@ -1826,7 +1832,11 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     LogInFormData.forEach(user => {
         if (user.user_Id === locationId) {
             userschatprofilepicture.src = user.user_ProfilePicture;
-            userchatreciepientname.textContent = user.user_Firstname + ' ' + user.user_Surname;
+            let username;
+            user.user_Mid_Name ? username = 
+            user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
+            username = user.user_Firstname + ' ' + user.user_Surname;
+            userchatreciepientname.textContent = username;
 
             function filter_Image() {
                 //profile_filter 
