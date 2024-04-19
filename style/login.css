@@ -117,117 +117,6 @@
     width: 100%;
 }
 
-.date_picker_container_month,
-.date_picker_container {
-    width: 100%;
-    height: max-content;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 0;
-    border-radius: 0px;
-    background: none;
-    border: none;
-    box-shadow: none;
-}
-
-.date_picker_container_month header,
-.date_picker_container header {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    width: 100%;
-    background: var(--color-dark);
-    border-radius: 0px;
-    border: none;
-    box-shadow: none;
-}
-
-.date_picker_container_month header span,
-.date_picker_container header span {
-    font-size: 18px;
-    display: block;
-    text-align: center;
-    box-shadow: none;
-    border-radius: 10px;
-    background: var(--color-dark);
-    color: var(--color-white);
-    border-color: var(--color-white);
-    border-width: 2px;
-    padding: 2px 10px;
-    cursor: pointer;
-}
-
-.month_picker,
-.day_picker {
-    width: 100%;
-    height: max-content;
-    display: grid;
-    padding: 3px;
-    gap: 5px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    border-radius: 0px;
-    background: var(--color-dark);
-    border: none;
-    box-shadow: none;
-}
-
-.month_picker {
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-.month_picker div,
-.day_picker div {
-    display: block;
-    text-align: center;
-    background: var(--color-dark);
-    color: var(--color-white);
-    border-color: var(--color-white);
-    border-width: 2px;
-    box-shadow: none;
-    border-radius: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.month_picker_Option.active,
-.day_Option.active {
-    background: var(--color-white);
-    color: var(--color-dark);
-}
-
-.done_with_Date_Picker,
-.done_with_Month_Picker {
-    display: block;
-    text-align: center;
-    border-color: var(--color-white);
-    box-shadow: none;
-    border-width: 2px;
-    border-radius: 10px;
-    padding: 5px 10px;
-    color: var(--color-white);
-    background: var(--color-success);
-    cursor: pointer;
-}
-
-.done_with_Month_Picker {
-    width: 100%;
-}
-
-.done_with_Month_Picker:hover,
-.done_with_Date_Picker:hover {
-    color: var(--color-success);
-    background: var(--color-white);
-}
-
-.day_picker div:hover {
-    background: var(--color-white);
-    color: var(--color-dark);
-    border-color: var(--color-dark);
-}
-
 .valuesOfDateOfBirth p {
     border: none;
     box-shadow: none;
@@ -295,21 +184,7 @@
     display: flex;
 }
 
-.selectoption {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    box-shadow: none;
-    border: none;
-    border-radius: 0px;
-    overflow: hidden;
-    margin: 5px 0px;
-}
-
-.selectoption input {
+.style_Bottom_Popup > input {
     width: 90px;
     display: block;
     text-align: center;
@@ -320,7 +195,7 @@
     font-size: 17px;
     border: none;
 }
-.selectoption input::placeholder {
+.style_Bottom_Popup > input::placeholder {
     color: var(--color-white);
 }
 
@@ -792,6 +667,12 @@
         border-radius: 0px;
     }
 
+    /* .pages.loginpage {
+        display: none;
+    }
+    .pages.signuppage1 {
+        display: flex;
+    } */
     .pages.holdallpage {
         max-height: 80vh;
     }

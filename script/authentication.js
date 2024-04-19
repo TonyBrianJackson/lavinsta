@@ -376,35 +376,45 @@ function getDateOfBirthValues() {
         option.addEventListener('click', () => {
             removeActiveDatePickerClasses();
             DateOfBirtConsole_Day.textContent = option.textContent;
+            document.querySelector('.selectoption').style.display = 'none';
             document.querySelector('.date_picker_container').style.display = 'none';
+            document.querySelector('.date_picker_container_month').style.display = 'none';
             option.classList.add('active');
         });
     });
     month_picker_Option.forEach(option => {
         option.addEventListener('click', () => {
             DateOfBirtConsole_Month.textContent = option.textContent;
+            document.querySelector('.selectoption').style.display = 'none';
+            document.querySelector('.date_picker_container').style.display = 'none';
             document.querySelector('.date_picker_container_month').style.display = 'none';
             removeActiveMonthPickerClasses();
             option.classList.add('active');
         });
     });
     DateOfBirtConsole_Day.addEventListener('click', () => {
+        document.querySelector('.selectoption').style.display = 'flex';
         document.querySelector('.date_picker_container').style.display = 'flex';
-    });
-    document.querySelector('.Month_PickerCloseButton').addEventListener('click', () => {
         document.querySelector('.date_picker_container_month').style.display = 'none';
     });
 
+
     DateOfBirtConsole_Month.addEventListener('click', () => {
+        document.querySelector('.selectoption').style.display = 'flex';
         document.querySelector('.date_picker_container_month').style.display = 'flex';
-    });
-    document.querySelector('.Date_PickerCloseButton').addEventListener('click', () => {
         document.querySelector('.date_picker_container').style.display = 'none';
     });
+    document.querySelector('.Date_PickerCloseButton').addEventListener('click', () => {
+        document.querySelector('.selectoption').style.display = 'none';
+        document.querySelector('.date_picker_container').style.display = 'none';
+        document.querySelector('.date_picker_container_month').style.display = 'none';
+    });
     document.querySelector('.done_with_Month_Picker').addEventListener('click', () => {
+        document.querySelector('.selectoption').style.display = 'none';
         document.querySelector('.date_picker_container_month').style.display = 'none';
     });
     document.querySelector('.done_with_Date_Picker').addEventListener('click', () => {
+        document.querySelector('.selectoption').style.display = 'none';
         document.querySelector('.date_picker_container').style.display = 'none';
     });
     function getYear() {

@@ -497,6 +497,7 @@
 .themeniph {
     background: var(--color-sky-blue);
 }
+
 .themeniph::before,
 .themeniph::after,
 .themexporiah::before,
@@ -542,6 +543,7 @@
     rotate: 25deg;
     z-index: 1;
 }
+
 .themeniph::after,
 .themexporiah::after,
 .themesrccode::after,
@@ -822,6 +824,7 @@
     box-shadow: none;
     border-radius: 0px;
 }
+
 .photofilterpopupcolumn span p {
     position: absolute;
     bottom: 2px;
@@ -1304,7 +1307,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     border: none;
-    background: linear-gradient(to bottom, var(--color-white),var(--color-white),var(--color-light),var(--color-light),var(--color-light));
+    background: linear-gradient(to bottom, var(--color-white), var(--color-white), var(--color-light), var(--color-light), var(--color-light));
     box-shadow: none;
     border-radius: inherit;
 }
@@ -1940,6 +1943,7 @@
     box-shadow: none;
     border: none;
 }
+
 .Edit_Date_OfBirth_Values {
     display: flex;
     flex-direction: row;
@@ -2001,6 +2005,9 @@
 .edit_month_picker {
     grid-template-columns: 1fr 1fr 1fr;
 }
+
+.done_with_Month_Picker,
+.done_with_Date_Picker,
 .edit_done_with_Month_Picker,
 .edit_day_picker div,
 .edit_month_picker div {
@@ -2015,6 +2022,8 @@
     padding: 10px;
     cursor: pointer;
 }
+
+.done_with_Month_Picker,
 .edit_day_picker div:last-child,
 .edit_done_with_Month_Picker {
     border-radius: 30px;
@@ -2022,22 +2031,27 @@
     background: var(--color-white);
     border-color: var(--color-dark);
 }
-.edit_month_picker_Option:nth-child(1),
+
+.edit_month_picker div:nth-child(1),
 .edit_day_picker div:nth-child(1) {
     border-radius: 25px 10px 10px 10px;
 }
-.edit_month_picker_Option:nth-child(3),
+
+.edit_month_picker div:nth-child(3),
 .edit_day_picker div:nth-child(4) {
     border-radius: 10px 25px 10px 10px;
 }
-.edit_month_picker_Option:nth-child(10),
+
+.edit_month_picker div:nth-child(10),
 .edit_day_picker div:nth-child(29) {
     border-radius: 10px 10px 10px 25px;
 }
-.edit_month_picker_Option:nth-child(12),
+
+.edit_month_picker div:nth-child(12),
 .edit_day_picker div:nth-child(32) {
     border-radius: 10px 10px 25px 10px;
 }
+
 .edit_day_picker div:hover,
 .edit_month_picker div:hover {
     color: var(--color-dark);
@@ -2046,8 +2060,8 @@
 
 }
 
-.edit_month_picker_Option.active,
-.edit_day_Option.active {
+.edit_month_picker div.active,
+.edit_day_picker div.active {
     background: var(--color-white);
     color: var(--color-dark);
     border-color: var(--color-dark);
@@ -2063,10 +2077,12 @@
     border-radius: 0px;
 }
 
+.done_with_Month_Picker,
 .edit_done_with_Month_Picker {
     width: 100%;
 }
 
+.done_with_Month_Picker:hover,
 .edit_done_with_Month_Picker:hover,
 .edit_done_with_Date_Picker:hover {
     color: var(--color-success);
@@ -2834,9 +2850,11 @@
     background: none;
     object-fit: cover;
 }
+
 .hamburgermenuheader .qualitymode {
     display: none;
 }
+
 @media (min-width: 100px) and (max-width: 800px) {
 
     .post,
@@ -2877,6 +2895,7 @@
     .gridpostimagecontainer {
         height: 100%;
     }
+
     .profile_options_container>div>div:nth-child(1)>div {
         background: transparent;
         padding: 10px;
@@ -2889,13 +2908,16 @@
         bottom: 10px;
         top: unset;
         border-radius: 25px;
+        transform: translate(-50%);
         z-index: 754;
         box-shadow: var(--simple-box-shadow);
     }
+
     .edit_selectoption,
     .license_Popup {
         z-index: 753;
     }
+
     .header {
         flex-direction: column;
         justify-content: center;
@@ -2916,6 +2938,7 @@
         font-weight: 900;
         font-size: 23px;
     }
+
     /* .headerbtns:hover>svg path,
     .headerbtns:hover>svg circle,
     .headerbtns:hover>svg polygon {
@@ -2956,7 +2979,7 @@
         width: 100%;
     }
 
-    .lavinstalogo > span {
+    .lavinstalogo>span {
         letter-spacing: 0.2vw;
         font-size: 8.55555vw;
         font-style: normal;
@@ -3025,18 +3048,22 @@
         font-size: 5.89vw;
         text-align: left;
     }
+
     .hamburgermenuheader .qualitymode {
         display: block;
     }
+
     .menupage {
         padding: 17px 10px;
     }
+
     .settingsheader,
     .hamburgermenuheader {
         width: 97%;
         border-radius: 10px;
         background: var(--color-white);
     }
+
     .headerbtns.sidebarlinks,
     .headerbtns.livecapture,
     .headerbtns.postwriterfloatitems,
@@ -3049,6 +3076,7 @@
         height: 50px;
         margin: 0;
     }
+
     .headerbtns.postwriterfloatitems,
     .headerbtns.toggleBtn,
     .headerbtns.items {
@@ -3059,6 +3087,7 @@
         box-shadow: none;
         border: 1px solid var(--color-light);
     }
+
     .header.headerbtns>svg {
         width: 40px;
         height: 40px;
@@ -3095,49 +3124,64 @@
     .headerbtns.items:nth-child(1) {
         border-radius: 25px 10px 10px 10px;
     }
+
     .headerbtns.items:nth-child(4) {
         border-radius: 10px 25px 10px 10px;
     }
+
     .headerbtns.items:nth-child(5) {
         border-radius: 10px 10px 10px 25px;
     }
+
     .headerbtns.items:nth-child(8) {
         border-radius: 10px 10px 25px 10px;
     }
+
     .headerbtns.postwriterfloatitems:nth-child(1),
     .headerbtns.items:nth-child(9) {
         border-radius: 25px 10px 10px 25px;
     }
-    
+
     .headerbtns.postwriterfloatitems:nth-child(4),
     .headerbtns.toggleBtn {
         border-radius: 10px 25px 25px 10px;
     }
+
     .postwriterfloat,
     .float {
-        width: 100%;
-        height: 0px;
+        height: max-content;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 5px;
         place-items: center;
-        transform: rotate(90deg);
         z-index: 1;
         background: var(--color-white);
         padding: 10px;
         border-radius: 25px;
     }
+
     .float {
+        width: 0vw;
+        height: 0px;
         box-shadow: var(--simple-box-shadow);
+        transition: 800ms opacity, 800ms visibility, 800ms height, 800ms width;
     }
+
     .postwriterfloat {
-        height: max-content;
-        transform: rotate(0deg);
+        overflow: hidden;
+        width: 0vw;
         background: none;
+        transition: 800ms width, 800ms visibility;
     }
+
+    .postwriterfloatactive {
+        margin-left: 0px;
+        width: 75vw;
+    }
+
     .floatactive {
-        transform: rotate(0deg);
-        justify-content: center;
+        width: 90vw;
+        height: max-content;
     }
 
     .navigatiofloatcontainer {
@@ -3153,27 +3197,17 @@
         border-radius: 25px;
     }
 
-    .postwriterfloatactive {
-        width: 73%;
-        margin: 0px;
-    }
-
     .smallscreenpostwriter {
         gap: 0px 10px;
-    }
-
-    .floatactive {
-        height: max-content;
-        width: 100%;
     }
 
     .postwritermaster {
         box-shadow: none;
         border: none;
-        width: 65px;
+        width: 55px;
         height: 55px;
         padding: 10px;
-        border-radius: 25px;
+        border-radius: 50%;
     }
 
     .master {
@@ -3246,14 +3280,14 @@
     .secondprofileculomn {
         border-radius: 0px;
         padding: 0px;
-        background: linear-gradient(to bottom, var(--color-white),var(--color-light),var(--color-white));
+        background: linear-gradient(to bottom, var(--color-white), var(--color-light), var(--color-white));
     }
 
     .secondcoverphotocontainer {
         min-height: 400px;
         height: 50vh;
         width: 100%;
-        border-radius: 25px;
+        border-radius: 25px 25px 0px 0px;
         /* border-radius: 0px; */
         padding: 0px;
         border: none;
@@ -3339,11 +3373,13 @@
         padding: 10px;
         background: var(--color-white);
     }
+
     .commentsectioncontainer .options,
     .commentroomsection .options {
         padding: 10px;
         gap: 0px 10px;
     }
+
     .commentsectioncontaineractive {
         z-index: 751;
     }
@@ -3377,6 +3413,7 @@
         z-index: 1;
         background: none;
     }
+
     .options .headerbtns.sharegridlike {
         width: 45px;
         height: 45px;
@@ -3547,6 +3584,7 @@
     .copyrightmessage {
         border-radius: 10px;
     }
+
     .menutabs,
     .accountdelettabs,
     .deletedtabs,
@@ -3941,9 +3979,11 @@
         display: flex;
         border-radius: 20px 20px 0px 0px;
     }
+
     .copyrightmessage {
         border-radius: 0px;
     }
+
     .hamburgermenupopup {
         align-items: center;
         justify-content: space-between;
@@ -3982,6 +4022,7 @@
         width: 70%;
         z-index: 754;
     }
+
     .master,
     .postwritermaster {
         width: 70px;
@@ -4307,6 +4348,7 @@
         width: 30px;
         height: 30px;
     }
+
     .commentsectioncontainer,
     .commentroomsection {
         width: 70vw;
@@ -4322,6 +4364,7 @@
         z-index: 650;
         box-shadow: var(--simple-box-shadow);
     }
+
     .commentsection,
     .replyroomculomn {
         display: grid;
@@ -4333,6 +4376,7 @@
         border-radius: inherit;
         background: var(--color-light);
     }
+
     .editpopup,
     .reportcontainer {
         z-index: 650;
@@ -4444,6 +4488,7 @@
 }
 
 @media (min-width: 801px) and (max-width: 902px) {
+
     .edit_selectoption,
     .license_Popup,
     .profile_options_container {
@@ -4454,6 +4499,7 @@
         z-index: 754;
         box-shadow: var(--simple-box-shadow);
     }
+
     .largescalewideviewcontainer {
         width: 70%;
     }
@@ -4463,7 +4509,8 @@
     .pagename {
         display: none;
     }
-    .lavinstalogo > span {
+
+    .lavinstalogo>span {
         font-size: 30px;
         font-style: normal;
         font-family: satisfy;
@@ -4564,7 +4611,6 @@
 
     .hamburgermenupopup {
         width: 25vw;
-        height: 100%;
     }
 
     .greatepostcontainer {
@@ -4583,7 +4629,11 @@
     .copyrightmessage {
         width: 100%;
     }
-
+    .hamburgermenupopup,
+    .profile_Cliant,
+    .profile {
+        top: 70px;
+    }
     .humburgermenu {
         width: 100%;
         height: 75%;
@@ -4604,7 +4654,12 @@
     .hamburgermenupopup,
     .profile_Cliant,
     .profile {
-        height: 600px;
+        height: 530px;
+    }
+
+    .profile_Cliant,
+    .profile {
+        top: 70px;
     }
 
     .humburgermenu {
@@ -4637,6 +4692,7 @@
         z-index: 754;
         box-shadow: var(--simple-box-shadow);
     }
+
     .profile_Cliant,
     .profile {
         width: 35vw;
@@ -4718,7 +4774,9 @@
         font-size: 25px;
     }
 }
+
 @media (min-width: 561px) and (max-width: 700px) {
+
     .edit_selectoption,
     .license_Popup,
     .profile_options_container {
@@ -4729,6 +4787,7 @@
         z-index: 754;
         box-shadow: var(--simple-box-shadow);
     }
+
     .profile_Cliant,
     .profile {
         width: 45vw;
@@ -4736,6 +4795,7 @@
         height: 600px;
     }
 }
+
 @media (min-width: 0px) and (max-width: 240px) {
     .header {
         flex-direction: column;
@@ -4750,7 +4810,7 @@
         height: max-content;
     }
 
-    .lavinstalogo > span {
+    .lavinstalogo>span {
         font-size: 12px;
     }
 

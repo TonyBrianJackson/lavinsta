@@ -22,9 +22,9 @@
     width: 241px;
     height: 20vh;
     position: fixed;
-    top: 40%;
+    transform: translate(-50%,-50%);
     left: 50%;
-    transform: translate(-50%);
+    top: 50%;
     border-style: solid;
     border-radius: 10px;
     padding: 20px;
@@ -923,9 +923,6 @@
         width: 150px;
         height: 200px;
     }
-    .logoutpopup.license_Popup {
-        top: 25%;
-    }
     .confirmation_popup {
         width: 241px;
         height: 20vh;
@@ -942,8 +939,6 @@
 @media (min-width: 901px) and (max-width: 1402px) {
 
     .post_making_upload_popup {
-        width: 270px;
-        top: 80px;
         padding: 20px;
         z-index: 400;
         height: max-content;
@@ -951,7 +946,6 @@
 
     .logoutpopup.license_Popup {
         width: 270px;
-        top: 80px;
         padding: 20px;
         z-index: 400;
         height: max-content;

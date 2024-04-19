@@ -1005,7 +1005,7 @@ logoutconfirmationtrue.addEventListener('click', () => {
 const Edit_DateOfBirtConsole_Day = document.querySelector('.Edit_DateOfBirtConsole_Day');
 const Edit_DateOfBirtConsole_Month = document.querySelector('.Edit_DateOfBirtConsole_Month');
 const Edit_DateOfBirtConsole_Year = document.querySelector('.Edit_DateOfBirtConsole_Year');
-const edit_selectoption_exit = document.querySelector('.edit_selectoption_exit');
+const homeeditsection = document.querySelector('.homeeditsection');
 const edit_done_with_Month_Picker = document.querySelector('.edit_done_with_Month_Picker');
 const edit_done_with_Date_Picker = document.querySelector('.edit_done_with_Date_Picker');
 
@@ -1042,22 +1042,22 @@ edit_month_picker_Option.forEach(option => {
     });
 })
 Edit_DateOfBirtConsole_Day.addEventListener('click', () => {
-    document.querySelector('.edit_selectoption').style.display = 'flex';
+    document.querySelector('.homeeditsection').style.display = 'flex';
     document.querySelector('.edit_date_picker_container').style.display = 'flex';
     document.querySelector('.edit_date_picker_container_month').style.display = 'none';
 });
 Edit_DateOfBirtConsole_Month.addEventListener('click', () => {
-    document.querySelector('.edit_selectoption').style.display = 'flex';
+    document.querySelector('.homeeditsection').style.display = 'flex';
     document.querySelector('.edit_date_picker_container').style.display = 'none';
     document.querySelector('.edit_date_picker_container_month').style.display = 'flex';
 });
-edit_selectoption_exit.addEventListener('click', () => {
-    document.querySelector('.edit_selectoption').style.display = 'none';
+homeeditsection.addEventListener('click', () => {
+    document.querySelector('.homeeditsection').style.display = 'none';
     document.querySelector('.edit_date_picker_container').style.display = 'none';
 });
 edit_done_with_Date_Picker.addEventListener('click', () => {
-    document.querySelector('.edit_selectoption').style.display = 'none';
+    document.querySelector('.homeeditsection').style.display = 'none';
 });
 edit_done_with_Month_Picker.addEventListener('click', () => {
-    document.querySelector('.edit_selectoption').style.display = 'none';
+    document.querySelector('.homeeditsection').style.display = 'none';
 });
