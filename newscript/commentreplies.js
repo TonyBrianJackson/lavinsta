@@ -229,8 +229,8 @@ function createcommentreplys(section, locationId) {
                             LikePopupsAndMore(comment.id, 'commentlike', comment.likes.length);
                         });
 
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 commentreact.id = data.user_Id + comment.id;
                             });
@@ -618,8 +618,8 @@ function createcommentreplys(section, locationId) {
                         commentreact.classList.add('replylike');
                         function themecommentMode() {
                             LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -757,8 +757,8 @@ function createcommentreplys(section, locationId) {
                         commentreact.addEventListener('click', () => {
                             likecomment();
                         })
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 commentreact.id = data.user_Id + comment.id;
                             });
@@ -1039,8 +1039,8 @@ function createcommentreplys(section, locationId) {
                         commentreact.classList.add('replylike');
 
                         function themeCommentMode() {
-                            if (Array.isArray(ActiveAccount)) {
-                                ActiveUser_Account = ActiveAccount;
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                                 ActiveUser_Account.forEach(data => {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
@@ -1201,8 +1201,8 @@ function createcommentreplys(section, locationId) {
                             likecomment();
                         });
 
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 commentreact.id = data.user_Id + comment.id;
                             });

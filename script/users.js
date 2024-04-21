@@ -1,4 +1,10 @@
 function createUsersProfile(locationId) {
+    document.querySelectorAll('.commentsectioncontainer').forEach(popup => {
+        popup.remove();
+    });
+    document.querySelectorAll('.commentroomsectionactive').forEach(popup => {
+        popup.remove();
+    });
     if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
         sessionStorage.setItem('activepage', locationId);
         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -23,55 +29,49 @@ function createUsersProfile(locationId) {
                 let usertimelinetext = document.createElement('span');
                 let userpublic = document.createElement('span');
                 let userothers = document.createElement('span');
-                let topacttimeline = document.createElement('img');
-                let topactpublic = document.createElement('img');
-                let topactothers = document.createElement('img');
+                let topacttimeline = document.createElement('div');
+                let topactpublic = document.createElement('div');
+                let topactothers = document.createElement('div');
                 let userconnectgrid = document.createElement('nav');
                 let user_Connection_Grid_Inner = document.createElement('div');
 
-                let user_More_Option_Views = document.createElement('span');
                 let userconnect_Container = document.createElement('span');
                 let user_Information_View_Container = document.createElement('span');
                 let user_Friends_View_Container = document.createElement('span');
-
+                let user_Copy_Link_Container = document.createElement('span');
+                
                 let userconnect = document.createElement('img');
-                let usersinformationview = document.createElement('img');
-                let usersfriendsview = document.createElement('img');
                 let username;
                 profile.user_Mid_Name ? username = 
                 profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname : 
                 username = profile.user_Firstname + ' ' + profile.user_Surname;
-                userspreview.appendChild(user_More_Option_Views);
-                user_More_Option_Views.innerHTML = vellip;
 
-                userconnect.src = 'icons/add-user.png';
-                usersfriendsview.src = 'icons/tow-people_solid.png';
-                usersinformationview.src = 'icons/information.png';
                 userconnectgrid.id = profile.user_Id;
                 exituserprofile.id = profile.user_Id;
-                user_More_Option_Views.id = profile.user_Id;
                 userprofileheader.id = profile.user_Id;
                 userconnect_Container.id = profile.user_Id;
 
                 userconnect_Container.innerHTML = moresvg;
                 user_Friends_View_Container.innerHTML = peoplesvg;
                 user_Information_View_Container.innerHTML = infosvg;
-
+                user_Copy_Link_Container.innerHTML = copyLinksvg;
+                
                 userconnectgrid.appendChild(user_Connection_Grid_Inner);
                 user_Connection_Grid_Inner.appendChild(userconnect_Container);
                 user_Connection_Grid_Inner.appendChild(user_Friends_View_Container);
                 user_Connection_Grid_Inner.appendChild(user_Information_View_Container);
-
+                user_Connection_Grid_Inner.appendChild(user_Copy_Link_Container);
+                
                 userconnect_Container.classList.add('headerbtns');
                 user_Friends_View_Container.classList.add('headerbtns');
                 user_Friends_View_Container.classList.add('headerbtns');
                 user_Information_View_Container.classList.add('headerbtns');
-                user_More_Option_Views.classList.add('headerbtns');
+                user_Copy_Link_Container.classList.add('headerbtns');
 
                 userconnect_Container.classList.add('unsent_Request');
                 user_Friends_View_Container.classList.add('user_Friends_View_Container');
                 user_Information_View_Container.classList.add('user_Information_View_Container');
-                user_More_Option_Views.classList.add('user_More_Option_Views');
+                user_Copy_Link_Container.classList.add('user_Copy_Link_Container');
 
                 ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                 ActiveUser_Account.forEach(user => {
@@ -105,7 +105,9 @@ function createUsersProfile(locationId) {
                                                         chatroom.classList.remove('Funcy_Box_Shadow');
                                                     }, 2000);
                                                     sessionStorage.setItem('activepage', friend.connectionId + user.user_Id);
-                                                    document.querySelector('.navigatiofloatcontainer').style.display = 'none';
+                                                    if (document.querySelector('.navigatiofloatcontainer')) {
+                                                        document.querySelector('.navigatiofloatcontainer').style.display = 'none';
+                                                    }
                                                 }
                                             });
                                             if (JSON.parse(localStorage.getItem('myChatMsg'))) {
@@ -148,10 +150,29 @@ function createUsersProfile(locationId) {
                 } else {
                     ActiveUser_Account = [];
                 }
-                userconnect.classList.add('userconnect');
-                user_More_Option_Views.addEventListener('click', () => {
+                const copyLink = (text) => {
+                    if (navigator.clipboard) {
+                        try {
+                            const toCopy = text;
+                            navigator.clipboard.writeText(toCopy);
+                            create_Message('text copied');
+                        }
+                        catch (err) {
+                            console.error('Failed to copy: ', err);
+                            create_Message('unable to copy');
+                        }
+                    }
+                }
+                user_Copy_Link_Container.addEventListener('click',()=> {
+                    let url = document.createElement('a');
+                    url.href = `view.html?User_Id=${profile.user_Id}`;
+                    copyLink(url);
+                });
+                userprofilepic.addEventListener('click',()=> {
                     userconnectgrid.classList.toggle('userconnectgridactive');
                 });
+                userconnect.classList.add('userconnect');
+
                 userconnectgrid.classList.add('userconnectgrid');
 
                 //users mini profile
@@ -281,9 +302,10 @@ function createUsersProfile(locationId) {
                 usertopactivitypublic.appendChild(userpublic);
                 usertopactivityothers.appendChild(userothers);
 
-                topacttimeline.src = 'icons/history.png';
-                topactothers.src = 'icons/application.png';
-                topactpublic.src = 'icons/web-content.png';
+                topacttimeline.innerHTML = homesvg;
+                topactothers.innerHTML = moresvg;
+                topactpublic.innerHTML = feedsvg;
+
                 usertimelinetext.textContent = 'timeline';
                 userpublic.textContent = 'public';
                 userothers.textContent = 'others';
@@ -311,8 +333,9 @@ function createUsersProfile(locationId) {
                 usersname.textContent = username;
                 if (profile.user_CoverPhoto) {
                     usercoverphoto.src = profile.user_CoverPhoto;
+                    userprofilepic.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
                 } else {
-                    usercoverphoto.src = 'icons/male-user.png';
+                    userprofilepic.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
                 } if (profile.user_ProfilePicture) {
                     userprofilepicture.src = profile.user_ProfilePicture;
                 } else {
@@ -386,7 +409,6 @@ function createUsersProfile(locationId) {
                     exituserprofile.classList.toggle('exituserprofilelarge');
                     userconnectgrid.classList.toggle('userconnectgridlarge');
                     userconnect.classList.toggle('userconnectgridlargebutton');
-                    user_More_Option_Views.classList.toggle('user_More_Option_Views_Large');
                 }
 
                 userprofileminimizer.id = profile.user_Id;
@@ -457,271 +479,6 @@ function createUsersProfile(locationId) {
                 usercoverphoto.id = profile.user_Id;
                 loader(profile_Cliant);
                 createGridPost(profile.user_Id, userpostgrid);
-            }
-        });
-    }
-}
-function createProfileOptions(locationId, user_Id) {
-    document.querySelectorAll('.profile_options_container').forEach(optioncontainer => {
-        optioncontainer.remove();
-    });
-    if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
-        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-        LogInFormData.forEach(profile => {
-            if (profile.user_Id === locationId) {
-                let option_header = document.createElement('header');
-                let option_exit = document.createElement('div');
-                let option_tag = document.createElement('b');
-                let profile_options_container = document.createElement('div');
-                let option_inner_container = document.createElement('div');
-                let option_left = document.createElement('div');
-                let option_right = document.createElement('div');
-                let option_bottom = document.createElement('nav');
-                let option_connect = document.createElement('button');
-                let option_disconnect = document.createElement('button');
-                let option_profile_bio = document.createElement('p');
-                let option_profile_picture = document.createElement('div');
-                let option_profile_picture_img = document.createElement('img');
-                let option_profile_name = document.createElement('strong');
-                document.body.appendChild(profile_options_container);
-                option_header.appendChild(option_exit);
-                option_header.appendChild(option_tag);
-                profile_options_container.appendChild(option_header);
-                profile_options_container.appendChild(option_inner_container);
-                profile_options_container.appendChild(option_bottom);
-                option_inner_container.appendChild(option_left);
-                option_inner_container.appendChild(option_right);
-                option_bottom.appendChild(option_connect);
-                option_left.appendChild(option_profile_picture);
-                option_left.appendChild(option_profile_name);
-                option_right.appendChild(option_profile_bio);
-                option_profile_picture.appendChild(option_profile_picture_img);
-                option_exit.innerHTML = undo;
-                option_profile_picture_img.src = profile.user_ProfilePicture;
-                let username;
-                profile.user_Mid_Name ? username = 
-                profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname : 
-                username = profile.user_Firstname + ' ' + profile.user_Surname;
-                option_profile_name.textContent = username;
-                option_profile_bio.textContent = profile.user_Bio.trim();
-                option_tag.innerHTML = 'User Profile Options &quest;';
-                option_exit.classList.add('headerbtns');
-                profile_options_container.classList.add('profile_options_container');
-                option_connect.textContent = 'Connect';
-                if (profile.user_CoverPhoto) {
-                    option_profile_picture.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
-                } else {
-                    option_profile_picture.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
-                }
-                LogInFormData.forEach(user => {
-                    if (user.user_Id === user_Id) {
-                        let connections = user.user_Connection;
-                        connections.forEach(friend => {
-                            if (friend.connectionId === profile.user_Id) {
-                                option_connect.textContent = 'Connected';
-                            }
-                        });
-                        let sentconnections = user.user_SentRequest;
-                        sentconnections.forEach(friend => {
-                            if (friend.recieversId === profile.user_Id) {
-                                option_connect.textContent = 'Cancel';
-                            }
-                        });
-                        let connectionrequest = user.user_ConnectRequest;
-                        connectionrequest.forEach(friend => {
-                            if (friend.connectionId === profile.user_Id) {
-                                option_connect.textContent = 'Accept';
-                                option_disconnect.textContent = 'Decline';
-                                option_bottom.appendChild(option_disconnect);
-                            }
-                        });
-                    }
-                });
-                option_profile_picture.addEventListener('click', () => {
-                    createUsersProfile(profile.user_Id);
-                });
-                option_connect.addEventListener('click', () => {
-                    if (option_connect.textContent === 'Connect') {
-                        option_connect.textContent = 'Cancel';
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(user => {
-                            const id = '' + new Date().getTime();
-                            if (user.user_Id === profile.user_Id) {
-                                let connections = user.user_ConnectRequest;
-                                connections.push({
-                                    id: id,
-                                    connectionId: user_Id,
-                                    recieversId: profile.user_Id,
-                                    time: new Date().getTime(),
-                                    requestView: false,
-                                });
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            } if (user.user_Id === user_Id) {
-                                let connections = user.user_SentRequest;
-                                connections.push({
-                                    id: id,
-                                    connectionId: user_Id,
-                                    recieversId: profile.user_Id,
-                                    time: new Date().getTime(),
-                                    requestView: false,
-                                });
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            }
-                        });
-                    } else if (option_connect.textContent === 'Cancel') {
-                        option_connect.textContent = 'Connect';
-                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                        LogInFormData.forEach(user => {
-                            if (user.user_Id === profile.user_Id) {
-                                let connections = user.user_ConnectRequest;
-                                connections = connections.filter(connect => {
-                                    if (connect.connectionId === user_Id) {
-                                        return false;
-                                    } else {
-                                        return true;
-                                    }
-                                });
-                                user.user_ConnectRequest = connections;
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            } if (user.user_Id === user_Id) {
-                                let connections = user.user_SentRequest;
-                                connections = connections.filter(connect => {
-                                    if (connect.recieversId === profile.user_Id) {
-                                        return false;
-                                    } else {
-                                        return true;
-                                    }
-                                });
-                                user.user_SentRequest = connections;
-                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                            }
-                        });
-                    } else if (option_connect.textContent === 'Accept') {
-                        option_connect.textContent = 'Accepted';
-                        option_connect.disabled = true;
-                        option_disconnect.remove();
-                        pushFriend();
-                        option_connect.disabled = true;
-                    }
-                });
-                option_disconnect.addEventListener('click', () => {
-                    option_disconnect.textContent = 'Declined';
-                    option_disconnect.disabled = true;
-                    option_connect.remove();
-                    LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                    LogInFormData.forEach(user => {
-                        if (user.user_Id === profile.user_Id) {
-                            let connectRequest = user.user_ConnectRequest;
-                            connectRequest = connectRequest.filter(connection => {
-                                if (connection.connectionId === user_Id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            });
-                            user.user_ConnectRequest = connectRequest;
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                        }
-                    });
-                    LogInFormData.forEach(user => {
-                        if (user.user_Id === user_Id) {
-                            let sent_Request = user.user_SentRequest;
-                            sent_Request = sent_Request.filter(connection => {
-                                if (connection.recieversId === profile.user_Id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            });
-                            user.user_SentRequest = sent_Request;
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                        }
-                    });
-                });
-                option_exit.addEventListener('click', () => {
-                    profile_options_container.remove();
-                });
-                if (profile.user_Id === user_Id) {
-                    option_connect.remove();
-                    option_disconnect.remove();
-                    option_profile_name.textContent += ` (You)`;
-                }
-                function pushFriend() {
-                    const id = '' + new Date().getTime();
-                    LogInFormData.forEach(user => {
-                        if (user.user_Id === user_Id) {
-                            let connections = user.user_Connection;
-                            connections.push({
-                                connectionId: profile.user_Id,
-                                id: id,
-                                count: 0,
-                                onlinestatus: false,
-                                status: new Date().getTime(),
-                                NotificationView: false,
-                                connector_ChatView: false,
-                            });
-                            let connectRequest = user.user_ConnectRequest;
-                            connectRequest = connectRequest.filter(connection => {
-                                if (connection.connectionId === profile.user_Id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            });
-                            user.user_ConnectRequest = connectRequest;
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                        } if (user.user_Id === profile.user_Id) {
-                            let connections = user.user_Connection;
-                            let sent_Request = user.user_SentRequest;
-                            connections.push({
-                                connectionId: profile.user_Id,
-                                id: id,
-                                count: 0,
-                                onlinestatus: false,
-                                status: new Date().getTime(),
-                                NotificationView: false,
-                                connector_ChatView: false,
-                            });
-                            sent_Request = sent_Request.filter(sentRequest => {
-                                if (sentRequest.recieversId === user_Id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            });
-                            user.user_SentRequest = sent_Request;
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                        }
-                    });
-                    LogInFormData.forEach(user => {
-                        if (user.user_Id === user_Id) {
-                            let connectRequest = user.user_ConnectRequest;
-                            connectRequest = connectRequest.filter(connection => {
-                                if (connection.connectionId === profile.user_Id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            });
-                            user.user_ConnectRequest = connectRequest;
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                        }
-                    });
-                    LogInFormData.forEach(user => {
-                        if (user.user_Id === profile.user_Id) {
-                            let sent_Request = user.user_SentRequest;
-                            sent_Request = sent_Request.filter(sentRequest => {
-                                if (sentRequest.recieversId === user_Id) {
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            });
-                            user.user_SentRequest = sent_Request;
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                        }
-                    });
-                }
             }
         });
     }
@@ -988,9 +745,4 @@ function createFriends(locationId) {
             }
         });
     }
-}
-function removeInfopage() {
-    document.querySelectorAll('.license_Popup').forEach(page => {
-        page.remove();
-    });
 }

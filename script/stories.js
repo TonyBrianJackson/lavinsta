@@ -754,6 +754,8 @@ async function create_Main_Stories(locationId, Property_Src) {
                     gridpostimagecontainer.appendChild(gridpostimagetoview);
                     gridpostimagetoview.classList.add('gridpostimagetoview');
                     gridpostimagetoview.src = storystatus.Property_Src;
+                    gridpostimagecontainer.style.backgroundImage = "url(" + storystatus.Property_Src + ")";
+                    gridpostimagetoview.style.display = 'none';
                 } if (storystatus.type == 'video') {
                     let gridpostimagetoview = document.createElement('video');
                     let gridpostcover = document.createElement('div');
@@ -772,6 +774,7 @@ async function create_Main_Stories(locationId, Property_Src) {
                     gridpostimagecontainer.appendChild(gridpostimagetoview);
                     gridpostimagetoview.classList.add('gridpostimagetoview');
                     gridpostimagetoview.src = storystatus.Property_Src;
+                    gridpostimagecontainer.style.backgroundImage = "url(" + storystatus.Property_Src + ")";
 
                     gridpostcover.style.display = 'flex';
                     gridpostimagecontainer.appendChild(gridpostcover);
@@ -782,7 +785,6 @@ async function create_Main_Stories(locationId, Property_Src) {
                     gridpostcover.appendChild(gridpostpausebtn);
                     gridpostcover.appendChild(storymute);
                     gridpostcover.appendChild(storyunmute);
-                    gridpostcover.appendChild(storyseemoreorless);
 
                     gridpostbottomcontrols.appendChild(gridpostprogressarea);
 
@@ -799,8 +801,8 @@ async function create_Main_Stories(locationId, Property_Src) {
                     gridposttimegrid.classList.add('gridposttimegrid');
                     gridpostcurrenttime.classList.add('gridpostcurrenttime');
                     gridposttotaltime.classList.add('gridpostcurrenttime');
-                    gridpostpausebtn.classList.add('gridpostpausebtn');
-                    gridpostplaybtn.classList.add('gridpostpausebtn');
+                    gridpostpausebtn.classList.add('gridpostplaybtn');
+                    gridpostplaybtn.classList.add('gridpostplaybtn');
                     gridpostplayicon.src = 'icons/play-button.png';
                     gridpostpauseicon.src = 'icons/pause.png';
                     storymute.src = 'icons/audio.png';

@@ -482,8 +482,8 @@ function changeActiveClasses() {
 }
 let verification_console = document.querySelector('.verification_console');
 function getRandomCode() {
-    var minNumber = 10000;
-    var maxNumber = 99999;
+    var minNumber = new Date().getTime();
+    var maxNumber = new Date().getTime() + new Date().getTime();
     let randomcode = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
     let new_user_Id_maile = document.querySelector('.new_user_Id_maile');
     let username = firstName.value.toLowerCase().trim().replace(' ','.') + mid_name.value.toLowerCase().trim().replace(' ','.') + surName.value.toLowerCase().trim().replace(' ','');
@@ -686,13 +686,12 @@ function create_Detail_Message(messages) {
     }, 3500);
 }
 function getResetCode(firstname,midname,surname) {
-    var minNumber = 10000;
-    var maxNumber = 99999;
+    var minNumber = new Date().getTime();
+    var maxNumber = new Date().getTime() + new Date().getTime();
     let randomcode = Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
     let new_user_Id_maile = document.querySelector('#user_New_E_Mail');
     let username = firstname.toLowerCase().trim().replace(' ','.') + midname.toLowerCase().trim().replace(' ','.') + surname.toLowerCase().trim().replace(' ','');
-    let newOne = username.split("").slice(0,username.length);
-    console.log(newOne);
+
     lavinsta_Email = `${username}${randomcode}@lavinsta.com`;
 
     new_user_Id_maile.value = lavinsta_Email;
@@ -753,7 +752,7 @@ function Reset_Password() {
                             ActiveUser_Account = [];
                             ActiveUser_Account.push({
                                 user_Id: user.user_Id,
-                                userMode: data.userMode
+                                userMode: user.userMode
                             });
                             localStorage.setItem('ActiveUser_Account', JSON.stringify(ActiveUser_Account))
                         }

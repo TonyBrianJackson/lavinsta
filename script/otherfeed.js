@@ -6,7 +6,7 @@ function createOtherPost() {
                 if (photo.isPhoto) {
                     let adgrid = document.createElement("div");
                     let head = document.createElement("header");
-                    let adgridimagecontainer = document.createElement("div");
+                    let adgridimagecontainer = document.createElement("a");
 
                     let nameandimg = document.createElement("div");
                     let postername = document.createElement("p");
@@ -15,6 +15,7 @@ function createOtherPost() {
                     let authorsImg = document.createElement("img");
 
                     let adImg = document.createElement("img");
+                    adgridimagecontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     function Create_GridPost_Options(anything) {
                         let more = document.createElement("span");
@@ -66,7 +67,7 @@ function createOtherPost() {
                     adgrid.appendChild(head);
                     adgrid.appendChild(adgridimagecontainer);
                     adgridimagecontainer.appendChild(adImg);
-                    adgridimagecontainer.appendChild(advertactionbar);
+                    adgrid.appendChild(advertactionbar);
                     if (photo.title !== "") {
                         let titlehead = document.createElement("header");
                         let posttitle = document.createElement("p");
@@ -425,10 +426,6 @@ function createOtherPost() {
                         }
                     }
 
-                    adImg.addEventListener("click", () => {
-                        createMain_GridPost(photo.id, adImg.src);
-                    });
-
                     function showOnAndOffActivitiesOnGridPost() {
                         if (photo.likeactive === false) {
                             advertlike.remove();
@@ -447,7 +444,7 @@ function createOtherPost() {
                 if (photo.isAdvert) {
                     let adgrid = document.createElement("div");
                     let head = document.createElement("header");
-                    let adgridimagecontainer = document.createElement("div");
+                    let adgridimagecontainer = document.createElement("a");
 
                     let nameandimg = document.createElement("div");
                     let postername = document.createElement("p");
@@ -455,6 +452,7 @@ function createOtherPost() {
                     let authorsImg = document.createElement("img");
 
                     let adImg = document.createElement("img");
+                    adgridimagecontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     function Create_GridPost_Options(anything) {
                         let more = document.createElement("span");
@@ -596,7 +594,7 @@ function createOtherPost() {
                     adgrid.appendChild(head);
                     adgrid.appendChild(adgridimagecontainer);
                     adgridimagecontainer.appendChild(adImg);
-                    adgridimagecontainer.appendChild(advertactionbar);
+                    adgrid.appendChild(advertactionbar);
 
                     if (photo.children) {
                         create_Multi_Tile();
@@ -875,10 +873,6 @@ function createOtherPost() {
                             decideLeft();
                         }
                     }
-
-                    adImg.addEventListener("click", () => {
-                        createMain_GridPost(photo.id, adImg.src);
-                    });
 
                     function showOnAndOffActivitiesOnGridPost() {
                         if (photo.likeactive === false) {
@@ -898,7 +892,7 @@ function createOtherPost() {
                 if (photo.isCrime) {
                     let adgrid = document.createElement("div");
                     let head = document.createElement("header");
-                    let adgridimagecontainer = document.createElement("div");
+                    let adgridimagecontainer = document.createElement("a");
 
                     let nameandimg = document.createElement("div");
                     let postername = document.createElement("p");
@@ -906,6 +900,7 @@ function createOtherPost() {
                     let authorsImg = document.createElement("img");
 
                     let adImg = document.createElement("img");
+                    adgridimagecontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     function Create_GridPost_Options(anything) {
                         let more = document.createElement("span");
@@ -1023,7 +1018,7 @@ function createOtherPost() {
                     adgrid.appendChild(head);
                     adgrid.appendChild(adgridimagecontainer);
                     adgridimagecontainer.appendChild(adImg);
-                    adgridimagecontainer.appendChild(advertactionbar);
+                    adgrid.appendChild(advertactionbar);
                     if (photo.title !== "") {
                         let titlehead = document.createElement("header");
                         let posttitle = document.createElement("p");
@@ -1323,10 +1318,6 @@ function createOtherPost() {
                             decideLeft();
                         }
                     }
-
-                    adImg.addEventListener("click", () => {
-                        createMain_GridPost(photo.id, adImg.src);
-                    });
 
                     function showOnAndOffActivitiesOnGridPost() {
                         if (photo.likeactive === false) {

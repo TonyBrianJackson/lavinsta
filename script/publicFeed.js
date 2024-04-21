@@ -74,9 +74,6 @@ function createPublicFeed() {
                         let mainimg = document.createElement('img');
                         main.appendChild(mainimg);
                         mainimg.classList.add('mainimg');
-                        mainimg.addEventListener('click', () => {
-                            createMain_GridPost(photo.id, mainimg.src);
-                        });
                         function create_Multi_Tile() {
                             let children_Tile_Box = document.createElement('nav');
                             let children = photo.children;
@@ -428,7 +425,7 @@ function createPublicFeed() {
                         create_share_Popup(photo.id);
                     });
 
-                    main.appendChild(livecountgrid);
+                    post.appendChild(livecountgrid);
 
                     livecountgrid.appendChild(live_Like_Count_Container);
                     livecountgrid.appendChild(live_Comment_Count_Container);
@@ -635,8 +632,8 @@ function createPublicFeed() {
                             sharevideophotocomment.classList.remove('sharevideophotocommentactive');
                         }, 3000);
                     });
+                    main.href = `view.html?Post_Id=${photo.id}`;
 
-                    main.href = `#Post_Id=${photo.id}/postType=${photo.type}`;
                     function Poster_Details() {
                         LogInFormData.forEach(user => {
                             if (user.user_Id === photo.posterId) {

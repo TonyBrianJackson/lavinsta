@@ -929,3 +929,49 @@ function secondcreatePeople() {
         Create_People(user.user_Id, userpeoplecolumn);
     });
 }
+document.querySelectorAll('.chatbtn').forEach(button => {
+    button.addEventListener('click', () => {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(user => {
+            if (button.id == 'general_smart_Chat') {
+                createChatMenu(user.user_Id);
+                sessionStorage.setItem('activepage', 'general_smart_Chat');
+            } else if (button.id == 'community_smart_Chat') {
+                create_Community_Chat_Menu(user.user_Id);
+                sessionStorage.setItem('activepage', 'community_smart_Chat');
+            }
+        });
+    });
+});
+
+function get_Active_Page() {
+    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(data => {
+            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+            LogInFormData.forEach(user => {
+                if (user.user_Id === data.user_Id) {
+                    let connections = user.user_Connection;
+                    connections.forEach(connection => {
+                        if (connection.connectionId + data.user_Id === sessionStorage.getItem('activepage')) {
+                            document.querySelector('.profile').style.display = 'none';
+                            document.querySelector('.chattab').style.display = 'flex';
+                            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
+                            create_Chat_Rooms(connection.connectionId + data.user_Id, connection.connectionId, data.user_Id, connection.status);
+                        }
+                    })
+                }
+                if (sessionStorage.getItem('activepage') == 'general_smart_Chat') {
+                    document.querySelector('.chattab').style.display = 'flex';
+                    document.querySelectorAll('#general_smart_Chat').forEach(button => {
+                        button.classList.add('active');
+                    });
+                    setTimeout(() => {
+                        createChatMenu(data.user_Id);
+                    }, 1000 * 3);
+                }
+            });
+        });
+    }
+}
+get_Active_Page();

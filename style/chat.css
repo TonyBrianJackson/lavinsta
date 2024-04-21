@@ -1458,6 +1458,16 @@
     .post .options .headerbtns:nth-child(8) {
         border-radius: 10px 10px 25px 10px;
     }
+    .largescalewideviewcontainer .options .headerbtns:nth-child(9),
+    .adgrid .options .headerbtns:nth-child(9),
+    .post .options .headerbtns:nth-child(9) {
+        border-radius: 10px 25px 10px 25px;
+    }
+    .largescalewideviewcontainer .options .headerbtns:nth-child(12),
+    .adgrid .options .headerbtns:nth-child(12),
+    .post .options .headerbtns:nth-child(12) {
+        border-radius: 25px 10px 25px 10px;
+    }
     .mesgBox,
     .userschatbox {
         width: 100%;

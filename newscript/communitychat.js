@@ -28,11 +28,7 @@ if (Array.isArray(JSON.parse(localStorage.getItem('myCommunities')))) {
 
 
 JSON.parse(localStorage.getItem('Community_myChat_Msg'));
-function removeOptions() {
-    document.querySelectorAll('.options').forEach(option => {
-        option.remove();
-    });
-}
+
 function create_Community_Chat_Menu(locationId) {
     removeAllchatcontainers();
     let userschatcontainer = document.createElement('div');

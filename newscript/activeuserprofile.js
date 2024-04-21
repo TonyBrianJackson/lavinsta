@@ -187,38 +187,28 @@ function create_Active_Account() {
                 let usertimelinetext = document.createElement('span');
                 let userpublic = document.createElement('span');
                 let userothers = document.createElement('span');
-                let topacttimeline = document.createElement('img');
-                let topactpublic = document.createElement('img');
-                let topactothers = document.createElement('img');
+                let topacttimeline = document.createElement('div');
+                let topactpublic = document.createElement('div');
+                let topactothers = document.createElement('div');
                 let userconnectgrid = document.createElement('nav');
                 let user_Connection_Grid_Inner = document.createElement('div');
 
-                let user_More_Option_Views = document.createElement('span');
                 let user_Profile_Settings_Container = document.createElement('span');
                 let user_Information_View_Container = document.createElement('span');
                 let user_Friends_View_Container = document.createElement('span');
                 let user_Profile_Label = document.createElement('span');
-
+                let user_Copy_Link_Container = document.createElement('span');
                 let usersprofilesetting = document.createElement('img');
-                let usersinformationview = document.createElement('img');
-                let usersfriendsview = document.createElement('img');
-                let usersprofilelabel = document.createElement('img');
 
                 let username;
-                profile.user_Mid_Name ? username = 
-                profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname : 
-                username = profile.user_Firstname + ' ' + profile.user_Surname;
+                profile.user_Mid_Name ? username =
+                    profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname :
+                    username = profile.user_Firstname + ' ' + profile.user_Surname;
 
-                userspreview.appendChild(user_More_Option_Views);
-                user_More_Option_Views.innerHTML = vellip;
 
-                usersprofilelabel.src = 'icons/camera.png';
-                usersprofilesetting.src = 'icons/setting.png';
-                usersfriendsview.src = 'icons/tow-people_solid.png';
-                usersinformationview.src = 'icons/information.png';
+
                 userconnectgrid.id = profile.user_Id;
                 exituserprofile.id = profile.user_Id;
-                user_More_Option_Views.id = profile.user_Id;
                 userprofileheader.id = profile.user_Id;
                 user_Profile_Settings_Container.id = profile.user_Id;
 
@@ -226,13 +216,14 @@ function create_Active_Account() {
                 user_Friends_View_Container.innerHTML = peoplesvg;
                 user_Information_View_Container.innerHTML = infosvg;
                 user_Profile_Label.innerHTML = camerasvg;
+                user_Copy_Link_Container.innerHTML = copyLinksvg;
 
                 userconnectgrid.appendChild(user_Connection_Grid_Inner);
                 user_Connection_Grid_Inner.appendChild(user_Profile_Label);
                 user_Connection_Grid_Inner.appendChild(user_Profile_Settings_Container);
                 user_Connection_Grid_Inner.appendChild(user_Friends_View_Container);
                 user_Connection_Grid_Inner.appendChild(user_Information_View_Container);
-
+                user_Connection_Grid_Inner.appendChild(user_Copy_Link_Container);
                 userconnectgrid.classList.add('userconnectgrid');
 
                 if (profile.user_Is_Admin === 'Assist_Admin') {
@@ -381,18 +372,23 @@ function create_Active_Account() {
                 user_Friends_View_Container.classList.add('headerbtns');
                 user_Information_View_Container.classList.add('headerbtns');
                 user_Profile_Label.classList.add('headerbtns');
-                user_More_Option_Views.classList.add('headerbtns');
+                user_Copy_Link_Container.classList.add('headerbtns');
 
                 user_Profile_Settings_Container.classList.add('user_Profile_Settings_Container');
                 user_Friends_View_Container.classList.add('user_Friends_View_Container');
                 user_Information_View_Container.classList.add('user_Information_View_Container');
-                user_More_Option_Views.classList.add('user_More_Option_Views');
                 usersprofilesetting.classList.add('usersprofilesetting');
+                user_Copy_Link_Container.classList.add('user_Copy_Link_Container');
 
-                user_More_Option_Views.addEventListener('click', () => {
-                    userconnectgrid.classList.toggle('userconnectgridactive');
+                user_Copy_Link_Container.addEventListener('click', () => {
+                    let url = document.createElement('a');
+                    url.href = `view.html?User_Id=${profile.user_Id}`;
+                    copyLink(url);
                 });
 
+                userprofilepic.addEventListener('click',()=> {
+                    userconnectgrid.classList.toggle('userconnectgridactive');
+                });
                 //users mini profile
                 let userstrash = document.createElement('nav');
                 let userminiprofile = document.createElement('div');
@@ -1043,9 +1039,10 @@ function create_Active_Account() {
                 usertopactivitypublic.appendChild(userpublic);
                 usertopactivityothers.appendChild(userothers);
 
-                topacttimeline.src = 'icons/history.png';
-                topactothers.src = 'icons/application.png';
-                topactpublic.src = 'icons/web-content.png';
+                topacttimeline.innerHTML = homesvg;
+                topactothers.innerHTML = moresvg;
+                topactpublic.innerHTML = feedsvg;
+
                 usertimelinetext.textContent = 'timeline';
                 userpublic.textContent = 'public';
                 userothers.textContent = 'others';
@@ -1072,8 +1069,9 @@ function create_Active_Account() {
                 usersname.textContent = username;
                 if (profile.user_CoverPhoto) {
                     usercoverphoto.src = profile.user_CoverPhoto;
+                    userprofilepic.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
                 } else {
-                    usersinfopro.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                    userprofilepic.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
                 } if (profile.user_ProfilePicture) {
                     userprofilepicture.src = profile.user_ProfilePicture;
                 } else {
@@ -1158,7 +1156,6 @@ function create_Active_Account() {
                     userprofileminimizer.classList.toggle('userprofileminimizerlarge');
                     exituserprofile.classList.toggle('exituserprofilelarge');
                     userconnectgrid.classList.toggle('userconnectgridlarge');
-                    user_More_Option_Views.classList.toggle('user_More_Option_Views_Large');
                 }
 
                 userprofileminimizer.id = profile.user_Id;
@@ -1287,7 +1284,7 @@ function createAdvanceSwitchPage() {
         myLogsArray.forEach(account => {
             LogInFormData.forEach(user => {
                 if (user.user_Id === account.accountId) {
-                    document.querySelector('#accountswitch').addEventListener('click',()=> {
+                    document.querySelector('#accountswitch').addEventListener('click', () => {
                         create_Switch_Acc_Popup();
                     });
                     function create_Switch_Acc_Popup() {
@@ -1312,7 +1309,7 @@ function createAdvanceSwitchPage() {
                         license_Popup.classList.add('license_Popup');
                         license_Column.classList.add('license_Column');
                         logoutbutton.classList.add('logoutbutton');
-                        logoutbutton.addEventListener('click',()=> {
+                        logoutbutton.addEventListener('click', () => {
                             document.querySelector('.confirmation_popup').style.display = 'flex';
                         });
                         exit.addEventListener('click', () => {
@@ -1404,7 +1401,7 @@ function createAdvanceSwitchPage() {
                                         //         });
                                         //     }
                                         // });
-                                        persondeclinebutton.addEventListener('click',()=> {
+                                        persondeclinebutton.addEventListener('click', () => {
                                             myLogsArray = myLogsArray.filter(user => {
                                                 if (user.accountId === persondeclinebutton.id) {
                                                     return false;
@@ -1412,7 +1409,7 @@ function createAdvanceSwitchPage() {
                                                     return true;
                                                 }
                                             });
-                                            localStorage.setItem('myLogsArray',JSON.stringify(myLogsArray));
+                                            localStorage.setItem('myLogsArray', JSON.stringify(myLogsArray));
                                             persondeclinebutton.disabled = true;
                                             persondeclinebutton.textContent = 'removed';
                                         });

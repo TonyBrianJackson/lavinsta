@@ -3,7 +3,6 @@ if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
     LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
     createChatTaskBar();
     create_Video_Chat();
-    get_Active_Page();
     createFriendContact();
 } else {
     LogInFormData = [];
@@ -1436,9 +1435,11 @@ function access_Chat_Count() {
 }
 function createChatMenu(locationId) {
     removeAllchatcontainers();
-    let userschatcontainer = document.createElement('div');
-    userschatcontainer.classList.add('userschatcontainer');
-    document.querySelector('.msgculomn').appendChild(userschatcontainer);
+    if (document.querySelector('.msgculomn')) {
+        let userschatcontainer = document.createElement('div');
+        userschatcontainer.classList.add('userschatcontainer');
+        document.querySelector('.msgculomn').appendChild(userschatcontainer);
+        
     LogInFormData.forEach(data => {
         if (data.user_Id === locationId) {
             let connections = data.user_Connection;
@@ -1646,6 +1647,7 @@ function createChatMenu(locationId) {
             });
         }
     });
+    }
 }
 function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     document.querySelectorAll('.userchatroom').forEach(room => {
@@ -1916,18 +1918,16 @@ function create_Chat_Rooms(trackingId, locationId, CreatorId, status) {
     });
 
     userchatreciepientname.classList.add('userchatreciepientname');
-    document.querySelector('.navigatiofloatcontainer').style.display = 'none';
+    if (document.querySelector('.navigatiofloatcontainer')) {
+        document.querySelector('.navigatiofloatcontainer').style.display = 'none';
+    }
     userschatexit.addEventListener('click', () => {
         createChatMenu(CreatorId);
-        document.querySelectorAll('#general_smart_Chat').forEach(button => {
-            button.classList.add('active');
-        });
-        document.querySelectorAll('#community_smart_Chat').forEach(button => {
-            button.classList.remove('active');
-        });
         userchatroom.remove();
         sessionStorage.setItem('activepage', 'general_smart_Chat');
-        document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
+        if (document.querySelector('.navigatiofloatcontainer')) {
+            document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
+        }
     });
     if (Array.isArray(JSON.parse(localStorage.getItem('myChatMsg')))) {
         myChatMsg = JSON.parse(localStorage.getItem('myChatMsg'));
@@ -2689,55 +2689,10 @@ function removeAllchatcontainers() {
         container.remove();
     });
 }
-
-document.querySelectorAll('.chatbtn').forEach(button => {
-    button.addEventListener('click', () => {
-        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-        ActiveUser_Account.forEach(user => {
-            if (button.id == 'general_smart_Chat') {
-                createChatMenu(user.user_Id);
-                sessionStorage.setItem('activepage', 'general_smart_Chat');
-            } else if (button.id == 'community_smart_Chat') {
-                create_Community_Chat_Menu(user.user_Id);
-                sessionStorage.setItem('activepage', 'community_smart_Chat');
-            }
-        });
-    });
-});
 function secondchatcontainers() {
     removeAllchatcontainers();
     ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
     ActiveUser_Account.forEach(user => {
         createChatMenu(user.user_Id);
     });
-}
-function get_Active_Page() {
-    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-        ActiveUser_Account.forEach(data => {
-            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-            LogInFormData.forEach(user => {
-                if (user.user_Id === data.user_Id) {
-                    let connections = user.user_Connection;
-                    connections.forEach(connection => {
-                        if (connection.connectionId + data.user_Id === sessionStorage.getItem('activepage')) {
-                            document.querySelector('.profile').style.display = 'none';
-                            document.querySelector('.chattab').style.display = 'flex';
-                            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
-                            create_Chat_Rooms(connection.connectionId + data.user_Id, connection.connectionId, data.user_Id, connection.status);
-                        }
-                    })
-                }
-                if (sessionStorage.getItem('activepage') == 'general_smart_Chat') {
-                    document.querySelector('.chattab').style.display = 'flex';
-                    document.querySelectorAll('#general_smart_Chat').forEach(button => {
-                        button.classList.add('active');
-                    });
-                    setTimeout(() => {
-                        createChatMenu(data.user_Id);
-                    }, 1000 * 3);
-                }
-            });
-        });
-    }
 }

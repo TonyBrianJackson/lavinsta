@@ -5,6 +5,9 @@ function removemesgBox() {
     });
 };
 function CreationOfComments(section, locationId) {
+    document.querySelectorAll('.profile_Cliant').forEach(popup => {
+        popup.remove();
+    });
     Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
     document.querySelectorAll('.commentsection').forEach(session => {
         if (session.id === locationId) {
@@ -1370,6 +1373,9 @@ function CreationOfComments(section, locationId) {
 
 function create_Comment_Reply_room(locationId) {
     document.querySelectorAll('.commentroomsectionactive').forEach(popup => {
+        popup.remove();
+    });
+    document.querySelectorAll('.profile_Cliant').forEach(popup => {
         popup.remove();
     });
     Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));

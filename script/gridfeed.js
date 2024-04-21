@@ -6,8 +6,7 @@ function createGridPost(locationId, gridsection) {
                 let gridpost = document.createElement('a');
                 let gridpostImgCover = document.createElement('div');
                 let gridpost_Type_Indicator = document.createElement('div');
-                let Img_Inidcator_Img = document.createElement('img');
-                gridpost.href = `#Post_Id=${photo.id}/postType=${photo.type}`;
+                gridpost.href = `view.html?Post_Id=${photo.id}`;
                 if (photo.isPhoto || photo.isProfile_Photo || photo.isCover_Photo) {
                     let gridpostimg = document.createElement('img');
                     gridpost.appendChild(gridpostimg);
@@ -17,9 +16,11 @@ function createGridPost(locationId, gridsection) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
                             gridpostimg.src = children[0].Property_Src;
+                            gridpost.style.backgroundImage = "url(" + children[0].Property_Src + ")";
                         }
                     } else {
                         gridpostimg.src = photo.Property_Src;
+                        gridpost.style.backgroundImage = "url(" + photo.Property_Src + ")";
                     }
                     function filter_Image() {
                         if (photo.filter == 'default') {
@@ -135,8 +136,7 @@ function createPublicGridPost(locationId, gridsection) {
                 let gridpost = document.createElement('a');
                 let gridpostImgCover = document.createElement('div');
                 let gridpost_Type_Indicator = document.createElement('div');
-                let Img_Inidcator_Img = document.createElement('img');
-                gridpost.href = `#Post_Id=${photo.id}/postType=${photo.type}`;
+                gridpost.href = `view.html?Post_Id=${photo.id}`;
                 if (photo.isPhoto) {
                     let gridpostimg = document.createElement('img');
                     gridpost.appendChild(gridpostimg);
@@ -146,9 +146,11 @@ function createPublicGridPost(locationId, gridsection) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
                             gridpostimg.src = children[0].Property_Src;
+                            gridpost.style.backgroundImage = "url(" + children[0].Property_Src + ")";
                         }
                     } else {
                         gridpostimg.src = photo.Property_Src;
+                        gridpost.style.backgroundImage = "url(" + photo.Property_Src + ")";
                     }
                     function filter_Image() {
                         if (photo.filter == 'default') {
@@ -269,7 +271,7 @@ function createOtherGridPost(locationId, gridsection) {
                     let gridpostImgCover = document.createElement('div');
                     let gridpost_Type_Indicator = document.createElement('div');
                     let Img_Inidcator_Img = document.createElement('img');
-                    gridpost.href = `#Post_Id=${photo.id}/postType=${photo.type}`;
+                    gridpost.href = `view.html?Post_Id=${photo.id}`;
                     if (photo.isPhoto || photo.isAdvert || photo.isCrime) {
                         let gridpostimg = document.createElement('img');
                         gridpost.appendChild(gridpostimg);
@@ -279,9 +281,11 @@ function createOtherGridPost(locationId, gridsection) {
                             let children = photo.children;
                             for (let i = 0; i < children.length; i++) {
                                 gridpostimg.src = children[0].Property_Src;
+                                gridpost.style.backgroundImage = "url(" + children[0].Property_Src + ")";
                             }
                         } else {
                             gridpostimg.src = photo.Property_Src;
+                            gridpost.style.backgroundImage = "url(" + photo.Property_Src + ")";
                         }
                         function filter_Image() {
                             if (photo.filter == 'default') {

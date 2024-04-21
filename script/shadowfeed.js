@@ -1,7 +1,9 @@
 function createMain_GridPost(LocationId, Property_Src,generictype) {
+    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
     Feeds_Data_Base.forEach(photo => {
         if (photo.id === LocationId) {
             if (photo.type == 'timeline' || photo.type == 'public' || photo.type == 'other') {
+                document.title = `post/${photo.title}`;
                 let itemsviewclosebutton = document.createElement('span');
                 let itemsviewonlargescale = document.createElement('section');
                 let largescalewideviewcontainer = document.createElement('div');
@@ -314,6 +316,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                         nameAndImgWrapper.classList.add('nameAndImgWrapper');
                         gridpostNameAndImg.classList.add('gridpostNameAndImg');
                         function Poster_Details() {
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
                             LogInFormData.forEach(user => {
                                 if (user.user_Id === photo.posterId) {
                                     posterImg.src = user.user_ProfilePicture;
@@ -440,7 +443,6 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 gridpostsave.addEventListener('click', () => {
                     gridpostsave.classList.add('gridpostsaved');
                     pushSavedphotos();
-                    newSaved_Script();
                 });
                 gridpostsave.classList.add('gridpostsave');
 
@@ -577,8 +579,8 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                     create_share_Popup(photo.id);
                 });
 
-                if (Array.isArray(ActiveAccount)) {
-                    ActiveUser_Account = ActiveAccount;
+                if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                    ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                     ActiveUser_Account.forEach(data => {
                         gridpostlike.id = data.user_Id + photo.id;
                     });
@@ -677,6 +679,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 });
                 itemsviewclosebutton.addEventListener('click', () => {
                     itemsviewonlargescale.remove();
+                    history.back();
                     document.querySelectorAll('.commentsectioncontainer').forEach(container => {
                         if (container.id === photo.id) {
                             container.classList.add('commentsectioncontainer');
@@ -1108,7 +1111,7 @@ function createGridPostTile(locationId,generictype) {
                             let tileImg = document.createElement('img');
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tileImg);
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tile.href = `view.html?Post_Id=${gridphoto.id}`;
                             tileImg.classList.add('tileimg');
                             tile.classList.add('tile');
                             if (gridphoto.children) {
@@ -1151,7 +1154,7 @@ function createGridPostTile(locationId,generictype) {
                             let tilevideo = document.createElement('video');
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tilevideo);
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tile.href = `view.html?Post_Id=${gridphoto.id}`;
                             tilevideo.classList.add('tilevideo');
                             tile.classList.add('tile');
                             tilevideo.src = gridphoto.Property_Src;
@@ -1167,7 +1170,7 @@ function createGridPostTile(locationId,generictype) {
                             gridpostmain.appendChild(tileText);
                             tile.classList.add('radialtext');
                             gridpostmain.classList.add('gridpostmain');
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tile.href = `view.html?Post_Id=${gridphoto.id}`;
                             tileText.classList.add('tileText');
                             tile.classList.add('tile');
                             tileText.textContent = gridphoto.Property_Src;
@@ -1239,7 +1242,7 @@ function createGridPostTile(locationId,generictype) {
                                     tilecontainer.appendChild(another_Tile_Box);
                                     another_Tile_Box.appendChild(tile);
                                     tile.appendChild(tileImg);
-                                    tile.href = `#Post_Id=${feed.Child_Id}/postType=${gridphoto.type}`;
+                                    tile.href = `view.html?Post_Id=${feed.Child_Id}`;
                                     tileImg.src = feed.Property_Src;
                                     tileImg.classList.add('tileimg');
                                     tile.classList.add('tile');
@@ -1266,7 +1269,7 @@ function createGridPostTile(locationId,generictype) {
                             let tileImg = document.createElement('img');
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tileImg);
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tile.href = `view.html?Post_Id=${gridphoto.id}`;
                             tileImg.classList.add('tileimg');
                             tile.classList.add('tile');
                             if (gridphoto.children) {
@@ -1309,7 +1312,7 @@ function createGridPostTile(locationId,generictype) {
                             let tilevideo = document.createElement('video');
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tilevideo);
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tile.href = `view.html?Post_Id=${gridphoto.id}`;
                             tilevideo.classList.add('tilevideo');
                             tile.classList.add('tile');
                             tilevideo.src = gridphoto.Property_Src;
@@ -1325,7 +1328,7 @@ function createGridPostTile(locationId,generictype) {
                             gridpostmain.appendChild(tileText);
                             tile.classList.add('radialtext');
                             gridpostmain.classList.add('gridpostmain');
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tile.href = `view.html?Post_Id=${gridphoto.id}`;
                             tileText.classList.add('tileText');
                             tile.classList.add('tile');
                             tileText.textContent = gridphoto.Property_Src;
@@ -1397,7 +1400,7 @@ function createGridPostTile(locationId,generictype) {
                                     tilecontainer.appendChild(another_Tile_Box);
                                     another_Tile_Box.appendChild(tile);
                                     tile.appendChild(tileImg);
-                                    tile.href = `#Post_Id=${feed.Child_Id}/postType=${gridphoto.type}`;
+                                    tile.href = `view.html?Post_Id=${feed.Child_Id}`;
                                     tileImg.src = feed.Property_Src;
                                     tileImg.classList.add('tileimg');
                                     tile.classList.add('tile');
@@ -1424,7 +1427,7 @@ function createGridPostTile(locationId,generictype) {
                             let tileImg = document.createElement('img');
                             tilecontainer.appendChild(tile);
                             tile.appendChild(tileImg);
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
+                            tile.href = `view.html?Post_Id=${gridphoto.id}`;
                             tileImg.classList.add('tileimg');
                             tile.classList.add('tile');
                             if (gridphoto.children) {
@@ -1474,7 +1477,7 @@ function createGridPostTile(locationId,generictype) {
                                     tilecontainer.appendChild(another_Tile_Box);
                                     another_Tile_Box.appendChild(tile);
                                     tile.appendChild(tileImg);
-                                    tile.href = `#Post_Id=${feed.Child_Id}/postType=${gridphoto.type}`;
+                                    tile.href = `view.html?Post_Id=${feed.Child_Id}`;
                                     tileImg.src = feed.Property_Src;
                                     tileImg.classList.add('tileimg');
                                     tile.classList.add('tile');
