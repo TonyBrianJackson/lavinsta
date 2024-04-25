@@ -157,19 +157,12 @@ function active_user_render() {
                         document.querySelector('.photogalleryculomn2').innerHTML = `<div class="lavinstacrime_Img_Container" id="${user.user_Id}"></div>`;
     
                         document.querySelector('.topkeepsuggession.homesearchList').innerHTML = `<div class="both_Search_Popup homesearch_List" id="${user.user_Id}"></div>`;
-                        document.querySelector('.topkeepsuggession.videosearchList').innerHTML = `<div class="both_Search_Popup videosearch_List" id="${user.user_Id}"></div>`;
                         document.querySelector('.generalnotificationculomn').innerHTML = `<div class="usersnotificationcoulmn" id="${user.user_Id}"></div>`;
     
                         document.querySelector('.footer_task_bar').innerHTML = `<nav class="chattaskbar" id="${user.user_Id}"></nav>`;
     
                         document.querySelector('.calllistcolumn').innerHTML = `<div class="userscallslistcolumn" id="${user.user_Id}"></div>`;
-    
-                        //video player
-                        document.querySelector('.trending_Videos').innerHTML = `<div class="TrendingVideos_Column" id="${user.user_Id}"></div>`;
-                        document.querySelector('.live_Videos').innerHTML = `<div class="LiveVideos_Column" id="${user.user_Id}"></div>`;
-                        document.querySelector('.timeline_Videos').innerHTML = `<div class="TimeLineVideos_Column" id="${user.user_Id}"></div>`;
-                        document.querySelector('.saved_Videos').innerHTML = `<div class="SavedVideos_Column" id="${user.user_Id}"></div>`;
-                        document.querySelector('#reelsgridculomn').innerHTML = `<div class="ReelsVideos_Column" id="${user.user_Id}"></div>`;
+
                     }
                     Create_Additional_HtmlTags();
     

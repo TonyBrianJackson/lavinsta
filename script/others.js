@@ -278,22 +278,36 @@ function create_Grid_Story_Archieve() {
                 let Trash = user.user_Archieve;
                 Trash.forEach(trash => {
                     let griditems = document.createElement('div');
+                    let gridpostmain = document.createElement('div');
+                    let gridpostcover = document.createElement('a');
                     userstoryarchievecolumn.appendChild(griditems);
+                    griditems.appendChild(gridpostmain);
                     griditems.classList.add('griditems');
+                    gridpostmain.classList.add('gridpostmain');
+                    gridpostcover.classList.add('gridpostcover');
+                    const setBackGroundImage = ()=> {
+                        if (user.user_ProfilePicture) {
+                            griditems.style.backgroundImage = "url(" + user.user_ProfilePicture + ")";
+                        } else {
+                            griditems.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                        }
+                    }
+                    setBackGroundImage();
                     if (trash.type == 'photo') {
                         let gridimg = document.createElement('img');
-                        griditems.appendChild(gridimg);
+                        gridpostmain.appendChild(gridimg);
                         gridimg.src = trash.Property_Src;
                         gridimg.classList.add('gridimg');
                     } if (trash.type == 'video') {
-                        let gridimg = document.createElement('img');
-                        griditems.appendChild(gridimg);
+                        let gridimg = document.createElement('video');
+                        gridpostmain.appendChild(gridimg);
                         gridimg.src = trash.Property_Src;
                         gridimg.classList.add('gridimg');
                     }
                     griditems.addEventListener('click', () => {
                         create_Main_Story_Archieve(trash.id);
                     });
+                    gridpostmain.appendChild(gridpostcover);
                 });
             }
         });

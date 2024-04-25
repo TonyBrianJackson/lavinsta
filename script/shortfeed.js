@@ -52,113 +52,13 @@ function Create_Short() {
 
                 function Create_GridPost_Options(anything) {
                     let more = document.createElement('span');
-                    let postmenu = document.createElement('nav');
-                    let option_First_Child1 = document.createElement('span');
-                    let option_First_Child2 = document.createElement('span');
-                    let option_First_Child3 = document.createElement('span');
-                    let option_First_Child4 = document.createElement('span');
-                    let option_First_Child5 = document.createElement('span');
-                    let option_First_Child6 = document.createElement('span');
-
-                    let option_Name1 = document.createElement('span');
-                    let option_Name2 = document.createElement('span');
-                    let option_Name3 = document.createElement('span');
-                    let option_Name4 = document.createElement('span');
-                    let option_Name5 = document.createElement('span');
-                    let option_Name6 = document.createElement('span');
-
                     head.appendChild(more);
-
-                    short.appendChild(postmenu);
-
-                    postmenu.appendChild(option_First_Child1);
-                    postmenu.appendChild(option_First_Child2);
-                    postmenu.appendChild(option_First_Child3);
-                    postmenu.appendChild(option_First_Child4);
-                    postmenu.appendChild(option_First_Child5);
-                    postmenu.appendChild(option_First_Child6);
-
-                    option_First_Child1.appendChild(option_Name1);
-                    option_First_Child2.appendChild(option_Name2);
-                    option_First_Child3.appendChild(option_Name3);
-                    option_First_Child4.appendChild(option_Name4);
-                    option_First_Child5.appendChild(option_Name5);
-                    option_First_Child6.appendChild(option_Name6);
-
-                    option_Name1.textContent = 'Edit';
-                    option_Name2.textContent = 'Delete';
-                    option_Name3.textContent = 'Turn Off Comments';
-                    option_Name4.textContent = 'Turn Off Votes';
-                    option_Name5.textContent = 'Turn Off Shares';
-                    option_Name6.textContent = 'View Reports';
-                    option_First_Child1.addEventListener('click', () => {
-                        editingPostText(photo.id);
-                    });
-                    option_First_Child2.addEventListener('click', () => {
-                        delete_Timeline_Post(photo.id);
-                    });
-                    option_First_Child3.addEventListener('click', () => {
-                        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-                        if (photo.commentactive === true) {
-                            photo.commentactive = false;
-                            option_Name3.textContent = 'Turn On Comments';
-                        } else {
-                            photo.commentactive = true;
-                            option_Name3.textContent = 'Turn Off Comments';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-                    option_First_Child4.addEventListener('click', () => {
-                        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-                        if (photo.likeactive === true) {
-                            photo.likeactive = false;
-                            option_Name4.textContent = 'Turn On Votes';
-                        } else {
-                            photo.likeactive = true;
-                            option_Name4.textContent = 'Turn Off Votes';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-                    option_First_Child5.addEventListener('click', () => {
-                        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-                        if (photo.shareactive === true) {
-                            photo.shareactive = false;
-                            option_Name5.textContent = 'Turn On Shares';
-                        } else {
-                            photo.shareactive = true;
-                            option_Name5.textContent = 'Turn Off Shares';
-                        }
-                        localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
-                    });
-                    option_First_Child6.addEventListener('click', () => {
-                        create_reportScript(photo.id);
-                    });
-                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        ActiveUser_Account.forEach(data => {
-                            if (photo.posterId !== data.user_Id) {
-                                more.remove();
-                                postmenu.remove();
-                            }
-                        });
-                    }
-                    postmenu.classList.add('postmenu');
                     more.classList.add('more');
                     more.innerHTML = vellip;
 
                     more.addEventListener('click', () => {
-                        postmenu.classList.toggle('postmenuactive');
+                        create_Post_Options_Script(main,photo.id);
                     });
-                    function Activities_Option_TextContents() {
-                        if (photo.shareactive === false) {
-                            option_Name5.textContent = 'Turn On Shares';
-                        } if (photo.commentactive === false) {
-                            option_Name3.textContent = 'Turn On Comments';
-                        } if (photo.likeactive === false) {
-                            option_Name4.textContent = 'Turn On Votes';
-                        }
-                    }
-                    Activities_Option_TextContents();
                 }
                 Create_GridPost_Options();
 
@@ -169,16 +69,21 @@ function Create_Short() {
                 short.appendChild(shorthorizontalfloat);
                 short.appendChild(masters);
 
-                shortverticalfloat.appendChild(comment);
-                shortverticalfloat.appendChild(live_Comment_Count_Container);
+                let share = document.createElement('span');
+                let live_Share_Count_Container = document.createElement('div');
+                let livesharecount = document.createElement('span');
                 shortverticalfloat.appendChild(like);
                 shortverticalfloat.appendChild(live_Like_Count_Container);
-                shorthorizontalfloat.appendChild(save);
+                shortverticalfloat.appendChild(comment);
+                shortverticalfloat.appendChild(live_Comment_Count_Container);
+                shortverticalfloat.appendChild(share);
+                shortverticalfloat.appendChild(live_Share_Count_Container);
+                shortverticalfloat.appendChild(save);
                 shorthorizontalfloat.appendChild(shortcomment);
 
                 live_Comment_Count_Container.appendChild(livecommentcount);
                 live_Like_Count_Container.appendChild(livelikecount);
-
+                live_Share_Count_Container.appendChild(livesharecount);
                 live_Like_Count_Container.id = photo.id;
                 live_Comment_Count_Container.id = photo.id;
 
@@ -186,11 +91,13 @@ function Create_Short() {
 
                 live_Like_Count_Container.classList.add('like_count');
 
+                live_Share_Count_Container.classList.add('counts');
+
                 masters.appendChild(mastersmiddle);
                 shortcomment.appendChild(shortcommentinput);
                 shortcomment.appendChild(reelcommentsend);
                 reelcommentsend.innerHTML = send2svg;
-
+                shortcommentinput.type = 'text';
                 head.appendChild(nameAndImg);
                 head.appendChild(reeltime);
                 head.appendChild(title);
@@ -202,6 +109,7 @@ function Create_Short() {
                 nameAndImg.appendChild(name);
                 comment.innerHTML = commentsvg;
                 like.innerHTML = likesvg;
+                share.innerHTML = sharesvg;
                 save.innerHTML = savedsvg;
                 reeltime.classList.add('reeltime');
 
@@ -489,6 +397,9 @@ function Create_Short() {
                     create_Comment_room(photo.id);
                     sessionStorage.setItem('activepage', photo.id);
                 });
+                share.addEventListener('click',()=> {
+                    create_share_Popup(photo.id);
+                });
                 shortcommentinput.placeholder = 'add comment...';
                 shortcommentinput.id = photo.id;
                 short.id = photo.id + feedcolumn.id;
@@ -500,12 +411,14 @@ function Create_Short() {
                 like.id = photo.id;
                 livecommentcount.textContent = photo.comments.length;
                 livelikecount.textContent = photo.likes.length;
+                livesharecount.textContent = photo.shares.length;
                 livelikecount.id = photo.id;
                 livecommentcount.id = photo.id;
                 livelikecount.classList.add('livelikecount');
                 livelikecount.classList.add('live_Like_Counters');
                 livecommentcount.classList.add('live_Comment_Counters');
                 livecommentcount.classList.add('livecommentcount');
+                livesharecount.classList.add('livelikecount')
                 live_Like_Count_Container.addEventListener('click', () => {
                     LikePopupsAndMore(photo.id, 'postlike',photo.likes.length);
                 });

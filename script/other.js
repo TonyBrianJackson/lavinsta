@@ -603,9 +603,8 @@ function createTilePost(locationId) {
                         if (photo.type == 'photo') {
                             let tile = document.createElement('a');
                             let tileImg = document.createElement('img');
-                            tilecontainer.appendChild(tile);
+                            tilebox.appendChild(tile);
                             tile.appendChild(tileImg);
-                            tile.href = `#Post_Id=${gridphoto.id}/postType=${gridphoto.type}`;
                             tileImg.classList.add('tileimg');
                             tile.classList.add('tile');
                             if (gridphoto.children) {
@@ -644,9 +643,13 @@ function createTilePost(locationId) {
                                 create_Main_Trash_Items(photo.id);
                             });
                         } if (photo.type == 'video') {
-                            let savedtileImg = document.createElement('video');
-                            savedtile.appendChild(savedtileImg);
-                            savedtileImg.src = photo.Property_Src;
+                            let tile = document.createElement('a');
+                            let tileImg = document.createElement('video');
+                            tilebox.appendChild(tile);
+                            tile.appendChild(tileImg);
+                            tileImg.classList.add('tileimg');
+                            tile.classList.add('tile');
+                            tileImg.src = photo.Property_Src;
                             tile.addEventListener('click', () => {
                                 create_Main_Trash_Items(photo.id);
                             });
@@ -746,22 +749,21 @@ function newSaved_Script() {
                             if (feed.id === photo.postId) {
                                 if (feed.isProfile_Photo || feed.isCover_Photo || feed.isPhoto || feed.isAdvert || feed.isCrime) {
                                     let griditems = document.createElement('div');
+                                    let gridpostcover = document.createElement('a');
                                     let gridimg = document.createElement('img');
                                     let deletebutton = document.createElement('div');
-                                    let deleteimg = document.createElement('img');
-                                    deletebutton.appendChild(deleteimg);
-                                    deleteimg.src = 'newicons/trash-can.png';
+                                    deletebutton.innerHTML = deletesvg;
                                     savedculomn.appendChild(griditems);
                                     griditems.appendChild(gridimg);
+                                    griditems.appendChild(gridpostcover);
                                     griditems.appendChild(deletebutton);
+                                    gridpostcover.href = `view.html?Post_Id=${feed.id}`;
                                     griditems.classList.add('griditems');
-                                    deletebutton.classList.add('deletebutton');
+                                    deletebutton.classList.add('headerbtns');
+                                    gridpostcover.classList.add('gridpostcover');
                                     gridimg.src = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
                                         deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
-                                    });
-                                    griditems.addEventListener('click', event => {
-                                        createMain_GridPost(feed.id, feed.Property_Src);
                                     });
                                     function filter_Image() {
                                         if (feed.filter == 'default') {
@@ -787,28 +789,57 @@ function newSaved_Script() {
                                         }
                                     }
                                     filter_Image();
+                                    const setBackGroundImage = ()=> {
+                                        if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+                                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                                            LogInFormData.forEach(data => {
+                                                if (data.user_Id === feed.posterId) {
+                                                    if (data.user_ProfilePicture) {
+                                                        griditems.style.backgroundImage = "url(" + data.user_ProfilePicture + ")";
+                                                    } else {
+                                                        griditems.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    }
+                                    setBackGroundImage();
                                 } if (feed.isVideo || feed.isShort) {
                                     let griditems = document.createElement('div');
+                                    let gridpostcover = document.createElement('a');
                                     let gridimg = document.createElement('video');
                                     let deletebutton = document.createElement('div');
-                                    let deleteimg = document.createElement('img');
-                                    deletebutton.appendChild(deleteimg);
-                                    deleteimg.src = 'newicons/trash-can.png';
+                                    deletebutton.innerHTML = deletesvg;
                                     savedculomn.appendChild(griditems);
                                     griditems.appendChild(gridimg);
+                                    griditems.appendChild(gridpostcover);
                                     griditems.appendChild(deletebutton);
+                                    gridpostcover.href = `view.html?video_Id=${feed.id}`;
                                     griditems.classList.add('griditems');
-                                    deletebutton.classList.add('deletebutton');
+                                    gridpostcover.classList.add('gridpostcover');
+                                    deletebutton.classList.add('headerbtns');
                                     gridimg.src = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
                                         deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
                                     });
-                                    griditems.addEventListener('click', event => {
-                                        createMain_GridPost(feed.id, feed.Property_Src);
-                                    });
+                                    const setBackGroundImage = ()=> {
+                                        if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+                                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                                            LogInFormData.forEach(data => {
+                                                if (data.user_Id === feed.posterId) {
+                                                    if (data.user_ProfilePicture) {
+                                                        griditems.style.backgroundImage = "url(" + data.user_ProfilePicture + ")";
+                                                    } else {
+                                                        griditems.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    }
+                                    setBackGroundImage();
                                 } if (feed.isText) {
                                     let griditems = document.createElement('div');
-                                    let gridpostmain = document.createElement('div');
+                                    let gridpostmain = document.createElement('a');
                                     let gridimg = document.createElement('p');
                                     let deletebutton = document.createElement('div');
                                     deletebutton.innerHTML = deletesvg;
@@ -816,16 +847,14 @@ function newSaved_Script() {
                                     griditems.appendChild(gridpostmain);
                                     gridpostmain.appendChild(gridimg);
                                     griditems.appendChild(deletebutton);
+                                    gridpostmain.href = `view.html?Post_Id=${feed.id}`;
                                     gridpostmain.classList.add('gridpostmain');
                                     gridimg.classList.add('gridposttext');
                                     griditems.classList.add('griditems');
-                                    deletebutton.classList.add('deletebutton');
+                                    deletebutton.classList.add('headerbtns');
                                     gridimg.textContent = feed.Property_Src;
                                     deletebutton.addEventListener('click', () => {
                                         deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
-                                    });
-                                    griditems.addEventListener('click', event => {
-                                        createMain_GridPost(feed.id, feed.Property_Src);
                                     });
                                     function textGridPostTextTheme() {
                                         function textThemeBackGround() {
@@ -880,6 +909,21 @@ function newSaved_Script() {
                                         textThemeFont();
                                     }
                                     textGridPostTextTheme();
+                                    const setBackGroundImage = ()=> {
+                                        if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+                                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                                            LogInFormData.forEach(data => {
+                                                if (data.user_Id === feed.posterId) {
+                                                    if (data.user_ProfilePicture) {
+                                                        griditems.style.backgroundImage = "url(" + data.user_ProfilePicture + ")";
+                                                    } else {
+                                                        griditems.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    }
+                                    setBackGroundImage();
                                 }
                             }
                         }
@@ -933,157 +977,6 @@ function deleting_Saved_Post_Script(savedItems, LogInFormData, locationId, id) {
                 newSaved_Script();
                 confirmation_popup.remove();
             }
-        });
-    });
-}
-function createSavedVideos() {
-    const SavedVideos_Column = document.querySelectorAll('.SavedVideos_Column');
-    SavedVideos_Column.forEach(column => {
-        column.innerHTML = '';
-        Feeds_Data_Base.forEach(feed => {
-            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-            LogInFormData.forEach(user => {
-                if (user.user_Id === column.id) {
-                    let savedItems = user.user_Saved;
-                    savedItems.forEach(photo => {
-                        if (column.id === photo.savedId) {
-                            if (feed.id === photo.postId) {
-                                if (feed.isVideo || feed.isShort) {
-                                    let gridvideosaved = document.createElement('video')
-                                    let videogrid = document.createElement('div');
-                                    let topvideogrid = document.createElement('div');
-                                    let bottomvideogrid = document.createElement('div');
-                                    let topvideogridcontainer = document.createElement('div');
-                                    let topvidrightsection = document.createElement('div');
-                                    let title = document.createElement('div');
-                                    let savedvideogridname = document.createElement('b');
-                                    let reelgridusersphoto = document.createElement('div');
-                                    let reelgridposterimg = document.createElement('img');
-                                    let gridvideosavedtime = document.createElement('span');
-                                    let gridvideodate = document.createElement('span');
-                                    let gridsavedvideomore = document.createElement('span');
-                                    let gridvideomenu = document.createElement('div');
-                                    let gridmenugrid = document.createElement('div');
-                                    let gridvideoremove = document.createElement('span');
-                                    let gridmenudeleteimg = document.createElement('img');
-
-                                    reelgridusersphoto.appendChild(reelgridposterimg);
-                                    reelgridusersphoto.classList.add('reelgridusersphoto');
-
-                                    gridvideoremove.addEventListener('click', () => {
-                                        deleting_Saved_Post_Script(savedItems, LogInFormData, photo.savedId, photo.id);
-                                        gridvideomenu.classList.toggle('gridmenuactive');
-                                    });
-                                    gridvideoremove.appendChild(gridmenudeleteimg);
-                                    gridmenudeleteimg.src = 'newicons/trash-can.png';
-
-                                    gridvideoremove.classList.add('gridmenulike');
-
-                                    gridvideomenu.appendChild(gridmenugrid);
-                                    gridmenugrid.appendChild(gridvideoremove);
-                                    gridmenugrid.classList.add('gridmenugrid');
-                                    gridsavedvideomore.innerHTML = '&vellip;';
-                                    videogrid.appendChild(gridsavedvideomore);
-                                    videogrid.appendChild(gridvideomenu);
-                                    gridsavedvideomore.classList.add('gridvideomore');
-                                    gridvideomenu.classList.add('gridmenu');
-
-
-                                    column.appendChild(videogrid);
-                                    videogrid.appendChild(topvideogrid);
-                                    videogrid.appendChild(bottomvideogrid);
-                                    topvideogrid.appendChild(topvideogridcontainer);
-                                    topvideogridcontainer.appendChild(gridvideosaved);
-                                    topvideogridcontainer.appendChild(gridvideosavedtime);
-                                    topvideogrid.appendChild(topvidrightsection);
-                                    bottomvideogrid.appendChild(title);
-                                    topvidrightsection.appendChild(reelgridusersphoto);
-                                    topvidrightsection.appendChild(savedvideogridname);
-                                    topvidrightsection.appendChild(gridvideodate);
-                                    gridvideodate.textContent = feed.date;
-                                    gridvideosaved.src = feed.Property_Src;
-                                    function Poster_Details() {
-                                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                                        LogInFormData.forEach(user => {
-                                            if (user.user_Id === feed.posterId) {
-                                                reelgridposterimg.src = user.user_ProfilePicture;
-                                                let username;
-                                                user.user_Mid_Name ? username =
-                                                    user.user_Firstname + ' ' + user.user_Mid_Name + ' ' + user.user_Surname :
-                                                    username = user.user_Firstname + ' ' + user.user_Surname;
-                                                savedvideogridname.innerHTML = username;
-                                                function filter_Image() {
-                                                    //profile_filter 
-                                                    if (user.user_ProfilePicture_Filter == 'default') {
-                                                        reelgridposterimg.classList.add('--color-default');
-                                                    } else if (user.user_ProfilePicture_Filter == 'gray') {
-                                                        reelgridposterimg.classList.add('--color-gray');
-                                                    } else if (user.user_ProfilePicture_Filter == 'contrast') {
-                                                        reelgridposterimg.classList.add('--color-contrast');
-                                                    } else if (user.user_ProfilePicture_Filter == 'bright') {
-                                                        reelgridposterimg.classList.add('--color-bright');
-                                                    } else if (user.user_ProfilePicture_Filter == 'blur') {
-                                                        reelgridposterimg.classList.add('--color-blur');
-                                                    } else if (user.user_ProfilePicture_Filter == 'invert') {
-                                                        reelgridposterimg.classList.add('--color-invert');
-                                                    } else if (user.user_ProfilePicture_Filter == 'sepia') {
-                                                        reelgridposterimg.classList.add('--color-sepia');
-                                                    } else if (user.user_ProfilePicture_Filter == 'hue-rotate') {
-                                                        reelgridposterimg.classList.add('--color-hue-rotate');
-                                                    } else if (user.user_ProfilePicture_Filter == 'opacity') {
-                                                        reelgridposterimg.classList.add('--color-opacity');
-                                                    } else if (user.user_ProfilePicture_Filter == 'satulate') {
-                                                        reelgridposterimg.classList.add('--color-satulate');
-                                                    }
-                                                }
-                                                filter_Image();
-                                            }
-                                        });
-                                    }
-                                    Poster_Details();
-                                    title.addEventListener('click', () => {
-                                        if (title.textContent.length > 80) {
-                                            title.classList.toggle('reeltitleeeactive');
-                                        };
-                                    });
-                                    gridvideodate.classList.add('gridvideodate');
-                                    videogrid.classList.add('newvideoposted');
-                                    topvideogridcontainer.classList.add('videoi');
-                                    topvidrightsection.classList.add('videoinfo');
-                                    bottomvideogrid.classList.add('newvidc1');
-                                    topvideogrid.classList.add('newvidc');
-                                    title.classList.add('savedvideotitle');
-                                    gridvideosavedtime.classList.add('gridvideotime');
-                                    reelgridposterimg.classList.add('usersphoto');
-                                    gridvideosaved.classList.add('videotowatch');
-                                    title.textContent = feed.title;
-                                    savedvideogridname.classList.add('videogridname');
-                                    gridvideosaved.addEventListener('loadeddata', () => {
-                                        let videoDuration = event.target.duration;
-                                        let currentMin = Math.floor(videoDuration / 60);
-                                        currentMin < 10 ? currentMin = '0' + currentMin : currentMin;
-                                        let currentSec = Math.floor(videoDuration % 60);
-                                        currentSec < 10 ? currentSec = '0' + currentSec : currentSec;
-                                        gridvideosavedtime.innerHTML = `${currentMin} : ${currentSec}`
-                                    });
-                                    topvideogridcontainer.addEventListener('click', () => {
-                                        Videoplayer.src = gridvideosaved.src;
-                                        Videoplayer === gridvideosaved;
-                                        playerpausebtn.style.display = 'flex';
-                                        playerplaybtn.style.display = 'none';
-                                        titlearea.textContent = title.textContent;
-                                        Videoplayer.play();
-                                    });
-
-                                    gridsavedvideomore.addEventListener('click', () => {
-                                        gridvideomenu.classList.toggle('gridmenuactive');
-                                    });
-                                }
-                            }
-                        }
-                    });
-                }
-            });
         });
     });
 }

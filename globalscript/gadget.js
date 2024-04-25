@@ -398,11 +398,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child7.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child7.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -548,7 +551,7 @@ function create_share_Popup(locationId) {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
                                             const id = '' + new Date().getTime();
-                                            shortVideoArray.push({
+                                            Feeds_Data_Base.push({
                                                 type: 'public',
                                                 shareId: photo.id,
                                                 isShort: true,
@@ -567,7 +570,7 @@ function create_share_Popup(locationId) {
                                                 commentactive: true,
                                                 shareactive: true,
                                             });
-                                            localStorage.setItem('shortVideoArray', JSON.stringify(shortVideoArray));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -648,11 +651,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child5.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child5.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -844,11 +850,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child4.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child4.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -1198,11 +1207,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child7.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child7.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -1347,7 +1359,7 @@ function create_share_Popup(locationId) {
                                     LogInFormData.forEach(user => {
                                         if (user.user_Id === data.user_Id) {
                                             const id = '' + new Date().getTime();
-                                            shortVideoArray.push({
+                                            Feeds_Data_Base.push({
                                                 type: 'public',
                                                 shareId: photo.id,
                                                 isShort: true,
@@ -1366,7 +1378,7 @@ function create_share_Popup(locationId) {
                                                 commentactive: true,
                                                 shareactive: true,
                                             });
-                                            localStorage.setItem('shortVideoArray', JSON.stringify(shortVideoArray));
+                                            localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                                             shareNotification(id, false, 'shared a post');
                                         }
                                     });
@@ -1446,11 +1458,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child5.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child5.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -1641,11 +1656,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child4.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child4.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -1837,11 +1855,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child4.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child4.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -2186,11 +2207,14 @@ function create_share_Popup(locationId) {
                         }
                         event_Listeners();
                         function RulesActivities() {
-                            ActiveUser_Account.forEach(user => {
-                                if (user.user_Id === photo.posterId) {
-                                    option_First_Child7.remove();
-                                }
-                            });
+                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                                ActiveUser_Account.forEach(user => {
+                                    if (user.user_Id === photo.posterId) {
+                                        option_First_Child7.remove();
+                                    }
+                                });
+                            }
                         }
                         RulesActivities();
                     }
@@ -2221,7 +2245,7 @@ function create_Comment_room(locationId) {
                 let options = document.createElement('div');
                 let exit = document.createElement('span');
 
-                let sharegridview = document.createElement('div');
+                let sharegridview = document.createElement('a');
                 let sharegridlike = document.createElement('div');
                 let sharegridshare = document.createElement('div');
                 let sharegridphotoo = document.createElement('div');
@@ -2238,6 +2262,11 @@ function create_Comment_room(locationId) {
                 sharegridshare.innerHTML = sharesvg;
                 sharegridphotoo.innerHTML = createsvg;
                 sharegridview.innerHTML = focussvg;
+                if (photo.isVideo || photo.isShort) {
+                    sharegridview.href = `view.html?video_Id=${photo.id}`;
+                } else {
+                    sharegridview.href = `view.html?Post_Id=${photo.id}`;
+                }
 
                 sharegridview.classList.add('headerbtns');
                 sharegridlike.classList.add('headerbtns');
@@ -2379,7 +2408,6 @@ function create_Comment_room(locationId) {
             commentsectioncontainer.appendChild(commentactiongrid);
             commentsectioncontainer.appendChild(commentsection);
             commentsectioncontainer.appendChild(newcommentinput);
-
             commentmovebackward.classList.add('headerbtns');
             commentrefreshbtn.classList.add('headerbtns');
 
@@ -3006,10 +3034,6 @@ function delete_Timeline_Post(locationId) {
                     });
                     localStorage.setItem('Feeds_Data_Base', JSON.stringify(Feeds_Data_Base));
                     confirmation_popup.remove();
-                    createPhotoPostOnTimeLine();
-                    create_TimeLine_G_Video();
-                    createGridPost();
-                    create_Message('operated successfully');
                 });
                 function pushtrash() {
                     Feeds_Data_Base.forEach(photo => {
@@ -3071,7 +3095,10 @@ function delete_Timeline_Post(locationId) {
                                         });
                                         localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
                                     }
-                                    create_Trash_Items();
+                                    createPhotoPostOnTimeLine();
+                                    create_TimeLine_G_Video();
+                                    createGridPost();
+                                    create_Message('operated successfully');
                                 }
                             });
                         }
@@ -3101,7 +3128,7 @@ function increaseviewscount(postId) {
                         if (count.id === postId) {
                             if (count.classList.contains('viewscount')) {
                                 pushViews();
-                                count.textContent = views.length;
+                                count.innerHTML = `${views.length} view(s)`;
                                 count.classList.add('Viewed');
                                 count.classList.remove('viewscount');
                             }
@@ -3207,6 +3234,7 @@ function set_Comment_Data(postId, input) {
     }
 }
 function create_Post_Options_Script(container, locationId) {
+    removeOptions();
     if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
         Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
         Feeds_Data_Base.forEach(photo => {
@@ -3238,12 +3266,12 @@ function create_Post_Options_Script(container, locationId) {
                     }
                 }
                 removeOptions();
-                const copyLink = (text) => {
+                const copyLink = (text, messages) => {
                     if (navigator.clipboard) {
                         try {
                             const toCopy = text;
                             navigator.clipboard.writeText(toCopy);
-                            create_Message('text copied');
+                            create_Message(messages);
                         }
                         catch (err) {
                             console.error('Failed to copy: ', err);
@@ -3269,11 +3297,11 @@ function create_Post_Options_Script(container, locationId) {
                 options.appendChild(second_Option);
                 options.appendChild(third_Option);
                 options.appendChild(eight_Option);
+                options.appendChild(nineth_Option);
                 options.appendChild(fouth_Option);
                 options.appendChild(fifth_Option);
                 options.appendChild(sixth_Option);
                 options.appendChild(seventh_Option);
-                options.appendChild(nineth_Option);
                 first_Option.innerHTML = editsvg;
                 second_Option.innerHTML = savedsvg;
                 third_Option.innerHTML = deletesvg;
@@ -3375,10 +3403,10 @@ function create_Post_Options_Script(container, locationId) {
                         }
                     });
                 });
-                nineth_Option.addEventListener('click',()=> {
+                nineth_Option.addEventListener('click', () => {
                     let url = document.createElement('a');
                     url.href = `view.html?Post_Id=${photo.id}`;
-                    copyLink(url);
+                    copyLink(url, 'post url copied...');
                 });
                 exit.addEventListener('click', () => {
                     options.remove();
@@ -3439,21 +3467,8 @@ function create_Post_Options_Script(container, locationId) {
                     });
                 } if (photo.isText) {
                     eight_Option.innerHTML = copysvg;
-                    function copyTextPost(text) {
-                        if (navigator.clipboard) {
-                            try {
-                                const toCopy = text;
-                                navigator.clipboard.writeText(toCopy);
-                                create_Message('text copied');
-                            }
-                            catch (err) {
-                                console.error('Failed to copy: ', err);
-                                create_Message('unable to copy');
-                            }
-                        }
-                    }
                     eight_Option.addEventListener('click', () => {
-                        copyTextPost(photo.Property_Src);
+                        copyLink(photo.Property_Src, 'text copied');
                         removeOptions();
                     });
                 }
@@ -3475,8 +3490,318 @@ function create_Post_Options_Script(container, locationId) {
         });
     }
 }
+function create_Side_Options(container, locationId) {
+    removeOptions();
+    if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
+        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
+        Feeds_Data_Base.forEach(photo => {
+            if (photo.id === locationId) {
+                let options = document.createElement('div');
+                let first_Option = document.createElement('span');
+                let second_Option = document.createElement('span');
+                let third_Option = document.createElement('span');
+                let fouth_Option = document.createElement('span');
+                let fifth_Option = document.createElement('span');
+                let exit = document.createElement('span');
+
+                container.insertAdjacentElement("afterend", options);
+                options.appendChild(exit);
+                options.appendChild(first_Option);
+                options.appendChild(second_Option);
+                options.appendChild(third_Option);
+                options.appendChild(fouth_Option);
+                options.appendChild(fifth_Option);
+                first_Option.innerHTML = commentsvg;
+                second_Option.innerHTML = likesvg;
+                third_Option.innerHTML = sharesvg;
+                fouth_Option.innerHTML = settingssvg;
+                fifth_Option.innerHTML = menusvg;
+                exit.innerHTML = undo2;
+
+                options.classList.add('options');
+                first_Option.classList.add('headerbtns');
+                second_Option.classList.add('headerbtns');
+                third_Option.classList.add('headerbtns');
+                fouth_Option.classList.add('headerbtns');
+                fifth_Option.classList.add('headerbtns');
+                exit.classList.add('headerbtns');
+                first_Option.addEventListener('click', () => {
+                    create_Comment_room(photo.id);
+                    removeOptions();
+                });
+                third_Option.addEventListener('click', () => {
+                    create_share_Popup(photo.id);
+                    removeOptions();
+                });
+                let popupname = `${photo.likes.length} likes(s) &centerdot; ${photo.comments.length} comments(s) &centerdot; ${photo.shares.length} shares(s) &centerdot; ${photo.views.length} views(s)`;
+                let newtime;
+                const startTime = function () {
+                    let time;
+                    let timeresult = new Date().getTime();
+                    let miliseconds = timeresult - photo.time;
+                    var token;
+                    var moment = 'ago';
+                    let maintime;
+
+                    time = miliseconds / 1000;
+                    if (time <= 60 * 60 * 24 * 7 * 4 * 12) {
+                        token = 'month';
+                        maintime = time / 2419200;
+                        newtime = `${photo.attribute} &centerdot; ${Math.trunc(maintime)} ${token} ${moment}`;
+                    } if (time <= 60 * 60 * 24 * 7 * 4) {
+                        token = 'week';
+                        maintime = time / 604800;
+                        newtime = `${photo.attribute} &centerdot; ${Math.trunc(maintime)} ${token} ${moment}`;
+                    } if (time <= 60 * 60 * 24 * 7) {
+                        token = 'day';
+                        maintime = time / 86400;
+                        newtime = `${photo.attribute} &centerdot; ${Math.trunc(maintime)} ${token} ${moment}`;
+                    } if (time <= 60 * 60 * 24) {
+                        token = 'hr';
+                        maintime = time / 3600;
+                        newtime = `${photo.attribute} &centerdot; ${Math.trunc(maintime)} ${token} ${moment}`;
+                    } if (time <= 60 * 60) {
+                        token = 'min';
+                        maintime = time / 60;
+                        newtime = `${photo.attribute} &centerdot; ${Math.trunc(maintime)} ${token} ${moment}`;
+                    } if (time <= 60) {
+                        token = 'sec';
+                        maintime = time;
+                        newtime = `${photo.attribute} &centerdot; ${Math.trunc(maintime)} ${token} ${moment}`;
+                    }
+                }
+                fouth_Option.addEventListener('click', () => {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                        ActiveUser_Account.forEach(user => {
+                            create_Video_Info(container, newtime, popupname, photo.title, photo.posterId, user.user_Id);
+                            removeOptions();
+                        });
+                    }
+                });
+                fifth_Option.addEventListener('click', () => {
+                    create_List_Popup();
+                    removeOptions();
+                });
+                startTime();
+
+                exit.addEventListener('click', () => {
+                    options.remove();
+                });
+
+                second_Option.classList.add('un_liked');
+                function checkIfPostIsLiked() {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+                        ActiveUser_Account.forEach(data => {
+                            let likes = photo.likes;
+                            likes.forEach(like => {
+                                if (like.id === data.user_Id + photo.id) {
+                                    second_Option.classList.add('liked');
+                                    second_Option.classList.remove('un_liked');
+                                }
+                            });
+                        });
+                    }
+                }
+                checkIfPostIsLiked();
+                function decideRight() {
+                    second_Option.classList.add('liked');
+                    second_Option.classList.remove('un_liked');
+                    if (photo.isText === true) {
+                        like_Post(photo.id, photo.Property_Src, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
+                    } else {
+                        like_Post(photo.id, photo.title, '' + new Date().getTime(), photo.posterId, 'post_Like', 'post_Like');
+                    }
+                }
+                function decideLeft() {
+                    second_Option.classList.remove('liked');
+                    second_Option.classList.add('un_liked');
+                    Unlike_Post(photo.id);
+                }
+                function makeLike() {
+                    if (second_Option.classList.contains('un_liked')) {
+                        decideRight();
+                    } else if (second_Option.classList.contains('liked')) {
+                        decideLeft();
+                    }
+                }
+                second_Option.addEventListener('click', () => {
+                    makeLike();
+                    removeOptions();
+                });
+            }
+        });
+    }
+}
+const createmininavigation = (container) => {
+    removeOptions();
+    const options = document.createElement('header');
+    const exit = document.createElement('span');
+    const first_Option = document.createElement('span');
+    const second_Option = document.createElement('span');
+    const third_Option = document.createElement('span');
+    const fouth_Option = document.createElement('span');
+    container.insertAdjacentElement("afterend", options);
+    options.appendChild(exit);
+    options.appendChild(first_Option);
+    options.appendChild(second_Option);
+    options.appendChild(third_Option);
+    options.appendChild(fouth_Option);
+    exit.innerHTML = undo;
+    first_Option.innerHTML = feedsvg;
+    second_Option.innerHTML = homesvg;
+    third_Option.innerHTML = savedsvg;
+    fouth_Option.innerHTML = stopwatchsvg;
+    exit.classList.add('headerbtns');
+    first_Option.classList.add('headerbtns');
+    second_Option.classList.add('headerbtns');
+    third_Option.classList.add('headerbtns');
+    fouth_Option.classList.add('headerbtns');
+    options.classList.add('options');
+    exit.addEventListener('click',()=> {
+        removeOptions();
+    });
+    first_Option.addEventListener('click',()=> {
+        creategridvideo(container);
+    });
+    second_Option.addEventListener('click',()=> {
+        create_TimeLine_G_Video(container);
+    });
+    third_Option.addEventListener('click',()=> {
+        create_Saved_Videos(container);
+    });
+    fouth_Option.addEventListener('click',()=> {
+        create_Short_Video(container);
+    });
+}
+function create_List_Popup() {
+    document.querySelectorAll('.playlist').forEach(list => {
+        list.remove();
+    });
+    const playlist = document.createElement('section');
+    const optionbtn = document.createElement('span');
+    const navigation = document.createElement('nav');
+    const exit = document.createElement('span');
+    const playercolumn = document.createElement('div');
+    document.body.appendChild(playlist);
+    playlist.appendChild(playercolumn);
+    playlist.appendChild(navigation);
+    navigation.appendChild(exit);
+    navigation.appendChild(optionbtn);
+    playlist.classList.add('playlist');
+    playercolumn.classList.add('playercolumn');
+    optionbtn.innerHTML = moresvg;
+    exit.innerHTML = undo;
+    optionbtn.classList.add('headerbtns');
+    exit.classList.add('headerbtns');
+    navigation.classList.add('navigation');
+    optionbtn.addEventListener('click',() => {
+        createmininavigation(playercolumn);
+    });
+    exit.addEventListener('click',()=> {
+        playlist.remove();
+    });
+    creategridvideo(playercolumn);
+    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
+        ActiveUser_Account.forEach(user => {
+            playercolumn.id = user.user_Id;
+        });
+    }
+}
+function create_Video_Info(container, elapsedtime, headers, Property_Src, locationId, user_Id) {
+    document.querySelectorAll('.video_options_container').forEach(optioncontainer => {
+        optioncontainer.remove();
+    });
+    if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+        LogInFormData.forEach(profile => {
+            if (profile.user_Id === locationId) {
+                let header = document.createElement('header');
+                let exit = document.createElement('span');
+                let video_options_container = document.createElement('div');
+                let option_inner_container = document.createElement('div');
+                let option_bottom = document.createElement('div');
+                let option_profile_picture = document.createElement('div');
+                let option_profile_picture_img = document.createElement('img');
+                let option_profile_name = document.createElement('strong');
+                let title = document.createElement('p');
+                let multipleitems = document.createElement('b');
+                let time = document.createElement('b');
+                container.insertAdjacentElement("afterend", video_options_container);
+                video_options_container.appendChild(header);
+                video_options_container.appendChild(option_inner_container);
+                video_options_container.appendChild(option_bottom);
+                option_inner_container.appendChild(option_profile_picture);
+                option_inner_container.appendChild(option_profile_name);
+                option_profile_picture.appendChild(option_profile_picture_img);
+                option_bottom.appendChild(time);
+                option_bottom.appendChild(multipleitems);
+                option_bottom.appendChild(title);
+                header.appendChild(exit);
+                exit.innerHTML = undo;
+                title.textContent = Property_Src;
+                multipleitems.innerHTML = headers;
+                time.innerHTML = elapsedtime,
+                    option_profile_picture_img.src = profile.user_ProfilePicture;
+                let username;
+                profile.user_Mid_Name ? username =
+                    profile.user_Firstname + ' ' + profile.user_Mid_Name + ' ' + profile.user_Surname :
+                    username = profile.user_Firstname + ' ' + profile.user_Surname;
+                option_profile_name.textContent = username;
+                exit.classList.add('headerbtns');
+                option_bottom.classList.add('option_bottom')
+                option_inner_container.classList.add('option_inner_container');
+                video_options_container.classList.add('video_options_container');
+                if (profile.user_CoverPhoto) {
+                    option_profile_picture.style.backgroundImage = "url(" + profile.user_CoverPhoto + ")";
+                } else {
+                    option_profile_picture.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                }
+                option_profile_picture.addEventListener('click', () => {
+                    createProfileOptions(profile.user_Id, user_Id);
+                });
+                exit.addEventListener('click', () => {
+                    video_options_container.remove();
+                });
+                function filter_Image_Profile() {
+                    if (profile.user_ProfilePicture_Filter == 'default') {
+                        option_profile_picture_img.classList.add('--color-default');
+                    } else if (profile.user_ProfilePicture_Filter == 'gray') {
+                        option_profile_picture_img.classList.add('--color-gray');
+                    } else if (profile.user_ProfilePicture_Filter == 'contrast') {
+                        option_profile_picture_img.classList.add('--color-contrast');
+                    } else if (profile.user_ProfilePicture_Filter == 'bright') {
+                        option_profile_picture_img.classList.add('--color-bright');
+                    } else if (profile.user_ProfilePicture_Filter == 'blur') {
+                        option_profile_picture_img.classList.add('--color-blur');
+                    } else if (profile.user_ProfilePicture_Filter == 'invert') {
+                        option_profile_picture_img.classList.add('--color-invert');
+                    } else if (profile.user_ProfilePicture_Filter == 'sepia') {
+                        option_profile_picture_img.classList.add('--color-sepia');
+                    } else if (profile.user_ProfilePicture_Filter == 'hue-rotate') {
+                        option_profile_picture_img.classList.add('--color-hue-rotate');
+                    } else if (profile.user_ProfilePicture_Filter == 'opacity') {
+                        option_profile_picture_img.classList.add('--color-opacity');
+                    } else if (profile.user_ProfilePicture_Filter == 'satulate') {
+                        option_profile_picture_img.classList.add('--color-satulate');
+                    }
+                }
+                filter_Image_Profile();
+            }
+        });
+    }
+}
 function removeOptions() {
     document.querySelectorAll('.options').forEach(option => {
         option.remove();
     });
 }
+document.querySelector('.viewoptions.headerbtns').addEventListener('click',() => {
+    document.querySelector('.publicreelside').style.display = 'flex';
+});
+
+document.querySelector('.viewoptionsoptions').addEventListener('click',()=> {
+    createmininavigation(document.querySelector('.Public_video_Reel_Column'));
+});

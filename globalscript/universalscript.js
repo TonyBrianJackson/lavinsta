@@ -741,6 +741,30 @@ function createProfileOptions(locationId, user_Id) {
                         }
                     });
                 }
+                function filter_Image_Profile() {
+                    if (profile.user_ProfilePicture_Filter == 'default') {
+                        option_profile_picture_img.classList.add('--color-default');
+                    } else if (profile.user_ProfilePicture_Filter == 'gray') {
+                        option_profile_picture_img.classList.add('--color-gray');
+                    } else if (profile.user_ProfilePicture_Filter == 'contrast') {
+                        option_profile_picture_img.classList.add('--color-contrast');
+                    } else if (profile.user_ProfilePicture_Filter == 'bright') {
+                        option_profile_picture_img.classList.add('--color-bright');
+                    } else if (profile.user_ProfilePicture_Filter == 'blur') {
+                        option_profile_picture_img.classList.add('--color-blur');
+                    } else if (profile.user_ProfilePicture_Filter == 'invert') {
+                        option_profile_picture_img.classList.add('--color-invert');
+                    } else if (profile.user_ProfilePicture_Filter == 'sepia') {
+                        option_profile_picture_img.classList.add('--color-sepia');
+                    } else if (profile.user_ProfilePicture_Filter == 'hue-rotate') {
+                        option_profile_picture_img.classList.add('--color-hue-rotate');
+                    } else if (profile.user_ProfilePicture_Filter == 'opacity') {
+                        option_profile_picture_img.classList.add('--color-opacity');
+                    } else if (profile.user_ProfilePicture_Filter == 'satulate') {
+                        option_profile_picture_img.classList.add('--color-satulate');
+                    }
+                }
+                filter_Image_Profile();
             }
         });
     }

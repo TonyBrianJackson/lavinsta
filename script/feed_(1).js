@@ -83,19 +83,15 @@ document.querySelector('#activatereelgadget').addEventListener('click', () => {
 document.querySelector('.reelsideoutercontainerexit').addEventListener('click', () => {
     document.querySelector('.reelsideoutercontainer').style.display = 'none';
 });
-function createPublicGridShortVideo() {
-    const Public_video_Reel_Column = document.querySelectorAll('.Public_video_Reel_Column');
-    Public_video_Reel_Column.forEach(column => {
-        column.innerHTML = '';
+function createPublicGridShortVideo(feedcolumn) {
+    feedcolumn.innerHTML = '';
+    if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
+        Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
         Feeds_Data_Base.forEach(shortVideo => {
             if (shortVideo.type == 'public') {
-                if (shortVideo.isShort) {
+                if (shortVideo.isShort || shortVideo.isVideo) {
                     let gridshortlikecount = document.createElement('span');
-                    let gridshortcommentcount = document.createElement('span');
                     let viewscount = document.createElement('span');
-                    let gridmenusave = document.createElement('span');
-                    let gridmenudelete = document.createElement('span');
-                    let gridmenu = document.createElement('div');
     
                     let reeltitleeee = document.createElement('span');
                     let gridshort = document.createElement('div');
@@ -108,22 +104,15 @@ function createPublicGridShortVideo() {
                     let reelgridposterimg = document.createElement('img');
                     let reelgridpostername = document.createElement('b');
                     let gridvideotime = document.createElement('span');
-                    let gridvideomore = document.createElement('span');
-                    let gridmenugrid = document.createElement('div');
-    
-                    let gridmenusend = document.createElement('span');
-                    let gridmenusendimg = document.createElement('img');
-                    let gridmenudeleteimg = document.createElement('img');
-                    let gridmenusaveimg = document.createElement('img');
+                    let more = document.createElement('span');
                     let gridvideodate = document.createElement('span');
                     let commentandlikesharelivelikesflex = document.createElement('div');
                     let reelvideocover = document.createElement('span');
     
-                    column.appendChild(gridshort);
+                    feedcolumn.appendChild(gridshort);
                     gridshort.appendChild(reelgrid1);
                     gridshort.appendChild(reelgrid2);
-                    gridshort.appendChild(gridvideomore);
-                    gridshort.appendChild(gridmenu);
+                    gridshort.appendChild(more);
                     gridshort.appendChild(commentandlikesharelivelikesflex);
                     reelgrid2.appendChild(reeltitleeee);
                     reelgrid1.appendChild(reelvid);
@@ -192,26 +181,12 @@ function createPublicGridShortVideo() {
                         gridvideotime.innerHTML = `${currentMin} : ${currentSec}`;
                     });
     
-                    commentandlikesharelivelikesflex.appendChild(gridshortlikecount);
-                    commentandlikesharelivelikesflex.appendChild(gridshortcommentcount);
-                    commentandlikesharelivelikesflex.appendChild(viewscount);
-                    commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
-                    gridshortlikecount.textContent = shortVideo.likes.length + 'likes';
-                    gridshortcommentcount.textContent = shortVideo.comments.length + 'comments';
-                    gridshortlikecount.classList.add('gridvideolikecount');
-                    gridshortcommentcount.classList.add('gridshortcommentcount');
                     viewscount.classList.add('viewscount');
 
-                    gridshortlikecount.addEventListener('click',() => {
-                        LikePopupsAndMore(shortVideo.id, 'postlike',shortVideo.likes.length);
-                    });
-
-                    let view_Count_Extension = '';
-                    viewscount.textContent = `${shortVideo.views.length}${view_Count_Extension} views`;
-
-
-                    gridshortlikecount.id = shortVideo.id;
-                    gridshortcommentcount.id = shortVideo.id;
+                    commentandlikesharelivelikesflex.appendChild(gridshortlikecount);
+                    commentandlikesharelivelikesflex.classList.add('commentandlikesharelivelikesflex');
+                    gridshortlikecount.innerHTML = `${shortVideo.likes.length} like(s) &centerdot; ${shortVideo.comments.length} comments(s) &centerdot; ${shortVideo.views.length} views(s)`;
+    
                     const startTime = function () {
                         let time;
                         let timeresult = new Date().getTime();
@@ -267,96 +242,20 @@ function createPublicGridShortVideo() {
                         increaseviewscount(shortVideo.id);
                     });
     
-                    gridmenu.appendChild(gridmenugrid);
-                    gridmenugrid.appendChild(gridmenusave);
-                    gridmenugrid.appendChild(gridmenudelete);
-                    gridmenugrid.appendChild(gridmenusend);
-                    gridvideomore.innerHTML = '&vellip;';
-                    gridmenugrid.classList.add('gridmenugrid');
-                    gridmenudelete.classList.add('gridmenulike');
-                    gridmenusave.classList.add('gridmenulike');
-                    gridmenusend.classList.add('gridmenulike');
+                    more.innerHTML = vellip;
     
+                    more.classList.add('more');
     
-                    gridmenusend.addEventListener('click', () => {
-                        document.querySelectorAll('.commentsectioncontainer').forEach(container => {
-                            if (container.id === shortVideo.id) {
-                                container.classList.toggle('commentsectioncontaineractive');
-                            } else {
-                                container.classList.add('commentsectioncontainer');
-                                container.classList.remove('commentsectioncontaineractive');
-                            }
-                        });
-                        gridmenu.classList.toggle('gridmenuactive');
-                    });
-    
-                    gridmenusend.appendChild(gridmenusendimg);
-    
-                    gridmenusendimg.src = 'newicons/send.png';
-    
-                    gridmenusave.appendChild(gridmenusaveimg);
-                    gridmenudelete.appendChild(gridmenudeleteimg);
-                    gridmenusaveimg.src = 'newicons/bookmark-white.png';
-                    gridmenudeleteimg.src = 'newicons/trash-can.png';
-                    gridvideomore.innerHTML = '&vellip;';
-    
-                    gridvideomore.classList.add('gridvideomore');
-                    gridmenu.classList.add('gridmenu');
-    
-                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                        ActiveUser_Account.forEach(data => {
-                            if (shortVideo.posterId !== data.user_Id) {
-                                gridmenudelete.remove();
-                            }
-                        });
-                    }
-    
-                    gridvideomore.addEventListener('click', () => {
-                        gridmenu.classList.toggle('gridmenuactive');
-                    });
-
-                    function pushSavedphotos() {
-                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                            ActiveUser_Account.forEach(data => {
-                                LogInFormData.forEach(user => {
-                                    if (user.user_Id === data.user_Id) {
-                                        let saved = user.user_Saved;
-                                        saved.forEach(item => {
-                                            if (item.postId === shortVideo.id) {
-                                                create_Message('already saved');
-                                            } else {
-                                                const newId = '' + new Date().getTime();
-                                                saved.push({
-                                                    savedId: user.user_Id,
-                                                    postId: shortVideo.id,
-                                                    id: newId,
-                                                });
-                                                localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                                                create_Message('saved successfully');
-                                            }
-                                        })
-                                    }
-                                });
-                            });
-                        }
-                    }
-        
-                    gridmenusave.addEventListener('click', () => {
-                        gridmenu.classList.toggle('gridmenuactive');
-                        pushSavedphotos();
-                        newSaved_Script();
-                    });
-                    
-                    gridmenudelete.addEventListener('click', () => {
-                        delete_Timeline_Post(shortVideo.id);
-                        gridmenu.classList.toggle('gridmenuactive');
+                    more.addEventListener('click', () => {
+                        create_Post_Options_Script(feedcolumn, shortVideo.id);
                     });
                 }
             }
         });
-    });
+    }
+}
+if (document.querySelector('.Public_video_Reel_Column')) {
+    document.addEventListener('DOMContentLoaded',createPublicGridShortVideo(document.querySelector('.Public_video_Reel_Column')));
 }
 function creategridreel() {
     const ReelsVideos_Column = document.querySelectorAll('.ReelsVideos_Column');
@@ -383,7 +282,7 @@ function creategridreel() {
                     let reelgridposterimg = document.createElement('img');
                     let reelgridpostername = document.createElement('b');
                     let gridvideotime = document.createElement('span');
-                    let gridvideomore = document.createElement('span');
+                    let more = document.createElement('span');
                     let gridmenugrid = document.createElement('div');
     
                     let gridmenusend = document.createElement('span');
@@ -397,7 +296,7 @@ function creategridreel() {
                     column.appendChild(gridshort);
                     gridshort.appendChild(reelgrid1);
                     gridshort.appendChild(reelgrid2);
-                    gridshort.appendChild(gridvideomore);
+                    gridshort.appendChild(more);
                     gridshort.appendChild(gridmenu);
                     gridshort.appendChild(commentandlikesharelivelikesflex);
                     reelgrid2.appendChild(reeltitleeee);
@@ -544,7 +443,7 @@ function creategridreel() {
                     gridmenugrid.appendChild(gridmenusave);
                     gridmenugrid.appendChild(gridmenudelete);
                     gridmenugrid.appendChild(gridmenusend);
-                    gridvideomore.innerHTML = '&vellip;';
+                    more.innerHTML = '&vellip;';
                     gridmenugrid.classList.add('gridmenugrid');
                     gridmenudelete.classList.add('gridmenulike');
                     gridmenusave.classList.add('gridmenulike');
@@ -571,9 +470,9 @@ function creategridreel() {
                     gridmenudelete.appendChild(gridmenudeleteimg);
                     gridmenusaveimg.src = 'newicons/bookmark-white.png';
                     gridmenudeleteimg.src = 'newicons/trash-can.png';
-                    gridvideomore.innerHTML = '&vellip;';
+                    more.innerHTML = '&vellip;';
     
-                    gridvideomore.classList.add('gridvideomore');
+                    more.classList.add('more');
                     gridmenu.classList.add('gridmenu');
     
                     if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
@@ -585,7 +484,7 @@ function creategridreel() {
                         });
                     }
     
-                    gridvideomore.addEventListener('click', () => {
+                    more.addEventListener('click', () => {
                         gridmenu.classList.toggle('gridmenuactive');
                     });
 
@@ -637,11 +536,4 @@ function creategridreel() {
             }
         });
     });
-}
-if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
-    Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
-    createPublicGridShortVideo();
-    creategridreel();
-} else {
-    Feeds_Data_Base = [];
 }

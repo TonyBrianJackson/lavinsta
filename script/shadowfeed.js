@@ -208,8 +208,8 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
 
                     viewscount.id = photo.id;
                     function checkifviews() {
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 let views = photo.views;
                                 views.forEach(count => {
@@ -416,8 +416,8 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                 function pushSavedphotos() {
                     if (gridpostsave.classList.contains('gridpostsave')) {
                         const newId = '' + new Date().getTime();
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 LogInFormData.forEach(user => {
                                     if (user.user_Id === data.user_Id) {
@@ -616,8 +616,8 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                         }
                     });
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             document.querySelectorAll('.sharegridlike').forEach(likebutton => {
                                 if (likebutton.id === data.user_Id + photo.id) {
@@ -644,8 +644,8 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                         }
                     });
 
-                    if (Array.isArray(ActiveAccount)) {
-                        ActiveUser_Account = ActiveAccount;
+                    if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                         ActiveUser_Account.forEach(data => {
                             document.querySelectorAll('.sharegridliked').forEach(likebutton => {
                                 if (likebutton.id === data.user_Id + photo.id) {
@@ -678,14 +678,7 @@ function createMain_GridPost(LocationId, Property_Src,generictype) {
                     gridinputinput.value = '';
                 });
                 itemsviewclosebutton.addEventListener('click', () => {
-                    itemsviewonlargescale.remove();
                     history.back();
-                    document.querySelectorAll('.commentsectioncontainer').forEach(container => {
-                        if (container.id === photo.id) {
-                            container.classList.add('commentsectioncontainer');
-                            container.classList.remove('commentsectioncontaineractive');
-                        }
-                    });
                 });
 
                 tilebox_Timeline.id = photo.posterId + 'timeline';

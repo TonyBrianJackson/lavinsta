@@ -16,11 +16,9 @@ function createGridPost(locationId, gridsection) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
                             gridpostimg.src = children[0].Property_Src;
-                            gridpost.style.backgroundImage = "url(" + children[0].Property_Src + ")";
                         }
                     } else {
                         gridpostimg.src = photo.Property_Src;
-                        gridpost.style.backgroundImage = "url(" + photo.Property_Src + ")";
                     }
                     function filter_Image() {
                         if (photo.filter == 'default') {
@@ -121,9 +119,21 @@ function createGridPost(locationId, gridsection) {
                 gridpostImgCover.appendChild(gridpost_Type_Indicator);
                 gridpostImgCover.classList.add('gridpostImgCover');
                 gridpost.classList.add('gridpost');
-                gridpost.addEventListener('click', () => {
-                    createMain_GridPost(photo.id, photo.Property_Src,'home');
-                });
+                const setBackGroundImage = ()=> {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(data => {
+                            if (data.user_Id === photo.posterId) {
+                                if (data.user_CoverPhoto) {
+                                    gridpost.style.backgroundImage = "url(" + data.user_CoverPhoto + ")";
+                                } else {
+                                    gridpost.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                                }
+                            }
+                        })
+                    }
+                }
+                setBackGroundImage();
             }
         }
     });
@@ -141,7 +151,6 @@ function createPublicGridPost(locationId, gridsection) {
                     let gridpostimg = document.createElement('img');
                     gridpost.appendChild(gridpostimg);
                     gridpostimg.classList.add('gridpostimg');
-                    Img_Inidcator_Img.src = 'icons/image(0).png';
                     if (photo.children) {
                         let children = photo.children;
                         for (let i = 0; i < children.length; i++) {
@@ -181,9 +190,9 @@ function createPublicGridPost(locationId, gridsection) {
                     gridpost.appendChild(gridpostimg);
                     gridpostimg.classList.add('gridpostimg');
                     gridpostimg.src = photo.Property_Src;
-                    Img_Inidcator_Img.src = 'icons/youtube.png';
-                    if (photo.isVideo) Img_Inidcator_Img.src = 'icons/youtube.png';
-                    if (photo.isShort) Img_Inidcator_Img.src = 'icons/stopwatch.png';
+                    gridpost_Type_Indicator.innerHTML = imagesvg;
+                    if (photo.isVideo) gridpost_Type_Indicator.innerHTML = videosvg;
+                    if (photo.isShort) gridpost_Type_Indicator.innerHTML = stopwatchsvg;
                 } if (photo.isText) {
                     let gridpostmain = document.createElement('div');
                     let gridposttext = document.createElement('p');
@@ -251,12 +260,23 @@ function createPublicGridPost(locationId, gridsection) {
                 gridsection.appendChild(gridpost);
                 gridpost.appendChild(gridpostImgCover);
                 gridpostImgCover.appendChild(gridpost_Type_Indicator);
-                gridpost_Type_Indicator.appendChild(Img_Inidcator_Img);
                 gridpostImgCover.classList.add('gridpostImgCover');
                 gridpost.classList.add('gridpost');
-                gridpost.addEventListener('click', () => {
-                    createMain_GridPost(photo.id, photo.Property_Src,'home');
-                });
+                const setBackGroundImage = ()=> {
+                    if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+                        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                        LogInFormData.forEach(data => {
+                            if (data.user_Id === photo.posterId) {
+                                if (data.user_CoverPhoto) {
+                                    gridpost.style.backgroundImage = "url(" + data.user_CoverPhoto + ")";
+                                } else {
+                                    gridpost.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                                }
+                            }
+                        })
+                    }
+                }
+                setBackGroundImage();
             }
         }
     });
@@ -270,14 +290,12 @@ function createOtherGridPost(locationId, gridsection) {
                     let gridpost = document.createElement('a');
                     let gridpostImgCover = document.createElement('div');
                     let gridpost_Type_Indicator = document.createElement('div');
-                    let Img_Inidcator_Img = document.createElement('img');
                     gridpost.href = `view.html?Post_Id=${photo.id}`;
                     if (photo.isPhoto || photo.isAdvert || photo.isCrime) {
                         let gridpostimg = document.createElement('img');
                         gridpost.appendChild(gridpostimg);
                         gridpostimg.classList.add('gridpostimg');
-                        Img_Inidcator_Img.src = 'icons/image(0).png';
-                        if (photo.children) {
+                            if (photo.children) {
                             let children = photo.children;
                             for (let i = 0; i < children.length; i++) {
                                 gridpostimg.src = children[0].Property_Src;
@@ -316,12 +334,24 @@ function createOtherGridPost(locationId, gridsection) {
                     gridsection.appendChild(gridpost);
                     gridpost.appendChild(gridpostImgCover);
                     gridpostImgCover.appendChild(gridpost_Type_Indicator);
-                    gridpost_Type_Indicator.appendChild(Img_Inidcator_Img);
+                    gridpost_Type_Indicator.innerHTML = imagesvg;
                     gridpostImgCover.classList.add('gridpostImgCover');
                     gridpost.classList.add('gridpost');
-                    gridpost.addEventListener('click', () => {
-                        createMain_GridPost(photo.id, photo.Property_Src,'home');
-                    });
+                    const setBackGroundImage = ()=> {
+                        if (Array.isArray(JSON.parse(localStorage.getItem('LogInFormData')))) {
+                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
+                            LogInFormData.forEach(data => {
+                                if (data.user_Id === photo.posterId) {
+                                    if (data.user_CoverPhoto) {
+                                        gridpost.style.backgroundImage = "url(" + data.user_CoverPhoto + ")";
+                                    } else {
+                                        gridpost.style.backgroundImage = "url(" + 'lavinstaphotos/eagle.png' + ")";
+                                    }
+                                }
+                            })
+                        }
+                    }
+                    setBackGroundImage();
                 }
             }
         }

@@ -25,7 +25,7 @@ function create_Grid_Story_Trash() {
                         gridimg.src = trash.Property_Src;
                         gridimg.classList.add('gridimg');
                     } if (trash.type == 'video') {
-                        let gridimg = document.createElement('img');
+                        let gridimg = document.createElement('video');
                         griditems.appendChild(gridimg);
                         gridimg.src = trash.Property_Src;
                         gridimg.classList.add('gridimg');

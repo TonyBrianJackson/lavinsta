@@ -379,7 +379,19 @@ function create_Active_Account() {
                 user_Information_View_Container.classList.add('user_Information_View_Container');
                 usersprofilesetting.classList.add('usersprofilesetting');
                 user_Copy_Link_Container.classList.add('user_Copy_Link_Container');
-
+                const copyLink = (text) => {
+                    if (navigator.clipboard) {
+                        try {
+                            const toCopy = text;
+                            navigator.clipboard.writeText(toCopy);
+                            create_Message('profile link copied');
+                        }
+                        catch (err) {
+                            console.error('Failed to copy: ', err);
+                            create_Message('unable to copy');
+                        }
+                    }
+                }
                 user_Copy_Link_Container.addEventListener('click', () => {
                     let url = document.createElement('a');
                     url.href = `view.html?User_Id=${profile.user_Id}`;
@@ -1779,35 +1791,6 @@ function getActivePage() {
             document.querySelector('.publicfeedpage').style.display = 'grid';
         } else if (activepage == 'reelsmainpage') {
             document.querySelector('.reelsmainpage').style.display = 'grid';
-        } else if (activepage == 'trending_Videos') {
-            document.querySelector('.videopagebackground').style.display = 'flex';
-            document.querySelector('.gallery').style.display = 'flex';
-            document.querySelector('.trending_Videos').style.display = 'grid';
-            document.querySelector('#trendingvideos').classList.add('active');
-        } else if (activepage == 'live_Videos') {
-            document.querySelector('.videopagebackground').style.display = 'flex';
-            document.querySelector('.gallery').style.display = 'flex';
-            document.querySelector('.live_Videos').style.display = 'grid';
-            document.querySelector('.trending_Videos').style.display = 'none';
-            document.querySelector('#livestreaming').classList.add('active');
-            document.querySelector('#trendingvideos').classList.remove('active');
-        } else if (activepage == 'timeline_Videos') {
-            document.querySelector('.trending_Videos').style.display = 'none';
-            document.querySelector('.timeline_Videos').style.display = 'grid';
-            document.querySelector('.videopagebackground').style.display = 'flex';
-            document.querySelector('.gallery').style.display = 'flex';
-            document.querySelector('#timelinevideos').classList.add('active');
-            document.querySelector('#trendingvideos').classList.remove('active');
-        } else if (activepage == 'saved_Videos') {
-            document.querySelector('.saved_Videos').style.display = 'grid';
-            document.querySelector('.trending_Videos').style.display = 'none';
-            document.querySelector('.videopagebackground').style.display = 'flex';
-            document.querySelector('.gallery').style.display = 'flex';
-            document.querySelector('#savedvideos').classList.add('active');
-            document.querySelector('#trendingvideos').classList.remove('active');
-        } else if (activepage == 'gallery') {
-            document.querySelector('.videopagebackground').style.display = 'flex';
-            document.querySelector('.gallery').style.display = 'flex';
         }
     }
 }

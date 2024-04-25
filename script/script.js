@@ -112,14 +112,14 @@ function All_Search_On_Home() {
                                             let textType = TextTitle.toLowerCase();
                                             if (titleType.indexOf(textType) != -1) {
                                                 searchResult =
-                                                    `<div class="search_result" id="${post.id}">
-                                                    <div>
-                                                        <div><img src="${user.user_ProfilePicture}"></div>
-                                                        <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
-                                                    </div>
-                                                    <small>${post.attribute}</small>
-                                                    <p>${post.title}</p>
-                                                </div>`;
+                                                    `<a href="view.html?Post_Id=${post.id}" class="search_result" id="${post.id}">
+                                                        <div>
+                                                            <div><img src="${user.user_ProfilePicture}"></div>
+                                                            <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
+                                                        </div>
+                                                        <small>${post.attribute}</small>
+                                                        <p>${post.title}</p>
+                                                    </a>`;
                                                 document.querySelector('.homesearch_List').innerHTML += searchResult;
                                             }
                                         })
@@ -133,24 +133,19 @@ function All_Search_On_Home() {
                                             let textType = TextTitle.toLowerCase();
                                             if (titleType.indexOf(textType) != -1) {
                                                 searchResult =
-                                                    `<div class="search_result" id="${post.id}">
+                                                    `<a href="view.html?Post_Id=${post.id}" class="search_result" id="${post.id}">
                                                     <div>
                                                         <div><img src="${user.user_ProfilePicture}"></div>
                                                         <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
                                                     </div>
                                                     <small>${post.attribute}</small>
                                                     <p>${post.Property_Src}</p>
-                                                </div>`;
+                                                </a>`;
                                                 document.querySelector('.homesearch_List').innerHTML += searchResult;
                                             }
                                         });
                                     });
                                 }
-                                document.querySelectorAll('.search_result').forEach(result => {
-                                    result.addEventListener('click', () => {
-                                        createMain_GridPost(result.id);
-                                    });
-                                });
                             }
                         }
                     });
@@ -177,14 +172,14 @@ function All_Search_On_Home() {
                                             if (titleType.indexOf(textType) != -1) {
                                                 let searchResult;
                                                 searchResult =
-                                                    `<div class="search_result" id="${post.id}">
+                                                    `<a href="view.html?Post_Id=${post.id}" class="search_result" id="${post.id}">
                                                     <div>
                                                         <div><img src="${user.user_ProfilePicture}"></div>
                                                         <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
                                                     </div>
                                                     <small>${post.attribute}</small>
                                                     <p>${post.Property_Src}</p>
-                                                </div>`;
+                                                </a>`;
                                                 document.querySelector('.homesearch_List').innerHTML += searchResult;
                                             }
                                         });
@@ -199,24 +194,19 @@ function All_Search_On_Home() {
                                             if (titleType.indexOf(textType) != -1) {
                                                 let searchResult;
                                                 searchResult =
-                                                    `<div class="search_result" id="${post.id}">
+                                                    `<a href="view.html?Post_Id=${post.id}" class="search_result" id="${post.id}">
                                                     <div>
                                                         <div><img src="${user.user_ProfilePicture}"></div>
                                                         <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
                                                     </div>
                                                     <small>${post.attribute}</small>
                                                     <p>${post.title}</p>
-                                                </div>`;
+                                                </a>`;
                                                 document.querySelector('.homesearch_List').innerHTML += searchResult;
                                             }
                                         })
                                     })
                                 }
-                                document.querySelectorAll('.search_result').forEach(result => {
-                                    result.addEventListener('click', () => {
-                                        createMain_GridPost(result.id);
-                                    });
-                                });
                             }
                         }
                     });
@@ -243,24 +233,19 @@ function All_Search_On_Home() {
                                             if (titleType.indexOf(textType) != -1) {
                                                 let searchResult;
                                                 searchResult =
-                                                    `<div class="search_result" id="${post.id}">
+                                                    `<a href="view.html?Post_Id=${post.id}" class="search_result" id="${post.id}">
                                                     <div>
                                                         <div><img src="${user.user_ProfilePicture}"></div>
                                                         <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
                                                     </div>
                                                     <small>${post.attribute}</small>
                                                     <p>${post.title}</p>
-                                                </div>`;
+                                                </a>`;
                                                 document.querySelector('.homesearch_List').innerHTML += searchResult;
                                             }
                                         })
                                     })
                                 }
-                                document.querySelectorAll('.search_result').forEach(result => {
-                                    result.addEventListener('click', () => {
-                                        createMain_GridPost(result.id);
-                                    });
-                                });
                             }
                         }
                     });
@@ -287,24 +272,19 @@ function All_Search_On_Home() {
                                             if (titleType.indexOf(textType) != -1) {
                                                 let searchResult;
                                                 searchResult =
-                                                    `<div class="search_result" id="${post.id}">
+                                                    `<a href="view.html?Post_Id=${post.id}" class="search_result" id="${post.id}">
                                                     <div>
                                                         <div><img src="${user.user_ProfilePicture}"></div>
                                                         <strong>${user.user_Firstname + ' ' + user.user_Surname}</strong>
                                                     </div>
                                                     <small>${post.attribute}</small>
                                                     <p>${post.title}</p>
-                                                </div>`;
+                                                </a>`;
                                                 document.querySelector('.homesearch_List').innerHTML += searchResult;
                                             }
                                         })
                                     })
                                 }
-                                document.querySelectorAll('.search_result').forEach(result => {
-                                    result.addEventListener('click', () => {
-                                        createMain_GridPost(result.id);
-                                    });
-                                });
                             }
                         }
                     });
@@ -371,7 +351,7 @@ function All_Search_On_Home() {
             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
             ActiveUser_Account.forEach(user => {
                 createsuggesion(user.user_Id);
-            });   
+            });
         }
     }
     //keyup functions***
@@ -459,28 +439,6 @@ function All_Search_On_Home() {
             }
         });
     };
-    function pushVideoSearch_Suggession() {
-        const id = '' + new Date().getTime();
-        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-            ActiveUser_Account.forEach(data => {
-                LogInFormData.forEach(user => {
-                    if (user.user_Id === data.user_Id) {
-                        let user_Recent_Search = user.user_Recent_Video_Search;
-                        if (document.querySelector('.Videos_Search_Bar_In_Search-Box').value) {
-                            user_Recent_Search.push({
-                                title: document.querySelector('.Videos_Search_Bar_In_Search-Box').value.toLowerCase(),
-                                id: id,
-                            });
-                            localStorage.setItem('LogInFormData', JSON.stringify(LogInFormData));
-                        }
-                    }
-                });
-            });
-        }
-    };
-
     searchbtn.addEventListener('click', () => {
         ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
         LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
@@ -489,22 +447,6 @@ function All_Search_On_Home() {
                 if (user.user_Id === data.user_Id) {
                     pushsuggesion(data.user_Id);
                     createsuggesion(data.user_Id);
-                }
-            });
-        });
-    });
-    VideoMainSearchBarSvg.addEventListener('click', () => {
-        ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-        LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-        ActiveUser_Account.forEach(data => {
-            LogInFormData.forEach(user => {
-                if (user.user_Id === data.user_Id) {
-                    let user_Recent_Search = user.user_Recent_Video_Search;
-                    user_Recent_Search.forEach(recent => {
-                        if (recent.title !== document.querySelector('.Videos_Search_Bar_In_Search-Box').value.toLowerCase()) {
-                            pushVideoSearch_Suggession();
-                        }
-                    })
                 }
             });
         });
@@ -587,294 +529,9 @@ function All_Search_On_Home() {
     };
 }
 All_Search_On_Home();
-function All_Search_On_Video() {
-    const Videos_Search_Bar_In_Search_Box = document.querySelector('.Videos_Search_Bar_In_Search-Box');
-    const randomvideosearch = document.querySelector('#randomvideosearch');
-
-    function advancesearch_Method() {
-        if (document.querySelector('#homesearch').classList.contains('active')) {
-            const Videos_Search_Bar_In_Search_Box = document.querySelector('.search_textBox').value.toLowerCase();
-            document.querySelectorAll('.videosearch_List').forEach(searchListColumn => {
-                searchListColumn.innerHTML = '';
-                Feeds_Data_Base.forEach(post => {
-                    LogInFormData.forEach(user => {
-                        if (user.user_Id === post.posterId) {
-                            if (post.isVideo || post.isShort) {
-                                let Html;
-                                if (post.title.indexOf(Videos_Search_Bar_In_Search_Box) != -1) {
-                                    Html = `<div class="search_result" id="${post.id}">
-                                                <div>
-                                                    <span class="searchvideoresult"><div></div><video src="${post.Property_Src}"></span>
-                                                    <nav><strong class="videoseachresultname" id="${user.user_Id}">${user.user_Firstname + ' ' + user.user_Surname}</strong></nav>
-                                                </div>
-                                                <p>${post.title}</p>
-                                                <span>
-                                                    <div>${post.likecount + 'likes'}</div>
-                                                    <div>${post.commentcount + 'comments'}</div>
-                                                    <div>${post.viewcount + 'views'}</div>
-                                                </span>
-                                                <button id="${post.id}" class="viewPostButton">view post</button>
-                                            </div>`;
-                                    searchListColumn.innerHTML += Html;
-                                    document.querySelectorAll('.searchvideoresult').forEach(result => {
-                                        result.addEventListener('click', () => {
-                                            document.getElementById('vplayer').src = post.Property_Src;
-                                            document.getElementById('vplayer').play();
-                                        });
-                                    });
-                                    document.querySelectorAll('.videoseachresultname').forEach(result => {
-                                        result.addEventListener('click', () => {
-                                            createUsersProfile(post.posterId);
-                                        });
-                                    });
-                                    document.querySelectorAll('.viewPostButton').forEach(result => {
-                                        result.addEventListener('click', () => {
-                                            createMain_GridPost(post.id);
-                                        })
-                                    });
-                                } else {
-                                    searchListColumn.innerHTML = 'no result';
-                                }
-                            }
-                        }
-                    });
-                });
-            });
-        }
-    };
-    function text_Visibility(innerValue) {
-        Videos_Search_Bar_In_Search_Box.value = innerValue.target.value;
-        advancesearch_Method();
-    };
-    function text_Visibility1(innerValue) {
-        randomvideosearch.value = innerValue.target.value;
-        advancesearch_Method();
-    };
-    randomvideosearch.addEventListener('input', text_Visibility);
-    Videos_Search_Bar_In_Search_Box.addEventListener('input', text_Visibility1);
-}
-All_Search_On_Video();
 
 const postcontainer = document.querySelector('.postcontainer');
-const CurrentTime = document.querySelector('#CurrentTime');
-const totalDuration = document.querySelector('#totalDuration');
-const progressarea = document.querySelector('.progressarea');
-const progressbar = document.querySelector('.progressbar');
-const progresstime = document.querySelector('.progresstime');
-const videovideoplayer = document.querySelector('.videovideoplayer');
-const next10secstrim = document.querySelector('#next10secstrim');
-const previous10secstrim = document.querySelector('#previous10secstrim');
-const playerplaybtn = document.querySelector('#playerplaybtn');
-const playerpausebtn = document.querySelector('#playerpausebtn');
-const expanding = document.querySelector('.alphaleftcontrols.expanding');
-const collapsing = document.querySelector('.alphaleftcontrols.collapsing');
-const pictureInpicture = document.querySelector('alpharightcontrols.pictureInpicture');
-const repeatbtn = document.querySelector('.alpharightcontrols.repeat');
-const loopbtn = document.querySelector('.alpharightcontrols.loop');
-const volumeon = document.querySelector('.alpharightcontrols.volumeon');
-const volumeoff = document.querySelector('.alpharightcontrols.volumeoff');
-const volumerange = document.querySelector('#volumerange');
-const alpharightcontrols = document.querySelectorAll('.alpharightcontrols');
-//videoplayer works
 
-
-const gallery = document.querySelector('.gallery');
-const connectvideos = document.querySelector('.connectvideos');
-const Videoplayer = document.getElementById('vplayer');
-const videouploadpopup = document.querySelector('.videouploadpopup');
-const titlearea = document.querySelector('.titlearea');
-const playeractionarea = document.querySelector('.playeractionarea');
-const mainvideoplayer = document.querySelector('.mainvideoplayer');
-const videoplayernavigation = document.querySelector('.videoplayernavigation');
-const videoplayermiddleplaypause = document.querySelector('.videoplayermiddleplaypause');
-const videoplayerplaybutton = document.querySelector('.videoplayerplaybutton');
-const videoplayerpausebutton = document.querySelector('.videoplayerpausebutton');
-mainvideoplayer.addEventListener('mousemove', () => {
-    videoplayermiddleplaypause.classList.add('videoplayermiddleplaypauseactive');
-    videoplayernavigation.style.display = 'flex';
-});
-mainvideoplayer.addEventListener('mouseleave', () => {
-    setTimeout(() => {
-        videoplayermiddleplaypause.classList.remove('videoplayermiddleplaypauseactive');
-        videoplayernavigation.style.display = 'none';
-    }, 1000);
-});
-next10secstrim.addEventListener('click', () => {
-    Videoplayer.currentTime += 10;
-});
-previous10secstrim.addEventListener('click', () => {
-    Videoplayer.currentTime -= 10;
-});
-Videoplayer.addEventListener('loadeddata', (e) => {
-    let videoDuration = e.target.duration;
-    let totalMin = Math.floor(videoDuration / 60);
-    let totalSec = Math.floor(videoDuration % 60);
-
-    //if totalmin are less than 10 add 0 at the beginning;
-    totalMin < 10 ? totalMin = "0" + totalMin : totalMin;
-    //if totalmin are less than 10 add 0 at the beginning;
-    totalSec < 10 ? totalSec = "0" + totalSec : totalSec;
-    totalDuration.innerHTML = `${totalMin} : ${totalSec}`;
-});
-
-Videoplayer.addEventListener('timeupdate', () => {
-    let currentVideoTime = event.target.currentTime;
-    let currentMin = Math.floor(currentVideoTime / 60);
-    let currentSec = Math.floor(currentVideoTime % 60);
-    //if CurrentMin is < 10 add 0 at the beginning;
-    currentMin < 10 ? currentMin = "0" + currentMin : currentMin;
-
-    //if CurrentSec is < 10 add 0 at the beginning;
-    currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
-    CurrentTime.innerHTML = `${currentMin} : ${currentSec}`;
-
-    //progress bar
-    let videoDuration = event.target.duration;
-    let progressvalue = (currentVideoTime / videoDuration) * 100;
-    progressbar.style.width = `${progressvalue}%`;
-});
-Videoplayer.addEventListener('ended', () => {
-    playerpausebtn.style.display = 'none';
-    videoplayerpausebutton.style.display = 'none';
-    playerplaybtn.style.display = 'flex';
-    videoplayerplaybutton.style.display = 'flex';
-});
-Videoplayer.addEventListener('play', () => {
-    playerpausebtn.style.display = 'flex';
-    videoplayerpausebutton.style.display = 'flex';
-    playerplaybtn.style.display = 'none';
-    videoplayerplaybutton.style.display = 'none';
-});
-Videoplayer.addEventListener('pause', () => {
-    playerpausebtn.style.display = 'none';
-    videoplayerpausebutton.style.display = 'none';
-    playerplaybtn.style.display = 'flex';
-    videoplayerplaybutton.style.display = 'flex';
-});
-var Document_Title = document.title;
-
-document.addEventListener('visibilitychange', () => {
-    var state = document.visibilityState;
-    if (!Videoplayer.paused) {
-        if (state == 'hidden') {
-            Videoplayer.pause();
-        }
-    }
-    document.querySelectorAll('video').forEach(video => {
-        if (!video.paused) {
-            if (state == 'hidden') {
-                video.pause();
-            }
-        }
-    })
-});
-//duration events
-progressarea.addEventListener('click', () => {
-    let videoDuration = Videoplayer.duration;
-    progressbarwidthvalue = progressarea.clientWidth;
-    let clickOffSetx = event.offsetX;
-    Videoplayer.currentTime = (clickOffSetx / progressbarwidthvalue) * videoDuration;
-});
-progressarea.addEventListener('mousemove', () => {
-    let progressbarwidthvalue = progressarea.clientWidth;
-    let x = event.offsetX;
-    progresstime.style.setProperty('--x', `${x}px`);
-    progresstime.style.display = 'block';
-    let videoDuration = Videoplayer.duration;
-    let progressareatime = Math.floor((x / progressbarwidthvalue) * videoDuration);
-    let currentMin = Math.floor(progressareatime / 60);
-    let currentSec = Math.floor(progressareatime % 60);
-
-    //if CurrentMin is < 10 add 0 at the beginning;
-    currentMin < 10 ? currentMin = "0" + currentMin : currentMin;
-
-    //if currentsec is < than 10 add 0 at the beginning
-    currentSec < 10 ? currentSec = "0" + currentSec : currentSec;
-    CurrentTime.innerHTML = ` ${currentMin} : ${currentSec}`;
-    progresstime.innerHTML = `${currentMin} : ${currentSec}`;
-});
-progressarea.addEventListener('mouseleave', () => {
-    progresstime.style.display = 'none';
-});
-
-expanding.addEventListener('click', () => {
-    document.querySelector('.videoplayer').requestFullscreen();
-    document.querySelector('.videoplayer').style = 'border-radius: 0px;';
-    expanding.style.display = 'none';
-    collapsing.style.display = 'flex';
-});
-collapsing.addEventListener('click', () => {
-    expanding.style.display = 'flex';
-    collapsing.style.display = 'none';
-    document.querySelector('.videoplayer').style = 'border-radius: 10px;';
-    document.exitFullscreen();
-});
-volumeon.addEventListener('click', () => {
-    volumeoff.style.display = 'flex';
-    volumeon.style.display = 'none';
-    volumerange.value = 0;
-    Videoplayer.volume = 0;
-});
-volumeoff.addEventListener('click', () => {
-    volumeoff.style.display = 'none';
-    volumeon.style.display = 'flex';
-    volumerange.value = 80;
-    Videoplayer.volume = 0.8;
-});
-function volumeChanges() {
-    Videoplayer.volume = volumerange.value / 100;
-    if (volumerange.value < 1) {
-        volumeoff.style.display = 'flex';
-        volumeon.style.display = 'none';
-    } else {
-        volumeoff.style.display = 'none';
-        volumeon.style.display = 'flex';
-    }
-}
-
-volumerange.addEventListener('change', () => {
-    volumeChanges();
-});
-
-
-repeatbtn.addEventListener('click', () => {
-    loopbtn.style.display = 'flex';
-    repeatbtn.style.display = 'none';
-});
-loopbtn.addEventListener('click', () => {
-    loopbtn.style.display = 'none';
-    repeatbtn.style.display = 'flex';
-});
-
-playerplaybtn.addEventListener('click', () => {
-    let vplayer = document.querySelector('#vplayer');
-    if (vplayer.src) {
-        vplayer.play();
-    }
-});
-
-videoplayerplaybutton.addEventListener('click', () => {
-    let vplayer = document.querySelector('#vplayer');
-    if (vplayer.src) {
-        vplayer.play();
-    }
-});
-
-//end
-playerpausebtn.addEventListener('click', () => {
-    let vplayer = document.querySelector('#vplayer');
-    if (vplayer.src) {
-        vplayer.pause();
-    }
-});
-videoplayerpausebutton.addEventListener('click', () => {
-    let vplayer = document.querySelector('#vplayer');
-    if (vplayer.src) {
-        vplayer.pause();
-    }
-});
-
-const TrendIngVid = document.getElementById('videotrending');
 let videotitleposter = document.getElementById('videotitle');
 
 
@@ -908,7 +565,6 @@ videoLabel.addEventListener('click', () => {
     addvideo.style.display = 'block';
     addreel.style.display = 'none';
     textarea2.style.width = '80%';
-    document.querySelector('.gallery').style.display = 'flex';
 });
 reeLabel.addEventListener('click', () => {
     let addvideo = document.getElementById('addvideo');
@@ -919,7 +575,6 @@ reeLabel.addEventListener('click', () => {
     addvideo.style.display = 'none';
     addreel.style.display = 'block';
     textarea2.style.width = '80%';
-    document.querySelector('.gallery').style.display = 'none';
 });
 
 function activatebuttons() {

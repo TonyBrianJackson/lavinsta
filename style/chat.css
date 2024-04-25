@@ -406,7 +406,12 @@
 .options .headerbtns {
     color: var(--color-white);
 }
-
+.options .headerbtns.liked {
+    border-color: var(--color-bright);
+}
+.options .headerbtns.liked svg path {
+    fill: var(--color-bright);
+}
 .options .headerbtns.cancelled::before {
     content: '';
     height: 90%;
@@ -1368,7 +1373,7 @@
         left: 0;
         width: 100vw;
         height: 100%;
-        z-index: 340;
+        z-index: 357;
         margin: 0;
         padding: 10px;
         border-radius: 0px;
@@ -1403,18 +1408,21 @@
         min-height: 55px;
         border: none;
         overflow: hidden;
-        background: var(--color-white);
+        background: #aaa;
         display: flex;
         padding: 12px;
     }
 
     .options {
         gap: 0px 5px;
+        align-items: center;
+        justify-content: center;
     }
 
     .largescalewideviewcontainer .options,
     .adgrid .options,
-    .post .options {
+    .post .options,
+    .reel .options {
         width: 95%;
         overflow-x: scroll;
         overflow-y: hidden;
@@ -1423,7 +1431,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 5px;
-        background: var(--color-white);
+        background: #aaa;
         box-shadow: var(--simple-box-shadow);
         z-index: 36;
         bottom: 10px;
@@ -1431,41 +1439,48 @@
 
     .largescalewideviewcontainer .options .headerbtns,
     .adgrid .options .headerbtns,
-    .post .options .headerbtns {
+    .post .options .headerbtns,
+    .reel .options .headerbtns {
         width: 100%;
-        background: var(--color-white);
-        box-shadow: none;
+        background: none;
+        box-shadow: var(--solid-box-shadow);
         border-radius: 10px;
     }
 
     .largescalewideviewcontainer .options .headerbtns:nth-child(1),
     .adgrid .options .headerbtns:nth-child(1),
-    .post .options .headerbtns:nth-child(1) {
+    .post .options .headerbtns:nth-child(1),
+    .reel .options .headerbtns:nth-child(1) {
         border-radius: 25px 10px 10px 10px;
     }
     .largescalewideviewcontainer .options .headerbtns:nth-child(4),
     .adgrid .options .headerbtns:nth-child(4),
-    .post .options .headerbtns:nth-child(4) {
+    .post .options .headerbtns:nth-child(4),
+    .reel .options .headerbtns:nth-child(4) {
         border-radius: 10px 25px 10px 10px;
     }
     .largescalewideviewcontainer .options .headerbtns:nth-child(5),
     .adgrid .options .headerbtns:nth-child(5),
-    .post .options .headerbtns:nth-child(5) {
+    .post .options .headerbtns:nth-child(5),
+    .reel .options .headerbtns:nth-child(5) {
         border-radius: 10px 10px 10px 25px;
     }
     .largescalewideviewcontainer .options .headerbtns:nth-child(8),
     .adgrid .options .headerbtns:nth-child(8),
-    .post .options .headerbtns:nth-child(8) {
+    .post .options .headerbtns:nth-child(8),
+    .reel .options .headerbtns:nth-child(8) {
         border-radius: 10px 10px 25px 10px;
     }
     .largescalewideviewcontainer .options .headerbtns:nth-child(9),
     .adgrid .options .headerbtns:nth-child(9),
-    .post .options .headerbtns:nth-child(9) {
+    .post .options .headerbtns:nth-child(9),
+    .reel .options .headerbtns:nth-child(9) {
         border-radius: 10px 25px 10px 25px;
     }
     .largescalewideviewcontainer .options .headerbtns:nth-child(12),
     .adgrid .options .headerbtns:nth-child(12),
-    .post .options .headerbtns:nth-child(12) {
+    .post .options .headerbtns:nth-child(12),
+    .reel .options .headerbtns:nth-child(12) {
         border-radius: 25px 10px 25px 10px;
     }
     .mesgBox,
@@ -1505,10 +1520,15 @@
         width: 45px;
         height: 45px;
         border: 1px solid var(--color-light);
+        box-shadow: none;
         color: var(--color-dark);
         margin: 0;
     }
 
+    .options .headerbtns {
+         background: none;
+         box-shadow: var(--solid-box-shadow);
+    }
     .memberscontainer.community_profile .headerbtns {
         border: none;
     }
@@ -1657,6 +1677,34 @@
 }
 
 @media (min-width: 540px) and (max-width: 560px) {
+    .largescalewideviewcontainer .options,
+    .adgrid .options,
+    .post .options,
+    .reel .options {
+        width: 95%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        border-radius: 25px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 5px;
+        background: #aaa;
+        box-shadow: var(--simple-box-shadow);
+        z-index: 36;
+        bottom: 10px;
+    }
+
+    .largescalewideviewcontainer .options .headerbtns,
+    .adgrid .options .headerbtns,
+    .post .options .headerbtns,
+    .reel .options .headerbtns {
+        width: 100%;
+        background: none;
+        box-shadow: var(--solid-box-shadow);
+        border-radius: 10px;
+        border: 1px solid var(--color-light);
+    }
     .userchatheader {
         width: 100%;
     }

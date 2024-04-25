@@ -1,10 +1,10 @@
 if (Array.isArray(JSON.parse(localStorage.getItem('Feeds_Data_Base')))) {
     Feeds_Data_Base = JSON.parse(localStorage.getItem('Feeds_Data_Base'));
     get_Comment_Active_Page();
-    createPhotoPostOnTimeLine();
     createGridPost();
     createPublicGridPost();
     createOtherGridPost();
+    document.addEventListener('DOMContentLoaded',createPhotoPostOnTimeLine());
 } else {
     Feeds_Data_Base = [];
 }
@@ -234,8 +234,8 @@ function createPhotoPostOnTimeLine() {
                     timelinetotaltime.classList.add('timelinecurrenttime');
 
                     function checkifviews() {
-                        if (Array.isArray(ActiveAccount)) {
-                            ActiveUser_Account = ActiveAccount;
+                        if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
+                            ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
                             ActiveUser_Account.forEach(data => {
                                 let views = photo.views;
                                 views.forEach(count => {

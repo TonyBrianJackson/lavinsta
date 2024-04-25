@@ -1,6 +1,8 @@
 function checksearchParameters() {
     let newparemeters = new URLSearchParams(window.location.search).get('Post_Id');
+    let videoparemeters = new URLSearchParams(window.location.search).get('video_Id');
     window.addEventListener('DOMContentLoaded', createMain_GridPost(newparemeters));
+    window.addEventListener('DOMContentLoaded', create_Video_Player(videoparemeters));
     console.log(newparemeters);
 }
 checksearchParameters();

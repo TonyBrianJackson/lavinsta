@@ -155,7 +155,7 @@ function createUsersProfile(locationId) {
                         try {
                             const toCopy = text;
                             navigator.clipboard.writeText(toCopy);
-                            create_Message('text copied');
+                            create_Message('profile link copied');
                         }
                         catch (err) {
                             console.error('Failed to copy: ', err);

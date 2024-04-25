@@ -19,7 +19,11 @@
 }
 
 .reelsmainpage {
-    grid-template-columns: 20vw 50vw 30vw;
+    align-items: baseline;
+    justify-items: baseline;
+    align-content: baseline;
+    background: hsl(5, 85%, 20%);
+    grid-template-columns: 25vw 45vw 30vw;
 }
 
 /*reel*/
@@ -88,6 +92,7 @@
     background: none;
     box-shadow: none;
     overflow: hidden;
+    padding: 30px;
 }
 
 /*otherpost*/
@@ -99,7 +104,7 @@
     height: 93vh;
     border: none;
     box-shadow: none;
-    background: var(--color-light);
+    background: none;
     border-radius: 0px;
     top: 54px;
     display: flex;
@@ -123,8 +128,11 @@
     place-items: center;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding: 10px;
 }
-
+.rightsidefeedsothersection .worldwidegadgetcontainer {
+    height: max-content;
+}
 .reelpagecreate {
     display: flex;
     flex-direction: column;
@@ -136,7 +144,7 @@
     box-shadow: none;
     border: none;
     overflow: hidden;
-    background: var(--color-light);
+    background: none;
     position: fixed;
     left: 0px;
     top: 200px;
@@ -304,7 +312,7 @@
 .worldwidegadgetcontaineronshortpage {
     height: max-content;
     width: 100%;
-    background: var(--color-dark);
+    background: var(--color-white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -314,13 +322,14 @@
     overflow: hidden;
     position: relative;
     border: none;
-    box-shadow: none;
+    box-shadow: var(--simple-box-shadow);
+    border-radius: 10px;
 }
 
 .worldwidegadgetcontainer {
     height: 100%;
     width: 300px;
-    background: var(--color-dark);
+    background: var(--color-white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -330,9 +339,16 @@
     overflow: hidden;
     position: relative;
     border: none;
-    box-shadow: none;
+    box-shadow: var(--simple-box-shadow);
+    border-radius: 10px;
 }
-
+.rightsidefeedsothersection .worldwidegadgetcontainer {
+    height: max-content;
+    width: 100%;
+}
+.rightsidefeedsothersection .worldwidegadgetcontainer .worldwidegadgetinnercontainer {
+    height: 450px;
+}
 .worldwidegadgetinnercontainer {
     height: 100%;
     width: 100%;
@@ -345,10 +361,7 @@
     justify-content: center;
     overflow: hidden;
     position: relative;
-}
-
-.worldwidegadgetcontaineronshortpage .worldwidegadgetinnercontainer {
-    height: max-content;
+    border-radius: inherit;
 }
 
 .worldwidegadgetinnercontainer img {
@@ -357,7 +370,7 @@
     width: 100%;
     border: none;
     box-shadow: none;
-    border-radius: 0px;
+    border-radius: inherit;
     display: block;
     background: none;
 }
@@ -447,82 +460,48 @@
 .publicreelside,
 .publicvideosidebar {
     padding: 10px;
+    width: 25vw;
     height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom, var(--second-color-white), var(--color-gray), var(--second-color-dark));
+    justify-content: baseline;
+    background: #aaa;
     position: fixed;
     overflow: hidden;
     border: none;
+    box-shadow: var(--simple-box-shadow);
 }
 
 .publicvideosidebar {
-    width: 23vw;
     left: 5px;
     top: 130px;
-    box-shadow: var(--simple-box-shadow);
     z-index: 5;
 }
 
 .publicreelside {
-    width: 23vw;
     right: 5px;
     top: 130px;
     overflow: hidden;
     z-index: 4;
-    background: linear-gradient(to bottom, var(--second-color-white), var(--color-gray), var(--second-color-dark));
-    box-shadow: var(--simple-box-shadow);
 }
 
 .Public_video_Reel_Column {
-    padding: 10px;
-    height: 95%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 5px;
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    align-items: baseline;
+    align-content: baseline;
+    justify-items: baseline;
+    place-items: center;
     background: none;
     border: none;
-    border-color: var(--color-bright);
     box-shadow: none;
     overflow-x: hidden;
     overflow-y: scroll;
-}
-
-.publicvideoplayer header {
-    position: absolute;
-    border: none;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: max-content;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-}
-
-.reelsideoutercontainer header,
-.publicreelside header {
-    border: none;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    overflow: hidden;
-    width: 100%;
-    height: max-content;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
 }
 
 .publicvideosidebar video {
@@ -626,9 +605,9 @@
 
 .publicvideoplayerprogressarea {
     width: 95%;
-    height: 1px;
+    height: 3px;
     border: none;
-    background: var(--color-bright);
+    background: var(--color-black);
     box-shadow: none;
     border-radius: 0px;
     display: flex;
@@ -637,10 +616,11 @@
     justify-content: center;
     cursor: pointer;
     overflow: hidden;
+    filter: var(--solid-filter-shadow);
 }
 
 .progressareacontainer {
-    height: 5px;
+    height: 3px;
     width: 95%;
     margin: 10px;
     background: none;
@@ -654,9 +634,6 @@
     overflow: hidden;
 }
 
-.publicvideoplayernavigation:hover .publicvideoplayerprogressarea {
-    height: 3px;
-}
 
 .publicvideoplayerprogressbar {
     display: block;
@@ -665,10 +642,11 @@
     border: none;
     box-shadow: none;
     border-radius: 0px;
-    background: var(--color-primary);
+    background: #6e18f3;
 }
 
 .publicvideoplayertime {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -682,12 +660,12 @@
 .publicvideoplayertime span {
     display: block;
     text-align: center;
-    width: 70px;
-    color: #ffffffff;
+    color: var(--color-black);
     background: none;
     box-shadow: none;
     border: none;
     border-radius: 0px;
+    filter: var(--solid-filter-shadow);
 }
 
 .reelpagecreate label {
@@ -795,10 +773,14 @@
     .publicfeedpage {
         grid-template-columns: 100vw;
     }
-
-    .secondreelcontainer,
+    .reelsmainpage {
+        background: var(--color-light);
+    }
     .publicmiddlesection {
         margin-top: 115px;
+    }
+    .secondreelcontainer {
+        margin-top: 15px;
     }
 
     .headermiddle {
@@ -843,7 +825,12 @@
         height: 100%;
         padding: 5px;
     }
-
+    .publicreelside {
+        z-index: 302;
+    }
+    .publicvideosidebar {
+        z-index: 303;
+    }
     .reelsideoutercontainer {
         z-index: 8;
         padding: 0px;
@@ -966,12 +953,6 @@
         width: 100%;
     }
 
-    .headerbtns {
-        width: 50px;
-        height: 50px;
-        margin: 0px 10px;
-    }
-
     .headermiddle {
         display: flex;
         width: 100%;
@@ -984,20 +965,41 @@
     .reelsideoutercontainer,
     .publicreelside,
     .publicvideosidebar {
-        top: 0;
-        left: 0px;
-        border-radius: 0px;
+        border-radius: 10px;
         display: none;
         width: 100vw;
-        height: 100vh;
+        height: 75vh;
         padding: 5px;
+        top: unset;
+        bottom: 10px;
     }
 
     .reelsideoutercontainer,
     .publicreelside {
-        width: 50vw;
+        width: 60vw;
     }
-
+    .publicreelside {
+        z-index: 303;
+        height: 95vh;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+    }
+    .publicvideosidebar {
+        height: 95vh;
+        width: 95vw;
+        z-index: 303;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .publicvideoplayertime {
+        justify-content: space-evenly;
+    }
+    
+    .publicvideoplayertime span {
+        font-size: 4.111vw;
+    }
     .advertStatusbarcontainer {
         width: 100vw;
     }

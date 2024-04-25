@@ -65,10 +65,10 @@ floatItems.forEach(item => {
             document.querySelector('.publicfeedpage').style.display = 'flex';
             sessionStorage.setItem('activepage', 'lavinstafeeds');
         } if (item.id != 'lav_Insta_search') {
-            document.querySelector('.main_Seach_Path').style.display = 'none';
+            document.querySelector('.searchpath').style.display = 'none';
         } else {
             loadPage();
-            document.querySelector('.main_Seach_Path').style.display = 'flex';
+            document.querySelector('.searchpath').style.display = 'flex';
             sessionStorage.setItem('activepage', 'homesearch');
             document.querySelector('.navigatiofloatcontainer').style.display = 'none';
         } if (item.id != 'lav_Insta_menu') {
@@ -141,7 +141,7 @@ sidebarItems.forEach(item => {
             document.querySelector('.callslist').style.display = 'none';
         } else {
             document.querySelector('.callslist').style.display = 'flex';
-        } if (item.id =='devmode') {
+        } if (item.id == 'devmode') {
             createDevTool();
         }
     })
@@ -157,15 +157,7 @@ document.querySelector('.livepage_Close_Button').addEventListener('click', () =>
 document.querySelector('.calllistexit').addEventListener('click', () => {
     document.querySelector('.callslist').style.display = 'none';
 });
-const viewbtn = document.querySelector('.viewbtn');
-viewbtn.addEventListener('click', () => {
-    document.querySelector('.live_Page').classList.toggle('livebackgroundminimize');
-    document.querySelector('.livebackground').classList.toggle('livebackground_Fit');
-    document.querySelector('.leftliveside').classList.toggle('leftliveside_Fit');
-    document.querySelectorAll('.livesidebars').forEach(link => {
-        link.classList.toggle('livesidebars_Fit');
-    });
-});
+
 const gallerybtns1 = document.querySelectorAll('.headerbtns.gallerybtns1');
 gallerybtns1.forEach(button => {
     button.addEventListener('click', () => {
@@ -192,77 +184,15 @@ gallerybtns1.forEach(button => {
             document.querySelector('.reelsmainpage').style.display = 'grid';
             sessionStorage.setItem('activepage', 'reelsmainpage');
             document.querySelector('.videopagebackground').style.display = 'none';
-        } if (button.id != 'gallery') {
-            document.querySelector('.gallery').style.display = 'none';
+        } if (button.id == 'exit') {
+            sessionStorage.setItem('activepage', 'home');
+            document.querySelector('.videopagebackground').style.display = 'none';
+        } if (button.id == 'videosearchbtn') {
+            document.querySelector('.searchpath').style.display = 'flex';
+            document.querySelector('.navigatiofloatcontainer').style.display = 'none';
         } else {
-            sessionStorage.setItem('activepage', 'gallery');
-            document.querySelector('.gallery').style.display = 'flex';
-        } if (button.id != 'videosearchbtn') {
-            document.querySelector('.video_Seach_Path').style.display = 'none';
-        } else {
-            document.querySelector('.video_Seach_Path').style.display = 'flex';
-        }
-    })
-})
-const wsidebarlink = document.querySelectorAll('.wsidebarlinks');
-wsidebarlink.forEach(item => {
-    item.addEventListener('click', () => {
-        if (item.id != 'videogallery') {
-            document.querySelector('.gallery').style.display = 'none';
-        } else {
-            sessionStorage.setItem('activepage', 'gallery');
-            document.querySelector('.gallery').style.display = 'flex';
-            document.querySelector('.wsidebar').classList.toggle('wsidebaractive');
-            nextbtn.classList.toggle('nextbtnactive');
-        } if (item.id != 'golive') {
-            document.querySelector('.live_Page').style.display = 'none';
-        } else {
-            sessionStorage.setItem('activepage', 'live_Page');
-            document.querySelector('.live_Page').style.display = 'flex';
-            document.querySelector('.wsidebar').classList.toggle('wsidebaractive');
-            nextbtn.classList.toggle('nextbtnactive');
-        }
-    })
-});
-
-const gallerybtns = document.querySelectorAll('.gallerybtns');
-gallerybtns.forEach(item => {
-    item.addEventListener('click', () => {
-        if (item.id != 'trendingvideos') {
-            document.querySelector('.trending_Videos').style.display = 'none';
-            document.querySelector('#trendingvideos').classList.remove('active');
-        } else {
-            sessionStorage.setItem('activepage', 'trending_Videos');
-            document.querySelector('.trending_Videos').style.display = 'flex';
-            document.querySelector('#trendingvideos').classList.add('active');
-        } if (item.id != 'trendingshorts') {
-            document.querySelector('.class_shortReel').style.display = 'none';
-            document.querySelector('#trendingshorts').classList.remove('active');
-        } else {
-            sessionStorage.setItem('activepage', 'class_shortReel');
-            document.querySelector('.class_shortReel').style.display = 'flex';
-            document.querySelector('#trendingshorts').classList.add('active');
-        } if (item.id != 'livestreaming') {
-            document.querySelector('.live_Videos').style.display = 'none';
-            document.querySelector('#livestreaming').classList.remove('active');
-        } else {
-            sessionStorage.setItem('activepage', 'live_Videos');
-            document.querySelector('.live_Videos').style.display = 'flex';
-            document.querySelector('#livestreaming').classList.add('active');
-        } if (item.id != 'timelinevideos') {
-            document.querySelector('.timeline_Videos').style.display = 'none';
-            document.querySelector('#timelinevideos').classList.remove('active');
-        } else {
-            sessionStorage.setItem('activepage', 'timeline_Videos');
-            document.querySelector('.timeline_Videos').style.display = 'flex';
-            document.querySelector('#timelinevideos').classList.add('active');
-        } if (item.id != 'savedvideos') {
-            document.querySelector('.saved_Videos').style.display = 'none';
-            document.querySelector('#savedvideos').classList.remove('active');
-        } else {
-            sessionStorage.setItem('activepage', 'saved_Videos');
-            document.querySelector('.saved_Videos').style.display = 'flex';
-            document.querySelector('#savedvideos').classList.add('active');
+            document.querySelector('.searchpath').style.display = 'none';
+            document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
         }
     })
 });
@@ -611,15 +541,15 @@ document.querySelector('#create_Advert_purpose').addEventListener('click', () =>
 function opene_Search_Popup() {
     const searchmoveback = document.querySelector('.searchmoveback');
     searchmoveback.addEventListener('click', () => {
-        let main_Seach_Path = document.querySelector('.main_Seach_Path');
-        main_Seach_Path.style.display = 'none';
+        let searchpath = document.querySelector('.searchpath');
+        searchpath.style.display = 'none';
         document.querySelector('.navigatiofloatcontainer').style.display = 'flex';
         sessionStorage.setItem('activepage', 'home');
     });
     function OpenSearchPath() {
         sessionStorage.setItem('activepage', 'homesearch');
-        let main_Seach_Path = document.querySelector('.main_Seach_Path');
-        main_Seach_Path.style.display = 'flex';
+        let searchpath = document.querySelector('.searchpath');
+        searchpath.style.display = 'flex';
         document.querySelector('.navigatiofloatcontainer').style.display = 'none';
     }
     document.querySelectorAll('.popup_search').forEach(button => {
@@ -628,19 +558,9 @@ function opene_Search_Popup() {
         });
     });
 
-    //video search popup
-    const video_Search_Path_Exit = document.querySelector('.video_Search_Path_Exit');
-    const video_Seach_Path = document.querySelector('.video_Seach_Path');
-    const randomvideosearch = document.querySelector('#randomvideosearch');
-    video_Search_Path_Exit.addEventListener('click', () => {
-        video_Seach_Path.style.display = 'none';
-    });
-    randomvideosearch.addEventListener('click', () => {
-        video_Seach_Path.style.display = 'flex';
-    });
     //chats and people search
     document.querySelectorAll('.searchbtn_buttonsearch').forEach(button => {
-        button.addEventListener('click',()=> {
+        button.addEventListener('click', () => {
             if (button.id == 'peoplesearchbutton') {
                 document.querySelector('.people .navigationheader .headermiddle').classList.toggle('headermiddleactive');
             } else if (button.id == 'chatsearchbutton') {
@@ -679,49 +599,16 @@ phbtn.forEach(item => {
 
 const videouploadpopupclose = document.querySelector('.videouploadpopupclose');
 videouploadpopupclose.addEventListener('click', () => {
-    videouploadpopup.style.display = 'none';
+    document.querySelector('.videouploadpopup').style.display = 'none';
 });
 
-const addpurpose = document.querySelector('#addpurpose');
-addpurpose.addEventListener('click', () => {
-    let livepurposepopup = document.querySelector('.livepurposepopup');
-    livepurposepopup.classList.toggle('livepurposepopupactive');
-});
-const livepurposeclosebtn = document.querySelector('.livepurposeclosebtn');
-livepurposeclosebtn.addEventListener('click', () => {
-    let livepurposepopup = document.querySelector('.livepurposepopup');
-    livepurposepopup.classList.toggle('livepurposepopupactive');
-});
+
 const activetimer = document.querySelector('#activetimer');
 activetimer.addEventListener('click', () => {
     let livetimer = document.querySelector('.livetimer');
     livetimer.classList.toggle('livetimeractive')
 });
-const hidesmallvideocheck = document.querySelector('#hidesmallvideocheck');
-hidesmallvideocheck.addEventListener('click', () => {
-    let tinyvideoview = document.querySelector('.tinyvideoview');
-    tinyvideoview.classList.toggle('tinyvideoviewactive');
-    gallery.style.display = 'none';
-    tinyvideoview.style.display = 'flex';
-    tinylivevideocheck.pause();
 
-});
-const livehide = document.querySelector('#livehide');
-livehide.addEventListener('click', () => {
-    let tinyvideoview = document.querySelector('.tinyvideoview');
-    tinyvideoview.classList.toggle('tinyvideoviewactive');
-    gallery.style.display = 'none';
-    tinyvideoview.style.display = 'flex';
-    tinylivevideocheck.pause();
-
-});
-boostlivevideo.addEventListener('click', () => {
-    document.querySelector('.liveboostpopup').classList.toggle('liveboostpopupactive');
-});
-const liveboostclosebtn = document.querySelector('.liveboostclosebtn');
-liveboostclosebtn.addEventListener('click', () => {
-    document.querySelector('.liveboostpopup').classList.toggle('liveboostpopupactive');
-});
 //MULTI PURPOSE CLOSE BTN
 
 const photopopupclosebtn = document.querySelector('.photopopupclosebtn');

@@ -498,7 +498,7 @@ function getRandomCode() {
         if (navigator.clipboard) {
             try {
                 navigator.clipboard.writeText(text);
-                create_Detail_Message('text copied');
+                create_Detail_Message('email copied...');
             } catch (err) {
                 console.error('Failed to copy: ', err);
                 create_Detail_Message('unable to copy');
@@ -527,6 +527,7 @@ function getRandomCode() {
 }
 document.querySelector('#deliver_Code').addEventListener('click', () => {
     getRandomCode();
+    document.querySelector('#welcomepage').disabled = true;
 });
 gender.forEach(sex => {
     sex.addEventListener('click', () => {

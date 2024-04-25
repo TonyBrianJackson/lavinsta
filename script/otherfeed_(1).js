@@ -7,7 +7,7 @@ function createPhotosGadget() {
                 if (photo.isPhoto) {
                     let worldwidegadgethead = document.createElement('div');
                     let worldwidegadgetcontainer = document.createElement('div');
-                    let worldwidegadgetinnercontainer = document.createElement('div');
+                    let worldwidegadgetinnercontainer = document.createElement('a');
                     let worldwideImageGadget = document.createElement('img');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
@@ -25,6 +25,8 @@ function createPhotosGadget() {
 
                     let live_Like_Count_Container = document.createElement('div');
                     let live_Comment_Count_Container = document.createElement('div');
+
+                    worldwidegadgetinnercontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     gadgetsidepannel.appendChild(gadgetlike);
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
@@ -156,7 +158,7 @@ function createPhotosGadget() {
                     worldwidegadgetcontainer.appendChild(worldwidegadgetinnercontainer);
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
-                    worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
+                    worldwidegadgetcontainer.appendChild(gadgetsidepannel);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
                     if (photo.title !== "") {
@@ -325,7 +327,7 @@ function createPhotosGadget() {
                 } if (photo.isAdvert) {
                     let worldwidegadgethead = document.createElement('div');
                     let worldwidegadgetcontainer = document.createElement('div');
-                    let worldwidegadgetinnercontainer = document.createElement('div');
+                    let worldwidegadgetinnercontainer = document.createElement('a');
                     let worldwideImageGadget = document.createElement('img');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
@@ -343,6 +345,8 @@ function createPhotosGadget() {
 
                     let live_Like_Count_Container = document.createElement('div');
                     let live_Comment_Count_Container = document.createElement('div');
+
+                    worldwidegadgetinnercontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     gadgetsidepannel.appendChild(gadgetlike);
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
@@ -473,7 +477,7 @@ function createPhotosGadget() {
                     worldwidegadgetcontainer.appendChild(worldwidegadgetinnercontainer);
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
-                    worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
+                    worldwidegadgetcontainer.appendChild(gadgetsidepannel);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
 
@@ -642,7 +646,7 @@ function createPhotosGadget() {
                 } if (photo.isCrime) {
                     let worldwidegadgethead = document.createElement('div');
                     let worldwidegadgetcontainer = document.createElement('div');
-                    let worldwidegadgetinnercontainer = document.createElement('div');
+                    let worldwidegadgetinnercontainer = document.createElement('a');
                     let worldwideImageGadget = document.createElement('img');
                     let worldwidegadgetcaptioncover = document.createElement('div');
                     let worldwidegadgetcaption = document.createElement('p');
@@ -661,6 +665,8 @@ function createPhotosGadget() {
 
                     let live_Like_Count_Container = document.createElement('div');
                     let live_Comment_Count_Container = document.createElement('div');
+
+                    worldwidegadgetinnercontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     gadgetsidepannel.appendChild(gadgetlike);
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
@@ -791,7 +797,7 @@ function createPhotosGadget() {
                     worldwidegadgetcontainer.appendChild(worldwidegadgetinnercontainer);
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
-                    worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
+                    worldwidegadgetcontainer.appendChild(gadgetsidepannel);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
 
@@ -970,8 +976,8 @@ function createAdsGadget() {
             if (photo.type === 'other') {
                 if (photo.isPhoto) {
                     let worldwidegadgethead = document.createElement('div');
-                    let worldwidegadgetcontaineronshortpage = document.createElement('div');
-                    let worldwidegadgetinnercontainer = document.createElement('div');
+                    let worldwidegadgetcontainer = document.createElement('div');
+                    let worldwidegadgetinnercontainer = document.createElement('a');
                     let worldwideImageGadget = document.createElement('img');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
@@ -988,6 +994,8 @@ function createAdsGadget() {
 
                     let live_Like_Count_Container = document.createElement('div');
                     let live_Comment_Count_Container = document.createElement('div');
+
+                    worldwidegadgetinnercontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     gadgetsidepannel.appendChild(gadgetlike);
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
@@ -1114,11 +1122,11 @@ function createAdsGadget() {
                     nameandimg.appendChild(authorsname);
                     nameandimg.appendChild(elapsedTime);
                     nameandimg.appendChild(attributation);
-                    column.appendChild(worldwidegadgetcontaineronshortpage);
-                    worldwidegadgetcontaineronshortpage.appendChild(worldwidegadgetinnercontainer);
+                    column.appendChild(worldwidegadgetcontainer);
+                    worldwidegadgetcontainer.appendChild(worldwidegadgetinnercontainer);
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
-                    worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
+                    worldwidegadgetcontainer.appendChild(gadgetsidepannel);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
 
@@ -1130,7 +1138,7 @@ function createAdsGadget() {
                     worldwidegadgetauthorsimgcontainer.classList.add('worldwidegadgetauthorsimgcontainer');
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
-                    worldwidegadgetcontaineronshortpage.classList.add('worldwidegadgetcontaineronshortpage');
+                    worldwidegadgetcontainer.classList.add('worldwidegadgetcontainer');
 
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
@@ -1286,8 +1294,8 @@ function createAdsGadget() {
                     });
                 } if (photo.isAdvert) {
                     let worldwidegadgethead = document.createElement('div');
-                    let worldwidegadgetcontaineronshortpage = document.createElement('div');
-                    let worldwidegadgetinnercontainer = document.createElement('div');
+                    let worldwidegadgetcontainer = document.createElement('div');
+                    let worldwidegadgetinnercontainer = document.createElement('a');
                     let worldwideImageGadget = document.createElement('img');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
@@ -1304,6 +1312,8 @@ function createAdsGadget() {
 
                     let live_Like_Count_Container = document.createElement('div');
                     let live_Comment_Count_Container = document.createElement('div');
+
+                    worldwidegadgetinnercontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     gadgetsidepannel.appendChild(gadgetlike);
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
@@ -1430,11 +1440,11 @@ function createAdsGadget() {
                     nameandimg.appendChild(authorsname);
                     nameandimg.appendChild(elapsedTime);
                     nameandimg.appendChild(attributation);
-                    column.appendChild(worldwidegadgetcontaineronshortpage);
-                    worldwidegadgetcontaineronshortpage.appendChild(worldwidegadgetinnercontainer);
+                    column.appendChild(worldwidegadgetcontainer);
+                    worldwidegadgetcontainer.appendChild(worldwidegadgetinnercontainer);
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
-                    worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
+                    worldwidegadgetcontainer.appendChild(gadgetsidepannel);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
 
@@ -1447,7 +1457,7 @@ function createAdsGadget() {
                     worldwidegadgetauthorsimgcontainer.classList.add('worldwidegadgetauthorsimgcontainer');
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
-                    worldwidegadgetcontaineronshortpage.classList.add('worldwidegadgetcontaineronshortpage');
+                    worldwidegadgetcontainer.classList.add('worldwidegadgetcontainer');
 
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);
@@ -1603,8 +1613,8 @@ function createAdsGadget() {
                     });
                 } if (photo.isCrime) {
                     let worldwidegadgethead = document.createElement('div');
-                    let worldwidegadgetcontaineronshortpage = document.createElement('div');
-                    let worldwidegadgetinnercontainer = document.createElement('div');
+                    let worldwidegadgetcontainer = document.createElement('div');
+                    let worldwidegadgetinnercontainer = document.createElement('a');
                     let worldwideImageGadget = document.createElement('img');
                     let worldwidegadgetnameandimggrid = document.createElement('div');
                     let nameandimg = document.createElement('div');
@@ -1621,6 +1631,8 @@ function createAdsGadget() {
 
                     let live_Like_Count_Container = document.createElement('div');
                     let live_Comment_Count_Container = document.createElement('div');
+
+                    worldwidegadgetinnercontainer.href = `view.html?Post_Id=${photo.id}`;
 
                     gadgetsidepannel.appendChild(gadgetlike);
                     gadgetsidepannel.appendChild(live_Like_Count_Container);
@@ -1747,11 +1759,11 @@ function createAdsGadget() {
                     nameandimg.appendChild(authorsname);
                     nameandimg.appendChild(elapsedTime);
                     nameandimg.appendChild(attributation);
-                    column.appendChild(worldwidegadgetcontaineronshortpage);
-                    worldwidegadgetcontaineronshortpage.appendChild(worldwidegadgetinnercontainer);
+                    column.appendChild(worldwidegadgetcontainer);
+                    worldwidegadgetcontainer.appendChild(worldwidegadgetinnercontainer);
                     worldwidegadgetinnercontainer.appendChild(worldwidegadgethead);
                     worldwidegadgetinnercontainer.appendChild(worldwideImageGadget);
-                    worldwidegadgetinnercontainer.appendChild(gadgetsidepannel);
+                    worldwidegadgetcontainer.appendChild(gadgetsidepannel);
                     worldwidegadgethead.appendChild(worldwidegadgetnameandimggrid);
                     worldwidegadgetauthorsimgcontainer.appendChild(authorsImg);
 
@@ -1764,7 +1776,7 @@ function createAdsGadget() {
                     worldwidegadgetauthorsimgcontainer.classList.add('worldwidegadgetauthorsimgcontainer');
                     worldwidegadgetnameandimggrid.classList.add('worldwidegadgetnameandimggrid');
                     worldwidegadgethead.classList.add('worldwidegadgethead');
-                    worldwidegadgetcontaineronshortpage.classList.add('worldwidegadgetcontaineronshortpage');
+                    worldwidegadgetcontainer.classList.add('worldwidegadgetcontainer');
 
                     gadgetcomment.addEventListener('click', () => {
                         create_Comment_room(photo.id);

@@ -43,7 +43,7 @@ function createcommentreplys(section, locationId) {
                                     commentpost.textContent.split(" ").forEach(texttitle => {
                                         prefix.forEach(unit => {
                                             if (texttitle.indexOf(unit.prefixName) != -1) {
-                                                if (unit.prefixName == 'https://') {
+                                                if (unit.prefixName == 'https://' || unit.prefixName == 'http://') {
                                                     let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                                     commentpost.innerHTML = newtitle;
                                                 } else {
@@ -68,7 +68,7 @@ function createcommentreplys(section, locationId) {
                             commentpost.textContent.split(" ").forEach(texttitle => {
                                 prefix.forEach(unit => {
                                     if (texttitle.indexOf(unit.prefixName) != -1) {
-                                        if (unit.prefixName == 'https://') {
+                                        if (unit.prefixName == 'https://' || unit.prefixName == 'http://') {
                                             let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                             console.log(texttitle);
                                             commentpost.innerHTML = newtitle;
@@ -346,35 +346,9 @@ function createcommentreplys(section, locationId) {
                         commentname.classList.add('commentname');
                         reactsflex.classList.add('reactsflex');
 
-                        expand.classList.add('expand');
-                        expand.textContent = 'see more...';
-                        expand.style.display = 'none';
 
-
-                        if (commentpost.textContent.length > 200) {
-                            expand.style.display = 'block';
-                        } else {
-                            expand.style.display = 'none';
-                        }
-
-                        expand.addEventListener('click', () => {
-                            commentpost.classList.toggle('commentpostmoreorless');
-                            if (expand.innerText == 'see more...') {
-                                expand.innerText = 'see less';
-                            } else if (expand.innerText == 'see less') {
-                                expand.innerText = 'see more...';
-                            } else {
-                                expand.innerText = 'see more...'
-                            }
-                        });
                         commentpost.addEventListener('click', () => {
-                            if (expand.textContent == 'see more...') {
-                                expand.textContent = 'see less.'
-                                commentpost.classList.toggle('commentpostactive');
-                            } else if (expand.textContent == 'see less.') {
-                                expand.textContent = 'see more...';
-                                commentpost.classList.toggle('commentpostactive');
-                            }
+                            commentpost.classList.toggle('commentpostactive');
                         });
 
                         function Poster_Details() {
@@ -451,8 +425,6 @@ function createcommentreplys(section, locationId) {
                         let commentdelete = document.createElement('div');
                         //EXPAND TEXT
                         let expand = document.createElement('span');
-                        expand.textContent = 'see more...';
-                        expand.classList.add('expand');
 
                         commentdelete.addEventListener('click', () => {
                             ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
@@ -616,27 +588,6 @@ function createcommentreplys(section, locationId) {
                         reactsflex.appendChild(commentdelete);
                         reactsflex.classList.add('reactsflex');
                         commentreact.classList.add('replylike');
-                        function themecommentMode() {
-                            LogInFormData = JSON.parse(localStorage.getItem('LogInFormData'));
-                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                                ActiveUser_Account.forEach(data => {
-                                    LogInFormData.forEach(user => {
-                                        if (user.user_Id === data.user_Id) {
-                                            if (user.user_Mode == 'defaultTheme') {
-                                                commentreact.classList.remove('darkmodeicons');
-                                            } else if (user.user_Mode == 'darkTheme') {
-                                                commentreact.classList.add('darkmodeicons');
-                                            } else if (user.user_Mode == 'lightOffTheme') {
-                                                commentreact.classList.add('darkmodeicons');
-                                            }
-                                        }
-                                    });
-
-                                });
-                            }
-                        }
-                        themecommentMode();
 
                         commentreact.innerHTML = likesvg;
                         commentnameandimg.appendChild(commentimagecontainer);
@@ -650,24 +601,8 @@ function createcommentreplys(section, locationId) {
                             create_Random_Items(comment.id, comment.posterId, comment.caption, comment.Property_Src, comment.type, 'comment', commenttime.innerHTML);
                         });
 
-                        expand.addEventListener('click', () => {
-                            commentpost.classList.toggle('commentpostmoreorless');
-                            if (expand.innerText == 'see more...') {
-                                expand.innerText = 'see less';
-                            } else if (expand.innerText == 'see less') {
-                                expand.innerText = 'see more...';
-                            } else {
-                                expand.innerText = 'see more...'
-                            }
-                        });
                         commentpost.addEventListener('click', () => {
-                            if (expand.textContent == 'see more...') {
-                                expand.textContent = 'see less.'
-                                commentpost.classList.toggle('commentpostactive');
-                            } else if (expand.textContent == 'see less.') {
-                                expand.textContent = 'see more...';
-                                commentpost.classList.toggle('commentpostactive');
-                            }
+                            commentpost.classList.toggle('commentpostactive');
                         });
                         commentmesg.id = comment.posterId;
                         section.appendChild(commentmesg);
@@ -694,7 +629,7 @@ function createcommentreplys(section, locationId) {
                         commentpost.textContent.split(" ").forEach(texttitle => {
                             prefix.forEach(unit => {
                                 if (texttitle.indexOf(unit.prefixName) != -1) {
-                                    if (unit.prefixName == 'https://') {
+                                    if (unit.prefixName == 'https://' || unit.prefixName == 'http://') {
                                         let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         console.log(texttitle);
                                         commentpost.innerHTML = newtitle;
@@ -745,11 +680,6 @@ function createcommentreplys(section, locationId) {
                         commentdelete.id = comment.posterId;
 
 
-                        if (commentpost.textContent.length > 200) {
-                            expand.style.display = 'block';
-                        } else {
-                            expand.style.display = 'none';
-                        }
                         commentdelete.innerHTML = settingssvg;
                         commentdelete.classList.add('commentdelete');
                         commentdelete.classList.add('headerbtns');
@@ -1038,27 +968,6 @@ function createcommentreplys(section, locationId) {
 
                         commentreact.classList.add('replylike');
 
-                        function themeCommentMode() {
-                            if (Array.isArray(JSON.parse(localStorage.getItem('ActiveUser_Account')))) {
-                                ActiveUser_Account = JSON.parse(localStorage.getItem('ActiveUser_Account'));
-                                ActiveUser_Account.forEach(data => {
-                                    LogInFormData.forEach(user => {
-                                        if (user.user_Id === data.user_Id) {
-                                            if (user.user_Mode == 'defaultTheme') {
-                                                commentreact.classList.remove('darkmodeicons');
-                                            } else if (user.user_Mode == 'darkTheme') {
-                                                commentreact.classList.add('darkmodeicons');
-                                            } else if (user.user_Mode == 'lightOffTheme') {
-                                                commentreact.classList.add('darkmodeicons');
-                                            }
-                                        }
-                                    });
-
-                                });
-                            }
-                        }
-                        themeCommentMode();
-
                         commentdelete.id = comment.posterId;
 
                         const startTime = function () {
@@ -1131,7 +1040,6 @@ function createcommentreplys(section, locationId) {
                         commentreact.innerHTML = likesvg;
 
                         reactsflex.classList.add('reactsflex');
-                        expand.classList.add('expand');
                         commentmesg.classList.add('commentmesg');
                         commentpost.classList.add('commentpost');
                         commentnameandimg.classList.add('commentnameandimg');
@@ -1145,7 +1053,7 @@ function createcommentreplys(section, locationId) {
                         commentpost.textContent.split(" ").forEach(texttitle => {
                             prefix.forEach(unit => {
                                 if (texttitle.indexOf(unit.prefixName) != -1) {
-                                    if (unit.prefixName == 'https://') {
+                                    if (unit.prefixName == 'https://' || unit.prefixName == 'http://') {
                                         let newtitle = commentpost.textContent.replace(texttitle, `<a href="${texttitle.trim()}" target="_blank">${texttitle.trim()}</a>`);
                                         console.log(texttitle);
                                         commentpost.innerHTML = newtitle;
@@ -1165,33 +1073,12 @@ function createcommentreplys(section, locationId) {
                         commentpostcontainer.classList.add('commentpostcontainer');
                         nextcommentcontainer.classList.add('nextcommentcontainer');
 
-                        if (commentpost.textContent.length > 200) {
-                            expand.style.display = 'block';
-                        } else {
-                            expand.style.display = 'none';
-                        }
                         commentpostvdieocontainer.addEventListener('click', () => {
                             create_Random_Items(comment.id, comment.posterId, comment.caption, comment.Property_Src, comment.type, 'comment', commenttime.innerHTML);
                         });
 
-                        expand.addEventListener('click', () => {
-                            commentpost.classList.toggle('commentpostmoreorless');
-                            if (expand.innerText == 'see more...') {
-                                expand.innerText = 'see less';
-                            } else if (expand.innerText == 'see less') {
-                                expand.innerText = 'see more...';
-                            } else {
-                                expand.innerText = 'see more...'
-                            }
-                        });
                         commentpost.addEventListener('click', () => {
-                            if (expand.textContent == 'see more...') {
-                                expand.textContent = 'see less.'
-                                commentpost.classList.toggle('commentpostactive');
-                            } else if (expand.textContent == 'see less.') {
-                                expand.textContent = 'see more...';
-                                commentpost.classList.toggle('commentpostactive');
-                            }
+                            commentpost.classList.toggle('commentpostactive');
                         });
 
                         //COMMENTS LIKE COUNT
